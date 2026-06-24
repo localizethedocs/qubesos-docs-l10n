@@ -1,0 +1,897 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:3
+#: 55fd33cf6ff54759b1e7b50eadccbcb6
+msgid "How to edit the documentation"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:5
+#: 342828dce68b405bbcc8d957f3f23213
+msgid ""
+"The Qubes OS documentation is stored as `reStructuredText (rST) <https://"
+"docutils.sourceforge.io/rst.html>`__ files in the `qubes-doc <https://github."
+"com/QubesOS/qubes-doc>`__ repository."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:8
+#: 7f8666bc0f49438cbd66ec69184eb1aa
+msgid ""
+"We use `Sphinx <https://www.sphinx-doc.org/>`__ for building and `Read The "
+"Docs (RTD) <https://about.readthedocs.com/>`__ for hosting. RTD is a "
+"`continuous‑documentation deployment platform <https://docs.readthedocs.com/"
+"platform/stable/continuous-deployment.html>`__ that can automatically detect "
+"changes in a GitHub repository and build the latest version of a "
+"documentation."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:13
+#: 72b860bd27454091a83617b929eb1ed1
+msgid ""
+"Qubes OS Documentation Workflow - once new documentation is written or "
+"changed, it is built and verified with Sphinx, pushed on GitHub/GitLab and "
+"hosted on RTD"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:19
+#: edeee33ac2e844d08cf6cbdd599c3ca5
+msgid ""
+"By cloning and regularly pulling from `qubes-doc <https://github.com/QubesOS/"
+"qubes-doc>`__ repository, users can maintain their own up-to-date offline "
+"copy of the Qubes documentation rather than relying solely on the web and "
+"either serve it locally or read the rST files directly. EPUB or PDF versions "
+"of Qubes OS documentation can also be downloaded from `doc.qubes-os.org "
+"<https://doc.qubes-os.org/en/latest/>`__:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:25
+#: 165d35d1f75a41f3b780907df2c909f7
+msgid ""
+"Highlights from where one can download a ePUB or PDF of hte Qubes OS "
+"documentation deployed on RTD"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:31
+#: b4dfadead197488e9c997291d501de8f
+msgid ""
+"The documentation is a volunteer community effort. People like you are "
+"constantly working to make it better. If you notice something that can be "
+"fixed or improved, please follow the steps below to open a pull request!"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:38
+#: 5144a9f5851c473f8226d42195a2e827
+msgid "How to submit a pull request"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:40
+#: 2a1d71553616441f8bfff59d4f723440
+msgid ""
+"We keep all the rST documentation in `qubes-doc <https://github.com/QubesOS/"
+"qubes-doc>`__, a dedicated Git repository hosted on `GitHub <https://github."
+"com/>`__. Thanks to GitHub’s easy web interface, you can edit the "
+"documentation even if you’re not familiar with Git or the command line! All "
+"you need is a free GitHub account."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:46
+#: 6d70692b62dd4643b1809d0c1412daa1
+msgid "A few notes before we get started:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:48
+#: d01c9749614e40eda5dc602ccf457ac7
+msgid ""
+"Since Qubes is a security-oriented project, every documentation change will "
+"be :ref:`reviewed <developer/general/how-to-edit-the-rst-documentation:"
+"security>` before it’s accepted. This allows us to maintain quality control "
+"and protect our users."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:50
+#: c17f96cdbbca401b849c093f32390322
+msgid ""
+"To give your contribution a better chance of being accepted, please follow "
+"our :doc:`/developer/general/rst-documentation-style-guide`."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:52
+#: 8afe3b9dbbcd4a3b9fb8c1b0b52874b8
+msgid ""
+"We don’t want you to spend time and effort on a contribution that we can’t "
+"accept. If your contribution would take a lot of time, please :doc:`file an "
+"issue </introduction/issue-tracking>` for it first so that we can make sure "
+"we’re on the same page before significant works begins."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:54
+#: 9c7ede60f09641c3a1ab2b919baa1811
+msgid ""
+"Alternatively, you may already have written content that doesn’t conform to "
+"these guidelines, but you’d be willing to modify it so that it does. In this "
+"case, you can still submit it by following the instructions below. Just make "
+"a note in your pull request (PR) that you’re aware of the changes that need "
+"to be made and that you’re just asking for the content to be reviewed before "
+"you spend time making those changes."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:56
+#: e7e526e86c804b5c921c40982bfd15fe
+msgid ""
+"Finally, if you’ve written something that doesn’t belong in qubes-doc but "
+"that would be beneficial to the Qubes community, please consider adding it "
+"to the :ref:`external documentation <developer/general/rst-documentation-"
+"style-guide:core vs. external documentation>`."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:58
+#: 95c13c6d976e4b1f8606a0ef5e548e53
+msgid ""
+"(**Advanced users:** If you’re already familiar with GitHub or wish to work "
+"from the command line, you can skip the rest of this section. All you need "
+"to do to contribute is to `fork and clone <https://guides.github.com/"
+"activities/forking/>`__ the `qubes-doc <https://github.com/QubesOS/qubes-"
+"doc>`__ repo, make your changes, then `submit a pull request <https://help."
+"github.com/articles/using-pull-requests/>`__. You can continue reading :ref:"
+"`viewing_pr`.)"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:65
+#: de5605c663174850b4c82049c91a0636
+msgid ""
+"Ok, let’s begin. Every documentation page has a :guilabel:`Edit on GitHub` "
+"link."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:67
+#: fe4bafe3a7c54ae1ae7ab027ddf5fa78
+msgid "|page-source-button|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:543
+#: c7c8392dd8c54e1ea1001c315e6275f6
+msgid "Highlights the Edit Source Button to GitHub sources on doc.qubes-os.org"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:69
+#: 72e0e52768a44420875ee2b35dabe4ad
+msgid ""
+"When you click on it, you’ll be taken to the source file — a "
+"reStructuredText (``.rst``) file — on GitHub."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:71
+#: 5a0aebb5fa1d4ad8b412b0f5ac31400d
+msgid ""
+"On this page, there will be a button to edit the file (if you are already "
+"logged in)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:74
+#: bc71426623cf4ac5b950dd1ecf274c75
+msgid "|github-edit|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:545
+#: 8f14534979fd4ca8bc69485a39e34542
+msgid "Highlights the Sign-In on GitHub"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:76
+#: eafc2de0fd9442d5a0dec99b4c9b963b
+msgid ""
+"If you are not logged in you can click on :guilabel:`Sign In` and you’ll be "
+"prompted to sign in with your GitHub username and password. You can also "
+"create a free account from here."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:80
+#: afb94815c68e40a098ec2c488e998760
+msgid "|github-sign-in|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:547
+#: ff7a460100414172a1bef0489716e6fd
+msgid "GitHub Login"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:82
+#: f83bfe21144e49968d16ec58a957f155
+msgid ""
+"If this is your first contribution to the documentation, you need to fork "
+"the repository (make your own copy)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:85
+#: 38544ec1d58f421c89665fcc6a4a3376
+msgid "|fork1|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:549
+#: 940b9b14ee194ef0bc0361cbaad6bfbe
+msgid "Highlights the Fork Button on GitHub for the qubes-doc repository"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:87
+#: 5ca9684ed8a14ed688fb5626b8b2d688
+msgid ""
+"It’s easy — just click the green :guilabel:`Create fork` button on the next "
+"page. This step is only needed the first time you make a contribution."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:92
+#: eff77c1ccb4b4f66a50d546eb0c31c1f
+msgid "|fork2|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:551
+#: 3eca1ce62c59484ebdcf59f632a0775d
+msgid ""
+"Highlights the Create Fork Button on GitHub when forking the qubes-doc "
+"repository"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:94
+#: 03cf7394b815428bbf7407abc5f6f8d7
+msgid "Now you can make your modifications."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:96
+#: 10b373e81e744f38b1daed3fb73f3ebe
+msgid "|fork3|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:553
+#: 124a74ce9ec84440aab81afaac2f805e
+msgid "Forked qubes-doc repository on GitHub"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:101
+#: 687591fde1774ef0a24b153d8b5833f4
+msgid "|edit|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:555
+#: efea7d7d7c124f989303bedb0a38d80a
+msgid ""
+"Highlights the edit options for an rst file in the GitHub forked qubes-doc "
+"repository"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:103
+#: 099e3854e4d4428ca001d80adb249749
+msgid ""
+"If you want to add images, read :ref:`how_to_add_images` and refer to :ref:"
+"`build_locally` if you want to locally verify that everything looks correct "
+"before submitting any changes."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:107
+#: 3d209bdff9634538a728ae7be7f0ba07
+msgid ""
+"Once you’re finished, describe your changes at the bottom and click :"
+"guilabel:`Commit changes`."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:110
+#: 39a1cf7ea3a64e7dab4753dc199ca649
+msgid "|commit|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:557
+#: e7668d7d533c4296992b16de469fd3a0
+msgid "Highlights the commit changes button on GitHub"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:112
+#: d8bc1ecf14084047af92a14c0ecbbe0d
+msgid ""
+"After that, you’ll see exactly what modifications you’ve made. At this "
+"stage, those changes are still in your own copy (fork) of the documentation. "
+"If everything looks good, send those changes to us by pressing the :guilabel:"
+"`Create pull request` button."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:118
+#: d3d59e6fcb424924bfa51b99f512f4c8
+msgid ""
+"You will be able to adjust the pull request message and title there. In most "
+"cases, the defaults are ok, so you can just confirm by pressing the :"
+"guilabel:`Create pull request` button again. However, if you’re not ready "
+"for your PR to be reviewed or merged yet, please `make a draft PR instead "
+"<https://github.blog/news-insights/product-news/introducing-draft-pull-"
+"requests/>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:124
+#: 3520768013894d3b97cc693007ee1e0c
+msgid "|pull-request-confirm|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:559
+#: 95b3f997612643f7b665fa94c8c97333
+msgid ""
+"Highlights the create pull request button on GitHub when creating a pull "
+"request"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:126
+#: 092cdeb2c1a14e06acee495ea86bb797
+msgid ""
+"If any of your changes should be reflected in the :doc:`documentation index "
+"(a.k.a. table of contents) </index>` — for example, if you’re adding a new "
+"page, changing the title of an existing page, or removing a page — please "
+"see :ref:`edit_doc_index`."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:130
+#: 899d3ae5c496432d80bbea553def6237
+msgid ""
+"That’s all! We will review your changes. If everything looks good, we’ll "
+"pull them into the official documentation. Otherwise, we may have some "
+"questions for you, which we’ll post in a comment on your pull request. "
+"(GitHub will automatically notify you if we do.) If, for some reason, we "
+"can’t accept your pull request, we’ll post a comment explaining why we can’t."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:141
+#: 482034e1fdd843cabf851c7918f71a9c
+msgid "Viewing your pull request on RTD"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:143
+#: 1fc72b0f450544e0aabb0f5ddfafd415
+msgid ""
+"Every time you push a commit to your pull request, a build on RTD will be "
+"triggered. To view your PR you can go to Qubes OS builds on `RTD <https://"
+"app.readthedocs.org/projects/qubes-doc/builds/>`__, find the last build of "
+"your PR and click on it:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:147
+#: 4e0fca80512b4bc588695e436e7cddbe
+msgid "|pull-request-builds|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:561
+#: 807510b7bc714cc885b1c0a06a4bf8f7
+msgid ""
+"Highlights the pull request <number> and its build in the build list on RTD"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:149
+#: feb5d10dc20e4305ad6d0187bfdc2fb3
+msgid "There you can view the rendered docs or inspect the logs for errors:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:151
+#: 30a542a444e54cb395c0a640df60ec5d
+msgid "|pull-request-build|"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:563
+#: 34b6b0cd439944de83731e28d6ff99b3
+msgid ""
+"Highlights the View Docs button in a specific build for a pull request "
+"<number> on RTD"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:153
+#: ea952b3dfc5045c7b23cb2faef0c9625
+msgid ""
+"You can also just head straight to the following url: ``https://qubes-doc--"
+"<PR-NUMBER>.org.readthedocs.build/en/<PR-NUMBER>/``."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:157
+#: 5605e3b790b84e009550e74a9aea1e5a
+msgid "Tips & Tricks"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:159
+#: 483fb3b123ab4112ba111569e45ca139
+msgid ""
+"Pull upstream changes into your fork regularly. Diverging too far from main "
+"can be cumbersome to update at a later stage."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:160
+#: d23b8cd4310642e2a0e28adcf9026a85
+msgid "To pull in upstream changes:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:167
+#: 94a66c1db72f4b1a9222e6c021e0e173
+msgid "Check the log and the current changes, before merging:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:173
+#: bfd38a1a3eb14ba9b23a40eb05379361
+msgid "Then merge the changes that you fetched:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:179
+#: 729d22c045a54931a8f0933acb7ac566
+msgid ""
+"Keep your pull requests limited to a single issue, pull requests should be "
+"as atomic as possible."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:184
+#: a3e926d8ac824971a70528fe4a77a076
+msgid "TL;DR: How to edit the documentation index"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:186
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:214
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:262
+#: 8b4dc5ef83ba4897ade19accd2de0dc3 d9613d84840e4ddf9bbb93f9176401ad
+#: f486614a7423448a948c509d20214ba7
+msgid ""
+"For a more comprehensive guide to the rST syntax and pitfalls please refer "
+"to the :doc:`/developer/general/rst-documentation-style-guide`."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:188
+#: 34a5041109f941f48bd85dc393e71f91
+msgid ""
+"The source file for the :doc:`documentation index (a.k.a. table of contents) "
+"</index>` is `index.rst <https://github.com/QubesOS/qubes-doc/blob/main/"
+"index.rst>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:192
+#: 57610f6dabfc4486b7baa116d8bf7524
+msgid ""
+":file:`index.rst` contains information about the hierarchy between the files "
+"in the documentation and/or the connection between them. `toctree <https://"
+"www.sphinx-doc.org/en/master/usage/restructuredtext/directives."
+"html#directive-toctree>`__ is the rST directive which defines the table of "
+"contents."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:196
+#: f0e63aab1b3a4fe2b2d507cd58bd2166
+msgid ""
+"If you want to add a newly created documentation file, do so as follows:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:205
+#: e9f454a77ed34c329a755e2b2e5a9fb0
+msgid "Editing this file will change what appears on the documentation index."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:207
+#: a1c514058774427ba075dcb75f71764d
+msgid ""
+"Please always be mindful that rST syntax is sensitive to indentation (3 "
+"spaces)!"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:212
+#: 7142673cbcba4a8b915ea558703e0bdc
+msgid "TL;DR: How to add images"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:216
+#: b6488dcf587e4e79833f57a7eefd2ab2
+msgid ""
+"Images reside inside the `qubes-doc repository <https://github.com/QubesOS/"
+"qubes-doc/>`__ in the directory `attachment/doc <https://github.com/QubesOS/"
+"qubes-doc/tree/main/attachment/doc>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:218
+#: 4e2186eca6054af89b73761d79c5ec82
+msgid "To add an image to a page, use the following syntax:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:226
+#: 1e3d58193a5343cf9d306b33025ef0ee
+msgid ""
+"If you want to add a caption to the image, you may do so using the optional "
+"``caption`` of the `figure directive <https://docutils.sourceforge.io/docs/"
+"ref/rst/directives.html#figure>`__. Another way without a caption is to use "
+"the `image directive <https://docutils.sourceforge.io/docs/ref/rst/"
+"directives.html#image>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:229
+#: 813c094e65264e6ea7b925d3d6d1a9ce
+msgid ""
+"Then, add your image(s) in a the :file:`attachment/doc` folder in the `qubes-"
+"doc <https://github.com/QubesOS/qubes-doc>`__ repository using the same path "
+"and filename. This is the only permitted way to include images. Do not link "
+"to images on other websites."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:236
+#: bfe36222dd274130b47824745db28408
+msgid "TL;DR: Cross-referencing"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:238
+#: 9ce5263cdafe409cbf8324b0896ad0e7
+msgid "You can link to any part of the documentation using cross-references."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:240
+#: b3af858f1f7242438709f3f7298631a3
+msgid ""
+"**When referencing to a page** use the `:doc: role <https://www.sphinx-doc."
+"org/en/master/usage/referencing.html#role-doc>`__ as in:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:246
+#: c889a2da606d469d8d146c200385e035
+msgid ""
+"Use the path to the file starting from the root of qubes-doc repository, "
+"**with a leading slash** (``/``) and without the ``.rst`` file ending."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:248
+#: 632c7ca823de47d087070d45f8a27886
+msgid ""
+"**When referencing to a section in a page** use the ``:ref:`` `role <https://"
+"www.sphinx-doc.org/en/master/usage/referencing.html#role-ref>`__ as in:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:254
+#: 1dcae38285ec4a5e84e16fbd46c26875
+msgid ""
+"The first part (before the colon) is the path of the file as with the `:doc: "
+"role <https://www.sphinx-doc.org/en/master/usage/referencing.html#role-"
+"doc>`__ but **without the leading slash** (``/``). The second part is the "
+"content of the header."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:256
+#: 49fa6963068d4b5d9566854de66551e6
+msgid ""
+"**When referencing some kind of code** use the corresponding role, "
+"eventually prefixed by the sub-project, as in:"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:265
+#: ba145bd821a848e6a97207130bfb06bc
+msgid "Qubes OS rST configuration"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:267
+#: 344880d290204d46826c5edf2cea8079
+msgid ""
+":file:`qubes-doc` directory contains a build configuration file named :file:"
+"`conf.py`, used by Sphinx to define `input and output behaviour <https://www."
+"sphinx-doc.org/en/master/usage/configuration.html>`__. It contains settings "
+"and extensions that define how the documentation will be generated. You can "
+"find it `here <https://github.com/QubesOS/qubes-doc/blob/main/conf.py>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:272
+#: 11524db3131e417e8f8deff3f49a2fc0
+msgid ""
+"You can also find a :file:`readthedocs.yml` `file <https://github.com/"
+"QubesOS/qubes-doc/blob/main/.readthedocs.yaml>`__ which tells RTD how to "
+"build the documentation. It defines the build environment, Python version, "
+"required dependencies, and which Sphinx configuration to run. Thus RTD "
+"automatically generates and hosts the docs."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:278
+#: aea51994581a41f5a386b31ae22b26a7
+msgid "Extensions"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:280
+#: 19a20cd775ea4fbfa51c78c9d386cd64
+msgid ""
+"We use several Sphinx `extensions <https://www.sphinx-doc.org/en/master/"
+"usage/extensions/index.html>`__ as defined in :file:`conf.py`, as well a "
+"simple custom one to embed YouTube videos, which can be found `here <https://"
+"github.com/QubesOS/qubes-doc/tree/main/_ext>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:288
+#: 794016a8bfbc4bfca8833a046add6d26
+msgid "Building the rST documentation locally"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:291
+#: 54070cc9f863414b96ff1f76b95c5b72
+msgid ""
+"In order to build the Qubes OS rST documentation locally clone the `qubes-"
+"doc <https://github.com/QubesOS/qubes-doc>`__ repository (or your forked one "
+"if you want to submit a pull request)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:295
+#: b39a28bc65784e8682f32025fa26ea5b
+msgid ""
+"It is recommended to use a virtual environment, f.ex. `venv <https://docs."
+"python.org/3/library/venv.html>`__, `poetry <https://python-poetry.org/>`__ "
+"or `uv <https://docs.astral.sh/uv/>`__. In the following section there is a "
+"sample setup to prepare local environments for building Qubes OS rST "
+"documentation."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:302
+#: 7bf74ddcfe43491bbd7de6ba7da77b04
+msgid "Using venv"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:306
+#: 99538166c68942e694dcf61184ed9323
+msgid "Creating a Python environment with venv"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:309
+#: 96c8693808dc4cc2b2b01d108a7012ea
+msgid "**Install needed packages and clone the repository**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:317
+#: fd8d62b873814c4dadb2c81a29576734
+msgid "**Create a virtual environment**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:319
+#: 70c44ceae1dc40b195cefddee13788ae
+msgid "Create and enter the virtual environment."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:329
+#: 0d03fd52ac67443891790f47567e8732
+msgid ""
+"You will have to activate the environment every time a new shell is opened."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:331
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:415
+#: 0a7b7589e1014655be602821104a05da 8b2a40e3c9ce45ceb6cac9e5242d0fa8
+msgid "**Install Sphinx and Required Extensions**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:333
+#: b67a9db177f64832a55f703aa3e64a56
+msgid ""
+"Install Sphinx and the necessary extensions (:program:`sphinx-autobuild`, :"
+"program:`sphinx-lint`)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:341
+#: 4da5dc732e3d4709983152899e592954
+msgid "Linting the documentation from venv"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:344
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:434
+#: c1783c8b40784ea898fff53812ba8e7c 61967795edf04de7ad07bdf0a580e46a
+msgid "**Run Linting**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:346
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:436
+#: 7c820d96928d4839b5a256f7204811c1 6380d3bd585f4def9183a00c724b848d
+msgid ""
+"The `sphinx-lint` extension checks for common issues like missing "
+"references, invalid directives, or formatting errors. Run the linting step "
+"using the :program:`sphinx-lint` command."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:354
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:444
+#: 0d11ffb1844f4d60b3490898e11a104e a0c4dea643e44c1aaa05d40d09e54d3e
+msgid "**Run Link Checker**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:356
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:446
+#: 0977f9ee056f4e3b92e9e674c94b02a9 4bcc0f82e5ed405c9de0cae41730000a
+msgid ""
+"The `sphinx-linkcheck` extension verifies the validity of all external and "
+"internal links."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:358
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:448
+#: 5b02dd7771f64fc8b704603b6d55563d 93735679f30f4d97acb68eaacd6d10ef
+msgid ""
+"The results will be written to the :file:`_build/linkcheck` directory with a "
+"detailed report in :file:`output.txt` or :file:`output.json` files of all "
+"checked links and their status (e.g., OK, broken, timeout)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:367
+#: 09da6726a116442ba6c478b19e1fd195
+msgid "Building the documentation from venv"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:370
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:460
+#: 9f33254ba17c4c39a3aebe05caebb270 6de9763a88f146fa80195bedea63f896
+msgid "**Build Documentation**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:372
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:462
+#: fa38788ae341469bb91a0b33d676057d dbe85609363a4f4bb2f3dfd069fb5d1e
+msgid ""
+"Use `sphinx-build` with the `-v` (verbose) flag to generate detailed output "
+"during the build process. The build command specifies the source directory "
+"(current directory :file:`.`, :file:`qubes-doc` in this case), the output "
+"directory (:file:`_build/html`), and the builder (`html`)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:380
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:470
+#: 905977d12fa24925b0adab1d92773011 174372e129804e1f8e7878a9ae70a345
+msgid ""
+"The build command specifies the source directory (:file:`qubes-doc`), the "
+"output directory (:file:`_build/html`), and the builder (`html`). The build "
+"command will process all source files in the :file:`qubes-doc` directory, "
+"generate HTML output in the :file:`_build/html` directory, and print "
+"detailed build information to the console. Pay attention to errors and "
+"warning in the output! Please do not introduce any new warnings and fix all "
+"errors."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:386
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:476
+#: 385bb392a89d48089ebab10f313d2298 403b74eff8854a0dbc1031624b0a621d
+msgid "**Use sphinx-autobuild for development**"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:388
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:478
+#: 94388eeaf246434db837350f37981f4b e9fd1cf8ca2f4d06a7ba88d84f709e2e
+msgid ""
+"For an active development workflow, you can use `sphinx-autobuild` to "
+"automatically rebuild the documentation and refresh browser whenever a file "
+"is saved. `sphinx-autobuild` starts a web server at `http://127.0.0.1:8000`, "
+"automatically rebuilds the documentation and reloads the browser tab when "
+"changes are detected in the :file:`qubes-doc` directory."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:397
+#: 097bb62bafa74c82958f8403f85d1b84
+msgid "Using poetry"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:400
+#: 53adeda5acc24fcc85c737f3eaeba9a1
+msgid ""
+"You can also use `uv <https://docs.astral.sh/uv/getting-started/>`__ if you "
+"wish."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:403
+#: 8b5c54220cd34b31853ce9a2deafd27a
+msgid "Creating a Python environment with poetry"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:406
+#: e955fe5a4a854cdca12b6b3899334470
+msgid ""
+"`Install poetry <https://python-poetry.org/docs/#installation>`__ and git "
+"and clone the repository."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:417
+#: 63c11cac98ca4b7a94f6b538a7fa41b5
+msgid ""
+"Install Poetry, Sphinx and the necessary extensions (`sphinx-autobuild`, "
+"`sphinx-lint`). A :file:`pyproject.toml` file is `provided <https://github."
+"com/QubesOS/qubes-doc/blob/main/pyproject.toml>`__."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:428
+#: 8ab60e68c028440aa7d4ea0a17faf6eb
+msgid ""
+"If you would like to avoid prefixing commands with :program:`poetry run`, "
+"you can source the virtual environment with ``eval $(poetry env activate)`` "
+"on every new shell session. Note that when enabling ``virtualenvs.in-"
+"project``, you will find the virtual environment in the project root "
+"directory undre ``.venv``, same place the ``venv`` instructions uses."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:431
+#: 6bd066272c9547948463e57b7616001c
+msgid "Linting the documentation with peotry"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:457
+#: 6dec3a9f9e024a46a30bca0077ee2e19
+msgid "Building the documentation with poetry"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:488
+#: 347449ffdde641bfbb2eedd13ecb9ae1
+msgid "Editor"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:490
+#: 2a445c80f179440a95c0493004183587
+msgid ""
+"An editor you can use is `ReText <https://github.com/retext-project/"
+"retext>`__ but any editor would do."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:502
+#: 78d433ba0b33439eafcf22a43e0eb36e
+msgid "Security"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:504
+#: 923bde581a7f4d50bde26ff9185defab
+msgid ""
+"Also see: :ref:`FAQ: Why is the documentation hosted on ReadTheDocs as "
+"opposed to the website? <introduction/faq:why is the documentation hosted on "
+"readthedocs as opposed to the website?>`"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:506
+#: f38cd7e988e84630a9e805e0881d4882
+msgid ""
+"All pull requests (PRs) against `qubes-doc <https://github.com/QubesOS/qubes-"
+"doc>`__ must pass review prior to be merged, except in the case of :ref:"
+"`external documentation <index:external documentation>` (see `#4693 <https://"
+"github.com/QubesOS/qubes-issues/issues/4693>`__). This process is designed "
+"to ensure that contributed text is accurate and non-malicious. This process "
+"is a best effort that should provide a reasonable degree of assurance, but "
+"it is not foolproof. For example, all text characters are checked for ANSI "
+"escape sequences. However, binaries, such as images, are simply checked to "
+"ensure they appear or function the way they should when the website is "
+"rendered. They are not further analyzed in an attempt to determine whether "
+"they are malicious."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:517
+#: 29a7680b6dd8416a90a4b2157cfff0a5
+msgid ""
+"Once a pull request passes review, the reviewer should add a signed comment "
+"stating, “Passed review as of ``<LATEST_COMMIT>`` (or similar). The "
+"documentation maintainer then verifies that the pull request is mechanically "
+"sound (no merge conflicts, broken links, ANSI escapes, etc.). If so, the "
+"documentation maintainer then merges the pull request, adds a PGP-signed tag "
+"to the latest commit (usually the merge commit), then pushes to the remote. "
+"In cases in which another reviewer is not required, the documentation "
+"maintainer may review the pull request (in which case no signed comment is "
+"necessary, since it would be redundant with the signed tag)."
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:529
+#: 92f36b4232624557958fac11dbb3b0bc
+msgid "Questions, problems, and improvements"
+msgstr ""
+
+#: ../../../developer/general/how-to-edit-the-rst-documentation.rst:531
+#: d0e18036f96b4eae892e091cc151e2fa
+msgid ""
+"If you have a question about something you read in the documentation or "
+"about how to edit the documentation, please post it on the `forum <https://"
+"forum.qubes-os.org/>`__ or send it to the appropriate :doc:`mailing list </"
+"introduction/support>`. If you see that something in the documentation "
+"should be fixed or improved, please :ref:`contribute <developer/general/how-"
+"to-edit-the-rst-documentation:how to submit a pull request>` the change "
+"yourself. To report an issue with the documentation, please follow our "
+"standard :doc:`issue reporting guidelines </introduction/issue-tracking>`. "
+"(If you report an issue with the documentation, you will likely be asked to "
+"submit a pull request for it, unless there is a clear indication in your "
+"report that you are not willing or able to do so.)"
+msgstr ""

@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/services/qfilecopy.rst:3 c2c16e6ca9d5485d98cbf51521b94cdb
+msgid "Inter-qube file copying (qfilecopy)"
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:6 8505009931a2428888b7fdf8e88eb2c0
+msgid "There are two cases when we need a mechanism to copy files between VMs:"
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:8 deec97ac72d045c69812704b13bf88a8
+msgid ""
+"“regular” file copy - when user instructs file manager to copy a given files/"
+"directories to a different VM"
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:10
+#: a67518c2c6c94651ae456efe897c84a8
+msgid ""
+"DispVM copy - user selects “open in DispVM” on a file; this file must be "
+"copied to a DisposableVM, edited by user, and possibly a modified file "
+"copied back from DispVM to VM."
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:14
+#: e5dce0f358bc441fb9a0088c868896aa
+msgid ""
+"In the early days of Qubes OS, for both cases, a block device (backed by a "
+"file in dom0 with a vfat filesystem on it) was attached to VM, file(s) "
+"copied there, and then the device was detached and attached to target VM. In "
+"the DispVM case, if a edited file has been modified, another block device is "
+"passed to requester VM in order to update the source file."
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:16
+#: 690c1f16b46f439d8fcfac0754abb65f
+msgid "This has the following disadvantages:"
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:18
+#: 2408c2d2d6e1462fb83873b16aab5993
+msgid ""
+"performance - dom0 has to prepare and attach/detach block devices, which is "
+"slow because of hotplug scripts involvement."
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:20
+#: e9f736a59dd64074b4005f2dc1864a81
+msgid ""
+"security - VM kernel parses partition table and filesystem metadata from the "
+"block device; they are controlled by (potentially untrusted) sender VM."
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:24
+#: ff3a589a9bf049faab9c1929fa097252
+msgid ""
+"In modern Qubes OS releases, we have reimplemented interVM file copy using "
+"qrexec, which addresses the above mentioned disadvantages. Nowadays, even "
+"more generic solution (qubes rpc) is used. See the developer docs on qrexec "
+"and qubes rpc. In a nutshell, the file sender and the file receiver just "
+"read/write from stdin/stdout, and the qubes rpc layer passes data properly - "
+"so, no block devices are used."
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:26
+#: 31ec88a5abf34084a16a45bc8dc16e0d
+msgid ""
+"The rpc action for regular file copy is *qubes.Filecopy*, the rpc client is "
+"named *qfile-agent*, the rpc server is named *qfile-unpacker*. For DispVM "
+"copy, the rpc action is *qubes.OpenInVM*, the rpc client is named *qopen-in-"
+"vm*, rpc server is named *vm-file-editor*. Note that the *qubes.OpenInVM* "
+"action can be done on a normal AppVM, too."
+msgstr ""
+
+#: ../../../developer/services/qfilecopy.rst:28
+#: fa4a8a2091064a7facea2a1ecc3ff89c
+msgid ""
+"Being a rpc server, *qfile-unpacker* must be coded securely, as it processes "
+"potentially untrusted data format. Particularly, we do not want to use "
+"external tar or cpio and be prone to all vulnerabilities in them; we want a "
+"simplified, small utility, that handles only directory/file/symlink file "
+"type, permissions, mtime/atime, and assume user/user ownership. In the "
+"current implementation, the code that actually parses the data from srcVM "
+"has ca 100 lines of code and executes chrooted to the destination directory. "
+"The latter is hardcoded to ``~user/QubesIncoming/srcVM``; because of chroot, "
+"there is no possibility to alter files outside of this directory."
+msgstr ""

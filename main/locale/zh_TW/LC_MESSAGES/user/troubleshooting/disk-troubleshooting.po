@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:3
+#: d22edcf854cc4498b0d96b6b70352f78
+msgid "Disk troubleshooting"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:7
+#: 4a38eeb122a04f08ab669f0a3fc4a4b5
+msgid "\"Out of disk space\" error"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:10
+#: 9082496f8e5a4183922aa7d37fd507f7
+msgid ""
+"If the disk is completely full, you will get an ``Out of disk space`` error "
+"that may crash your system because Dom0 does not have enough disk space to "
+"work. So it’s good practice to regularly check disk space usage. Running the "
+"``df -h`` command in dom0 terminal will show some information, but not "
+"include all the relevant details. The Qubes user interface provides a disk "
+"space widget. If you are unable to access the interface, the command line "
+"version is running ``sudo lvs | head`` and looking at top entry for LVM "
+"pool. For example:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:21
+#: 26475a71b6cc4ea2926394f6dd2bb297
+msgid ""
+"If you run ``df -h``, it only shows the information in the ``root`` line "
+"(which is already included in the ``pool00`` line). As you can see, the "
+"``sudo lvs | head`` command includes additional important columns ``Data%`` "
+"and ``Meta%``, shown in the above example to have the values 89% and 69% "
+"respectively."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:23
+#: dc7f8163c4ba4b6e8d2a51f3f075e19c
+msgid ""
+"If your system is able to boot, but cannot load a desktop environment, it is "
+"possible to login to dom0 terminal with Alt + Ctrl + F2."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:25
+#: 9b9334551a3e43d8a3cf9bf179381964
+msgid ""
+"If this does not work, check the size of ``/var/lib/qubes/qubes.xml``. If it "
+"is zero, you’ll need to use one of the file backup (stored in ``/var/lib/"
+"qubes/backup``), hopefully you have the current data there. Find the most "
+"recent one and place in ``/var/lib/qubes/qubes.xml`` instead of the empty "
+"file."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:27
+#: efea99edd2ea48c8b8eaf945b9fe635d
+msgid ""
+"In any case you’ll need some disk space to start the VM. Check ``df -h`` "
+"output if you have some. If not, here are some hints how to free some disk "
+"space:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:29
+#: cdfdb604f8f9484bbb7d565f1dd1d064
+msgid "Clean yum cache."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:37
+#: 51e4519803484c499b6d375309a602cf
+msgid ""
+"Delete ``.img`` files of a less important VM, which can be found in ``/var/"
+"lib/qubes/appvms/``. Then, when the system is working again, clean up the "
+"rest."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:44
+#: 471966091a924a74ad858041726ec667
+msgid ""
+"With this method, you lose the data of one VM, but it’ll work more reliably."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:46
+#: c2ad97031d454caabfaf638d34200ca8
+msgid "Decrease the filesystem safety margin (5% by default)."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:54
+#: c5fc678707b94938a8ed287163ede6d8
+msgid ""
+"Remove some unneeded files in dom0 home (if you have any, most likely not). "
+"Also look for unneeded files in ``/var/log`` in dom0, and ``/var/log/qubes``."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:58
+#: e4e5578155b746eabebc558ebed51d81
+msgid ""
+"The above steps applies to old VM disks format. These steps may work on "
+"Qubes 4.0, but are not default anymore. By default, Qubes 4.0 now uses LVM. "
+"The equivalent steps are:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:60
+#: b9f6a39bb49d4eff89b41c5d8a11b8b2
+msgid "Get a list of VM disks using ``sudo lvs``."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:62
+#: d3c097c1935b46c0861dcb405a2d9661
+msgid ""
+"Use ``sudo lvremove qubes_dom0/<name>`` to remove backup copies of some less "
+"important VMs – entries with ``-back`` in their name."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:64
+#: 449772c368ab4b29b2618b02314ce132
+msgid ""
+"If that isn’t enough, remove actual disks of less important VMs. NOTE: You "
+"will lose the data of that VM, but your system will resume working."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:68
+#: 2546da3dacb2411eb8b2d569ccab394c
+msgid "For example:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:97
+#: f2df3a0f3aef42e497fee62014913379
+msgid ""
+"After freeing some initial space, it may be possible to recover more space "
+"by deleting files in a userVM after connecting to the userVM terminal:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:106
+#: ad37b228d4db45a8b33a2f38ea80ead8
+msgid ""
+"Since ``qvm-console-dispvm`` requires working graphical user interface "
+"login, you must first free enough space to be able to start a VM and login "
+"to graphical UI."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:109
+#: 113fced507d8438b98cf2714f3384df9
+msgid "Can't resize VM storage / \"resize2fs: Permission denied\" error"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:112
+#: 5ca2fe07a87c435b9dbd51b87cdc0437
+msgid ""
+":doc:`Resizing a volume </user/advanced-topics/resize-disk-image>` in the "
+"Qubes interface should be a straightforward process. But sometimes, an "
+"attempt to resize will look like it worked, when it in fact fails silently. "
+"If you then try the same operation in the dom0 console using the ``qvm-"
+"volume extend`` command, it fails with the error message: ``resize2fs: "
+"Permission denied to resize filesystem``. This error indicates that a "
+"``resize2fs`` will not work, unless ``fsck`` is run first. Qubes OS "
+"utilities cannot yet handle this case."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:114
+#: 6eb129179a1748fdbbcb465b14551ff4
+msgid "To fix this issue:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:116
+#: bd1c3a889c6d42a68c638f2e15785438
+msgid "In the dom0 terminal get a root console on the vm (eg. sys-usb) with:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:124
+#: e00fa42d93d24a6aa5cad9790f5a6136
+msgid ""
+"Unmount everything mounted on the private volume ``/dev/xvdb partition``. "
+"There are typically several mounts listed in ``/etc/mtab``."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:126
+#: cd960cafd4994374b3fadc59bf608700
+msgid ""
+"When you attempt to unmount the ``/home`` directory using the ``umount /"
+"home`` command, you will encounter an error because there are processes "
+"using the ``/home`` directory. You can view a list of these processes with "
+"the ``fuser`` command:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:136
+#: 4f28e2c6d932462e8801fdce9b418fa4
+msgid "Kill these process until they are all gone using ``kill <process ID>``."
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:138
+#: 63cea4e8d2cc4c5a9ac4b99bebc60763
+msgid "Finally, run:"
+msgstr ""
+
+#: ../../../user/troubleshooting/disk-troubleshooting.rst:152
+#: 5a7d0d29db71406a9c44bffc9d622f11
+msgid ""
+"After restarting your VM, everything should now work as expected. The "
+"private volume size shown externally in the VM’s settings interface is the "
+"same as that seen within the VM."
+msgstr ""

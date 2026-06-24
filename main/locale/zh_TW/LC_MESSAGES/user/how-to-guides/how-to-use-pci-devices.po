@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:3
+#: 483e6b0db431417985709040826cd9bf
+msgid "How to use PCI devices"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:6
+#: c1e7b9848874412f88ce3e6ff288703e
+msgid ""
+"*This page is part of* :doc:`device handling in qubes </user/how-to-guides/"
+"how-to-use-devices>` *.*"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:8
+#: ce8b7c934edc4cebab77b4f99c9f55b9
+msgid ""
+"**Warning:** Only dom0 exposes PCI devices. Some of them are strictly "
+"required in dom0 (e.g., the host bridge). You may end up with an unusable "
+"system by attaching the wrong PCI device to a VM. PCI passthrough should be "
+"safe by default, but non-default options may be required. Please make sure "
+"you carefully read and understand the :ref:`security considerations <user/"
+"security-in-qubes/device-handling-security:pci security>` before deviating "
+"from default behavior."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:11
+#: 898305ceb6604e6db45819a4de64ab87
+msgid "Introduction"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:14
+#: a9906cef24f249b887f1a4c88f9060d4
+msgid ""
+"Unlike other devices (:doc:`USB </user/how-to-guides/how-to-use-usb-"
+"devices>`, :doc:`block </user/how-to-guides/how-to-use-block-storage-"
+"devices>`, mic), PCI devices need to be attached on VM-bootup. Similar to "
+"how you can’t attach a new sound-card after your computer booted (and expect "
+"it to work properly), attaching PCI devices to already booted VMs isn’t "
+"supported. Moreover, PCI devices can be attached only to VMs running in "
+"certain virtualization modes. See :ref:`FAQ: Which virtualization modes do "
+"VMs use? <introduction/faq:which virtualization modes do vms use?>`"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:16
+#: 5bc3aedea58d455a86ff92d8c2be7387
+msgid ""
+"The Qubes installer attaches all network class controllers to ``sys-net`` "
+"and all USB controllers to ``sys-usb`` by default, if you chose to create "
+"the network and USB qube during install. While this covers most use cases, "
+"there are some occasions when you may want to manually attach one NIC to "
+"``sys-net`` and another to a custom NetVM, or have some other type of PCI "
+"controller you want to manually attach."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:18
+#: a1eb7f455a6e4c88909cd9fbfa5ea117
+msgid ""
+"Some devices expose multiple functions with distinct BDF-numbers. Limits "
+"imposed by the PC and VT-d architectures may require all functions belonging "
+"to the same device to be attached to the same VM. This requirement can be "
+"dropped with the ``no-strict-reset`` option during attachment, bearing in "
+"mind the aforementioned :ref:`security considerations <user/security-in-"
+"qubes/device-handling-security:pci security>`. In the steps below, you can "
+"tell if this is needed if you see the BDF for the same device listed "
+"multiple times with only the number after the “.” changing."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:20
+#: a235286cdd4a487f945bfa9f7965c2c2
+msgid ""
+"While PCI device can only be used by one powered on VM at a time, it *is* "
+"possible to *assign* the same device to more than one VM at a time. This "
+"means that you can use the device in one VM, shut that VM down, start up a "
+"different VM (to which the same device is now attached), then use the device "
+"in that VM. This can be useful if, for example, you have only one USB "
+"controller, but you have multiple security domains which all require the use "
+"of different USB devices."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:23
+#: 70640ce8d4344cd9ad38e79eb9d7a0e2
+msgid "Attaching Devices Using the GUI"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:26
+#: 148c8197616449b2af3680d61da285fc
+msgid ""
+"The qube settings for a VM offers the “Devices”-tab. There you can attach "
+"PCI-devices to a qube."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:28
+#: 6494d94e31b34a71831fb08b68bd0646
+msgid "To reach the settings of any qube either"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:30
+#: 30dab0d2b0464a1b9ad9019c7b198bbc
+msgid ""
+"Press Alt+F3 to open the application finder, type in the VM name, select the "
+"|appmenu| ``[VM-name]: Qube Settings`` menu entry and press enter or click "
+"``Launch``!"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:155
+#: ba605e0610c649fd9bf7f1068fcb7654
+msgid "appmenu"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:32
+#: 1a84a397cdf24eb9acec6114100e9caf
+msgid ""
+"Select the VM in Qube Manager and click the settings-button or right-click "
+"the VM and select ``Qube settings``."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:34
+#: 863b833883b44bf597df034e2e9acb1f
+msgid ""
+"Click the Domain Manager, hover the VM you want to attach a device to and "
+"select “settings” in the additional menu. (only running VMs!)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:38
+#: a2ed26ef89bb4841982afe22e4787275
+msgid "Select the “Devices” tab on the top bar."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:40
+#: 0901dcd90e4b4041a273f38308f0ef23
+msgid ""
+"Select a device you want to attach to the qube and click the single arrow "
+"right! (``>``)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:42
+#: f401c07915fb47c8a521ec22931925f0
+msgid ""
+"You’re done. If everything worked out, once the qube boots (or reboots if "
+"it’s running) it will start with the pci device attached."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:44
+#: dd9b7f89b9db4bcdab248a56d499bda1
+msgid ""
+"In case it doesn’t work out, first try disabling memory-balancing in the "
+"settings (“Advanced” tab). If that doesn’t help, read on to learn how to "
+"disable the strict reset requirement!"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:49
+#: b3933b53af394b849af8ee006390259a
+msgid "``qvm-pci`` Usage"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:52
+#: 2fbda48b4a384590b6b756cb03d90695
+msgid ""
+"The ``qvm-pci`` tool allows PCI attachment and detachment. It’s a shortcut "
+"for :ref:`qvm-device pci <user/how-to-guides/how-to-use-devices:general "
+"qubes device widget behavior and handling>`"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:54
+#: 28cd6a9d600245aa96e6c02f52752d50
+msgid ""
+"To figure out what device to attach, first list the available PCI devices by "
+"running (as user) in dom0:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:62
+#: 0e76b7cee1964c8c8e461a5e2358e107
+msgid ""
+"This will show you the ``backend:BDF`` (Bus_Device.Function) address of each "
+"PCI device. It will look something like ``dom0:00_1a.0``. Once you’ve found "
+"the address of the device you want to attach, then attach it like this:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:70
+#: 5c73fbc604e64968a4c9ea9c9f851e93
+msgid ""
+"Since PCI devices have to be attached on bootup, attaching has to happen "
+"with the ``--persistant`` option."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:72
+#: d6c6f3b1abd248c7b0af390714806368
+msgid ""
+"For example, if ``00_1a.0`` is the BDF of the device you want to attach to "
+"the “work” domain, you would do this:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:81
+#: 8179a873ecce492c86ab0ee1150242e0
+msgid "Possible Issues"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:84
+#: e4ef381df3bb4bd980372149eb87ceed
+msgid ""
+"Visit the :doc:`PCI Troubleshooting guide </user/troubleshooting/pci-"
+"troubleshooting>` to see issues that may arise due to PCI devices and how to "
+"troubleshoot them."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:87
+#: 5121f58b93fd469590830bfa85346525
+msgid "Additional Attach Options"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:90
+#: deace3a0221742149df1251af26777f5
+msgid ""
+"Attaching a PCI device through the commandline offers additional options, "
+"specifiable via the ``--option``/``-o`` option. (Yes, confusing wording, "
+"there’s an `issue for that <https://github.com/QubesOS/qubes-issues/"
+"issues/4530>`__.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:92
+#: f436ef3d918646a78cb0b2b7eb1d8d52
+msgid ""
+"``qvm-pci`` exposes two additional options. Both are intended to fix device "
+"or driver specific issues, but both come with :ref:`heavy security "
+"implications <user/security-in-qubes/device-handling-security:pci "
+"security>`! **Make sure you understand them before continuing!**"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:95
+#: 198050838c6142c2b11c8cfe66c7f043
+msgid "no-strict-reset"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:98
+#: b824d3b0166949afb6fc2f12883cdc32
+msgid ""
+"Do not require PCI device to be reset before attaching it to another VM. "
+"This may leak usage data even without malicious intent!"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:100
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:114
+#: 3374163e39f744b99793c162bb75631d 8fd5fbb78ad849f5b071ea7d15858754
+msgid "usage example:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:109
+#: 8aa6ccb8d39b4d408d24310632468d25
+msgid "permissive"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:112
+#: d2e7c42ef9954bf09a71d49018554393
+msgid ""
+"Allow write access to full PCI config space instead of whitelisted "
+"registers. This increases attack surface and possibility of `side channel "
+"attacks <https://en.wikipedia.org/wiki/Side-channel_attack>`__."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:123
+#: 7f74649954774009a8d6aab5a74ec4f1
+msgid "Bringing PCI Devices Back to dom0"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:126
+#: f9369cb951d54c43886b84a68a4c3cb5
+msgid ""
+"By default, when a device is detached from a VM (or when a VM with an "
+"attached PCI device is shut down), the device is *not* automatically "
+"attached back to dom0."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:128
+#: e1d1ded2f1d84770a7e7273ece284951
+msgid "This is an intended feature."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:130
+#: 6c9903371a264b2e981d1f5d11e2c1ef
+msgid ""
+"A device which was previously attached to a VM less trusted than dom0 "
+"(which, in Qubes, is *all* of them) could attack dom0 if it were "
+"automatically reattached there."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:132
+#: 2a35b66f87264aafb3e31d91b39024fa
+msgid "In order to re-enable the device in dom0, either:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:134
+#: 5eeff86cb6e94bcf9985351d1c109592
+msgid "Reboot the physical machine. (Best practice)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:138
+#: a086fce69a96481c9a1f8932eb9099a1
+msgid "or"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:140
+#: 64202c32520440cfb62b4bc92575b8ae
+msgid ""
+"Go to the sysfs (``/sys/bus/pci``), find the right device, detach it from "
+"the pciback driver, and attach it back to the original driver. Replace "
+"``<BDF>`` with your full device, for example ``0000:00:1c.2``:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-pci-devices.rst:153
+#: 8504ffa54a674c93a14bcb4e7f559453
+msgid ""
+"It is **strongly discouraged to reattach PCI devices to dom0**, especially "
+"if they don’t support resetting!"
+msgstr ""
