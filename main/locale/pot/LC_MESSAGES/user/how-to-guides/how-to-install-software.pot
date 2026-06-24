@@ -1,0 +1,856 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:3
+#: 367d80eac432425e82e164cf0974a594
+msgid "How to install software"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:6
+#: 2f01c9e32fb344d29fcff8c0b8814225
+msgid ""
+"When you wish to install software in Qubes OS, you should generally install "
+"it in a :term:`template`. For installing templates themselves, see :ref:`how "
+"to install a template <user/templates/templates:installing>`. Advanced users "
+"may also be interested in learning how to install software in :doc:"
+"`standalones </user/advanced-topics/standalones-and-hvms>` and :doc:`dom0 </"
+"user/advanced-topics/how-to-install-software-in-dom0>`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:8
+#: ea424147668c4aa2abf0391ff0610889
+msgid ""
+"Qubes OS is effectively a “meta” operating system (OS) that can run almost "
+"any arbitrary OS inside of itself. For example, the way software is normally "
+"installed in a Linux distribution (“distro”) is quite different from the way "
+"software is normally installed in Windows. This isn’t up to Qubes. Qubes is "
+"just the framework in which you’re running these other OSes. Therefore, if "
+"you want to install software in a Linux template, for example, you should do "
+"so in whatever way is normal for that Linux distro. Most Linux software is "
+"distributed via `packages <https://en.wikipedia.org/wiki/Package_format>`__, "
+"which are stored in `software repositories <https://en.wikipedia.org/wiki/"
+"Software_repository>`__ (“repos”). `Package managers <https://en.wikipedia."
+"org/wiki/Package_manager>`__ handle downloading, installing, updating, and "
+"removing packages. (Again, none of this is Qubes-specific.) If you’re not "
+"familiar with how software is normally installed in Linux distros via "
+"package managers or the software you want doesn’t seem to be available in "
+"your distro’s repos (or you’re in another situation not covered on this "
+"page), please read this `community guide to installing software in Qubes "
+"<https://forum.qubes-os.org/t/9991/>`__."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:10
+#: 799722aa345e49379f8bd45da940f71c
+msgid ""
+"The following instructions explain how to permanently install new software "
+"in a template. There are different instructions for software from the "
+"default repositories and all other software. (If you’re not sure, try the "
+"default repositories first.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:15
+#: 729a51ece76c48e688cdb3597ea50c36
+msgid "Installing software from default repositories"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:17
+#: 1138cdb981894d6ab4badf3362528f56
+msgid "Start the template."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:19
+#: d7812e9629184174a138290f10872b1d
+msgid ""
+"Start either a terminal (e.g. ``Xfce Terminal``) or a dedicated software "
+"management application, such as ``gpk-application``."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:21
+#: 86612e19aa9a4cfaa025a7ed3619bc3b
+msgid ""
+"Install software as normally instructed inside that operating system, e.g.:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:23
+#: ce5db4f105414c49b86080fc852f402a
+msgid "Fedora: :samp:`sudo dnf install {<PACKAGE_NAME>}`"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:25
+#: b364a55c2cfd4c34aeda61e27cf42cc8
+msgid "Debian: :samp:`sudo apt install {<PACKAGE_NAME>}`"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:27
+#: 76fd743e3e4e4ae6896b0a29a0792b66
+msgid "Shut down the template."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:29
+#: d6ec4df591794b42bd0ccbf151761d95
+msgid "Restart all qubes based on the template."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:31
+#: ../../../user/how-to-guides/how-to-install-software.rst:99
+#: 4fd404f1e5854515ae97ff39275326d0 0ed782970daf4bb5a9990254326e6ee2
+msgid ""
+"(Recommended) In the relevant qubes’ :menuselection:`Settings --> "
+"Applications` tab, select the new application(s) from the list, and press :"
+"guilabel:`OK`. These new shortcuts will appear in the Applications Menu. (If "
+"you encounter problems, see :ref:`app-menu-troubleshooting`)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:33
+#: cf72e5ec1ee14a188f80b52e6424eafa
+msgid "The Applications tab in Qube Settings"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:42
+#: f9e5adc1a89c48acb070fb40b3ec94e6
+msgid "Installing software from external repositories (Debian)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:44
+#: 500467f051644975b1f17e16049ef643
+msgid ""
+"Some software which is not available in the default Debian repositories can "
+"be installed through `extrepo <https://manpages.debian.org/stable/extrepo/"
+"extrepo.1p.en.html>`__, a Debian tool for safely managing external "
+"repositories. Qubes OS Debian templates ship with ``extrepo`` and ``extrepo-"
+"offline-data`` pre-installed and configured for offline use, so you do not "
+"need to give the template network access to enable a repository. Use of "
+"`extrepo` is documented in the man page."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:47
+#: 26b5aceb7c1c48c6b087b7fe0908e864
+msgid ""
+"While the repositories managed by ``extrepo`` are curated by Debian, the "
+"Debian project makes no warranty as to the security or quality of the "
+"software in these third-party repositories. We recommend that you install "
+"third-party software in a dedicated :term:`template` rather than the default "
+"one."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:50
+#: 18595112e9864d1b89e7c3561dfb60dc
+msgid ""
+"For software packages available from repositories **not** included in "
+"extrepo, you must create a repository definition and install the relevant "
+"signing key. This will usually be documented by the software provider. The "
+"only Qubes specific part is that you will have to download the signing key "
+"in an online qube, and then use ``qvm-move`` to transfer the key to your "
+"template."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:53
+#: 4fb9632dc3bd4bf1abe890385d4dd8ea
+msgid "Installing software from other sources"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:55
+#: 9b4e21c323fb4d7bae2c58cab326a91c
+msgid ""
+"Some software is not available from the default repositories and must be "
+"downloaded and installed from another source. Depending on the installation "
+"method, you may either use the updates proxy or direct networking."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:58
+#: 123d8f40e95541ad98398f741521a73b
+msgid "Using the updates proxy"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:60
+#: 96b991e00f174b13a7eb5278f0507c38
+msgid ""
+"If you are still using the distribution package manager, updates will likely "
+"still work over the updates proxy without needing to give the TemplateVM "
+"direct network access."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:62
+#: e070f52246534b349802d48cd94e35e6
+msgid ""
+"If you are using another installation method fetching remote resources, you "
+"might still be able to use the updates proxy by making the tools aware of "
+"the proxy. For many tools, it is enough to export the following environment "
+"variables in your shell session before proceeding:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:72
+#: e37417388b0f4c14946b898977d4cbbd
+msgid "Using direct networking"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:74
+#: ef0daddb135d4100aab763a6e568ef87
+msgid ""
+"This method gives your template direct network access, which is :ref:`risky "
+"<user/how-to-guides/how-to-install-software:why don't templates have normal "
+"network access?>`. This method is **not** recommended for trusted templates. "
+"Moreover, depending on how you install this software, it may not get updated "
+"automatically when you :doc:`update Qubes normally </user/how-to-guides/how-"
+"to-update>`, which means you may have to update it manually yourself."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:76
+#: a325329d37aa4ff195210b12d329d4b7
+msgid ""
+"This method assumes that you are trying to follow instructions to install "
+"some piece of software in a normal operating system, except *that* operating "
+"system is running as a template in Qubes OS."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:78
+#: b5c96b8550044c6996f0c2fe0e0d52ec
+msgid ""
+"(Recommended) Clone the desired template (since this new template will "
+"probably be less trusted than the original)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:80
+#: 41ccc936e6f64e8abebc7235103219c9
+msgid ""
+"(Recommended) In the new template’s :menuselection:`Settings --> Basic` tab, "
+"change the color :guilabel:`label` from :guilabel:`black` to :guilabel:`red` "
+"(or another color that signifies to you that the template is less trusted)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:82
+#: 447dc4649af342f49b6a77cb5b84146a
+msgid ""
+"In the new template’s :menuselection:`Settings --> Basic` tab, change the :"
+"guilabel:`Networking` value from :guilabel:`default (none) (current)` to :"
+"guilabel:`sys-firewall` (or whichever network-providing qube you wish to "
+"use)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:84
+#: 141659a7f82d4240853676f186304531
+msgid ""
+"(Recommended) In the new template’s :menuselection:`Settings --> Firewall "
+"rules` tab:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:86
+#: 75c3126b94724cd1835ae206fb8812e2
+msgid "select :guilabel:`Limit outgoing Internet connections to…`"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:87
+#: f2e787c4186f4fdba0f8f32610b87dca
+msgid ""
+"tick :guilabel:`Allow full access for 5 min.` (This can help in case you "
+"forget to remove network access later.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:89
+#: f4275e4c74ef4ff1a05e7b76c2bc817b
+msgid ""
+"Follow the normal instructions for installing your software in the new "
+"template. For example, open a terminal and enter the commands as instructed."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:91
+#: fde8f2e03cf84406a5f2d7c2433521a5
+msgid ""
+"If you don’t fully understand the commands you’re entering, then this can be "
+"extremely risky, and the template should be regarded as *completely "
+"untrusted*."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:93
+#: 02eadb57f6dc4c51bad8c21a5e2098cc
+msgid ""
+"(Recommended) In the new template’s :menuselection:`Settings --> Basic` tab, "
+"change the :guilabel:`Networking` value from :guilabel:`sys-firewall "
+"(current)` (or whichever network-providing qube you chose) back to :guilabel:"
+"`default (none)`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:95
+#: b3840a4d71684383b7f3d1eb50c55feb
+msgid "Shut down the new template."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:97
+#: 9d312fc6a55647aeb8855a2d71a0ebe5
+msgid ""
+"Create or assign your desired app qubes to use the new template. If any app "
+"qubes were already assigned to the new template, restart them."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:107
+#: 376930005cfc46f4921ba53875df20fd
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:109
+#: a2a07a765f83432da6ebc8b45e5862fb
+msgid "If things are still not working as expected:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:111
+#: 9b06398f9de8484498ba53c852331e27
+msgid ""
+"Review the instructions very carefully, making sure you follow each step."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:113
+#: 40cbd2bccefb41f09524cb06bd83a0b7
+msgid ""
+"Make sure you **shut down the template after installing your software**."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:115
+#: f068c9cc34b54252816b94a2c72463b1
+msgid ""
+"Make sure you **restart your app qube after shutting down your template**."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:117
+#: b0977ce52da54cbfa5d6513ab5017fa4
+msgid "Make sure your app qube is assigned to the right template."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:119
+#: a8cfc5deb6494a2d84633c56b171a554
+msgid ""
+"If your software requires special files or directories to be persistent, and "
+"you’re an advanced user, see :doc:`standalones and HVMs </user/advanced-"
+"topics/standalones-and-hvms>` and :doc:`how to make any file persistent "
+"(bind-dirs) </user/advanced-topics/bind-dirs>`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:121
+#: 9f63847caba74ea19cc879f4a1103780
+msgid ":doc:`Ask for help. </introduction/support>`"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:124
+#: a3553b8d72814ec0ae16b8f586631a61
+msgid "How to update software"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:126
+#: 9d06130e5aa342ea9b46f60b10d9b76d
+msgid "Please see :doc:`/user/how-to-guides/how-to-update`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:129
+#: 46c2313a8cac4a4db224d5df47f6d3b8
+msgid "Why don't templates have normal network access?"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:131
+#: 44ac96d33dbd41c1b2aa78a94413d4a9
+msgid ""
+"In order to protect you from performing risky activities in templates, they "
+"do not have normal network access by default. Instead, templates use an :ref:"
+"`updates-proxy` which allows you to install and update software using the "
+"distribution’s package manager over the proxy connection. **The updates "
+"proxy is already set up to work automatically out-of-the-box and requires no "
+"special action from you.** Most users should simply follow the normal "
+"instructions for :ref:`installing-software-from-default-repositories` and :"
+"doc:`updating </user/how-to-guides/how-to-update>` software. If your "
+"software is not available in the default repositories, see :ref:`user/how-to-"
+"guides/how-to-install-software:installing software from other sources`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:134
+#: a03def11cb60403ab1ac27eb3db4175c
+msgid "Advanced"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:136
+#: 1f3daa7ea71b4d10a7917447172da030
+msgid ""
+"The following sections cover advanced topics pertaining to installing and "
+"updating software in qubes."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:139
+#: 602719430b874453be10cfffd01db678
+msgid "Testing repositories"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:141
+#: 6d180fd4d21d4921a37496c40bf1477b
+msgid ""
+"If you wish to install updates that are still in :doc:`testing </user/"
+"downloading-installing-upgrading/testing>`, you must enable the appropriate "
+"testing repositories."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:143
+#: f8649459e3b2458fa1339c65d705e7f1
+msgid ""
+"The following repos are in templates and standalones. For dom0 testing "
+"repos, see :ref:`user/advanced-topics/how-to-install-software-in-dom0:"
+"testing repositories`. For testing new templates, please see :ref:`user/"
+"downloading-installing-upgrading/testing:templates`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:146
+#: 4d5d144095554263885c499cbc18bd67
+msgid "Fedora"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:148
+#: 2293cc6d369f4cd0a19a277c906039ac
+msgid ""
+"There are three Qubes VM testing repositories (where ``*`` denotes the "
+"Release):"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:150
+#: 6e0f2906555f4e5293b8ed7f6476dfbf
+msgid ""
+"``qubes-vm-*-current-testing`` – testing packages that will eventually land "
+"in the stable (``current``) repository"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:152
+#: d0f2692662b04cd09880d385d08709d0
+msgid ""
+"``qubes-vm-*-security-testing`` – a subset of ``qubes-vm-*-current-testing`` "
+"that contains packages that qualify as security fixes"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:154
+#: 55fbe455208146f383001847967492a2
+msgid ""
+"``qubes-vm-*-unstable`` – packages that are not intended to land in the "
+"stable (``qubes-vm-*-current``) repository; mostly experimental debugging "
+"packages"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:156
+#: 7bc60d0fde8e48769f69651a25c50fc4
+msgid ""
+"To temporarily enable any of these repos, use the ``--enablerepo=<repo-"
+"name>`` option. Example commands:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:164
+#: 25fa06b1894c428485afc532a0f663be
+msgid ""
+"To enable or disable any of these repos permanently, change the "
+"corresponding ``enabled`` value to ``1`` in :file:`/etc/yum.repos.d/qubes-*."
+"repo`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:167
+#: 2bccd4bc7a0847ec8ea8d403b5f7379b
+msgid "Debian"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:169
+#: f8a2c9ced6a94224b02b4274cb8da529
+msgid ""
+"Debian also has three Qubes VM testing repositories (where ``*`` denotes the "
+"Debian codename, i.e. \"|debian-codename|\"):"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:171
+#: eb51fd79b7d042818e2973350a141d92
+msgid ""
+"``*-testing`` – testing packages that will eventually land in the stable "
+"(``current``) repository"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:173
+#: b63c20e636b94715908acd3767ac1f6d
+msgid ""
+"``*-securitytesting`` – a subset of ``*-testing`` that contains packages "
+"that qualify as security fixes"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:175
+#: 81dbf0c149ba494a95e14f53daef2e98
+msgid ""
+"``*-unstable`` – packages that are not intended to land in the stable "
+"repository; mostly experimental debugging packages"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:177
+#: 5d4b19b02128454ca532ef81e50b481c
+msgid ""
+"To enable or disable any of these repos permanently, uncomment the "
+"corresponding ``deb`` line in :file:`/etc/apt/sources.list.d/qubes-r4.list`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:180
+#: f59f140001f94810ba7f247c0358e528
+msgid "Standalones"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:183
+#: 2c07d7a7f6264fae89873e8b4d9d3536
+msgid ""
+"The process for installing and updating software in :term:`standalones "
+"<standalone>` is the same as described above for templates, except no qubes "
+"are based on standalones, so there are no other qubes to restart."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:187
+#: af47968c81e444d186e2ad75a8d9fa7f
+msgid "Running scripts after package installation or removal"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:189
+#: c6c4a14b19324cba9cedd814df8e491e
+msgid ""
+"**In Fedora templates**, after a successful `dnf install`  or  `dnf remove` "
+"a hook runs :file:`/etc/qubes-rpc/qubes.PostInstall`  which executes any "
+"shell scripts in :file:`/etc/qubes/post-install.d/`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:191
+#: 839abc3c9c10463eb700c7e7ec19c564
+msgid ""
+"**In Debian templates**, there is a native mechanism, using :file:`/etc/apt/"
+"apt.conf.d/`. Scripts may be placed here to call ``Apt Post-Invoke`` `hooks "
+"<https://manpages.debian.org/trixie/apt/apt.conf.5.en.html>`__ . :file:`/etc/"
+"qubes-rpc/qubes.PostInstall` does not operate in Debian templates."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:195
+#: eb33099f5b294dc68d317818554f5997
+msgid "RPMFusion for Fedora templates"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:197
+#: a3745621548a4800952d018672d571c4
+msgid ""
+"If you would like to enable the `RPM Fusion <https://rpmfusion.org>`__ "
+"repositories, open a Terminal of the template and type the following "
+"commands, depending on which RPM Fusion repositories you wish to enable (see "
+"`RPM Fusion <https://rpmfusion.org>`__ for details):"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:209
+#: 852f0c8b34d24e6486820cdbb36ef9db
+msgid ""
+"This will permanently enable the RPM Fusion repos. If you install software "
+"from here, it’s important to keep these repos enabled so that you can "
+"receiving future updates. If you only enable these repos temporarily to "
+"install a package the Qubes update mechanism may persistently notify you "
+"that updates are available, since it cannot download them."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:212
+#: 5665a1278f6d4f19b4fec55b15ca5c57
+msgid "Reverting changes to a template"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:214
+#: 3c0ffbbe0a1d42debca639e9d03384fe
+msgid ""
+"Perhaps you’ve just updated your template, and the update broke your "
+"template. Or perhaps you’ve made a terrible mistake, like accidentally "
+"confirming the installation of an unsigned package that could be malicious. "
+"If you want to undo changes to a template, there are three basic methods:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:216
+#: 06860b387df140d3a7caf8cf18fdd034
+msgid ""
+"**Root revert.** This is appropriate for misconfigurations, but not for "
+"security concerns. It will preserve your customizations."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:218
+#: 78c5cf16f47d40b897b5f448bdc9da61
+msgid ""
+"**Reinstall the template.** This is appropriate for both misconfigurations "
+"and security concerns, but you will lose all customizations."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:220
+#: bea7949e498046c396b75dfe484454d1
+msgid ""
+"**Full revert.** This is appropriate for both misconfigurations and security "
+"concerns, and it can preserve your customizations. However, it is a bit more "
+"complex."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:223
+#: 02e902350c9f472fa309936bcb38a7f2
+msgid "Root revert"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:225
+#: 1558ed9032474a909904454bade2ef2c
+msgid ""
+"This command will roll back any changes made *during the last time the "
+"template was run, but* **not** *before.* This means that if you have already "
+"restarted the template, using this command is unlikely to help, and you’ll "
+"likely want to reinstall it from the repository instead. On the other hand, "
+"if the template is already broken or compromised, it won’t hurt to try "
+"reverting first. Just make sure to **back up** all of your data and changes "
+"first!"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:227
+#: 703effe6652b44baa0cbf005934b5dfd
+msgid ""
+"Shut down ``<template>``. If you’ve already just shut it down, do **not** "
+"start it again (see above)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:229
+#: baa67a1fec044d33bd5f603e9ad5b722
+msgid "In a dom0 terminal:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:236
+#: 732c104cd0aa4818bdab72b92e982a56
+msgid "Reinstall the template"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:238
+#: db71eee7e60349209fa8823f36063aa3
+msgid ""
+"Please see :doc:`How to Reinstall a template </user/how-to-guides/how-to-"
+"reinstall-a-template>`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:241
+#: cd120e8cb5fa4307b645a685ece08645
+msgid "Full revert"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:243
+#: 4bdfa7e7aac0457690f87e669427c9a2
+msgid "This is like the simple revert, except:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:245
+#: 67b52a316cb447b88cd8c45cdaef0651
+msgid ""
+"You must also revert the private volume with :samp:`qvm-volume revert "
+"{<template>}:private`. This requires you to have an old revision of the "
+"private volume, which does not exist with the current default config. "
+"However, if you don’t have anything important in the private volume (likely "
+"for a template), then you can work around this by just resetting the private "
+"volume with :samp:`qvm-volume import --no-resize {<template>}:private /dev/"
+"null`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:247
+#: af212bfda20847a2824cb2c5934b1931
+msgid ""
+"The saved revision of the volumes must be uncompromised. With the default "
+"``revisions_to_keep=1`` for the root volume, you must **not** have started "
+"the template since the compromising action."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:252
+#: 226aef9f11d646de961b0917673c586d
+msgid "Updates proxy"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:254
+#: b99d29a11cae4315bd0d28950b66aef6
+msgid ""
+"Updates proxy is a service which allows access from package managers "
+"configured to use the proxy by default, but can be used by any other program "
+"that accepts proxy arguments. The purpose of the proxy, instead of direct "
+"network access, is meant to mitigate user errors of using applications such "
+"as the browser in the template. Not necessarily what part of the network "
+"they can access, but only to applications trusted by the user, configured to "
+"use the proxy. The http proxy (tinyproxy) does not filter traffic because it "
+"is hard to list all the repository mirrors and keep that list up to date). "
+"it also does not cache anything."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:256
+#: 9606227597f1401295a2ef35b7212f49
+msgid ""
+"The proxy is running in selected VMs (by default all the NetVMs (1)) and "
+"intercepts traffic directed to 127.0.0.1:8082. Thanks to such configuration "
+"all the VMs can use the same proxy address. If the VM is configured to have "
+"access to the updates proxy (2), the startup scripts will automatically "
+"configure dnf/apt to really use the proxy (3). Also access to updates proxy "
+"is independent of any other firewall settings (VM will have access to "
+"updates proxy, even if policy is set to block all the traffic)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:258
+#: d7d91815ae5a4c8ab4a00b630bb8b42f
+msgid ""
+"There are two services (``qvm-service``, :doc:`service framework </user/"
+"advanced-topics/qubes-service>`):"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:260
+#: be5f9bb4bf6f468487eed0431de8b7f4
+msgid ""
+"``qubes-updates-proxy`` (and its deprecated name: ``qubes-yum-proxy``) - a "
+"service providing a proxy for templates - by default enabled in NetVMs "
+"(especially: sys-net)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:262
+#: 0d0bab7efdd149f192194d44b4d270f0
+msgid ""
+"``updates-proxy-setup`` (and its deprecated name: ``yum-proxy-setup``) - use "
+"a proxy provided by another VM (instead of downloading updates directly), "
+"enabled by default in all templates"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:264
+#: 1ace090d15e749e998b453d3ab1cd3a8
+msgid ""
+"Both the old and new names work. The defaults listed above are applied if "
+"the service is not explicitly listed in the services tab."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:267
+#: ac8ea7d38a0d432f9df9dc3eccfbe6e2
+msgid "Technical details"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:269
+#: 015523af7151416d8512c77be0185ea9
+msgid ""
+"The updates proxy uses RPC/qrexec. The proxy is configured in qrexec policy "
+"in dom0: ``/etc/qubes/policy.d/90-default.policy``. By default this is set "
+"to sys-net and/or sys-whonix, depending on firstboot choices. This new "
+"design allows for templates to be updated even when they are not connected "
+"to any NetVM."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:271
+#: e2269dbb444b4509bcb99ae88e53ccb7
+msgid ""
+"Example policy file in R4.2 (with Whonix installed, but not set as default "
+"UpdateVM for all templates):"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:288
+#: 4a662876f76f45819c78afec579636ef
+msgid "Installing Snap Packages"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:290
+#: 057368451c02433c84ba6f36503cd6bf
+msgid ""
+"Snap packages do not use the normal update channels for Debian and Fedora "
+"(apt and dnf) and are often installed as the user rather than as root. To "
+"support these in an app qube you need to take the following steps:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:292
+#: 5fc94a4b11db4c3eaaaf2ba46d47aaf4
+msgid ""
+"In the **template** you must install ``snapd`` and ``qubes-snapd-helper``. "
+"Open a terminal in the template and run:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:329
+#: 78524d063fee4a1bb457eacf1354ded8
+msgid "You may see the following message:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:336
+#: 7a03104d9db547ec9654744a52343fd5
+msgid "This is expected and you can safely continue. Shutdown the template:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:343
+#: fe084815ca094c3a9df1863e970f5642
+msgid ""
+"Now open the **app qube** in which you would like to install the Snap "
+"application and run a terminal:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:349
+#: a5fd117c1be545529935bad6f6a4a6ae
+msgid "When the install is complete you can close the terminal window."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:351
+#: e04c24b2cfcc4866a5e7bc80899c2ab7
+msgid ""
+"Refresh the Applications list for the app qube. In the Qubes Menu for the "
+"**app qube** launch the Qube :guilabel:`Settings`. Then go to the "
+"Applications tab and click “Refresh Applications”"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:353
+#: 1bd0fb3b68dd461fba012788101f42c1
+msgid ""
+"The refresh will take a few minutes; after it’s complete the Snap app will "
+"appear in the app qube’s list of available applications. At this point the "
+"snap will be persistent within the app qube and will receive updates when "
+"the app qube is running."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:356
+#: 703db147be0d4717b827f919650e1ce8
+msgid "Autostarting Installed Applications"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:358
+#: f8cc5cf426cd4fa09bdc50d9c64c6d43
+msgid ""
+"If you want a desktop app to start automatically every time a qube starts "
+"you can create a link to it in the ``~/.config/autostart`` directory of the "
+"**app qube**. This might be useful for Qubes that you set to automatically "
+"start on boot or for Qubes that have a set of apps you typically use all "
+"day, such as a chat app."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:360
+#: 77a1bffef52a4b778eeebdf033c73836
+msgid ""
+"Open a terminal in the **app qube** where you would like the app to launch."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:362
+#: 90c3dcd7727441768075873f549951e6
+msgid ""
+"List the names of the available desktop shortcuts by running the command "
+"``ls /usr/share/applications`` and find the exact name of the shortcut to "
+"the app you want to autostart:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:374
+#: 7debd0448ee14391b9f38ccc3f5b60b7
+msgid "Create the autostart directory:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:380
+#: 67a2b8e798784479b6a86e63a8872c72
+msgid ""
+"Make a link to the desktop app file you’d like to start in the autostart "
+"directory. For example, the command below will link the Thunderbird app into "
+"the autostart directory:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-install-software.rst:386
+#: c2eba7323abf4a3889144391f86685f9
+msgid ""
+"Note that the app will autostart only when the app qube starts. If you would "
+"like the app qube to autostart, select the “Start qube automatically on "
+"boot” checkbox in the app qube’s Qube Settings."
+msgstr ""
