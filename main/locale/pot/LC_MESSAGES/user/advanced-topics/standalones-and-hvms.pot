@@ -1,0 +1,670 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:3
+#: 85c30f49136f49a398d14d5281637113
+msgid "Standalones and HVMs"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:7
+#: 81c0331eed60425bb87765f3d69e22f8
+msgid "This page is intended for advanced users."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:9
+#: 0202193f5e534343aa2af578e863d704
+msgid ""
+"A :term:`standalone` is a type of qube that is created by cloning a :term:"
+"`template`. Unlike templates, however, standalones do not supply their root "
+"filesystems to other qubes. Examples of situations in which standalones can "
+"be useful include:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:11
+#: 2a39268ed7684986a06fbc42127d4cb3
+msgid ""
+"Qubes used for development (dev environments often require a lot of specific "
+"packages and tools)"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:13
+#: 9ce85cf242194ff6a7e8b2584397f1b7
+msgid ""
+"Qubes used for installing untrusted packages. Normally, you install "
+"digitally signed software from Red Hat/Fedora repositories, and it’s "
+"reasonable that such software has non malicious *installation* scripts (rpm "
+"pre/post scripts). However, when you would like to install some packages "
+"from less trusted sources, or unsigned, then using a dedicated (untrusted) "
+"standalone might be a better way."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:17
+#: 589486e37ebf4cda82a0afd2398c3ec0
+msgid ""
+"Meanwhile, a :term:`Hardware-assisted Virtual Machine (HVM)  <hvm>`, also "
+"known as a “Fully-Virtualized Virtual Machine,” utilizes the virtualization "
+"extensions of the host CPU. These are typically contrasted with "
+"Paravirtualized (PV) VMs."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:19
+#: 85516666d4b6471e95f309383301454d
+msgid ""
+"HVMs allow you to create qubes based on any OS for which you have an "
+"installation ISO, so you can easily have qubes running Windows, ``*BSD``, or "
+"any Linux distribution. You can also use HVMs to run “live” distros."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:21
+#: 6db9e28a6857428d8ed2abbfac2b86ee
+msgid ""
+"By default, every qube runs in PVH mode (which has security advantages over "
+"both PV and HVM), except for those with attached PCI devices, which run in "
+"HVM mode. See `here <https://blog.invisiblethings.org/2017/07/31/qubes-40-"
+"rc1.html>`__ for a discussion of the switch from PV to HVM and `here "
+"<https://www.qubes-os.org/news/2018/01/11/qsb-37/>`__ for the announcement "
+"about the change to using PVH as default."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:23
+#: 3c7d03035f4d43728052a0529d1f6030
+msgid ""
+"The standalone/template distinction and the HVM/PV/PVH distinctions are "
+"orthogonal. The former is about root filesystem inheritance, whereas the "
+"latter is about the virtualization mode. In practice, however, it is most "
+"common for standalones to be HVMs and for HVMs to be standalones. Hence, "
+"this page covers both topics."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:26
+#: bfe052545bad43d5b74293e4028571bf
+msgid "Understanding Virtualization Modes"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:29
+#: 6e8453fd53b9467fa9d99cce7891d9b1
+msgid ""
+"PVH has both better performance and better security than either PV or HVM:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:31
+#: 930eb1eba9c541d9a5861b7064bb8319
+msgid ""
+"PVH has less attack surface than PV, as it relies on Second Level Address "
+"Translation (SLAT) hardware. Guests modify their own page tables natively, "
+"without hypervisor involvement. Xen does not need to perform complex checks "
+"to ensure that a guest cannot obtain write access to its own page tables, as "
+"is necessary for PV. Flaws in these checks have been a source of no fewer "
+"than four guest ⇒ host escapes: XSA-148, XSA-182, XSA-212, and XSA-213."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:33
+#: 8c3ff396f81743ae9ea78439417b758a
+msgid ""
+"PVH also has less attack surface than HVM, as it does not require QEMU to "
+"provide device emulation services. While QEMU is confined in a stubdomain, "
+"and again in a seccomp based sandbox, the stubdomain has significant attack "
+"surface against the hypervisor. Not only does it have the full attack "
+"surface of a PV domain, it also has access to additional hypercalls that "
+"allow it to control the guest it is providing emulation services for. "
+"XSA-109 was a vulnerability in one of these hypercalls."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:35
+#: f92899e1e1024ae4892eeddfc74de279
+msgid ""
+"PVH has better performance than HVM, as the stubdomain in HVM consumes "
+"resources (both memory and a small amount of CPU). There is little "
+"difference in the I/O path at runtime, as both PVH and HVM guests usually "
+"use paravirtualized I/O protocols."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:37
+#: 603a8d8e7f6a4c7fa69702b233e405a8
+msgid ""
+"Surprisingly, PVH often has better performance than PV. This is because PVH "
+"does not require hypercalls for page table updates, which are expensive. "
+"SLAT does raise the cost of TLB misses, but this is somewhat mitigated by a "
+"second-level TLB in recent hardware."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:40
+#: eca5860393624834a9882ff195f9a143
+msgid "Creating a standalone"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:43
+#: aa8fb8166e9c4e9ba02394d94f314ee4
+msgid ""
+"You can create a standalone in the Qube Manager by selecting the “Type” of "
+"“Standalone qube copied from a template” or “Empty standalone qube (install "
+"your own OS).”"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:45
+#: 2b3e006643744b568d9ffe11c88093d2
+msgid ""
+"Alternatively, to create an empty standalone from the dom0 command line:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:53
+#: 7b04e1a4723d47de975c02f221a19cea
+msgid "Or to create a standalone copied from a template:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:61
+#: ebcae2856c134dec985cba6a100b421e
+msgid "Notes:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:63
+#: dfa4515c14a941658308af7c1a9e53cf
+msgid ""
+"Technically, ``virt_mode=hvm`` is not necessary for every standalone. "
+"However, it is needed if you want to use a kernel from within the qube."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:65
+#: e5f632c948344a2c953a4987c16756ac
+msgid ""
+"If you want to make software installed in a template available in your "
+"standalone, pass in the name of the template using the ``--template`` option."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:70
+#: f17496df04a04e08ac5bb364550fa0ab
+msgid "Updating standalones"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:73
+#: 100c1d3cc5ea423dbc4e60698935adc6
+msgid ""
+"When you create a standalone from a template, the standalone is a complete "
+"clone of the template, including the entire filesystem. After the moment of "
+"creation, the standalone becomes completely independent from the template. "
+"Therefore, the standalone will not be updated merely by updating the "
+"template from which it was originally cloned. Rather, it must be updated as "
+"an independent qube. See :doc:`How to Update </user/how-to-guides/how-to-"
+"update>`."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:76
+#: 71afccffb1c442bf86102be732e0cefa
+msgid "Creating an HVM"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:80
+#: 66286bf171e943bcb1971924d9e48933
+msgid "Using the GUI"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:83
+#: 7b6829a12c0648c9b413e940ba8bec07
+msgid ""
+"In Qube Manager, use either the \"New qube\" button, or the \"New qube\" "
+"entry in the \"Qube\" menu. In the \"Create new qube\" dialog box click on "
+"tab \"Standalone\". If \"install system from device\" is selected (which it "
+"is by default), then ``virt_mode`` will be set to ``hvm`` automatically. "
+"Otherwise, open the newly-created qube’s Settings GUI and, in the "
+"\"Advanced\" tab, select ``HVM`` in the virtualization mode drop-down list. "
+"Also, make sure “Kernel” is set to ``(none)`` on the same tab."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:86
+#: 305d773bc460499f82671533375fb24a
+msgid "Command line"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:89
+#: 023a608fdb7c4055bb19ca42ac9089c3
+msgid ""
+"Qubes are template-based (i.e., :term:`app qubes  <app qube>` by default, so "
+"you must set the ``--class StandaloneVM`` option to create a standalone. The "
+"name and label color used below are for illustration purposes."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:97
+#: 84e940d3d06a42c48c00e66937e50bc9
+msgid ""
+"If you receive an error like this one, then you must first enable VT-x in "
+"your BIOS:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:105
+#: 28eafb9e9cda483a84d39792b3e0655f
+msgid ""
+"Make sure that you give the new qube adequate memory to install and run."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:108
+#: 12292418cdef4fa1b21642a41edd510d
+msgid "Installing an OS in an HVM"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:111
+#: 955a267a2a774ecea35a9471d71e9019
+msgid ""
+"You will have to boot the qube with the installation media “attached” to it. "
+"You may either use the GUI or use command line instructions. At the command "
+"line you can do this in three ways:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:113
+#: cdde85ca0bff46849b225304aae4900c
+msgid "If you have the physical CD-ROM media and an optical disc drive:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:121
+#: 7d8ee7cd24184b4e93e478e3a6572767
+msgid "If you have an ISO image of the installation media located in dom0:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:129
+#: be4c35f036724ff0ada324c4d380e2aa
+msgid ""
+"If you have an ISO image of the installation media located in a qube (the "
+"qube where the media is located must be running):"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:139
+#: 5b50bf8e8a554ff9aca255c317d86cdb
+msgid "For security reasons, you should *never* copy untrusted data to dom0."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:141
+#: b0cf6244261149d9baf85dc7ab6f621b
+msgid ""
+"Next, the qube will start booting from the attached installation media, and "
+"you can start installation. Whenever the installer wants to “reboot the "
+"system” it actually shuts down the qube, and Qubes won’t automatically start "
+"it. You may have to restart the qube several times in order to complete "
+"installation (as is the case with Windows 7 installations). Several "
+"invocations of the ``qvm-start`` command (as shown above) might be needed."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:144
+#: d7631f9e789e44e2a24c646a4b172435
+msgid "Setting up networking for HVMs"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:147
+#: eaadad15c48a4acbab2864728b8fae35
+msgid ""
+"Just like standard app qubes, an HVM gets a fixed IP addresses centrally "
+"assigned by Qubes. Normally, Qubes agent scripts (or services on Windows) "
+"running within each app qube are responsible for setting up networking "
+"within the qube according to the configuration created by Qubes (through :"
+"ref:`keys <developer/debugging/vm-interface:qubesdb>` exposed by dom0 to the "
+"qube). Such centrally-managed networking infrastructure allows for `advanced "
+"networking configurations <https://blog.invisiblethings.org/2011/09/28/"
+"playing-with-qubes-networking-for-fun.html>`__."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:149
+#: c7b0125964bd429e84537909cae82e05
+msgid ""
+"A generic HVM such as a standard Windows or Ubuntu installation, however, "
+"has no Qubes agent scripts running inside it initially and thus requires "
+"manual configuration of networking so that it matches the values assigned by "
+"Qubes."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:151
+#: 15830fae78544d6d956d57d5146ac8b0
+msgid ""
+"Even though we do have a small DHCP server that runs inside the HVM’s "
+"untrusted stub domain to make the manual network configuration unnecessary "
+"for many qubes, this won’t work for most modern Linux distributions, which "
+"contain Xen networking PV drivers (but not Qubes tools), which bypass the "
+"stub-domain networking. (Their net frontends connect directly to the net "
+"backend in the :term:`net qube  <net qube>`.) In this instance, our DHCP "
+"server is not useful."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:153
+#: 13b4e968d1a447dd8499c70a7a5ab5df
+msgid ""
+"In order to manually configure networking in a qube, one should first find "
+"out the IP/netmask/gateway assigned to the particular qube by Qubes. This "
+"can be seen, e.g., in the Qube Manager in the qube’s properties:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:155
+#: 6d877c4263b34d37b98d76d66adcad9d
+msgid "r4.0-manager-networking-config.png"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:160
+#: 3cf506bfcf544ca7a1f5d25ecda8e63d
+msgid ""
+"Alternatively, one can use the ``qvm-ls -n`` command to obtain the same "
+"information (IP/netmask/gateway). The Qube Settimgs shows a netmask of "
+"255.255.255.255. This is not suitable for most standalones, and you will "
+"need to use a different value."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:162
+#: 1155a951424c4cce8448e4e87eb8e614
+msgid ""
+"In Qubes, the IP address is usually in range 10.137.0.0/16, with disposables "
+"in range 10.138.0.0/16, and DNS set to ``10.139.1.1`` and ``10.139.1.2``. "
+"The simplest solution is to set the netmask to 255.0.0.0 - standard for a "
+"class A network. If you want a more restricted solution you could use "
+"255.252.0.0, or 255.255.255.0"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:164
+#: 2327b7de895a40f2832312e9def376ae
+msgid ""
+"There is :ref:`opt-in support <developer/system/networking:ipv6>` for IPv6 "
+"forwarding."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:167
+#: 49579b100b144a55b20820865e44afc6
+msgid "An example of setting up a network - Network Manager on KDE"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:170
+#: 1081e08791d24db0807f56ac0db97152
+msgid ""
+"Every guest operating system has its own way of handling networking, and the "
+"user is referred to the documentation that comes with that operating system. "
+"However, Network Manager is widely used on Linux systems, and so a worked "
+"example will prove useful. This example is for an HVM running EndeavourOS."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:172
+#: 0acfb8a3c5da4190a3e4fb63e1ba1502
+msgid "Image of Qube Settings"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:175
+#: 4daca223e9fb481d897ffc6a41468d8e
+msgid ""
+"In this example, Network Manager on KDE, the network had the following "
+"values:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:177
+#: 3318757357614a4aa84ccd776e7bdc74
+msgid "IPv4 networking"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:179
+#: 09efc1df924a4c859b7635affea3f283
+msgid "IP address 10.137.0.17"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:181
+#: f52e48fa90d047e590288bce48e5228f
+msgid ""
+"Netmask - qube settings showed 255.255.255.255, but we decided to use "
+"255.255.255.0"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:183
+#: a1a5b285c5cb44fa8568eb985a3c9faf
+msgid "Gateway 10.138.24.248"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:185
+#: bf95d1157bbb4e57ab1dc88eeb136323
+msgid "Virtual DNS 10.139.1.1 and 10.139.1.2"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:189
+#: d5876f387b37433ba063e9e4f44e839f
+msgid "Image of Network Manager, annotated by numbers for reference below"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:192
+#: 4c485b7a052047d58911fc950ba50771
+msgid ""
+"The network was set up by entering Network Manager, selecting the Wi-Fi & "
+"Networking tab, clicking on the Wired Ethernet item, and selecting tab IPv4 "
+"(1). The Manual method was selected (2), which revealed areas for data "
+"entry. The DNS Servers section takes a comma-separated list, here "
+"10.139.1.1,10.1.139.2 (3). At the bottom of the tab (4), the ‘+ Add’ button "
+"was selected, and the IP address of 10.137.0.17 entered in the ‘Address’ "
+"column, the Netmask of 255.255.255.0 entered in the ‘Netmask’ column, and "
+"the Gateway of 10.138.24.248 under ‘Gateway’. Selecting the “Apply” button "
+"stored these changes"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:195
+#: 7f0149d295f346bfbc39f2d12ec63028
+msgid "Using template-based HVMs"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:198
+#: 316f016560b849f9bfdae9011ec5d2ba
+msgid ""
+"Qubes allows HVMs to share a common root filesystem from a select template. "
+"This mode can be used for any HVM (e.g., FreeBSD running in an HVM)."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:200
+#: a6f2f2e7b5644468a83f7855d39b2480
+msgid ""
+"In order to create an HVM template, you use the following command, suitably "
+"adapted:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:208
+#: 987bb017553c482285c04926632af975
+msgid ""
+"Set memory as appropriate and install the OS into this template in the same "
+"way you would install it into a normal HVM. Generally, you should install in "
+"to the first “system” disk. (Resize it as needed before starting "
+"installation.)"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:210
+#: ea5a8e26d86c4f76bfac2044122f32ce
+msgid ""
+"You can then create a new qube using the new template. If you use this "
+"Template as is, then any HVMs based on it will effectively be disposables. "
+"All file system changes will be wiped when the HVM is shut down."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:212
+#: 1960ea4f264d4e4584a3253ade518c4e
+msgid ""
+":ref:`user/templates/windows/qubes-windows:windows as a template` gives "
+"specific advice on installing and using Windows-based templates."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:215
+#: af4a44dde7a34eafa5d1f6551e55410b
+msgid "Cloning HVMs"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:218
+#: f0055dc57f154aa18544f573555efa17
+msgid ""
+"Just like normal app qubes, HVMs can also be cloned either using the command "
+"``qvm-clone`` or via the Qube Manager’s “Clone VM” option in the right-click "
+"menu."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:220
+#: d9d811c6c99042d5aa32254e7b8c6923
+msgid ""
+"The cloned qube will get identical root and private images and will "
+"essentially be identical to the original qube, except that it will get a "
+"different MAC address for the networking interface:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:310
+#: c2405c2917184b1ba82cd49f68d3607a
+msgid ""
+"Note that the MAC addresses differ between those two otherwise identical "
+"qubes. The IP addresses assigned by Qubes will also be different, of course, "
+"to allow networking to function properly:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:322
+#: 681799e6c8dc480b94756bbaa8e97bfa
+msgid ""
+"If, for any reason, you would like to make sure that the two qubes have the "
+"same MAC address, you can use ``qvm-prefs`` to set a fixed MAC address:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:354
+#: a67da4f84645455bbb68afc2ce0c2872
+msgid "Assigning PCI devices to HVMs"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:357
+#: df391f91d0b14e57862243488b8d5464
+msgid ""
+"HVMs (including Windows qubes) can be :doc:`assigned PCI devices </user/how-"
+"to-guides/how-to-use-pci-devices>` just like normal app qubes. For example, "
+"you can assign a USB controller to a Windows qube, and you should be able to "
+"use various devices that require Windows software, such as phones, "
+"electronic devices that are configured via FTDI, etc."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:359
+#: 5276302a6b46488f83752f4954dff201
+msgid ""
+"One problem at the moment, however, is that after the whole system gets "
+"suspended into S3 sleep and subsequently resumed, some attached devices may "
+"stop working and should be restarted within the qube. This can be achieved "
+"under a Windows HVM by opening the Device Manager, selecting the actual "
+"device (such as a USB controller), ‘Disabling’ the device, and then "
+"‘Enabling’ the device again. This is illustrated in the screenshot below:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:361
+#: ef997372189b4e6cb201014a5a0cb2d0
+msgid "r2b1-win7-usb-disable.png"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:367
+#: 0b1072f6ad3e4409bd44041559da395b
+msgid "Converting VirtualBox VMs to Qubes HVMs"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:370
+#: 3e1570993fac4ee4a9373e4ab565fd16
+msgid "You can convert any VirtualBox VM to a Qubes HVM using this method."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:372
+#: 5121367e12184a32a577c0c442b2dcd0
+msgid ""
+"For example, Microsoft provides `virtual machines containing an evaluation "
+"version of Windows <https://developer.microsoft.com/en-us/windows/downloads/"
+"virtual-machines/>`__."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:374
+#: 2bf470a3d2014fed92ec0af8bf3e4c75
+msgid ""
+"About 60 GB of disk space is required for conversion. Use an external hard "
+"drive if needed. The final ``root.img`` size is 40 GB."
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:376
+#: aecae63ec8724b4d948fa7f378ae916e
+msgid "In a Debian app qube, install ``qemu-utils`` and ``unzip``:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:384
+#: c2903938217e47f4b40511fed51d14e5
+msgid "In a Fedora app qube:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:392
+#: a1def9107e864d4b905d65202e055570
+msgid "Unzip VirtualBox zip file:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:400
+#: 08d96c62c0a743f5a5e2f655973af2cb
+msgid "Extract OVA tar archive:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:408
+#: 023c271dabc74ecc93eea3b266e3dda1
+msgid "Convert vmdk to raw:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:416
+#: 9d89a4b0c97449d28054af485d54dfab
+msgid ""
+"Copy the root image file from the originating qube (here called "
+"``untrusted``) to a temporary location in dom0, typing this in a dom0 "
+"terminal:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:424
+#: 256639142b194b4796817e76cbcf7acb
+msgid ""
+"From within dom0, create a new HVM (here called ``win10``) with the root "
+"image we just copied to dom0 (change the amount of RAM in GB as you wish):"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:432
+#: 1c00fae4d8ae484a9d0a5840bfbe8db7
+msgid "Start ``win10``:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:441
+#: bfeca3c1878d425892369728df96d73d
+msgid "Optional ways to get more information"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:444
+#: 5a41a32f3f124390b9d5981ae9bd7ff4
+msgid "Filetype of OVA file:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:452
+#: 07a0e7b1f99a42e68d445147f015a483
+msgid "List files of OVA tar archive:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:460
+#: 33c906e4322443f9aa9fb92de6214f8a
+msgid "List filetypes supported by qemu-img:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:469
+#: a1b995f25c32478f8c85ebcac9fbce67
+msgid "Further reading"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:472
+#: ed6af75f56f64027b7e26d4f8440d20c
+msgid "Other documents related to HVMs:"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:474
+#: 8bab964357694ebf95b4ea5dd6af8ec6
+msgid ""
+"`Windows VMs <https://forum.qubes-os.org/search?"
+"q=windows%20hvm%20%23guides>`__"
+msgstr ""
+
+#: ../../../user/advanced-topics/standalones-and-hvms.rst:476
+#: b9cdd140d9554ae7862bad0750e7d44a
+msgid "`Linux HVM Tips <https://forum.qubes-os.org/t/19008>`__"
+msgstr ""

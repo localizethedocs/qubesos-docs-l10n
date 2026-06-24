@@ -1,0 +1,226 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/building/qubes-builder-v2.rst:3
+#: 4757caf488914e21856b37bd8a5e47e1
+msgid "Qubes builder v2"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:5
+#: 70d5f9e3b0ed4d20a7ffee22b6ae802a
+msgid ""
+"This is a brief introduction to using Qubes Builder v2 to work with Qubes OS "
+"sources. It will walk you through installing and configuring Builder v2, and "
+"using it to fetch and build Qubes OS packages."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:7
+#: 1fc747549f964e01866559902739da79
+msgid ""
+"For details and customization, use `Qubes OS v2 builder documentation "
+"<https://github.com/QubesOS/qubes-builderv2/>`__."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:10
+#: 8bf0705486c04a24b42c044a73b487b8
+msgid "Overview"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:12
+#: b6506c063315468b99928b84ce3b61a7
+msgid ""
+"In the second generation of Qubes OS builder, container or disposable qube "
+"isolation is used to perform every stage of the build and release process. "
+"From fetching sources to building, everything is executed inside an isolated "
+"*cage* (either a disposable or a container) using an *executor*. For every "
+"command that needs to perform an action on sources, like cloning and "
+"verifying Git repos, rendering a SPEC file, generating SRPM or Debian source "
+"packages, a new cage is used. Only the signing, publishing, and uploading "
+"stages are executed locally outside a cage."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:15
+#: ecb04b5eb5d44ccd84e774b0b1971883
+msgid "Setup"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:17
+#: 476b0c7a06d947c99872e7231a43e386
+msgid ""
+"This is a simple setup using a docker or podman executor. This is a good "
+"default choice; if you don’t know which executor to use, use docker.  Note "
+"the podman executor `is known <https://github.com/QubesOS/qubes-issues/"
+"issues/10280>`__ not to be currently able to build DEB packages."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:19
+#: 6aef116e1f2f4f13a93816940b3455e1
+msgid ""
+"First, decide what qube you are going to use when working with Qubes Builder "
+"v2. It can be an app qube or a standalone, with some steps different between "
+"the two."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:21
+#: a0b9923b06db4883920fafab22d772ce
+msgid "Clone the qubes-builder v2 repository into a location of your choice:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:28
+#: d338ec4b04d84f29a328440a0817c741
+msgid "Installing dependencies"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:30
+#: 5eef9a3ca33c467dadd72a7340ab7de1
+msgid ""
+"If you want to use an app qube for developing, install dependencies in the "
+"template. If you are using a standalone, install them in the qube itself. "
+"Dependencies are specified in ``dependencies-*. txt`` files in the main "
+"builder directory (you will also find dependency lists for ``podman`` and "
+"``qubes`` executors if you choose to use those), and you can install them "
+"easily in the following ways:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:32
+#: 55fba8f36e474b7eadb1f54c9dfbd19c
+msgid "for Fedora, use:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:39
+#: af44a29dac9c415093b1f7cb5ef2c9e4
+msgid ""
+"for Debian (note: some Debian packages require Debian version 13 or later), "
+"use:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:46
+#: 417b0ca0a11c4553b9103d35bdd9dd65
+msgid ""
+"If you have installed dependencies in the template, close it, and (re)start "
+"the development qube."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:48
+#: d1f7f6ae1e6f45b79968db3bb805784e
+msgid ""
+"If you haven’t previously used docker in the current qube, you need to set "
+"up some permissions (nothing needs to be done here if you're using "
+"`podman`). In particular, the user has to be added to the ``docker`` group:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:54
+#: 33c20beee0ac450fb498887c89cd246a
+msgid "Next, **restart the qube**."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:56
+#: 7bd4d448ad9947b0b1180182e0a8fd65
+msgid "Finally, you need to generate a docker image:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:58
+#: 793316c50f59451f83942d836a03aa54
+msgid "Depending on your choice of a container runtime, run one of:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:68
+#: fe11dc7c16b343758ecab5df9b7662ec
+msgid ""
+"If you are using ``docker`` and an app qube, as ``/var/lib/docker`` is not "
+"persistent by default, you also need to use :doc:`bind-dirs </user/advanced-"
+"topics/bind-dirs>` to avoid repeating this step after reboot, adding the "
+"following to the ``/rw/config/qubes-bind-dirs.d/docker.conf`` file in this "
+"qube:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:74
+#: ee7f28fcae1142d89e4a87fdcff93fc4
+msgid ""
+"If you are using ``podman`` this is not necessary, as the container images "
+"are stored in ``~/.local/share/containers/``."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:77
+#: 06a33622fbf543de97d5a46cd11484b9
+msgid "Configuration"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:79
+#: 6af1f4e7c57345e2b88776150ee24025
+msgid ""
+"To use Qubes OS Builder v2, you need to have a ``builder.yml`` configuration "
+"file. You can use one of the sample files from the ``example-configs/`` "
+"directory; for a more readable ``builder.yml``, you can also include one of "
+"the files from that directory in your ``builder.yml``. An example ``builder."
+"yml`` is:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:109
+#: 8160ee74a34d41c0bd70e74d19269cd5
+msgid ""
+"If you want use the ``podman`` executor, you have to enable socket "
+"activation, with:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:117
+#: 98b186dc32594e0a84211cbfe9fcd2b4
+msgid "Using Builder v2"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:119
+#: 2adf4f6bf0eb4a36b5be2700c5c9417d
+msgid ""
+"To fetch sources - in this example, for the ``core-admin-client`` package, "
+"you can use the following command:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:125
+#: de99e14099004fdcab40335692640826
+msgid ""
+"This will fetch the sources for the listed package and place them in "
+"``artifacts/sources`` directory."
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:127
+#: 0f8c258479f74a96b8f81ca3856aa7f6
+msgid ""
+"To build a package (from sources in the ``artifacts/sources`` directory), "
+"use:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:133
+#: 5b4afe2ae3b94fa483e9313c876285fc
+msgid ""
+"or, if you want to build for a specific target (``host-fc37`` is a ``dom0`` "
+"using Fedora 37, ``vm-fc40`` would be a qube using Fedora 40 etc.), use:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:139
+#: c5f76293a53f47388d453128e1b91f31
+msgid "If you want to fetch the entire Qubes OS source use the following:"
+msgstr ""
+
+#: ../../../developer/building/qubes-builder-v2.rst:145
+#: 16093d22881c4039bb5c871a48527f91
+msgid ""
+"**caution**: some repositories might have additional requirements. You can "
+"disable repositories that are not needed in the ``example-configs/*.yml`` "
+"file you are using by commenting them out. In particular, ``python-fido2``, "
+"``lvm`` and ``windows``-related repositories have special requirements."
+msgstr ""

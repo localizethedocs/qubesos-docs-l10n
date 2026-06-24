@@ -1,0 +1,937 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/advanced-topics/salt.rst:3 99d19d7ae7764b3da8598a0e8c13d0d3
+msgid "Salt (management software)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:7 f26fa20b1a5b436486cde744f350b937
+msgid "This page is intended for advanced users."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:9 918349c84602428fb061913f5c73cb14
+msgid ""
+"Since the Qubes R3.1 release we have included the Salt (also called "
+"SaltStack) management engine in dom0 as default (with some states already "
+"configured). Salt allows administrators to easily configure their systems. "
+"In this guide we will show how it is set up and how you can modify it for "
+"your own purpose."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:11 e24451f424de4464aa6c6d420853c49a
+msgid ""
+"In the current form the **API is provisional** and subject to change between "
+"*minor* releases."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:14 033b12b59d224437a6967264c22339b0
+msgid "Understanding Salt"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:17 979e96db47054dd980d8d0bcf7d39dbd
+msgid ""
+"This document is not meant to be comprehensive Salt documentation; however, "
+"before writing anything it is required you have at least *some* "
+"understanding of basic Salt-related vocabulary. For more exhaustive "
+"documentation, visit `official site <https://docs.saltproject.io/en/latest/"
+">`__, though we must warn you that it is not easy to read if you just start "
+"working with Salt and know nothing."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:20 32276fb38e8d4f9eb82846cb3019bc69
+msgid "The Salt Architecture"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:23 40cc8c96b24542a89d5cf681a7a17ec4
+msgid ""
+"Salt is a client-server model, where the server (called *master*) manages "
+"its clients (called *minions*). In typical situations, it is intended that "
+"the administrator interacts only with the master and keeps the "
+"configurations there. In Qubes, we don’t have a master. Instead we have one "
+"minion which resides in ``dom0`` and manages qubes from there. This setup is "
+"also supported by Salt."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:25 3405b98739c148aa806f1bf37d3e82e0
+msgid ""
+"Salt is a management engine (similar to Ansible, Puppet, and Chef), that "
+"enforces a particular state of a minion system. A *state* is an end effect "
+"*declaratively* expressed by the administrator. This is the most important "
+"concept in the entire engine. All configurations (i.e., the states) are "
+"written in YAML."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:27 27ed023fa1d147d18e1cb0cc07f997bb
+msgid ""
+"A *pillar* is a data back-end declared by the administrator. When states "
+"become repetitive, instead of pure YAML they can be written using a template "
+"engine (preferably Jinja2); which can use data structures specified in "
+"pillars."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:29 91be4752592c49e09ef83927e5eb7208
+msgid ""
+"A *formula* is a ready to use, packaged solution that combines a state and a "
+"pillar (possibly with some file templates and other auxiliary files). There "
+"are many formulas made by helpful people all over the Internet."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:31 b56147b2a499494e9bb7c893394ffb92
+msgid ""
+"A *grain* is some data that is also available in templates, but its value is "
+"not directly specified by administrator. For example, the distribution (e."
+"g., ``\"Debian\"`` or ``\"Gentoo\"``) is a value of the grain ``\"os\"``. It "
+"also contains other information about the kernel, hardware, etc."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:33 e0f166e8c66b43a9b8952a4173c3981f
+msgid ""
+"A *module* is a Python extension to Salt that is responsible for actually "
+"enforcing the state in a particular area. It exposes some *imperative* "
+"functions for the administrator. For example, there is a ``system`` module "
+"that has a ``system.halt`` function that, when issued, will immediately halt "
+"a domain."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:35 1560e9920f4e44cdb67b36e7ae4f7062
+msgid ""
+"In salt, there are different levels of functionality. The lowest level is a "
+"single state function, called like this ``state.single pkg.installed "
+"name=firefox-esr`` When the system compiles data from sls formulas, it "
+"generates *chunks* - low chunks are at the bottom of the compiler . You can "
+"call them with ``state.low``. Next up is the *lowstate* level - this is the "
+"list of all low chunks in order. To see them you have ``state."
+"show_lowstate``, and use ``state.lowstate`` to apply them. At the top level "
+"is *highstate* - this is an interpretation of **all** the data represented "
+"in YAML in sls files. You can view it with ``state.show_highstate``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:37 51febdd8095e4b74a308ea91952bb4a0
+msgid ""
+"When you want to apply a configuration, you can use ``qubesctl state."
+"highstate.`` This will apply all the states you have included in highstate."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:39 6b07376f6f7840fc936587cdf35d386c
+msgid ""
+"There is another function, ``state.apply``; ``state.apply`` has two uses. "
+"When used on its own, it will apply *highstate* - all the configuration that "
+"has been enabled. It can also be used to apply a specific state, like this: "
+"``state.apply browser`` - this will apply the state specified in ``browser."
+"sls``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:41 aa83fff2cf9b47b99ecfea0d0d4ee244
+msgid ""
+"For simplicity we will use ``state.apply`` through this page, when we want "
+"to apply all configured states."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:44 b5b92500c99c4d64b4828b69e0b99071
+msgid "Configuration"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:48 21db62aef1ec46ee9b53d4949a433a4a
+msgid "States"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:51 1b16f845425749af96cda53f2088ee8b
+msgid ""
+"The smallest unit of configuration is a state. A state is written in YAML "
+"and looks like this:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:61 2d09e8007ab648f88029bee0913bbca7
+msgid ""
+"The stateid has to be unique throughout all states running for a minion and "
+"can be used to order the execution of the references state. ``cmd.run`` is "
+"an execution module. It executes a command on behalf of the administrator. "
+"``name: echo 'hello world'`` is a parameter for the execution module ``cmd."
+"run``. The module used defines which parameters can be passed to it."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:63 564bed083ea040bea773ab1eaf68f4f9
+msgid ""
+"There is a list of `officially available states <https://docs.saltproject.io/"
+"en/latest/ref/states/all/>`__. There are many very useful states:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:65 a6a4ac712e684a2a9b43cf7abc376042
+msgid ""
+"For `managing files <https://docs.saltproject.io/en/latest/ref/states/all/"
+"salt.states.file.html>`__: Use this to create files or directories and "
+"change them (append lines, replace text, set their content etc.)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:67 0842273c82f94a72949267f85dbf9e37
+msgid ""
+"For `installing and uninstalling <https://docs.saltproject.io/en/latest/ref/"
+"states/all/salt.states.pkg.html>`__ packages."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:69 170250927d8a466cb01457204c19d74c
+msgid ""
+"For `executing shell commands <https://docs.saltproject.io/en/latest/ref/"
+"states/all/salt.states.cmd.html>`__."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:73 2fe1914650a14432971491a805110c7d
+msgid ""
+"With these three states you can define most of the configuration of a VM."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:75 664c036c8ce54c0193d16f4cb08e6935
+msgid ""
+"You can also `order the execution <https://docs.saltproject.io/en/latest/ref/"
+"states/ordering.html>`__ of your states:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:100 71e4405aebaf490097955e8e0c5a695a
+msgid ""
+"The order of execution will be ``A, B, C, D``. The official documentation "
+"has more details on the `require <https://docs.saltproject.io/en/latest/ref/"
+"states/requisites.html>`__ and `order <https://docs.saltproject.io/en/latest/"
+"ref/states/ordering.html#the-order-option>`__ arguments."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:103 a4ed9c320f0a4ca98dd9393e339cdb39
+msgid "State Files"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:106 02c31209e9604b8697281e17666b99b8
+msgid ""
+"When configuring a system you will write one or more state files (``*.sls``) "
+"and put (or symlink) them into the main Salt directory ``/srv/salt/``. Each "
+"state file contains multiple states and should describe some unit of "
+"configuration (e.g., a state file ``mail.sls`` could setup a qube for e-"
+"mail)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:109 04674bf3134048198395eeed41dfa5a9
+msgid "Top Files"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:112 ad76fed5d75549d083f71c7ea68e32e0
+msgid ""
+"After you have several state files, you need something to assign them to a "
+"qube. This is done by ``*.top`` files (`official documentation <https://docs."
+"saltproject.io/en/latest/ref/states/top.html>`__). Their structure looks "
+"like this:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:123 f6d4462df07d47b5a40df526a90539dd
+msgid ""
+"In most cases, the environment will be called ``base``. The "
+"``target_matching_clause`` will be used to select your minions (Templates or "
+"qubes). It can be either the name of a qube or a regular expression. If you "
+"are using a regular expressions, you need to give Salt a hint you are doing "
+"so:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:134 3ac48e7f7c544332bcbb21bdaefc4b14
+msgid ""
+"For each target you can write a list of state files. Each line is a path to "
+"a state file (without the ``.sls`` extension) relative to the main "
+"directory. Each ``/`` is exchanged with a ``.``, so you can’t reference "
+"files or directories with a ``.`` in their name."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:137 ff810a9e82574805989a36fb4d3ee913
+msgid "Enabling Top Files and Applying the States"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:140 e2980104199d4dae92a44b324599d244
+msgid ""
+"Now, because we use custom extensions to manage top files (instead of just "
+"enabling them all), to enable a particular top file you should issue command:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:148 276a1fd09e634e7a93ef43f2663ed0e1
+msgid "To list all enabled top files:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:156 0a449948b15547ad87786b54d1ea3078
+msgid "And to disable one:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:164 e23865ecfb39421fa050857a1c651b9a
+msgid "To apply the states to dom0 and all VMs:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:172 54ca6ba0d23e40f785b8ed22e7faed58
+msgid "(More information on the ``qubesctl`` command further down.)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:175 a898419038ad4f2197f75661159672a6
+msgid "Template Files"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:178 136fd34ee72d415c8b99bab5ec20f379
+msgid ""
+"You will sometimes find yourself writing repetitive states. To solve this, "
+"there is the ability to template files or states. This is most commonly done "
+"with `Jinja <https://palletsprojects.com/p/jinja/>`__. Jinja is similar to "
+"Python and in many cases behaves in a similar fashion, but there are "
+"sometimes differences when, for example, you set some variable inside a "
+"loop: the variable outside will not get changed. Instead, to get this "
+"behavior, you would use a ``do`` statement. So you should take a look at the "
+"`Jinja API documentation <https://jinja.palletsprojects.com/templates/>`__. "
+"Documentation about using Jinja to directly call Salt functions and get data "
+"about your system can be found in the official `Salt documentation <https://"
+"docs.saltproject.io/salt/user-guide/en/latest/topics/jinja.html>`__."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:181 c51305c9ac4a4da1a62e91087cbbc3d1
+msgid "Salt Configuration, QubesOS layout"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:184 98d16d6dd3a64e9c98dc99f6b728c0f1
+msgid ""
+"All Salt configuration files are in the ``/srv/`` directory, as usual. The "
+"main directory is ``/srv/salt/`` where all state files reside. States are "
+"contained in ``*.sls`` files. However, the states that are part of the "
+"standard Qubes distribution are mostly templates and the configuration is "
+"done in pillars from formulas."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:186 b6668c27dea2403d8982b61177b0e902
+msgid ""
+"The formulas are in ``/srv/formulas``, including stock formulas for domains "
+"in ``/srv/formulas/dom0/virtual-machines-formula/qvm``, which are used by "
+"first boot."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:188 9b91886e2f7345d1ae3d52f6c9f7139e
+msgid ""
+"Because we use some code that is not found in older versions of Salt, there "
+"is a tool called ``qubesctl`` that should be run instead of ``salt-call --"
+"local``. It accepts all the same arguments of the vanilla tool."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:191 50b75294e06c4d85afc9d4e073f1bafd
+msgid "Configuring a qube's System from Dom0"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:194 01b90ddecb404e439b4877e93bcf3b45
+msgid ""
+"Salt can be used to configure qubes from dom0. Simply set the qube name as "
+"the target minion name in the top file. You can also use the ``qubes`` "
+"pillar module to select qubes with a particular property (see below). If you "
+"do so, then you need to pass additional arguments to the ``qubesctl`` tool:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:218 7872245c91794fa39605952446d0fabd
+msgid ""
+"To apply a state to all templates, call ``qubesctl --templates state.apply``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:220 e70c336717e94a2cabeb3bb6b5205d55
+msgid ""
+"The actual configuration is applied using ``salt-ssh`` (running over "
+"``qrexec`` instead of ``ssh``). Which means you don’t need to install "
+"anything special in a qube you want to manage. Additionally, for each target "
+"qube, ``salt-ssh`` is started from a temporary qube. This way dom0 doesn’t "
+"directly interact with potentially malicious target qubes; and in the case "
+"of a compromised Salt qube, because they are temporary, the compromise "
+"cannot spread from one qube to another."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:222 705e5c48c4274e8486729967a00dc922
+msgid ""
+"Beginning with Qubes 4.0 and after `QSB #45 <https://www.qubes-os.org/"
+"news/2018/12/03/qsb-45/>`__, we implemented two changes:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:224 261e23082cd24b24a2865f3d1720c843
+msgid ""
+"Added the ``management_dispvm`` qube property, which specifies the "
+"disposable Template that should be used for management, such as Salt "
+"configuration. App qubes inherit this property from their parent templates. "
+"If the value is not set explicitly, the default is taken from the global "
+"``management_dispvm`` property. The qube-specific property is set with the "
+"``qvm-prefs`` command, while the global property is set with the ``qubes-"
+"prefs`` command."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:226 fe74f88b0151457f9295381a22e5e3e2
+msgid ""
+"Created the ``default-mgmt-dvm`` disposable template, which is hidden from "
+"the menu (to avoid accidental use), has networking disabled, and has a black "
+"label (the same as templates). This qube is set as the global "
+"``management_dispvm``. Keep in mind that this disposable template has full "
+"control over the qubes it’s used to manage."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:231 5e5834c40ece406fa11fa7b32127f9f1
+msgid "Writing Your Own Configurations"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:234 9dc3d04c5f094a78aebcc8b0b76dc98a
+msgid "Let’s start with a quick example:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:250 6e1f72d70a474366af9e31dbc61bf775
+msgid ""
+"It uses the Qubes-specific ``qvm.present`` state, which ensures that the "
+"qube is present (if not, it creates it)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:252 7e31e92b9c1347379fc0ccdef5f69853
+msgid ""
+"The ``name`` flag informs Salt that the qube should be named ``salt-test`` "
+"(not ``my new and shiny VM``)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:254 77614f95f619456c9eaf5d874ff338bb
+msgid ""
+"The ``template`` flag informs Salt which template should be used for the "
+"qube."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:256 f304d6fd6b054aeea0dd83f81d115518
+msgid "The ``label`` flag informs Salt what color the qube should be."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:258 6ea8580f818e44d6a48289141b20b5a2
+msgid ""
+"The ``mem`` flag informs Salt how much RAM should be allocated to the qube."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:260 1682d3711bab41f7af58e4cb5b43f68f
+msgid ""
+"The ``vcpus`` flag informs Salt how many Virtual CPUs should be allocated to "
+"the qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:262 db10f10a98334c808e5d78a824eb6731
+msgid "The ``proxy`` flag informs Salt that the qube should be a ProxyVM."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:266 ffcbb1da46d24a519a2eeb9dfedffb8f
+msgid ""
+"As you will notice, the options are the same (or very similar) to those used "
+"in ``qvm-prefs``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:268 4622913c75074a5d8ceddfc934d6139b
+msgid ""
+"This should be put in ``/srv/salt/my-new-vm.sls`` or another ``.sls`` file. "
+"A separate ``*.top`` file should be also written:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:278 e9fdc562718942e489a6086f54328ae2
+msgid ""
+"**Note** The third line should contain the name of the previous state file, "
+"without the ``.sls`` extension."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:280 da8aeac4832c48cda44eaeef0b92ea16
+msgid "To enable the particular top file you should issue the command:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:288 b312d4c8fd9e4881a46d241d88bcd581
+msgid "To apply the state:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:297 61998e834f344e8b961a764f9c664944
+msgid "Example of Configuring Templates from Dom0"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:300 5ce1a8af97a0496cac5638ef2f5e02da
+msgid ""
+"Lets make sure that the ``mc`` package is installed in all templates. "
+"Similar to the previous example, you need to create a state file (``/srv/"
+"salt/mc-everywhere.sls``):"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:309 e63f24b97b4e49cbb93f88d9692291f7
+msgid "Then the appropriate top file (``/srv/salt/mc-everywhere.top``):"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:320 bfeda6ba8738460ca2e5107df71e2fa2
+msgid "Now you need to enable the top file:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:328 2bb0840425454e81b2686e9486bd0aac
+msgid "And apply the configuration:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:337 52894b3543ee498c9ebe2bcc73e793e2
+msgid "All Qubes-specific States"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:341 7d0964e512204bad9deaa4716531852b
+msgid "``qvm.present``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:344 10487059394d41dd8ad9fffc6f3949e3
+msgid "As in the example above, it creates a qube and sets its properties."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:347 d596aff94e2246429e884d1f1ace1361
+msgid "``qvm.prefs``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:350 39d5a585a2064b249f46c7ec84910f27
+msgid "You can set properties of an existing qube:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:361 3ff1cb35237c4fb0be8621210f9cbc8b
+msgid ""
+"**Note** The ``name:`` option will not change the name of a qube, it will "
+"only be used to match a qube to apply the configurations to it."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:364 70fc0ccef5cb44baad9b5edefc2c85bb
+msgid "``qvm.service``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:383 f3ca1f93f1974022a38ee5963b2bbed8
+msgid ""
+"This enables, disables, or sets to default, services as in ``qvm-service``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:386 a66640cc30c0438c99ed897a850f0e51
+msgid "``qvm.running``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:389 a58afb1d29d74808b645c66114e3bd2c
+msgid "Ensures the specified qube is running:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:400 275f8443461b43f0976813f15efe9087
+msgid "Virtual Machine Formulae"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:403 a0540437e426494391ff1ad0dda398ad
+msgid ""
+"You can use these formulae to download, install, and configure qubes in "
+"Qubes. These formulae use pillar data to define default qube names and "
+"configuration details. The default settings can be overridden in the pillar "
+"data located in:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:411 40267dad7a984720bfedb7a8849f5f99
+msgid ""
+"In dom0, you can apply a single state with ``sudo qubesctl state.sls "
+"STATE_NAME``. For example, ``sudo qubesctl state.sls qvm.personal`` will "
+"create a ``personal`` qube (if it does not already exist) with all its "
+"dependencies (template, ``sys-firewall``, and ``sys-net``)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:414 3731691bfca04bb09acada807084f8e9
+msgid "Available states"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:418 e2fdf0f7f24841b597ba066c9e382556
+msgid "``qvm.sys-net``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:421 53b6ce7bf1644a51a2084b47e1f7859b
+msgid "System NetVM"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:424 6af2169b2df448538842b682abaf8023
+msgid "``qvm.sys-usb``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:427 ee474747373b48ffa9262dd06367b57a
+msgid "System USB qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:430 dcc0afe649cd4333a9141d2332a09883
+msgid "``qvm.sys-net-as-usbvm``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:433 ab38630001d64bdf9509052d41b0a354
+msgid ""
+"System USB qube bundled into NetVM. Do not enable together with ``qvm.sys-"
+"usb``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:436 31eccea9399d45c2a3a214dafdb432b0
+msgid "``qvm.usb-keyboard``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:439 f7007f6f426f4988940531371d3a3c29
+msgid ""
+"Enable USB keyboard together with USB qube, including for early system boot "
+"(for LUKS passhprase). This state implicitly creates a USB qube (``qvm.sys-"
+"usb`` state), if not already done."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:442 351d7271458b45a8b3b5947a37e08646
+msgid "``qvm.sys-firewall``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:445 a487d16cc7c54517b6efc0ed507e212d
+msgid "System firewall ProxyVM"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:448 af5752282ff74dc7ac3e452dada9abd8
+msgid "``qvm.sys-whonix``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:451 d0e0e99244d84b929f04bdeef5979d4e
+msgid "Whonix gateway ProxyVM"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:454 0041056f6e4842c499d06848d54e4817
+msgid "``qvm.personal``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:457 66dbed1ea28b44b4a76c9dca8c98c414
+msgid "Personal app qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:460 2f54e9aa96b24d999da8d092fbf9c2b1
+msgid "``qvm.work``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:463 087109d3631446b69b085934d4cf5275
+msgid "Work app qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:466 f6532328a3e14f019ec2b42483ea5c90
+msgid "``qvm.untrusted``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:469 a02e52d3b1284df885a3008a19e69521
+msgid "Untrusted app qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:472 0eb9d3bc5b2a457cb28adcf6cb4ae68c
+msgid "``qvm.vault``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:475 247cbc493d614a17ab05c9c91d189557
+msgid "Vault app qube with no NetVM enabled."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:478 8d40a1a1597e48c1bed929b5f2233600
+msgid "``qvm.default-dispvm``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:481 a0ccb3d9ef724aec916b7422bbf99a59
+msgid "Default disposable template - fedora-26-dvm app qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:484 48dffce676bc41979c8bb7aa310ff6d4
+msgid "``qvm.anon-whonix``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:487 de2664d4162749caa88588202151c5d5
+msgid "Whonix workstation app qube."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:490 5b634ee8c09740249d99b13e8814b6e6
+msgid "``qvm.whonix-ws-dvm``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:493 c525e0b74fa54f81ae890a99917a791c
+msgid "Whonix workstation app qube for Whonix disposables."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:496 e4c2a607e12e47e78e4f36ebcdb4e2d8
+msgid "``qvm.updates-via-whonix``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:499 506b1b9b136f40c69de273e64d384d84
+msgid ""
+"Setup UpdatesProxy to route all templates updates through Tor (sys-whonix "
+"here)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:502 1199fac683794410b75f34a79f42f581
+msgid "``qvm.template-fedora-21``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:505 d3b23a5957164d6d82aff7585220d0ed
+msgid "Fedora-21 template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:508 58775f8ae0084ed6ae7853c7c0313d14
+msgid "``qvm.template-fedora-21-minimal``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:511 2ac64613ff2b4a4abb95cddbe3c02f78
+msgid "Fedora-21 minimal template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:514 3549d931eb4a49f7b060ea6ff0b58e09
+msgid "``qvm.template-debian-7``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:517 73bf3a96255c478f8637fefbd06fc86c
+msgid "Debian 7 (wheezy) template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:520 44d9328c694b4e61914daa2b216400df
+msgid "``qvm.template-debian-8``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:523 79c3d241b6244f8b89007c2a7e8f9514
+msgid "Debian 8 (jessie) template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:526 740c3419198e408093c97544798d04a5
+msgid "``qvm.template-whonix-gw``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:529 ec3b416f9c664ebca2d4a4de3f673587
+msgid "Whonix Gateway template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:532 0fc075c2bd8e4e5790c4f4b05a98b3d0
+msgid "``qvm.template-whonix-ws``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:535 c85123a237904b10aaf608bdd46aa9ff
+msgid "Whonix Workstation template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:538 2a1a781b5d7547dcb596c24a383c39ba
+msgid "``update.qubes-dom0``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:541 f04ac10eb57b4e3591edbe1ab7f1b841
+msgid "Updates dom0. Example (executed in dom0):"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:550 93dbf8c688344086a169c7554fc33467
+msgid "``update.qubes-vm``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:553 9d885ae63d7c4c8aa4b03e7cf0323fe4
+msgid "Updates domUs. Example to update all templates (executed in dom0):"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:561 2caf2e45d546442183a2dc12f72f655c
+msgid "Useful options:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:563 19da0c53592f4fcb8c579b7322ac22a1
+msgid ""
+"``--max-concurrency`` — Limits how many templates are updated at the same "
+"time. Adjust to your available RAM. The default is 4, and the GUI updater "
+"sets it to 1."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:565 08c15908fcd640f0a3acca0c6392f750
+msgid ""
+"``--targets=vm1,vm2,...`` — Limit to specific qubes, instead of all of them. "
+"(Use instead of ``--templates`` or ``--standalones``.)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:567 abd8cacb0c35455f9148990b9757b8db
+msgid "``--show-output`` — Show an update summary instead of just OK/FAIL."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:571 0190cc7dc5684e8293f12628874495da
+msgid "For other options, see ``qubesctl --help``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:574 055f9161d1d54be1b1382fd928887b3d
+msgid "The ``qubes`` Pillar Module"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:577 9440002d91a8407fa34f5dd7c2e0b6af
+msgid ""
+"Additional pillar data is available to ease targeting configurations (for "
+"example all templates)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:579 f44ef4f047b9431e9433d86283ac6ac6
+msgid "**Note:** This list is subject to change in future releases."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:582 d7f9a7dd9d1f4b69846c85c7f69c9507
+msgid "``qubes:features``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:585 3158b2485f024bbd9f49da8e3dd557ba
+msgid "Features the qube has. Only some values are included:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:587 d2a884d8fd114b5e8954c9a73fbf0786
+msgid "``service.*`` - services enabled or disabled in the qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:589 e5748fdcbfcc46bc872f56dac5059e44
+msgid "``vm-config.*`` - features also exposed to qubesdb"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:594 62ecc07375a1449d9d8809a22239ab38
+msgid "``qubes:tags``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:597 7c754a5204d74271abb133eb48c7e647
+msgid "Tags the qube has."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:600 e5135796411d45b38045b44dde75145d
+msgid "``qubes:type``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:603 e4f42e6c33d848159f15b8c1ffde19d3
+msgid "qube type. Possible values:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:605 6e1d920492d6408cb812e8b00c849b00
+msgid "``admin`` - Administration qube (``dom0``)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:607 563ad9dac7e84811a28e2b50b94a051e
+msgid "``template`` - template"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:609 382934cfcd7f4dfc96a243e390daed06
+msgid "``standalone`` - Standalone qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:611 01c138147c3947a2a0699048f2969db5
+msgid "``app`` - Template based app qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:616 813b34a5fe0d48f29de4f322c5b5a25f
+msgid "``qubes:template``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:619 6f748bc909c2478c899f4d717f941639
+msgid "Template name on which a given qube is based (if any)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:622 03c7358a15ec4af892acad867ed19696
+msgid "``qubes:netvm``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:625 dbe572db7e79448f92ab52e2d479931f
+msgid "qube which provides network to the given qube"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:628 1d86a47437cd4e5dbcd595fe2cb6a9cb
+msgid "Debugging"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:631 a77c3b51db30417cb4f5bd1b98ac0908
+msgid ""
+"The output for each qube is logged in ``/var/log/qubes/mgmt-VM_NAME.log``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:633 a607e385df8249ef8cd2b636d4839cdb
+msgid "If the log does not contain useful information:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:635 26c08c5deae047079df43d43d11819c2
+msgid "Run ``sudo qubesctl --skip-dom0 --target=VM_NAME state.apply``"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:637 6e2d827ffbfc4a778b48278e879a1846
+msgid "When your qube is being started (yellow) press Ctrl-z on qubesctl."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:639 f5a270f470fe4552a0a3c4e10178d03e
+msgid "Open terminal in disp-mgmt-qube_NAME."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:641 c963f7699b20467f865c5bb35006897a
+msgid ""
+"Look at /etc/qubes-rpc/qubes.SaltLinuxVM - this is what is executed in the "
+"management qube."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:643 dc9ebbb188a84191a862067a79eb81ea
+msgid "Get the last two lines:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:653 d9887cc940cd40cba90267e77d60bde5
+msgid "Adjust $target_vm (VM_NAME) and $salt_command (state.apply)."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:655 ef4ce07bad38456d92c92e5608bf4b11
+msgid "Execute them, fix problems, repeat."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:662 e8671ec93f614268b19ce2444c0fd3e9
+msgid "Known Pitfalls"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:666 acddb91eeb3647c282058ad52da88fc4
+msgid "Using fedora-24-minimal"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:669 690673c0e5794f9e97b9cf353139b965
+msgid ""
+"The fedora-24-minimal package is missing the ``sudo`` package. You can "
+"install it via:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:676 7de0bf9f26454af89cdc3e0a0ddbb031
+msgid ""
+"The ``-p`` will cause the execution to wait until the package is installed. "
+"Having the ``-p`` flag is important when using a state with ``cmd.run``."
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:679 9b215d3771bb43a8a81d9cb3dc04c955
+msgid "Disk Quota Exceeded (When Installing Templates)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:682 1f9f1abd401a404dafb1d434201caac1
+msgid ""
+"If you install multiple templates you may encounter this error. The solution "
+"is to shut down the updateVM between each install:"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:693 c631682cadd449d988f191f510e0c664
+msgid "Further Reading"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:696 e1c0ff6839874b13bf1f667f6499f564
+msgid "`Salt documentation <https://docs.saltproject.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:698 16f2cdc7038e4bc09b2dba79b1000100
+msgid ""
+"`Salt states <https://docs.saltproject.io/en/latest/ref/states/all/>`__ "
+"(`files <https://docs.saltproject.io/en/latest/ref/states/all/salt.states."
+"file.html>`__, `commands <https://docs.saltproject.io/en/latest/ref/states/"
+"all/salt.states.cmd.html>`__, `packages <https://docs.saltproject.io/en/"
+"latest/ref/states/all/salt.states.pkg.html>`__, `ordering <https://docs."
+"saltproject.io/en/latest/ref/states/ordering.html>`__)"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:700 8ef3428bfdb04045aaf5ae61f2de55dd
+msgid ""
+"`Top files <https://docs.saltproject.io/en/latest/ref/states/top.html>`__"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:702 937ae66c10c54890aea43e7db679ad93
+msgid "`Jinja templates <https://palletsprojects.com/p/jinja/>`__"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:704 37a9b837dd45458792440e000a6710cb
+msgid ""
+"`Qubes specific modules <https://github.com/QubesOS/qubes-mgmt-salt-dom0-qvm/"
+"blob/master/README.rst>`__"
+msgstr ""
+
+#: ../../../user/advanced-topics/salt.rst:706 a0d05f0965d54f2daf76f79c2c0e3da7
+msgid ""
+"`Formulas for default Qubes qubes <https://github.com/QubesOS/qubes-mgmt-"
+"salt-dom0-virtual-machines/tree/master/qvm>`__"
+msgstr ""
