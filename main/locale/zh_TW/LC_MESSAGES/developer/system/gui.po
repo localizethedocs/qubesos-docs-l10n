@@ -19,29 +19,33 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:3 3a145f334d43402a84cc32985516b846
 msgid "GUI virtualization"
-msgstr ""
+msgstr "GUI 虛擬化"
 
 #: ../../../developer/system/gui.rst:5 b161aa2e622e4ba49b03fda1f2cf55ce
 msgid "``qubes-gui`` and ``qubes-guid`` processes"
-msgstr ""
+msgstr "``qubes-gui`` 與 ``qubes-guid`` 進程"
 
 #: ../../../developer/system/gui.rst:7 dcacd068ded74b53a07b301e95715798
 msgid ""
 "All AppVM X applications connect to local (running in AppVM) Xorg servers "
 "that use the following “hardware” drivers:"
 msgstr ""
+"所有 AppVM 的 X 應用程式會連接到在本機（AppVM 內執行）的 Xorg 伺服器，這些伺"
+"服器使用下列「硬體」驅動程式："
 
 #: ../../../developer/system/gui.rst:9 95b11edc4fe849aeb2bb74ecbe72794e
 msgid ""
 "``dummyqsb_drv`` - video driver, that paints onto a framebuffer located in "
 "RAM, not connected to real hardware"
 msgstr ""
+"``dummyqsb_drv`` - 視訊驅動程式，會繪製到位於 RAM 中的影格緩衝區，不連接實際"
+"硬體"
 
 #: ../../../developer/system/gui.rst:10 4aa1049ad7564f988cec0da6ddf2c572
 msgid ""
 "``qubes_drv`` - it provides a virtual keyboard and mouse (in fact, more, see "
 "below)"
-msgstr ""
+msgstr "``qubes_drv`` - 提供虛擬鍵盤與滑鼠（實際上還有更多功能，詳見下文）"
 
 #: ../../../developer/system/gui.rst:12 0408293d9586450d8b98f47b0d3bd7f2
 msgid ""
@@ -49,53 +53,62 @@ msgid ""
 "``qubes-guid`` (running in the AppVM’s GuiVM, dom0 by default) processes "
 "connected over vchan. The main responsibilities of ``qubes-gui`` are:"
 msgstr ""
+"對於每個 AppVM，都有一對透過 vchan 連接的 ``qubes-gui``（在 AppVM 中執行）與 "
+"``qubes-guid``（在 AppVM 的 GuiVM 中執行，預設為 dom0）進程。``qubes-gui`` 的"
+"主要職責如下："
 
 #: ../../../developer/system/gui.rst:14 52b2b323d3f841ce971dde129a027fa5
 msgid ""
 "call XCompositeRedirectSubwindows on the root window, so that each window "
 "has its own composition buffer"
 msgstr ""
+"在根視窗上呼叫 XCompositeRedirectSubwindows，使每個視窗擁有自己的合成緩衝區"
 
 #: ../../../developer/system/gui.rst:15 09d0c4c27f9e4b46b4372c1439c05db1
 msgid ""
 "instruct the local Xorg server to notify it about window creation, "
 "configuration and damage events; pass information on these events to dom0"
 msgstr ""
+"指示本機 Xorg 伺服器通知其關於視窗建立、配置及損毀事件；並將這些事件的資訊傳"
+"遞給 dom0"
 
 #: ../../../developer/system/gui.rst:16 84f44a412b7b48eaa6c6dbacb022eac0
 msgid ""
 "receive information about keyboard and mouse events from dom0, tell ``qubes-"
 "drv`` to fake appropriate events"
-msgstr ""
+msgstr "從 dom0 接收鍵盤與滑鼠事件的資訊，告訴 ``qubes-drv`` 模擬相應的事件"
 
 #: ../../../developer/system/gui.rst:17 ../../../developer/system/gui.rst:24
 #: 1d4650f1725e466e909d134b9b894330 d29fac41badc47ba8fa6f694614592c2
 msgid ""
 "receive information about window size/position change, apply them to the "
 "local window"
-msgstr ""
+msgstr "接收關於視窗大小/位置變更的資訊，並將其套用至本機視窗"
 
 #: ../../../developer/system/gui.rst:19 73e1f21f4e3e4ede883c4f4b066faad3
 msgid "The main responsibilities of ``qubes-guid`` are:"
-msgstr ""
+msgstr "``qubes-guid`` 的主要職責如下："
 
 #: ../../../developer/system/gui.rst:21 d9abae8cccbd4f20a7413836a712d901
 msgid ""
 "create a window in dom0 whenever an information on window creation in AppVM "
 "is received from ``qubes-gui``"
 msgstr ""
+"每當從 ``qubes-gui`` 收到 AppVM 中建立視窗的資訊時，在 dom0 中建立一個視窗"
 
 #: ../../../developer/system/gui.rst:22 ed278fd8d60a4e95ba380b2307afb616
 msgid ""
 "whenever the local window receives XEvent, pass information on it to AppVM "
 "(particularly, mouse and keyboard data)"
 msgstr ""
+"每當本機視窗收到 XEvent 時，將其資訊傳遞給 AppVM（特別是滑鼠與鍵盤資料）"
 
 #: ../../../developer/system/gui.rst:23 9feca1db510c42b4bd7a99c986e32740
 msgid ""
 "whenever AppVM signals damage event, tell local Xorg server to repaint a "
 "given window fragment"
 msgstr ""
+"每當 AppVM 發出損毀事件訊號時，告訴本機 Xorg 伺服器重新繪製指定的視窗片段"
 
 #: ../../../developer/system/gui.rst:26 2920ac19f4dc4bbd85dc61514c6cd18d
 msgid ""
@@ -104,10 +117,13 @@ msgid ""
 "keystrokes fed to other AppVMs (e.g. XTEST extension will report the status "
 "of local AppVM keyboard only) or synthesize and pass events to other AppVMs."
 msgstr ""
+"請注意，只有在屬於此 AppVM 的視窗取得焦點時，鍵盤與滑鼠事件才會傳遞給該 "
+"AppVM。AppVM 無法獲取輸入至其他 AppVM 的按鍵資訊（例如 XTEST 擴充功能只會報告"
+"本機 AppVM 鍵盤的狀態），也無法合成事件並傳遞給其他 AppVM。"
 
 #: ../../../developer/system/gui.rst:29 5bf75346b0f3473cbe425238472b92e0
 msgid "Window content updates implementation"
-msgstr ""
+msgstr "視窗內容更新實作"
 
 #: ../../../developer/system/gui.rst:31 31bd96d6d7114777877c6d26363398de
 msgid ""
@@ -117,6 +133,10 @@ msgid ""
 "gui`` does not transfer all changed pixels via vchan. Instead, for each "
 "window, upon its creation or size change:"
 msgstr ""
+"典型的遠端桌面應用程式（如 VNC）會透過帶內方式（例如透過 TCP）傳遞所有變更的"
+"視窗內容資訊。由於該通道的吞吐量有限，這會影響視訊效能。在 Qubes 中，``qubes-"
+"gui`` 不會透過 vchan 傳輸所有變更的像素。相反地，對於每個視窗，在建立或調整大"
+"小時："
 
 #: ../../../developer/system/gui.rst:33 9946c440bd654dc99a981f60abf3cfdb
 msgid ""
@@ -124,6 +144,8 @@ msgid ""
 "physical memory frames that hold the composition buffer of a window, and "
 "pass this to dom0 via the deprecated ``MFNDUMP`` message."
 msgstr ""
+"舊版的 ``qubes-gui`` 會向 ``qubes-drv`` 驅動程式索取保存視窗合成緩衝區的實體"
+"記憶體頁框清單，並透過已棄用的 ``MFNDUMP`` 訊息將其傳遞給 dom0。"
 
 #: ../../../developer/system/gui.rst:34 1b1c3c0b84644862adc95e88f76e7c89
 msgid ""
@@ -131,6 +153,8 @@ msgid ""
 "memory using gntalloc, and then pass the grant table indexes gntalloc has "
 "chosen to the GUI daemon using the ``WINDOW_DUMP`` message."
 msgstr ""
+"新版的 ``qubes-gui`` 則依賴 ``qubes-drv`` 使用 gntalloc 配置記憶體，然後將 "
+"gntalloc 所選的許可表索引透過 ``WINDOW_DUMP`` 訊息傳遞給 GUI 守護行程。"
 
 #: ../../../developer/system/gui.rst:36 4526bb8f45894c24a57b3838ce2aee9d
 msgid ""
@@ -138,6 +162,8 @@ msgid ""
 "the buffer. There is no supported way (e.g. Xorg extension) to do this zero-"
 "copy style. The following method is used in Qubes:"
 msgstr ""
+"現在，``qubes-guid`` 必須告知 dom0 的 Xorg 伺服器緩衝區的位置。目前沒有支援的"
+"方式（例如 Xorg 擴充功能）可以實現這種零複製風格。Qubes 使用以下方法："
 
 #: ../../../developer/system/gui.rst:38 6c54ebf23f5b4a8cb41730047a33d62c
 msgid ""
@@ -145,12 +171,16 @@ msgid ""
 "``shmoverride.so``. This library hooks all function calls related to shared "
 "memory."
 msgstr ""
+"在 dom0 中，Xorg 伺服器以 ``LD_PRELOAD`` 方式載入名為 ``shmoverride.so`` 的函"
+"數庫啟動。此函數庫會掛接所有與共享記憶體相關的函數呼叫。"
 
 #: ../../../developer/system/gui.rst:39 6349bb8fdcf341a2a9fb136587a4e448
 msgid ""
 "``qubes-guid`` creates a shared memory segment, and then tells Xorg to "
 "attach it via ``MIT-SHM`` extension"
 msgstr ""
+"``qubes-guid`` 建立一個共享記憶體區段，然後告訴 Xorg 透過 ``MIT-SHM`` 擴充功"
+"能附加該區段"
 
 #: ../../../developer/system/gui.rst:40 37e016ea96084fda8006f766bca40beb
 msgid ""
@@ -159,6 +189,10 @@ msgid ""
 "``xc_map_foreign_pages`` for the deprecated ``MFNDUMP`` message, or "
 "``xengnttab_map_domain_grant_refs`` for the ``WINDOW_DUMP`` message."
 msgstr ""
+"當 Xorg 嘗試附加該區段（透過 glibc 的 ``shmat``）時，``shmoverride.so`` 會攔"
+"截此呼叫，並改為針對已棄用的 ``MFNDUMP`` 訊息透過 ``xc_map_foreign_pages`` 映"
+"射AppVM 記憶體，或針對 ``WINDOW_DUMP`` 訊息透過 "
+"``xengnttab_map_domain_grant_refs`` 映射。"
 
 #: ../../../developer/system/gui.rst:41 26fe35f3b7384311a9c06022b680714c
 msgid ""
@@ -166,6 +200,8 @@ msgid ""
 "onto a dom0 window. ``XShmPutImage`` will paint with DRAM speed, and many "
 "drivers use DMA to make this even faster."
 msgstr ""
+"之後，我們可以使用 MIT-SHM 函數（例如 ``XShmPutImage``）繪製到 dom0 視窗上。"
+"``XShmPutImage`` 將以 DRAM 速度進行繪製，許多驅動程式還會使用 DMA 使其更快。"
 
 #: ../../../developer/system/gui.rst:43 0cc25b6b610a4702a3fb6b43ec3e79ef
 msgid ""
@@ -177,27 +213,32 @@ msgid ""
 "domain ID specified by qubes-guid, so crafted ``WINDOW_DUMP`` messages are "
 "not helpful to an attacker."
 msgstr ""
+"重要細節在於 ``xc_map_foreign_pages`` 會驗證給定的 mfn 範圍是否確實屬於某個網"
+"域 ID（而後者由受信任的 ``qubes-guid`` 提供）。因此，惡意 AppVM 無法透過在 "
+"``MFNDUMP`` 訊息中傳遞精心偽造的 mfn 獲得任何好處。同樣地，"
+"``xengnttab_map_domain_grant_refs`` 只會映射 qubes-guid 指定的特定網域 ID 的"
+"許可，因此偽造的 ``WINDOW_DUMP`` 訊息對攻擊者來說也無用處。"
 
 #: ../../../developer/system/gui.rst:45 7886351f3ca5462882232c8b3c53a2d7
 msgid "To sum up, this solution has the following benefits:"
-msgstr ""
+msgstr "總結來說，此解決方案具有以下優點："
 
 #: ../../../developer/system/gui.rst:47 1ebd109c565f4611a055271e6ff5768a
 msgid "window updates at DRAM speed"
-msgstr ""
+msgstr "以 DRAM 速度更新視窗"
 
 #: ../../../developer/system/gui.rst:48 3a934c9e5f9c4d2c9be64c1ff564bd48
 msgid "no changes to Xorg code"
-msgstr ""
+msgstr "無需修改 Xorg 程式碼"
 
 #: ../../../developer/system/gui.rst:49 e69aa52719784d36b6d46a9df599dd9f
 msgid "minimal size of the supporting code"
-msgstr ""
+msgstr "支援程式碼的體積最小化"
 
 #: ../../../developer/system/gui.rst:51 86318474146543e7a9404fe47f6eaa4b
 msgid ""
 "There are two reasons that ``WINDOW_DUMP`` is preferred over ``MFNDUMP``:"
-msgstr ""
+msgstr "``WINDOW_DUMP`` 優於 ``MFNDUMP`` 有兩個原因："
 
 #: ../../../developer/system/gui.rst:53 b18fb941c0324b2a93597c878c6cac99
 msgid ""
@@ -205,6 +246,8 @@ msgid ""
 "all memory of any VM. Allowing any VM other than dom0 to do this would be a "
 "security vulnerability."
 msgstr ""
+"``xc_map_foreign_pages`` 只能由 dom0 使用，因為它可以存取任何 VM 的所有記憶"
+"體。允許 dom0 以外的任何 VM 執行此操作將構成安全漏洞。"
 
 #: ../../../developer/system/gui.rst:54 cded4c99eb04472987089140f32f4b93
 msgid ""
@@ -213,6 +256,9 @@ msgid ""
 "have access to that information. Therefore, the translation is done via the "
 "``u2mfn`` out-of-tree kernel module."
 msgstr ""
+"``xc_map_foreign_pages`` 需要待映射頁面的客戶機實體位址，但普通的使用者空間進"
+"程（如 ``qubes-gui`` 或 Xorg）無法存取該資訊。因此，轉換是透過 ``u2mfn`` 這個"
+"樹外核心模組完成的。"
 
 #: ../../../developer/system/gui.rst:56 9c15658a1d4f49e4b2a268e129d44e15
 msgid ""
@@ -222,6 +268,9 @@ msgid ""
 "gntalloc, which will allow exporting *any* page via gntalloc, including "
 "memory shared by another process."
 msgstr ""
+"目前，使用 ``WINDOW_DUMP`` 確實會帶來效能成本，因為 AppVM 的 X 伺服器必須將頁"
+"面從應用程式複製到 gntalloc 配置的記憶體中。這將可透過未來對 gntalloc 的改進"
+"來解決，使其能夠透過 gntalloc 匯出*任何*頁面，包括另一個進程共享的記憶體。"
 
 #: ../../../developer/system/gui.rst:58 68544f842f894b8585752c8a0a8446c5
 msgid "gui.png"
@@ -229,7 +278,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:62 cb16dfcd2e5046d794f423b8853f964c
 msgid "Security markers on dom0 windows"
-msgstr ""
+msgstr "dom0 視窗上的安全標註"
 
 #: ../../../developer/system/gui.rst:64 e2cbf65a271244fe99ace233b8bba669
 msgid ""
@@ -237,6 +286,8 @@ msgid ""
 "This prevents a rogue AppVM from painting a window pretending to belong to "
 "other AppVM or dom0 and trying to steal, for example, passwords."
 msgstr ""
+"使用者知道某個視窗屬於哪個 AppVM 是非常重要的。這可以防止惡意 AppVM 繪製一個"
+"假裝屬於其他 AppVM 或 dom0 的視窗，並試圖竊取例如密碼等資訊。"
 
 #: ../../../developer/system/gui.rst:66 9335103cb950406c87b3a66b9a7e3752
 msgid ""
@@ -247,22 +298,30 @@ msgid ""
 "not be treated by a window manager (typical case is menu windows), ``qubes-"
 "guid`` draws a two-pixel colourful frame inside it manually."
 msgstr ""
+"在 Qubes 中，使用了一個自訂的視窗裝飾器，會在已裝飾的視窗周圍繪製彩色邊框（顏"
+"色在 AppVM 建立時決定）。此外，視窗標題始終以 **[AppVM 名稱]** 開頭。如果視窗"
+"具有 ``override_redirect`` 屬性（表示不應由視窗管理器處理，典型情況是選單視"
+"窗），``qubes-guid`` 會手動在內部繪製一個兩像素的彩色邊框。"
 
 #: ../../../developer/system/gui.rst:69 e9d6bae6fdd443128743ac3187e867ca
 msgid "Clipboard sharing implementation"
-msgstr ""
+msgstr "剪貼簿共享實作"
 
 #: ../../../developer/system/gui.rst:71 5bb5b4b8a4814b14bc36780b446cf48e
 msgid ""
 "Certainly, it would be insecure to allow AppVM to read/write the clipboards "
 "of other AppVMs unconditionally. Therefore, the following mechanism is used:"
 msgstr ""
+"當然，允許 AppVM 無條件讀取/寫入其他 AppVM 的剪貼簿是不安全的。因此，使用了以"
+"下機制："
 
 #: ../../../developer/system/gui.rst:73 c7c918bcda0f475096416427318b52e4
 msgid ""
 "there is a “qubes clipboard” in dom0 - its contents are stored in a regular "
 "file in dom0 as ``/run/qubes/qubes-clipboard.bin``."
 msgstr ""
+"dom0 中有一個「qubes 剪貼簿」- 其內容儲存在 dom0 的普通檔案中，路徑為 ``/run/"
+"qubes/qubes-clipboard.bin``。"
 
 #: ../../../developer/system/gui.rst:74 1eaaca87c0d44a58955720231a8aa95b
 msgid ""
@@ -272,6 +331,10 @@ msgid ""
 "is sent to AppVM. ``qubes-gui`` responds with ``CLIPBOARD_DATA`` message "
 "followed by clipboard contents."
 msgstr ""
+"如果使用者想將本機 AppVM 的剪貼簿複製到 qubes 剪貼簿，她必須將焦點放在屬於此 "
+"AppVM 的任何視窗上，然後按下 **Ctrl-Shift-C**。此組合鍵會被 ``qubes-guid`` 攔"
+"截，並向 AppVM 發送 ``CLIPBOARD_REQ`` 訊息。``qubes-gui`` 則以 "
+"``CLIPBOARD_DATA`` 訊息回應，後面跟著剪貼簿內容。"
 
 #: ../../../developer/system/gui.rst:75 45ecc5788d384b32b9abeeb4fa40db7e
 msgid ""
@@ -281,6 +344,10 @@ msgid ""
 "data to the local clipboard, and then user can paste its contents to local "
 "applications normally."
 msgstr ""
+"使用者將焦點放在其他 AppVM 視窗上，按下 **Ctrl-Shift-V**。此組合鍵會被 "
+"``qubes-guid`` 攔截，並向 AppVM 發送 ``CLIPBOARD_DATA`` 訊息，後面跟著 qubes "
+"剪貼簿的內容；``qubes-gui`` 將資料複製到本機剪貼簿，然後使用者就可以正常地將"
+"其內容貼上到本機應用程式中。"
 
 #: ../../../developer/system/gui.rst:76 f3b55243e97c43108e79004221fc1350
 msgid ""
@@ -293,30 +360,39 @@ msgid ""
 "per line. Opening and closing curly braces should be on their own lines. "
 "There should be no leading white-space."
 msgstr ""
+"在全域剪貼簿複製或貼上操作時，會將補充的 JSON 後設資料檔案儲存為 ``/run/"
+"qubes/qubes-clipboard.bin.metadata``。每個欄位的說明可在 ``qubes-guid`` 的 "
+"``xside.h`` 標頭檔的 ``clipboard_metadata`` 結構中找到。雖然 ``qubes-guid`` "
+"的輸出完全符合 JSON 格式，但其解析器有限制。它期望每個鍵值對之後有換行符號，"
+"且每行只有一個鍵值對。開頭和結尾的花括號應各自獨立成行。不應有前導空白字元。"
 
 #: ../../../developer/system/gui.rst:78 23945a2f3b2c44d18a3ba2b8bd1d24f2
 msgid ""
 "This way, the user can quickly copy clipboards between AppVMs. This action "
 "is fully controlled by the user, it cannot be triggered/forced by any AppVM."
 msgstr ""
+"這樣一來，使用者可以快速地在 AppVM 之間複製剪貼簿。此操作完全由使用者控制，任"
+"何 AppVM 都無法觸發或強制執行。"
 
 #: ../../../developer/system/gui.rst:81 02a320a484a84592acb7df5a5ed34580
 msgid "``qubes-gui`` and ``qubes-guid`` code notes"
-msgstr ""
+msgstr "``qubes-gui`` 與 ``qubes-guid`` 程式碼說明"
 
 #: ../../../developer/system/gui.rst:83 8ce6606ecc394148b28e900022f08f3f
 msgid ""
 "Both applications are structured similarly. They use ``select`` function to "
 "wait for any of these two event sources:"
 msgstr ""
+"這兩個應用程式的結構類似。它們使用 ``select`` 函數來等待以下兩個事件來源之"
+"一："
 
 #: ../../../developer/system/gui.rst:85 bac99ea55ba94770b4c9a150e59889dc
 msgid "messages from the local X server"
-msgstr ""
+msgstr "來自本機 X 伺服器的訊息"
 
 #: ../../../developer/system/gui.rst:86 66f42ce3839d468483e4e9c7ada3c813
 msgid "messages from the vchan connecting to the remote party"
-msgstr ""
+msgstr "來自連接到遠端端的 vchan 訊息"
 
 #: ../../../developer/system/gui.rst:88 d5c3d6c2ba0a4ea4946c869806028a2c
 msgid ""
@@ -325,12 +401,17 @@ msgid ""
 "careful when altering the actual ``select`` loop, because both XEvents and "
 "vchan messages are buffered, and ``select`` will not wake for each message."
 msgstr ""
+"XEvents 由 ``handle_xevent_eventname`` 函數處理，而訊息則由 "
+"``handle_messagename`` 函數處理。在修改實際的 ``select`` 迴圈時應非常小心，因"
+"為 XEvents 和 vchan 訊息都會被緩衝，``select`` 不會為每個訊息都喚醒。"
 
 #: ../../../developer/system/gui.rst:90 a4b28b19c2ea4d659ef5957874c11c3b
 msgid ""
 "If one changes the number/order/signature of messages, one should increase "
 "the ``QUBES_GUID_PROTOCOL_VERSION`` constant in ``messages.h`` include file."
 msgstr ""
+"如果變更了訊息的數量/順序/簽名，則應增加 ``messages.h`` 包含檔案中的 "
+"``QUBES_GUID_PROTOCOL_VERSION`` 常數。"
 
 #: ../../../developer/system/gui.rst:92 400a622fd79f4d7e97013ff3e6c699fc
 msgid ""
@@ -338,10 +419,13 @@ msgid ""
 "domain_id.log`` file; ``qubes-gui`` writes debugging information to ``/var/"
 "log/qubes/gui_agent.log``. Include these files when reporting a bug."
 msgstr ""
+"``qubes-guid`` 將除錯資訊寫入 ``/var/log/qubes/qubes.domain_id.log`` 檔案；"
+"``qubes-gui`` 將除錯資訊寫入 ``/var/log/qubes/gui_agent.log`` 檔案。回報錯誤"
+"時請附上這些檔案。"
 
 #: ../../../developer/system/gui.rst:95 6359a569a12147d29452bb6c65e0bee6
 msgid "AppVM -> GuiVM messages"
-msgstr ""
+msgstr "AppVM -> GuiVM 訊息"
 
 #: ../../../developer/system/gui.rst:97 63e1ccc9a8f34bdfbe3d631de52e2b1b
 msgid ""
@@ -349,6 +433,8 @@ msgid ""
 "messages except for ``CLIPBOARD``, ``MFNDUMP``, and ``WINDOW_DUMP`` have "
 "fixed size, so the parsing code can be small."
 msgstr ""
+"正確處理以下訊息對安全性至關重要。請注意，除 ``CLIPBOARD``、``MFNDUMP`` 和 "
+"``WINDOW_DUMP`` 之外的所有訊息都具有固定大小，因此解析程式碼可以很精簡。"
 
 #: ../../../developer/system/gui.rst:99 0b41626b4f5247538d9eabf7891aef6a
 msgid ""
@@ -358,6 +444,10 @@ msgid ""
 "``transient_for`` `attribute <https://tronche.com/gui/x/icccm/sec-4."
 "html#WM_TRANSIENT_FOR>`__."
 msgstr ""
+"``override_redirect`` 視窗屬性的說明請參閱\\ `覆蓋重新導向旗標 <https://"
+"tronche.com/gui/x/xlib/window/attributes/override-redirect.html>`__\\ 。"
+"``transient_for`` 屬性的說明請參閱 ``transient_for`` `屬性 <https://tronche."
+"com/gui/x/icccm/sec-4.html#WM_TRANSIENT_FOR>`__。"
 
 #: ../../../developer/system/gui.rst:101 e865fd72c8b34c068dc452d64cb86a33
 msgid ""
@@ -365,29 +455,32 @@ msgid ""
 "Hints (EWMH) spec <https://standards.freedesktop.org/wm-spec/latest/>`__, "
 "especially under the ``_NET_WM_STATE`` section."
 msgstr ""
+"視窗管理器的提示與旗標在 `延伸視窗管理器提示 (EWMH) 規範 <https://standards."
+"freedesktop.org/wm-spec/latest/>`__ 中有說明，特別是在 ``_NET_WM_STATE`` 章節"
+"中。"
 
 #: ../../../developer/system/gui.rst:103 629c176cfa134bad92f6eab621a391e0
 msgid "Each message starts with the following header:"
-msgstr ""
+msgstr "每條訊息的開頭為以下標頭："
 
 #: ../../../developer/system/gui.rst:118 fb6605e2aa5b4c11962890b440bebbd4
 msgid "This header is followed by message-specific data:"
-msgstr ""
+msgstr "該標頭後面接著訊息特定的資料："
 
 #: ../../../developer/system/gui.rst:126 ../../../developer/system/gui.rst:312
 #: c4c49ea59c9a40b1950b52ad0719b5a7 c83d13d6b6f6475ebfd81153d872eb7d
 msgid "Message name"
-msgstr ""
+msgstr "訊息名稱"
 
 #: ../../../developer/system/gui.rst:127 ../../../developer/system/gui.rst:313
 #: 34c58fca2b60479991d9100f793fec5b fdf168d0f34c465eb3de764c8de9f0b3
 msgid "Structure after header"
-msgstr ""
+msgstr "標頭後的結構"
 
 #: ../../../developer/system/gui.rst:128 ../../../developer/system/gui.rst:314
 #: c2b018dac819460585b021164c3eba69 735c3c96cf9c4981bf7bbcd8eb0ba4a3
 msgid "Action"
-msgstr ""
+msgstr "動作"
 
 #: ../../../developer/system/gui.rst:130 ../../../developer/system/gui.rst:411
 #: da0084e4eebf4e489c47af5c23f0bb8e fb207dfd474f4c8280b675fed1422c29
@@ -399,10 +492,12 @@ msgid ""
 "amorphic blob (in protocol before 1.2, length determined by the “window” "
 "field, in 1.2 and later - by untrusted_len in the header)"
 msgstr ""
+"無定型二進位資料（在 1.2 之前的協定中，長度由「window」欄位決定；在 1.2 及之"
+"後則由標頭中的 untrusted_len 決定）"
 
 #: ../../../developer/system/gui.rst:132 39d3dd089ed940ccbad727d61ca0957d
 msgid "Store the received clipboard content (not parsed in any way)"
-msgstr ""
+msgstr "儲存接收到的剪貼簿內容（不以任何方式解析）"
 
 #: ../../../developer/system/gui.rst:134 8a6b495a3943473682391393762ac5fd
 msgid "MSG_CREATE"
@@ -410,7 +505,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:145 ec969f5e704e4662b91c89f248415b50
 msgid "Create a window with given parameters"
-msgstr ""
+msgstr "使用給定的參數建立視窗"
 
 #: ../../../developer/system/gui.rst:147 1617963815b446bd9e07f9e12edbb995
 msgid "MSG_DESTROY"
@@ -422,11 +517,11 @@ msgstr ""
 #: e98a229eb01141c7a9e29676419448b0 c8e284013f3149d2a4d5beaf20d80856
 #: ae312e3da6a44057a1bff3fcb7e3fa7a 87da1340cf8d45bb94890ce9de7c69b9
 msgid "None"
-msgstr ""
+msgstr "無"
 
 #: ../../../developer/system/gui.rst:149 a1c79efdcae546999fcc30a91124c36d
 msgid "Destroy a window"
-msgstr ""
+msgstr "銷毀視窗"
 
 #: ../../../developer/system/gui.rst:151 ../../../developer/system/gui.rst:366
 #: b1545a942e554cca8f1c3e02def63288 f48560285a4b497ebef0247dc4091a3b
@@ -436,7 +531,7 @@ msgstr ""
 #: ../../../developer/system/gui.rst:159 ../../../developer/system/gui.rst:374
 #: cdf2a92296544ff081d4af26fd2f5c51 3731991f66d1403582e3c9a256b3248c
 msgid "Map a window with given parameters"
-msgstr ""
+msgstr "使用給定的參數映射視窗"
 
 #: ../../../developer/system/gui.rst:161 da6adcfc886744bb904b6d26826f1093
 msgid "MSG_UNMAP"
@@ -444,7 +539,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:163 ff23af3c6ede41368ff30c7babb15c4b
 msgid "Unmap a window"
-msgstr ""
+msgstr "取消映射視窗"
 
 #: ../../../developer/system/gui.rst:165 ../../../developer/system/gui.rst:353
 #: d763415520444d45afd896433b864786 65dca365d75548abab150992a58da78d
@@ -454,7 +549,7 @@ msgstr ""
 #: ../../../developer/system/gui.rst:176 ../../../developer/system/gui.rst:364
 #: 9b3a2c0055e7453fa8b1a120a438eaba 33787f7c912d4fc983370a80c06f765d
 msgid "Change window position/size/type"
-msgstr ""
+msgstr "變更視窗位置/大小/類型"
 
 #: ../../../developer/system/gui.rst:178 d03e8c5775144c4da897622606e39102
 msgid "MSG_MFNDUMP"
@@ -464,7 +559,7 @@ msgstr ""
 msgid ""
 "Retrieve the array of mfns that constitute the composition buffer of a "
 "remote window."
-msgstr ""
+msgstr "擷取構成遠端視窗合成緩衝區的 mfn 陣列。"
 
 #: ../../../developer/system/gui.rst:194 6f0aa8effe8445f2bb58b5b4a70c9260
 msgid ""
@@ -473,6 +568,9 @@ msgid ""
 "parameters are just placeholders (to be filled by ``qubes-guid``), so that "
 "we can use the same structure when talking to ``shmoverride.so``."
 msgstr ""
+"「num_mfn」個 32 位元整數跟在 shm_cmd 結構之後；「off」是合成緩衝區在第一個頁"
+"框中的起始偏移量；「shmid」和「domid」參數僅是佔位符（將由 ``qubes-guid`` 填"
+"寫），以便在與 ``shmoverride.so`` 通訊時可以使用相同的結構。"
 
 #: ../../../developer/system/gui.rst:196 9110de60bd2446beb3ccd675f379a7fa
 msgid "MSG_SHMIMAGE"
@@ -480,7 +578,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:206 f1402e362121415b8e4624ae6b10e4d9
 msgid "Repaint the given window fragment"
-msgstr ""
+msgstr "重新繪製給定的視窗片段"
 
 #: ../../../developer/system/gui.rst:208 6796bf96ae1c4009ad605da8a19fd562
 msgid "MSG_WMNAME"
@@ -490,7 +588,7 @@ msgstr ""
 msgid ""
 "Set the window name. Only printable characters are allowed, and by default "
 "non-ASCII characters are not allowed."
-msgstr ""
+msgstr "設定視窗名稱。僅允許可列印字元，且預設不允許非 ASCII 字元。"
 
 #: ../../../developer/system/gui.rst:217 44b8894c809048b1bf6236f61c5fed23
 msgid "MSG_DOCK"
@@ -498,7 +596,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:219 858a179adc5344d9aca3f88eb3d652fc
 msgid "Dock the window in the tray"
-msgstr ""
+msgstr "將視窗停靠在系統匣中"
 
 #: ../../../developer/system/gui.rst:221 404adfeb34b04883b5845813147886ce
 msgid "MSG_WINDOW_HINTS"
@@ -506,7 +604,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:236 d4588b2e6ed648cc8ef31c0cbc5d0180
 msgid "Size hints for window manager"
-msgstr ""
+msgstr "視窗管理器的尺寸提示"
 
 #: ../../../developer/system/gui.rst:238 ../../../developer/system/gui.rst:423
 #: 8a2abea751014c8593b37b32103e1860 a97675d19c90459a9f27ad0990892b9a
@@ -517,7 +615,7 @@ msgstr ""
 msgid ""
 "Change window state request; fields contains bitmask which flags request to "
 "be set and which unset"
-msgstr ""
+msgstr "變更視窗狀態請求；欄位包含位元遮罩，標示哪些旗標請求設定、哪些取消設定"
 
 #: ../../../developer/system/gui.rst:248 c928c6950047422695a2e162cdf09c4e
 msgid "MSG_CURSOR"
@@ -529,6 +627,8 @@ msgid ""
 "(0) and `X Font cursors <https://tronche.com/gui/x/xlib/appendix/b/>`__ "
 "(with 0x100 bit set)."
 msgstr ""
+"更新視窗的游標指標。支援的游標 ID 為預設游標 (0) 和 `X 字型游標 <https://"
+"tronche.com/gui/x/xlib/appendix/b/>`__（設定 0x100 位元）。"
 
 #: ../../../developer/system/gui.rst:257 4662c3a90920467fb39dde175abd1c6b
 msgid "MSG_WMCLASS"
@@ -536,7 +636,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:265 c6872c9711ca414598a3abc2d9db096c
 msgid "Set the WM_CLASS property of a window."
-msgstr ""
+msgstr "設定視窗的 WM_CLASS 屬性。"
 
 #: ../../../developer/system/gui.rst:267 0ff883472597401fba2609d6db8f5f91
 msgid "MSG_WINDOW_DUMP"
@@ -547,6 +647,8 @@ msgid ""
 "Header for shared memory dump command of type hdr.type. Currently only "
 "``WINDOW_DUMP_TYPE_GRANT_REFS``  (0) is supported."
 msgstr ""
+"類型為 hdr.type 的共享記憶體傾印命令的標頭。目前僅支援 "
+"``WINDOW_DUMP_TYPE_GRANT_REFS`` (0)。"
 
 #: ../../../developer/system/gui.rst:278 d826af963fe14e79ba50e82c8b483ba3
 msgid "WINDOW_DUMP_TYPE_GRANT_REFS"
@@ -554,23 +656,23 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:286 080c7396a4924811b727f6f3d4325ea1
 msgid "Grant references that should be mapped into the compositing buffer."
-msgstr ""
+msgstr "應映射到合成緩衝區中的許可參考。"
 
 #: ../../../developer/system/gui.rst:292 1144c64c6a0b4e4ebfc2958ef6bb551d
 msgid "GuiVM -> AppVM messages"
-msgstr ""
+msgstr "GuiVM -> AppVM 訊息"
 
 #: ../../../developer/system/gui.rst:294 e5c16376edd5401d9f22f41efb71c576
 msgid "Proper handling of the below messages is NOT security-critical."
-msgstr ""
+msgstr "以下訊息的正確處理**不**涉及安全性關鍵。"
 
 #: ../../../developer/system/gui.rst:296 f86ea6111ded4052a59ae32790f796c3
 msgid "Each message starts with the following header"
-msgstr ""
+msgstr "每條訊息的開頭為以下標頭"
 
 #: ../../../developer/system/gui.rst:305 96cef716dc8f42e8b53f87b33cfd07ab
 msgid "The header is followed by message-specific data:"
-msgstr ""
+msgstr "該標頭後面接著訊息特定的資料："
 
 #: ../../../developer/system/gui.rst:316 580c60827b5f436193a69b360c67c36d
 msgid "MSG_KEYPRESS"
@@ -578,7 +680,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:327 efb7948c7936400b86b5eb4711a98ca4
 msgid "Tell ``qubes_drv`` driver to generate a keypress"
-msgstr ""
+msgstr "告訴 ``qubes_drv`` 驅動程式產生按鍵事件"
 
 #: ../../../developer/system/gui.rst:329 10af1b2eb8f54e7b9bf0d18f596cfd44
 msgid "MSG_BUTTON"
@@ -586,7 +688,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:340 f916b192a94c4a7da93069f2d022042a
 msgid "Tell   ``qubes_drv``  driver to generate mouseclick"
-msgstr ""
+msgstr "告訴 ``qubes_drv`` 驅動程式產生滑鼠點擊事件"
 
 #: ../../../developer/system/gui.rst:342 7c9f811d0a0a45be8d1a5209fd760836
 msgid "MSG_MOTION"
@@ -594,7 +696,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:352 c93798b658a44233981cda38ca9849bd
 msgid "Tell  ``qubes_drv``  driver to generate motion event"
-msgstr ""
+msgstr "告訴 ``qubes_drv`` 驅動程式產生移動事件"
 
 #: ../../../developer/system/gui.rst:376 c113c088c91d4a38a2e216101fcce0de
 msgid "MSG_CLOSE"
@@ -602,7 +704,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:378 c8430074a6c34688941c004aa5205a13
 msgid "send wmDeleteMessage to the window"
-msgstr ""
+msgstr "向視窗發送 wmDeleteMessage"
 
 #: ../../../developer/system/gui.rst:380 072b177664e24500b1e1e1dc493b591a
 msgid "MSG_CROSSING"
@@ -610,7 +712,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:393 05a7fb8cc2654d1d9ed48e1800f5eafc
 msgid "Notify window about enter/leave event"
-msgstr ""
+msgstr "通知視窗進入/離開事件"
 
 #: ../../../developer/system/gui.rst:395 bfad69e557ff4bed94d84343f165a640
 msgid "MSG_FOCUS"
@@ -618,7 +720,7 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:405 aaa2e15a0ad743f0ad354bc8781cae3e
 msgid "Raise a window, XSetInputFocus"
-msgstr ""
+msgstr "提起視窗，XSetInputFocus"
 
 #: ../../../developer/system/gui.rst:407 3abd17b2aa2e4c5cbcba0e1f3c560a79
 msgid "MSG_CLIPBOARD_REQ"
@@ -626,15 +728,15 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:409 2c7099ad49ef44dc9a78c8b1abc374e2
 msgid "Retrieve the local clipboard, pass contents to gui-daemon"
-msgstr ""
+msgstr "擷取本機剪貼簿，將內容傳遞給 gui 守護行程"
 
 #: ../../../developer/system/gui.rst:412 6f5fb9f6ff7b429a8caae564adb46c17
 msgid "amorphic blob"
-msgstr ""
+msgstr "無定型二進位資料"
 
 #: ../../../developer/system/gui.rst:413 77b8f20fe03949e5985361594638633b
 msgid "Insert the received data into local clipboard"
-msgstr ""
+msgstr "將接收到的資料插入本機剪貼簿"
 
 #: ../../../developer/system/gui.rst:415 cc41ef88cff247f181744b2428566a00
 msgid "MSG_EXECUTE"
@@ -642,11 +744,11 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:416 b410c63b9bda4cee8436c327978bac34
 msgid "Obsolete"
-msgstr ""
+msgstr "已過時"
 
 #: ../../../developer/system/gui.rst:417 43061459743d40f5b8103f2991c9d038
 msgid "Obsolete, unused"
-msgstr ""
+msgstr "已過時，未使用"
 
 #: ../../../developer/system/gui.rst:419 3393a9f584034906aa9e8c020faf55d9
 msgid "MSG_KEYMAP_NOTIFY"
@@ -658,14 +760,16 @@ msgstr ""
 
 #: ../../../developer/system/gui.rst:421 f83e194a9dad4041b59c477d575c2425
 msgid "Synchronize the keyboard state (key pressed/released) with dom0"
-msgstr ""
+msgstr "與 dom0 同步鍵盤狀態（按鍵按下/釋放）"
 
 #: ../../../developer/system/gui.rst:431 cf931f4d0d4848cb851e97d619b8c816
 msgid "Window state change confirmation"
-msgstr ""
+msgstr "視窗狀態變更確認"
 
 #: ../../../developer/system/gui.rst:433 2e40f51bbbac4fac847b2d860110942d
 msgid ""
 "``KEYPRESS``, ``BUTTON``, ``MOTION``, ``FOCUS`` messages pass information "
 "extracted from dom0 XEvent; see appropriate event documentation."
 msgstr ""
+"``KEYPRESS``、``BUTTON``、``MOTION``、``FOCUS`` 訊息傳遞從 dom0 XEvent 中提取"
+"的資訊；請參閱相應的事件文件。"
