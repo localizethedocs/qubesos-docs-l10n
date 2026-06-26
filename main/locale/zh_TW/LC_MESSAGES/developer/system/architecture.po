@@ -20,7 +20,7 @@ msgstr ""
 #: ../../../developer/system/architecture.rst:3
 #: e9b565c771254cc7bd3ee8c2fd04610f
 msgid "Architecture"
-msgstr ""
+msgstr "架構"
 
 #: ../../../developer/system/architecture.rst:6
 #: 9645ea5de17b445ba57037a7a00dbb6b
@@ -32,6 +32,10 @@ msgid ""
 "these programs or components does not affect the integrity of the rest of "
 "the system."
 msgstr ""
+"Qubes 實作了安全隔離（security-by-compartmentalization）的方法。為此，Qubes "
+"利用虛擬化技術將各種程式彼此隔離，甚至將許多系統層級的組件（如網路和儲存子系"
+"統）進行沙盒化，使得任何這些程式或組件遭到入侵時，都不會影響系統其餘部分的完"
+"整性。"
 
 #: ../../../developer/system/architecture.rst:8
 #: e5a50630253a489cbf1502d45bbd7abb
@@ -54,61 +58,67 @@ msgid ""
 "however, these applications are well isolated from each other. Qubes also "
 "supports secure copy-and-paste and file sharing between qubes, of course."
 msgstr ""
+"Qubes 讓使用者定義許多稱為 :term:`qube <qube>` 的安全隔離區，這些隔離區實作為"
+"輕量級\\ :term:`虛擬機器 (VM) <vm>`\\ 。例如，使用者可以擁有「個人」、「工"
+"作」、「購物」、「銀行」和「隨機」應用程式 qube，並且可以像在本機機器上執行一"
+"樣，在這些 qube 中使用應用程式。然而，這些應用程式彼此之間是良好隔離的。"
+"Qubes 當然也支援 qube 之間的安全複製貼上與檔案共享。"
 
 #: ../../../developer/system/architecture.rst:13
 #: 3d5e1f2b78764790a568ca73e6ca50e9
 msgid "Key architecture features"
-msgstr ""
+msgstr "主要架構特性"
 
 #: ../../../developer/system/architecture.rst:16
 #: 1934f0603e7b4d71a3b01def4fb80f04
 msgid "Based on a secure bare-metal hypervisor (Xen)"
-msgstr ""
+msgstr "基於安全的裸機 Hypervisor（Xen）"
 
 #: ../../../developer/system/architecture.rst:18
 #: e9d3520a4a1443cd9a11cc4c40f20aa8
 msgid "Networking code sand-boxed in an unprivileged VM (using IOMMU/VT-d)"
-msgstr ""
+msgstr "網路程式碼在無特權的 VM 中進行沙盒化（使用 IOMMU/VT-d）"
 
 #: ../../../developer/system/architecture.rst:20
 #: 1565e48de304480c93a0cb2159568b15
 msgid ""
 "USB stacks and drivers sand-boxed in an unprivileged VM (currently "
 "experimental feature)"
-msgstr ""
+msgstr "USB 堆疊與驅動程式在無特權的 VM 中進行沙盒化（目前為實驗性功能）"
 
 #: ../../../developer/system/architecture.rst:22
 #: 26733855b2094674b87a89614064ba81
 msgid "No networking code in the privileged domain (dom0)"
-msgstr ""
+msgstr "特權域（dom0）中沒有網路程式碼"
 
 #: ../../../developer/system/architecture.rst:24
 #: 09b00185210c4d04936f7785356b7933
 msgid ""
 "All user applications run in “app qubes,” lightweight VMs based on Linux"
 msgstr ""
+"所有使用者應用程式都在「應用程式 qube」中執行，這些是基於 Linux 的輕量級 VM"
 
 #: ../../../developer/system/architecture.rst:26
 #: 2ee3b8e5d1be4465875e8b2f5d2f92b3
 msgid "Centralized updates of all app qubes based on the same template"
-msgstr ""
+msgstr "基於相同範本集中更新所有應用程式 qube"
 
 #: ../../../developer/system/architecture.rst:28
 #: 5ebec54d555c4682a30155d32c717e6d
 msgid ""
 "Qubes GUI virtualization presents applications as if they were running "
 "locally"
-msgstr ""
+msgstr "Qubes GUI 虛擬化讓應用程式呈現如同在本機執行一般"
 
 #: ../../../developer/system/architecture.rst:30
 #: e76af0cfe1244b9bab3d246b65b7d74b
 msgid "Qubes GUI provides isolation between apps sharing the same desktop"
-msgstr ""
+msgstr "Qubes GUI 提供共享相同桌面的應用程式之間的隔離"
 
 #: ../../../developer/system/architecture.rst:32
 #: 0665b74ce9d049f0a625df01032dc701
 msgid "Secure system boot based (optional)"
-msgstr ""
+msgstr "安全系統啟動（可選）"
 
 #: ../../../developer/system/architecture.rst:36
 #: e2f50e00f59049968337c93fb954efff
@@ -119,11 +129,14 @@ msgid ""
 "historical interest only. For the latest information, please see the rest of "
 "the :ref:`System Documentation <system>`.)"
 msgstr ""
+"（對於專案歷史感興趣的人，\\ :download:`架構規格 v0.3 [PDF] </attachment/doc/"
+"arch-spec-0.3.pdf>`\\ 是 2009 年開啟這一切的原創文件。請注意，此文件僅供歷史"
+"參考。如需最新資訊，請參閱其餘的\\ :ref:`系統文件 <system>`\\ 。）"
 
 #: ../../../developer/system/architecture.rst:39
 #: ce7362d3d3c34d2eb240ccb5c99682c3
 msgid "Qubes Core Stack"
-msgstr ""
+msgstr "Qubes 核心堆疊"
 
 #: ../../../developer/system/architecture.rst:42
 #: 2ef5889a7991472d8b7783202f7c9d37
@@ -133,6 +146,9 @@ msgid ""
 "allows users and admins to interact with and configure the system. The other "
 "components of the Qubes system include:"
 msgstr ""
+"Qubes Core Stack，顧名思義，是 Qubes OS 的核心組件。它是將所有其他組件連接在"
+"一起的黏合劑，並允許使用者和管理員與系統互動及進行配置。Qubes 系統的其他組件"
+"包括："
 
 #: ../../../developer/system/architecture.rst:44
 #: 317eeccbb0a44840aa64fa9d05a1ed39
@@ -140,13 +156,14 @@ msgid ""
 "VM-located core agents (implementing e.g. qrexec endpoints used by various "
 "Qubes services)"
 msgstr ""
+"\"\"位於 VM 中的核心代理程式（實作例如各種 Qubes 服務所使用的 qrexec 端點）"
 
 #: ../../../developer/system/architecture.rst:46
 #: c9c92cba6274418f97fc1c861732a147
 msgid ""
 "VM-customizations (making the VMs lightweight and working well with seamless "
 "GUI virtualization)"
-msgstr ""
+msgstr "VM 自訂化（使 VM 輕量化並與無縫 GUI 虛擬化良好配合）"
 
 #: ../../../developer/system/architecture.rst:48
 #: 0ab23c9efdbd41b0bfdedecf8a282fb6
@@ -154,13 +171,15 @@ msgid ""
 "Qubes GUI virtualization (the protocol, VM-located agents, and daemons "
 "located in the GUI domain which, for now, happens to be the same as dom0),"
 msgstr ""
+"Qubes GUI 虛擬化（協定、位於 VM 中的代理程式，以及位於 GUI 域中的守護行程（目"
+"前恰好與 dom0 相同）），"
 
 #: ../../../developer/system/architecture.rst:50
 #: 02d6d9fa82d84f5f9213ecb285ba0454
 msgid ""
 "GUI domain customizations (Desktop Environment customizations, decoration "
 "coloring plugin, etc)"
-msgstr ""
+msgstr "GUI 域自訂化（桌面環境自訂化、裝飾著色外掛等）"
 
 #: ../../../developer/system/architecture.rst:52
 #: 0048c7b7074344568cfe1f62b8671125
@@ -168,6 +187,8 @@ msgid ""
 "The admin qube distribution (various customizations, special services, such "
 "as for receiving and verifying updates, in the future: custom distro)"
 msgstr ""
+"管理 qube 散佈版（各種自訂化、特殊服務，例如接收和驗證更新，未來：自訂散佈"
+"版）"
 
 #: ../../../developer/system/architecture.rst:54
 #: aefd78b85ff948f59a18c35c9f572ad9
@@ -176,6 +197,8 @@ msgid ""
 "hardening) or - in the future - some other virtualising or containerizing "
 "software or technology"
 msgstr ""
+"Xen Hypervisor（附帶大量自訂修補程式、偶爾的強化措施）或——未來——某些其他虛擬"
+"化或容器化軟體或技術"
 
 #: ../../../developer/system/architecture.rst:56
 #: 761e9dd3ce714eeebfb29794aae1644d
@@ -185,6 +208,9 @@ msgid ""
 "USB proxies for HID devices, USB proxy for offering USB devices (exposed via "
 "qvm-usb), Yubikey support, USB Armory support, etc)"
 msgstr ""
+"多種「Qubes 應用程式」（建構在 Qubes qrexec 基礎設施之上的各種服務，例如：可"
+"信賴的 PDF 和圖片轉換器、Split GPG、用於 HID 裝置的安全 USB 代理、用於提供 "
+"USB 裝置的 USB 代理（透過 qvm-usb 暴露）、Yubikey 支援、USB Armory 支援等）"
 
 #: ../../../developer/system/architecture.rst:58
 #: c24ea3ccde204029800c037f770a30ea
@@ -192,26 +218,28 @@ msgid ""
 "Various ready-to-use templates (e.g. Debian-, Whonix-based), which are used "
 "to create actual VMs, i.e. provide the root filesystem to the VMs"
 msgstr ""
+"各種立即可用的範本（例如基於 Debian、Whonix），用於建立實際的 VM，即提供 VM "
+"的根檔案系統"
 
 #: ../../../developer/system/architecture.rst:60
 #: a224942dd93740d89ce3c237a06929ac
 msgid "Salt Stack integration"
-msgstr ""
+msgstr "Salt 堆疊整合"
 
 #: ../../../developer/system/architecture.rst:64
 #: 8efb61b99e0d4b439d84b7c4444f372b
 msgid "And all these components are “glued together” by the Qubes Core Stack."
-msgstr ""
+msgstr "而所有這些組件都由 Qubes 核心堆疊「黏合在一起」。"
 
 #: ../../../developer/system/architecture.rst:66
 #: 6efeea22c75242218abf56a3f8431b24
 msgid "|Qubes system components|"
-msgstr ""
+msgstr "|Qubes 系統組件|"
 
 #: ../../../developer/system/architecture.rst:71
 #: 8cc08bfc63da435697ea822d3864e8ab
 msgid "Qubes system components"
-msgstr ""
+msgstr "Qubes 系統組件"
 
 #: ../../../developer/system/architecture.rst:68
 #: 5adb6d7676b24316b24244ae2dda10fb
@@ -220,3 +248,5 @@ msgid ""
 "system architecture. Unlike the other Qubes architecture diagram above, this "
 "one takes an app-qube-centric approach."
 msgstr ""
+"此圖說明了所有這些組件在整體系統架構中的位置。與上面其他的 Qubes 架構圖不同，"
+"此圖採用以應用程式 qube 為中心的方法。"

@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../../../developer/system/networking.rst:3 300d54bc1c564053b790279d65a26742
 msgid "Networking"
-msgstr ""
+msgstr "網路"
 
 #: ../../../developer/system/networking.rst:7 d5f28879b6d5469e9e36c81fb2632cc4
 msgid "Overall description"
-msgstr ""
+msgstr "總體說明"
 
 #: ../../../developer/system/networking.rst:10 4704c7a7da54464aa6e22dd6288a222c
 msgid ""
@@ -35,6 +35,11 @@ msgid ""
 "``eth0`` device to be up, and sets some redundant iptables rules), therefore "
 "the custom *vif-route-qubes* script is used."
 msgstr ""
+"在 Qubes 中，使用標準的 Xen 網路功能，基於驅動程式領域中的後端驅動程式和 VM "
+"中的前端驅動程式。為了消除源自遭入侵 VM 的第二層攻擊，使用路由網路而非預設的 "
+"``vif`` 裝置橋接，並在每個網路躍點套用 NAT。預設的 *vif-route* 指令稿有一些缺"
+"陷（需要 ``eth0`` 裝置處於啟動狀態，並設定了一些冗餘的 iptables 規則），因此"
+"使用了自訂的 *vif-route-qubes* 指令稿。"
 
 #: ../../../developer/system/networking.rst:12 ad52dbee8a084a8e85f0ff2d5fc0a557
 msgid ""
@@ -50,38 +55,46 @@ msgid ""
 "Moreover, in the network driver domain, there is no DNS server either, and "
 "consequently there are no ports open to the VMs."
 msgstr ""
+"AppVM 中 ``eth0`` 介面的 IP 位址，以及用作名稱伺服器的兩個 IP 位址（``DNS1`` "
+"和 ``DNS2``），會在 AppVM 啟動期間透過 QubesDB 傳遞給 AppVM（因此，網路驅動程"
+"式領域中不需要 DHCP 守護行程）。``DNS1`` 和 ``DNS2`` 是私有位址；每當網路驅動"
+"程式領域中介面啟動時，*/usr/lib/qubes/qubes_setup_dnat_to_ns* 指令稿會設定 "
+"DNAT iptables 規則，將 ``DNS1`` 和 ``DNS2`` 轉換為新學習到的真實 DNS 伺服器。"
+"這樣一來，當網路驅動程式領域中的組態變更時（例如使用者切換到不同的 WLAN），"
+"AppVM 的網路組態無需更改。此外，網路驅動程式領域中也沒有 DNS 伺服器，因此沒有"
+"對 VM 開放的連接埠。"
 
 #: ../../../developer/system/networking.rst:15 9b13edbfa3b544a88f65e827ad4e375a
 msgid "Routing tables examples"
-msgstr ""
+msgstr "路由表範例"
 
 #: ../../../developer/system/networking.rst:18 2ccda9066a5e4d9599923685f1ea3d01
 msgid "VM routing table is simple:"
-msgstr ""
+msgstr "VM 路由表很簡單："
 
 #: ../../../developer/system/networking.rst:25
 #: ../../../developer/system/networking.rst:50 957d95cd8b414ea48b1b65c0fee06db8
 #: e7b4d03715f8424d80634b311276d5ba
 msgid "Destination"
-msgstr ""
+msgstr "目的地"
 
 #: ../../../developer/system/networking.rst:26
 #: ../../../developer/system/networking.rst:51 ebecc4ba1c2c419a9b2846559bd3e37e
 #: b1ffd70416eb4537b5577d07470a11c2
 msgid "Gateway"
-msgstr ""
+msgstr "閘道"
 
 #: ../../../developer/system/networking.rst:27
 #: ../../../developer/system/networking.rst:52 abfe75eb5871493a80740f79f04e79b3
 #: 04e96deda6d5448195ec5695d738c544
 msgid "Genmask"
-msgstr ""
+msgstr "通用遮罩"
 
 #: ../../../developer/system/networking.rst:28
 #: ../../../developer/system/networking.rst:53 3a6af078bed8444ca4bf1e8b50cc1cab
 #: 9f77c8dab0e24c5998b896612b5321b6
 msgid "Flags"
-msgstr ""
+msgstr "旗標"
 
 #: ../../../developer/system/networking.rst:29
 #: ../../../developer/system/networking.rst:54 367385ca9cb64d07b07d9a63f288d567
@@ -181,7 +194,7 @@ msgstr ""
 
 #: ../../../developer/system/networking.rst:43 57bc9597e0c54425bcdc7fc265e74ae8
 msgid "Network driver domain routing table is a bit longer:"
-msgstr ""
+msgstr "網路驅動程式領域的路由表稍微長一些："
 
 #: ../../../developer/system/networking.rst:58 25db4560a7f84ec19a15cb524786266d
 msgid "10.137.0.16"
@@ -286,6 +299,13 @@ msgid ""
 "and set the value to ``1``. For example to enable it on ``sys-net``, execute "
 "in dom0:"
 msgstr ""
+"從 Qubes 4.0 開始，可選擇加入支援 IPv6 轉發。與 IPv4 類似，流量會進行路由並在"
+"每個網路閘道套用 NAT。這樣一來，每當上行連線變更時，我們無需重新設定每個連接"
+"的 qube 組態，甚至無需告訴 qube 上行連線是什麼——這在使用 VPN 或其他隧道服務時"
+"可能很複雜。此功能可以在任何提供網路的 qube 上啟用，並會向下傳播到網路樹，因"
+"此連接到它的每個 qube 也將啟用 IPv6。要啟用 ``ipv6`` 功能，請使用 ``qvm-"
+"features`` 工具並將值設為 ``1``。例如，要在 ``sys-net`` 上啟用它，請在 dom0 "
+"中執行："
 
 #: ../../../developer/system/networking.rst:127
 #: 076e620b249f45848d7894404d3552d3
@@ -294,6 +314,8 @@ msgid ""
 "to restart connected qubes for the change to take effect. In some cases you "
 "may also have to restart the network-providing qube."
 msgstr ""
+"以此方式啟用 IPv6 不會傳播到正在執行的 qube。您需要重新啟動已連接的 qube，變"
+"更才會生效。在某些情況下，您可能還需要重新啟動提供網路的 qube。"
 
 #: ../../../developer/system/networking.rst:130
 #: 050bff13124343228621cf1cf670d50c
@@ -302,13 +324,15 @@ msgid ""
 "if it is connected to IPv6-providing one. This can be done by setting "
 "``ipv6`` feature to empty value:"
 msgstr ""
+"也可以明確停用某些 qube 的 IPv6 支援，即使它們已連接到提供 IPv6 的 qube。這可"
+"以透過將 ``ipv6`` 功能設為空值來完成："
 
 #: ../../../developer/system/networking.rst:138
 #: 531cdc3e6ec741a692ad78bd1fe42137
 msgid ""
 "This configuration is presented below - green qubes have IPv6 access, red "
 "one does not."
-msgstr ""
+msgstr "此組態如下所示——綠色的 qube 具有 IPv6 存取權，紅色的則沒有。"
 
 #: ../../../developer/system/networking.rst:140
 #: bfbe32ac31fb42a7bf80d17960bd44bc
@@ -316,6 +340,8 @@ msgid ""
 "Qubes networking tree showing green qubes with IPv6 access and a red qube "
 "where ipv6 feature is set to empty value."
 msgstr ""
+"Qubes 網路樹，顯示具有 IPv6 存取權的綠色 qube，以及 ipv6 功能設為空值的紅色 "
+"qube。"
 
 #: ../../../developer/system/networking.rst:145
 #: 5077b652d3104be2bac55563d39736e2
@@ -329,11 +355,16 @@ msgid ""
 "encapsulate IPv6 traffic and setting ``ipv6`` to ``1`` only there. See "
 "diagram below"
 msgstr ""
+"在這種情況下，系統的上行連線具有原生 IPv6。但在某些情況下可能並非如此。這時可"
+"以使用一些隧道解決方案（例如 teredo）。當使用者連接到提供 IPv6 支援的VPN 服務"
+"時，無論使用者的網際網路連線如何，也同樣適用。此類組態可以透過僅在Qubes 網路"
+"的某個子集上啟用 ``ipv6`` 功能來表達，例如建立單獨的 qube 來封裝IPv6 流量，並"
+"僅在那裡將 ``ipv6`` 設為 ``1``。請參閱下圖"
 
 #: ../../../developer/system/networking.rst:147
 #: 9dd90099b45840e2bb1726d1ee56ee08
 msgid "Qubes networking tree showing IPv6 provided only by a subset of qubes."
-msgstr ""
+msgstr "Qubes 網路樹，顯示僅由部分 qube 提供 IPv6。"
 
 #: ../../../developer/system/networking.rst:152
 #: 06f9f256c72743f39597105194eb85e0
@@ -343,6 +374,9 @@ msgid ""
 "``qvm-firewall`` command supports adding IPv6 rules, the GUI firewall editor "
 "will have this ability later."
 msgstr ""
+"除了啟用 IPv6 轉發之外，還可以使用標準的 Qubes 防火牆來限制每個 qube 可存取的"
+"網路資源。目前只有 ``qvm-firewall`` 命令支援新增 IPv6 規則，GUI 防火牆編輯器"
+"之後將具備此功能。"
 
 #: ../../../developer/system/networking.rst:154
 #: 41619d0a20fb4d46ade4250381cf2892
@@ -353,11 +387,14 @@ msgid ""
 "Manager. Alternatively, disable IPv6 support using methods appropriate to "
 "the underlying template."
 msgstr ""
+"**注意：** 設定或取消設定 ``ipv6`` 功能僅影響 qubes 組態的網路。它不會影響例"
+"如外部介面。如果您想限制這些介面上的 IPv6，請在 Network Manager 中變更設定。"
+"或者，使用底層範本適用的方法停用 IPv6 支援。"
 
 #: ../../../developer/system/networking.rst:157
 #: 413d4256fe4542f0afde8b0ead114c43
 msgid "Limitations"
-msgstr ""
+msgstr "限制"
 
 #: ../../../developer/system/networking.rst:160
 #: cd0853e5e1804464be920f499dacd657
@@ -370,3 +407,8 @@ msgid ""
 "to return IPv6 addresses. In practice this is only a problem for IPv6-only "
 "networks."
 msgstr ""
+"目前僅設定 IPv4 DNS 伺服器，無論 ``ipv6`` 功能的狀態如何。這樣做是為了避免在 "
+"IPv6 DNS 可用或不可用時重新設定所有連接的 qube。將 qube 設定為始終使用 IPv6 "
+"DNS 並僅在故障時回退到 IPv4，可能會導致較長的逾時和較差的使用體驗。但請注意，"
+"使用 IPv4 的 DNS 並不妨礙返回 IPv6 位址。在實踐中，這僅對純 IPv6 網路才有問"
+"題。"
