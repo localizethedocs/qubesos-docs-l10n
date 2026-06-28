@@ -20,17 +20,17 @@ msgstr ""
 #: ../../../user/advanced-topics/gui-configuration.rst:3
 #: 71a5d1307bc846cfb37f2e18826de27e
 msgid "GUI configuration"
-msgstr ""
+msgstr "GUI 組態"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:7
 #: 4dae5fc0c7e446d2a309cee421a23650
 msgid "This page is intended for advanced users."
-msgstr ""
+msgstr "此頁面適用於進階使用者。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:10
 #: d421de031d1e49988ae337501a943084
 msgid "Video RAM adjustment for high-resolution displays"
-msgstr ""
+msgstr "高解析度顯示器的視訊 RAM 調整"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:13
 #: 6659165e849d4deaa646a34ece756be6
@@ -44,11 +44,16 @@ msgid ""
 "after starting some qubes, a 4K display is connected. If the buffer is too "
 "small, and internal desktop resize fails."
 msgstr ""
+"當 qube 啟動時，會分配固定數量的 RAM 給稱為視訊 RAM 的圖形緩衝區。此緩衝區至"
+"少需要與整個桌面一樣大，考慮到所有已連接或將連接到機器的顯示器。預設情況下，"
+"它會分配目前顯示器和額外一個全高清（FHD）顯示器（1920×1080 8 位元/通道 RGBA）"
+"所需的記憶體。當機器的主顯示器為 FHD 解析度，且在啟動一些 qube 後連接了 4K 顯"
+"示器時，此邏輯會失敗。如果緩衝區太小，內部桌面調整大小就會失敗。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:15
 #: e86e75cb5abc4ff78f4086e3436e159e
 msgid "To increase the minimum size of the video RAM buffer:"
-msgstr ""
+msgstr "若要增加視訊 RAM 緩衝區的最小大小："
 
 #: ../../../user/advanced-topics/gui-configuration.rst:23
 #: 9568734e6e244ae9849045082e7237cd
@@ -59,6 +64,9 @@ msgid ""
 "48600``, or slightly more than 48 MiB per qube. After making these "
 "adjustments, the qubes need to be restarted."
 msgstr ""
+"其中 ``$WIDTH`` × ``$HEIGHT`` 是您預期需要的最大桌面大小。例如，如果您打算並"
+"排使用 1080p 顯示器和 4K 顯示器，則為 ``(1920 + 3840) × 2160 × 4 / 1024 = "
+"48600``，即每個 qube 略多於 48 MiB。進行這些調整後，需要重新啟動 qube。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:25
 #: 83ad6a0311c84344a780994b8091ccea
@@ -67,11 +75,13 @@ msgid ""
 "unplug displays, the following code will set correct memory size using "
 "xrandr."
 msgstr ""
+"在有多個不同方向的顯示器，或者您插拔顯示器的情況下，以下程式碼將使用 xrandr "
+"設定正確的記憶體大小。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:32
 #: a6bf15a9d3f54fdf92c9791e7df25771
 msgid "The amount of memory allocated per qube is the maximum of:"
-msgstr ""
+msgstr "每個 qube 分配的記憶體量是以下各項的最大值："
 
 #: ../../../user/advanced-topics/gui-configuration.rst:34
 #: f9e10657071342a383d5876535130d91
@@ -81,7 +91,7 @@ msgstr ""
 #: ../../../user/advanced-topics/gui-configuration.rst:36
 #: a43d9020c972404ba9cb370ec44e2f20
 msgid "current display + ``gui-videoram-overhead``"
-msgstr ""
+msgstr "目前顯示器 + ``gui-videoram-overhead``"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:40
 #: 8ea7ae6a129549bc8808055b27f6ba6d
@@ -90,11 +100,13 @@ msgid ""
 "above). So, the ``gui-videoram-overhead`` zeroing is not strictly necessary; "
 "it only avoids allocating memory that will not be used."
 msgstr ""
+"預設開銷約為 8 MiB，足以應付 1080p 顯示器（見上文）。因此，將 ``gui-videoram-"
+"overhead`` 歸零並非絕對必要；它只是避免分配不會被使用的記憶體。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:44
 #: db1237aedeef4af49024e66edfd4404d
 msgid "Xorg configuration to mitigate tearing"
-msgstr ""
+msgstr "緩解畫面撕裂的 Xorg 組態"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:46
 #: 0744a26b65074c99a2d78ad51dd58f30
@@ -104,6 +116,9 @@ msgid ""
 "try placing this configuration in ``/etc/X11/xorg.conf.d/90-intel.conf``, "
 "and restarting the X server."
 msgstr ""
+"如果影片播放不平滑而是斷斷續續的，這可能是因為 X 伺服器組態不當。如果您有 HD "
+"顯示卡，可以嘗試將此組態放在 ``/etc/X11/xorg.conf.d/90-intel.conf`` 中，然後"
+"重新啟動 X 伺服器。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:58
 #: c57830119f2b4abc9716ca11870e0b93
@@ -117,6 +132,8 @@ msgid ""
 "kbd:`Ctrl-Alt-F2`. Once you have logged in you can examine the Xorg log "
 "file, and may be able to identify errors."
 msgstr ""
+"如果 X 伺服器無法運作，您可以按下 :kbd:`Ctrl-Alt-F2` 切換到另一個 tty。登入"
+"後，您可以檢查 Xorg 日誌檔案，並可能識別出錯誤。"
 
 #: ../../../user/advanced-topics/gui-configuration.rst:62
 #: 9fceaaac8df34aaea1012e85eb8194a4
@@ -125,3 +142,5 @@ msgid ""
 "for issues relating to the Qubes graphical user interface and how to fix "
 "them."
 msgstr ""
+"請參見\\ :doc:`GUI 疑難排解 </user/troubleshooting/gui-troubleshooting>`\\ ，"
+"了解與 Qubes 圖形使用者介面相關的問題及其修復方法。"

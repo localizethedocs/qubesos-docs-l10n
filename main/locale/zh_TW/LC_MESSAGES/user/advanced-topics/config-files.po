@@ -20,17 +20,17 @@ msgstr ""
 #: ../../../user/advanced-topics/config-files.rst:3
 #: 20e4dda3e0e94f5d8cc83f5fde1f8796
 msgid "Config files"
-msgstr ""
+msgstr "組態檔"
 
 #: ../../../user/advanced-topics/config-files.rst:7
 #: 99f34758b510483680f75303b92b0f33
 msgid "This page is intended for advanced users."
-msgstr ""
+msgstr "此頁面適用於進階使用者。"
 
 #: ../../../user/advanced-topics/config-files.rst:10
 #: c8f2b8d36b9f43e0956437b1d8c41394
 msgid "Qubes-specific VM config files"
-msgstr ""
+msgstr "Qubes 特定的 VM 組態檔"
 
 #: ../../../user/advanced-topics/config-files.rst:13
 #: a2ac8a9fa98c46448343f60cca95e50e
@@ -39,6 +39,8 @@ msgid ""
 "they can be used to customize a single VM instead of all VMs based on the "
 "same template. The scripts here all run as root."
 msgstr ""
+"這些檔案放置在 ``/rw`` 中，該目錄在 VM 重新啟動後仍會保留。這樣一來，它們可以"
+"用來自訂單個 VM，而不是基於相同範本的所有 VM。這裡的腳本都以 root 身分執行。"
 
 #: ../../../user/advanced-topics/config-files.rst:15
 #: eea52e7174cf4e45b137bdb265cef535
@@ -48,6 +50,9 @@ msgid ""
 "config``, etc. The script need to have the executable permission set to be "
 "executed. Example usage:"
 msgstr ""
+"``/rw/config/rc.local`` - 在 VM 啟動時執行的腳本。適合用來變更一些服務設定、"
+"將組態檔替換為儲存在 ``/rw/config`` 中的副本等。腳本需要設定可執行權限才能被"
+"執行。使用範例："
 
 #: ../../../user/advanced-topics/config-files.rst:32
 #: 5493f35b628d476c913ea23f2106da2c
@@ -55,6 +60,8 @@ msgid ""
 "``/rw/config/rc.local.d/*.rc`` - scripts run at VM startup just before ``/rw/"
 "config/rc.local``"
 msgstr ""
+"``/rw/config/rc.local.d/*.rc`` - 在 VM 啟動時、緊接在 ``/rw/config/rc."
+"local`` 之前執行的腳本"
 
 #: ../../../user/advanced-topics/config-files.rst:34
 #: 839bc90b6fa7410bb35c1c5c0206846e
@@ -64,6 +71,9 @@ msgid ""
 "system startup sequence - just before ``sysinit.target``, and setting up the "
 "network."
 msgstr ""
+"``/rw/config/rc.local-early.d/*.rc``、``/rw/config/rc.local-early`` - 與 ``/"
+"rw/config/rc.local`` 類似的腳本，但在系統啟動序列中更早執行— 就在 ``sysinit."
+"target`` 之前，並設定網路。"
 
 #: ../../../user/advanced-topics/config-files.rst:36
 #: bf7441628c60484a8fa34e99cd385f99
@@ -71,6 +81,8 @@ msgid ""
 "``/rw/config/qubes-ip-change-hook`` - script runs in NetVM after every "
 "external IP change and on “hardware” link status change."
 msgstr ""
+"``/rw/config/qubes-ip-change-hook`` - 在 NetVM 中每次外部 IP 變更和「硬體」連"
+"結狀態變更後執行的腳本。"
 
 #: ../../../user/advanced-topics/config-files.rst:38
 #: c2b7092f0214406686b5755c36178653
@@ -80,6 +92,9 @@ msgid ""
 "followed by ``qubes-firewall-user-script`` at start up. Good place to write "
 "custom firewall rules."
 msgstr ""
+"在 ProxyVM（或已啟用 ``qubes-firewall`` 服務的應用程式 qube）中，放置在以下目"
+"錄中的腳本將在啟動時按列出的順序執行，然後接著執行 ``qubes-firewall-user-"
+"script``。適合用來編寫自訂防火牆規則。"
 
 #: ../../../user/advanced-topics/config-files.rst:48
 #: 5e0bed3386f84931b071ec8b6440951f
@@ -88,6 +103,9 @@ msgid ""
 "be unloaded before system goes to sleep. The file is used only in a VM with "
 "PCI devices attached. Intended for use with problematic device drivers."
 msgstr ""
+"``/rw/config/suspend-module-blacklist`` - 要在系統進入睡眠前卸載的模組列表"
+"（每行一個）。此檔案僅在用於附加了 PCI 裝置的 VM。適用於有問題的裝置驅動程"
+"式。"
 
 #: ../../../user/advanced-topics/config-files.rst:50
 #: 92453da3ae314923a7a4943d36a2fb6d
@@ -100,6 +118,12 @@ msgid ""
 "domain id is arbitrary ``12`` then, the following script located at ``/rw/"
 "config/network-hooks.d/hook-100.sh`` in ``sys-firewall``:"
 msgstr ""
+"在 NetVM/ProxyVM 中，放置在 ``/rw/config/network-hooks.d`` 中的腳本將在設定 "
+"Qubes 介面組態時執行。對於每個腳本，``command``、``vif``、``vif_type`` 和 "
+"``ip`` 會作為參數傳遞（請參閱 ``/etc/xen/scripts/vif-route-qubes``）。例如，"
+"考慮一個 IP 為 ``10.137.0.100``、以 ``sys-firewall`` 作為 NetVM 的PV 應用程"
+"式 qube ``work``。假設其 Xen 網域 ID 為任意值 ``12``，則 ``sys-firewall`` 中"
+"位於 ``/rw/config/network-hooks.d/hook-100.sh`` 的以下腳本："
 
 #: ../../../user/advanced-topics/config-files.rst:73
 #: 45e760b7b08e473aa836d79cc726ceb0
@@ -111,11 +135,16 @@ msgid ""
 "should be preferred (up to the hook script). When the VM decides to use a PV "
 "interface (vif_type ``vif``), the ioemu one will be unplugged."
 msgstr ""
+"將在啟動 ``work`` 時使用參數 ``online vif12.0 vif 10.137.0.100`` 執行。請注"
+"意，在 HVM 的情況下，腳本將被呼叫兩次——一次使用 vif_type ``vif``，然後使用 "
+"vif_type ``vif_ioemu``（以及不同的介面名稱）。只要 ioemu 介面存在，就應該優先"
+"使用（由掛鉤腳本決定）。當 VM 決定使用 PV 介面（vif_type ``vif``）時，ioemu "
+"介面將被拔除。"
 
 #: ../../../user/advanced-topics/config-files.rst:77
 #: 50a42aba90404f7abeae75fd6cfbb71c
 msgid "Note that scripts need to be executable (``chmod +x``) to be used."
-msgstr ""
+msgstr "請注意，腳本需要是可執行的（``chmod +x``）才能被使用。"
 
 #: ../../../user/advanced-topics/config-files.rst:79
 #: 2ed88247dc6e4ac680e31847ad1f8cbe
@@ -124,11 +153,13 @@ msgid ""
 "instructions on how to easily modify arbitrary system files in an app qube "
 "and have those changes persist."
 msgstr ""
+"另請參閱 :doc:`bind-dirs </user/advanced-topics/bind-dirs>` 了解如何在應用程"
+"式 qube中輕鬆修改任意系統檔案並使這些變更持久保存的說明。"
 
 #: ../../../user/advanced-topics/config-files.rst:82
 #: 88e9d7acb6e549ef83a3da15a9e96dd3
 msgid "GUI and audio configuration in dom0"
-msgstr ""
+msgstr "dom0 中的 GUI 與音訊組態"
 
 #: ../../../user/advanced-topics/config-files.rst:85
 #: f427b4c20c4d4023ac66941bf30ceb23
@@ -137,18 +168,20 @@ msgid ""
 "managed by ``qubes-prefs`` or the Qubes Manager tool. Sample config "
 "(included in default installation):"
 msgstr ""
+"GUI 組態檔 ``/etc/qubes/guid.conf`` 是少數不受 ``qubes-prefs`` 或 Qubes "
+"Manager 工具管理的檔案之一。樣本組態（包含在預設安裝中）："
 
 #: ../../../user/advanced-topics/config-files.rst:119
 #: e2a0187cd38e41a6ac91f7e93ed31494
 msgid "Currently supported settings:"
-msgstr ""
+msgstr "目前支援的設定："
 
 #: ../../../user/advanced-topics/config-files.rst:121
 #: 1bb8a03c7ffb4494a38dcf092d700609
 msgid ""
 "``allow_fullscreen`` - allow VM to request its windows to go fullscreen "
 "(without any colorful frame)."
-msgstr ""
+msgstr "``allow_fullscreen`` - 允許 VM 請求其視窗進入全螢幕（沒有彩色邊框）。"
 
 #: ../../../user/advanced-topics/config-files.rst:123
 #: a8da2cee05de4bbd98970c4e7711fa93
@@ -162,6 +195,11 @@ msgid ""
 "``space`` to bring up the title bar menu again, then select “Leave "
 "Fullscreen”."
 msgstr ""
+"**注意：** 無論此設定如何，您始終可以透過在 Xfce4 中使用受信任的視窗管理器，"
+"在視窗標題列上按右鍵並選擇「全螢幕」來將視窗置於全螢幕模式。此功能仍應被視為"
+"安全的，因為 VM 視窗仍然無法自願進入全螢幕模式。使用者必須從 dom0 中受信任的"
+"視窗管理器選擇此選項。若要從此處退出全螢幕模式，請按下 ``alt`` + ``space`` 再"
+"次叫出標題列選單，然後選擇「離開全螢幕」。"
 
 #: ../../../user/advanced-topics/config-files.rst:127
 #: 1b83481c91f44e7492932d9d352c5cc8
@@ -169,6 +207,8 @@ msgid ""
 "``allow_utf8_titles`` - allow the use of UTF-8 in window titles; otherwise, "
 "non-ASCII characters are replaced by an underscore."
 msgstr ""
+"``allow_utf8_titles`` - 允許在視窗標題中使用 UTF-8；否則，非 ASCII 字元會被底"
+"線取代。"
 
 #: ../../../user/advanced-topics/config-files.rst:129
 #: 9cf6c026a7104b7fbe9428162033faef
@@ -176,6 +216,8 @@ msgid ""
 "``secure_copy_sequence`` and ``secure_paste_sequence`` - key sequences used "
 "to trigger secure copy and paste."
 msgstr ""
+"``secure_copy_sequence`` 和 ``secure_paste_sequence`` - 用於觸發安全複製和貼"
+"上的按鍵序列。"
 
 #: ../../../user/advanced-topics/config-files.rst:131
 #: 50200b0ae964408ea83ba3a7aab6e92d
@@ -184,6 +226,9 @@ msgid ""
 "200-500ms by default). Note that this will cause much higher CPU usage in "
 "dom0. It’s enabled by default, disabling it may save CPU in dom0."
 msgstr ""
+"``audio_low_latency`` - 強制低延遲音訊模式（約 40ms，預設為 200-500ms）。請注"
+"意，這會導致 dom0 中 CPU 使用率大幅提高。它預設為啟用，停用它可能可以節省 "
+"dom0 中的 CPU。"
 
 #: ../../../user/advanced-topics/config-files.rst:133
 #: af7369234c9c42a799c3ad9254763585
@@ -197,6 +242,13 @@ msgid ""
 "tint, but reduce icon saturation by 50% - ``tint+whitehack`` - same as tint, "
 "but change white pixels (0xffffff) to almost-white (0xfefefe)"
 msgstr ""
+"``trayicon_mode`` - 定義系統匣圖示的著色模式。選項有 - ``bg`` - 將整個圖示背"
+"景設為 VM 顏色 - ``border1`` - 在圖示邊緣新增 1px 邊框 - ``border2`` - 在距離"
+"圖示邊緣 1px 處新增 1px 邊框 - ``tint`` - 將圖示染色為 VM 顏色，可與其他修飾"
+"符一起使用（可啟用多個） - ``tint+border1,tint+border2`` - 與 tint 相同，但同"
+"時新增邊框 - ``tint+saturation50`` - 與 tint 相同，但將圖示飽和度降低 50% - "
+"``tint+whitehack`` - 與 tint 相同，但將白色像素（0xffffff）改為接近白色"
+"（0xfefefe）"
 
 #: ../../../user/advanced-topics/config-files.rst:135
 #: 2bb917d8dcb844dfa58438de9eca150c
@@ -204,8 +256,10 @@ msgid ""
 "``log level`` - defines the log options logs can take. It can have a value "
 "of 0 (only errors), 1 (some basic messages), and 2 (debug)."
 msgstr ""
+"``log level`` - 定義日誌可以採用的日誌選項。它可以取值 0（僅錯誤）、1（一些基"
+"本訊息）和 2（除錯）。"
 
 #: ../../../user/advanced-topics/config-files.rst:137
 #: 8e343a8cbd7e497997bb19d6d4199976
 msgid "``startup_timeout`` - The timeout for startup."
-msgstr ""
+msgstr "``startup_timeout`` - 啟動的超時時間。"

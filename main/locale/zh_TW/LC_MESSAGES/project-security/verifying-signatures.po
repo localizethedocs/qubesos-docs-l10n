@@ -20,7 +20,7 @@ msgstr ""
 #: ../../../project-security/verifying-signatures.rst:3
 #: cb512a3b1c24484592e5b9c507139239
 msgid "Verifying signatures"
-msgstr ""
+msgstr "驗證簽章"
 
 #: ../../../project-security/verifying-signatures.rst:6
 #: 8cf8a6d05a5b4dbab9800f53395606bf
@@ -31,11 +31,14 @@ msgid ""
 "extremely important for your security to understand and apply these "
 "practices."
 msgstr ""
+"Qubes OS 專案使用`數位簽章 <https://en.wikipedia.org/wiki/"
+"Digital_signature>`__ 來保證某些重要資產的真實性和完整性。此頁面說明如何驗證"
+"這些簽章。理解並應用這些做法對您的安全性極為重要。"
 
 #: ../../../project-security/verifying-signatures.rst:9
 #: 8a8a0956d0fc4c8990fcbd615bf0d275
 msgid "What digital signatures can and cannot prove"
-msgstr ""
+msgstr "數位簽章可以證明和不能證明的範圍"
 
 #: ../../../project-security/verifying-signatures.rst:12
 #: 3e46c8feff5a4e07a754798502aa3116
@@ -44,6 +47,8 @@ msgid ""
 "underlying digital signatures. Therefore, most people should read this "
 "section, even if it looks trivial at first sight."
 msgstr ""
+"大多數人——即使是程式設計師——都對數位簽章的基本概念感到困惑。因此，大多數人都"
+"應該閱讀本節，即使它乍看之下很 trivial。"
 
 #: ../../../project-security/verifying-signatures.rst:14
 #: 305fc5bb977c4eb48d118c4c574da17c
@@ -55,6 +60,9 @@ msgid ""
 "been tampered with (i.e., that a third party has not undetectably altered "
 "its contents *en route*)."
 msgstr ""
+"數位簽章可以在合理的確定程度上證明**真實性**和**完整性**。**真實性**確保給定"
+"檔案確實由簽署它的人建立（即第三方未偽造它）。**完整性**確保檔案的內容未被篡"
+"改（即第三方未在傳輸過程中未被察覺地更改其內容）。"
 
 #: ../../../project-security/verifying-signatures.rst:16
 #: 1ee557d4c89445448988e0dd060e096c
@@ -63,6 +71,8 @@ msgid ""
 "malicious. In fact, there is nothing that could stop someone from signing a "
 "malicious program (and it happens from time to time in reality)."
 msgstr ""
+"數位簽章**不能**證明簽署的檔案不是惡意的。事實上，沒有什麼能阻止某人簽署惡意"
+"程式（這種情況在現實中時有發生）。"
 
 #: ../../../project-security/verifying-signatures.rst:18
 #: 8b28ac9edce7499eb5e389be0b1906bb
@@ -73,6 +83,9 @@ msgid ""
 "decision of whether to trust any given party is beyond the scope of digital "
 "signatures. It’s more of a social and political decision."
 msgstr ""
+"重點是我們必須決定信任誰（例如 Linus Torvalds、Microsoft 或 Qubes 專案），並"
+"假設如果一個受信任方簽署了給定檔案，那麼它不應該是惡意的或有疏忽的錯誤。是否"
+"信任任何特定方的決定超出了數位簽章的範圍。這更像是一個社會和政治決定。"
 
 #: ../../../project-security/verifying-signatures.rst:20
 #: 54f3a52bb5e24c85a4db903fba4d1575
@@ -87,6 +100,13 @@ msgid ""
 "call this philosophy :ref:`distrusting the infrastructure <introduction/faq:"
 "what does it mean to \"distrust the infrastructure\"?>`."
 msgstr ""
+"一旦我們決定信任某些方，數位簽章就很有用，因為它們使我們能夠僅信任我們選擇的"
+"那少數幾方，而不必擔心在他們和我們之間可能發生的所有壞事，例如伺服器被入侵"
+"（qubes-os.org 總有一天會被入侵，所以 :ref:`don’t blindly trust the live "
+"version of this site <introduction/faq:should i trust this website?>`）、託管"
+"公司不誠實的 IT 人員、ISP 不誠實的工作人員、Wi-Fi 攻擊等。我們將這種理念稱"
+"為 :ref:`distrusting the infrastructure <introduction/faq:what does it mean "
+"to \"distrust the infrastructure\"?>`。"
 
 #: ../../../project-security/verifying-signatures.rst:22
 #: 69f90bdc21df45b9bc1f68d76d93c3e9
@@ -97,6 +117,9 @@ msgid ""
 "tampered with (and subsequently choose to refrain from executing, "
 "installing, or opening them)."
 msgstr ""
+"透過驗證我們下載的所有聲稱由我們選擇信任的一方撰寫的檔案，我們消除了對上述壞"
+"事的擔憂，因為我們可以輕鬆檢測是否有任何檔案被篡改（然後選擇不執行、不安裝或"
+"不開啟它們）。"
 
 #: ../../../project-security/verifying-signatures.rst:24
 #: 88d049f183f743eab00b1328ad83fa5c
@@ -109,11 +132,15 @@ msgid ""
 "the authenticity of the various keys used in the project and how to use "
 "those keys to verify certain important assets."
 msgstr ""
+"然而，為了使數位簽章有意義，我們必須確保用於簽章驗證的公鑰是真實的。任何人都"
+"可以產生一個聲稱屬於「Qubes OS 專案」的加密金鑰，但當然只有我們（真正的 "
+"Qubes 開發者）產生的金鑰才是真實的。此頁面的其餘部分說明了如何驗證專案中使用"
+"的各種金鑰的真實性，以及如何使用這些金鑰來驗證某些重要資產。"
 
 #: ../../../project-security/verifying-signatures.rst:27
 #: 4d205b9154bb4a389f567ea5eba17144
 msgid "OpenPGP software"
-msgstr ""
+msgstr "OpenPGP 軟體"
 
 #: ../../../project-security/verifying-signatures.rst:30
 #: 777b8ac0bdfc448d8f0dc814ad7a12c0
@@ -125,6 +152,10 @@ msgid ""
 "that complies with the OpenPGP standard will do, but here are some examples "
 "for popular operating systems:"
 msgstr ""
+"我們使用 `PGP <https://en.wikipedia.org/wiki/Pretty_Good_Privacy>`__（具體來"
+"說是 `OpenPGP <https://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP>`__ "
+"標準）。在開始之前，您需要可以管理 PGP 金鑰和驗證 PGP 簽章的軟體。任何符合 "
+"OpenPGP 標準的程式都可以，以下是流行作業系統的一些範例："
 
 #: ../../../project-security/verifying-signatures.rst:32
 #: 21eb62e72a1d4596802fe748405d2c2e
@@ -134,6 +165,9 @@ msgid ""
 "``gpg2`` command. If you don’t already have GnuPG installed, install it via "
 "your distro’s package manager or from the GnuPG website."
 msgstr ""
+"**Linux：** `GnuPG <https://gnupg.org/download/index.html>`__（`文件 "
+"<https://www.gnupg.org/documentation/>`__）。開啟終端機並使用 ``gpg2`` 命令。"
+"如果您尚未安裝 GnuPG，請透過您的發行版套件管理器或從 GnuPG 網站安裝。"
 
 #: ../../../project-security/verifying-signatures.rst:34
 #: d3b8fc7bbcac4f43b15e3102a3a3c8c0
@@ -141,6 +175,8 @@ msgid ""
 "**Mac:** `GPG Suite <https://gpgtools.org/>`__ (`documentation <https://"
 "gpgtools.tenderapp.com/kb>`__). Open a terminal to enter commands."
 msgstr ""
+"**Mac：** `GPG Suite <https://gpgtools.org/>`__（`文件 <https://gpgtools."
+"tenderapp.com/kb>`__）。開啟終端機來輸入命令。"
 
 #: ../../../project-security/verifying-signatures.rst:36
 #: 10018337b2424db6b9e5e02008ea35c1
@@ -149,6 +185,9 @@ msgid ""
 "<https://www.gpg4win.org/documentation.html>`__). Use the Windows command "
 "line (``cmd.exe``) to enter commands."
 msgstr ""
+"**Windows：** `Gpg4win <https://gpg4win.org/download.html>`__（`文件 "
+"<https://www.gpg4win.org/documentation.html>`__）。使用 Windows 命令列"
+"（``cmd.exe``）來輸入命令。"
 
 #: ../../../project-security/verifying-signatures.rst:38
 #: 22c482db021f4e5fb07c2ec159794491
@@ -159,11 +198,14 @@ msgid ""
 "and the :ref:`project-security/verifying-signatures:troubleshooting faq` "
 "below."
 msgstr ""
+"在本頁面中，我們將透過 ``gpg2`` 命令使用 GnuPG。如果對您不起作用，請嘗試使用 "
+"``gpg``。如果仍然不行，請查閱您特定程式的文件（請參閱上面的連結）和下面的 :"
+"ref:`project-security/verifying-signatures:troubleshooting faq`。"
 
 #: ../../../project-security/verifying-signatures.rst:43
 #: 8e25f6e982384f729795e3030c9991ed
 msgid "How to import and authenticate the Qubes Master Signing Key"
-msgstr ""
+msgstr "如何匯入和驗證 Qubes Master Signing Key"
 
 #: ../../../project-security/verifying-signatures.rst:46
 #: d7c444cfdffd474fa5160cf3efb63856
@@ -175,6 +217,11 @@ msgid ""
 "signing-key.asc>`__ (``0x427F11FD0FAA4B080123F01CDDFA1A3E36879494``). In "
 "this way, the QMSK is the ultimate root of trust for the Qubes OS Project."
 msgstr ""
+"許多重要的 Qubes OS 專案資產（例如 ISO、RPM、TGZ 和 Git 物件）都由官方團隊成"
+"員的金鑰或發布簽署金鑰（RSK）進行數位簽章。每個此類金鑰又由 `Qubes Master "
+"Signing Key (QMSK) <https://keys.qubes-os.org/keys/qubes-master-signing-key."
+"asc>`__（``0x427F11FD0FAA4B080123F01CDDFA1A3E36879494``）簽署。透過這種方式，"
+"QMSK 是 Qubes OS 專案的終極信任根。"
 
 #: ../../../project-security/verifying-signatures.rst:48
 #: 313479b0d5e74cd6a7f7c798e0f136cc
@@ -184,6 +231,9 @@ msgid ""
 "on a dedicated, air-gapped “vault” machine, and the private portion will "
 "(hopefully) never leave this isolated machine."
 msgstr ""
+"開發者簽署金鑰設定為一年後到期，而 QMSK 和 RSK 沒有到期日。QMSK 是在一台專用"
+"的、氣隙隔離的「vault」機器上產生並僅保存在該機器上，私密部分（希望）永遠不會"
+"離開這台隔離的機器。"
 
 #: ../../../project-security/verifying-signatures.rst:52
 #: 6591aba5583744728015e2bff6ed8b31
@@ -192,13 +242,15 @@ msgid ""
 "`installing OpenPGP software <project-security/verifying-signatures:openpgp "
 "software>`."
 msgstr ""
+"在繼續之前，您必須先完成 :ref:`安裝 OpenPGP 軟體 <project-security/verifying-"
+"signatures:openpgp software>` 的先決步驟。"
 
 #: ../../../project-security/verifying-signatures.rst:54
 #: 8c4509953072401281c588d9b1d3201c
 msgid ""
 "Once you have appropriate OpenPGP software installed, there are several ways "
 "to get the QMSK."
-msgstr ""
+msgstr "一旦您安裝了合適的 OpenPGP 軟體，有幾種方法可以取得 QMSK。"
 
 #: ../../../project-security/verifying-signatures.rst:56
 #: fbb29ee881eb46db9f27b348e5877cfa
@@ -206,6 +258,8 @@ msgid ""
 "**If you’re on Qubes OS**, it’s available in every qube (`except dom0 "
 "<https://github.com/QubesOS/qubes-issues/issues/2544>`__):"
 msgstr ""
+"**如果您使用的是 Qubes OS**，它在每個 qube 中都可用（`除了 dom0 <https://"
+"github.com/QubesOS/qubes-issues/issues/2544>`__）："
 
 #: ../../../project-security/verifying-signatures.rst:63
 #: f3b0fcddc9e043d2b5858bbcb1f5693e
@@ -213,16 +267,18 @@ msgid ""
 "**If you’re on Fedora**, you can get it in the `distribution-gpg-keys "
 "<https://github.com/xsuchy/distribution-gpg-keys>`__ package:"
 msgstr ""
+"**如果您使用的是 Fedora**，您可以在 `distribution-gpg-keys <https://github."
+"com/xsuchy/distribution-gpg-keys>`__ 套件中取得："
 
 #: ../../../project-security/verifying-signatures.rst:71
 #: 2809e03aa4394d1a9ce5a7a1a6620871
 msgid "**If you’re on Debian**, it may already be included in your keyring."
-msgstr ""
+msgstr "**如果您使用的是 Debian**，它可能已包含在您的金鑰環中。"
 
 #: ../../../project-security/verifying-signatures.rst:73
 #: fe8732debfd44cd3b6fc8d7b79608b80
 msgid "You can also **fetch it with GPG**:"
-msgstr ""
+msgstr "您也可以**使用 GPG 取得它**："
 
 #: ../../../project-security/verifying-signatures.rst:80
 #: 394a7e8600174d15ab2a9d5b97f3ec2d
@@ -232,18 +288,21 @@ msgid ""
 "use with ``--keyserver <URI>`` along with keyserver options to include key "
 "signatures), e.g.:"
 msgstr ""
+"從公開的 `keyserver <https://en.wikipedia.org/wiki/"
+"Key_server_%28cryptographic%29#Keyserver_examples>`__ 取得（首次使用時使用 "
+"``--keyserver <URI>`` 指定，並包含 keyserver 選項以包含金鑰簽章），例如："
 
 #: ../../../project-security/verifying-signatures.rst:87
 #: b905a5b422314476b862ba964683a166
 msgid ""
 "Or **download it as a file**, then import the file. Here are some example "
 "download locations:"
-msgstr ""
+msgstr "或者**以檔案形式下載**，然後匯入該檔案。以下是一些範例下載位置："
 
 #: ../../../project-security/verifying-signatures.rst:89
 #: e2cfbcda34d04818bdbbc532702d2010
 msgid ":doc:`Qubes security pack </project-security/security-pack>`"
-msgstr ""
+msgstr ":doc:`Qubes 安全包 </project-security/security-pack>`"
 
 #: ../../../project-security/verifying-signatures.rst:91
 #: 0c7bd4417d1e4f9ba81fe5f7d8a569be
@@ -258,6 +317,8 @@ msgid ""
 "`Email to qubes-devel <https://groups.google.com/d/msg/qubes-devel/"
 "RqR9WPxICwg/kaQwknZPDHkJ>`__"
 msgstr ""
+"`發送郵件至 qubes-devel <https://groups.google.com/d/msg/qubes-devel/"
+"RqR9WPxICwg/kaQwknZPDHkJ>`__"
 
 #: ../../../project-security/verifying-signatures.rst:95
 #: f309d20dc5ef4cc7aa5e08a692aab064
@@ -265,11 +326,13 @@ msgid ""
 "`Email to qubes-users <https://groups.google.com/d/msg/qubes-users/"
 "CLnB5uFu_YQ/ZjObBpz0S9UJ>`__"
 msgstr ""
+"`發送郵件至 qubes-users <https://groups.google.com/d/msg/qubes-users/"
+"CLnB5uFu_YQ/ZjObBpz0S9UJ>`__"
 
 #: ../../../project-security/verifying-signatures.rst:98
 #: fb136a4eec174a79be2366ba1a78e0cb
 msgid "Once you have the key as a file, **import it**:"
-msgstr ""
+msgstr "一旦您有了金鑰檔案，**匯入它**："
 
 #: ../../../project-security/verifying-signatures.rst:107
 #: 70bcb8973cda4e7098b0f22bee87762e
@@ -280,6 +343,9 @@ msgid ""
 "these alone. You also should not rely on any single website, not even over "
 "HTTPS."
 msgstr ""
+"一旦您取得了 QMSK，您必須驗證它是真實的而非偽造的。任何人都可以建立一個名為"
+"「Qubes Master Signing Key」且短金鑰 ID 為 ``0x36879494`` 的 PGP 金鑰，因此您"
+"不能僅依賴這些。您也不應該依賴任何單一網站，即使是 HTTPS 也不行。"
 
 #: ../../../project-security/verifying-signatures.rst:109
 #: 853289ff8f09425da30501174da9e53e
@@ -291,6 +357,10 @@ msgid ""
 "with several other Qubes keys. On Debian, your keyring may already contain "
 "the necessary keys."
 msgstr ""
+"那麼，您*應該*怎麼做？一種選擇是使用 PGP `信任網絡 <https://en.wikipedia.org/"
+"wiki/Web_of_trust>`__。此外，一些作業系統包含安全取得 QMSK 的方法。例如，在 "
+"Fedora 上，``dnf install distribution-gpg-keys`` 將為您取得 QMSK 以及其他幾"
+"個 Qubes 金鑰。在 Debian 上，您的金鑰環可能已包含必要的金鑰。"
 
 #: ../../../project-security/verifying-signatures.rst:111
 #: 2c75258b36fb402085e4f579153dd2b0
@@ -298,6 +368,8 @@ msgid ""
 "Perhaps the most common route is to rely on the key’s fingerprint, which is "
 "a string of 40 alphanumeric characters, like this:"
 msgstr ""
+"也許最常見的方法是依賴金鑰的指紋，這是一個由 40 個字母數字字元組成的字串，像"
+"這樣："
 
 #: ../../../project-security/verifying-signatures.rst:119
 #: 5759aaadcfad43a7a43a26dc6b129ec5
@@ -309,6 +381,10 @@ msgid ""
 "whether any purported copy of it is authentic, simply by comparing the "
 "fingerprints."
 msgstr ""
+"每個 PGP 金鑰都有一個這樣的指紋，它在所有 PGP 金鑰中唯一地識別它。（在命令列"
+"上，您可以使用 ``gpg2 --fingerprint <KEY_ID>`` 命令檢視金鑰的指紋。）因此，如"
+"果您知道真實的 QMSK 指紋，那麼您總是有一種簡單的方法來確認任何聲稱的副本是否"
+"真實，只需比較指紋即可。"
 
 #: ../../../project-security/verifying-signatures.rst:121
 #: fa943780cb5b44b2bf94bc9cc1023796
@@ -320,6 +396,10 @@ msgid ""
 "sources in several different ways*, then comparing the strings of letters "
 "and numbers to make sure they match."
 msgstr ""
+"但是您如何知道哪個指紋是真實的呢？畢竟，\\ :ref:`這個網站可能被入侵 "
+"<introduction/faq:should i trust this website?>`\\ ，因此您在這裡看到的指紋可"
+"能不是真實的。這就是為什麼我們強烈建議從\\ *多個獨立來源以多種不同方式*\\ 取"
+"得指紋，然後比較字母和數字字串以確保它們匹配。"
 
 #: ../../../project-security/verifying-signatures.rst:123
 #: b4eb96d97d9544c784b7473829eaac72
@@ -328,6 +408,8 @@ msgid ""
 "fingerprint, spaces and capitalization don’t matter. In other words, all of "
 "these fingerprints are considered the same:"
 msgstr ""
+"為了說服自己知道真實的 QMSK 指紋，空格和大小寫並不重要。換句話說，所有這些指"
+"紋都被認為是相同的："
 
 #: ../../../project-security/verifying-signatures.rst:134
 #: cf96a1b58a1944a489fbd3fcf9f70758
@@ -338,6 +420,9 @@ msgid ""
 "characters, if any of those characters are in a different order, sequence, "
 "or position, then the fingerprints should not be considered the same."
 msgstr ""
+"相反地，重要的是\\ *所有*\\ 字元必須以\\ *完全*\\ 相同的順序出現。即使只有一"
+"個字元不同，指紋就不應被認為是相同的。即使兩個指紋擁有所有相同的字元，如果任"
+"何字元的順序、序列或位置不同，則指紋不應被認為是相同的。"
 
 #: ../../../project-security/verifying-signatures.rst:136
 #: f6fc6b5210e94545ae977ea6a081bff0
@@ -348,6 +433,9 @@ msgid ""
 "without spaces). You may also sometimes see (or need to enter) the entire "
 "fingerprint prefixed with ``0x``, as in:"
 msgstr ""
+"然而，在*搜尋*、*查詢*或*輸入*金鑰時，空格和大小寫可能會因您使用的軟體或工具"
+"而有所不同。您可能需要嘗試不同的變體（例如有空格和無空格）。您有時也可能看到"
+"（或需要輸入）帶有 ``0x`` 前綴的完整指紋，如下所示："
 
 #: ../../../project-security/verifying-signatures.rst:145
 #: 021b73842cd149278e0c9a84bd282f2b
@@ -360,6 +448,10 @@ msgid ""
 "matches exactly, the fingerprint is considered the same. The ``0x`` prefix "
 "only matters if the software or tool you’re using cares about it."
 msgstr ""
+"``0x`` 前綴有時用於表示其後的字串是十六進位值，某些 PGP 相關工具可能需要此前"
+"綴。同樣地，為了說服自己知道真實的 QMSK 指紋，您可以安全地忽略 ``0x`` 前綴，"
+"因為它不是指紋的一部分。只要 ``0x`` 之後的 40 個字元字串完全匹配，指紋就被認"
+"為是相同的。``0x`` 前綴只有在您使用的軟體或工具關心它時才重要。"
 
 #: ../../../project-security/verifying-signatures.rst:147
 #: 4e33debd64da44918f21465ac041c0fa
@@ -373,6 +465,10 @@ msgid ""
 "same order, then at least one of the fingerprints is a forgery. Here are "
 "some ideas to get you started:"
 msgstr ""
+"「比對指紋」的一般概念是到現實世界中（無論是數位、實體或兩者兼備）尋找其他聲"
+"稱是 QMSK 指紋的 40 個字元字串，然後將它們與您自己聲稱的 QMSK 指紋進行比較，"
+"以確保字母數字字元的序列完全相同（同樣，無論空格或大小寫）。如果任何字元不匹"
+"配或順序不同，那麼至少其中一個指紋是偽造的。以下是一些幫助您入門的想法："
 
 #: ../../../project-security/verifying-signatures.rst:149
 #: c1d84c5ebcc44462a5a927b859aa90d9
@@ -384,6 +480,12 @@ msgid ""
 "reddit.com/r/Qubes/comments/5bme9n/fingerprint_verification/>`__, `personal "
 "websites <https://andrewdavidwong.com/fingerprints.txt>`__)."
 msgstr ""
+"在各個網站上檢查指紋（例如 `郵寄清單 <https://groups.google.com/g/qubes-"
+"devel/c/RqR9WPxICwg/m/kaQwknZPDHkJ>`__、`討論區 <https://forum.qubes-os.org/"
+"t/1441/9>`__、`社群媒體 <https://x.com/rootkovska/"
+"status/496976187491876864>`__ `社交平台 <https://www.reddit.com/r/Qubes/"
+"comments/5bme9n/fingerprint_verification/>`__、`個人網站 <https://"
+"andrewdavidwong.com/fingerprints.txt>`__）。"
 
 #: ../../../project-security/verifying-signatures.rst:151
 #: 5281e97193f847e9ac2f2ea2fbf51ce9
@@ -394,13 +496,17 @@ msgid ""
 "status/813847907858337793/photo/2>`__, or in the `recording of a "
 "presentation <https://youtu.be/S0TVw7U3MkE?t=2563>`__)."
 msgstr ""
+"針對出現指紋的 PDF、照片和影片進行檢查（例如 `演講投影片 <https://"
+"hyperelliptic.org/PSC/slides/psc2015_qubesos.pdf>`__、在 `T恤上 <https://x."
+"com/legind/status/813847907858337793/photo/2>`__ 或 `演講錄影 <https://youtu."
+"be/S0TVw7U3MkE?t=2563>`__）。"
 
 #: ../../../project-security/verifying-signatures.rst:153
 #: 3a08a6731455470a8396ca70ceffb833
 msgid ""
 "Ask people to post the fingerprint on various mailing lists, forums, and "
 "chat rooms."
-msgstr ""
+msgstr "請人們在各種郵寄清單、論壇和聊天室中發布指紋。"
 
 #: ../../../project-security/verifying-signatures.rst:155
 #: ca1f84a1a05d4625a74ea81131a2f06f
@@ -408,22 +514,23 @@ msgid ""
 "Download old Qubes ISOs from different sources and check the included Qubes "
 "Master Signing Key."
 msgstr ""
+"從不同來源下載舊版 Qubes ISO 並檢查其中包含的 Qubes Master Signing Key。"
 
 #: ../../../project-security/verifying-signatures.rst:157
 #: 31feac1dcc484c4ba9e83ab6afbcc8c6
 msgid "Repeat the above over Tor."
-msgstr ""
+msgstr "透過 Tor 重複上述操作。"
 
 #: ../../../project-security/verifying-signatures.rst:159
 #: 5dd4d047c6e34e0da97f524bc5e8ecad
 msgid "Repeat the above over various VPNs and proxy servers."
-msgstr ""
+msgstr "透過各種 VPN 和代理伺服器重複上述操作。"
 
 #: ../../../project-security/verifying-signatures.rst:161
 #: 19cc843ad71348d7845b80035889985e
 msgid ""
 "Repeat the above on different networks (work, school, internet cafe, etc.)."
-msgstr ""
+msgstr "在不同網路（工作、學校、網咖等）上重複上述操作。"
 
 #: ../../../project-security/verifying-signatures.rst:163
 #: 93589da386ca4a7d9523fff1418d7990
@@ -431,11 +538,12 @@ msgid ""
 "Text, email, call, video chat, snail mail, or meet up with people you know "
 "to confirm the fingerprint."
 msgstr ""
+"透過簡訊、電子郵件、通話、視訊聊天、傳統郵件或與您認識的人會面來確認指紋。"
 
 #: ../../../project-security/verifying-signatures.rst:165
 #: 6da3bdd6ab32422b9c0a4cfe9fa8dc4c
 msgid "Repeat the above from different computers and devices."
-msgstr ""
+msgstr "從不同的電腦和裝置重複上述操作。"
 
 #: ../../../project-security/verifying-signatures.rst:169
 #: a83d35e69bc146d980314803c93fcd1b
@@ -446,6 +554,9 @@ msgid ""
 "whether a key claiming to be the QMSK is authentic, compare that key’s "
 "fingerprint to your trusted copy and confirm they match."
 msgstr ""
+"一旦您從足夠多的獨立來源以足夠多的不同方式觀察到足夠多的匹配指紋，並確信您擁"
+"有真實的指紋，請將其保存在安全的地方。每次您需要檢查聲稱是 QMSK 的金鑰是否真"
+"實時，請將該金鑰的指紋與您信任的副本進行比較，並確認它們匹配。"
 
 #: ../../../project-security/verifying-signatures.rst:171
 #: 12fb3f9998cf4df1901751b47d42927f
@@ -454,6 +565,8 @@ msgid ""
 "“ultimate” so that it can be used to automatically verify all the keys "
 "signed by the QMSK (in particular, RSKs)."
 msgstr ""
+"既然您已匯入真實的 QMSK，請將其信任等級設定為「ultimate」，以便它可以用來自動"
+"驗證所有由 QMSK 簽署的金鑰（特別是 RSK）。"
 
 #: ../../../project-security/verifying-signatures.rst:215
 #: bac1555f9d2f4daab57197869144e340
@@ -462,13 +575,15 @@ msgid ""
 "member keys, they will already be trusted in virtue of being signed by the "
 "QMSK."
 msgstr ""
+"現在，當您匯入任何發布簽署金鑰和許多 Qubes 團隊成員金鑰時，它們將因為由 QMSK "
+"簽署而已經受到信任。"
 
 #: ../../../project-security/verifying-signatures.rst:217
 #: f5bedae0d5d9409698e6e460afbb3b38
 msgid ""
 "As a final sanity check, make sure the QMSK is in your keyring with the "
 "correct trust level."
-msgstr ""
+msgstr "作為最終的合理性檢查，請確保 QMSK 在您的金鑰環中具有正確的信任等級。"
 
 #: ../../../project-security/verifying-signatures.rst:229
 #: 25d3d77816e648bb8547f5d20ce3634a
@@ -477,11 +592,14 @@ msgid ""
 "follow the instructions in this section carefully and consult the :ref:"
 "`project-security/verifying-signatures:troubleshooting faq` below."
 msgstr ""
+"如果您在這裡沒有看到信任等級為「ultimate」的 QMSK，請返回並仔細遵循本節中的說"
+"明，並查閱下面的 :ref:`project-security/verifying-signatures:troubleshooting "
+"faq`。"
 
 #: ../../../project-security/verifying-signatures.rst:234
 #: 4b8714d06316448c8b809025fa3357ec
 msgid "How to import and authenticate release signing keys"
-msgstr ""
+msgstr "如何匯入和驗證發布簽署金鑰"
 
 #: ../../../project-security/verifying-signatures.rst:237
 #: 4045b34a6a064c5092266921d7e610ac
@@ -489,6 +607,8 @@ msgid ""
 "Every Qubes OS release is signed by a **release signing key (RSK)**, which "
 "is, in turn, signed by the Qubes Master Signing Key (QMSK)."
 msgstr ""
+"每個 Qubes OS 發布版本都由一個**發布簽署金鑰 (RSK)** 簽署，而該金鑰又由 "
+"Qubes Master Signing Key (QMSK) 簽署。"
 
 #: ../../../project-security/verifying-signatures.rst:241
 #: ../../../project-security/verifying-signatures.rst:319
@@ -497,7 +617,7 @@ msgstr ""
 #: 3aec2bde1a024c62bf62714001189a1a
 msgid ""
 "Before we proceed, you must first complete the following prerequisite steps:"
-msgstr ""
+msgstr "在繼續之前，您必須先完成以下先決步驟："
 
 #: ../../../project-security/verifying-signatures.rst:243
 #: ../../../project-security/verifying-signatures.rst:321
@@ -508,11 +628,13 @@ msgid ""
 ":ref:`Install OpenPGP software. <project-security/verifying-signatures:"
 "openpgp software>`"
 msgstr ""
+":ref:`安裝 OpenPGP 軟體。 <project-security/verifying-signatures:openpgp "
+"software>`"
 
 #: ../../../project-security/verifying-signatures.rst:245
 #: 516cbbabce894e69bd881467f9113045
 msgid ":ref:`Import and authenticate the QMSK. <how-to-import-QMSK>`"
-msgstr ""
+msgstr ":ref:`匯入和驗證 QMSK。 <how-to-import-QMSK>`"
 
 #: ../../../project-security/verifying-signatures.rst:249
 #: a3224b1e89964f5eb3a9589698e45e38
@@ -523,6 +645,9 @@ msgid ""
 "Qubes release number, such as :samp:`4` or :samp:`4.3`. There are several "
 "ways to get the RSK for your Qubes release."
 msgstr ""
+"完成這兩個先決步驟後，下一步是取得正確的 RSK。RSK 的檔名模式為 :file:`qubes-"
+"release-{*}-signing-key.asc`，其中 :samp:`{*}` 是 Qubes 的主要或次要版本號，"
+"例如 :samp:`4` 或 :samp:`4.3`。有幾種方法可以取得您 Qubes 版本的 RSK。"
 
 #: ../../../project-security/verifying-signatures.rst:251
 #: 7fe591c53acf472a9e068d4c0dc5ee88
@@ -531,6 +656,9 @@ msgid ""
 "are available **in dom0** or **in the official Fedora templates** (and qubes "
 "based on them), in :file:`/etc/pki/rpm-gpg/RPM-GPG-KEY-qubes-{*}`."
 msgstr ""
+"**如果您可以存取現有的 Qubes 安裝**，發布金鑰可在 **dom0 中**或**官方 Fedora "
+"範本中**（以及基於它們的 qube 中）取得，位於 :file:`/etc/pki/rpm-gpg/RPM-GPG-"
+"KEY-qubes-{*}`。"
 
 #: ../../../project-security/verifying-signatures.rst:253
 #: a28dbf7fba854160b87223142b048ec7
@@ -539,18 +667,21 @@ msgid ""
 "dom0>` or :doc:`any qube based on fedora </user/how-to-guides/how-to-copy-"
 "and-move-files>` into other qubes for further use."
 msgstr ""
+"這些可以 :doc:`從 dom0 複製 </user/how-to-guides/how-to-copy-from-dom0>` 或 :"
+"doc:`從任何基於 fedora 的 qube </user/how-to-guides/how-to-copy-and-move-"
+"files>` 複製到其他 qube 中以供進一步使用。"
 
 #: ../../../project-security/verifying-signatures.rst:255
 #: daf10719e30d455d9edd24742dbe204b
 msgid ""
 "If you wish to use one of these keys, **make sure to import it into your "
 "keyring**, e.g.:"
-msgstr ""
+msgstr "如果您希望使用其中一個金鑰，**請確保將其匯入您的金鑰環**，例如："
 
 #: ../../../project-security/verifying-signatures.rst:262
 #: 4f3eb60e4af543d7b1ae5b8ca516e6db
 msgid "**Fetch it with GPG**:"
-msgstr ""
+msgstr "**使用 GPG 取得它**："
 
 #: ../../../project-security/verifying-signatures.rst:269
 #: 9af241c3690642259f46941c618448a2
@@ -562,13 +693,18 @@ msgid ""
 "security/security-pack>` and the `Qubes keyserver <https://keys.qubes-os.org/"
 "keys/>`__. Once you’ve downloaded your RSK, **import it with GPG**:"
 msgstr ""
+"**以檔案形式下載**。您可以在`下載頁面 <https://www.qubes-os.org/downloads/"
+">`__ 上找到您 Qubes 版本的 RSK。您也可以從 :doc:`Qubes 安全包 </project-"
+"security/security-pack>` 和 `Qubes keyserver <https://keys.qubes-os.org/keys/"
+">`__ 下載所有目前使用的開發者簽署金鑰、RSK 和 Qubes Master Signing Key。下載 "
+"RSK 後，**使用 GPG 匯入它**："
 
 #: ../../../project-security/verifying-signatures.rst:278
 #: a6cefbd6ffd446788528a0337db01225
 msgid ""
 "Now that you have the correct RSK, you simply need to verify that it is "
 "signed by the QMSK:"
-msgstr ""
+msgstr "既然您有了正確的 RSK，您只需要驗證它是由 QMSK 簽署的："
 
 #: ../../../project-security/verifying-signatures.rst:293
 #: 3f443716155e4c22b6852053bf733fbf
@@ -583,13 +719,18 @@ msgid ""
 "necessary to independently verify the authenticity of the RSK, since you "
 "already verified the authenticity of the QMSK."
 msgstr ""
+"這只是一個範例，因此您收到的輸出可能不完全相同（:samp:`{X}` 將被版本號取"
+"代）。重要的是帶有 ``sig!`` 前綴的行，顯示 QMSK 已簽署此金鑰。這驗證了 RSK 的"
+"真實性。請注意，``sig`` 標籤後的 ``!`` 標誌很重要，因為它表示金鑰簽章是有效"
+"的。``sig-`` 前綴將表示簽章錯誤，而 ``sig%`` 則表示 gpg 在驗證簽章時遇到錯"
+"誤。您不需要獨立驗證 RSK 的真實性，因為您已經驗證了 QMSK 的真實性。"
 
 #: ../../../project-security/verifying-signatures.rst:295
 #: 3598a9e236084f3cb460a32643c2dc8f
 msgid ""
 "As a final sanity check, make sure the RSK is in your keyring with the "
 "correct trust level:"
-msgstr ""
+msgstr "作為最終的合理性檢查，請確保 RSK 在您的金鑰環中具有正確的信任等級："
 
 #: ../../../project-security/verifying-signatures.rst:306
 #: 9bb4a14a08c8486483f7a180fd2a6921
@@ -599,23 +740,26 @@ msgid ""
 "consult the :ref:`project-security/verifying-signatures:troubleshooting faq` "
 "below."
 msgstr ""
+"如果您在這裡沒有看到具有「full」或更高信任等級的正確 RSK，請返回並仔細遵循本"
+"節中的說明，並查閱下面的 :ref:`project-security/verifying-signatures:"
+"troubleshooting faq`。"
 
 #: ../../../project-security/verifying-signatures.rst:309
 #: 626757314b434384a9e5bdb753eef72c
 msgid "How to obtain and authenticate other signing keys"
-msgstr ""
+msgstr "如何取得和驗證其他簽署金鑰"
 
 #: ../../../project-security/verifying-signatures.rst:312
 #: 3e16f705e0e745fd80ad73fd46a5db18
 msgid ""
 "Please see the :doc:`Qubes security pack </project-security/security-pack>` "
 "documentation."
-msgstr ""
+msgstr "請參閱 :doc:`Qubes 安全包 </project-security/security-pack>` 文件。"
 
 #: ../../../project-security/verifying-signatures.rst:315
 #: e57a92a59b314caeb726d3235c1f7d64
 msgid "How to verify detached PGP signatures on Qubes ISOs"
-msgstr ""
+msgstr "如何驗證 Qubes ISO 上的分離式 PGP 簽章"
 
 #: ../../../project-security/verifying-signatures.rst:323
 #: ../../../project-security/verifying-signatures.rst:414
@@ -623,13 +767,13 @@ msgstr ""
 msgid ""
 ":ref:`Import and authenticate the Qubes Master Signing Key. <how-to-import-"
 "QMSK>`"
-msgstr ""
+msgstr ":ref:`匯入和驗證 Qubes Master Signing Key。 <how-to-import-QMSK>`"
 
 #: ../../../project-security/verifying-signatures.rst:325
 #: 6660b6788836492281cdfb6f86ecdc69
 msgid ""
 ":ref:`Import and authenticate your release signing key. <how-to-import-RSK>`"
-msgstr ""
+msgstr ":ref:`匯入和驗證您的發布簽署金鑰。 <how-to-import-RSK>`"
 
 #: ../../../project-security/verifying-signatures.rst:329
 #: f7a07d755c74441c9fa26b05cd29b9d8
@@ -642,6 +786,11 @@ msgid ""
 "signature filename is always the same as the ISO filename followed by ``."
 "asc``."
 msgstr ""
+"每個 Qubes ISO 都附帶一個**分離式 PGP 簽章**檔案，您可以在`下載頁面 <https://"
+"www.qubes-os.org/downloads/>`__ 上與 ISO 一起找到。如果您 ISO 的檔名是 :file:"
+"`Qubes-R{X}-86_64.iso`，則該 ISO 的簽章檔名為 :file:`Qubes-R{X}-86_64.iso."
+"asc`，其中 :samp:`{X}` 是特定的 Qubes 版本。簽章檔名始終與 ISO 檔名相同，後"
+"接 ``.asc``。"
 
 #: ../../../project-security/verifying-signatures.rst:331
 #: f92850c2b3b646c4914cad56f7abfd89
@@ -652,6 +801,9 @@ msgid ""
 "make sure to replace :samp:`Qubes-R{X}` by the correct release number (i."
 "e.: :samp:`Qubes-R{4.3}`):"
 msgstr ""
+"**下載 ISO 和其簽章檔案**。將它們都放在**同一個目錄**中，然後導航到該目錄。現"
+"在，您可以在包含這兩個檔案的目錄中執行此 GPG 命令來驗證 ISO，請確保將 :samp:"
+"`Qubes-R{X}` 替換為正確的版本號（例如 :samp:`Qubes-R{4.3}`）："
 
 #: ../../../project-security/verifying-signatures.rst:344
 #: 44f3b0baec544719983386b5ec1a03ba
@@ -661,6 +813,9 @@ msgid ""
 "Release X Signing Key\"``. This confirms that the signature on the ISO is "
 "good."
 msgstr ""
+"這只是一個範例，因此您收到的輸出不會完全相同。重要的是顯示 ``Good signature "
+"from \"Qubes OS Release X Signing Key\"`` 的那一行。這確認了 ISO 上的簽章是有"
+"效的。"
 
 #: ../../../project-security/verifying-signatures.rst:346
 #: e27e59f79a924ad8b5fb335b25d47e1d
@@ -669,16 +824,18 @@ msgid ""
 "in this section carefully, and consult the :ref:`project-security/verifying-"
 "signatures:troubleshooting faq` below."
 msgstr ""
+"如果您在這裡沒有看到有效的簽章，請返回並仔細遵循本節中的說明，並查閱下面的 :"
+"ref:`project-security/verifying-signatures:troubleshooting faq`。"
 
 #: ../../../project-security/verifying-signatures.rst:349
 #: b45e89436a564a80a306ea91efb824f5
 msgid "How to re-verify installation media after writing"
-msgstr ""
+msgstr "如何重新驗證寫入後的安裝媒體"
 
 #: ../../../project-security/verifying-signatures.rst:351
 #: 12c3807292da45879bd8bf553334f8ac
 msgid "This is an optional section intended for advanced users."
-msgstr ""
+msgstr "這是一個可選章節，適用於進階使用者。"
 
 #: ../../../project-security/verifying-signatures.rst:353
 #: e98340251995418b94bb96941b484f71
@@ -697,16 +854,23 @@ msgid ""
 "as discussed in our :doc:`installation security considerations </user/"
 "downloading-installing-upgrading/install-security>`."
 msgstr ""
+"**為什麼在已經驗證原始 ISO 之後還要重新驗證已寫入的資料？** 可以想像，一個足"
+"夠老練的對手可能會讓您的初始 ISO 驗證成功（例如以免警覺到您的機器已被入侵），"
+"然後在資料寫入安裝媒體時暗中修改資料，導致 Qubes 安裝程式被入侵。這可能會增加"
+"攻擊不被檢測到的機率。減輕此風險的一種方法是在將安裝程式寫入無法更改的安裝媒"
+"體（例如具有正確實作物理寫入保護開關和不可刷新或經加密簽章（或兩者兼備）的韌"
+"體的 USB 隨身碟）後重新驗證，如我們的 :doc:`安裝安全考量 </user/downloading-"
+"installing-upgrading/install-security>` 中所述。"
 
 #: ../../../project-security/verifying-signatures.rst:355
 #: 29b9c07d45db420b93cebcbcd3fe62c9
 msgid "Before we proceed, you must have:"
-msgstr ""
+msgstr "在繼續之前，您必須具備："
 
 #: ../../../project-security/verifying-signatures.rst:357
 #: f872a1c11c454ada8ae903853d145446
 msgid ":ref:`an authentic RSK <how-to-import-RSK>`"
-msgstr ""
+msgstr ":ref:`一個真實的 RSK <how-to-import-RSK>`"
 
 #: ../../../project-security/verifying-signatures.rst:358
 #: 839edb0c713144ef832c1a5681e936ae
@@ -715,6 +879,9 @@ msgid ""
 "installing-upgrading/installation-guide:copying the iso onto the "
 "installation medium>` (such as a USB drive or optical disc)"
 msgstr ""
+":ref:`將 Qubes ISO 寫入您想要的媒體 <user/downloading-installing-upgrading/"
+"installation-guide:copying the iso onto the installation medium>`（例如 USB "
+"隨身碟或光碟）"
 
 #: ../../../project-security/verifying-signatures.rst:360
 #: 0f364033988d453aac590e8c56258261
@@ -722,11 +889,13 @@ msgid ""
 "**First**, unplug your USB drive and flip the write protect switch so that "
 "the data on the drive can no longer be altered."
 msgstr ""
+"**首先**，拔下您的 USB 隨身碟並撥動寫入保護開關，使隨身碟上的資料無法再被更"
+"改。"
 
 #: ../../../project-security/verifying-signatures.rst:362
 #: dde0636230ce43efb2ea670405d16953
 msgid "Then, you have two options:"
-msgstr ""
+msgstr "然後，您有兩個選項："
 
 #: ../../../project-security/verifying-signatures.rst:364
 #: 7a30be0fce1d41ffb13139cff2ed1dbb
@@ -735,6 +904,8 @@ msgid ""
 "installation medium, consider using that computer, preferably an offline "
 "computer that has never seen the original ISO."
 msgstr ""
+"**如果您有與建立安裝媒體不同的電腦**，請考慮使用該電腦，最好是從未見過原始 "
+"ISO 的離線電腦。"
 
 #: ../../../project-security/verifying-signatures.rst:365
 #: 13cc4c26701a43fe8772ce7a3713e2b1
@@ -743,6 +914,8 @@ msgid ""
 "system), preferably offline and with a storage space that is too small to "
 "hold the original ISO"
 msgstr ""
+"**如果沒有**\\ ，請至少嘗試使用一個全新的 VM（例如如果是 Qubes 系統則使用新"
+"的 qube），最好是離線的，且儲存空間小到無法容納原始 ISO。"
 
 #: ../../../project-security/verifying-signatures.rst:367
 #: 7589870e3cb44168aeb94be8d0f80526
@@ -758,6 +931,12 @@ msgid ""
 "the USB drive blinking to support the illusion that the data is being read "
 "from the USB drive)."
 msgstr ""
+"其概念是原始系統可能已被入侵，而使用不同的系統進行重新驗證迫使您的假想對手必"
+"須再入侵另一個系統才能成功。畢竟，如果您的對手知道您正在尋找的答案——也就是與"
+"真實 ISO 匹配——並且可以在同一個重新驗證環境中存取該 ISO，那麼幾乎沒有什麼可以"
+"阻止他們直接讀取原始 ISO 並將該結果提供給您（可能同時從 USB 隨身碟讀取資料並"
+"將其導入 ``/dev/null``，讓您看到 USB 隨身碟上的燈閃爍，以營造正在從 USB 隨身"
+"碟讀取資料的假象）。"
 
 #: ../../../project-security/verifying-signatures.rst:369
 #: f203b5ccec3842df845717fde6a79188
@@ -767,6 +946,8 @@ msgid ""
 "directly from the write-protected USB drive instead of from the original ISO "
 "file."
 msgstr ""
+"現在，我們的目標是執行**與原始 ISO 相同的驗證步驟**，但這次我們將直接從已寫入"
+"保護的 USB 隨身碟讀取安裝程式資料，而不是從原始 ISO 檔案。"
 
 #: ../../../project-security/verifying-signatures.rst:371
 #: 1ff7b74faa1947b9a27aaa3d34d8d081
@@ -774,6 +955,8 @@ msgid ""
 "In order to do this, **we have to know the exact size, in bytes, of the "
 "original ISO**. There are two ways to get this information:"
 msgstr ""
+"為了做到這一點，**我們必須知道原始 ISO 的準確大小（以位元組為單位）**。有兩種"
+"方法可以取得此資訊："
 
 #: ../../../project-security/verifying-signatures.rst:373
 #: bdb051ecba8c49a2a9f68a650bed0cf5
@@ -783,11 +966,15 @@ msgid ""
 "these values directly in the `downloads page’s source data <https://github."
 "com/QubesOS/qubesos.github.io/blob/master/_data/downloads.yml>`__."
 msgstr ""
+"**從 Qubes 網站**，將滑鼠懸停在`下載頁面 <https://www.qubes-os.org/downloads/"
+">`__ 上的任何 ISO 下載按鈕上。您也可以直接在`下載頁面的原始資料 <https://"
+"github.com/QubesOS/qubesos.github.io/blob/master/_data/downloads.yml>`__ 中檢"
+"視這些值。"
 
 #: ../../../project-security/verifying-signatures.rst:374
 #: e36d494123f74810955da6b7a77b607c
 msgid "**from the ISO itself**:"
-msgstr ""
+msgstr "**從 ISO 本身**\\ ："
 
 #: ../../../project-security/verifying-signatures.rst:381
 #: 69f3577f002b4a3e9d4f531b412c9c2a
@@ -796,6 +983,8 @@ msgid ""
 "replaced by the release number). Note that your actual byte number will "
 "depend on which Qubes ISO you’re using. This is just an example."
 msgstr ""
+"其中 :file:`Qubes-R{X}-x86_64.iso` 是您的 Qubes ISO（:samp:`{X}` 被版本號取"
+"代）。請注意，您實際的位元組數將取決於您使用的 Qubes ISO。這只是一個範例。"
 
 #: ../../../project-security/verifying-signatures.rst:383
 #: 2df7e3d2adf44bd88fc198b2359e11eb
@@ -804,6 +993,9 @@ msgid ""
 "against the data on the USB drive. The following command reads the exact "
 "number of bytes from your USB drive and pipes them into :program:`gpg`:"
 msgstr ""
+"您現在可以使用 :program:`gpg` 直接針對 USB 隨身碟上的資料驗證分離式 PGP 簽"
+"章。以下命令從您的 USB 隨身碟讀取精確的位元組數，並將它們透過管道傳入 :"
+"program:`gpg`："
 
 #: ../../../project-security/verifying-signatures.rst:398
 #: 26ed2787dd364d37b06dd90dd06ccb1a
@@ -812,6 +1004,9 @@ msgid ""
 "in bytes of the original ISO and ``Qubes-RX-x86_64.iso.asc`` is the detached "
 "PGP signature file of the original ISO."
 msgstr ""
+"其中 :file:`/dev/{sdX}` 是您的 USB 隨身碟，:samp:`<SIZE>` 是原始 ISO 的準確大"
+"小（以位元組為單位），``Qubes-RX-x86_64.iso.asc`` 是原始 ISO 的分離式 PGP 簽"
+"章檔案。"
 
 #: ../../../project-security/verifying-signatures.rst:400
 #: dff820679bdc475e8993535e1e78c99a
@@ -821,6 +1016,9 @@ msgid ""
 "to use data from your USB drive as the ``<SIGNED_DATA>``, which is why the "
 "``-`` at the end of the command is required."
 msgstr ""
+":program:`gpg` 驗證命令的通常形式是 ``gpg --verify <簽章> <簽署資料>``。我們"
+"的命令使用 shell 重新導向，以便將來自 USB 隨身碟的資料用作 ``<簽署資料>``，這"
+"就是為什麼命令末尾需要 ``-`` 的原因。"
 
 #: ../../../project-security/verifying-signatures.rst:403
 #: 6826c726739343fc85cfdcb3aef807f2
@@ -830,11 +1028,14 @@ msgid ""
 "`appropriate RSK <how-to-import-RSK>`, which should be signed by a copy of "
 "the :ref:`genuine QMSK <how-to-import-QMSK>`."
 msgstr ""
+"**您收到的輸出不會完全相同**，重要的是您應該收到一個針對 :ref:`適當的 RSK "
+"<how-to-import-RSK>` 的 ``Good signature`` 訊息，而該 RSK 應由 :ref:`真實 "
+"QMSK <how-to-import-QMSK>` 的副本簽署。"
 
 #: ../../../project-security/verifying-signatures.rst:406
 #: f942d7394a06457093c2ae5df095f3cd
 msgid "How to verify signatures on Git repository tags and commits"
-msgstr ""
+msgstr "如何驗證 Git 儲存庫標籤和送交上的簽章"
 
 #: ../../../project-security/verifying-signatures.rst:416
 #: bf35ab1d03b74354b3827aca3ad2153e
@@ -844,6 +1045,9 @@ msgid ""
 "policies <project-security/security-pack:pgp key policies>` for important "
 "information about these keys."
 msgstr ""
+":doc:`從 Qubes 安全包 (qubes-secpack) 匯入和驗證金鑰。 </project-security/"
+"security-pack>` 請參閱我們的 :ref:`PGP 金鑰政策 <project-security/security-"
+"pack:pgp key policies>` 以了解關於這些金鑰的重要資訊。"
 
 #: ../../../project-security/verifying-signatures.rst:420
 #: 76437ff1b494461d98ce3ba3731f574a
@@ -858,6 +1062,12 @@ msgid ""
 "you personally vouch for the trustworthiness of the unsigned commits. "
 "Instead, ask the person who pushed the unsigned commits to sign them."
 msgstr ""
+"每當您使用任何 `Qubes 儲存庫 <https://github.com/QubesOS>`__\\ 時，您應該使"
+"用 Git 驗證最新送交上的標籤或最新送交本身的 PGP 簽章。（可能兩者都存在，但只"
+"需要一個。）如果頂端沒有可信任的已簽署標籤或送交，則最新可信任已簽署標籤或送"
+"交之後的任何送交都\\ **不應**\\ 被信任。如果您遇到包含任何未簽署送交的儲存"
+"庫，您不應在其之上添加任何自己的已簽署標籤或送交，除非您個人擔保這些未簽署送"
+"交的可信度。相反地，請要求推送未簽署送交的人對它們進行簽署。"
 
 #: ../../../project-security/verifying-signatures.rst:422
 #: fb0c21c7ed044e79a007330865c0ad66
@@ -873,54 +1083,58 @@ msgid ""
 "yourself. (Also see: :ref:`distrusting the infrastructure <introduction/faq:"
 "what does it mean to \"distrust the infrastructure\"?>`.)"
 msgstr ""
+"GitHub 正確執行了簽章檢查、帳戶身份是真實的、管理員未更換使用者的金鑰、"
+"GitHub 的伺服器未被入侵等。由於您無法確定所有這些條件都成立，因此最好自己驗證"
+"簽章。（另請參閱：:ref:`distrusting the infrastructure <introduction/faq:"
+"what does it mean to \"distrust the infrastructure\"?>`。）"
 
 #: ../../../project-security/verifying-signatures.rst:425
 #: 7bf29535f5d842f6ab6ab0287519211d
 msgid "How to verify a signature on a Git tag"
-msgstr ""
+msgstr "如何驗證 Git 標籤上的簽章"
 
 #: ../../../project-security/verifying-signatures.rst:433
 #: ../../../project-security/verifying-signatures.rst:449
 #: 62e4901f1c9f4514847612076d7ba0b4 7547909b155346ae8ca6e938ef9bcd9f
 msgid "or"
-msgstr ""
+msgstr "或"
 
 #: ../../../project-security/verifying-signatures.rst:441
 #: 6637339e146e47ccb6a71e741cc2b362
 msgid "How to verify a signature on a Git commit"
-msgstr ""
+msgstr "如何驗證 Git 送交上的簽章"
 
 #: ../../../project-security/verifying-signatures.rst:457
 #: bac8b7bbb0f941948587683c7ec4379f
 msgid "Troubleshooting FAQ"
-msgstr ""
+msgstr "疑難排解常見問題"
 
 #: ../../../project-security/verifying-signatures.rst:461
 #: 860af71960bf4f8dac1fda35a364822c
 msgid "Why am I getting \"Can't check signature: public key not found\"?"
-msgstr ""
+msgstr "為什麼我收到「Can't check signature: public key not found」？"
 
 #: ../../../project-security/verifying-signatures.rst:464
 #: 65f7a9504f3c4a59b8860d0dc2a5630f
 msgid ""
 "You don’t have the correct :ref:`release signing key <how-to-import-RSK>`."
-msgstr ""
+msgstr "您沒有正確的\\ :ref:`發佈簽署金鑰 <how-to-import-RSK>`\\ 。"
 
 #: ../../../project-security/verifying-signatures.rst:467
 #: e37dbc2573dc4be799984dedf0173319
 msgid ""
 "Why am I getting \"BAD signature from ‘Qubes OS Release X Signing Key'\"?"
-msgstr ""
+msgstr "為什麼我收到「BAD signature from 'Qubes OS Release X Signing Key'」？"
 
 #: ../../../project-security/verifying-signatures.rst:470
 #: 28ba076905d14ff391d9a65d5f28a4ff
 msgid "The problem could be one or more of the following:"
-msgstr ""
+msgstr "問題可能是以下一項或多項："
 
 #: ../../../project-security/verifying-signatures.rst:472
 #: 1368c98d3d254fa884d2d9923f6510ed
 msgid "You’re trying to verify the wrong file(s). Reread this page carefully."
-msgstr ""
+msgstr "您正在嘗試驗證錯誤的檔案。仔細重新閱讀此頁面。"
 
 #: ../../../project-security/verifying-signatures.rst:474
 #: 57ca30fb87cc47398bc2536a093b0e23
@@ -928,6 +1142,8 @@ msgid ""
 "You’re using the wrong GPG command. Follow the provided examples carefully, "
 "or try using ``gpg`` instead of ``gpg2`` (or vice versa)."
 msgstr ""
+"您使用了錯誤的 GPG 命令。仔細遵循提供的範例，或嘗試使用 ``gpg`` 代替 ``gpg2``"
+"（反之亦然）。"
 
 #: ../../../project-security/verifying-signatures.rst:476
 #: 48a17bd2b7834dce838d77a7850735dd
@@ -939,11 +1155,15 @@ msgid ""
 "the same result, try downloading the ISO again from a different source, then "
 "try verifying again."
 msgstr ""
+"ISO 或 :ref:`分離式 PGP 簽章檔案 <project-security/verifying-signatures:how "
+"to verify detached pgp signatures on qubes isos>` 有問題（例如下載不完整或損"
+"毀）。請嘗試從其他來源重新下載簽章檔案，然後再次嘗試驗證。如果仍然得到相同的"
+"結果，請嘗試從其他來源重新下載 ISO，然後再次嘗試驗證。"
 
 #: ../../../project-security/verifying-signatures.rst:481
 #: 742af3f7172a447c901a114e8a377544
 msgid "Why am I getting \"bash: gpg2: command not found\"?"
-msgstr ""
+msgstr "為什麼我收到「bash: gpg2: command not found」？"
 
 #: ../../../project-security/verifying-signatures.rst:484
 #: 57a1b19a89374642ba86704d5a8f53ef
@@ -952,11 +1172,13 @@ msgid ""
 "appropriate for your environment (e.g., via your package manager), or try "
 "using ``gpg`` instead."
 msgstr ""
+"您尚未安裝 ``gpg2``。請使用適合您環境的方法（例如透過套件管理器）安裝它，或嘗"
+"試使用 ``gpg`` 代替。"
 
 #: ../../../project-security/verifying-signatures.rst:487
 #: 677210e92ec045dab726d468e649832b
 msgid "Why am I getting \"No such file or directory\"?"
-msgstr ""
+msgstr "為什麼我收到「No such file or directory」？"
 
 #: ../../../project-security/verifying-signatures.rst:490
 #: 019254efa1b34f7da26848117c263f9f
@@ -965,6 +1187,8 @@ msgid ""
 "follow the instructions more carefully, making sure that you put all "
 "required files in the same directory *and* navigate to that directory."
 msgstr ""
+"您的工作目錄不包含所需的檔案。返回並更仔細地遵循說明，確保將所有所需檔案放在"
+"同一個目錄中\\ *並*\\ 導航到該目錄。"
 
 #: ../../../project-security/verifying-signatures.rst:493
 #: d7e984b875fc44718d0e5fdd869d0b3a
@@ -972,12 +1196,14 @@ msgid ""
 "Why am I getting \"can't open signed data ‘Qubes-RX-x86_64.iso'\" / \"no "
 "signed data\" / \"can't hash datafile: No data\"?"
 msgstr ""
+"為什麼我收到「can't open signed data 'Qubes-RX-x86_64.iso'」/「no signed "
+"data」/「can't hash datafile: No data」？"
 
 #: ../../../project-security/verifying-signatures.rst:496
 #: ../../../project-security/verifying-signatures.rst:558
 #: 7f3786e192d94e5b9e53d97de359c8b2 616c45a2f4c54dafb0650b9ad238cafd
 msgid "The correct ISO is not in your working directory."
-msgstr ""
+msgstr "正確的 ISO 不在您的工作目錄中。"
 
 #: ../../../project-security/verifying-signatures.rst:499
 #: 652392853972418aabf635b9ebc84a05
@@ -985,6 +1211,8 @@ msgid ""
 "Why am I getting \"can't open ‘Qubes-RX-x86_64.iso.asc' / verify signatures "
 "failed: file open error\"?"
 msgstr ""
+"為什麼我收到「can't open 'Qubes-RX-x86_64.iso.asc' / verify signatures "
+"failed: file open error」？"
 
 #: ../../../project-security/verifying-signatures.rst:502
 #: 4268f25951f84ca9a5ef0ae38f0f48bd
@@ -993,11 +1221,13 @@ msgid ""
 "signatures:how to verify detached pgp signatures on qubes isos>` is not in "
 "your working directory."
 msgstr ""
+"正確的 :ref:`分離式 PGP 簽章檔案 <project-security/verifying-signatures:how "
+"to verify detached pgp signatures on qubes isos>` 不在您的工作目錄中。"
 
 #: ../../../project-security/verifying-signatures.rst:505
 #: 1fbe443fa4ab438bb028661578103229
 msgid "Why am I getting \"no valid OpenPGP data found\"?"
-msgstr ""
+msgstr "為什麼我收到「no valid OpenPGP data found」？"
 
 #: ../../../project-security/verifying-signatures.rst:508
 #: 3016cf7ef95d43379d91e3dd7d778d16
@@ -1007,6 +1237,9 @@ msgid ""
 "isos>`, or you inverted the arguments to ``gpg2``. (The signature file goes "
 "first.)"
 msgstr ""
+"您沒有正確的 :ref:`分離式 PGP 簽章檔案 <project-security/verifying-"
+"signatures:how to verify detached pgp signatures on qubes isos>`，或者您將 "
+"``gpg2`` 的引數順序顛倒了。（簽章檔案在前。）"
 
 #: ../../../project-security/verifying-signatures.rst:511
 #: 1eaa26acd5284ee9b5fa3c5d1aa5a775
@@ -1014,17 +1247,19 @@ msgid ""
 "Why am I getting \"WARNING: This key is not certified with a trusted "
 "signature! There is no indication that the signature belongs to the owner.\"?"
 msgstr ""
+"為什麼我收到「WARNING: This key is not certified with a trusted signature! "
+"There is no indication that the signature belongs to the owner.」？"
 
 #: ../../../project-security/verifying-signatures.rst:514
 #: 1f278b0e780d4700972476ef808d72fe
 msgid "There are several possibilities:"
-msgstr ""
+msgstr "有幾種可能性："
 
 #: ../../../project-security/verifying-signatures.rst:516
 #: a41e482fbb084366aec9a08c66c07697
 msgid ""
 "You don’t have the :ref:`Qubes Master Signing Key <how-to-import-QMSK>`."
-msgstr ""
+msgstr "您沒有 :ref:`Qubes Master Signing Key <how-to-import-QMSK>`。"
 
 #: ../../../project-security/verifying-signatures.rst:518
 #: f3ea37e6e88149ef8f63553d71413c04
@@ -1032,6 +1267,8 @@ msgid ""
 "You have not :ref:`set the Qubes Master Signing Key’s trust level correctly. "
 "<how-to-import-QMSK>`"
 msgstr ""
+"您尚未\\ :ref:`正確設定 Qubes Master Signing Key 的信任等級。 <how-to-import-"
+"QMSK>`"
 
 #: ../../../project-security/verifying-signatures.rst:520
 #: edab120baf9848fe95a0e1efcf347321
@@ -1041,11 +1278,14 @@ msgid ""
 "security/verifying-signatures:how to verify signatures on git repository "
 "tags and commits>`"
 msgstr ""
+"對於非由 Qubes Master Signing Key 直接簽署的金鑰，您尚未 :ref:`正確設定該金鑰"
+"的信任等級。 <project-security/verifying-signatures:how to verify signatures "
+"on git repository tags and commits>`"
 
 #: ../../../project-security/verifying-signatures.rst:525
 #: ab812d7735664b9baca83a9d5efc3760
 msgid "Why am I getting \"X signature not checked due to a missing key\"?"
-msgstr ""
+msgstr "為什麼我收到「X signature not checked due to a missing key」？"
 
 #: ../../../project-security/verifying-signatures.rst:528
 #: 57939ab369de4bf791a14f76936944c4
@@ -1055,6 +1295,9 @@ msgid ""
 "have the :ref:`Qubes Master Signing Key <how-to-import-QMSK>` and the :ref:"
 "`release signing key <how-to-import-RSK>` for your Qubes release."
 msgstr ""
+"您的金鑰環中沒有建立這些簽章的金鑰。就驗證 Qubes ISO 而言，只要您擁有 :ref:"
+"`Qubes Master Signing Key <how-to-import-QMSK>` 和您 Qubes 版本的\\ :ref:`發"
+"佈簽署金鑰 <how-to-import-RSK>`\\ ，就不需要它們。"
 
 #: ../../../project-security/verifying-signatures.rst:531
 #: 48ea1b976bfd4f049e34ed39004f4c42
@@ -1062,6 +1305,7 @@ msgid ""
 "Why am I seeing additional signatures on a key with \"[User ID not found]\" "
 "or from a revoked key?"
 msgstr ""
+"為什麼我在金鑰上看到帶有「[User ID not found]」或來自已撤銷金鑰的額外簽章？"
 
 #: ../../../project-security/verifying-signatures.rst:534
 #: ef9e7295d689449c977a1c0da236a886
@@ -1072,11 +1316,14 @@ msgid ""
 "can create a revocation certificate). This has no impact on verifying Qubes "
 "ISOs, code, or keys."
 msgstr ""
+"這只是 OpenPGP 運作方式的基本部分。任何人都可以簽署他人的公鑰並將簽署後的金鑰"
+"上傳到 keyserver。每個人也可以隨時自由撤銷自己的金鑰（假設他們擁有或可以建立"
+"撤銷憑證）。這不影響驗證 Qubes ISO、程式碼或金鑰。"
 
 #: ../../../project-security/verifying-signatures.rst:537
 #: 57c64dfcebd847b59d5d4d99e1b3957e
 msgid "Why am I getting \"verify signatures failed: unexpected data\"?"
-msgstr ""
+msgstr "為什麼我收到「verify signatures failed: unexpected data」？"
 
 #: ../../../project-security/verifying-signatures.rst:540
 #: ../../../project-security/verifying-signatures.rst:546
@@ -1086,16 +1333,18 @@ msgid ""
 "<project-security/verifying-signatures:how to verify detached pgp signatures "
 "on qubes isos>`."
 msgstr ""
+"您驗證的對象不是正確的 :ref:`獨立 PGP 簽章檔案 <project-security/verifying-"
+"signatures:how to verify detached pgp signatures on qubes isos>`。"
 
 #: ../../../project-security/verifying-signatures.rst:543
 #: a3c47b274267420da67ee047b4af4e8e
 msgid "Why am I getting \"not a detached signature\"?"
-msgstr ""
+msgstr "為什麼我收到「not a detached signature」？"
 
 #: ../../../project-security/verifying-signatures.rst:549
 #: fc7368608854469e93360195f1912d16
 msgid "Why am I getting \"CRC error; […] no signature found […]\"?"
-msgstr ""
+msgstr "為什麼我收到「CRC error; […] no signature found […]」？"
 
 #: ../../../project-security/verifying-signatures.rst:552
 #: 865243d1b913415ca481c17c70560444
@@ -1105,16 +1354,19 @@ msgid ""
 "on qubes isos>`, or the signature file has been modified. Try downloading it "
 "again or from a different source."
 msgstr ""
+"您驗證的對象不是正確的 :ref:`獨立 PGP 簽章檔案 <project-security/verifying-"
+"signatures:how to verify detached pgp signatures on qubes isos>`，或者簽章檔"
+"案已被修改。請嘗試重新下載或從其他來源下載。"
 
 #: ../../../project-security/verifying-signatures.rst:555
 #: d8da7b97b40d4816af53bc7cf0f3b03a
 msgid "Why am I getting \"WARNING: 1 listed file could not be read\"?"
-msgstr ""
+msgstr "為什麼我收到「WARNING: 1 listed file could not be read」？"
 
 #: ../../../project-security/verifying-signatures.rst:561
 #: 9c3a3f786de2477eb2ac739ec1ae760d
 msgid "I have another problem that isn't mentioned here."
-msgstr ""
+msgstr "我遇到此處未提及的其他問題。"
 
 #: ../../../project-security/verifying-signatures.rst:564
 #: eb72fdf8022d401f81a4c4f4e01d1594
@@ -1129,3 +1381,11 @@ msgid ""
 ">`__. Still have question? Please see :doc:`help, support, mailing lists, "
 "and forum </introduction/support>` for places where you can ask!"
 msgstr ""
+"仔細重新閱讀此頁面，以確認您沒有跳過任何步驟。特別是，請確保您擁有 :ref:"
+"`Qubes Master Signing Key <how-to-import-QMSK>`、適用於您 Qubes 版本的\\ :"
+"ref:`發布簽署金鑰 <how-to-import-RSK>`\\，\\ *以及*\\ :ref:`分離式 PGP 簽章檔"
+"案 <project-security/verifying-signatures:how to verify detached pgp "
+"signatures on qubes isos>`\\ ，全部都是針對*正確的* Qubes OS 版本。如果您的問"
+"題是關於 GPG，請參閱 `GnuPG 文件 <https://www.gnupg.org/documentation/>`__。"
+"還有問題嗎？請參閱\\ :doc:`協助、支援、郵件列表與論壇 </introduction/"
+"support>`\\ 尋找可以提問的地方！"
