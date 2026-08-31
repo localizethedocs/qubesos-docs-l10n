@@ -8,26 +8,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-08-31 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/debugging/automated-tests.rst:3
-#: 9fde8924fe924d9d941d35b4de91c388
+#: 60364a07d1f6423eae89c25b97fcb17e
 msgid "Automated tests"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:7
-#: 16d28df2a29c4b22b04ac3e26bd20818
+#: d6ba92daa6984e12a8fb6813dcaf7523
 msgid "Unit and Integration Tests"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:10
-#: 2ae0c449384945c39985e83dd8df66de
+#: cdd68f2bf1f94e4daf8890502d457974
 msgid ""
 "Starting with Qubes R3 we use `python unittest <https://docs.python.org/3/"
 "library/unittest.html>`__ to perform automatic tests of Qubes OS. Despite "
@@ -38,19 +39,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:12
-#: 76493c19a7364d829c8de19cbc70ab06
+#: d8988fe4f86b4cfaa4ef006730fefa66
 msgid ""
 "The integration tests must be run in dom0, but some unit tests can run "
 "inside a VM as well."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:15
-#: e63fc1d17d5b4d75bc30ce0721044bf6
+#: c866392315764b8e80f685e5333e4914
 msgid "Integration & unit testing in dom0"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:18
-#: d5e63ed47e6f4ce59c0c73735a637996
+#: 13d05a4cf252432f96e3120c70d28a1c
 msgid ""
 "Integration tests are written with the assumption that they will be executed "
 "on dedicated hardware and must be run in dom0. All other unit tests can also "
@@ -58,14 +59,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:20
-#: e13627cd06a64e1a907b09c3c9723e85
+#: 7291bc5ba8214067989b8b8a98a2b3d1
 msgid ""
 "**Do not run the tests on installations with important data, because you "
 "might lose it.**"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:22
-#: ea0ecc172f1543678fb2c871a657fc96
+#: 43f7c1708aa24a7bbbdd506955c9116f
 msgid ""
 "All the VMs with a name starting with ``test-`` on the installation are "
 "removed during the process, and all the tests are recklessly started from "
@@ -73,7 +74,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:24
-#: ff38d6b14600467e8f4253474b0f967c
+#: f9a963a7fe3f44b9b791efde3c84d19b
 msgid ""
 "First you need to build all packages that you want to test. Please do not "
 "mix branches as this will inevitably lead to failures. Then setup Qubes OS "
@@ -81,39 +82,39 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:26
-#: d378407d0b6049eda05e2177522df1c8
+#: 64c90e338d1f47fe87461d5e120e9f5e
 msgid ""
 "For testing you’ll have to stop the ``qubesd`` service as the tests will use "
 "its own custom variant of the service: ``sudo systemctl stop qubesd``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:28
-#: 2e823d581e4842e39bb6213042f5651d
+#: 260fa5fffbf54c3da65941845c710d0d
 msgid "Don’t forget to start it after testing again."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:30
-#: a995f7e45f884a94a10a513b680694d3
+#: f9affe81085048d6a854db8e4c0bce5f
 msgid "To start testing you can then use the standard python unittest runner:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:32
-#: 753b1bb214a44607a887bd0b7c3da805
+#: 673247cf6537445d93892aeea78ecada
 msgid "``sudo -E python3 -m unittest -v qubes.tests``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:34
-#: 8044a4b92e4b43b382f796ba9166920e
+#: 1165753a16404dcc900e0b0aa0362b1f
 msgid "Alternatively, use the custom Qubes OS test runner:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:36
-#: a86828fc00a74cb0b763eb22bebe34df
+#: db5cca61d01d47eea5ba42196188cc0e
 msgid "``sudo -E python3 -m qubes.tests.run -v``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:38
-#: 3175393e39c140318098a055b68b4faf
+#: 527fa718660744b7a9a48211c6dfcac9
 msgid ""
 "Our test runner runs mostly the same as the standard one, but it has some "
 "nice additional features like colored output and not needing the “qubes."
@@ -121,19 +122,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:40
-#: c782a8cef781429e9fd2ab5bcf0d604b
+#: 3ec20fe7fbeb48868b1ea265254b51e2
 msgid "You can use ``python3 -m qubes.tests.run -h`` to get usage information:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:83
-#: c6c8a7df258c4b819faf866b440adffc
+#: c35045c5d56f486689b782c90d4009a7
 msgid ""
 "For instance, to run only the tests for the fedora-21 template, you can use "
 "the ``-l`` option, then filter the list:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:110
-#: 8a86e1146e984e759af93783303f2e55
+#: dae4c892bc3f49c999dd00a275a32314
 msgid ""
 "Some developers script this part, so you can provide arguments to the script "
 "and it handles ``qubesd``. Save the following contents to :file:`~/run-"
@@ -141,34 +142,34 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:124
-#: 6d9d9019e83a4aa5a6502c2183d95a15
+#: 0a122b62f0bf43d7a69a2e1998345362
 msgid "And run:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:130
-#: df097312e4374963b342550528cbe30e
+#: 552983e97f24470d85e7f48a9a83e311
 msgid "You might even almost complete test names and shell expansion:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:136
-#: b4c01fddf3664f43807c4face15b3071
+#: 942ba966aee046c8a24dbfe94c5ca596
 msgid "Example test run:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:138
-#: a6ff2c2008f54644a237dfd28b9bfa0a
+#: 38c23151757040bfacbee313ad6a63ed
 msgid "snapshot-tests2.png"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:143
-#: 0fe8878cd9dc49da941e295af1d53d5f
+#: 3b9b2b5110e649caae75f47a672cb9da
 msgid ""
 "Tests are also compatible with nose2 test runner, so you can use this "
 "instead:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:150
-#: c0ab25b74e044b58be2cfe77191c2080
+#: 250a9db519c941c3a67a5a1c4b54ee83
 msgid ""
 "This may be especially useful together with various nose2 plugins to store "
 "tests results (for example ``nose2.plugins.junitxml``), to ease presenting "
@@ -176,7 +177,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:152
-#: 43b9169edd4c442092095c623a9b2d3b
+#: 6e6aa9dfc94a4fb890251d1942da8d31
 msgid ""
 "If you cancel the test, normally by ``Ctrl-C | SIGINT`` repeatedly, you "
 "might not be able to start the next test, it will hang. To solve that, "
@@ -185,12 +186,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:155
-#: 90f3fa613ce24fe28c883118a56aa0e5
+#: 65920b2cd2464d99b2db25848b08a3f5
 msgid "Unit testing inside a VM"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:158
-#: 35da17c7fe764b2fa0cffddc30801d5d
+#: 85b2365abfdd42a9b91aae44a368f309
 msgid ""
 "Many unit tests will also work inside a VM. However all of the tests "
 "requiring a dedicated VM to be run (mostly the integration tests) will be "
@@ -198,7 +199,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:160
-#: 567b4d72efdd4a70888d8f4c752aea13
+#: e59b92ed405e4cc78d86f9045daf7359
 msgid ""
 "Whereas integration tests are mostly stored in the `qubes-core-admin "
 "<https://github.com/QubesOS/qubes-core-admin>`__ repository, unit tests can "
@@ -206,7 +207,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:162
-#: eac012def18c460c9943130686419f19
+#: bc65bf7332b54470a606d465606ca7b4
 msgid ""
 "To for example run the ``qubes-core-admin`` unit tests, you currently have "
 "to clone at least `qubes-core-admin <https://github.com/QubesOS/qubes-core-"
@@ -215,7 +216,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:164
-#: 7e3c442087aa476e952a1475f598c4cd
+#: 8c61a1050df7495f850a981cd5f57df7
 msgid ""
 "The below example however will assume that you set up a build environment as "
 "described in the :doc:`Qubes Builder documentation </developer/building/"
@@ -223,31 +224,31 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:166
-#: bc1ba4e8122b4cd5a5d87051e1e607b7
+#: 7b0c232e19f443de997cf9980466e090
 msgid ""
 "Assuming you cloned the ``qubes-builder`` repository to your home directory "
 "inside a fedora VM, you can use the following commands to run the unit tests:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:181
-#: 375d11ca18e94184bcb9e5700f94e8b2
+#: ed875f4375994fd69ec28e3405ac5609
 msgid "To run only the tests related to e.g. ``lvm``, you may use:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:183
-#: 169988518e37456c952570227403ef05
+#: 355df92043b54b538348491343dda070
 msgid "``./run-tests -v $(python3 -m qubes.tests.run -l | grep lvm)``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:185
-#: dd15a98028474941864271ed97ab9e0b
+#: e6e963b4e67a49f0bf38e3ca5aacc96a
 msgid ""
 "You can later re-use the created virtual environment including all of the "
 "via ``pip3`` installed packages with ``source ~/python35/bin/activate``."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:187
-#: 5521246afacd48c19744bfc7da1e8800
+#: 059b6c64f8044847b1dcef86b485cc2f
 msgid ""
 "We recommend to run the unit tests with the Python version that the code is "
 "meant to be run with in dom0 (3.5 was just an example above). For instance, "
@@ -258,38 +259,38 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:190
-#: d64945fd39384ef2b952fa0c10eebb25
+#: 8ac0eb58a05d4fa8977cca45e79b7153
 msgid "Tests configuration"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:193
-#: 8f063d220d254b028c962cfa8fda0c08
+#: 0df1f68c8bc144d2b858c830894587f6
 msgid "Test runs can be altered using environment variables:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:195
-#: f555bc38e8984e1881031dc77e82f084
+#: 6b9a523967e24cb18570973edceea7e4
 msgid ""
 "``DEFAULT_LVM_POOL`` - LVM thin pool to use for tests, in ``VolumeGroup/"
 "ThinPool`` format"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:197
-#: de8e3e18b15642f79ad1fbef9b80b7f4
+#: 2669a7e41be44b4abf4c6db3a854ce7b
 msgid ""
 "``QUBES_TEST_PCIDEV`` - PCI device to be used in PCI passthrough tests (for "
 "example sound card)"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:199
-#: f9ed82ccd96f4a6396767038c3faf506
+#: c518a5cc937c4d7cb96a47e5b5fa1bfb
 msgid ""
 "``QUBES_TEST_TEMPLATES`` - space separated list of templates to run tests "
 "on; if not set, all installed templates are tested"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:201
-#: e4484b161af34cdbbf078e3d5e226718
+#: d0fde22458ca4ea7bbf60c3a848c8b47
 msgid ""
 "``QUBES_TEST_LOAD_ALL`` - load all tests (including tests for all templates) "
 "when relevant test modules are imported; this needs to be set for test "
@@ -298,12 +299,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:206
-#: aaa89265a26347258c6cee0b0baa5689
+#: a9a087566af2414ab13da411aff7a827
 msgid "Adding a new test to core-admin"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:209
-#: 4113732a9c804079a90e4d685fefa058
+#: 95a8c83ac80b43be80716e707f038ee5
 msgid ""
 "After adding a new unit test to `core-admin/qubes/tests <https://github.com/"
 "QubesOS/qubes-core-admin/tree/master/qubes/tests>`__ you’ll have to include "
@@ -312,12 +313,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:212
-#: 39e7274b8b6142d8abf5ea607e4e988b
+#: 41d2f1ec996f42ca83c3307629197b17
 msgid "Editing ``__init__.py``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:215
-#: 6f058c35fc1f422394c7b38e56cd99e0
+#: 10efd662380d44b8b1ea3d881e830fa6
 msgid ""
 "You’ll also need to add your test at the bottom of the ``__init__.py`` file, "
 "in the method ``def load_tests``, in the for loop with ``modname``. Again, "
@@ -325,12 +326,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:232
-#: d122b0a9702048b9b1c8fee79c29644a
+#: 6d28eff1a4e1475689baf4dc1dbdb3f9
 msgid "Testing PyQt applications"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:235
-#: 8a03b534673f4ed397d9a5fbc1b5f0da
+#: 85e17237c07f4a6e83567b3dc9a77758
 msgid ""
 "When testing (Py)QT applications, it’s useful to create a separate "
 "QApplication object for each test. But QT framework does not allow multiple "
@@ -342,19 +343,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:283
-#: 6f0ff412458a42a99e5ecdc33c1149f0
+#: 8d06b09f607f44c6a2501ea1ab689d01
 msgid "Automated tests with openQA"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:286
-#: 8296d35f35b048b7af76a5ec14604d0e
+#: a329a3212749449ba73fc3f52a189bc7
 msgid ""
 "**URL:** https://openqa.qubes-os.org/ **Tests:** https://github.com/QubesOS/"
 "openqa-tests-qubesos"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:288
-#: 3d8795164ebe451a9a17bbbbdf418118
+#: f1bb842a278a4c849d1f9664d1422708
 msgid ""
 "Manually testing Qubes OS and its installation is a time-consuming process. "
 "We use `OpenQA <https://open.qa/>`__ to automate this process. It works by "
@@ -365,7 +366,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:290
-#: 24d7f4169d1942789a50d8339e79d4a9
+#: 456142b3d70a417a940eea76237199ee
 msgid ""
 "Using openQA to automatically test the Qubes installation process works "
 "since Qubes 4.0-rc4 on 2018-01-26, provided that the versions of KVM and "
@@ -376,19 +377,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:292
-#: 447f1734e99d45f986585abf96dcb4e0
+#: 366ad34125cb4a4d9130213d2caa9dda
 msgid ""
 "Thanks to present and past donors who have provided the infrastructure for "
 "Qubes’ openQA system with hardware that meets these requirements."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:295
-#: 408d919793fa4025a11fc59bb856b53e
+#: 8515784de8d040fe8b3edefa768224e0
 msgid "How to add openQA test"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:297
-#: cee8170e07744c3ab18cfcbfcf1fa540
+#: 29ef0186d25d4772bbda7670a3b1025f
 msgid ""
 "openQA tests integration of your PR will the rest of the system, therefore, "
 "for that, if your code is not tested yet buy unittests because of reasons, "
@@ -398,7 +399,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:299
-#: 230c6000731b43959422bac8f326878a
+#: d4d23102efc347cf816ff8c16501bc50
 msgid ""
 "If your code may hang, use a timeout on a section of the code. This avoids "
 "holding openQA hostage for too long, which otherwise is capped to "
@@ -406,7 +407,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:301
-#: 6b8c29481e7b47a090ac37c6ad9f54b6
+#: 8a05120fefe54e8896c5a9efef7ddbe2
 msgid ""
 "Performance tests runs on hardware ``@hw*``. Everything else, should run on "
 "Qubes in KVM on a best effort basis, exclusion depends on maintainers "
@@ -414,40 +415,40 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:303
-#: a80f1df305194f6283f825b955bad3d1
+#: 7fe8b45e9d7842d7be0b87c983fe4899
 msgid "openQA, you might love or hate it, but you need it:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:305
-#: 22a1c76e2c1a49af94d39211bac967c6
+#: 18f884a6cda641078c5adb990e8dac5e
 msgid ""
 "Qubes in KVM is slow and memory restricted to 8GB of RAM, that is on purpose:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:306
-#: dc6659d78b104f248609ce01a8ee66f6
+#: 1d4cec45e8784aaeb369e89df572da8a
 msgid ""
 "Helps catch leaky objects, might be code that runs after the test is "
 "finished, sometimes an ``asyncio.Future``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:307
-#: 61aa670e4f954d66814f18bfd671254e
+#: 4d1eebfbd32e476abab41358ebda754b
 msgid "Ensures changes are compliant with minimum system requirements"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:308
-#: cdecd8da73cc4937b158220cc668aabf
+#: 88400ec2dc7b495e8f91b30cf51ccbdd
 msgid "Ability to run simultaneous tests on single worker without conflicts"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:309
-#: 561714d7dd174f2294142365975e2ed8
+#: a0c767f64dcb4b41bb8dcafbdb8c8248
 msgid "Runs on a pool of certified systems to guarantee future compatibility"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:311
-#: 051fe150e02f4ef481d7494d189169c8
+#: f93aaf48883a42dda0af0191800b0f76
 msgid ""
 "You might want to \"simulate\" openQA slowness to reproduce errors that you "
 "might not see on a more powerful system. You can do so by configuring the "
@@ -455,66 +456,66 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:314
-#: df39c384ea21403394266befc529f319
+#: 3411f914c410436cab59f31c1c7a579d
 msgid "How to schedule openQA"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:316
-#: 82238cd7dd264c6191034bd49b1e4775
+#: 1e4df7b5f8164d8391de68d3e5f074b0
 msgid "The process is the following:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:318
-#: 6fa635505b6647969b770ba15232aed8
+#: 1532d16fdb844d34b8ecbc0aa35c20f3
 msgid "Github comment on PR: developer interaction"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:319
-#: c91f03a79dda4f218e11110f9f68e582
+#: 4658d2914fa3448c9dfb2d90b7a71d45
 msgid "Gitlab pipeline: fetch sources, builds and publishes to openQA"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:320
-#: f315681b060d42c280494cf2e658a2c6
+#: d3deb3d8f5c848f1848b2d25b12862cd
 msgid "openQA pipeline: automated tests"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:321
-#: 094c05d54aab4628b6ae614d4e257b1d
+#: af9556316b6e4ced89275eed9251519d
 msgid "qubesos-bot comment: brings results to PR, editing comment if existent"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:323
-#: 212dd708624a45ae983b93207b6d3df1
+#: 11b1a62c84f243949e102ad8ffd9a80c
 msgid ""
 "Only the first step, scheduling via Github comment, requires developer "
 "intervention."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:327
-#: 948a23b42b5141bd873869b221a6401d
+#: 277b8504a7504aff82c2356cf7a5ae8b
 msgid "Add label to your PR on Github"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:329
-#: ac6d41e4a28f4d3d8614a324549d5b76
+#: fdbef8e859c9499c914f26031895bf59
 msgid "Only necessary if testing more than one PR"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:330
-#: d57797057ce74b54a92c422df0617f87
+#: 34fedef171494b2da5ac0da05438c63c
 msgid "Ask the maintainer to allow your account to assign labels"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:331
-#: 39db0cf61d474758af63c8a56033bdb2
+#: c30bf0c1f5eb4c19b5247d5e250c7236
 msgid ""
 "Only the maintainer can create labels, unless given individually on a per "
 "repository basis"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:333
-#: f5395421c56a4d2e9bd66f6b9c67dc6b
+#: b97b5d2f12f8422692560c7b9f45e90f
 msgid ""
 "Click the top most search box on `Github <https://github.com>`__ and use the "
 "following query with the label you want to add to your PR: ``org:QubesOS is:"
@@ -524,144 +525,144 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:337
-#: c45d8063c8b34f32ba7931a3a44d7ae9
+#: 34b749c714ec4c8ca85ff457c9949c4d
 msgid "Comment on Github"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:339
-#: c263aba1f02145f4b495a8ebcf94e7f1
+#: 1bac047da1854553bf51e00677fe88d9
 msgid ""
 "To schedule, comment on a PR ``openQArun`` to test that PR, optionally, add "
 "filters:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:341
-#: 70775753df9349b9952a2ae9f2c734d7
+#: c192b9d9478c4288bf66df256af6c6ec
 msgid "``PR_LABEL``: All PRs with such label"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:342
-#: 2dfcdabe780842419782ef6c2c74bd2f
+#: c7f150cbf1b8449185cc5739f6fa3108
 msgid "``TEST``: Only selected tests, CSV"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:343
-#: 5dcb8115d8b4469295f9d11728773923
+#: 0d25cf12f051454cac8d4eb2ae47d336
 msgid "``SELINUX_TEMPLATES``: Installs selinux on specified templates, CSV"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:344
-#: aba0b111dba14223a76b983e1ec0a608
+#: 4776b70d33374707a0c37967ff925c32
 msgid "``TEST_TEMPLATES``: Test only selected templates, CSV"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:345
-#: 58ea88dff94b40e18b794f9cfd8084da
+#: 459606abd3c243758e75b474e2959d9b
 msgid "``UPDATE_TEMPLATES``: Update only selected templates, CSV"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:346
-#: 0e1decb31d9744f1bbf5ae8df1644e95
+#: bcde4901a2bb406795c951af19af2867
 msgid "``DEFAULT_TEMPLATE``: Specify default template"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:347
-#: 75bdb1471dce45f4b23382d088e746a0
+#: 7a802dc0a7c5409889a1ddb7d13c3066
 msgid "``FLAVOR``: ``pull-requests``, ``kernel``, ``whonix``, ``templates``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:348
-#: 0e50db684b054a15aa0f4bc9cfc22d42
+#: 4e15fa6371394fe7b4e768694cdc702f
 msgid "``KERNEL_VERSION``: ``stable``, ``latest``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:349
-#: f367681fc6744dae97d1d4f9717f6d6f
+#: dc376deb77b945578f4dc8a02e5faf76
 msgid "``QUBES_TEST_MGMT_TPL``: Select ``management_dispvm`` template"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:350
-#: bbb80d9883c1432098350b4c2feff586
+#: 1a65c879a7124a2db86809da6d368b22
 msgid "``DISTUPGRADE_TEMPLATES``: Dist upgrade only selected templates"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:351
-#: 2e0f84f8c28c4fedbae79c0a10596ac6
+#: f604f22e32b3459e87c4e3bdda90e18a
 msgid "``MACHINE``: Runs on specified ``hw*``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:353
-#: 48c30b79724d4071b43c0b765b193281
+#: a809c79860a34d0db3ee12a63388a0c0
 msgid "Notes:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:355
-#: ec5a34535b8a4c0a938e06c194a67a0c
+#: b7128e860bcf48dd9892bfae03857e4f
 msgid "These are ``and`` filters, when combined, all must match"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:356
-#: c0e8e4c50a984e00ac9bf0516fe8ac81
+#: def08691d32a4e82abfbd0a438406834
 msgid "If a test is already assigned to a ``hw``, don't specify ``MACHINE``"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:358
-#: 879f2b46516c4a5db122c4d4e8d3e3af
+#: 4f1956d4ae6f42759ea49e9a3057e19a
 msgid "Examples:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:379
-#: 11a2d66fcb7e4f73b8d0aa0bc02b325c
+#: 39d23a2fd1934a1797e568d59de29aaf
 msgid "Gitlab pipeline"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:381
-#: 7b16afb55f1147ada8a628a9fb7eadee
+#: f2bce3567b7d4571ac9abc94a7483f5e
 msgid ""
 "Find your `Gitlab pipeline <https://gitlab.com/QubesOS/qubes-continuous-"
 "integration/-/pipelines>`__ and wait till completion."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:383
-#: 259c8f83ba4042dcbe63412303485096
+#: 987737eb54de460b9d5087ca4536c30c
 msgid ""
 "In less than 20 seconds after the Github comment, the pipeline will have the "
 "``Running`` status"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:384
-#: 72bd9f0d211d48868f0f6d800d92dbb3
+#: 0958fee7ee54474bab9b9edeb20230ee
 msgid ""
 "Takes at minimum 10 minutes to complete, if covering more components, it can "
 "take more than 1 hour"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:385
-#: f5fc51fe2efb482a978f0c1cb4efdde5
+#: 634007048a384615bf6f201bdedfa425
 msgid ""
 "Only the maintainer can cancel pipelines at this stage because of Gitlab's "
 "lax permission system"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:389
-#: 0ef7f532aad24aba8f5ffc887f064de8
+#: e13906238bdf4cc7b369d107368f40c3
 msgid "openQA pipeline"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:391
-#: fcd0f1cb83c1489583ce15ed08638dcf
+#: ee554cc33c1a49e0a05706ba716ab17f
 msgid ""
 "Find your test in `openQA pull requests group <https://openqa.qubes-os.org/"
 "group_overview/11>`__."
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:394
-#: 314cd024305d4a689155f696366ee211
+#: 9e8ed74c990549bd965f008a0324c5fa
 msgid "**Cancellation**:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:396
-#: 221ee6a0b5e747549f9b351e16405e99
+#: 8ca4ce58ee984c98b3acfd1c03f09f21
 msgid ""
 "Sometimes, you might want to cancel a test because it is using outdated "
 "code. For that, `login to openQA <https://openqa-qubes-os.org/login>`__ and "
@@ -671,19 +672,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:397
-#: b1a4d7701ae446c092c0a06917e36866
+#: 310ea2ebc7834f37b3fb9d3cb77801ef
 msgid ""
 "Don't cancel ``install_default_upload@hw*``, it can leave system boot order "
 "in weird state, breaks further tests, requiring manual intervention to fix"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:401
-#: 7468f48a36a743f4abcf9037ff7895d1
+#: 85730c8e15c14736bb065114f66c43df
 msgid "Check out results"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:403
-#: 517ea5fa9d654950b2ef9207bf14da5d
+#: 4d3719e8311f4f20a691818eded49533
 msgid ""
 "qubesos-bot does comment on Github a summary of the results, providing links "
 "to jobs that failed. Click on such link and you will be redirected "
@@ -691,46 +692,46 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:405
-#: 3a3f9b99e881453b9db752a585ada07c
+#: aa2bc740b7334d8eb521b0cac88896e0
 msgid "**Settings tab**:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:407
-#: 42074679fa584e86ac0d098199b51955
+#: 3b36d9b02a5d4639b1bf8782b455d2c1
 msgid "``PULL_REQUESTS``: Included PRs and commit used"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:408
-#: ef7a5147ea144bf3ae24e084aefaf904
+#: 93b85133530d409e970f0098c59c4534
 msgid "``QEMURAM``: Memory available to the guest, normally 8192 MiB"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:409
-#: b299c87dc5cc476fa30081ae0c2893ad
+#: 3a317e4e4fc74fe998850619762798c9
 msgid ""
 "``MAX_JOB_TIME``: How much time, in seconds, a job can take, until timeout "
 "is reached"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:411
-#: 726eadd82b764c3082486ccc8d41ed25
+#: f984075039674d0288f3acc3401dad63
 msgid "**Details tab**:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:413
-#: 4111d0b430014ec8a22dcb31f0bbdb91
+#: c1df9980893844f4948368e65dd679a4
 msgid "Find red signs, failure is near"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:414
-#: fbf1029cfda649dc8a640b1d099950d5
+#: 611b57f355d64e57a74255fad527a004
 msgid ""
 "When clicking an image, there is a video icon on the top right to jump to "
 "video right when that image was made"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:415
-#: e9b2763838a64c6bb256ccf5dbd41d82
+#: d2fab26a42f94994962fc4a9e4e86b5b
 msgid ""
 "Test classes ``TC_*``, are links, when clicking, you will be able to see "
 "beautiful perl code used during the test. Relevant to see why something "
@@ -739,89 +740,89 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:417
-#: 63de121b80174e06bc772abc54c1ad8b
+#: 457fc9431f604516af7fe0885c309a8a
 msgid "**Logs & Assets**:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:419
-#: eaf97f589de34360b9756c148a5e211d
+#: 2aa84f1008b345a4b12681df735569a3
 msgid ""
 "``Video``: Screencast, you will most likely need to right click and set "
 "slower speed. To disable time stamp, click on CC then Off"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:420
-#: 8d0fb24bc0ee4bd4bdc5da94c2b0ce5c
+#: a261137729bd4e8db2352fc80822349c
 msgid ""
 "``sut_packages.txt``: List of packages available on each qube at the "
 "beginning of the test"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:421
-#: 923427d9eef04acf841739be8f31bb39
+#: 396a11240e46485da3251239167512bb
 msgid "``vars.json``: JSON variant of **Settings tab**"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:422
-#: 2ea278c6bea448f8b267cb612dbf155a
+#: 94482b3e167b462997a6ef34f97fc583
 msgid "``serial0.txt``: Dom0 serial output"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:423
-#: 1a15562a52724b5ba9a6501139c8a1db
+#: 1a1233bb09a941f1a0ddfd256bf75af8
 msgid "``serial_terminal.txt``: Dom0 serial console"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:424
-#: 268ac56f2d4c4287bc3a40a58f536f02
+#: 8b2cb32e24204da2a2aa3398701c5a4d
 msgid "``system_tests-var_log.tar.gz``: Dom0 directory :file:`/var/log/`"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:425
-#: 8456428b1571480d9f14bdc6a4998d60
+#: a99f40706d1845fc89a67ff58182108f
 msgid "``system_tests-tests-TEST.log``: Test results"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:426
-#: 6c85c931f19c4be1ba5e2611ca4c7c92
+#: cb866a34f3af41788faefbd149857712
 msgid ""
 "``system_tests-*(hypervisor|guest*).log``: Dom0 directory :file:`/var/log/"
 "xen/console` with all qubes involved in a test that failed"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:427
-#: 2e0a501f75e84fab9cd137427c76dd0d
+#: 84095a5df34a4acc8f9d1dc791b529c6
 msgid ""
 "``system_tests-qvm-prefs-QUBE.log``: ``qvm-prefs`` of qubes running before "
 "test"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:428
-#: 21ec5091523342ad9e66d741b05672d0
+#: 43c43931eb4f4fb28c6b06153d855437
 msgid ""
 "``system_tests-((user-journalctl|journalctl|libxl-driver|xen-hotplug).log|."
 "xsession-errors)``: Dom0 logs added since the test started"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:429
-#: 56a87c728e61450dbebb328849e6f8a1
+#: ee2b2633381a4ad7b09df57379abb874
 msgid ""
 "``system_tests-objgraph*``: Memory leak graphs generated by graphviz "
 "displayed as image. Image might be huge, farewell"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:431
-#: 8b21c93daf77473b830954ad2b0230cb
+#: 756072238a9c4a549e1b1cf07d75b172
 msgid "``*.qcow2``: Disk image / snapshot"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:434
-#: d312192c3a2c4db3a2b147675d51551f
+#: 73ccf1fcba15435581b2c39becac245d
 msgid "Looking for patterns in tests"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:437
-#: ce65ebc0de3843218d7925fa42cf5b95
+#: 4e6b8eefa4454068b9601db33c7a46b6
 msgid ""
 "In order to better visualize patterns in tests the `openqa_investigator "
 "<https://github.com/QubesOS/openqa-tests-qubesos/blob/master/utils/"
@@ -830,47 +831,47 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:439
-#: be979cf496d349f8be336cb0d4d23f5e
+#: 54915f881d0e4a4985510748c324eda9
 msgid "openqa-investigator-splitgpg-example.png"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:444
-#: b6cc77c96a3d4570a17863267b9d2a32
+#: 3aef84d382024bd191d940847486b4a7
 msgid "Some outputs:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:446
-#: 0eeb099df56246a7b9e540ce02117f99
+#: f8ead73458c2466a9e260f5ffdd414c5
 msgid "plot by tests"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:448
-#: 940d395712a9476b93636ef8246a68bf
+#: 1cddfb38112b43d389c344871c42b20b
 msgid "plot by errors"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:450
-#: eda92097dbe14e72ac303b6826bd9ddf
+#: 02cb3af2cb22498484560a16be81e48d
 msgid "markdown"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:454
-#: 21e33e2e56914ec2ae2f486a7e0c2c2d
+#: 18361215848a49df84ee3e02d6239c93
 msgid "Some filters:"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:456
-#: 5dbca32033b54965a938f8485da5722d
+#: 449136cab7ec45e2a9560554fd9e4821
 msgid "filter by error"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:458
-#: 87779aa38d0e459ab72d3b0b0ea9e089
+#: 21f2c50603114bd6b93afe2aea94fe83
 msgid "filter by test name"
 msgstr ""
 
 #: ../../../developer/debugging/automated-tests.rst:462
-#: cdd23eee5c744aa59024f826548e6549
+#: 21e6236e95394a0f9aba84aeaa0c11fa
 msgid ""
 "Check out the script’s help with ``python3 openqa_investigator.py --help`` "
 "to see all available options."

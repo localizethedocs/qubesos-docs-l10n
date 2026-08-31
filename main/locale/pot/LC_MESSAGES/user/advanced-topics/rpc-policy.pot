@@ -8,26 +8,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-08-31 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../user/advanced-topics/rpc-policy.rst:3
-#: 44888f7de4264bfa8e2db1705862bf19
+#: 9821726c8c124429bb44632581936a49
 msgid "RPC policies"
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:7
-#: 450f376cbb394e3ab9de41f33339641c
+#: 01e8e198aece4ad9af25383cc66a7fd7
 msgid "This page is intended for advanced users."
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:9
-#: 3dc066ad0f4b433984005f21495f7b5e
+#: a2cac8f26499421a82bde40c311771ac
 msgid ""
 "*Qubes OS 4.1 introduced a new qrexec policy system and policy format. "
 "Please see* `this article <https://www.qubes-os.org/news/2020/06/22/new-"
@@ -35,7 +36,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:11
-#: ba50180fb2564a37b1ec48adba4cccb4
+#: 862c7ae92e664fd299bcfb4bc32b3c44
 msgid ""
 "This document explains the basics of RPC policies in Qubes. For more "
 "information, see :doc:`Qrexec: command execution in VMs </developer/services/"
@@ -43,12 +44,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:13
-#: 9a2e53438b0a4f2886828b834534715b
+#: fa764785e41f4c5eb2715bdf1c3da7a8
 msgid "Here’s an example of an RPC policy file in dom0:"
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:27
-#: 39181a31a4fa404483d4c9c700b1218c
+#: 5e2b16580f90457a9daf614b0b371db9
 msgid ""
 "It has three columns (from left to right): source, destination, and "
 "permission. Each row is a rule. For example, the second row says that we’re "
@@ -62,7 +63,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:29
-#: 112cdff540c345a6952312df9f44ef47
+#: 8f60a92a4527425ebd43ef041d7b3414
 msgid ""
 "Now, the whole policy file is parsed from top to bottom. As soon as a rule "
 "is found that matches the action being evaluated, parsing stops. We can see "
@@ -81,7 +82,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:31
-#: f36fedece4cf47489764c4d0d49bc304
+#: e425a9247f474323a9f6e815d2cc0770
 msgid ""
 "When an operation is initiated with a specific target, e.g. ``qvm-copy-to-vm "
 "other_work_vm some_file`` the policy mechanism looks for a row matching "
@@ -103,7 +104,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:33
-#: 97fd43a7c36f4bd2b471c8812adf7979
+#: 80127907546c4e86856c11c722bf8a4f
 msgid ""
 "The fourth row says that we’re **denied** from copying files **from** any VM "
 "in the system **to** any VM tagged with “work”. Again, since parsing goes "
@@ -113,7 +114,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:35
-#: cd131f68b6fe41fdaf1c88bd6ca23cea
+#: 86f635c36aea4eb08f3cd6578261c72f
 msgid ""
 "The fifth and final row says that we’re **asked** (i.e., prompted) to copy "
 "files **from** any VM in the system **to** any VM in the system. (This rule "
@@ -125,7 +126,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:37
-#: 6b35a544529441d2998520574fecc371
+#: 86c7219f65964abdbe6e9ab7effa0c9b
 msgid ""
 "All together, the four rules we added say that all VMs tagged with “work” "
 "are allowed to copy files to each other; however, they’re denied from "
@@ -135,14 +136,14 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:39
-#: bf12ac444c9a4612b39e9d079b4e4cd3
+#: 891d261d96c448ddb65b3f498a464920
 msgid ""
 "Further details about how this system works can be found in :doc:`Qrexec: "
 "command execution in VMs </developer/services/qrexec>`."
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:41
-#: 6999d4a63a0b469fa074eacfc550239e
+#: da78c1bbfe6c4318bfd57315ff5b4956
 msgid ""
 "(**Note** *: the* ``$`` *character is deprecated in qrexec keywords – please "
 "use* ``@`` *instead (e.g.* ``@anyvm`` *). For more information, see the "
