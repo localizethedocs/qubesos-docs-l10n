@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Qubes Windows Tools (QWT)" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/templates/windows/qubes-windows-tools.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Qubes Windows Tools (QWT) are a set of programs and drivers that provide integration of Windows 7, 10, and 11 Standalone, TemplateVMs, and AppVMs with the rest of the Qubes system. They contain sev..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Qubes Windows Tools (QWT) are a set of programs and drivers that provide integration of Windows 7, 10, and 11 Standalone, TemplateVMs, and AppVMs with the rest of the Qubes system. They contain sev..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qubes Windows Tools (QWT) &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/templates/windows/qubes-windows-tools.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Migrate Windows qubes from old Qubes versions" href="qubes-windows-migrate.html" />
+    <link rel="prev" title="How to install Windows qubes in Qubes OS" href="qubes-windows.html" />
+
+   
+
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Windows qubes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qubes-windows.html">How to install Windows qubes in Qubes OS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Qubes Windows Tools (QWT)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-windows-os-as-a-qubes-vm">Installing Windows OS as a Qubes VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-qubes-windows-tools-qwt-in-a-windows-vm">Installing Qubes Windows Tools (QWT) in a Windows VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xen-pv-drivers-and-qubes-windows-tools">Xen PV drivers and Qubes Windows Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-windows-appvms-in-seamless-mode">Using Windows AppVMs in seamless mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-template-based-windows-appvms">Using template-based Windows AppVMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-windows-disposables">Using Windows disposables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-logs">Installation logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#updates">Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uninstalling-qubes-windows-tools-in-a-windows-vm">Uninstalling Qubes Windows Tools in a Windows VM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#windows-7">Windows 7</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#windows-10-and-11">Windows 10 and 11</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference external" href="https://forum.qubes-os.org/t/create-a-gaming-hvm/19000">Create a Gaming HVM in Qubes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qubes-windows-migrate.html">Migrate Windows qubes from old Qubes versions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Windows qubes</a></li>
+      <li class="breadcrumb-item active">Qubes Windows Tools (QWT)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/templates/windows/qubes-windows-tools.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qubes-windows-tools-qwt">
+<h1>Qubes Windows Tools (QWT)<a class="headerlink" href="#qubes-windows-tools-qwt" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As there is no officially supported version of Qubes Windows Tools for Windows 7, the following instructions describe a workaround to obtain QWT functionality using an older version of QWT for Windows 7. For Windows 10 and 11, the latest official version of QWT must be used.</p>
+</div>
+<p>Qubes Windows Tools (QWT) are a set of programs and drivers that provide integration of Windows 7, 10, and 11 Standalone, TemplateVMs, and AppVMs with the rest of the Qubes system. They contain several components that can be enabled or disabled during installation and rely on specific functions of Qubes, which support this integration:</p>
+<ul class="simple">
+<li><p><strong>Shared components (required)</strong> - common libraries used by QWT components</p></li>
+<li><p><strong>Qubes GUI Agent</strong> - video driver and GUI agent that enable the seamless GUI mode that integrates Windows apps onto the common Qubes trusted desktop (currently only for Windows 7 and, in a preliminary experimental version, for Windows 10 and 11).</p></li>
+<li><p><strong>Configure autologon</strong> - To start a Windows qube without a prompt for user name and password, autologon is defined, using a random hidden password which cannot be extracted from the registry.</p></li>
+<li><p><strong>Disable UAC</strong> - User Account Control may interfere with QWT and doesn’t really provide any additional benefits in the Qubes environment</p></li>
+<li><p><strong>Clipboard sender/receiver</strong> - Support for <a class="reference internal" href="../../how-to-guides/how-to-copy-and-paste-text.html"><span class="doc">secure clipboard copy/paste</span></a> between the Windows VM and other AppVMs</p></li>
+<li><p><strong>File sender/receiver</strong> - Support for <a class="reference internal" href="../../how-to-guides/how-to-copy-and-move-files.html"><span class="doc">secure file exchange</span></a> between the Windows VM and other AppVMs</p></li>
+<li><p><strong>Xen PV drivers</strong> - drivers for the virtual hardware exposed by Xen for Windows that increase performance compared to QEMU emulated devices and are required for attaching USB devices</p>
+<ul>
+<li><p>Base Xen PV Drivers (required): paravirtual bus and interface drivers</p></li>
+<li><p>Xen PV Disk Drivers: paravirtual storage drivers</p></li>
+<li><p>Xen PV Network Drivers: paravirtual network drivers</p></li>
+<li><p>Move user profiles: user profile directory (<code class="docutils literal notranslate"><span class="pre">C:\users</span></code>) is moved to VM’s private disk backed by <code class="docutils literal notranslate"><span class="pre">private.img</span> <span class="pre">file</span></code> in <code class="docutils literal notranslate"><span class="pre">dom0</span></code> (useful mainly for HVM templates).</p></li>
+</ul>
+</li>
+<li><p><strong>Qubes Core Agent</strong> (part of Qubes) - Needed for proper integration with Qubes as well as for <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code> and generic <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> for the Windows VM (e.g., ability to run custom service within/from the Windows VM)</p></li>
+<li><p><strong>Copy/Edit in Disposable VM</strong> (part of Qubes) - Support for editing files in DisposableVMs</p></li>
+<li><p><strong>Audio</strong> - Audio support is available even without QWT installation if <code class="docutils literal notranslate"><span class="pre">qvm-features</span> <span class="pre">audio-model</span></code> is set as <code class="docutils literal notranslate"><span class="pre">ich6</span></code></p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Due to the security problems described in <a class="reference external" href="https://github.com/QubesOS/qubes-secpack/blob/master/QSBs/qsb-091-2023.txt">QSB-091</a>, installation of Qubes Windows Tools is currently blocked in Qubes R4.2. Instead, a text file containing a warning is displayed. Currently, it is difficult to estimate the severity of the risks posed by the sources of the Xen drivers used in QWT possibly being compromised, so it was decided not to offer direct QWT installation until this problem could be treated properly. While Windows qubes are, in Qubes, generally not regarded as being very trustworthy, a possible compromise of the Xen drivers used in Qubes Windows Tools might create a risk for Xen or <cite>dom0</cite> and thus be dangerous for Qubes itself. This risk may be small or even non-existent, as stated in QSB-091. If you <strong>understand</strong> this risk and are <strong>willing to take it</strong>, you can still install the previous version of Qubes Windows Tools <strong>for Windows 7</strong>, which will work for Windows 7, but not for Windows 10 or 11.</p>
+<p><strong>For Windows 10 or 11</strong>, currently, there is no official, final QWT version available for Qubes R4.2, but for Qubes R4.3, an official version has been developed and can also be used in Qubes R4.2. This version is not subject to the security problems stated above, but it should be noted that its graphics agent is still regarded as experimental and so may show some errors. The new Qubes graphics driver used there is not yet fully compatible with Windows and may cause weird effects. So, in Windows 11 25H2, it will cause all windows to be displayed twice; this can be, at least partially, remedied by moving the second instance to another workspace. Furthermore, trying to display the Windows menu via the keyboard button may result in a tiny, unusable menu. If the driver is installed, despite these risks, and is working at least partially, switching to seamless mode and staying there will probably work quite satisfactorily, but switching to and from non-seamless mode may cause trouble, as well as changing the screen resolution will do there. So, usage of the new Qubes graphics driver should be avoided unless a casual reboot of the Windows VM is acceptable, even if it is partially working. Using the Qubes graphics driver will not provide seamless mode unless the <code class="docutils literal notranslate"><span class="pre">qvm-features</span></code> parameter <code class="docutils literal notranslate"><span class="pre">gui</span></code> is set to <code class="docutils literal notranslate"><span class="pre">1</span></code>. To disable the graphics driver, the parameter <code class="docutils literal notranslate"><span class="pre">gui</span></code> has to be set to an empty string, while the parameter <code class="docutils literal notranslate"><span class="pre">gui-emulated</span></code> has to be set to <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+</div>
+<p><strong>Note</strong>: If you choose to move profiles, drive letter <code class="docutils literal notranslate"><span class="pre">Q:</span></code> must be assigned to the secondary (private) disk.</p>
+<p><strong>Note</strong>: Xen PV disk drivers are not installed by default. This is because they seem to cause problems (BSOD = Blue Screen Of Death). We’re working with upstream devs to fix this. <strong>However</strong>, the BSOD seems to only occur after the first boot, and everything works fine after that. <strong>Enable the drivers at your own risk</strong>, of course, but we welcome reports of success/failure in any case (backup your VM first!). With disk PV drivers absent, <code class="docutils literal notranslate"><span class="pre">qvm-block</span></code> will not work for the VM, but you can still use standard Qubes inter-VM file copying mechanisms. On the other hand, the Xen PV drivers allow USB device access even without QWT installation if <code class="docutils literal notranslate"><span class="pre">qvm-features</span> <span class="pre">stubdom-qrexec</span></code> is set as <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>Below is a breakdown of the feature availability depending on the Windows version (only x64):</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Windows 7</p></th>
+<th class="head"><p>Windows 10</p></th>
+<th class="head"><p>Windows 11</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Qubes Video Driver</p></td>
+<td><p>y</p></td>
+<td><p>(y)</p></td>
+<td><p>(y)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Qubes Network Setup</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-even"><td><p>Private Volume Setup (move profiles)</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-odd"><td><p>File sender/receiver</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-even"><td><p>Disable UAC</p></td>
+<td><p>y</p></td>
+<td><p>n</p></td>
+<td><p>n</p></td>
+</tr>
+<tr class="row-odd"><td><p>Configure autologon</p></td>
+<td><p>n</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-even"><td><p>Clipboard Copy/Paste</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Application shortcuts</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-even"><td><p>Copy/Edit in Disposable VM</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Block device</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-even"><td><p>USB device</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+<tr class="row-odd"><td><p>Audio</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+<td><p>y</p></td>
+</tr>
+</tbody>
+</table>
+<p>Qubes Windows Tools are open source and are distributed under a GPL license.</p>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Currently, only 64-bit versions of Windows 7, 10, and 11 are supported by Qubes Windows Tools. Only the emulated SVGA GPU is supported (although <a class="reference external" href="https:///groups.google.com/forum/#!topic/qubes-users/cmPRMOkxkdA">there have been reports</a> on working GPU passthrough).</p></li>
+<li><p>This page documents the process of installing Qubes Windows Tools in versions <strong>R4.2</strong> and <strong>R4.3</strong>.</p></li>
+<li><p><em>In testing VMs only</em> it’s probably a good idea to install a VNC server before installing QWT. If something goes very wrong with the Qubes GUI agent, a VNC server should still allow access to the OS.</p></li>
+<li><p>As several of the installation steps described below may cause errors, the Windows VM where Qubes Windows Tools are installed should be cloned before starting the installation.</p></li>
+</ul>
+<section id="installing-windows-os-as-a-qubes-vm">
+<h2>Installing Windows OS as a Qubes VM<a class="headerlink" href="#installing-windows-os-as-a-qubes-vm" title="Link to this heading"></a></h2>
+<p>Please refer to <a class="reference internal" href="qubes-windows.html"><span class="doc">this page</span></a> for instructions on how to install Windows in a Qubes VM.</p>
+</section>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<p>Before proceeding with the installation, we need to disable the Windows mechanism that allows only signed drivers to be installed, because currently, the drivers provided as part of the Windows Tools are not digitally signed with a publicly recognizable certificate. To do that:</p>
+<ol class="arabic simple">
+<li><p>Start the command prompt as Administrator, i.e., right-click on the Command Prompt icon (All Programs -&gt; Accessories) and choose “Run as administrator”.</p></li>
+<li><p>In the command prompt, type <code class="docutils literal notranslate"><span class="pre">bcdedit</span> <span class="pre">/set</span> <span class="pre">testsigning</span> <span class="pre">on</span></code></p></li>
+<li><p>Reboot your Windows VM</p></li>
+</ol>
+<p>Maybe in the future, this step will not be necessary anymore, because we will sign our drivers with a publicly verifiable certificate. However, it should be noted that even given the fact that those drivers are not digitally signed, this doesn’t affect the security of the Windows VM in any way. This is because the actual installation <cite>iso</cite> file can be verified as described in step 3 below. The only downside of those drivers not being signed is the inconvenience to the user that he or she must disable the signature enforcement policy before installing the tools.</p>
+<p>QWT relies on PowerShell scripts. If the execution policy defined for PowerShell is set to <cite>Restricted</cite>, execution of these scripts is blocked. Before QWT installation, this should be checked using the PowerShell command</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Get-ExecutionPolicy</span>
+</pre></div>
+</div>
+<p>If script execution is blocked, it must be allowed using the following PowerShell command with administrator privileges:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">Set-ExecutionPolicy</span> <span class="n">Unrestricted</span>
+</pre></div>
+</div>
+<p><strong>Warning:</strong> It is encouraged to enable autologon for any Windows HVMs that will have Qubes Tools installed in order to avoid possible problems with the Windows logon process, especially if the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Del</kbd></kbd> requirement is enabled there. To do so, in Windows 7, run the <code class="docutils literal notranslate"><span class="pre">netplwiz</span></code> command from the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Win</kbd>-<kbd class="kbd docutils literal notranslate">R</kbd></kbd> “execute” prompt, and uncheck the <em>Users must enter a user name and password to use this computer</em> option. In Windows 10 and 11, autologon can be configured later on during Qubes Windows Tools installation.</p>
+<p><strong>Warning:</strong> It is recommended to increase the default value of the Windows VM’s <code class="docutils literal notranslate"><span class="pre">qrexec_timeout</span></code> property from 60 (seconds) to, for example, 300. During one of the first reboots after Windows Tools installation, Windows user profiles are moved onto the private VM’s virtual disk (private.img), and this operation can take some time. Moving profiles and, later on, updating a Windows installation, is performed in an early boot phase when <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> is not yet running, so a timeout may occur with the default value. To change the property use this command in <code class="docutils literal notranslate"><span class="pre">dom0</span></code>: <em>(where</em> <code class="docutils literal notranslate"><span class="pre">&lt;VMname&gt;</span></code> <em>is the name of your Windows VM)</em></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>qrexec_timeout<span class="w"> </span><span class="m">7200</span>
+</pre></div>
+</div>
+<p>To enable file copy operations to a Windows VM, the <code class="docutils literal notranslate"><span class="pre">default_user</span></code> property of this VM should be set to the <code class="docutils literal notranslate"><span class="pre">&lt;USERNAME&gt;</span></code> that you use to log in to the Windows VM. This can be done via the following command on a <code class="docutils literal notranslate"><span class="pre">dom0</span></code> terminal  (where <code class="docutils literal notranslate"><span class="pre">&lt;VMNAME&gt;</span></code> is the name of your Windows VM):</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>default_user<span class="w"> </span>&lt;USERNAME&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<p><strong>Warning:</strong> If this property is not set or set to a wrong value, files copied to this VM are stored in the folder <code class="file docutils literal notranslate"><span class="pre">C:\Windows\System32\config\systemprofile\Documents\QubesIncoming{&lt;source_VM&gt;}</span></code>. If the target VM is an AppVM, this has the consequence that the files are stored in the corresponding TemplateVM and so are lost on AppVM shutdown.</p>
+<p><strong>For Windows 10 and 11:</strong> From the Windows command line, disable hibernation in order to avoid an incomplete Windows shutdown, which may lead to corruption of the VM’s disk.</p>
+<ol class="arabic simple">
+<li><p>Start the command prompt as Administrator, i.e., right-click on the Command Prompt icon <span class="menuselection">All Programs ‣ Accessories</span> and select <span class="guilabel">Run as administrator</span></p></li>
+<li><p>In the command prompt, type <code class="docutils literal notranslate"><span class="pre">powercfg</span> <span class="pre">-H</span> <span class="pre">off</span></code></p></li>
+<li><p>Reboot your Windows VM</p></li>
+</ol>
+<p>Additionally, these versions of Windows will not display the CD-ROM drive after starting the qube with</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-start<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>--cdrom<span class="w"> </span>...
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-start<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>--install-windows-tools
+</pre></div>
+</div>
+<p>The solution is to disable hibernation in Windows with this command. (That command is included in QWT’s setup, but it’s necessary to run it manually in order to be able to open QWT’s setup ISO/CD-ROM in Windows).</p>
+</section>
+<section id="installing-qubes-windows-tools-qwt-in-a-windows-vm">
+<h2>Installing Qubes Windows Tools (QWT) in a Windows VM<a class="headerlink" href="#installing-qubes-windows-tools-qwt-in-a-windows-vm" title="Link to this heading"></a></h2>
+<p>Installing the Qubes Windows Tools on Windows 7, 10, and 11, both as a StandaloneVM as well as a Template VM and a corresponding AppVM, is described in the following sections.</p>
+<p><strong>Note:</strong> Seamless mode is currently only available in an experimental version for Windows 10 and 11. Please check the top of this document for the full feature availability breakdown.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Qubes R4.2, the new version of QWT is not included in the repositories, but it can be downloaded from the R4.3 repository (version <a class="reference external" href="https://yum.qubes-os.org/r4.3/current-testing/dom0/fc41/rpm/qubes-windows-tools-4.2.2-1.fc41.noarch.rpm">4.2.2-1</a> ), and it will work under R4.2, too.</p>
+</div>
+<ol class="arabic">
+<li><p>First, make sure that <code class="docutils literal notranslate"><span class="pre">qubes-windows-tools</span></code> is installed in your system:</p>
+<ul>
+<li><p>For use with <strong>Windows 7</strong>, install the previous version of Qubes Windows Tools. The corresponding .rpm file for manual QWT installation for Windows 7is still available from the repositories for Qubes R4.2 (version <a class="reference external" href="https://yum.qubes-os.org/r4.2/current/dom0/fc37/rpm/qubes-windows-tools-4.1.69-1.fc37.noarch.rpm">4.1.69-1</a> ).</p>
+<p>After downloading, copy the file to <cite>dom0</cite> as described in <a class="reference external" href="https://www.qubes-os.org/doc/how-to-copy-from-dom0/#copying-to-dom0">How to copy from dom0</a> and install it via <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">PATH_TO_RPMFILE</span></code>.</p>
+</li>
+<li><p>For use with <strong>Windows 10 and 11</strong>, you have to install the new version 4.2.2 of Qubes Windows Tools. In Qubes R4.3, the QWT package is already part of the repositories. So, QWT can be installed directy, without downloading anything, via</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>sudo<span class="w"> </span>qubes-dom0-update<span class="w"> </span>qubes-windows-tools
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Caution:</strong> Installing one of these QWT versions will remove the other if it is installed.</p>
+<p><strong>Warning:</strong> In Windows 7, the older version of Qubes Windows Tools will be replaced during the next <code class="docutils literal notranslate"><span class="pre">dom0</span></code> update by the current dummy version 4.1.70-1. This can be inhibited by appending the line <code class="docutils literal notranslate"><span class="pre">exclude=qubes-windows-tools</span></code> to the file <code class="docutils literal notranslate"><span class="pre">/etc/dnf/dnf.conf</span></code> in <code class="docutils literal notranslate"><span class="pre">dom0</span></code>.</p>
+<p>This package makes the ISO with Qubes Windows Tools available, which is passed to the VM when <code class="docutils literal notranslate"><span class="pre">--install-windows-tools</span></code> is specified for the <code class="docutils literal notranslate"><span class="pre">qvm-start</span></code> command. Please note that none of this software ever runs in <code class="docutils literal notranslate"><span class="pre">dom0</span></code> or any other part of the system except for the Windows AppVM in which it is to be installed. (It could not run in <code class="docutils literal notranslate"><span class="pre">dom0</span></code> at all, because <code class="docutils literal notranslate"><span class="pre">dom0</span></code> is a VM running under Fedora, while the QWT software is Windows software.)</p>
+</li>
+<li><p>To install the Qubes Windows Tools in a Windows VM, one should start the VM passing the additional option <code class="docutils literal notranslate"><span class="pre">--install-windows-tools</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-start<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>--install-windows-tools
+</pre></div>
+</div>
+<p>Once the Windows VM boots, a CDROM should appear in the ‘My Computer’ menu (typically as <code class="docutils literal notranslate"><span class="pre">D:</span></code> or <code class="docutils literal notranslate"><span class="pre">E:</span></code>) with the setup program with the setup program <code class="docutils literal notranslate"><span class="pre">qubes-tools-x64.msi</span></code> for Windows 7 or <code class="docutils literal notranslate"><span class="pre">qubes-tools-4.2.2.exe</span></code> for Windows 10 and 11 in its main directory.</p>
+</li>
+<li><p>Install Qubes Windows Tools by starting the setup program (logged in as administrator), optionally selecting the <code class="docutils literal notranslate"><span class="pre">Xen</span> <span class="pre">PV</span> <span class="pre">disk</span> <span class="pre">drivers</span></code>.</p>
+<p><strong>Caution:</strong> For Windows 7, the installation of the graphics driver in the first step will probably break the Windows qube, causing it to show only a black window and become unresponsive; the graphics driver has to be installed later on in a second step described below. For Windows 10 and 11, the Qubes graphics driver is still in experimental development. It may work or not, possibly depending on your hardware. So, in Windows 10 and 11, it may be less risky to install Qubes Windows Tools without selecting this driver, and later on, to try it in a clone of your Windows VM by re-running the installation in change mode.</p>
+<p><strong>Warning:</strong> The installation of the PV disk drivers may lead Windows to declare that the hardware has changed and that, in consequence, the activation is no longer valid, possibly complaining that the use of the software is no longer lawful. It should be possible to reactivate the software if a valid product key is provided.</p>
+<p>For installation in a template, you should select <code class="docutils literal notranslate"><span class="pre">Move</span> <span class="pre">user</span> <span class="pre">profiles</span></code>.</p>
+<p><img alt="QWT_install_select" src="../../../_images/QWT_install_select.png" /></p>
+<p>Several times, Windows security may ask for confirmation of driver installation. Driver installation has to be allowed; otherwise, the installation of Qubes Windows Tools will abort.</p>
+<p><img alt="QWT_install_driver" src="../../../_images/QWT_install_driver.png" /></p>
+<p>If during installation, the Xen driver requests a reboot, select “No” and let the installation continue - the system will be rebooted later.</p>
+<p><img alt="QWT_install_no_restart" src="../../../_images/QWT_install_no_restart.png" /></p>
+</li>
+<li><p>After successful installation, the Windows VM must be shut down and started again, possibly a couple of times. On each shutdown, wait until the VM has <strong>really</strong> stopped, i.e., Qubes shows no more activity.</p>
+<p><strong>For Windows 7:</strong> If seamless mode is to be used, the Qubes graphics driver can now be installed, using a sequence of rather awkward operations:</p>
+<ul class="simple">
+<li><p>Start the Windows 7 VM.</p></li>
+<li><p>In the Windows device manager, you will probably find one or more unknown devices. Uninstall these devices.</p></li>
+<li><p>Reboot the VM.</p></li>
+<li><p>Now, using the  appropriate Windows system management function, change the QWT installation, adding the Qubes graphics driver, but <strong>do not</strong> click on the “Finish” button to complete the installation.</p></li>
+<li><p>In the device manager, you will find a new display called “Qubes Video Driver”. Deactivate this device.</p></li>
+<li><p>Now, click on the “Finish” button to complete the QWT installation change.</p></li>
+<li><p>Reboot the VM.</p></li>
+<li><p>It may be necessary to start the GUI manually, by typing <code class="docutils literal notranslate"><span class="pre">qvm-start-gui</span> <span class="pre">VMNAME</span></code> in dom0.</p></li>
+<li><p>The device “Qubes Video Driver” may show up as deactivated. In this case, you can now activate it again.</p></li>
+<li><p>Changing the screen resolution for this VM probably will not work and may lead to a crash, so it’s better to avoid it. But you can start any program, e.g., the Windows Explorer. In the Qube Manager, you can now select seamless mode for this VM, and it works!</p></li>
+<li><p>Shut down the Windows VM.</p></li>
+</ul>
+</li>
+<li><p>It is advisable to set some other parameters in order to enable audio and USB block device access, synchronize the Windows clock with the Qubes clock, and so on:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>audio-model<span class="w"> </span>ich9
+<span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>stubdom-qrexec<span class="w"> </span><span class="m">1</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>timezone<span class="w"> </span>localtime
+</pre></div>
+</div>
+<p>For audio, the parameter <code class="docutils literal notranslate"><span class="pre">audio-model</span></code> can be selected as <code class="docutils literal notranslate"><span class="pre">ich6</span></code> or <code class="docutils literal notranslate"><span class="pre">ich9</span></code>; select the value that gives the best audio quality. Audio quality may also be improved by setting the following parameters, but this can depend on the Windows version and on your hardware:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>timer-period<span class="w"> </span><span class="m">1000</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>out.latency<span class="w"> </span><span class="m">10000</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>out.buffer-length<span class="w"> </span><span class="m">4000</span>
+</pre></div>
+</div>
+<p>With the value <code class="docutils literal notranslate"><span class="pre">localtime</span></code> the dom0 <code class="docutils literal notranslate"><span class="pre">timezone</span></code> will be provided to virtual hardware, effectively setting the Windows clock to that of Qubes. With a digit value (negative or positive) the guest clock will have an offset (in seconds) applied relative to UTC.</p>
+</li>
+<li><p>Reboot Windows. If the VM starts, but does not show any window, then shut down Windows from the Qube manager, wait until it has <strong>really</strong> stopped, and reboot Windows once more.</p></li>
+<li><p>Now the system should be up, with QWT running correctly.</p></li>
+<li><p><strong>Windows 7 only:</strong> Optionally enable seamless mode on VM startup. This can be done by setting appropriate values in the Windows registry:</p>
+<ul class="simple">
+<li><p>Start the command prompt as administrator, i.e., right click on the Command Prompt icon (All Programs -&gt; Accessories) and choose “Run as administrator”</p></li>
+<li><p>In the command prompt, type <code class="docutils literal notranslate"><span class="pre">regedit</span></code></p></li>
+<li><p>In the registry editor, position to the key <code class="docutils literal notranslate"><span class="pre">\HKEY_LOCAL_MACHINE\Software\Invisible</span> <span class="pre">Things</span> <span class="pre">Lab\Qubes</span> <span class="pre">Tools\</span></code></p></li>
+<li><p>Change the value <code class="docutils literal notranslate"><span class="pre">SeamlessMode</span></code> from 0 to 1</p></li>
+<li><p>Position to the key <code class="docutils literal notranslate"><span class="pre">\HKEY_LOCAL_MACHINE\Software\Invisible</span> <span class="pre">Things</span> <span class="pre">Lab\Qubes</span> <span class="pre">Tools\qga\</span></code></p></li>
+<li><p>Change the value <code class="docutils literal notranslate"><span class="pre">SeamlessMode</span></code> from 0 to 1</p></li>
+<li><p>Terminate the registry editor.</p></li>
+</ul>
+<p>After the next boot, the VM will start in seamless mode. If Windows is used in a TemplateVM / AppVM combination, this registry fix has to be applied to the TemplateVM, as the <code class="docutils literal notranslate"><span class="pre">HKLM</span></code> registry key belongs to the template-based part of the registry.</p>
+<p><strong>Windows 10 and 11:</strong>  If the experimental graphics driver is installed and enabled by setting the <code class="docutils literal notranslate"><span class="pre">qvm-features</span></code> parameter <code class="docutils literal notranslate"><span class="pre">gui</span></code> to 1, seamless mode can be enabled and will stay enabled even after reboot of the qube.</p>
+</li>
+</ol>
+</section>
+<section id="xen-pv-drivers-and-qubes-windows-tools">
+<h2>Xen PV drivers and Qubes Windows Tools<a class="headerlink" href="#xen-pv-drivers-and-qubes-windows-tools" title="Link to this heading"></a></h2>
+<p>Installing Xen’s PV drivers in the VM will lower its resources usage when using network and/or I/O intensive applications, but <em>may</em> come at the price of system stability (although Xen’s PV drivers on a Windows VM are usually very stable). They can be installed as an optional part of Qubes Windows Tools (QWT), which bundles Xen’s PV drivers.</p>
+<p><strong>Notes</strong> about using Xen’s VBD (storage) PV driver:</p>
+<ul class="simple">
+<li><p><strong>Windows 7:</strong> Installing the driver requires a fully updated VM, or else you’ll likely get a BSOD (“Blue Screen Of Death”) and a VM in a difficult-to-fix state. Updating Windows takes <em>hours</em> and for casual usage there isn’t much of a performance between the disk PV driver and the default one; so there is likely no need to go through the lengthy Windows Update process if your VM doesn’t have access to untrusted networks and if you don’t use I/O intensive apps or attach block devices. If you plan to update your newly installed Windows VM, it is recommended that you do so <em>before</em> installing Qubes Windows Tools. Installing the driver will probably cause Windows 7 activation to become invalid, but the activation can be restored using the Microsoft telephone activation method.</p></li>
+<li><p>The option to install the storage PV driver is disabled by default in Qubes Windows Tools</p></li>
+<li><p>In case you already had QWT installed without the storage PV driver and you then updated the VM, you may then install the driver by again starting the QWT installer and selecting the change option.</p></li>
+</ul>
+</section>
+<section id="using-windows-appvms-in-seamless-mode">
+<h2>Using Windows AppVMs in seamless mode<a class="headerlink" href="#using-windows-appvms-in-seamless-mode" title="Link to this heading"></a></h2>
+<p>Windows Apps can be started using the Qubes menu. Alternatively, you can open the Windows menu by typing the Windows key on your keyboard while the cursor is positioned in a window of the Windows VM.</p>
+<p><strong>Note:</strong> The following features are only available for Windows 7 and are still somewhat buggy in Windows 10 and 11.</p>
+<p>Once you start a Windows-based AppVM with Qubes Tools installed, you can easily start individual applications from the VM (note the <code class="docutils literal notranslate"><span class="pre">-a</span></code> switch used here, which will auto-start the VM if it is not running):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-run<span class="w"> </span>-a<span class="w"> </span>my-win-appvm<span class="w"> </span>explorer.exe
+</pre></div>
+</div>
+<p><img alt="windows-seamless-4.png" src="../../../_images/windows-seamless-4.png" /> <img alt="windows-seamless-1.png" src="../../../_images/windows-seamless-1.png" /></p>
+<p>Also, the inter-VM services work as usual – e.g. to request opening a document or URL in the Windows AppVM from another VM:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-open-in-vm<span class="w"> </span>my-win-appvm<span class="w"> </span>roadmap.pptx
+
+<span class="gp">[user@dom0 ~]$ </span>qvm-open-in-vm<span class="w"> </span>my-win-appvm<span class="w"> </span>https://invisiblethingslab.com
+</pre></div>
+</div>
+<p>… just like in the case of Linux AppVMs. Of course all those operations are governed by central policy engine running in Dom0 – if the policy doesn’t contain explicit rules for the source and/or target AppVM, the user will be asked whether to allow or deny the operation.</p>
+<p>Inter-VM file copy and clipboard works for Windows AppVMs the same way as for Linux AppVM (except that we don’t provide a command line wrapper, <code class="docutils literal notranslate"><span class="pre">qvm-copy-to-vm</span></code> in Windows VMs) – to copy files from Windows AppVMs just right-click on the file in Explorer, and choose: Send To-&gt; Other AppVM.</p>
+<p>To simulate <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Alt</kbd>-<kbd class="kbd docutils literal notranslate">Delete</kbd></kbd> in the HVM (SAS, Secure Attention Sequence), press Ctrl-Alt-Home while having any window of this VM in the foreground.</p>
+<p><img alt="windows-seamless-7.png" src="../../../_images/windows-seamless-7.png" /></p>
+<p><strong>Changing between seamless and full desktop mode</strong></p>
+<p>You can switch between seamless and “full desktop” mode for Windows HVMs in their settings in Qubes Manager. The latter is the default.</p>
+</section>
+<section id="using-template-based-windows-appvms">
+<h2>Using template-based Windows AppVMs<a class="headerlink" href="#using-template-based-windows-appvms" title="Link to this heading"></a></h2>
+<p>Qubes allows HVM VMs to share a common root filesystem from a select Template VM, just as for Linux AppVMs. This mode is not limited to Windows AppVMs, and can be used for any HVM (e.g. FreeBSD running in a HVM).</p>
+<p>In order to create an HVM TemplateVM, the type “TemplateVM” has to be selected on creating the VM. Then set memory as appropriate, and install the Windows OS (or any other OS) into this template the same way as you would install it into a normal HVM – please see instructions on <a class="reference internal" href="../../advanced-topics/standalones-and-hvms.html"><span class="doc">this page</span></a>.</p>
+<p>If you use this Template as it is, then any HVMs that use it will effectively be DisposableVMs - the User directory will be wiped when the HVM is closed down.</p>
+<p>If you want to retain the User directory between reboots, then it would make sense to store the <code class="docutils literal notranslate"><span class="pre">C:\Users</span></code> directory on the 2nd disk, which is automatically exposed by Qubes to all HVMs. This 2nd disk is backed by the <code class="docutils literal notranslate"><span class="pre">private.img</span></code> file in the AppVMs and is not reset upon AppVMs reboot, so the user’s directories and profiles would survive the AppVMs reboot, unlike the “root” filesystem, which will be reverted to the “golden image” from the Template VM automatically. To facilitate such separation of user profiles, Qubes Windows Tools provide an option to automatically move the <code class="docutils literal notranslate"><span class="pre">C:\Users</span></code> directory to the 2nd disk backed by <code class="docutils literal notranslate"><span class="pre">private.img</span></code>. It’s a selectable feature of the installer. For Windows 7, the private disk must be renamed to <code class="docutils literal notranslate"><span class="pre">Q:</span></code> before QWT installation (see above); for Windows 10 and 11, this renaming occurs automatically during QWT installation.</p>
+<p>If that feature is selected during installation, completion of the process requires two reboots:</p>
+<ul class="simple">
+<li><p>The private disk is initialised and formatted on the first reboot after tools installation. It can’t be done <strong>during</strong> the installation because Xen mass storage drivers are not yet active.</p></li>
+<li><p>User profiles are moved to the private disk on the next reboot after the private disk is initialised. A reboot is required because the “mover utility” runs very early in the boot process so OS can’t yet lock any files in there. This can take some time depending on the profiles’ size, and because the GUI agent is not yet active, dom0/Qubes Manager may complain that the AppVM failed to boot. That’s a false alarm (you can increase the AppVM’s default boot timeout using <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code>), the VM should appear “green” in Qubes Manager shortly after.</p></li>
+</ul>
+<p>It also makes sense to disable Automatic Updates for all the template-based AppVMs – of course, this should be done in the Template VM, not in individual AppVMs, because the system-wide settings are stored in the root filesystem (which holds the system-wide registry hives). Then, periodically check for updates in the Template VM, and the changes will be carried over to any child AppVMs.</p>
+<p>Once the template has been created and installed, it is easy to create AppVMs based on it by selecting the type “AppVM” and a suitable template.</p>
+</section>
+<section id="using-windows-disposables">
+<h2>Using Windows disposables<a class="headerlink" href="#using-windows-disposables" title="Link to this heading"></a></h2>
+<p>Windows qubes can be used as disposables, like any other Linux-based qubes. On creating a template for Windows disposables, certain preparations have to be executed:</p>
+<ul class="simple">
+<li><p>Create an AppVM based on a Windows TemplateVM.</p></li>
+<li><p>Start this AppVM and insert a link to the command prompt executable in the <code class="docutils literal notranslate"><span class="pre">Autostart</span></code> directory of the Windows menu tree:</p>
+<ul>
+<li><p><strong>For Windows 7:</strong></p>
+<ul>
+<li><p>If the Windows qube started in seamless mode, hit the Windows keyboard key while the cursor is positioned in a window of this VM. In non-seamless mode, click on the Start button. In both cases, the Windows menu will be displayed.</p></li>
+<li><p>Position into the <code class="docutils literal notranslate"><span class="pre">Autostart</span></code> submenu.</p></li>
+</ul>
+</li>
+<li><p><strong>For Windows 10 or 11:</strong></p>
+<ul>
+<li><p>Type <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Win</kbd>+<kbd class="kbd docutils literal notranslate">R</kbd></kbd> to open the execution Prompt.</p></li>
+<li><p>Type <code class="docutils literal notranslate"><span class="pre">shell:startup</span></code>.</p></li>
+<li><p>An explorer window will open, which is positioned to the <code class="docutils literal notranslate"><span class="pre">Autostart</span></code> folder.</p></li>
+</ul>
+</li>
+<li><p>Right-click and select the option “New -&gt; Link”.</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">C:\Windows\System32\CMD.exe</span></code> as executable.</p></li>
+<li><p>Name the link, e.g. as <code class="docutils literal notranslate"><span class="pre">Command</span> <span class="pre">Prompt</span></code>.</p></li>
+<li><p>Close the Window with <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p></li>
+<li><p>Shut down this AppVM.</p></li>
+</ul>
+</li>
+<li><p>In the Qube Manager, refresh the applications of the newly created AppVM and select those applications that you want to make available from the disposable. Alternatively, in dom0 execute the command</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-sync-appmenus<span class="w"> </span>&lt;VMNAME&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;VMNAME&gt;</span></code> is the name of your windows qube.</p>
+<ul class="simple">
+<li><p>In the Qube Manager, go to the “Advanced” tab and enable the option <code class="docutils literal notranslate"><span class="pre">Disposable</span> <span class="pre">template</span></code> for your Windows qube. Alternatively, in dom0 execute the commands</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>template_for_dispvms<span class="w"> </span>True
+<span class="gp">[user@dom0 ~]$ </span>qvm-features<span class="w"> </span>&lt;VMNAME&gt;<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="m">1</span><span class="sb">``</span>.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Apply</span></code>.</p></li>
+<li><p>Still in the Advanced tab, select your Windows qube as its own <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">disposable</span> <span class="pre">template</span></code>. Alternatively, in dom0 execute the command <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span> <span class="pre">&lt;VMNAME&gt;</span> <span class="pre">default_dispvm</span> <span class="pre">&lt;VMNAME&gt;</span></code>.</p></li>
+<li><p>Close the Qube Manager by clicking <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p></li>
+</ul>
+<p>Now you should have a menu <code class="docutils literal notranslate"><span class="pre">Disposable:</span> <span class="pre">&lt;VMname&gt;</span></code> containing the applications that can be started in a disposable Windows VM. If you set the newly created and configured Windows VM as <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">disposable</span> <span class="pre">template</span></code> for any other Windows- (or Linux-) based qube, this qube can use the Windows-based dispvm like any other disposable.</p>
+<p>For further information on usage of disposables, see <a class="reference internal" href="../../how-to-guides/how-to-use-disposables.html"><span class="doc">How to use disposables</span></a>.</p>
+<p><strong>Caution:</strong> <em>If a Windows-based disposable is used from another qube via the</em> <code class="docutils literal notranslate"><span class="pre">Open/Edit</span> <span class="pre">in</span> <span class="pre">DisposableVM</span></code> <em>command, this disposable may not close automatically, due to the command prompt window still running in this dispvm. In this case, the disposable has to be shut down manually.</em></p>
+</section>
+<section id="installation-logs">
+<h2>Installation logs<a class="headerlink" href="#installation-logs" title="Link to this heading"></a></h2>
+<p>If the installation process fails or something goes wrong during it, include the installation logs in your bug report. They are created in the <code class="docutils literal notranslate"><span class="pre">%TEMP%</span></code> directory, by default <code class="docutils literal notranslate"><span class="pre">&lt;user</span> <span class="pre">profile&gt;\AppData\Local\Temp</span></code>. There are two text files, one small and one big, with names starting with <code class="docutils literal notranslate"><span class="pre">Qubes_Windows_Tools</span></code>.</p>
+<p>Uninstalling QWT is supported. After uninstalling, you need to manually enable the DHCP Client Windows service, or set IP settings yourself to restore network access.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Various aspects of Qubes Windows Tools (QWT) can be configured through the registry. The main configuration key is located in <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SOFTWARE\Invisible</span> <span class="pre">Things</span> <span class="pre">Lab\Qubes</span> <span class="pre">Tools</span></code>. Configuration values set on this level are global to all QWT components. It’s possible to override global values with component-specific keys; this is useful mainly for setting log verbosity for troubleshooting. Possible configuration values are:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LogDir</p></td>
+<td><p>String</p></td>
+<td><p>Directory where logs are created</p></td>
+<td><p>c:\Program Files\Invisible Things Lab\Qubes Tools\log</p></td>
+</tr>
+<tr class="row-odd"><td><p>LogLevel</p></td>
+<td><p>DWORD</p></td>
+<td><p>Log verbosity (see below)</p></td>
+<td><p>2 (INFO)</p></td>
+</tr>
+<tr class="row-even"><td><p>LogRetention</p></td>
+<td><p>DWORD</p></td>
+<td><p>Maximum age of log files (in seconds), older logs are automatically deleted</p></td>
+<td><p>604800 (7 days)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Possible log levels:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+<col style="width: 33.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Level</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Error</p></td>
+<td><p>Serious errors that most likely cause irrecoverable failures</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Warning</p></td>
+<td><p>Unexpected but non-fatal events</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Info</p></td>
+<td><p>Useful information (default)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Debug</p></td>
+<td><p>Internal state dumps for troubleshooting</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Verbose</p></td>
+<td><p>Trace most function calls</p></td>
+</tr>
+</tbody>
+</table>
+<p>Debug and Verbose levels can generate a large volume of logs and are intended for development/troubleshooting only.</p>
+<p>To override global settings for a specific component, create a new key under the root key mentioned above and name it as the executable name, without <code class="docutils literal notranslate"><span class="pre">.exe</span></code> extension.</p>
+<p>Component-specific settings currently available:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Setting</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>qga</p></td>
+<td><p>DisableCursor</p></td>
+<td><p>DWORD</p></td>
+<td><p>Disable the cursor in the VM. Useful for integration with Qubes desktop, so you don’t see two cursors. Can be disabled if you plan to use the VM through a remote desktop connection of some sort. Needs GUI agent restart to apply change (locking OS/logoff should be enough since qga is restarted on desktop change).</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>If the VM is inaccessible (doesn’t respond to qrexec commands, gui is not functioning), try to boot it in safe mode:</p>
+<ul>
+<li><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-start<span class="w"> </span>--debug<span class="w"> </span>&lt;VMNAME&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Enable boot options and select Safe Mode (method depends on the Windows version; optionally with networking)</p></li>
+</ul>
+<p>Safe Mode should at least give you access to logs (see above).</p>
+<p><strong>Please include appropriate logs when reporting bugs/problems.</strong> Logs contain the QWT version. If the OS crashes (BSOD) please include the BSOD code and parameters in your bug report. The BSOD screen should be visible if you run the VM in debug mode (<code class="docutils literal notranslate"><span class="pre">qvm-start</span> <span class="pre">--debug</span> <span class="pre">vmname</span></code>). If it’s not visible or the VM reboots automatically, try to start Windows in safe mode (see above) and 1) disable automatic restart on BSOD (Control Panel - System - Advanced system settings - Advanced - Startup and recovery), 2) check the system event log for BSOD events. If you can, send the <code class="docutils literal notranslate"><span class="pre">memory.dmp</span></code> dump file from <code class="docutils literal notranslate"><span class="pre">C:\Windows</span></code>.</p>
+<p>Xen logs in dom0 (<code class="docutils literal notranslate"><span class="pre">/var/log/xen/console/guest-*</span></code>) are also useful as they contain pvdrivers diagnostic output.</p>
+<p>If a specific component is malfunctioning, you can increase its log verbosity as explained above to get more troubleshooting information. Below is a list of components:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>qrexec-agent</p></td>
+<td><p>Responsible for most communication with Qubes (dom0 and other domains), secure clipboard, file copying, qrexec services.</p></td>
+</tr>
+<tr class="row-odd"><td><p>qrexec-wrapper</p></td>
+<td><p>Helper executable that’s responsible for launching qrexec services, handling their I/O and vchan communication.</p></td>
+</tr>
+<tr class="row-even"><td><p>qrexec-client-vm</p></td>
+<td><p>Used for communications by the qrexec protocol.</p></td>
+</tr>
+<tr class="row-odd"><td><p>qga</p></td>
+<td><p>GUI agent.</p></td>
+</tr>
+<tr class="row-even"><td><p>QgaWatchdog</p></td>
+<td><p>Service that monitors session/desktop changes (logon/logoff/locking/UAC…) and simulates SAS sequence (Ctrl-Alt-Del).</p></td>
+</tr>
+<tr class="row-odd"><td><p>qubesdb-daemon</p></td>
+<td><p>Service for accessing the Qubes configuration database.</p></td>
+</tr>
+<tr class="row-even"><td><p>network-setup</p></td>
+<td><p>Service that sets up network parameters according to the VM’s configuration.</p></td>
+</tr>
+<tr class="row-odd"><td><p>prepare-volume</p></td>
+<td><p>Utility that initializes and formats the disk backed by private.img file. It’s registered to run on the next system boot during QWT setup, if that feature is selected (it can’t run during the setup because Xen block device drivers are not yet active). It, in turn, registers “move profiles” (see below) to run at early boot.</p></td>
+</tr>
+<tr class="row-even"><td><p>relocate-dir</p></td>
+<td><p>Utility that moves the user profiles directory to the private disk. It’s registered as an early boot native executable (similar to chkdsk), so it can run before any profile files are opened by some other process. Its log is in a fixed location: C:\move-profiles.log (it can’t use our common logger library, so none of the log settings apply).</p></td>
+</tr>
+</tbody>
+</table>
+<p>If there are network-related issues, the qube doesn’t resolve DNS and has trouble accessing the Internet, this might be an issue with the PV Network Drivers.</p>
+<p>In this case, it’s recommended that the PV Network Drivers be unchecked during installation of Qubes Windows Tools as seen in the screenshot below.</p>
+<p><img alt="QWT_no_PV_network" src="../../../_images/QWT_no_PV_network.png" /></p>
+</section>
+<section id="updates">
+<h2>Updates<a class="headerlink" href="#updates" title="Link to this heading"></a></h2>
+<p>When we publish a new QWT version, it’s usually pushed to the <code class="docutils literal notranslate"><span class="pre">current-testing</span></code> or <code class="docutils literal notranslate"><span class="pre">unstable</span></code> repository first. To use versions from current-testing, run this in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>sudo<span class="w"> </span>qubes-dom0-update<span class="w"> </span>--enablerepo<span class="o">=</span>qubes-dom0-current-testing<span class="w"> </span>qubes-windows-tools
+</pre></div>
+</div>
+<p>That command will download a new QWT <code class="docutils literal notranslate"><span class="pre">iso</span></code> file from the testing repository. It goes without saying that you should <strong>backup your VMs</strong> before installing anything from testing repos.</p>
+</section>
+<section id="uninstalling-qubes-windows-tools-in-a-windows-vm">
+<h2>Uninstalling Qubes Windows Tools in a Windows VM<a class="headerlink" href="#uninstalling-qubes-windows-tools-in-a-windows-vm" title="Link to this heading"></a></h2>
+<section id="windows-7">
+<h3>Windows 7<a class="headerlink" href="#windows-7" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Uninstall QWT 4.1.69-1, using the standard procedure from the system control panel of Windows. This will most likely result in a crash with the error INACCESSIBLE BOOT DEVICE, especially if the PV drivers were installed with QWT.</p></li>
+<li><p>Restart Windows again, hitting the <kbd class="kbd docutils literal notranslate">F8</kbd> key, select the restart menu, and then select a start in safe mode.</p></li>
+<li><p>The system will start again, but in a rather useless way. Just shut it down and reboot again.</p></li>
+<li><p>Now Windows will start normally. Check within the control panel if there are any Xen drivers left. If so, uninstall them.</p></li>
+<li><p>In the Windows device manager, check if there is still a (probably non-working) Xen PV disk device. If so, uninstall it.</p></li>
+<li><p>In the control panel, check again if the Xen drivers are removed. A Xen Bus Package (version 8.2.1.8) may remain and cannot be removed, but does no harm. Any other Xen drivers should have disappeared.</p></li>
+</ul>
+</section>
+<section id="windows-10-and-11">
+<h3>Windows 10 and 11<a class="headerlink" href="#windows-10-and-11" title="Link to this heading"></a></h3>
+<p>If there is a drive <code class="docutils literal notranslate"><span class="pre">D:</span></code> from this earlier installation of Qubes Windows Tools, it will probably contain incomplete private data; especially the folder <code class="docutils literal notranslate"><span class="pre">AppData</span></code> containing program configuration data will be missing. In this situation, it may be better to perform a new Windows installation, because repair may be difficult and trouble-prone.</p>
+<ul class="simple">
+<li><p>First, be sure that the automatic repair function is disabled. In a command window, execute <code class="docutils literal notranslate"><span class="pre">bcdedit</span> <span class="pre">/set</span> <span class="pre">recoveryenabled</span> <span class="pre">NO</span></code>, and check that this worked by issuing the command <code class="docutils literal notranslate"><span class="pre">bcdedit</span></code>, without parameters, again.</p></li>
+<li><p>Now, uninstall QWT (currently version 4.2.2-1), using the Apps and Features function of Windows. This will most likely result in a crash with the error INACCESSIBLE BOOT DEVICE, especially if the PV drivers were installed with QWT.</p></li>
+<li><p>Restart Windows again, possibly two or three times, until repair options are offered. By hitting the F8 key, select the restart menu, and in that menu select a start in safe mode (in German, it’s option number 4).</p></li>
+<li><p>The system will start again, but in a rather useless way. Just shut it down and reboot again.</p></li>
+<li><p>Now Windows will start normally. Check in the Apps and Features display if there are any Xen drivers left. If so, uninstall them.</p></li>
+<li><p>In the Windows device manager, check if there is still a (probably non-working) Xen PV disk device. If so, uninstall it.</p></li>
+<li><p>In the Apps and Features display, check again if the Xen drivers are removed. A Xen Bus Package may remain and cannot be removed, but it does not cause harm. Any other Xen drivers should have disappeared.</p></li>
+</ul>
+<p>In order to avoid Qubes stopping Windows VMs forcefully after QWT was uninstalled, it is advisable to undefine the qrexec control for these VMs. This can be done using the command <code class="docutils literal notranslate"><span class="pre">qvm-features</span> <span class="pre">&lt;VMNAME&gt;</span> <span class="pre">qrexec</span> <span class="pre">&quot;&quot;</span></code>.</p>
+<p>After successful uninstallation of the PV disk drivers, the disks will appear as QEMU ATA disks.</p>
+<p><strong>Warning:</strong> The uninstallation of the PV disk drivers may lead Windows to declare that the hardware has changed and that, in consequence, the activation is no longer valid, possibly complaining that the use of the software is no longer lawful. It should be possible to reactivate the software if a valid product key is provided.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qubes-windows.html" class="btn btn-neutral float-left" title="How to install Windows qubes in Qubes OS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qubes-windows-migrate.html" class="btn btn-neutral float-right" title="Migrate Windows qubes from old Qubes versions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/templates/windows/qubes-windows-tools.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="GUI 虛擬化" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/system/gui.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="qubes-gui 與 qubes-guid 進程: 所有 AppVM 的 X 應用程式會連接到在本機（AppVM 內執行）的 Xorg 伺服器，這些伺服器使用下列「硬體」驅動程式： dummyqsb_drv- 視訊驅動程式，會繪製到位於 RAM 中的影格緩衝區，不連接實際硬體, qubes_drv- 提供虛擬鍵盤與滑鼠（實際上還有更多功能，詳見下文）. 對於每個 AppVM，都有一對透過 ..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="qubes-gui 與 qubes-guid 進程: 所有 AppVM 的 X 應用程式會連接到在本機（AppVM 內執行）的 Xorg 伺服器，這些伺服器使用下列「硬體」驅動程式： dummyqsb_drv- 視訊驅動程式，會繪製到位於 RAM 中的影格緩衝區，不連接實際硬體, qubes_drv- 提供虛擬鍵盤與滑鼠（實際上還有更多功能，詳見下文）. 對於每個 AppVM，都有一對透過 ..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUI 虛擬化 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/system/gui.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="網路" href="networking.html" />
+    <link rel="prev" title="Security-critical code" href="security-critical-code.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GUI 虛擬化</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-gui-and-qubes-guid-processes"><code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 與 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 進程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#window-content-updates-implementation">視窗內容更新實作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-markers-on-dom0-windows">dom0 視窗上的安全標註</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clipboard-sharing-implementation">剪貼簿共享實作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-gui-and-qubes-guid-code-notes"><code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 與 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 程式碼說明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appvm-guivm-messages">AppVM -&gt; GuiVM 訊息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#guivm-appvm-messages">GuiVM -&gt; AppVM 訊息</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">GUI 虛擬化</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/system/gui.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gui-virtualization">
+<h1>GUI 虛擬化<a class="headerlink" href="#gui-virtualization" title="連結到這個標頭"></a></h1>
+<section id="qubes-gui-and-qubes-guid-processes">
+<h2><code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 與 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 進程<a class="headerlink" href="#qubes-gui-and-qubes-guid-processes" title="連結到這個標頭"></a></h2>
+<p>所有 AppVM 的 X 應用程式會連接到在本機（AppVM 內執行）的 Xorg 伺服器，這些伺服器使用下列「硬體」驅動程式：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dummyqsb_drv</span></code> - 視訊驅動程式，會繪製到位於 RAM 中的影格緩衝區，不連接實際硬體</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qubes_drv</span></code> - 提供虛擬鍵盤與滑鼠（實際上還有更多功能，詳見下文）</p></li>
+</ul>
+<p>對於每個 AppVM，都有一對透過 vchan 連接的 <code class="docutils literal notranslate"><span class="pre">qubes-gui``（在</span> <span class="pre">AppVM</span> <span class="pre">中執行）與</span> <span class="pre">``qubes-guid``（在</span> <span class="pre">AppVM</span> <span class="pre">的</span> <span class="pre">GuiVM</span> <span class="pre">中執行，預設為</span> <span class="pre">dom0）進程。``qubes-gui</span></code> 的主要職責如下：</p>
+<ul class="simple">
+<li><p>在根視窗上呼叫 XCompositeRedirectSubwindows，使每個視窗擁有自己的合成緩衝區</p></li>
+<li><p>指示本機 Xorg 伺服器通知其關於視窗建立、配置及損毀事件；並將這些事件的資訊傳遞給 dom0</p></li>
+<li><p>從 dom0 接收鍵盤與滑鼠事件的資訊，告訴 <code class="docutils literal notranslate"><span class="pre">qubes-drv</span></code> 模擬相應的事件</p></li>
+<li><p>接收關於視窗大小/位置變更的資訊，並將其套用至本機視窗</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 的主要職責如下：</p>
+<ul class="simple">
+<li><p>每當從 <code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 收到 AppVM 中建立視窗的資訊時，在 dom0 中建立一個視窗</p></li>
+<li><p>每當本機視窗收到 XEvent 時，將其資訊傳遞給 AppVM（特別是滑鼠與鍵盤資料）</p></li>
+<li><p>每當 AppVM 發出損毀事件訊號時，告訴本機 Xorg 伺服器重新繪製指定的視窗片段</p></li>
+<li><p>接收關於視窗大小/位置變更的資訊，並將其套用至本機視窗</p></li>
+</ul>
+<p>請注意，只有在屬於此 AppVM 的視窗取得焦點時，鍵盤與滑鼠事件才會傳遞給該 AppVM。AppVM 無法獲取輸入至其他 AppVM 的按鍵資訊（例如 XTEST 擴充功能只會報告本機 AppVM 鍵盤的狀態），也無法合成事件並傳遞給其他 AppVM。</p>
+</section>
+<section id="window-content-updates-implementation">
+<h2>視窗內容更新實作<a class="headerlink" href="#window-content-updates-implementation" title="連結到這個標頭"></a></h2>
+<p>典型的遠端桌面應用程式（如 VNC）會透過帶內方式（例如透過 TCP）傳遞所有變更的視窗內容資訊。由於該通道的吞吐量有限，這會影響視訊效能。在 Qubes 中，<code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 不會透過 vchan 傳輸所有變更的像素。相反地，對於每個視窗，在建立或調整大小時：</p>
+<ul class="simple">
+<li><p>舊版的 <code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 會向 <code class="docutils literal notranslate"><span class="pre">qubes-drv</span></code> 驅動程式索取保存視窗合成緩衝區的實體記憶體頁框清單，並透過已棄用的 <code class="docutils literal notranslate"><span class="pre">MFNDUMP</span></code> 訊息將其傳遞給 dom0。</p></li>
+<li><p>新版的 <code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 則依賴 <code class="docutils literal notranslate"><span class="pre">qubes-drv</span></code> 使用 gntalloc 分配記憶體，然後將 gntalloc 所選的許可表索引透過 <code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP</span></code> 訊息傳遞給 GUI 守護進程。</p></li>
+</ul>
+<p>現在，<code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 必須告知 dom0 的 Xorg 伺服器緩衝區的位置。目前沒有支援的方式（例如 Xorg 擴充功能）可以實現這種零複製風格。Qubes 使用以下方法：</p>
+<ul class="simple">
+<li><p>在 dom0 中，Xorg 伺服器以 <code class="docutils literal notranslate"><span class="pre">LD_PRELOAD</span></code> 方式載入名為 <code class="docutils literal notranslate"><span class="pre">shmoverride.so</span></code> 的函數庫啟動。此函數庫會掛接所有與共享記憶體相關的函數呼叫。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 建立一個共享記憶體區段，然後告訴 Xorg 透過 <code class="docutils literal notranslate"><span class="pre">MIT-SHM</span></code> 擴充功能附加該區段</p></li>
+<li><p>當 Xorg 嘗試附加該區段（透過 glibc 的 <code class="docutils literal notranslate"><span class="pre">shmat</span></code>）時，<code class="docutils literal notranslate"><span class="pre">shmoverride.so</span></code> 會攔截此呼叫，並改為針對已棄用的 <code class="docutils literal notranslate"><span class="pre">MFNDUMP</span></code> 訊息透過 <code class="docutils literal notranslate"><span class="pre">xc_map_foreign_pages</span></code> 映射AppVM 記憶體，或針對 <code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP</span></code> 訊息透過 <code class="docutils literal notranslate"><span class="pre">xengnttab_map_domain_grant_refs</span></code> 映射。</p></li>
+<li><p>之後，我們可以使用 MIT-SHM 函數（例如 <code class="docutils literal notranslate"><span class="pre">XShmPutImage</span></code>）繪製到 dom0 視窗上。<code class="docutils literal notranslate"><span class="pre">XShmPutImage</span></code> 將以 DRAM 速度進行繪製，許多驅動程式還會使用 DMA 使其更快。</p></li>
+</ul>
+<p>重要細節在於 <code class="docutils literal notranslate"><span class="pre">xc_map_foreign_pages</span></code> 會驗證給定的 mfn 範圍是否確實屬於某個網域 ID（而後者由受信任的 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 提供）。因此，惡意 AppVM 無法透過在 <code class="docutils literal notranslate"><span class="pre">MFNDUMP</span></code> 訊息中傳遞精心偽造的 mfn 獲得任何好處。同樣地，<code class="docutils literal notranslate"><span class="pre">xengnttab_map_domain_grant_refs</span></code> 只會映射 qubes-guid 指定的特定網域 ID 的許可，因此偽造的 <code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP</span></code> 訊息對攻擊者來說也無用處。</p>
+<p>總結來說，此解決方案具有以下優點：</p>
+<ul class="simple">
+<li><p>以 DRAM 速度更新視窗</p></li>
+<li><p>無需修改 Xorg 程式碼</p></li>
+<li><p>支援程式碼的體積最小化</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP</span></code> 優於 <code class="docutils literal notranslate"><span class="pre">MFNDUMP</span></code> 有兩個原因：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xc_map_foreign_pages</span></code> 只能由 dom0 使用，因為它可以存取任何 VM 的所有記憶體。允許 dom0 以外的任何 VM 執行此操作將構成安全漏洞。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xc_map_foreign_pages</span></code> 需要待映射頁面的客戶機實體位址，但普通的使用者空間進程（如 <code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 或 Xorg）無法存取該資訊。因此，轉換是透過 <code class="docutils literal notranslate"><span class="pre">u2mfn</span></code> 這個樹外核心模組完成的。</p></li>
+</ol>
+<p>目前，使用 <code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP</span></code> 確實會帶來效能成本，因為 AppVM 的 X 伺服器必須將頁面從應用程式複製到 gntalloc 配置的記憶體中。這將可透過未來對 gntalloc 的改進來解決，使其能夠透過 gntalloc 匯出*任何*頁面，包括另一個進程共享的記憶體。</p>
+<figure class="align-default">
+<img alt="gui.png" src="../../_images/gui.png" />
+</figure>
+</section>
+<section id="security-markers-on-dom0-windows">
+<h2>dom0 視窗上的安全標註<a class="headerlink" href="#security-markers-on-dom0-windows" title="連結到這個標頭"></a></h2>
+<p>使用者知道某個視窗屬於哪個 AppVM 是非常重要的。這可以防止惡意 AppVM 繪製一個假裝屬於其他 AppVM 或 dom0 的視窗，並試圖竊取例如密碼等資訊。</p>
+<p>在 Qubes 中，使用了一個自訂的視窗裝飾器，會在已裝飾的視窗周圍繪製彩色邊框（顏色在 AppVM 建立時決定）。此外，視窗標題始終以 <strong>[AppVM 名稱]</strong> 開頭。如果視窗具有 <code class="docutils literal notranslate"><span class="pre">override_redirect</span></code> 屬性（表示不應由視窗管理器處理，典型情況是選單視窗），<code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 會手動在內部繪製一個兩像素的彩色邊框。</p>
+</section>
+<section id="clipboard-sharing-implementation">
+<h2>剪貼簿共享實作<a class="headerlink" href="#clipboard-sharing-implementation" title="連結到這個標頭"></a></h2>
+<p>當然，允許 AppVM 無條件讀取/寫入其他 AppVM 的剪貼簿是不安全的。因此，使用了以下機制：</p>
+<ul class="simple">
+<li><p>dom0 中有一個「qubes 剪貼簿」- 其內容儲存在 dom0 的普通檔案中，路徑為 <code class="docutils literal notranslate"><span class="pre">/run/qubes/qubes-clipboard.bin</span></code>。</p></li>
+<li><p>如果使用者想將本機 AppVM 的剪貼簿複製到 qubes 剪貼簿，她必須將焦點放在屬於此 AppVM 的任何視窗上，然後按下 <strong>Ctrl-Shift-C</strong>。此組合鍵會被 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 攔截，並向 AppVM 發送 <code class="docutils literal notranslate"><span class="pre">CLIPBOARD_REQ</span></code> 訊息。<code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 則以 <code class="docutils literal notranslate"><span class="pre">CLIPBOARD_DATA</span></code> 訊息回應，後面跟著剪貼簿內容。</p></li>
+<li><p>使用者將焦點放在其他 AppVM 視窗上，按下 <strong>Ctrl-Shift-V</strong>。此組合鍵會被 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 攔截，並向 AppVM 發送 <code class="docutils literal notranslate"><span class="pre">CLIPBOARD_DATA</span></code> 訊息，後面跟著 qubes 剪貼簿的內容；<code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 將資料複製到本機剪貼簿，然後使用者就可以正常地將其內容貼上到本機應用程式中。</p></li>
+<li><p>在全域剪貼簿複製或貼上操作時，會將補充的 JSON 後設資料檔案儲存為 <code class="docutils literal notranslate"><span class="pre">/run/qubes/qubes-clipboard.bin.metadata</span></code>。每個欄位的說明可在 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 的 <code class="docutils literal notranslate"><span class="pre">xside.h</span></code> 標頭檔的 <code class="docutils literal notranslate"><span class="pre">clipboard_metadata</span></code> 結構中找到。雖然 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 的輸出完全符合 JSON 格式，但其解析器有限制。它期望每個鍵值對之後有換行符號，且每行只有一個鍵值對。開頭和結尾的花括號應各自獨立成行。不應有前導空白字元。</p></li>
+</ul>
+<p>這樣一來，使用者可以快速地在 AppVM 之間複製剪貼簿。此操作完全由使用者控制，任何 AppVM 都無法觸發或強制執行。</p>
+</section>
+<section id="qubes-gui-and-qubes-guid-code-notes">
+<h2><code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 與 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 程式碼說明<a class="headerlink" href="#qubes-gui-and-qubes-guid-code-notes" title="連結到這個標頭"></a></h2>
+<p>這兩個應用程式的結構類似。它們使用 <code class="docutils literal notranslate"><span class="pre">select</span></code> 函數來等待以下兩個事件來源之一：</p>
+<ul class="simple">
+<li><p>來自本機 X 伺服器的訊息</p></li>
+<li><p>來自連接到遠端端的 vchan 訊息</p></li>
+</ul>
+<p>XEvents 由 <code class="docutils literal notranslate"><span class="pre">handle_xevent_eventname</span></code> 函數處理，而訊息則由 <code class="docutils literal notranslate"><span class="pre">handle_messagename</span></code> 函數處理。在修改實際的 <code class="docutils literal notranslate"><span class="pre">select</span></code> 迴圈時應非常小心，因為 XEvents 和 vchan 訊息都會被緩衝，<code class="docutils literal notranslate"><span class="pre">select</span></code> 不會為每個訊息都喚醒。</p>
+<p>如果變更了訊息的數量/順序/簽名，則應增加 <code class="docutils literal notranslate"><span class="pre">messages.h</span></code> 包含檔案中的 <code class="docutils literal notranslate"><span class="pre">QUBES_GUID_PROTOCOL_VERSION</span></code> 常數。</p>
+<p><code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 將除錯資訊寫入 <code class="docutils literal notranslate"><span class="pre">/var/log/qubes/qubes.domain_id.log</span></code> 檔案；<code class="docutils literal notranslate"><span class="pre">qubes-gui</span></code> 將除錯資訊寫入 <code class="docutils literal notranslate"><span class="pre">/var/log/qubes/gui_agent.log</span></code> 檔案。回報錯誤時請附上這些檔案。</p>
+</section>
+<section id="appvm-guivm-messages">
+<h2>AppVM -&gt; GuiVM 訊息<a class="headerlink" href="#appvm-guivm-messages" title="連結到這個標頭"></a></h2>
+<p>正確處理以下訊息對安全性至關重要。請注意，除 <code class="docutils literal notranslate"><span class="pre">CLIPBOARD</span></code>、<code class="docutils literal notranslate"><span class="pre">MFNDUMP</span></code> 和 <code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP</span></code> 之外的所有訊息都具有固定大小，因此解析程式碼可以很精簡。</p>
+<p><code class="docutils literal notranslate"><span class="pre">override_redirect</span></code> 視窗屬性的說明請參閱<a class="reference external" href="https://tronche.com/gui/x/xlib/window/attributes/override-redirect.html">覆蓋重新導向旗標</a>。<code class="docutils literal notranslate"><span class="pre">transient_for</span></code> 屬性的說明請參閱 <code class="docutils literal notranslate"><span class="pre">transient_for</span></code> <a class="reference external" href="https://tronche.com/gui/x/icccm/sec-4.html#WM_TRANSIENT_FOR">屬性</a>。</p>
+<p>視窗管理器的提示與旗標在 <a class="reference external" href="https://standards.freedesktop.org/wm-spec/latest/">延伸視窗管理器提示 (EWMH) 規範</a> 中有說明，特別是在 <code class="docutils literal notranslate"><span class="pre">_NET_WM_STATE</span></code> 章節中。</p>
+<p>每條訊息的開頭為以下標頭：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msghdr</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">window</span><span class="p">;</span>
+<span class="w">    </span><span class="cm">/* This field is intended for use by GUI agents to skip unknown</span>
+<span class="cm">     * messages from the (trusted) GUI daemon. GUI daemon, on the other</span>
+<span class="cm">     * hand, should never rely on this field to calculate the actual len</span>
+<span class="cm">     * of message to be read, as the (untrusted) agent can put whatever</span>
+<span class="cm">     * it wants here! */</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">untrusted_len</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>該標頭後面接著訊息特定的資料：</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 10.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>訊息名稱</p></th>
+<th class="head"><p>標頭後的結構</p></th>
+<th class="head"><p>動作</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MSG_CLIPBOARD_DATA</p></td>
+<td><p>無定型二進位資料（在 1.2 之前的協定中，長度由「window」欄位決定；在 1.2 及之後則由標頭中的 untrusted_len 決定）</p></td>
+<td><p>儲存接收到的剪貼簿內容（不以任何方式解析）</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_CREATE</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_create</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">override_redirect</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>使用給定的參數建立視窗</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_DESTROY</p></td>
+<td><p>無</p></td>
+<td><p>銷毀視窗</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_MAP</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_map_info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">transient_for</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">override_redirect</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>使用給定的參數映射視窗</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_UNMAP</p></td>
+<td><p>無</p></td>
+<td><p>取消映射視窗</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_CONFIGURE</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_configure</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">override_redirect</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>變更視窗位置/大小/類型</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_MFNDUMP</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">shm_cmd</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">shmid</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">bpp</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">off</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_mfn</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">domid</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mfns</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>擷取構成遠端視窗合成緩衝區的 mfn 陣列。</p>
+<p>「num_mfn」個 32 位元整數跟在 shm_cmd 結構之後；「off」是合成緩衝區在第一個頁框中的起始偏移量；「shmid」和「domid」參數僅是佔位符（將由 <code class="docutils literal notranslate"><span class="pre">qubes-guid</span></code> 填寫），以便在與 <code class="docutils literal notranslate"><span class="pre">shmoverride.so</span></code> 通訊時可以使用相同的結構。</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>MSG_SHMIMAGE</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_shmimage</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>重新繪製給定的視窗片段</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_WMNAME</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_wmname</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>設定視窗名稱。僅允許可列印字元，且預設不允許非 ASCII 字元。</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_DOCK</p></td>
+<td><p>無</p></td>
+<td><p>將視窗停靠在系統匣中</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_WINDOW_HINTS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_window_hints</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">flags</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">min_width</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">min_height</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">max_width</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">max_height</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width_inc</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height_inc</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">base_width</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">base_height</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>視窗管理器的尺寸提示</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_WINDOW_FLAGS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_window_flags</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">flags_set</span><span class="p">;</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">flags_unset</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>變更視窗狀態請求；欄位包含位元遮罩，標示哪些旗標請求設定、哪些取消設定</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_CURSOR</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_cursor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cursor</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>更新視窗的游標指標。支援的游標 ID 為預設游標 (0) 和 <a href="#id1"><span class="problematic" id="id2">`</span></a>X 字型游標 &lt;<a class="reference external" href="https://tronche.com/gui/x/xlib/appendix/b/">https://tronche.com/gui/x/xlib/appendix/b/</a>&gt;`__（設定 0x100 位元）。</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_WMCLASS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_wmclass</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">res_class</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">res_name</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>設定視窗的 WM_CLASS 屬性。</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_WINDOW_DUMP</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_window_dump_hdr</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">bpp</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>類型為 hdr.type 的共享記憶體傾印命令的標頭。目前僅支援 <code class="docutils literal notranslate"><span class="pre">WINDOW_DUMP_TYPE_GRANT_REFS</span></code> (0)。</p></td>
+</tr>
+<tr class="row-odd"><td><p>WINDOW_DUMP_TYPE_GRANT_REFS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_window_dump_grant_refs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">refs</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>應映射到合成緩衝區中的許可參考。</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="guivm-appvm-messages">
+<h2>GuiVM -&gt; AppVM 訊息<a class="headerlink" href="#guivm-appvm-messages" title="連結到這個標頭"></a></h2>
+<p>以下訊息的正確處理**不**涉及安全性關鍵。</p>
+<p>每條訊息的開頭為以下標頭</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msghdr</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">window</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>該標頭後面接著訊息特定的資料：</p>
+<table class="docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head"><p>訊息名稱</p></th>
+<th class="head"><p>標頭後的結構</p></th>
+<th class="head"><p>動作</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MSG_KEYPRESS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_keypress</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">keycode</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>告訴 <code class="docutils literal notranslate"><span class="pre">qubes_drv</span></code> 驅動程式產生按鍵事件</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_BUTTON</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">button</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>告訴 <code class="docutils literal notranslate"><span class="pre">qubes_drv</span></code> 驅動程式產生滑鼠點擊事件</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_MOTION</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_motion</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">is_hint</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>告訴 <code class="docutils literal notranslate"><span class="pre">qubes_drv</span></code> 驅動程式產生移動事件</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_CONFIGURE</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_configure</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">override_redirect</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>變更視窗位置/大小/類型</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_MAP</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_map_info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">transient_for</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">override_redirect</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>使用給定的參數映射視窗</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_CLOSE</p></td>
+<td><p>無</p></td>
+<td><p>向視窗發送 wmDeleteMessage</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_CROSSING</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_crossing</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mode</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">detail</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">focus</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>通知視窗進入/離開事件</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_FOCUS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_focus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mode</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">detail</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>提起視窗，XSetInputFocus</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_CLIPBOARD_REQ</p></td>
+<td><p>無</p></td>
+<td><p>擷取本機剪貼簿，將內容傳遞給 gui 守護進程</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_CLIPBOARD_DATA</p></td>
+<td><p>無定型二進位資料</p></td>
+<td><p>將接收到的資料插入本機剪貼簿</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_EXECUTE</p></td>
+<td><p>已過時</p></td>
+<td><p>已過時，未使用</p></td>
+</tr>
+<tr class="row-odd"><td><p>MSG_KEYMAP_NOTIFY</p></td>
+<td><p>unsigned char remote_keys[32];</p></td>
+<td><p>與 dom0 同步鍵盤狀態（按鍵按下/釋放）</p></td>
+</tr>
+<tr class="row-even"><td><p>MSG_WINDOW_FLAGS</p></td>
+<td><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">msg_window_flags</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">flags_set</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">flags_unset</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</td>
+<td><p>視窗狀態變更確認</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">KEYPRESS</span></code>、<code class="docutils literal notranslate"><span class="pre">BUTTON</span></code>、<code class="docutils literal notranslate"><span class="pre">MOTION</span></code>、<code class="docutils literal notranslate"><span class="pre">FOCUS</span></code> 訊息傳遞從 dom0 XEvent 中提取的資訊；請參閱相應的事件文件。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="security-critical-code.html" class="btn btn-neutral float-left" title="Security-critical code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="networking.html" class="btn btn-neutral float-right" title="網路" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/system/gui.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

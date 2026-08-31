@@ -1,0 +1,717 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Multi-factor Login" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/security-in-qubes/mfa.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Multi-factor authentication within particular qubes: Most use cases for the hardware tokens can be achieved exactly as described by the manufacturer or other instructions found online. One usually ..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Multi-factor authentication within particular qubes: Most use cases for the hardware tokens can be achieved exactly as described by the manufacturer or other instructions found online. One usually ..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-factor Login &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/security-in-qubes/mfa.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="CTAP proxy" href="ctap-proxy.html" />
+    <link rel="prev" title="Split GPG-2" href="split-gpg-2.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi-factor Login</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#multi-factor-authentication-within-particular-qubes">Multi-factor authentication within particular qubes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-factor-login-for-qubes-os">Multi-factor login for Qubes OS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#time-based-one-time-password-totp">Time-based One-time Password (TOTP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lost-totp-authentication-device">Lost TOTP / authentication device?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#login-with-a-yubikey-nitrokey3">Login with a YubiKey / NitroKey3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-login-with-yubikey-nitrokey3">Setup login with YubiKey / NitroKey3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-enforce-yubikey-nitrokey3-login">Optional: Enforce YubiKey / NitroKey3 Login</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-locking-the-screen-when-yubikey-nitrokey3-is-removed">Optional: Locking the screen when YubiKey / NitroKey3 is removed</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Multi-factor Login</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/security-in-qubes/mfa.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="multi-factor-login">
+<h1>Multi-factor Login<a class="headerlink" href="#multi-factor-login" title="Link to this heading"></a></h1>
+<section id="multi-factor-authentication-within-particular-qubes">
+<h2>Multi-factor authentication within particular qubes<a class="headerlink" href="#multi-factor-authentication-within-particular-qubes" title="Link to this heading"></a></h2>
+<p>Most use cases for the hardware tokens can be achieved exactly as described by the manufacturer or other instructions found online. One usually just needs to attach the token (e.g. YubiKey) to the corresponding app qube to get the same result (see the documentation on how to use <a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html"><span class="doc">USB devices</span></a> in Qubes OS accordingly). The recommended way for using CTAP in Qubes is described <a class="reference internal" href="ctap-proxy.html"><span class="doc">here</span></a>.</p>
+</section>
+<section id="multi-factor-login-for-qubes-os">
+<h2>Multi-factor login for Qubes OS<a class="headerlink" href="#multi-factor-login-for-qubes-os" title="Link to this heading"></a></h2>
+<p>By default Qubes has two protection mechanisms against attackers. The first is full disk encryption and the second the user login screen / lockscreen. This article section concerns only adding multi-factor authentication to the second one.</p>
+<section id="time-based-one-time-password-totp">
+<h3>Time-based One-time Password (TOTP)<a class="headerlink" href="#time-based-one-time-password-totp" title="Link to this heading"></a></h3>
+<p>As the name implies, this generates authentication code that is time-dependent. You can save the TOTP secret in a mobile app like <a class="reference external" href="https://en.wikipedia.org/wiki/FreeOTP">FreeOTP</a> and then use it as an additional factor to login to your Qubes system.</p>
+<blockquote>
+<div><p><strong>Warning</strong>: remember to keep backup access codes.</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p>Download <code class="docutils literal notranslate"><span class="pre">google-authenticator</span></code> in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubes-dom0-update<span class="w"> </span>google-authenticator
+</pre></div>
+</div>
+</li>
+<li><p>Run google authenticator:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>google-authenticator
+</pre></div>
+</div>
+</li>
+<li><p>Walk through the setup instructions which will also generate your QR code for your auth app of choice:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Do you want me to update your “/home/user/.google_authenticator” file (y/n) y</span>
+
+<span class="go">Do you want to disallow multiple uses of the same authentication token? This restricts you to one login about every 30s, but it increases your chances to notice or even prevent man-in-the-middle attacks (y/n)</span>
+
+<span class="go">By default, tokens are good for 30 seconds, and to compensate for possible time-skew between the client and the server, we allow an extra token before and after the current time. If you experience problems with poor time synchronization, you can increase the window from its default size of 1:30min to about 4min. Do you want to do so (y/n)</span>
+
+<span class="go">If the computer that you are logging into isn’t hardened against brute-force login attempts, you can enable rate-limiting for the authentication module. By default, this limits attackers to no more than 3 login attempts every 30s. Do you want to enable rate-limiting (y/n)</span>
+</pre></div>
+</div>
+<p><strong>Warning</strong>: in the next session if incorrectly performed, there is the risk of locking yourself out. Before procedding ensure that you have an up-to-date backup.</p>
+<p>For advanced users, to make sure you can quickly recover, you can also open another loging session in a tty. To do this, you do <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">alt</span></code> + <code class="docutils literal notranslate"><span class="pre">F2</span></code> and login normally. Should anything go wrong, as long as you don’t shut the computer down, you can still access this tty by entering the same key combination and reverting the changes. After you’ve opened this “backup” login, you can get to your graphical desktop with <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">alt</span></code> + <code class="docutils literal notranslate"><span class="pre">F1</span></code>.</p>
+</li>
+</ol>
+<p>Now we are going to add the authenticator as a login requirement:</p>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">authselect</span> <span class="pre">create-profile</span> <span class="pre">mfa</span> <span class="pre">--base-on</span> <span class="pre">sssd</span></code></p></li>
+<li><p>Edit the custom system authentication template in <code class="docutils literal notranslate"><span class="pre">/etc/authselect/custom/mfa/system-auth</span></code>.
+Add the following line right after <code class="docutils literal notranslate"><span class="pre">auth</span> <span class="pre">required</span> <span class="pre">pam_faildelay.so</span> <span class="pre">delay=2000000</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>auth required pam_google_authenticator.so
+</pre></div>
+</div>
+<p>After the change, the top of the file should look like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{imply &quot;with-smartcard&quot; if &quot;with-smartcard-required&quot;}
+auth required pam_env.so
+auth required pam_faildelay.so delay=2000000
+auth required pam_google_authenticator.so
+</pre></div>
+</div>
+</li>
+<li><p>Lastly, activate this authentication method with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>authselect<span class="w"> </span><span class="k">select</span><span class="w"> </span>custom/mfa
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Now you can test by locking the screen with <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">alt</span></code> + <code class="docutils literal notranslate"><span class="pre">l</span></code> . If it was successful and you are pleased with the results, restart your computer.</p>
+<p><strong>Note</strong>: When logging in. the first thing you put is the TOTP secret and then the password. This is true in the screen locker and as well as the session manager (the login window that shows right after you put the disk encryption passphrase).</p>
+<p>After this is done, its recommended to do a backup. This is because as long as you incude dom0 in the backup, your authentication code will be backed up as well.</p>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<p>The following assumes you haven’t restarted your computer since setting up TOTP secret.</p>
+<ol class="arabic">
+<li><p>Switch to TTY2 with <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">alt</span></code> + <code class="docutils literal notranslate"><span class="pre">F2</span></code> .</p></li>
+<li><p>Revert to the original policy with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>authselect<span class="w"> </span><span class="k">select</span><span class="w"> </span>sssd
+</pre></div>
+</div>
+</li>
+<li><p>Switch back to the graphical desktop with <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">alt</span></code> + <code class="docutils literal notranslate"><span class="pre">F1</span></code> . You should be able to login normally (without multi-factor authentication).</p></li>
+<li><p>Change the mfa custom policy and apply it again.</p></li>
+</ol>
+</section>
+<section id="lost-totp-authentication-device">
+<h3>Lost TOTP / authentication device?<a class="headerlink" href="#lost-totp-authentication-device" title="Link to this heading"></a></h3>
+<p>In case you’ve lost your TOTP authentication device, you have two options.</p>
+<p>The first option is backup codes. When generating the TOTP secret you must have saved some recovery codes. Those can be used in place of the TOTP code, but they’re discarded after use. So make sure you redo the multi-factor authentications intructions.</p>
+<p>The second option is recovery from a backup. It will work as long as you included dom0 in said backup. After restoring the dom0 backup, open a terminal in dom0 and the file should be located in <code class="docutils literal notranslate"><span class="pre">/home/&lt;USER&gt;/home-restore-&lt;DATE&gt;/dom0-home/&lt;USER&gt;/.google_authenticator</span></code>.</p>
+</section>
+<section id="login-with-a-yubikey-nitrokey3">
+<h3>Login with a YubiKey / NitroKey3<a class="headerlink" href="#login-with-a-yubikey-nitrokey3" title="Link to this heading"></a></h3>
+<p>The YubiKey / NitroKey3 is a hardware authentication device manufactured by Yubico / NitroKey to protect access to computers, networks, and online services that supports one-time passwords (OTP), public-key cryptography, and authentication, and the Universal 2nd Factor <a class="reference external" href="https://en.wikipedia.org/wiki/Universal_2nd_Factor">(U2F)</a> and FIDO2 protocols developed by the <a class="reference external" href="https://en.wikipedia.org/wiki/FIDO_Alliance">FIDO Alliance</a>.</p>
+<p>You can use a YubiKey / NitroKey3 to enhance the user authentication in Qubes. The following instructions explain how to setup the YubiKey / NitroKey3 as an <em>additional</em> way to login.</p>
+<p>After setting it up, you can login by providing both - a password typed in via keyboard <em>and</em> the YubiKey / NitroKey3 plugged in. Someone eavesdropping your login attempt would not be able to login by only observing and remembering your password. Stealing your YubiKey / NitroKey3 would not suffice to login either. Only if an attacker has both, the password and the Yubikey / NitroKey3, it would be possible to login (it is thus called <a class="reference external" href="https://en.wikipedia.org/wiki/Multi-factor_authentication">Multi-factor authentication</a>).</p>
+<p>The following instructions keep your current login password untouched and recommends to define a new, additional password that is used in combination with the YubiKey / NitroKey3 only. This ensures that you a) do not accidentally lock yourself out during setup and b) you do not need to fear <a class="reference external" href="https://en.wikipedia.org/wiki/Shoulder_surfing_(computer_security)">shoulder surfing</a> so much (i.e. by not using your standard login password in public).</p>
+</section>
+<section id="setup-login-with-yubikey-nitrokey3">
+<h3>Setup login with YubiKey / NitroKey3<a class="headerlink" href="#setup-login-with-yubikey-nitrokey3" title="Link to this heading"></a></h3>
+<p>To use the YubiKey / NitroKey3 for multi-factor authentication you need to</p>
+<ul class="simple">
+<li><p>install software for the YubiKey / NitroKey3,</p></li>
+<li><p>configure the YubiKey for the <a class="reference external" href="https://en.wikipedia.org/wiki/Challenge%E2%80%93response_authentication">Challenge-Response</a> mode or the NitroKey3 for <a class="reference external" href="https://en.wikipedia.org/wiki/HMAC-based_one-time_password">HOTP</a> mode,</p></li>
+<li><p>store the password for YubiKey / NitroKey3 Login and the Challenge-Response / HOTP secret in dom0,</p></li>
+<li><p>enable YubiKey / NitroKey3 authentication for every service you want to use it for.</p></li>
+</ul>
+<p>All these requirements are described below, step by step, for the YubiKey and NitroKey3. Note that setting up both a YubiKey and a NitroKey3 is not supported.</p>
+<ol class="arabic">
+<li><p>Install YubiKey / NitroKey3 software in the template on which your USB VM is based. Without this software the challenge-response / HOTP mechanism won’t work.</p>
+<ul>
+<li><p><strong>YubiKey</strong></p>
+<ul class="simple">
+<li><p>For Fedora.</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>ykpers
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For Debian.</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>yubikey-personalization
+</pre></div>
+</div>
+</li>
+<li><p><strong>NitroKey3</strong></p>
+<ul class="simple">
+<li><p>Follow the installation instructions on the official <a class="reference external" href="https://docs.nitrokey.com/software/nitropy/all-platforms/installation">NitroKey website</a>.</p></li>
+<li><p><strong>WARNING</strong>: <em>as of April 2024 the official instructions involve using pipx to install the pynitrokey package and its dependencies without any GPG verification! This is not a recommended practice, but will soon be fixed by NitroKey when they start providing release artifacts with detached signatures on</em> <a class="reference external" href="https://github.com/Nitrokey/pynitrokey/releases">their GitHub</a> <em>. Proper packaging and distribution for Debian and perhaps Fedora is also planned for the mid-long term.</em> <strong>Installing packages using pip or pipx is not recommended!</strong></p></li>
+</ul>
+</li>
+<li><p><strong>both</strong></p>
+<ul class="simple">
+<li><p>Shut down your template. Then, either reboot your USB VM (so changes inside the template take effect in your USB app qube) or install the packages inside your USB VM as well if you would like to avoid rebooting it.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Install <a class="reference external" href="https://github.com/QubesOS/qubes-app-yubikey">qubes-app-yubikey</a> in dom0. This provides the program to authenticate with password and YubiKey / NitroKey3.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubes-dom0-update<span class="w"> </span>qubes-yubikey-dom0
+</pre></div>
+</div>
+</li>
+<li><p>Configure your YubiKey / NitroKey3:</p>
+<ul>
+<li><p><strong>YubiKey</strong></p>
+<ul class="simple">
+<li><p>Configure your YubiKey for challenge-response <code class="docutils literal notranslate"><span class="pre">HMAC-SHA1</span></code> mode. This can be done on any qube, e.g. a disposable (you need to <a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html"><span class="doc">attach the YubiKey</span></a> to this app qube though) or directly on the sys-usb vm. You need to (temporarily) install the package “yubikey-personalization-gui” and run it by typing <code class="docutils literal notranslate"><span class="pre">yubikey-personalization-gui</span></code> in the command line.</p>
+<ul>
+<li><p>In the program go to <code class="docutils literal notranslate"><span class="pre">Challenge-Response</span></code>,</p></li>
+<li><p>select <code class="docutils literal notranslate"><span class="pre">HMAC-SHA1</span></code>,</p></li>
+<li><p>choose <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Slot</span> <span class="pre">2</span></code>,</p></li>
+<li><p>optional: enable <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">user</span> <span class="pre">input</span> <span class="pre">(button</span> <span class="pre">press)</span></code> (recommended),</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">fixed</span> <span class="pre">64</span> <span class="pre">bit</span> <span class="pre">input</span></code> for <code class="docutils literal notranslate"><span class="pre">HMAC-SHA1</span> <span class="pre">mode</span></code>,</p></li>
+<li><p>insert the YubiKey (if not done already) and make sure that it is attached to the vm,</p></li>
+<li><p>press <code class="docutils literal notranslate"><span class="pre">Write</span> <span class="pre">Configuration</span></code> once you are ready.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>NitroKey3</strong></p>
+<ul>
+<li><p>Set up a new NK3 Secrets App HOTP secret by attaching the NitroKey to your USB qube and running the following commands in it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">AESKEY</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;your-20-digit-secret&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base32<span class="k">)</span>
+<span class="gp">$ </span>nitropy<span class="w"> </span>nk3<span class="w"> </span>secrets<span class="w"> </span>register<span class="w"> </span>--kind<span class="w"> </span>hotp<span class="w"> </span>--hash<span class="w"> </span>sha256<span class="w"> </span>--digits-str<span class="w"> </span><span class="m">8</span><span class="w"> </span>--counter-start<span class="w"> </span><span class="m">1</span><span class="w"> </span>--touch-button<span class="w"> </span>loginxs<span class="w"> </span><span class="nv">$AESKEY</span>
+</pre></div>
+</div>
+</li>
+<li><p>Note that the 20 digit sequence can contain any printable ASCII character, e.g. letters, numbers, punctuation marks. The actual <code class="docutils literal notranslate"><span class="pre">Secret</span> <span class="pre">Key</span> <span class="pre">(base</span> <span class="pre">32)</span></code> is the base32 encoded form of that sequence.</p></li>
+</ul>
+</li>
+<li><p><strong>both</strong></p>
+<ul class="simple">
+<li><p>We will call the <code class="docutils literal notranslate"><span class="pre">Secret</span> <span class="pre">Key</span> <span class="pre">(20</span> <span class="pre">bytes</span> <span class="pre">hex)</span></code> (YubiKey) or <code class="docutils literal notranslate"><span class="pre">Secret</span> <span class="pre">Key</span> <span class="pre">(base</span> <span class="pre">32)</span></code> <code class="docutils literal notranslate"><span class="pre">AESKEY</span></code>.</p>
+<ul>
+<li><p>It is recommended to keep a backup of your <code class="docutils literal notranslate"><span class="pre">AESKEY</span></code> in an offline VM used as a vault.</p></li>
+<li><p>Consider keeping a backup of your <code class="docutils literal notranslate"><span class="pre">AESKEY</span></code> on paper and storing it in a safe place.</p></li>
+<li><p>If you have multiple YubiKeys for backup purposes (in case one gets lost, stolen or breaks) you can write the same settings into other YubiKeys. For YubiKeys you can choose “Program multiple YubiKeys” in the program; make sure to select <code class="docutils literal notranslate"><span class="pre">Same</span> <span class="pre">secret</span> <span class="pre">for</span> <span class="pre">all</span> <span class="pre">keys</span></code> in this case. For NitroKeys you can set up the secret for multiple of them, but you must always use the same NitroKey, because the HOTP counter will be incremented in dom0 as well as the used NitroKey whenever you make use of this method. If you want to switch to a different NitroKey later, delete the file <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/nk-hotp-counter</span></code> in dom0 first to make it work with a fresh NitroKey 3. Do the same if for some reason your counters get desynchronized (it stops working), e.g. due to connectivity issues (NitroKey3A Minis are known to wear out quickly).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>YubiKey</strong></p>
+<ul class="simple">
+<li><p>Paste your <code class="docutils literal notranslate"><span class="pre">AESKEY</span></code> into <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/yk-secret-key.hex</span></code> in dom0. Note that if you had previously used a NitroKey3 with this package, you <em>must</em> delete the file <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/nk-hotp-secret</span></code> or its content!</p></li>
+<li><p><strong>NitroKey3</strong></p>
+<ul>
+<li><p>Create the file <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/nk-hotp-secret</span></code> in dom0 and paste your <code class="docutils literal notranslate"><span class="pre">AESKEY</span></code> (in base 32 format) into it.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>As mentioned before, you need to define a new password that is only used in combination with the YubiKey / NitroKey3. You can write this password in plain text into <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/login-pass</span></code> in dom0. This is considered safe as dom0 is ultimately trusted anyway.</p>
+<ul>
+<li><p>However, if you prefer you can paste a hashed password instead into <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/login-pass-hashed.hex</span></code> in dom0.</p></li>
+<li><p>You can calculate your hashed password using the following two commands. First run the following command to store your password in a temporary variable <code class="docutils literal notranslate"><span class="pre">password</span></code>. (This way your password will not leak to the terminal command history file.)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>password
+</pre></div>
+</div>
+</li>
+<li><p>Now run the following command to calculate your hashed password.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$password</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>dgst<span class="w"> </span>-sha1<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f2<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; &#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>To enable multi-factor authentication for a service, you need to add</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>auth include yubikey
+</pre></div>
+</div>
+<p>(same for YubiKey and NitroKey3) to the corresponding service file in <code class="docutils literal notranslate"><span class="pre">/etc/pam.d/</span></code> in dom0. This means, if you want to enable the login via YubiKey / NitroKey3 for xfce4-screensaver (the default screen lock program), you add the line at the beginning of <code class="docutils literal notranslate"><span class="pre">/etc/pam.d/xfce4-screensaver</span></code>. If you want to use the login for a tty shell, add it to <code class="docutils literal notranslate"><span class="pre">/etc/pam.d/login</span></code>. Add it to <code class="docutils literal notranslate"><span class="pre">/etc/pam.d/lightdm</span></code> if you want to enable the login for the default display manager and so on.
+It is important, that <code class="docutils literal notranslate"><span class="pre">auth</span> <span class="pre">include</span> <span class="pre">yubikey</span></code> is added at the beginning of these files, otherwise it will most likely not work.</p>
+</li>
+<li><p>Adjust the USB VM name in case you are using something other than the default <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> by editing <code class="docutils literal notranslate"><span class="pre">/etc/qubes/yk-keys/vm</span></code> in dom0.</p></li>
+</ol>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
+<p>When you want to authenticate</p>
+<ol class="arabic simple">
+<li><p>plug your YubiKey / NitroKey3 into an USB slot,</p></li>
+<li><p>enter the password associated with the YubiKey / NitroKey3,</p></li>
+<li><p>press Enter and</p></li>
+<li><p>press the button of the YubiKey / NitroKey3, if you configured the confirmation (it will light up or blink).</p></li>
+</ol>
+<p>When everything is ok, your screen will be unlocked.</p>
+<p>In any case you can still use your normal login password, but do it in a secure location where no one can snoop your password.</p>
+</section>
+<section id="optional-enforce-yubikey-nitrokey3-login">
+<h3>Optional: Enforce YubiKey / NitroKey3 Login<a class="headerlink" href="#optional-enforce-yubikey-nitrokey3-login" title="Link to this heading"></a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">/etc/pam.d/yubikey</span></code> (or appropriate file if you are using other screen locker program) and remove <code class="docutils literal notranslate"><span class="pre">default=ignore</span></code> so the line looks like this.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>auth [success=done] pam_exec.so expose_authtok quiet /usr/bin/yk-auth
+</pre></div>
+</div>
+</section>
+<section id="optional-locking-the-screen-when-yubikey-nitrokey3-is-removed">
+<h3>Optional: Locking the screen when YubiKey / NitroKey3 is removed<a class="headerlink" href="#optional-locking-the-screen-when-yubikey-nitrokey3-is-removed" title="Link to this heading"></a></h3>
+<p>You can setup your system to automatically lock the screen when you unplug your YubiKey / NitroKey3. This will require creating a simple qrexec service which will expose the ability to lock the screen to your USB VM, and then adding a udev hook to actually call that service.</p>
+<p>In dom0:</p>
+<ol class="arabic">
+<li><p>First configure the qrexec service. Create <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/custom.LockScreen</span></code> with a simple command to lock the screen. In the case of xfce4-screensaver (used in Xfce) it would be:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>DISPLAY=:0 xfce4-screensaver-command -lock
+</pre></div>
+</div>
+</li>
+<li><p>Then make <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/custom.LockScreen</span></code> executable.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/qubes-rpc/custom.LockScreen
+</pre></div>
+</div>
+</li>
+<li><p>Allow your USB VM to call that service. Assuming that it’s named <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> it would require creating <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/policy/custom.LockScreen</span></code> with:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sys-usb dom0 allow
+</pre></div>
+</div>
+</li>
+</ol>
+<p>In your USB VM:</p>
+<ol class="arabic">
+<li><p>Create udev hook. Store it in <code class="docutils literal notranslate"><span class="pre">/rw/config</span></code> to have it persist across VM restarts. For example name the file <code class="docutils literal notranslate"><span class="pre">/rw/config/yubikey.rules</span></code>. Add the following line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ACTION==&quot;remove&quot;, SUBSYSTEM==&quot;usb&quot;, ENV{ID_SECURITY_TOKEN}==&quot;1&quot;, RUN+=&quot;/usr/bin/qrexec-client-vm dom0 custom.LockScreen&quot;
+</pre></div>
+</div>
+</li>
+<li><p>Ensure that the udev hook is placed in the right place after VM restart. Append to <code class="docutils literal notranslate"><span class="pre">/rw/config/rc.local</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ln<span class="w"> </span>-s<span class="w"> </span>/rw/config/yubikey.rules<span class="w"> </span>/etc/udev/rules.d/
+udevadm<span class="w"> </span>control<span class="w"> </span>--reload
+</pre></div>
+</div>
+</li>
+<li><p>Then make <code class="docutils literal notranslate"><span class="pre">/rw/config/rc.local</span></code> executable.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/rw/config/rc.local
+</pre></div>
+</div>
+</li>
+<li><p>For changes to take effect, you need to call this script manually for the first time.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>/rw/config/rc.local
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you use KDE, the command(s) in first step would be different:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>In<span class="w"> </span>the<span class="w"> </span><span class="k">case</span><span class="w"> </span>of<span class="w"> </span>USB<span class="w"> </span>VM<span class="w"> </span>being<span class="w"> </span>autostarted,<span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>have<span class="w"> </span>direct<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>D-Bus
+<span class="gp"># </span>session<span class="w"> </span>bus,<span class="w"> </span>so<span class="w"> </span>find<span class="w"> </span>its<span class="w"> </span>address<span class="w"> </span>manually:
+<span class="gp">$ </span><span class="nv">kde_pid</span><span class="o">=</span><span class="sb">`</span>pidof<span class="w"> </span>kdeinit4<span class="sb">`</span>
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span>/proc/<span class="nv">$kde_pid</span>/environ<span class="p">|</span>grep<span class="w"> </span>-ao<span class="w"> </span><span class="s1">&#39;DBUS_SESSION_BUS_ADDRESS=[[:graph:]]*&#39;</span><span class="sb">`</span>
+<span class="gp">$ </span>qdbus<span class="w"> </span>org.freedesktop.ScreenSaver<span class="w"> </span>/ScreenSaver<span class="w"> </span>Lock
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="split-gpg-2.html" class="btn btn-neutral float-left" title="Split GPG-2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="ctap-proxy.html" class="btn btn-neutral float-right" title="CTAP proxy" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/security-in-qubes/mfa.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Automated tests" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/debugging/automated-tests.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Unit and Integration Tests: Starting with Qubes R3 we use python unittest to perform automatic tests of Qubes OS. Despite the name, we use it for both unit tests and integration tests. The main pur..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Unit and Integration Tests: Starting with Qubes R3 we use python unittest to perform automatic tests of Qubes OS. Despite the name, we use it for both unit tests and integration tests. The main pur..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automated tests &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/debugging/automated-tests.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Qube configuration interface" href="vm-interface.html" />
+    <link rel="prev" title="How to set up a test bench" href="test-bench.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Automated tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unit-and-integration-tests">Unit and Integration Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#integration-unit-testing-in-dom0">Integration &amp; unit testing in dom0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-testing-inside-a-vm">Unit testing inside a VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tests-configuration">Tests configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-new-test-to-core-admin">Adding a new test to core-admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-init-py">Editing <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-pyqt-applications">Testing PyQt applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#automated-tests-with-openqa">Automated tests with openQA</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-add-openqa-test">How to add openQA test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-schedule-openqa">How to schedule openQA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-label-to-your-pr-on-github">Add label to your PR on Github</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment-on-github">Comment on Github</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gitlab-pipeline">Gitlab pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openqa-pipeline">openQA pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-out-results">Check out results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#looking-for-patterns-in-tests">Looking for patterns in tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Automated tests</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/debugging/automated-tests.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="automated-tests">
+<h1>Automated tests<a class="headerlink" href="#automated-tests" title="Link to this heading"></a></h1>
+<section id="unit-and-integration-tests">
+<h2>Unit and Integration Tests<a class="headerlink" href="#unit-and-integration-tests" title="Link to this heading"></a></h2>
+<p>Starting with Qubes R3 we use <a class="reference external" href="https://docs.python.org/3/library/unittest.html">python unittest</a> to perform automatic tests of Qubes OS. Despite the name, we use it for both <a class="reference external" href="https://en.wikipedia.org/wiki/Unit_tests">unit tests</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Integration_tests">integration tests</a>. The main purpose is, of course, to deliver much more stable releases.</p>
+<p>The integration tests must be run in dom0, but some unit tests can run inside a VM as well.</p>
+<section id="integration-unit-testing-in-dom0">
+<h3>Integration &amp; unit testing in dom0<a class="headerlink" href="#integration-unit-testing-in-dom0" title="Link to this heading"></a></h3>
+<p>Integration tests are written with the assumption that they will be executed on dedicated hardware and must be run in dom0. All other unit tests can also be run in dom0.</p>
+<p><strong>Do not run the tests on installations with important data, because you might lose it.</strong></p>
+<p>All the VMs with a name starting with <code class="docutils literal notranslate"><span class="pre">test-</span></code> on the installation are removed during the process, and all the tests are recklessly started from dom0, even when testing (&amp; possibly breaking) VM components.</p>
+<p>First you need to build all packages that you want to test. Please do not mix branches as this will inevitably lead to failures. Then setup Qubes OS with these packages installed.</p>
+<p>For testing you’ll have to stop the <code class="docutils literal notranslate"><span class="pre">qubesd</span></code> service as the tests will use its own custom variant of the service: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">stop</span> <span class="pre">qubesd</span></code></p>
+<p>Don’t forget to start it after testing again.</p>
+<p>To start testing you can then use the standard python unittest runner:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">unittest</span> <span class="pre">-v</span> <span class="pre">qubes.tests</span></code></p>
+<p>Alternatively, use the custom Qubes OS test runner:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-E</span> <span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">qubes.tests.run</span> <span class="pre">-v</span></code></p>
+<p>Our test runner runs mostly the same as the standard one, but it has some nice additional features like colored output and not needing the “qubes.test” prefix.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">qubes.tests.run</span> <span class="pre">-h</span></code> to get usage information:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>python3<span class="w"> </span>-m<span class="w"> </span>qubes.tests.run<span class="w"> </span>-h
+<span class="go">usage: run.py [-h] [--verbose] [--quiet] [--list] [--failfast] [--no-failfast]</span>
+<span class="go">              [--do-not-clean] [--do-clean] [--loglevel LEVEL]</span>
+<span class="go">              [--logfile FILE] [--syslog] [--no-syslog] [--kmsg] [--no-kmsg]</span>
+<span class="go">              [TESTNAME [TESTNAME ...]]</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">  TESTNAME              list of tests to run named like in description</span>
+<span class="go">                        (default: run all tests)</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help            show this help message and exit</span>
+<span class="go">  --verbose, -v         increase console verbosity level</span>
+<span class="go">  --quiet, -q           decrease console verbosity level</span>
+<span class="go">  --list, -l            list all available tests and exit</span>
+<span class="go">  --failfast, -f        stop on the first fail, error or unexpected success</span>
+<span class="go">  --no-failfast         disable --failfast</span>
+<span class="go">  --loglevel LEVEL, -L LEVEL</span>
+<span class="go">                        logging level for file and syslog forwarding (one of:</span>
+<span class="go">                        NOTSET, DEBUG, INFO, WARN, WARNING, ERROR, CRITICAL;</span>
+<span class="go">                        default: DEBUG)</span>
+<span class="go">  --logfile FILE, -o FILE</span>
+<span class="go">                        if set, test run will be also logged to file</span>
+<span class="go">  --syslog              reenable logging to syslog</span>
+<span class="go">  --no-syslog           disable logging to syslog</span>
+<span class="go">  --kmsg, --very-brave-or-very-stupid</span>
+<span class="go">                        log most important things to kernel ring-buffer</span>
+<span class="go">  --no-kmsg, --i-am-smarter-than-kay-sievers</span>
+<span class="go">                        do not abuse kernel ring-buffer</span>
+<span class="go">  --allow-running-along-qubesd</span>
+<span class="go">                        allow running in parallel with qubesd; this is</span>
+<span class="go">                        DANGEROUS and WILL RESULT IN INCONSISTENT SYSTEM STATE</span>
+<span class="go">  --break-to-repl       break to REPL after tests</span>
+
+<span class="go">When running only specific tests, write their names like in log, in format:</span>
+<span class="go">MODULE+&quot;/&quot;+CLASS+&quot;/&quot;+FUNCTION. MODULE should omit initial &quot;qubes.tests.&quot;.</span>
+<span class="go">Example: basic/TC_00_Basic/test_000_create</span>
+</pre></div>
+</div>
+<p>For instance, to run only the tests for the fedora-21 template, you can use the <code class="docutils literal notranslate"><span class="pre">-l</span></code> option, then filter the list:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>python3<span class="w"> </span>-m<span class="w"> </span>qubes.tests.run<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>fedora-21
+<span class="go">network/VmNetworking_fedora-21/test_000_simple_networking</span>
+<span class="go">network/VmNetworking_fedora-21/test_010_simple_proxyvm</span>
+<span class="go">network/VmNetworking_fedora-21/test_020_simple_proxyvm_nm</span>
+<span class="go">network/VmNetworking_fedora-21/test_030_firewallvm_firewall</span>
+<span class="go">network/VmNetworking_fedora-21/test_040_inter_vm</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_000_start_shutdown</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_010_run_gui_app</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_050_qrexec_simple_eof</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_051_qrexec_simple_eof_reverse</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_052_qrexec_vm_service_eof</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_053_qrexec_vm_service_eof_reverse</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_060_qrexec_exit_code_dom0</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_065_qrexec_exit_code_vm</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_100_qrexec_filecopy</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_110_qrexec_filecopy_deny</span>
+<span class="go">vm_qrexec_gui/TC_00_AppVM_fedora-21/test_120_qrexec_filecopy_self</span>
+<span class="go">vm_qrexec_gui/TC_20_DispVM_fedora-21/test_000_prepare_dvm</span>
+<span class="go">vm_qrexec_gui/TC_20_DispVM_fedora-21/test_010_simple_dvm_run</span>
+<span class="go">vm_qrexec_gui/TC_20_DispVM_fedora-21/test_020_gui_app</span>
+<span class="go">vm_qrexec_gui/TC_20_DispVM_fedora-21/test_030_edit_file</span>
+<span class="gp">[user@dom0 ~]$ </span>sudo<span class="w"> </span>-E<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>qubes.tests.run<span class="w"> </span>-v<span class="w"> </span><span class="sb">`</span>python3<span class="w"> </span>-m<span class="w"> </span>qubes.tests.run<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>fedora-21<span class="sb">`</span>
+</pre></div>
+</div>
+<p>Some developers script this part, so you can provide arguments to the script and it handles <code class="docutils literal notranslate"><span class="pre">qubesd</span></code>. Save the following contents to <code class="file docutils literal notranslate"><span class="pre">~/run-tests</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/sh
+<span class="go">set -eu</span>
+<span class="go">exit_trap(){</span>
+<span class="go">    systemctl restart qubesd</span>
+<span class="go">}</span>
+<span class="go">trap exit_trap EXIT</span>
+<span class="go">systemctl stop qubesd</span>
+<span class="go">sudo -E python3 -m qubes.tests.run &quot;$@&quot;</span>
+</pre></div>
+</div>
+<p>And run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">~/run-tests -L INFO -o /tmp/tests.log &lt;TEST_NAME&gt;</span>
+</pre></div>
+</div>
+<p>You might even almost complete test names and shell expansion:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">~/run-tests qubes.tests.integ.dispvm_perf/TC_00_DispVMPerf_debian-{12,13}-xfce/test_0{0,1,2}</span>
+</pre></div>
+</div>
+<p>Example test run:</p>
+<figure class="align-default">
+<img alt="snapshot-tests2.png" src="../../_images/snapshot-tests2.png" />
+</figure>
+<p>Tests are also compatible with nose2 test runner, so you can use this instead:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>qubesd<span class="p">;</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>nose2<span class="w"> </span>-v<span class="w"> </span>--plugin<span class="w"> </span>nose2.plugins.loader.loadtests<span class="w"> </span>qubes.tests<span class="p">;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>qubesd
+</pre></div>
+</div>
+<p>This may be especially useful together with various nose2 plugins to store tests results (for example <code class="docutils literal notranslate"><span class="pre">nose2.plugins.junitxml</span></code>), to ease presenting results. This is what we use on <a class="reference external" href="https://open.qa/">OpenQA</a>.</p>
+<p>If you cancel the test, normally by <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span> <span class="pre">|</span> <span class="pre">SIGINT</span></code> repeatedly, you might not be able to start the next test, it will hang. To solve that, <code class="docutils literal notranslate"><span class="pre">Ctrl-C</span></code> until it quits the test, restart <code class="docutils literal notranslate"><span class="pre">qubesd</span></code> and start the test again.</p>
+</section>
+<section id="unit-testing-inside-a-vm">
+<h3>Unit testing inside a VM<a class="headerlink" href="#unit-testing-inside-a-vm" title="Link to this heading"></a></h3>
+<p>Many unit tests will also work inside a VM. However all of the tests requiring a dedicated VM to be run (mostly the integration tests) will be skipped.</p>
+<p>Whereas integration tests are mostly stored in the <a class="reference external" href="https://github.com/QubesOS/qubes-core-admin">qubes-core-admin</a> repository, unit tests can be found in each of the Qubes OS repositories.</p>
+<p>To for example run the <code class="docutils literal notranslate"><span class="pre">qubes-core-admin</span></code> unit tests, you currently have to clone at least <a class="reference external" href="https://github.com/QubesOS/qubes-core-admin">qubes-core-admin</a> and its dependency <a class="reference external" href="https://github.com/QubesOS/qubes-core-qrexec">qubes-core-qrexec</a> repository in the branches that you want to test.</p>
+<p>The below example however will assume that you set up a build environment as described in the <a class="reference internal" href="../building/qubes-builder-v2.html"><span class="doc">Qubes Builder documentation</span></a>.</p>
+<p>Assuming you cloned the <code class="docutils literal notranslate"><span class="pre">qubes-builder</span></code> repository to your home directory inside a fedora VM, you can use the following commands to run the unit tests:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~
+<span class="gp">$ </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3-pip<span class="w"> </span>lvm2<span class="w"> </span>python35<span class="w"> </span>python3-virtualenv
+<span class="gp">$ </span>virtualenv<span class="w"> </span>-p<span class="w"> </span>/usr/bin/python35<span class="w"> </span>python35
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>python35/bin/activate
+<span class="gp">$ </span>python3<span class="w"> </span>-V
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/qubes-builder/qubes-src/core-admin
+<span class="gp">$ </span>pip3<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>ci/requirements.txt
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>../core-qrexec:test-packages
+<span class="gp">$ </span>./run-tests
+</pre></div>
+</div>
+<p>To run only the tests related to e.g. <code class="docutils literal notranslate"><span class="pre">lvm</span></code>, you may use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">./run-tests</span> <span class="pre">-v</span> <span class="pre">$(python3</span> <span class="pre">-m</span> <span class="pre">qubes.tests.run</span> <span class="pre">-l</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">lvm)</span></code></p>
+<p>You can later re-use the created virtual environment including all of the via <code class="docutils literal notranslate"><span class="pre">pip3</span></code> installed packages with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/python35/bin/activate</span></code>.</p>
+<p>We recommend to run the unit tests with the Python version that the code is meant to be run with in dom0 (3.5 was just an example above). For instance, the <code class="docutils literal notranslate"><span class="pre">release4.0</span></code> (Qubes 4.0) branch is intended to be run with Python 3.5 whereas the Qubes 4.1 branch (<code class="docutils literal notranslate"><span class="pre">master</span></code> as of 2020-07) is intended to be run with Python 3.7 or higher. You can always check your dom0 installation for the Python version of the current stable branch.</p>
+</section>
+<section id="tests-configuration">
+<h3>Tests configuration<a class="headerlink" href="#tests-configuration" title="Link to this heading"></a></h3>
+<p>Test runs can be altered using environment variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_LVM_POOL</span></code> - LVM thin pool to use for tests, in <code class="docutils literal notranslate"><span class="pre">VolumeGroup/ThinPool</span></code> format</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QUBES_TEST_PCIDEV</span></code> - PCI device to be used in PCI passthrough tests (for example sound card)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QUBES_TEST_TEMPLATES</span></code> - space separated list of templates to run tests on; if not set, all installed templates are tested</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QUBES_TEST_LOAD_ALL</span></code> - load all tests (including tests for all templates) when relevant test modules are imported; this needs to be set for test runners not supporting <a class="reference external" href="https://docs.python.org/3/library/unittest.html#load-tests-protocol">load_tests protocol</a></p></li>
+</ul>
+</section>
+<section id="adding-a-new-test-to-core-admin">
+<h3>Adding a new test to core-admin<a class="headerlink" href="#adding-a-new-test-to-core-admin" title="Link to this heading"></a></h3>
+<p>After adding a new unit test to <a class="reference external" href="https://github.com/QubesOS/qubes-core-admin/tree/master/qubes/tests">core-admin/qubes/tests</a> you’ll have to include it in <a class="reference external" href="https://github.com/QubesOS/qubes-core-admin/tree/master/qubes/tests/__init__.py">core-admin/qubes/tests/__init__.py</a></p>
+</section>
+<section id="editing-init-py">
+<h3>Editing <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code><a class="headerlink" href="#editing-init-py" title="Link to this heading"></a></h3>
+<p>You’ll also need to add your test at the bottom of the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file, in the method <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">load_tests</span></code>, in the for loop with <code class="docutils literal notranslate"><span class="pre">modname</span></code>. Again, given the hypothetical <code class="docutils literal notranslate"><span class="pre">example.py</span></code> test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">modname</span> <span class="ow">in</span> <span class="p">(</span>
+        <span class="s1">&#39;qubes.tests.basic&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.dom0_update&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.network&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.vm_qrexec_gui&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.backup&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.backupcompatibility&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.regressions&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;qubes.tests.example&#39;</span><span class="p">,</span> <span class="c1"># This is our newly added test</span>
+        <span class="p">):</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-pyqt-applications">
+<h3>Testing PyQt applications<a class="headerlink" href="#testing-pyqt-applications" title="Link to this heading"></a></h3>
+<p>When testing (Py)QT applications, it’s useful to create a separate QApplication object for each test. But QT framework does not allow multiple QApplication objects in the same process at the same time. This means it’s critical to reliably cleanup the previous instance before creating a new one. This turns out to be a non-trivial task, especially if <em>any</em> test uses the event loop. Failure to perform proper cleanup in many cases results in SEGV. Below you can find steps for the proper cleanup:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">quamash</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">unittest</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SomeTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+        <span class="c1"># force &quot;cleanlooks&quot; style, the default one on Xfce (GtkStyle) use</span>
+        <span class="c1"># static variable internally and caches pointers to later destroyed</span>
+        <span class="c1"># objects (result: SEGV)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qtapp</span> <span class="o">=</span> <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="p">([</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;-style&quot;</span><span class="p">,</span> <span class="s2">&quot;cleanlooks&quot;</span><span class="p">])</span>
+
+        <span class="c1"># construct event loop even if this particular test doesn&#39;t use it,</span>
+        <span class="c1"># otherwise events with qtapp references will be queued there anyway and the</span>
+        <span class="c1"># first test that actually use event loop will try to dereference (already</span>
+        <span class="c1"># destroyed) objects, resulting in SEGV</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span> <span class="o">=</span> <span class="n">quamash</span><span class="o">.</span><span class="n">QEventLoop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qtapp</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+        <span class="c1"># process any pending events before destroying the object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qtapp</span><span class="o">.</span><span class="n">processEvents</span><span class="p">()</span>
+
+        <span class="c1"># queue destroying the QApplication object, do that for any other QT</span>
+        <span class="c1"># related objects here too</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qtapp</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
+
+        <span class="c1"># process any pending events (other than just queued destroy), just in case</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qtapp</span><span class="o">.</span><span class="n">processEvents</span><span class="p">()</span>
+
+        <span class="c1"># execute main loop, which will process all events, _including just queued destroy_</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="c1"># at this point it QT objects are destroyed, cleanup all remaining references;</span>
+        <span class="c1"># del other QT object here too</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">qtapp</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span>
+        <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="automated-tests-with-openqa">
+<h2>Automated tests with openQA<a class="headerlink" href="#automated-tests-with-openqa" title="Link to this heading"></a></h2>
+<p><strong>URL:</strong> <a class="reference external" href="https://openqa.qubes-os.org/">https://openqa.qubes-os.org/</a> <strong>Tests:</strong> <a class="reference external" href="https://github.com/QubesOS/openqa-tests-qubesos">https://github.com/QubesOS/openqa-tests-qubesos</a></p>
+<p>Manually testing Qubes OS and its installation is a time-consuming process. We use <a class="reference external" href="https://open.qa/">OpenQA</a> to automate this process. It works by installing Qubes in KVM and interacting with it as a user would, including simulating mouse clicks and keyboard presses. Then, it checks the output to see whether various tests were passed, e.g. by comparing the virtual screen output to screenshots of a successful installation.</p>
+<p>Using openQA to automatically test the Qubes installation process works since Qubes 4.0-rc4 on 2018-01-26, provided that the versions of KVM and QEMU are new enough and the hardware has VT-x and EPT. KVM also supports nested virtualization, so HVM should theoretically work. In practice, however, either Xen or QEMU crashes when this is attempted. Nonetheless, PV works well, which is sufficient for automated installation testing.</p>
+<p>Thanks to present and past donors who have provided the infrastructure for Qubes’ openQA system with hardware that meets these requirements.</p>
+<section id="how-to-add-openqa-test">
+<h3>How to add openQA test<a class="headerlink" href="#how-to-add-openqa-test" title="Link to this heading"></a></h3>
+<p>openQA tests integration of your PR will the rest of the system, therefore, for that, if your code is not tested yet buy unittests because of reasons, write integration tests in the <code class="file docutils literal notranslate"><span class="pre">tests/integ</span></code> directory. This directory already exists in most relevant repositories, we will approach only this case for now.</p>
+<p>If your code may hang, use a timeout on a section of the code. This avoids holding openQA hostage for too long, which otherwise is capped to <code class="docutils literal notranslate"><span class="pre">MAX_JOB_TIME</span></code></p>
+<p>Performance tests runs on hardware <code class="docutils literal notranslate"><span class="pre">&#64;hw*</span></code>. Everything else, should run on Qubes in KVM on a best effort basis, exclusion depends on maintainers decision.</p>
+<p>openQA, you might love or hate it, but you need it:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Qubes in KVM is slow and memory restricted to 8GB of RAM, that is on purpose:</dt><dd><ul>
+<li><p>Helps catch leaky objects, might be code that runs after the test is finished, sometimes an <code class="docutils literal notranslate"><span class="pre">asyncio.Future</span></code></p></li>
+<li><p>Ensures changes are compliant with minimum system requirements</p></li>
+<li><p>Ability to run simultaneous tests on single worker without conflicts</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Runs on a pool of certified systems to guarantee future compatibility</p></li>
+</ul>
+<p>You might want to “simulate” openQA slowness to reproduce errors that you might not see on a more powerful system. You can do so by configuring the following options in Xen command line: <code class="docutils literal notranslate"><span class="pre">maxcpus=2</span></code>, <code class="docutils literal notranslate"><span class="pre">availmem=8192M</span></code></p>
+</section>
+<section id="how-to-schedule-openqa">
+<h3>How to schedule openQA<a class="headerlink" href="#how-to-schedule-openqa" title="Link to this heading"></a></h3>
+<p>The process is the following:</p>
+<ol class="arabic simple">
+<li><p>Github comment on PR: developer interaction</p></li>
+<li><p>Gitlab pipeline: fetch sources, builds and publishes to openQA</p></li>
+<li><p>openQA pipeline: automated tests</p></li>
+<li><p>qubesos-bot comment: brings results to PR, editing comment if existent</p></li>
+</ol>
+<p>Only the first step, scheduling via Github comment, requires developer intervention.</p>
+<section id="add-label-to-your-pr-on-github">
+<h4>Add label to your PR on Github<a class="headerlink" href="#add-label-to-your-pr-on-github" title="Link to this heading"></a></h4>
+<ul class="simple">
+<li><p>Only necessary if testing more than one PR</p></li>
+<li><p>Ask the maintainer to allow your account to assign labels</p></li>
+<li><p>Only the maintainer can create labels, unless given individually on a per repository basis</p></li>
+</ul>
+<p>Click the top most search box on <a class="reference external" href="https://github.com">Github</a> and use the following query with the label you want to add to your PR: <code class="docutils literal notranslate"><span class="pre">org:QubesOS</span> <span class="pre">is:pr</span> <span class="pre">is:open</span> <span class="pre">label:openqa-group-1</span></code>. If the label is already used, choose another label. If there are no <code class="docutils literal notranslate"><span class="pre">openqa-*</span></code> label, either wait or ask the maintainer to add more labels to each desired repository.</p>
+</section>
+<section id="comment-on-github">
+<h4>Comment on Github<a class="headerlink" href="#comment-on-github" title="Link to this heading"></a></h4>
+<p>To schedule, comment on a PR <code class="docutils literal notranslate"><span class="pre">openQArun</span></code> to test that PR, optionally, add filters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PR_LABEL</span></code>: All PRs with such label</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEST</span></code>: Only selected tests, CSV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELINUX_TEMPLATES</span></code>: Installs selinux on specified templates, CSV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEST_TEMPLATES</span></code>: Test only selected templates, CSV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPDATE_TEMPLATES</span></code>: Update only selected templates, CSV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_TEMPLATE</span></code>: Specify default template</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLAVOR</span></code>: <code class="docutils literal notranslate"><span class="pre">pull-requests</span></code>, <code class="docutils literal notranslate"><span class="pre">kernel</span></code>, <code class="docutils literal notranslate"><span class="pre">whonix</span></code>, <code class="docutils literal notranslate"><span class="pre">templates</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KERNEL_VERSION</span></code>: <code class="docutils literal notranslate"><span class="pre">stable</span></code>, <code class="docutils literal notranslate"><span class="pre">latest</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QUBES_TEST_MGMT_TPL</span></code>: Select <code class="docutils literal notranslate"><span class="pre">management_dispvm</span></code> template</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISTUPGRADE_TEMPLATES</span></code>: Dist upgrade only selected templates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MACHINE</span></code>: Runs on specified <code class="docutils literal notranslate"><span class="pre">hw*</span></code></p></li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>These are <code class="docutils literal notranslate"><span class="pre">and</span></code> filters, when combined, all must match</p></li>
+<li><p>If a test is already assigned to a <code class="docutils literal notranslate"><span class="pre">hw</span></code>, don’t specify <code class="docutils literal notranslate"><span class="pre">MACHINE</span></code></p></li>
+</ul>
+<p>Examples:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Only<span class="w"> </span>this<span class="w"> </span>PR
+<span class="go">openQArun</span>
+
+<span class="gp"># </span>All<span class="w"> </span>PRs<span class="w"> </span>that<span class="w"> </span>have<span class="w"> </span>such<span class="w"> </span>tag
+<span class="go">openQArun PR_LABEL=openqa-group-3</span>
+
+<span class="gp"># </span>Only<span class="w"> </span>this<span class="w"> </span>PR<span class="w"> </span>with<span class="w"> </span>only<span class="w"> </span>these<span class="w"> </span>tests
+<span class="go">openQArun TEST=system_tests_dispvm,system_tests_dispvm_perf</span>
+
+<span class="gp"># </span>All<span class="w"> </span>PRs<span class="w"> </span>that<span class="w"> </span>have<span class="w"> </span>such<span class="w"> </span>tag<span class="w"> </span>and<span class="w"> </span>only<span class="w"> </span>these<span class="w"> </span>tests
+<span class="go">openQArun PR_LABEL=openqa-group-3 TEST=system_tests_dispvm,system_tests_dispvm_perf</span>
+
+<span class="gp"># </span>Same<span class="w"> </span>as<span class="w"> </span>above,<span class="w"> </span>but<span class="w"> </span>only<span class="w"> </span>run<span class="w"> </span>tests<span class="w"> </span>on<span class="w"> </span><span class="k">select</span><span class="w"> </span>template
+<span class="go">openQArun PR_LABEL=openqa-group-3 TEST=system_tests_dispvm,system_tests_dispvm_perf TEST_TEMPLATES=debian-13-xfce</span>
+</pre></div>
+</div>
+</section>
+<section id="gitlab-pipeline">
+<h4>Gitlab pipeline<a class="headerlink" href="#gitlab-pipeline" title="Link to this heading"></a></h4>
+<p>Find your <a class="reference external" href="https://gitlab.com/QubesOS/qubes-continuous-integration/-/pipelines">Gitlab pipeline</a> and wait till completion.</p>
+<ul class="simple">
+<li><p>In less than 20 seconds after the Github comment, the pipeline will have the <code class="docutils literal notranslate"><span class="pre">Running</span></code> status</p></li>
+<li><p>Takes at minimum 10 minutes to complete, if covering more components, it can take more than 1 hour</p></li>
+<li><p>Only the maintainer can cancel pipelines at this stage because of Gitlab’s lax permission system</p></li>
+</ul>
+</section>
+<section id="openqa-pipeline">
+<h4>openQA pipeline<a class="headerlink" href="#openqa-pipeline" title="Link to this heading"></a></h4>
+<p>Find your test in <a class="reference external" href="https://openqa.qubes-os.org/group_overview/11">openQA pull requests group</a>.</p>
+<p><strong>Cancellation</strong>:</p>
+<ul class="simple">
+<li><p>Sometimes, you might want to cancel a test because it is using outdated code. For that, <a class="reference external" href="https://openqa-qubes-os.org/login">login to openQA</a> and ask the maintainer for <code class="docutils literal notranslate"><span class="pre">cancellation</span></code> permission. After gaining permission, the cancel button appears as an <cite>X</cite> near the circle indicating status of the job</p></li>
+<li><p>Don’t cancel <code class="docutils literal notranslate"><span class="pre">install_default_upload&#64;hw*</span></code>, it can leave system boot order in weird state, breaks further tests, requiring manual intervention to fix</p></li>
+</ul>
+</section>
+</section>
+<section id="check-out-results">
+<h3>Check out results<a class="headerlink" href="#check-out-results" title="Link to this heading"></a></h3>
+<p>qubesos-bot does comment on Github a summary of the results, providing links to jobs that failed. Click on such link and you will be redirected especifically to the test that failed, at the <strong>Details tab</strong>.</p>
+<p><strong>Settings tab</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PULL_REQUESTS</span></code>: Included PRs and commit used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QEMURAM</span></code>: Memory available to the guest, normally 8192 MiB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAX_JOB_TIME</span></code>: How much time, in seconds, a job can take, until timeout is reached</p></li>
+</ul>
+<p><strong>Details tab</strong>:</p>
+<ul class="simple">
+<li><p>Find red signs, failure is near</p></li>
+<li><p>When clicking an image, there is a video icon on the top right to jump to video right when that image was made</p></li>
+<li><p>Test classes <code class="docutils literal notranslate"><span class="pre">TC_*</span></code>, are links, when clicking, you will be able to see beautiful perl code used during the test. Relevant to see why something happens, such as test generation, window actions, environment variables, log uploads</p></li>
+</ul>
+<p><strong>Logs &amp; Assets</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Video</span></code>: Screencast, you will most likely need to right click and set slower speed. To disable time stamp, click on CC then Off</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sut_packages.txt</span></code>: List of packages available on each qube at the beginning of the test</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vars.json</span></code>: JSON variant of <strong>Settings tab</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serial0.txt</span></code>: Dom0 serial output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serial_terminal.txt</span></code>: Dom0 serial console</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_tests-var_log.tar.gz</span></code>: Dom0 directory <code class="file docutils literal notranslate"><span class="pre">/var/log/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_tests-tests-TEST.log</span></code>: Test results</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_tests-*(hypervisor|guest*).log</span></code>: Dom0 directory <code class="file docutils literal notranslate"><span class="pre">/var/log/xen/console</span></code> with all qubes involved in a test that failed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_tests-qvm-prefs-QUBE.log</span></code>: <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> of qubes running before test</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_tests-((user-journalctl|journalctl|libxl-driver|xen-hotplug).log|.xsession-errors)</span></code>: Dom0 logs added since the test started</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">system_tests-objgraph*</span></code>: Memory leak graphs generated by graphviz displayed as image. Image might be huge, farewell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*.qcow2</span></code>: Disk image / snapshot</p></li>
+</ul>
+</section>
+<section id="looking-for-patterns-in-tests">
+<h3>Looking for patterns in tests<a class="headerlink" href="#looking-for-patterns-in-tests" title="Link to this heading"></a></h3>
+<p>In order to better visualize patterns in tests the <a class="reference external" href="https://github.com/QubesOS/openqa-tests-qubesos/blob/master/utils/openqa_investigator.py">openqa_investigator</a> script can be used. It feeds off of the openQA test data to make graph plots. Here is an example:</p>
+<figure class="align-default">
+<img alt="openqa-investigator-splitgpg-example.png" src="../../_images/openqa-investigator-splitgpg-example.png" />
+</figure>
+<p>Some outputs:</p>
+<ul class="simple">
+<li><p>plot by tests</p></li>
+<li><p>plot by errors</p></li>
+<li><p>markdown</p></li>
+</ul>
+<p>Some filters:</p>
+<ul class="simple">
+<li><p>filter by error</p></li>
+<li><p>filter by test name</p></li>
+</ul>
+<p>Check out the script’s help with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">openqa_investigator.py</span> <span class="pre">--help</span></code> to see all available options.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="test-bench.html" class="btn btn-neutral float-left" title="How to set up a test bench" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vm-interface.html" class="btn btn-neutral float-right" title="Qube configuration interface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/debugging/automated-tests.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Salt (management software)" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/advanced-topics/salt.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Since the Qubes R3.1 release we have included the Salt (also called SaltStack) management engine in dom0 as default (with some states already configured). Salt allows administrators to easily confi..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Since the Qubes R3.1 release we have included the Salt (also called SaltStack) management engine in dom0 as default (with some states already configured). Salt allows administrators to easily confi..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salt (management software) &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/advanced-topics/salt.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="GUI domain" href="gui-domain.html" />
+    <link rel="prev" title="Managing qube kernels" href="managing-vm-kernels.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Salt (management software)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-salt">Understanding Salt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-salt-architecture">The Salt Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#states">States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-files">State Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#top-files">Top Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-top-files-and-applying-the-states">Enabling Top Files and Applying the States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#template-files">Template Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#salt-configuration-qubesos-layout">Salt Configuration, QubesOS layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-a-qube-s-system-from-dom0">Configuring a qube's System from Dom0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-configurations">Writing Your Own Configurations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-configuring-templates-from-dom0">Example of Configuring Templates from Dom0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#all-qubes-specific-states">All Qubes-specific States</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-present"><code class="docutils literal notranslate"><span class="pre">qvm.present</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-prefs"><code class="docutils literal notranslate"><span class="pre">qvm.prefs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-service"><code class="docutils literal notranslate"><span class="pre">qvm.service</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-running"><code class="docutils literal notranslate"><span class="pre">qvm.running</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#virtual-machine-formulae">Virtual Machine Formulae</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#available-states">Available states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-sys-net"><code class="docutils literal notranslate"><span class="pre">qvm.sys-net</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-sys-usb"><code class="docutils literal notranslate"><span class="pre">qvm.sys-usb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-sys-net-as-usbvm"><code class="docutils literal notranslate"><span class="pre">qvm.sys-net-as-usbvm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-usb-keyboard"><code class="docutils literal notranslate"><span class="pre">qvm.usb-keyboard</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-sys-firewall"><code class="docutils literal notranslate"><span class="pre">qvm.sys-firewall</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-sys-whonix"><code class="docutils literal notranslate"><span class="pre">qvm.sys-whonix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-personal"><code class="docutils literal notranslate"><span class="pre">qvm.personal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-work"><code class="docutils literal notranslate"><span class="pre">qvm.work</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-untrusted"><code class="docutils literal notranslate"><span class="pre">qvm.untrusted</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-vault"><code class="docutils literal notranslate"><span class="pre">qvm.vault</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-default-dispvm"><code class="docutils literal notranslate"><span class="pre">qvm.default-dispvm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-anon-whonix"><code class="docutils literal notranslate"><span class="pre">qvm.anon-whonix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-whonix-ws-dvm"><code class="docutils literal notranslate"><span class="pre">qvm.whonix-ws-dvm</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-updates-via-whonix"><code class="docutils literal notranslate"><span class="pre">qvm.updates-via-whonix</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-template-fedora-21"><code class="docutils literal notranslate"><span class="pre">qvm.template-fedora-21</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-template-fedora-21-minimal"><code class="docutils literal notranslate"><span class="pre">qvm.template-fedora-21-minimal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-template-debian-7"><code class="docutils literal notranslate"><span class="pre">qvm.template-debian-7</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-template-debian-8"><code class="docutils literal notranslate"><span class="pre">qvm.template-debian-8</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-template-whonix-gw"><code class="docutils literal notranslate"><span class="pre">qvm.template-whonix-gw</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvm-template-whonix-ws"><code class="docutils literal notranslate"><span class="pre">qvm.template-whonix-ws</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-qubes-dom0"><code class="docutils literal notranslate"><span class="pre">update.qubes-dom0</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-qubes-vm"><code class="docutils literal notranslate"><span class="pre">update.qubes-vm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-qubes-pillar-module">The <code class="docutils literal notranslate"><span class="pre">qubes</span></code> Pillar Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-features"><code class="docutils literal notranslate"><span class="pre">qubes:features</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-tags"><code class="docutils literal notranslate"><span class="pre">qubes:tags</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-type"><code class="docutils literal notranslate"><span class="pre">qubes:type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-template"><code class="docutils literal notranslate"><span class="pre">qubes:template</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-netvm"><code class="docutils literal notranslate"><span class="pre">qubes:netvm</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#known-pitfalls">Known Pitfalls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-fedora-24-minimal">Using fedora-24-minimal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disk-quota-exceeded-when-installing-templates">Disk Quota Exceeded (When Installing Templates)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Salt (management software)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/advanced-topics/salt.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="salt-management-software">
+<h1>Salt (management software)<a class="headerlink" href="#salt-management-software" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This page is intended for advanced users.</p>
+</div>
+<p>Since the Qubes R3.1 release we have included the Salt (also called SaltStack) management engine in dom0 as default (with some states already configured). Salt allows administrators to easily configure their systems. In this guide we will show how it is set up and how you can modify it for your own purpose.</p>
+<p>In the current form the <strong>API is provisional</strong> and subject to change between <em>minor</em> releases.</p>
+<section id="understanding-salt">
+<h2>Understanding Salt<a class="headerlink" href="#understanding-salt" title="Link to this heading"></a></h2>
+<p>This document is not meant to be comprehensive Salt documentation; however, before writing anything it is required you have at least <em>some</em> understanding of basic Salt-related vocabulary. For more exhaustive documentation, visit <a class="reference external" href="https://docs.saltproject.io/en/latest/">official site</a>, though we must warn you that it is not easy to read if you just start working with Salt and know nothing.</p>
+<section id="the-salt-architecture">
+<h3>The Salt Architecture<a class="headerlink" href="#the-salt-architecture" title="Link to this heading"></a></h3>
+<p>Salt is a client-server model, where the server (called <em>master</em>) manages its clients (called <em>minions</em>). In typical situations, it is intended that the administrator interacts only with the master and keeps the configurations there. In Qubes, we don’t have a master. Instead we have one minion which resides in <code class="docutils literal notranslate"><span class="pre">dom0</span></code> and manages qubes from there. This setup is also supported by Salt.</p>
+<p>Salt is a management engine (similar to Ansible, Puppet, and Chef), that enforces a particular state of a minion system. A <em>state</em> is an end effect <em>declaratively</em> expressed by the administrator. This is the most important concept in the entire engine. All configurations (i.e., the states) are written in YAML.</p>
+<p>A <em>pillar</em> is a data back-end declared by the administrator. When states become repetitive, instead of pure YAML they can be written using a template engine (preferably Jinja2); which can use data structures specified in pillars.</p>
+<p>A <em>formula</em> is a ready to use, packaged solution that combines a state and a pillar (possibly with some file templates and other auxiliary files). There are many formulas made by helpful people all over the Internet.</p>
+<p>A <em>grain</em> is some data that is also available in templates, but its value is not directly specified by administrator. For example, the distribution (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;Debian&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;Gentoo&quot;</span></code>) is a value of the grain <code class="docutils literal notranslate"><span class="pre">&quot;os&quot;</span></code>. It also contains other information about the kernel, hardware, etc.</p>
+<p>A <em>module</em> is a Python extension to Salt that is responsible for actually enforcing the state in a particular area. It exposes some <em>imperative</em> functions for the administrator. For example, there is a <code class="docutils literal notranslate"><span class="pre">system</span></code> module that has a <code class="docutils literal notranslate"><span class="pre">system.halt</span></code> function that, when issued, will immediately halt a domain.</p>
+<p>In salt, there are different levels of functionality. The lowest level is a single state function, called like this <code class="docutils literal notranslate"><span class="pre">state.single</span> <span class="pre">pkg.installed</span> <span class="pre">name=firefox-esr</span></code> When the system compiles data from sls formulas, it generates <em>chunks</em> - low chunks are at the bottom of the compiler . You can call them with <code class="docutils literal notranslate"><span class="pre">state.low</span></code>. Next up is the <em>lowstate</em> level - this is the list of all low chunks in order. To see them you have <code class="docutils literal notranslate"><span class="pre">state.show_lowstate</span></code>, and use <code class="docutils literal notranslate"><span class="pre">state.lowstate</span></code> to apply them. At the top level is <em>highstate</em> - this is an interpretation of <strong>all</strong> the data represented in YAML in sls files. You can view it with <code class="docutils literal notranslate"><span class="pre">state.show_highstate</span></code>.</p>
+<p>When you want to apply a configuration, you can use <code class="docutils literal notranslate"><span class="pre">qubesctl</span> <span class="pre">state.highstate.</span></code> This will apply all the states you have included in highstate.</p>
+<p>There is another function, <code class="docutils literal notranslate"><span class="pre">state.apply</span></code>; <code class="docutils literal notranslate"><span class="pre">state.apply</span></code> has two uses. When used on its own, it will apply <em>highstate</em> - all the configuration that has been enabled. It can also be used to apply a specific state, like this: <code class="docutils literal notranslate"><span class="pre">state.apply</span> <span class="pre">browser</span></code> - this will apply the state specified in <code class="docutils literal notranslate"><span class="pre">browser.sls</span></code>.</p>
+<p>For simplicity we will use <code class="docutils literal notranslate"><span class="pre">state.apply</span></code> through this page, when we want to apply all configured states.</p>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
+</section>
+<section id="states">
+<h3>States<a class="headerlink" href="#states" title="Link to this heading"></a></h3>
+<p>The smallest unit of configuration is a state. A state is written in YAML and looks like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stateid</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cmd.run</span><span class="p">:</span><span class="w">  </span><span class="c1">#this is the execution module. in this case it will execute a command on the shell</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &#39;hello world&#39;</span><span class="w"> </span><span class="c1">#this is a parameter of the state.</span>
+</pre></div>
+</div>
+<p>The stateid has to be unique throughout all states running for a minion and can be used to order the execution of the references state. <code class="docutils literal notranslate"><span class="pre">cmd.run</span></code> is an execution module. It executes a command on behalf of the administrator. <code class="docutils literal notranslate"><span class="pre">name:</span> <span class="pre">echo</span> <span class="pre">'hello</span> <span class="pre">world'</span></code> is a parameter for the execution module <code class="docutils literal notranslate"><span class="pre">cmd.run</span></code>. The module used defines which parameters can be passed to it.</p>
+<p>There is a list of <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/">officially available states</a>. There are many very useful states:</p>
+<ul class="simple">
+<li><p>For <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html">managing files</a>: Use this to create files or directories and change them (append lines, replace text, set their content etc.)</p></li>
+<li><p>For <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html">installing and uninstalling</a> packages.</p></li>
+<li><p>For <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/salt.states.cmd.html">executing shell commands</a>.</p></li>
+</ul>
+<p>With these three states you can define most of the configuration of a VM.</p>
+<p>You can also <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/ordering.html">order the execution</a> of your states:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">D</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cmd.run</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo 1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">last</span>
+<span class="nt">C</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cmd.run</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo 1</span>
+<span class="nt">B</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cmd.run</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo 1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">require</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">require_in</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cmd:C</span>
+<span class="nt">A</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cmd.run</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo 1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<p>The order of execution will be <code class="docutils literal notranslate"><span class="pre">A,</span> <span class="pre">B,</span> <span class="pre">C,</span> <span class="pre">D</span></code>. The official documentation has more details on the <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/requisites.html">require</a> and <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/ordering.html#the-order-option">order</a> arguments.</p>
+</section>
+<section id="state-files">
+<h3>State Files<a class="headerlink" href="#state-files" title="Link to this heading"></a></h3>
+<p>When configuring a system you will write one or more state files (<code class="docutils literal notranslate"><span class="pre">*.sls</span></code>) and put (or symlink) them into the main Salt directory <code class="docutils literal notranslate"><span class="pre">/srv/salt/</span></code>. Each state file contains multiple states and should describe some unit of configuration (e.g., a state file <code class="docutils literal notranslate"><span class="pre">mail.sls</span></code> could setup a qube for e-mail).</p>
+</section>
+<section id="top-files">
+<h3>Top Files<a class="headerlink" href="#top-files" title="Link to this heading"></a></h3>
+<p>After you have several state files, you need something to assign them to a qube. This is done by <code class="docutils literal notranslate"><span class="pre">*.top</span></code> files (<a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/top.html">official documentation</a>). Their structure looks like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">target_matching_clause</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">statefile1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">folder2.statefile2</span>
+</pre></div>
+</div>
+<p>In most cases, the environment will be called <code class="docutils literal notranslate"><span class="pre">base</span></code>. The <code class="docutils literal notranslate"><span class="pre">target_matching_clause</span></code> will be used to select your minions (Templates or qubes). It can be either the name of a qube or a regular expression. If you are using a regular expressions, you need to give Salt a hint you are doing so:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">^app-(work|(?!mail).*)$</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pcre</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">statefile</span>
+</pre></div>
+</div>
+<p>For each target you can write a list of state files. Each line is a path to a state file (without the <code class="docutils literal notranslate"><span class="pre">.sls</span></code> extension) relative to the main directory. Each <code class="docutils literal notranslate"><span class="pre">/</span></code> is exchanged with a <code class="docutils literal notranslate"><span class="pre">.</span></code>, so you can’t reference files or directories with a <code class="docutils literal notranslate"><span class="pre">.</span></code> in their name.</p>
+</section>
+<section id="enabling-top-files-and-applying-the-states">
+<h3>Enabling Top Files and Applying the States<a class="headerlink" href="#enabling-top-files-and-applying-the-states" title="Link to this heading"></a></h3>
+<p>Now, because we use custom extensions to manage top files (instead of just enabling them all), to enable a particular top file you should issue command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>top.enable<span class="w"> </span>my-new-vm
+</pre></div>
+</div>
+<p>To list all enabled top files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>top.enabled
+</pre></div>
+</div>
+<p>And to disable one:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>top.disable<span class="w"> </span>my-new-vm
+</pre></div>
+</div>
+<p>To apply the states to dom0 and all VMs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>--all<span class="w"> </span>state.apply
+</pre></div>
+</div>
+<p>(More information on the <code class="docutils literal notranslate"><span class="pre">qubesctl</span></code> command further down.)</p>
+</section>
+<section id="template-files">
+<h3>Template Files<a class="headerlink" href="#template-files" title="Link to this heading"></a></h3>
+<p>You will sometimes find yourself writing repetitive states. To solve this, there is the ability to template files or states. This is most commonly done with <a class="reference external" href="https://palletsprojects.com/p/jinja/">Jinja</a>. Jinja is similar to Python and in many cases behaves in a similar fashion, but there are sometimes differences when, for example, you set some variable inside a loop: the variable outside will not get changed. Instead, to get this behavior, you would use a <code class="docutils literal notranslate"><span class="pre">do</span></code> statement. So you should take a look at the <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja API documentation</a>. Documentation about using Jinja to directly call Salt functions and get data about your system can be found in the official <a class="reference external" href="https://docs.saltproject.io/salt/user-guide/en/latest/topics/jinja.html">Salt documentation</a>.</p>
+</section>
+</section>
+<section id="salt-configuration-qubesos-layout">
+<h2>Salt Configuration, QubesOS layout<a class="headerlink" href="#salt-configuration-qubesos-layout" title="Link to this heading"></a></h2>
+<p>All Salt configuration files are in the <code class="docutils literal notranslate"><span class="pre">/srv/</span></code> directory, as usual. The main directory is <code class="docutils literal notranslate"><span class="pre">/srv/salt/</span></code> where all state files reside. States are contained in <code class="docutils literal notranslate"><span class="pre">*.sls</span></code> files. However, the states that are part of the standard Qubes distribution are mostly templates and the configuration is done in pillars from formulas.</p>
+<p>The formulas are in <code class="docutils literal notranslate"><span class="pre">/srv/formulas</span></code>, including stock formulas for domains in <code class="docutils literal notranslate"><span class="pre">/srv/formulas/dom0/virtual-machines-formula/qvm</span></code>, which are used by first boot.</p>
+<p>Because we use some code that is not found in older versions of Salt, there is a tool called <code class="docutils literal notranslate"><span class="pre">qubesctl</span></code> that should be run instead of <code class="docutils literal notranslate"><span class="pre">salt-call</span> <span class="pre">--local</span></code>. It accepts all the same arguments of the vanilla tool.</p>
+</section>
+<section id="configuring-a-qube-s-system-from-dom0">
+<h2>Configuring a qube's System from Dom0<a class="headerlink" href="#configuring-a-qube-s-system-from-dom0" title="Link to this heading"></a></h2>
+<p>Salt can be used to configure qubes from dom0. Simply set the qube name as the target minion name in the top file. You can also use the <code class="docutils literal notranslate"><span class="pre">qubes</span></code> pillar module to select qubes with a particular property (see below). If you do so, then you need to pass additional arguments to the <code class="docutils literal notranslate"><span class="pre">qubesctl</span></code> tool:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">usage: qubesctl [-h] [--show-output] [--force-color] [--skip-dom0]</span>
+<span class="go">                [--targets TARGETS | --templates | --app | --all]</span>
+<span class="go">                ...</span>
+
+<span class="go">positional arguments:</span>
+<span class="go">  command            Salt command to execute (e.g., state.apply)</span>
+
+<span class="go">optional arguments:</span>
+<span class="go">  -h, --help         show this help message and exit</span>
+<span class="go">  --show-output      Show output of management commands</span>
+<span class="go">  --force-color      Force color output, allow control characters from VM,</span>
+<span class="go">                     UNSAFE</span>
+<span class="go">  --skip-dom0        Skip dom0 configuration (VM creation etc)</span>
+<span class="go">  --targets TARGETS  Coma separated list of VMs to target</span>
+<span class="go">  --templates        Target all templates</span>
+<span class="go">  --app              Target all app qubes</span>
+<span class="go">  --all              Target all non-disposables (templates and app qubes)</span>
+</pre></div>
+</div>
+<p>To apply a state to all templates, call <code class="docutils literal notranslate"><span class="pre">qubesctl</span> <span class="pre">--templates</span> <span class="pre">state.apply</span></code>.</p>
+<p>The actual configuration is applied using <code class="docutils literal notranslate"><span class="pre">salt-ssh</span></code> (running over <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ssh</span></code>). Which means you don’t need to install anything special in a qube you want to manage. Additionally, for each target qube, <code class="docutils literal notranslate"><span class="pre">salt-ssh</span></code> is started from a temporary qube. This way dom0 doesn’t directly interact with potentially malicious target qubes; and in the case of a compromised Salt qube, because they are temporary, the compromise cannot spread from one qube to another.</p>
+<p>Beginning with Qubes 4.0 and after <a class="reference external" href="https://www.qubes-os.org/news/2018/12/03/qsb-45/">QSB #45</a>, we implemented two changes:</p>
+<ol class="arabic simple">
+<li><p>Added the <code class="docutils literal notranslate"><span class="pre">management_dispvm</span></code> qube property, which specifies the disposable Template that should be used for management, such as Salt configuration. App qubes inherit this property from their parent templates. If the value is not set explicitly, the default is taken from the global <code class="docutils literal notranslate"><span class="pre">management_dispvm</span></code> property. The qube-specific property is set with the <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> command, while the global property is set with the <code class="docutils literal notranslate"><span class="pre">qubes-prefs</span></code> command.</p></li>
+<li><p>Created the <code class="docutils literal notranslate"><span class="pre">default-mgmt-dvm</span></code> disposable template, which is hidden from the menu (to avoid accidental use), has networking disabled, and has a black label (the same as templates). This qube is set as the global <code class="docutils literal notranslate"><span class="pre">management_dispvm</span></code>. Keep in mind that this disposable template has full control over the qubes it’s used to manage.</p></li>
+</ol>
+</section>
+<section id="writing-your-own-configurations">
+<h2>Writing Your Own Configurations<a class="headerlink" href="#writing-your-own-configurations" title="Link to this heading"></a></h2>
+<p>Let’s start with a quick example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">my new and shiny VM</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">qvm.present</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">salt-test</span><span class="w"> </span><span class="c1"># can be omitted when same as ID</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fedora-21</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yellow</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vcpus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">flags</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+</pre></div>
+</div>
+<p>It uses the Qubes-specific <code class="docutils literal notranslate"><span class="pre">qvm.present</span></code> state, which ensures that the qube is present (if not, it creates it).</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> flag informs Salt that the qube should be named <code class="docutils literal notranslate"><span class="pre">salt-test</span></code> (not <code class="docutils literal notranslate"><span class="pre">my</span> <span class="pre">new</span> <span class="pre">and</span> <span class="pre">shiny</span> <span class="pre">VM</span></code>).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">template</span></code> flag informs Salt which template should be used for the qube.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">label</span></code> flag informs Salt what color the qube should be.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">mem</span></code> flag informs Salt how much RAM should be allocated to the qube.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">vcpus</span></code> flag informs Salt how many Virtual CPUs should be allocated to the qube</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">proxy</span></code> flag informs Salt that the qube should be a ProxyVM.</p></li>
+</ul>
+<p>As you will notice, the options are the same (or very similar) to those used in <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code>.</p>
+<p>This should be put in <code class="docutils literal notranslate"><span class="pre">/srv/salt/my-new-vm.sls</span></code> or another <code class="docutils literal notranslate"><span class="pre">.sls</span></code> file. A separate <code class="docutils literal notranslate"><span class="pre">*.top</span></code> file should be also written:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">base</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dom0</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-new-vm</span>
+</pre></div>
+</div>
+<p><strong>Note</strong> The third line should contain the name of the previous state file, without the <code class="docutils literal notranslate"><span class="pre">.sls</span></code> extension.</p>
+<p>To enable the particular top file you should issue the command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>top.enable<span class="w"> </span>my-new-vm
+</pre></div>
+</div>
+<p>To apply the state:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>state.apply
+</pre></div>
+</div>
+<section id="example-of-configuring-templates-from-dom0">
+<h3>Example of Configuring Templates from Dom0<a class="headerlink" href="#example-of-configuring-templates-from-dom0" title="Link to this heading"></a></h3>
+<p>Lets make sure that the <code class="docutils literal notranslate"><span class="pre">mc</span></code> package is installed in all templates. Similar to the previous example, you need to create a state file (<code class="docutils literal notranslate"><span class="pre">/srv/salt/mc-everywhere.sls</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">mc</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pkg.installed</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</pre></div>
+</div>
+<p>Then the appropriate top file (<code class="docutils literal notranslate"><span class="pre">/srv/salt/mc-everywhere.top</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">base</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">qubes:type:template</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pillar</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mc-everywhere</span>
+</pre></div>
+</div>
+<p>Now you need to enable the top file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>top.enable<span class="w"> </span>mc-everywhere
+</pre></div>
+</div>
+<p>And apply the configuration:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qubesctl<span class="w"> </span>--all<span class="w"> </span>state.apply
+</pre></div>
+</div>
+</section>
+</section>
+<section id="all-qubes-specific-states">
+<h2>All Qubes-specific States<a class="headerlink" href="#all-qubes-specific-states" title="Link to this heading"></a></h2>
+<section id="qvm-present">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.present</span></code><a class="headerlink" href="#qvm-present" title="Link to this heading"></a></h3>
+<p>As in the example above, it creates a qube and sets its properties.</p>
+</section>
+<section id="qvm-prefs">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.prefs</span></code><a class="headerlink" href="#qvm-prefs" title="Link to this heading"></a></h3>
+<p>You can set properties of an existing qube:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">my preferences</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">qvm.prefs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">salt-test2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">netvm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sys-firewall</span>
+</pre></div>
+</div>
+<p><strong>Note</strong> The <code class="docutils literal notranslate"><span class="pre">name:</span></code> option will not change the name of a qube, it will only be used to match a qube to apply the configurations to it.</p>
+</section>
+<section id="qvm-service">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.service</span></code><a class="headerlink" href="#qvm-service" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">services in my qube</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">qvm.service</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">salt-test3</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">enable</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">disable</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service3</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service4</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service5</span>
+</pre></div>
+</div>
+<p>This enables, disables, or sets to default, services as in <code class="docutils literal notranslate"><span class="pre">qvm-service</span></code>.</p>
+</section>
+<section id="qvm-running">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.running</span></code><a class="headerlink" href="#qvm-running" title="Link to this heading"></a></h3>
+<p>Ensures the specified qube is running:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">qube is running</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">qvm.running</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">salt-test4</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="virtual-machine-formulae">
+<h2>Virtual Machine Formulae<a class="headerlink" href="#virtual-machine-formulae" title="Link to this heading"></a></h2>
+<p>You can use these formulae to download, install, and configure qubes in Qubes. These formulae use pillar data to define default qube names and configuration details. The default settings can be overridden in the pillar data located in:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/srv/pillar/base/qvm/init.sls
+</pre></div>
+</div>
+<p>In dom0, you can apply a single state with <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">qubesctl</span> <span class="pre">state.sls</span> <span class="pre">STATE_NAME</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">qubesctl</span> <span class="pre">state.sls</span> <span class="pre">qvm.personal</span></code> will create a <code class="docutils literal notranslate"><span class="pre">personal</span></code> qube (if it does not already exist) with all its dependencies (template, <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code>, and <code class="docutils literal notranslate"><span class="pre">sys-net</span></code>).</p>
+<section id="available-states">
+<h3>Available states<a class="headerlink" href="#available-states" title="Link to this heading"></a></h3>
+</section>
+<section id="qvm-sys-net">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.sys-net</span></code><a class="headerlink" href="#qvm-sys-net" title="Link to this heading"></a></h3>
+<p>System NetVM</p>
+</section>
+<section id="qvm-sys-usb">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.sys-usb</span></code><a class="headerlink" href="#qvm-sys-usb" title="Link to this heading"></a></h3>
+<p>System USB qube</p>
+</section>
+<section id="qvm-sys-net-as-usbvm">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.sys-net-as-usbvm</span></code><a class="headerlink" href="#qvm-sys-net-as-usbvm" title="Link to this heading"></a></h3>
+<p>System USB qube bundled into NetVM. Do not enable together with <code class="docutils literal notranslate"><span class="pre">qvm.sys-usb</span></code>.</p>
+</section>
+<section id="qvm-usb-keyboard">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.usb-keyboard</span></code><a class="headerlink" href="#qvm-usb-keyboard" title="Link to this heading"></a></h3>
+<p>Enable USB keyboard together with USB qube, including for early system boot (for LUKS passhprase). This state implicitly creates a USB qube (<code class="docutils literal notranslate"><span class="pre">qvm.sys-usb</span></code> state), if not already done.</p>
+</section>
+<section id="qvm-sys-firewall">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.sys-firewall</span></code><a class="headerlink" href="#qvm-sys-firewall" title="Link to this heading"></a></h3>
+<p>System firewall ProxyVM</p>
+</section>
+<section id="qvm-sys-whonix">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.sys-whonix</span></code><a class="headerlink" href="#qvm-sys-whonix" title="Link to this heading"></a></h3>
+<p>Whonix gateway ProxyVM</p>
+</section>
+<section id="qvm-personal">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.personal</span></code><a class="headerlink" href="#qvm-personal" title="Link to this heading"></a></h3>
+<p>Personal app qube</p>
+</section>
+<section id="qvm-work">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.work</span></code><a class="headerlink" href="#qvm-work" title="Link to this heading"></a></h3>
+<p>Work app qube</p>
+</section>
+<section id="qvm-untrusted">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.untrusted</span></code><a class="headerlink" href="#qvm-untrusted" title="Link to this heading"></a></h3>
+<p>Untrusted app qube</p>
+</section>
+<section id="qvm-vault">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.vault</span></code><a class="headerlink" href="#qvm-vault" title="Link to this heading"></a></h3>
+<p>Vault app qube with no NetVM enabled.</p>
+</section>
+<section id="qvm-default-dispvm">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.default-dispvm</span></code><a class="headerlink" href="#qvm-default-dispvm" title="Link to this heading"></a></h3>
+<p>Default disposable template - fedora-26-dvm app qube</p>
+</section>
+<section id="qvm-anon-whonix">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.anon-whonix</span></code><a class="headerlink" href="#qvm-anon-whonix" title="Link to this heading"></a></h3>
+<p>Whonix workstation app qube.</p>
+</section>
+<section id="qvm-whonix-ws-dvm">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.whonix-ws-dvm</span></code><a class="headerlink" href="#qvm-whonix-ws-dvm" title="Link to this heading"></a></h3>
+<p>Whonix workstation app qube for Whonix disposables.</p>
+</section>
+<section id="qvm-updates-via-whonix">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.updates-via-whonix</span></code><a class="headerlink" href="#qvm-updates-via-whonix" title="Link to this heading"></a></h3>
+<p>Setup UpdatesProxy to route all templates updates through Tor (sys-whonix here).</p>
+</section>
+<section id="qvm-template-fedora-21">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.template-fedora-21</span></code><a class="headerlink" href="#qvm-template-fedora-21" title="Link to this heading"></a></h3>
+<p>Fedora-21 template</p>
+</section>
+<section id="qvm-template-fedora-21-minimal">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.template-fedora-21-minimal</span></code><a class="headerlink" href="#qvm-template-fedora-21-minimal" title="Link to this heading"></a></h3>
+<p>Fedora-21 minimal template</p>
+</section>
+<section id="qvm-template-debian-7">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.template-debian-7</span></code><a class="headerlink" href="#qvm-template-debian-7" title="Link to this heading"></a></h3>
+<p>Debian 7 (wheezy) template</p>
+</section>
+<section id="qvm-template-debian-8">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.template-debian-8</span></code><a class="headerlink" href="#qvm-template-debian-8" title="Link to this heading"></a></h3>
+<p>Debian 8 (jessie) template</p>
+</section>
+<section id="qvm-template-whonix-gw">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.template-whonix-gw</span></code><a class="headerlink" href="#qvm-template-whonix-gw" title="Link to this heading"></a></h3>
+<p>Whonix Gateway template</p>
+</section>
+<section id="qvm-template-whonix-ws">
+<h3><code class="docutils literal notranslate"><span class="pre">qvm.template-whonix-ws</span></code><a class="headerlink" href="#qvm-template-whonix-ws" title="Link to this heading"></a></h3>
+<p>Whonix Workstation template</p>
+</section>
+<section id="update-qubes-dom0">
+<h3><code class="docutils literal notranslate"><span class="pre">update.qubes-dom0</span></code><a class="headerlink" href="#update-qubes-dom0" title="Link to this heading"></a></h3>
+<p>Updates dom0. Example (executed in dom0):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubesctl<span class="w"> </span>--show-output<span class="w"> </span>state.sls<span class="w"> </span>update.qubes-dom0
+</pre></div>
+</div>
+</section>
+<section id="update-qubes-vm">
+<h3><code class="docutils literal notranslate"><span class="pre">update.qubes-vm</span></code><a class="headerlink" href="#update-qubes-vm" title="Link to this heading"></a></h3>
+<p>Updates domUs. Example to update all templates (executed in dom0):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubesctl<span class="w"> </span>--show-output<span class="w"> </span>--skip-dom0<span class="w"> </span>--templates<span class="w"> </span>state.sls<span class="w"> </span>update.qubes-vm
+</pre></div>
+</div>
+<p>Useful options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--max-concurrency</span></code> — Limits how many templates are updated at the same time. Adjust to your available RAM. The default is 4, and the GUI updater sets it to 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--targets=vm1,vm2,...</span></code> — Limit to specific qubes, instead of all of them. (Use instead of <code class="docutils literal notranslate"><span class="pre">--templates</span></code> or <code class="docutils literal notranslate"><span class="pre">--standalones</span></code>.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-output</span></code> — Show an update summary instead of just OK/FAIL.</p></li>
+</ul>
+<p>For other options, see <code class="docutils literal notranslate"><span class="pre">qubesctl</span> <span class="pre">--help</span></code>.</p>
+</section>
+</section>
+<section id="the-qubes-pillar-module">
+<h2>The <code class="docutils literal notranslate"><span class="pre">qubes</span></code> Pillar Module<a class="headerlink" href="#the-qubes-pillar-module" title="Link to this heading"></a></h2>
+<p>Additional pillar data is available to ease targeting configurations (for example all templates).</p>
+<p><strong>Note:</strong> This list is subject to change in future releases.</p>
+<section id="qubes-features">
+<h3><code class="docutils literal notranslate"><span class="pre">qubes:features</span></code><a class="headerlink" href="#qubes-features" title="Link to this heading"></a></h3>
+<p>Features the qube has. Only some values are included:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">service.*</span></code> - services enabled or disabled in the qube</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vm-config.*</span></code> - features also exposed to qubesdb</p></li>
+</ul>
+</section>
+<section id="qubes-tags">
+<h3><code class="docutils literal notranslate"><span class="pre">qubes:tags</span></code><a class="headerlink" href="#qubes-tags" title="Link to this heading"></a></h3>
+<p>Tags the qube has.</p>
+</section>
+<section id="qubes-type">
+<h3><code class="docutils literal notranslate"><span class="pre">qubes:type</span></code><a class="headerlink" href="#qubes-type" title="Link to this heading"></a></h3>
+<p>qube type. Possible values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">admin</span></code> - Administration qube (<code class="docutils literal notranslate"><span class="pre">dom0</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">template</span></code> - template</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">standalone</span></code> - Standalone qube</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app</span></code> - Template based app qube</p></li>
+</ul>
+</section>
+<section id="qubes-template">
+<h3><code class="docutils literal notranslate"><span class="pre">qubes:template</span></code><a class="headerlink" href="#qubes-template" title="Link to this heading"></a></h3>
+<p>Template name on which a given qube is based (if any).</p>
+</section>
+<section id="qubes-netvm">
+<h3><code class="docutils literal notranslate"><span class="pre">qubes:netvm</span></code><a class="headerlink" href="#qubes-netvm" title="Link to this heading"></a></h3>
+<p>qube which provides network to the given qube</p>
+</section>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h2>
+<p>The output for each qube is logged in <code class="docutils literal notranslate"><span class="pre">/var/log/qubes/mgmt-VM_NAME.log</span></code>.</p>
+<p>If the log does not contain useful information:</p>
+<ol class="arabic simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">qubesctl</span> <span class="pre">--skip-dom0</span> <span class="pre">--target=VM_NAME</span> <span class="pre">state.apply</span></code></p></li>
+<li><p>When your qube is being started (yellow) press Ctrl-z on qubesctl.</p></li>
+<li><p>Open terminal in disp-mgmt-qube_NAME.</p></li>
+<li><p>Look at /etc/qubes-rpc/qubes.SaltLinuxVM - this is what is executed in the management qube.</p></li>
+<li><p>Get the last two lines:</p></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib/qubes-vm-connector/ssh-wrapper:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="gp">$ </span>salt-ssh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$target_vm</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">$salt_command</span>
+</pre></div>
+</div>
+<p>Adjust $target_vm (VM_NAME) and $salt_command (state.apply).</p>
+<ol class="arabic simple" start="6">
+<li><p>Execute them, fix problems, repeat.</p></li>
+</ol>
+</section>
+<section id="known-pitfalls">
+<h2>Known Pitfalls<a class="headerlink" href="#known-pitfalls" title="Link to this heading"></a></h2>
+<section id="using-fedora-24-minimal">
+<h3>Using fedora-24-minimal<a class="headerlink" href="#using-fedora-24-minimal" title="Link to this heading"></a></h3>
+<p>The fedora-24-minimal package is missing the <code class="docutils literal notranslate"><span class="pre">sudo</span></code> package. You can install it via:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>-p<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>fedora-24-minimal-template<span class="w"> </span><span class="s1">&#39;dnf install -y sudo&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-p</span></code> will cause the execution to wait until the package is installed. Having the <code class="docutils literal notranslate"><span class="pre">-p</span></code> flag is important when using a state with <code class="docutils literal notranslate"><span class="pre">cmd.run</span></code>.</p>
+</section>
+<section id="disk-quota-exceeded-when-installing-templates">
+<h3>Disk Quota Exceeded (When Installing Templates)<a class="headerlink" href="#disk-quota-exceeded-when-installing-templates" title="Link to this heading"></a></h3>
+<p>If you install multiple templates you may encounter this error. The solution is to shut down the updateVM between each install:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">install template and shutdown updateVM</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cmd.run</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo qubes-dom0-update -y fedora-24; qvm-shutdown {{ salt.cmd.run(qubes-prefs updateVM) }}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.saltproject.io/en/latest/">Salt documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/">Salt states</a> (<a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/salt.states.file.html">files</a>, <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/salt.states.cmd.html">commands</a>, <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html">packages</a>, <a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/ordering.html">ordering</a>)</p></li>
+<li><p><a class="reference external" href="https://docs.saltproject.io/en/latest/ref/states/top.html">Top files</a></p></li>
+<li><p><a class="reference external" href="https://palletsprojects.com/p/jinja/">Jinja templates</a></p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-mgmt-salt-dom0-qvm/blob/master/README.rst">Qubes specific modules</a></p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-mgmt-salt-dom0-virtual-machines/tree/master/qvm">Formulas for default Qubes qubes</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="managing-vm-kernels.html" class="btn btn-neutral float-left" title="Managing qube kernels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="gui-domain.html" class="btn btn-neutral float-right" title="GUI domain" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/advanced-topics/salt.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

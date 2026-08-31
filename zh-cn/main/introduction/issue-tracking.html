@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Issue tracking" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="introduction/issue-tracking.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="We use GitHub Issues as our issue tracking system. All issues pertaining to the Qubes OS Project (including auxiliary infrastructure such as this website) are tracked in qubes-issues. How to open a..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="We use GitHub Issues as our issue tracking system. All issues pertaining to the Qubes OS Project (including auxiliary infrastructure such as this website) are tracked in qubes-issues. How to open a..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Issue tracking &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/introduction/issue-tracking.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/custom.js?v=01ac952c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Help, support, mailing lists, and forum" href="support.html" />
+    <link rel="prev" title="Frequently asked questions (FAQ)" href="faq.html" />
+
+   
+
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Issue tracking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-open-a-new-issue">How to open a new issue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-need-help-have-a-question-or-want-to-discuss-something">I need help, have a question, or want to discuss something.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-see-something-that-should-be-changed-in-the-documentation">I see something that should be changed in the documentation.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-would-like-to-report-a-security-vulnerability">I would like to report a security vulnerability.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-still-want-to-open-an-issue">I still want to open an issue.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-issues-are-organized">How issues are organized</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#labels">Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#priority">Priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affected-release">Affected release</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#projects">Projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meta-issues">Meta-issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#search-tips">Search tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#guidelines">Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-issue-tracker-is-not-a-discussion-forum">The issue tracker is not a discussion forum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#do-not-submit-questions">Do not submit questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-the-issue-template">Use the issue template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#every-issue-must-be-about-a-single-actionable-thing">Every issue must be about a single, actionable thing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#every-issue-must-be-of-a-single-type">Every issue must be of a single type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-issues-should-not-be-duplicates-of-existing-issues">New issues should not be duplicates of existing issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-issues-should-include-all-relevant-information">New issues should include all relevant information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#there-are-no-guarantees-that-your-issue-will-be-addressed">There are no guarantees that your issue will be addressed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issues-and-comments-must-be-written-in-english">Issues and comments must be written in English</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#developers-may-ask-you-for-logs-or-other-data">Developers may ask you for logs or other data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-collapsible-sections-for-long-nonessential-content">Use collapsible sections for long, nonessential content</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-issues-get-closed">How issues get closed</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug-reports">Bug reports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolution">Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backports">Backports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-open-and-closed-issues">Understanding open and closed issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-and-what-do-issue-states-mean">Workflow and what do issue states mean</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#assigning-issues">Assigning issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-on-an-issue">Working on an issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Issue tracking</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/introduction/issue-tracking.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="issue-tracking">
+<h1>Issue tracking<a class="headerlink" href="#issue-tracking" title="Link to this heading"></a></h1>
+<p>We use <a class="reference external" href="https://docs.github.com/en/issues">GitHub Issues</a> as our <a class="reference external" href="https://en.wikipedia.org/wiki/Issue_tracking_system">issue tracking system</a>. All issues pertaining to the Qubes OS Project (including auxiliary infrastructure such as this website) are tracked in <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a>.</p>
+<section id="how-to-open-a-new-issue">
+<h2>How to open a new issue<a class="headerlink" href="#how-to-open-a-new-issue" title="Link to this heading"></a></h2>
+<p>First, let’s make sure the issue tracker is the right place.</p>
+<section id="i-need-help-have-a-question-or-want-to-discuss-something">
+<h3>I need help, have a question, or want to discuss something.<a class="headerlink" href="#i-need-help-have-a-question-or-want-to-discuss-something" title="Link to this heading"></a></h3>
+<p>We’re happy to help, answer questions, and have discussions, but the issue tracker is not the right place for these activities. Instead, please see <a class="reference internal" href="support.html"><span class="doc">Help, Support, Mailing Lists, and Forum</span></a>.</p>
+</section>
+<section id="i-see-something-that-should-be-changed-in-the-documentation">
+<h3>I see something that should be changed in the documentation.<a class="headerlink" href="#i-see-something-that-should-be-changed-in-the-documentation" title="Link to this heading"></a></h3>
+<p>We encourage you to submit the change yourself! Please see the <a class="reference internal" href="../developer/general/how-to-edit-the-rst-documentation.html"><span class="doc">how to edit the documentation</span></a> for instructions on how to do so. If it’s something you can’t do yourself, please proceed to open an issue.</p>
+</section>
+<section id="i-would-like-to-report-a-security-vulnerability">
+<h3>I would like to report a security vulnerability.<a class="headerlink" href="#i-would-like-to-report-a-security-vulnerability" title="Link to this heading"></a></h3>
+<p>Thank you! If the vulnerability is confidential, please do not report it in our public issue tracker. Instead, please see <a class="reference internal" href="../project-security/security.html#reporting-security-issues-in-qubes-os"><span class="std std-ref">Reporting Security Issues in Qubes OS</span></a>.</p>
+</section>
+<section id="i-still-want-to-open-an-issue">
+<h3>I still want to open an issue.<a class="headerlink" href="#i-still-want-to-open-an-issue" title="Link to this heading"></a></h3>
+<p>Great! Thank you for taking the time and effort to help improve Qubes! To ensure the process is efficient and productive for everyone involved, please follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Carefully read our issue tracking <a class="reference internal" href="#guidelines"><span class="std std-ref">Guidelines</span></a>. If your issue would violate any of the guidelines, <strong>stop</strong>. Please do not submit it.</p></li>
+<li><p><a class="reference internal" href="#search-tips"><span class="std std-ref">Search through the existing issues</span></a>, both open and closed, to see if your issue already exists. If it does, <strong>stop</strong>. <a class="reference internal" href="#new-issues-should-not-be-duplicates-of-existing-issues"><span class="std std-ref">Do not open a duplicate.</span></a> Instead, comment on the existing issue.</p></li>
+<li><p>Go <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/new/choose">here</a>.</p></li>
+<li><p>Select the <a class="reference internal" href="#types"><span class="std std-ref">type</span></a> of issue you want to open.</p></li>
+<li><p>Enter a descriptive title.</p></li>
+<li><p>Do not delete the provided issue template. Fill out every applicable section.</p></li>
+<li><p>Please note that AIs often <a class="reference external" href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)">hallucinate</a> about Qubes OS. If you're using an AI to assist you, please check its conclusions against the <a class="reference external" href="https://doc.qubes-os.org/">official documentation</a>.</p></li>
+<li><p>Make sure to mention any relevant documentation and other issues you’ve already seen. We don’t know what you’ve seen unless you tell us. If you don’t list it, we’ll assume you haven’t seen it.</p></li>
+<li><p>If any sections of the issue template are <em>truly</em> not applicable, you may remove them.</p></li>
+<li><p>Submit your issue.</p></li>
+<li><p>Respond to any questions the official team asks. For example, you may be asked to provide specific logs or other additional information.</p></li>
+</ol>
+<p>Eventually, your issue may be closed. See <a class="reference internal" href="#how-issues-get-closed"><span class="std std-ref">how issues get closed</span></a> for details about when, why, and how this occurs.</p>
+</section>
+</section>
+<section id="how-issues-are-organized">
+<h2>How issues are organized<a class="headerlink" href="#how-issues-are-organized" title="Link to this heading"></a></h2>
+<p>Issues can have several different properties and be organized in various ways. This section explains how we use labels, issue types, projects, and other features of GitHub’s issue tracking system in order to keep <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a> organized.</p>
+<section id="labels">
+<h3>Labels<a class="headerlink" href="#labels" title="Link to this heading"></a></h3>
+<p>When an issue is first created, it will receive the <code class="docutils literal notranslate"><span class="pre">P:</span> <span class="pre">default</span></code> (i.e., default priority) <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels">label</a> automatically. After an issue has been created, only Qubes team members have permission to modify labels. Many labels have descriptions on them that can be viewed by hovering over them or on the <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels">list of labels</a>. Let’s go over some of the most important ones.</p>
+</section>
+<section id="priority">
+<h3>Priority<a class="headerlink" href="#priority" title="Link to this heading"></a></h3>
+<p>There are several issue <strong>priority</strong> levels ranging from <code class="docutils literal notranslate"><span class="pre">P:</span> <span class="pre">minor</span></code> to <code class="docutils literal notranslate"><span class="pre">P:</span> <span class="pre">blocker</span></code> (see <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels?q=P%3A">here</a> for the full list). Every open issue should have exactly one priority. An open issue should not have more than one priority, and it should not lack a priority entirely. See <a class="reference internal" href="../developer/releases/version-scheme.html#bug-priorities"><span class="std std-ref">here</span></a> for details about how the developers use these priorities.</p>
+</section>
+<section id="component">
+<h3>Component<a class="headerlink" href="#component" title="Link to this heading"></a></h3>
+<p>There are many <strong>component</strong> labels, each beginning with <code class="docutils literal notranslate"><span class="pre">C:</span></code> (see <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels?q=C%3A">here</a> for the full list). Every open issue should have at least one component. An open issue may have more than one component, but it should not lack a component entirely. When no other component applies, use <code class="docutils literal notranslate"><span class="pre">C:</span> <span class="pre">other</span></code>.</p>
+</section>
+<section id="affected-release">
+<h3>Affected release<a class="headerlink" href="#affected-release" title="Link to this heading"></a></h3>
+<p>A label of the form <code class="docutils literal notranslate"><span class="pre">affects-&lt;RELEASE_NUMBER&gt;</span></code> indicates that an issue affects the corresponding Qubes OS release. An issue can have more than one of these labels if it affects multiple releases.</p>
+</section>
+<section id="types">
+<h3>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h3>
+<p>There are three issue <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/configuring-issues/managing-issue-types-in-an-organization">types</a>: Bug, Feature, and Task.</p>
+<ul class="simple">
+<li><p><strong>Bug</strong> — An unexpected problem or behavior</p></li>
+<li><p><strong>Feature</strong> — A request, idea, or new functionality</p></li>
+<li><p><strong>Task</strong> — A specific piece of work</p></li>
+</ul>
+<p>Every open issue should have exactly one type. <strong>Bug</strong> reports are for problems in things that already exist. If something doesn’t exist yet, but you think it ought to exist, then that issue should instead be a <strong>Feature</strong> request. If something already exists, but you think it could be improved in some way, that also qualifies as a <strong>Feature</strong> request. The <strong>Task</strong> type is for issues that are actionable but that fall under neither the <strong>Bug</strong> nor <strong>Feature</strong> types.</p>
+</section>
+<section id="projects">
+<h3>Projects<a class="headerlink" href="#projects" title="Link to this heading"></a></h3>
+<p>According to GitHub, a <a class="reference external" href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects">project</a> is “an adaptable spreadsheet, task-board, and road map that integrates with your issues and pull requests on GitHub to help you plan and track your work effectively.” The issue tracker has several <a class="reference external" href="https://github.com/QubesOS/qubes-issues/projects">projects</a>. Github projects allows more detailed issue states, and also attaching more metadata to issues. They also allow more focused view.</p>
+<p>There is a special project in Qubes OS project: the <a class="reference external" href="https://github.com/orgs/QubesOS/projects/19/views/1">Current team tasks project</a> which represents current work of the core team. Issues in this project’s <strong>backlog</strong> section are not yet ready for work - they might be waiting for clarifications, blockers, decisions on priorities etc. Issues that are <strong>ready</strong> can be picked up by any team member. There should not be too many issues in <strong>ready</strong> column to decrease confusion and decision paralysis - good number is around 20. The <strong>in review</strong> state means that the developer is finished with the work (the completion state has been reached) - if something has to be postponed or abandoned, a justification should be posted in issue discussion.</p>
+</section>
+<section id="meta-issues">
+<h3>Meta-issues<a class="headerlink" href="#meta-issues" title="Link to this heading"></a></h3>
+<p>A meta-issue is an issue that serves primarily to collect and organize a group of other issues. This group of other issues typically exists in a hierarchy of <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues">sub-issues</a>, usually with the meta-issue at the top. (For example, we use meta-issues when we need a way to track work on specific features. We cannot use <a class="reference internal" href="#projects"><span class="std std-ref">Projects</span></a> for this, because we already use a project for tracking the work of the Qubes team as a whole, and projects cannot contain milestones or other projects.)</p>
+<p>Meta-issues should have informative descriptions, not just lists of issues. In particular, each meta-issue should explain its goal, what is in scope, and what the relevant categories and priorities are.</p>
+<p>In addition, meta-issues should have clear, concrete, and actionable criteria for when they will be closed. Meta-issues should never be “open-ended” or expected to stay open indefinitely. If this ever becomes unclear, the meta-issue should be closed until it becomes clear.</p>
+</section>
+</section>
+<section id="search-tips">
+<h2>Search tips<a class="headerlink" href="#search-tips" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?utf8=%E2%9C%93&amp;q=is%3Aissue">Search both open and closed issues.</a> For example, you may be experiencing a bug that was just fixed, in which case the report for that bug is probably closed. In this case, it would be useful to view <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?q=sort%3Aupdated-desc%20type%3ABug">all bug reports, both open and closed, with the most recently updated sorted to the top</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels">Search with labels.</a> For example, you can search issues by priority (<a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels/P%3A%20blocker">blocker</a>, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels/P%3A%20critical">critical</a>, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels/P%3A%20major">major</a>, etc.) and by component (<a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22C%3A%20core%22">core</a>, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?utf8=%E2%9C%93&amp;q=is%3Aopen%20is%3Aissue%20label%3A%22C%3A%20manager%2Fwidget%22+">manager/widget</a>, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22C%3A%20Xen%22">Xen</a>, etc.).</p></li>
+<li><p>Search by closure reason: <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?q=reason%3Acompleted">reason:completed</a> and <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?q=reason%3A%22not%20planned%22">reason:&quot;not planned&quot;</a>.</p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/projects">Search by project</a>.</p></li>
+</ul>
+</section>
+<section id="guidelines">
+<h2>Guidelines<a class="headerlink" href="#guidelines" title="Link to this heading"></a></h2>
+<section id="the-issue-tracker-is-not-a-discussion-forum">
+<h3>The issue tracker is not a discussion forum<a class="headerlink" href="#the-issue-tracker-is-not-a-discussion-forum" title="Link to this heading"></a></h3>
+<p>The issue tracker is a tool to help the developers be more productive and efficient in their work. It is not a place for discussion. If you wish to discuss something in the issue tracker, please do so on the forum or mailing lists (see <a class="reference internal" href="support.html"><span class="doc">Help, Support, Mailing Lists, and Forum</span></a>). You can simply link to the relevant issue in your discussion post.</p>
+<p>This guideline is important for keeping issues focused on <em>actionable information</em>, which helps the developers to stay focused on their work. When developers come back to an issue to work on it, we do not want them to have to sift through a large number of unnecessary comments before they can get started. In many cases, an issue that gets “too big” essentially becomes more trouble than it’s worth, and no developer will touch it (also see <a class="reference internal" href="#every-issue-must-be-about-a-single-actionable-thing"><span class="std std-ref">Every issue must be about a single, actionable thing</span></a>). In these cases, we sometimes have to close the issue and open a new one. This is a waste of energy for everyone involved, so we ask that everyone help to avoid repeating this pattern.</p>
+</section>
+<section id="do-not-submit-questions">
+<h3>Do not submit questions<a class="headerlink" href="#do-not-submit-questions" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a> is not the place to ask questions. This includes, but is not limited to, troubleshooting questions and questions about how to do things with Qubes. Instead, see <a class="reference internal" href="support.html"><span class="doc">Help, Support, Mailing Lists, and Forum</span></a> for appropriate places to ask questions. By contrast, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a> is meant for tracking more general bugs, enhancements, and tasks that affect a broad range of Qubes users.</p>
+</section>
+<section id="use-the-issue-template">
+<h3>Use the issue template<a class="headerlink" href="#use-the-issue-template" title="Link to this heading"></a></h3>
+<p>When you open a new issue, an issue template is provided for you. Please use it. Do not delete it. The issue template is carefully designed to elicit important information. Without this information, the issue is likely to be incomplete. (If certain sections are not applicable, you may remove them, but please do so only sparingly and only if they are <em>truly</em> not applicable.)</p>
+<p>It is also important to note the placement and content of the HTML comments in the issue template. These help us to have issues with a consistent format.</p>
+</section>
+<section id="every-issue-must-be-about-a-single-actionable-thing">
+<h3>Every issue must be about a single, actionable thing<a class="headerlink" href="#every-issue-must-be-about-a-single-actionable-thing" title="Link to this heading"></a></h3>
+<p>If your issue is not actionable, please see <a class="reference internal" href="support.html"><span class="doc">Help, Support, Mailing Lists, and Forum</span></a> for the appropriate place to post it. If your issue would be about more than one thing, file them as separate issues instead. This means we should generally not try to use a single issue as a “meta” or “epic” issue that exists only to group, contain, or track other issues. Instead, when there is a need to group multiple related issues together, use <a class="reference external" href="https://github.com/QubesOS/qubes-issues/projects">projects</a>.</p>
+<p>This guideline is extremely important for making the issue tracker a useful tool for the developers. When an issue is too big and composite, it becomes intractable and drastically increases the likelihood that nothing will get done. Such issues also tend to encourage an excessive amount of general discussion that is simply not appropriate for a technical issue tracker (see <a class="reference internal" href="#the-issue-tracker-is-not-a-discussion-forum"><span class="std std-ref">The issue tracker is not a discussion forum</span></a>).</p>
+</section>
+<section id="every-issue-must-be-of-a-single-type">
+<h3>Every issue must be of a single type<a class="headerlink" href="#every-issue-must-be-of-a-single-type" title="Link to this heading"></a></h3>
+<p>Every issue must be exactly one of the following types: a bug report (<code class="docutils literal notranslate"><span class="pre">bug</span></code>), a feature or improvement request (<code class="docutils literal notranslate"><span class="pre">enhancement</span></code>), or a task (<code class="docutils literal notranslate"><span class="pre">task</span></code>). Do not file multi-typed issues. Instead, file multiple issues of distinct types. The Qubes team will classify your issue according to its type.</p>
+</section>
+<section id="new-issues-should-not-be-duplicates-of-existing-issues">
+<h3>New issues should not be duplicates of existing issues<a class="headerlink" href="#new-issues-should-not-be-duplicates-of-existing-issues" title="Link to this heading"></a></h3>
+<p>Before you submit an issue, check to see whether it has already been reported. Search through the existing issues – both open and closed – by typing your key words in the <strong>Filters</strong> box. If you find an issue that seems to be similar to yours, read through it.</p>
+<p>For bug reports, if you find an issue that is the same as or subsumes yours, leave a comment on the existing bug report issue rather than opening a new one, even if the existing bug report is closed (unless the existing issue was fixed a long time ago, in which case it's likely a different bug with similar symptoms). If a bug report affects more than one supported Qubes release, we usually keep only one bug report for all currently-supported releases. If a bug report was closed due to all affected releases reaching end of life at the time, and you're experiencing the same bug on a currently-supported release, please leave a comment saying so. We will reopen the issue and update it to reflect the fact that it has been reported to affect the currently-supported release.</p>
+<p>For feature requests, if the initial implementation was incomplete or unsuccessful, then please leave a comment on the existing feature request issue, and we will reopen it. However, if the initial implementation of the feature was successful, and you are reporting a problem with the feature that arose later, then please open a separate bug report (if one doesn't already exist for that bug) instead of commenting on the old feature request, as we generally prefer not to reopen old feature requests the initial implementation of which was successfully completed.</p>
+<p>Whenever you leave a comment on an issue, the Qubes team will see your comment and take appropriate action on that issue. For example, you can leave a comment with additional information to help the maintainer debug a problem. Adding a comment will subscribe you to email notifications, which can be helpful in getting important updates regarding the issue. If you don’t have anything to add but still want to receive email updates, you can click the “Subscribe” button on the issue.</p>
+</section>
+<section id="new-issues-should-include-all-relevant-information">
+<h3>New issues should include all relevant information<a class="headerlink" href="#new-issues-should-include-all-relevant-information" title="Link to this heading"></a></h3>
+<p>When you file a new issue, you should be sure to include the version of Qubes you’re using, as well as versions of related software packages (<a class="reference internal" href="../user/how-to-guides/how-to-copy-from-dom0.html"><span class="doc">how to copy information out of dom0</span></a>). If your issue is related to hardware, provide as many details as possible about the hardware. A great way to do this is by <a class="reference internal" href="../user/hardware/how-to-use-the-hcl.html#generating-and-submitting-new-reports"><span class="std std-ref">generating and submitting a Hardware Compatibility List (HCL) report</span></a>, then linking to it in your issue. You may also need to use command-line tools such as <code class="docutils literal notranslate"><span class="pre">lspci</span></code>. If you’re reporting a bug in a package that is in a <a class="reference internal" href="../user/downloading-installing-upgrading/testing.html"><span class="doc">testing</span></a> repository, please reference the appropriate issue in the <a class="reference external" href="https://github.com/QubesOS/updates-status/issues">updates-status</a> repository. Project maintainers really appreciate thorough explanations. It usually helps them address the problem more quickly, so everyone wins!</p>
+</section>
+<section id="there-are-no-guarantees-that-your-issue-will-be-addressed">
+<h3>There are no guarantees that your issue will be addressed<a class="headerlink" href="#there-are-no-guarantees-that-your-issue-will-be-addressed" title="Link to this heading"></a></h3>
+<p>Keep in mind that <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a> is an issue tracker, not a support system. Creating a new issue is simply a way for you to submit an item for the Qubes team’s consideration. It is up to the Qubes team to decide whether or how to address your issue, which may include closing the issue without taking any action on it. Even if your issue is kept open, however, you should not expect it to be addressed within any particular time frame, or at all. At the time of this writing, there are well over one thousand open issues in <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a>. The Qubes team has its own roadmap and priorities, which will govern the manner and order in which open issues are addressed.</p>
+</section>
+<section id="issues-and-comments-must-be-written-in-english">
+<h3>Issues and comments must be written in English<a class="headerlink" href="#issues-and-comments-must-be-written-in-english" title="Link to this heading"></a></h3>
+<p>If English is not your native language, you may post a machine translation. If you wish, you may also include the original non-English text in a <a class="reference internal" href="#use-collapsible-sections-for-long-nonessential-content"><span class="std std-ref">collapsible section</span></a>.</p>
+</section>
+<section id="developers-may-ask-you-for-logs-or-other-data">
+<h3>Developers may ask you for logs or other data<a class="headerlink" href="#developers-may-ask-you-for-logs-or-other-data" title="Link to this heading"></a></h3>
+<p>In some cases, Qubes developers who are working on an issue may request logs or other data from you. Qubes OS <em>never</em> sends such data automatically, and you are <em>never</em> required to provide it. However, without access to the logs, it may not be possible for the developers to diagnose and fix the bug you're experiencing. <em>If you wish to do so</em>, you <em>may</em> provide such data, for example, by posting it in a comment on the relevant issue. This is fine when the data is not sensitive. However, since issues are publicly visible, you should not post any sensitive data there. If the data that a Qubes developer wants from you is sensitive in any way, and if you're comfortable sharing it with the Qubes team, then we strongly recommend using encryption. The most common method is to send it in a PGP-encrypted email, then add a comment on the issue stating that you've sent the email. You can find the Qubes developers' email PGP keys on the <a class="reference external" href="https://www.qubes-os.org/team/">Team</a> page and in the <a class="reference internal" href="../project-security/security-pack.html"><span class="doc">Qubes security pack (qubes-secpack)</span></a>. Share the information inline or as a file attachment. Please do not just send a link to a pastebin or file-hosting service, as there's a risk that it will expire before the issue is resolved.</p>
+<p>In some cases, one Qubes developer may start working on an issue, then another one may take over some time later. If you send logs or other data to the first developer, the second developer will also need access to that data. Therefore, by sharing data with a member of the Qubes team, you thereby grant them permission to share that data with the rest of the Qubes team. Please do not share any data with a member of the Qubes team unless you are comfortable with the entire team having access to that data. (This is also why it's important for you to leave a comment on the issue stating that you emailed data to a specific developer, as it allows other developers to know that data was sent and to whom.)</p>
+<p>Please <strong>do not</strong> send unsolicited communications to developers or attempt to contact them directly for help.</p>
+</section>
+<section id="use-collapsible-sections-for-long-nonessential-content">
+<h3>Use collapsible sections for long, nonessential content<a class="headerlink" href="#use-collapsible-sections-for-long-nonessential-content" title="Link to this heading"></a></h3>
+<p>On GitHub, create collapsible sections in Markdown like so:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">details</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">summary</span><span class="p">&gt;</span>Summary goes here. This line is optional.<span class="p">&lt;/</span><span class="nt">summary</span><span class="p">&gt;</span>
+
+Long, nonessential content goes here. You can put a code block here, but make sure to leave empty lines before and after the fence lines (```).
+
+<span class="p">&lt;/</span><span class="nt">details</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Tip:</strong> Use the “Preview” tab to make sure it renders correctly before posting.</p>
+</section>
+</section>
+<section id="how-issues-get-closed">
+<h2>How issues get closed<a class="headerlink" href="#how-issues-get-closed" title="Link to this heading"></a></h2>
+<p>If the Qubes developers make a code change that resolves an issue, then the issue will typically be <a class="reference external" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-issues/linking-a-pull-request-to-an-issue">closed from the relevant commit or merged pull request (PR)</a>.</p>
+<section id="bug-reports">
+<h3>Bug reports<a class="headerlink" href="#bug-reports" title="Link to this heading"></a></h3>
+<p>In the case of bugs, the package containing the change will move to the appropriate <a class="reference internal" href="../user/downloading-installing-upgrading/testing.html"><span class="doc">testing</span></a> repository, then to the appropriate stable repository. If you so choose, you can test the fix while it’s in the <a class="reference internal" href="../user/downloading-installing-upgrading/testing.html"><span class="doc">testing</span></a> repository, or you can wait for it to land in the stable repository. If, after testing the fix, you find that it does not really fix the reported bug, please leave a comment on the issue explaining the situation. When you do, we will receive a notification and respond on the issue or reopen it (or both). Please <strong>do not</strong> create a duplicate issue or attempt to contact the developers individually about a problem.</p>
+</section>
+<section id="resolution">
+<h3>Resolution<a class="headerlink" href="#resolution" title="Link to this heading"></a></h3>
+<p>In GitHub, an issue can be <a class="reference external" href="https://github.blog/changelog/2022-03-10-the-new-github-issues-march-10th-update/#%F0%9F%95%B5%F0%9F%8F%BD%E2%99%80%EF%B8%8F-issue-closed-reasons">closed as either &quot;completed&quot; or &quot;not planned&quot;</a>.</p>
+<p>Being closed as <code class="docutils literal notranslate"><span class="pre">completed</span></code> means that the issue has been fixed (in the case of bugs) or done (in the case of enhancements and tasks). More precisely, it means that a commit containing the relevant work has been pushed. It takes time for this work to make its way into a package, which must then go through the <a class="reference internal" href="../user/downloading-installing-upgrading/testing.html"><span class="doc">testing</span></a> process before finally landing in the relevant stable repository. Automated comments on the issue will announce when key events in this process occur.</p>
+<p>Being closed as <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">planned</span></code> means that the issue will <em>not</em> be fixed (in the case of bugs) or done (in the case of enhancements and tasks). When an issue is closed as <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">planned</span></code>, we add a <strong>resolution</strong> label starting with <code class="docutils literal notranslate"><span class="pre">R:</span></code> that specifies the reason for the closure, such as <code class="docutils literal notranslate"><span class="pre">R:</span> <span class="pre">duplicate</span></code> or <code class="docutils literal notranslate"><span class="pre">R:</span> <span class="pre">cannot</span> <span class="pre">reproduce</span></code>. Each of these labels has a description that briefly explains the label. We also leave a comment containing a longer explanation for why the issue is being closed along with general information.</p>
+<p>While issues that are closed as <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">planned</span></code> get a more specific resolution label, issues that are closed as <code class="docutils literal notranslate"><span class="pre">completed</span></code> do not always get one, since the linked PRs, commits, automated messages, and the <code class="docutils literal notranslate"><span class="pre">completed</span></code> reason itself are often sufficient to convey all relevant information. For information about using closure reasons in searches, see <a class="reference internal" href="#search-tips"><span class="std std-ref">Search tips</span></a>.</p>
+</section>
+<section id="backports">
+<h3>Backports<a class="headerlink" href="#backports" title="Link to this heading"></a></h3>
+<p>Issues in GitHub can only be open or closed, but when it comes to bugs that affect multiple versions of Qubes OS, there are several possible states:</p>
+<ol class="arabic simple">
+<li><p>Not fixed yet</p></li>
+<li><p>Fix developed but not yet committed (PR open)</p></li>
+<li><p>Fix committed (PR merged), but update not yet pushed to any repo</p></li>
+<li><p>Update pushed to testing repo for the most recent development version</p></li>
+<li><p>Update pushed to stable repo for the most recent development version</p></li>
+<li><p>Update backported to stable version(s) and pushed to the testing repo</p></li>
+<li><p>Update pushed to stable repo of stable version(s)</p></li>
+</ol>
+<p>We close issues at step 3. Then, as updates are released, the issue automatically gets the appropriate <code class="docutils literal notranslate"><span class="pre">current-testing</span></code> (<code class="docutils literal notranslate"><span class="pre">rX.Y-*-cur-test</span></code>) and <code class="docutils literal notranslate"><span class="pre">stable</span></code> (<code class="docutils literal notranslate"><span class="pre">rX.Y-*-stable</span></code>) labels. Based on these labels, it’s possible to select issues waiting for step 6 (see <a class="reference external" href="https://github.com/QubesOS/qubes-issues#issues-by-release">issues by release</a>).</p>
+<p>Therefore, if you see that an issue is closed, but the fix is not yet available to you, be aware that it may be at an intermediate stage of this process between issue closure and the update being available in whichever repos you have enabled in whichever version of Qubes you’re using.</p>
+<p>In order to assist with this, we have a label called <a class="reference external" href="https://github.com/QubesOS/qubes-issues/labels/backport%20pending">backport pending</a>, which means, “The fix has been released for the testing release but is pending backport to the stable release.” Our infrastructure will attempt to apply this label automatically, when appropriate, but it is not perfect, and the developers may need to adjust it manually.</p>
+</section>
+<section id="understanding-open-and-closed-issues">
+<h3>Understanding open and closed issues<a class="headerlink" href="#understanding-open-and-closed-issues" title="Link to this heading"></a></h3>
+<p>Every issue is always in one of two states: open or closed, with open being the default. The <strong>open</strong> and <strong>closed</strong> states mean that, according to our available information at present, the issue in question either <strong>is</strong> or <strong>is not</strong> (respectively) actionable for the Qubes team. The open and closed states do not mean anything more than this, and it’s important not to read anything else into them. It’s also important to understand that closing an issue is, in effect, nothing more than changing a virtual tag on an issue. Closing an issue is never “final” in any sense, and it does not affect the issue itself in any other way. Issues can be opened and closed instantly with a single button press an unlimited number of times at no cost. In fact, since the open and closed states reflect our available information at present, one should expect these states to change back and forth as new information becomes available. Closed issues are fully searchable, just like open issues, and we explicitly instruct all users of the issue tracker to search <em>both</em> open <em>and</em> closed issues, which GitHub makes easy.</p>
+</section>
+</section>
+<section id="workflow-and-what-do-issue-states-mean">
+<h2>Workflow and what do issue states mean<a class="headerlink" href="#workflow-and-what-do-issue-states-mean" title="Link to this heading"></a></h2>
+<p>There are some rules we use when assigning issues and tagging them.</p>
+<section id="assigning-issues">
+<h3>Assigning issues<a class="headerlink" href="#assigning-issues" title="Link to this heading"></a></h3>
+<p>To avoid a situation where an issue is “dead” - assigned to someone who is not actively working on it - and to help the team organize their work, an issue should be assigned to a person who currently works on it, or will start working on it in a very near future (about a week or two). One person can have several issues assigned at the same time (for example they may be working on one another issue while waiting for review), but if an issue is no longer actively being worked on (for example when it’s blocked by something else), it should be unassigned. At that point, if there is some partial work already done, there should be a comment about that, including link to the code (some WIP commit in some branch?) if applicable.</p>
+<p>Issues should not be assigned as a todo-list several months in the future, or assigned to someone without their explicit confirmation that they are currently working on that issue or will start doing it shortly.</p>
+</section>
+<section id="working-on-an-issue">
+<h3>Working on an issue<a class="headerlink" href="#working-on-an-issue" title="Link to this heading"></a></h3>
+<p>Every issue should involve a clear statement of success: when is the issue finished? It might not be clear to the person making the issue, especially if it’s an enhancement request, but before work starts, the person working on the issue should make sure that it includes clear completion criteria in the description (via editing the description, if necessary). The completion criteria would ideally be a checklist, and consist of a list of pull requests/features, each preferably no more than two weeks of work. It’s also important to remember tests and documentation should also be part of the issue, if applicable.</p>
+<p>An issue should also have a rough estimate how much time it needs, if it’s more than one-two days. Of course this might be updated later, if an issue turns out to be more (or maybe less) complicated than it has initially seemed.</p>
+<p>When an issue is done (that is, the completion checklist has been completed), the issue should be moved to <strong>ready</strong> column in the <em>Current team tasks</em> project.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="faq.html" class="btn btn-neutral float-left" title="Frequently asked questions (FAQ)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="support.html" class="btn btn-neutral float-right" title="Help, support, mailing lists, and forum" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="##search-tips">the issue tracker</a>, <a href="support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/introduction/issue-tracking.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

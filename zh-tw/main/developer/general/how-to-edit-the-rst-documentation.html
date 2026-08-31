@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="如何編輯文件" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/general/how-to-edit-the-rst-documentation.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Qubes OS 文件以 reStructuredText (rST) 格式存放在 qubes-doc 儲存庫中。 We use Sphinx for building and Read The Docs (RTD) for hosting. RTD is a continuous‑documentation deployment platform that can automaticall..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Qubes OS 文件以 reStructuredText (rST) 格式存放在 qubes-doc 儲存庫中。 We use Sphinx for building and Read The Docs (RTD) for hosting. RTD is a continuous‑documentation deployment platform that can automaticall..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>如何編輯文件 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/general/how-to-edit-the-rst-documentation.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="reStructuredText 文件風格指南" href="rst-documentation-style-guide.html" />
+    <link rel="prev" title="Google Season of Docs (GSoD)" href="gsod.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">如何編輯文件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-submit-a-pull-request">如何提交拉取請求</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-your-pull-request-on-rtd">Viewing your pull request on RTD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-tricks">Tips &amp; Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tl-dr-how-to-edit-the-documentation-index">TL;DR: How to edit the documentation index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tl-dr-how-to-add-images">TL;DR: How to add images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tl-dr-cross-referencing">TL;DR: Cross-referencing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-os-rst-configuration">Qubes OS rST configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extensions">Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-rst-documentation-locally">Building the rST documentation locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-venv">Using venv</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-python-environment-with-venv">Creating a Python environment with venv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linting-the-documentation-from-venv">Linting the documentation from venv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-the-documentation-from-venv">Building the documentation from venv</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-poetry">Using poetry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-python-environment-with-poetry">Creating a Python environment with poetry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linting-the-documentation-with-peotry">Linting the documentation with peotry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-the-documentation-with-poetry">Building the documentation with poetry</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#editor">Editor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#security">安全性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#questions-problems-and-improvements">Questions, problems, and improvements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">如何編輯文件</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/general/how-to-edit-the-rst-documentation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-edit-the-documentation">
+<h1>如何編輯文件<a class="headerlink" href="#how-to-edit-the-documentation" title="連結到這個標頭"></a></h1>
+<p>Qubes OS 文件以 <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText (rST)</a> 格式存放在 <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> 儲存庫中。</p>
+<p>We use <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a> for building and
+<a class="reference external" href="https://about.readthedocs.com/">Read The Docs (RTD)</a> for hosting.
+RTD is a <a class="reference external" href="https://docs.readthedocs.com/platform/stable/continuous-deployment.html">continuous‑documentation deployment platform</a> that can automatically
+detect changes in a GitHub repository and build the latest version of a documentation.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/rst-rtd-workflow.png"><img alt="Qubes OS Documentation Workflow - once new documentation is written or changed, it is built and verified with Sphinx, pushed on GitHub/GitLab and hosted on RTD" src="../../_images/rst-rtd-workflow.png" style="width: 345.75px; height: 242.25px;" />
+</a>
+</figure>
+<p>By cloning and regularly pulling from <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> repository, users can maintain their
+own up-to-date offline copy of the Qubes documentation rather than
+relying solely on the web and either serve it locally or read the rST files directly.
+EPUB or PDF versions of Qubes OS documentation can also
+be downloaded from <a class="reference external" href="https://doc.qubes-os.org/en/latest/">doc.qubes-os.org</a>:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/rst-rtd-epub-pdf.png"><img alt="Highlights from where one can download a ePUB or PDF of hte Qubes OS documentation deployed on RTD" src="../../_images/rst-rtd-epub-pdf.png" style="width: 382.0px; height: 180.4px;" />
+</a>
+</figure>
+<p>The documentation is a volunteer community effort. People like you are
+constantly working to make it better. If you notice something that can
+be fixed or improved, please follow the steps below to open a pull
+request!</p>
+<section id="how-to-submit-a-pull-request">
+<h2>如何提交拉取請求<a class="headerlink" href="#how-to-submit-a-pull-request" title="連結到這個標頭"></a></h2>
+<p>We keep all the rST documentation in <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a>,
+a dedicated Git repository hosted on <a class="reference external" href="https://github.com/">GitHub</a>. Thanks to
+GitHub’s easy web interface, you can edit the documentation even if
+you’re not familiar with Git or the command line! All you need is a free
+GitHub account.</p>
+<p>A few notes before we get started:</p>
+<ul class="simple">
+<li><p>Since Qubes is a security-oriented project, every documentation change will be <a class="reference internal" href="#security"><span class="std std-ref">reviewed</span></a> before it’s accepted. This allows us to maintain quality control and protect our users.</p></li>
+<li><p>To give your contribution a better chance of being accepted, please follow our <a class="reference internal" href="rst-documentation-style-guide.html"><span class="doc">reStructuredText 文件風格指南</span></a>.</p></li>
+<li><p>We don’t want you to spend time and effort on a contribution that we can’t accept. If your contribution would take a lot of time, please <a class="reference internal" href="../../introduction/issue-tracking.html"><span class="doc">file an issue</span></a> for it first so that we can make sure we’re on the same page before significant works begins.</p></li>
+<li><p>Alternatively, you may already have written content that doesn’t conform to these guidelines, but you’d be willing to modify it so that it does. In this case, you can still submit it by following the instructions below. Just make a note in your pull request (PR) that you’re aware of the changes that need to be made and that you’re just asking for the content to be reviewed before you spend time making those changes.</p></li>
+<li><p>Finally, if you’ve written something that doesn’t belong in qubes-doc but that would be beneficial to the Qubes community, please consider adding it to the <a class="reference internal" href="rst-documentation-style-guide.html#core-vs-external-documentation"><span class="std std-ref">external documentation</span></a>.</p></li>
+</ul>
+<p>(<strong>Advanced users:</strong> If you’re already familiar with GitHub or wish to
+work from the command line, you can skip the rest of this section. All
+you need to do to contribute is to <a class="reference external" href="https://guides.github.com/activities/forking/">fork and clone</a>
+the <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> repo, make your changes,
+then <a class="reference external" href="https://help.github.com/articles/using-pull-requests/">submit a pull request</a>.
+You can continue reading <a class="reference internal" href="#viewing-pr"><span class="std std-ref">Viewing your pull request on RTD</span></a>.)</p>
+<p>Ok, let’s begin. Every documentation page has a <span class="guilabel">Edit on GitHub</span> link.</p>
+<p><img alt="Highlights the Edit Source Button to GitHub sources on doc.qubes-os.org" src="../../_images/doc-pr_01_page-source-button-rtd.png" /></p>
+<p>When you click on it, you’ll be taken to the source file — a reStructuredText (<code class="docutils literal notranslate"><span class="pre">.rst</span></code>) file — on GitHub.</p>
+<p>On this page, there will be a
+button to edit the file (if you are already logged in).</p>
+<p><img alt="Highlights the Sign-In on GitHub" src="../../_images/doc-pr_02_github-edit-rst.png" /></p>
+<p>If you are not logged in you can click on <span class="guilabel">Sign In</span>
+and you’ll be prompted to sign in with your GitHub username and password.
+You can also create a free account from here.</p>
+<p><img alt="GitHub Login" src="../../_images/doc-pr_03_sign-in-rst.png" /></p>
+<p>If this is your first contribution to the documentation, you need to
+fork the repository (make your own copy).</p>
+<p><img alt="Highlights the Fork Button on GitHub for the qubes-doc repository" src="../../_images/doc-pr_04_fork-rst1.png" /></p>
+<p>It’s easy — just click the
+green <span class="guilabel">Create fork</span> button on the next page. This step is only needed the first
+time you make a contribution.</p>
+<p><img alt="Highlights the Create Fork Button on GitHub when forking the qubes-doc repository" src="../../_images/doc-pr_04_fork-rst2.png" /></p>
+<p>Now you can make your modifications.</p>
+<p><img alt="Forked qubes-doc repository on GitHub" src="../../_images/doc-pr_04_fork-rst3.png" /></p>
+<p><img alt="Highlights the edit options for an rst file in the GitHub forked qubes-doc repository" src="../../_images/doc-pr_05_edit-rst.png" /></p>
+<p>If you want to add images, read <a class="reference internal" href="#how-to-add-images"><span class="std std-ref">TL;DR: How to add images</span></a> and refer to <a class="reference internal" href="#build-locally"><span class="std std-ref">Building the rST documentation locally</span></a>
+if you want to locally verify that everything looks correct before submitting any changes.</p>
+<p>Once you’re finished, describe your changes at the bottom and click
+<span class="guilabel">Commit changes</span>.</p>
+<p><img alt="Highlights the commit changes button on GitHub" src="../../_images/doc-pr_06_commit-msg-rst.png" /></p>
+<p>After that, you’ll see exactly what modifications you’ve made. At this
+stage, those changes are still in your own copy (fork) of the documentation.
+If everything looks good, send those changes to us by pressing
+the <span class="guilabel">Create pull request</span> button.</p>
+<p>You will be able to adjust the pull request message and title there. In
+most cases, the defaults are ok, so you can just confirm by pressing the
+<span class="guilabel">Create pull request</span> button again. However, if you’re not ready for
+your PR to be reviewed or merged yet, please
+<a class="reference external" href="https://github.blog/news-insights/product-news/introducing-draft-pull-requests/">make a draft PR instead</a>.</p>
+<p><img alt="Highlights the create pull request button on GitHub when creating a pull request" src="../../_images/doc-pr_09_create-pr-rst.png" /></p>
+<p>If any of your changes should be reflected in the <a class="reference internal" href="../../index.html"><span class="doc">documentation index (a.k.a. table of contents)</span></a> — for example, if you’re adding a
+new page, changing the title of an existing page, or removing a page —
+please see <a class="reference internal" href="#edit-doc-index"><span class="std std-ref">TL;DR: How to edit the documentation index</span></a>.</p>
+<p>That’s all! We will review your changes. If everything looks good, we’ll
+pull them into the official documentation. Otherwise, we may have some
+questions for you, which we’ll post in a comment on your pull request.
+(GitHub will automatically notify you if we do.) If, for some reason, we
+can’t accept your pull request, we’ll post a comment explaining why we
+can’t.</p>
+<section id="viewing-your-pull-request-on-rtd">
+<span id="viewing-pr"></span><h3>Viewing your pull request on RTD<a class="headerlink" href="#viewing-your-pull-request-on-rtd" title="連結到這個標頭"></a></h3>
+<p>Every time you push a commit to your pull request, a build on RTD will be triggered.
+To view your PR you can go to Qubes OS builds on <a class="reference external" href="https://app.readthedocs.org/projects/qubes-doc/builds/">RTD</a>,
+find the last build of your PR and click on it:</p>
+<p><img alt="Highlights the pull request &lt;number&gt; and its build in the build list on RTD" src="../../_images/doc-pr_10_view-pr-rtd.png" /></p>
+<p>There you can view the rendered docs or inspect the logs for errors:</p>
+<p><img alt="Highlights the View Docs button in a specific build for a pull request &lt;number&gt; on RTD" src="../../_images/doc-pr_11_view-pr-rtd.png" /></p>
+<p>You can also just head straight to the following url: <code class="docutils literal notranslate"><span class="pre">https://qubes-doc--&lt;PR-NUMBER&gt;.org.readthedocs.build/en/&lt;PR-NUMBER&gt;/</span></code>.</p>
+</section>
+<section id="tips-tricks">
+<h3>Tips &amp; Tricks<a class="headerlink" href="#tips-tricks" title="連結到這個標頭"></a></h3>
+<ul>
+<li><p>Pull upstream changes into your fork regularly. Diverging too far from main can be cumbersome to update at a later stage.</p></li>
+<li><p>To pull in upstream changes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>https://github.com/QubesOS/qubes-doc.git
+<span class="gp">$ </span>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+</pre></div>
+</div>
+</li>
+<li><p>Check the log and the current changes, before merging:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>upstream/main
+</pre></div>
+</div>
+</li>
+<li><p>Then merge the changes that you fetched:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>merge<span class="w"> </span>upstream/main
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Keep your pull requests limited to a single issue, pull requests should be as atomic as possible.</p>
+</section>
+</section>
+<section id="tl-dr-how-to-edit-the-documentation-index">
+<span id="edit-doc-index"></span><h2>TL;DR: How to edit the documentation index<a class="headerlink" href="#tl-dr-how-to-edit-the-documentation-index" title="連結到這個標頭"></a></h2>
+<p>For a more comprehensive guide to the rST syntax and pitfalls please refer to the <a class="reference internal" href="rst-documentation-style-guide.html"><span class="doc">reStructuredText 文件風格指南</span></a>.</p>
+<p>The source file for the <a class="reference internal" href="../../index.html"><span class="doc">documentation index (a.k.a. table of contents)</span></a> is
+<a class="reference external" href="https://github.com/QubesOS/qubes-doc/blob/main/index.rst">index.rst</a>.</p>
+<p><code class="file docutils literal notranslate"><span class="pre">index.rst</span></code> contains information about the hierarchy between the files in the documentation and/or
+the connection between them. <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree">toctree</a>
+is the rST directive which defines the table of contents.</p>
+<p>If you want to add a newly created documentation file, do so as follows:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="c">.. toctree:</span>
+<span class="c">   /path/to/old_doc_file_name</span>
+<span class="c">   /path/to/new_doc_file_name</span>
+</pre></div>
+</div>
+<p>Editing this file will change what appears on the documentation index.</p>
+<p>Please always be mindful that rST syntax is sensitive to indentation (3 spaces)!</p>
+</section>
+<section id="tl-dr-how-to-add-images">
+<span id="how-to-add-images"></span><h2>TL;DR: How to add images<a class="headerlink" href="#tl-dr-how-to-add-images" title="連結到這個標頭"></a></h2>
+<p>For a more comprehensive guide to the rST syntax and pitfalls please refer to the <a class="reference internal" href="rst-documentation-style-guide.html"><span class="doc">reStructuredText 文件風格指南</span></a>.</p>
+<p>Images reside inside the <a class="reference external" href="https://github.com/QubesOS/qubes-doc/">qubes-doc repository</a> in the directory <a class="reference external" href="https://github.com/QubesOS/qubes-doc/tree/main/attachment/doc">attachment/doc</a>.</p>
+<p>To add an image to a page, use the following syntax:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> /attachment/doc/r4.0-snapshot12.png
+  <span class="nc">:alt:</span> Qubes desktop screenshot depicting &lt;description&gt;
+</pre></div>
+</div>
+<p>If you want to add a caption to the image, you may do so using the optional <code class="docutils literal notranslate"><span class="pre">caption</span></code> of the <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#figure">figure directive</a>.
+Another way without a caption is to use the <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#image">image directive</a>.</p>
+<p>Then, add your image(s) in a the <code class="file docutils literal notranslate"><span class="pre">attachment/doc</span></code> folder in the <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a>
+repository using the same path and filename.
+This is the only permitted way to include images. Do not link to images on other websites.</p>
+</section>
+<section id="tl-dr-cross-referencing">
+<span id="cross-referencing"></span><h2>TL;DR: Cross-referencing<a class="headerlink" href="#tl-dr-cross-referencing" title="連結到這個標頭"></a></h2>
+<p>You can link to any part of the documentation using cross-references.</p>
+<p><strong>When referencing to a page</strong> use the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-doc">:doc: role</a> as in:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>See <span class="na">:doc:</span><span class="nv">`/introduction/contributing`</span> to do [...]
+</pre></div>
+</div>
+<p>Use the path to the file starting from the root of qubes-doc repository, <strong>with a leading slash</strong> (<code class="docutils literal notranslate"><span class="pre">/</span></code>) and without the <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file ending.</p>
+<p><strong>When referencing to a section in a page</strong> use the <code class="docutils literal notranslate"><span class="pre">:ref:</span></code> <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-ref">role</a> as in:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>See <span class="na">:ref:</span><span class="nv">`introduction/contributing:Contributing Code`</span> for [...]
+</pre></div>
+</div>
+<p>The first part (before the colon) is the path of the file as with the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-doc">:doc: role</a> but <strong>without the leading slash</strong> (<code class="docutils literal notranslate"><span class="pre">/</span></code>). The second part is the content of the header.</p>
+<p><strong>When referencing some kind of code</strong> use the corresponding role, eventually prefixed by the sub-project, as in:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>See <span class="na">:py:class:</span><span class="nv">`core-admin:qubes.vm.dispvm.DispVM`</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>For a more comprehensive guide to the rST syntax and pitfalls please refer to the <a class="reference internal" href="rst-documentation-style-guide.html"><span class="doc">reStructuredText 文件風格指南</span></a>.</p>
+</div>
+</section>
+<section id="qubes-os-rst-configuration">
+<h2>Qubes OS rST configuration<a class="headerlink" href="#qubes-os-rst-configuration" title="連結到這個標頭"></a></h2>
+<p><code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> directory contains a build configuration file named <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>, used by Sphinx
+to define <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/configuration.html">input and output behaviour</a>.
+It contains settings and extensions that define how the documentation will be generated.
+You can find it <a class="reference external" href="https://github.com/QubesOS/qubes-doc/blob/main/conf.py">here</a>.</p>
+<p>You can also find a <code class="file docutils literal notranslate"><span class="pre">readthedocs.yml</span></code> <a class="reference external" href="https://github.com/QubesOS/qubes-doc/blob/main/.readthedocs.yaml">file</a>
+which tells RTD how to build the documentation. It defines the build environment, Python version, required dependencies,
+and which Sphinx configuration to run. Thus RTD automatically generates and hosts the docs.</p>
+<section id="extensions">
+<h3>Extensions<a class="headerlink" href="#extensions" title="連結到這個標頭"></a></h3>
+<p>We use several Sphinx <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/index.html">extensions</a>
+as defined in <code class="file docutils literal notranslate"><span class="pre">conf.py</span></code>, as well a simple custom one to embed YouTube videos,
+which can be found <a class="reference external" href="https://github.com/QubesOS/qubes-doc/tree/main/_ext">here</a>.</p>
+</section>
+</section>
+<section id="building-the-rst-documentation-locally">
+<span id="build-locally"></span><h2>Building the rST documentation locally<a class="headerlink" href="#building-the-rst-documentation-locally" title="連結到這個標頭"></a></h2>
+<p>In order to build the Qubes OS rST documentation locally clone the <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> repository
+(or your forked one if you want to submit a pull request).</p>
+<p>It is recommended to use a virtual environment, f.ex.
+<a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a>,
+<a class="reference external" href="https://python-poetry.org/">poetry</a> or <a class="reference external" href="https://docs.astral.sh/uv/">uv</a>.
+In the following section there is a sample setup to prepare local environments
+for building Qubes OS rST documentation.</p>
+<section id="using-venv">
+<h3>Using venv<a class="headerlink" href="#using-venv" title="連結到這個標頭"></a></h3>
+<section id="creating-a-python-environment-with-venv">
+<h4>Creating a Python environment with venv<a class="headerlink" href="#creating-a-python-environment-with-venv" title="連結到這個標頭"></a></h4>
+<ol class="arabic">
+<li><p><strong>Install needed packages and clone the repository</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3-dev<span class="w"> </span>python3.11-venv
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/QubesOS/qubes-doc.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>qubes-doc
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a virtual environment</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Create and enter the virtual environment.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="gp">$ </span>.<span class="w"> </span>.venv/bin/activate
+<span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VIRTUAL_ENV</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>You will have to activate the environment every time a new shell is opened.</p>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Install Sphinx and Required Extensions</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Install Sphinx and the necessary extensions (<strong class="program">sphinx-autobuild</strong>, <strong class="program">sphinx-lint</strong>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span>sphinx-lint<span class="w"> </span>sphinx-autobuild
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="linting-the-documentation-from-venv">
+<h4>Linting the documentation from venv<a class="headerlink" href="#linting-the-documentation-from-venv" title="連結到這個標頭"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Run Linting</strong></p></li>
+</ol>
+<blockquote>
+<div><p>The <cite>sphinx-lint</cite> extension checks for common issues like missing references, invalid directives,
+or formatting errors. Run the linting step using the <strong class="program">sphinx-lint</strong> command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>sphinx-lint<span class="w"> </span>-i<span class="w"> </span>.venv<span class="w"> </span>.
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Run Link Checker</strong></p></li>
+</ol>
+<blockquote>
+<div><p>The <cite>sphinx-linkcheck</cite> extension verifies the validity of all external and internal links.</p>
+<p>The results will be written to the <code class="file docutils literal notranslate"><span class="pre">_build/linkcheck</span></code> directory with a detailed report in <code class="file docutils literal notranslate"><span class="pre">output.txt</span></code> or <code class="file docutils literal notranslate"><span class="pre">output.json</span></code> files
+of all checked links and their status (e.g., OK, broken, timeout).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>linkcheck<span class="w"> </span>.<span class="w"> </span>_build/linkcheck
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="building-the-documentation-from-venv">
+<h4>Building the documentation from venv<a class="headerlink" href="#building-the-documentation-from-venv" title="連結到這個標頭"></a></h4>
+<ul>
+<li><p><strong>Build Documentation</strong></p>
+<p>Use <cite>sphinx-build</cite> with the <cite>-v</cite> (verbose) flag to generate detailed output during the build process.
+The build command specifies the source directory (current directory <code class="file docutils literal notranslate"><span class="pre">.</span></code>, <code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> in this case), the output directory (<code class="file docutils literal notranslate"><span class="pre">_build/html</span></code>), and the builder (<cite>html</cite>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>sphinx-build<span class="w"> </span>-v<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+<p>The build command specifies the source directory (<code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code>), the output directory (<code class="file docutils literal notranslate"><span class="pre">_build/html</span></code>), and the builder (<cite>html</cite>).
+The build command will process all source files in the <code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> directory, generate HTML output in the <code class="file docutils literal notranslate"><span class="pre">_build/html</span></code> directory, and print detailed build information to the console.
+Pay attention to errors and warning in the output!
+Please do not introduce any new warnings and fix all errors.</p>
+</li>
+<li><p><strong>Use sphinx-autobuild for development</strong></p>
+<p>For an active development workflow, you can use <cite>sphinx-autobuild</cite> to automatically rebuild the documentation
+and refresh browser whenever a file is saved. <cite>sphinx-autobuild</cite> starts a web server at <cite>http://127.0.0.1:8000</cite>,
+automatically rebuilds the documentation and reloads the browser tab when changes are detected in the <code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> directory.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>sphinx-autobuild<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="using-poetry">
+<h3>Using poetry<a class="headerlink" href="#using-poetry" title="連結到這個標頭"></a></h3>
+<p>You can also use <a class="reference external" href="https://docs.astral.sh/uv/getting-started/">uv</a> if you wish.</p>
+<section id="creating-a-python-environment-with-poetry">
+<h4>Creating a Python environment with poetry<a class="headerlink" href="#creating-a-python-environment-with-poetry" title="連結到這個標頭"></a></h4>
+<ol class="arabic">
+<li><p><a class="reference external" href="https://python-poetry.org/docs/#installation">Install poetry</a> and git and clone the repository.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+<span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/QubesOS/qubes-doc.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>qubes-doc
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install Sphinx and Required Extensions</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Install Poetry, Sphinx and the necessary extensions (<cite>sphinx-autobuild</cite>, <cite>sphinx-lint</cite>).
+A <code class="file docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file is <a class="reference external" href="https://github.com/QubesOS/qubes-doc/blob/main/pyproject.toml">provided</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://install.python-poetry.org<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-
+<span class="gp">$ </span>poetry<span class="w"> </span>config<span class="w"> </span>virtualenvs.in-project<span class="w"> </span><span class="nb">true</span><span class="w">  </span><span class="c1"># optional</span>
+<span class="gp">$ </span>poetry<span class="w"> </span>install
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>If you would like to avoid prefixing commands with <strong class="program">poetry run</strong>, you can source the virtual environment with <code class="docutils literal notranslate"><span class="pre">eval</span> <span class="pre">$(poetry</span> <span class="pre">env</span> <span class="pre">activate)</span></code> on every new shell session. Note that when enabling <code class="docutils literal notranslate"><span class="pre">virtualenvs.in-project</span></code>, you will find the virtual environment in the project root directory undre <code class="docutils literal notranslate"><span class="pre">.venv</span></code>, same place the <code class="docutils literal notranslate"><span class="pre">venv</span></code> instructions uses.</p>
+</div>
+</div></blockquote>
+</section>
+<section id="linting-the-documentation-with-peotry">
+<h4>Linting the documentation with peotry<a class="headerlink" href="#linting-the-documentation-with-peotry" title="連結到這個標頭"></a></h4>
+<ol class="arabic simple">
+<li><p><strong>Run Linting</strong></p></li>
+</ol>
+<blockquote>
+<div><p>The <cite>sphinx-lint</cite> extension checks for common issues like missing references, invalid directives,
+or formatting errors. Run the linting step using the <strong class="program">sphinx-lint</strong> command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>sphinx-lint<span class="w"> </span>-i<span class="w"> </span>.venv<span class="w"> </span>.
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Run Link Checker</strong></p></li>
+</ol>
+<blockquote>
+<div><p>The <cite>sphinx-linkcheck</cite> extension verifies the validity of all external and internal links.</p>
+<p>The results will be written to the <code class="file docutils literal notranslate"><span class="pre">_build/linkcheck</span></code> directory with a detailed report in <code class="file docutils literal notranslate"><span class="pre">output.txt</span></code> or <code class="file docutils literal notranslate"><span class="pre">output.json</span></code> files
+of all checked links and their status (e.g., OK, broken, timeout).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>sphinx-build<span class="w"> </span>-b<span class="w"> </span>linkcheck<span class="w"> </span>.<span class="w"> </span>_build/linkcheck
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="building-the-documentation-with-poetry">
+<h4>Building the documentation with poetry<a class="headerlink" href="#building-the-documentation-with-poetry" title="連結到這個標頭"></a></h4>
+<ul>
+<li><p><strong>Build Documentation</strong></p>
+<p>Use <cite>sphinx-build</cite> with the <cite>-v</cite> (verbose) flag to generate detailed output during the build process.
+The build command specifies the source directory (current directory <code class="file docutils literal notranslate"><span class="pre">.</span></code>, <code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> in this case), the output directory (<code class="file docutils literal notranslate"><span class="pre">_build/html</span></code>), and the builder (<cite>html</cite>).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>sphinx-build<span class="w"> </span>-v<span class="w"> </span>-b<span class="w"> </span>html<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+<p>The build command specifies the source directory (<code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code>), the output directory (<code class="file docutils literal notranslate"><span class="pre">_build/html</span></code>), and the builder (<cite>html</cite>).
+The build command will process all source files in the <code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> directory, generate HTML output in the <code class="file docutils literal notranslate"><span class="pre">_build/html</span></code> directory, and print detailed build information to the console.
+Pay attention to errors and warning in the output!
+Please do not introduce any new warnings and fix all errors.</p>
+</li>
+<li><p><strong>Use sphinx-autobuild for development</strong></p>
+<p>For an active development workflow, you can use <cite>sphinx-autobuild</cite> to automatically rebuild the documentation
+and refresh browser whenever a file is saved. <cite>sphinx-autobuild</cite> starts a web server at <cite>http://127.0.0.1:8000</cite>,
+automatically rebuilds the documentation and reloads the browser tab when changes are detected in the <code class="file docutils literal notranslate"><span class="pre">qubes-doc</span></code> directory.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>poetry<span class="w"> </span>run<span class="w"> </span>sphinx-autobuild<span class="w"> </span>.<span class="w"> </span>_build/html
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="editor">
+<h3>Editor<a class="headerlink" href="#editor" title="連結到這個標頭"></a></h3>
+<p>An editor you can use is <a class="reference external" href="https://github.com/retext-project/retext">ReText</a> but any editor would do.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libxcb-cursor0
+<span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="gp">$ </span>.<span class="w"> </span>.venv/bin/activate
+<span class="gp">$ </span>pip3<span class="w"> </span>install<span class="w"> </span>ReText
+</pre></div>
+</div>
+</section>
+</section>
+<section id="security">
+<h2>安全性<a class="headerlink" href="#security" title="連結到這個標頭"></a></h2>
+<p>Also see: <a class="reference internal" href="../../introduction/faq.html#why-is-the-documentation-hosted-on-readthedocs-as-opposed-to-the-website"><span class="std std-ref">FAQ: Why is the documentation hosted on ReadTheDocs as opposed to the website?</span></a></p>
+<p>All pull requests (PRs) against <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> must pass review
+prior to be merged, except in the case of <a class="reference internal" href="../../index.html#external-documentation"><span class="std std-ref">external documentation</span></a>
+(see <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4693">#4693</a>). This
+process is designed to ensure that contributed text is accurate and
+non-malicious. This process is a best effort that should provide a
+reasonable degree of assurance, but it is not foolproof. For example,
+all text characters are checked for ANSI escape sequences. However,
+binaries, such as images, are simply checked to ensure they appear or
+function the way they should when the website is rendered. They are not
+further analyzed in an attempt to determine whether they are malicious.</p>
+<p>Once a pull request passes review, the reviewer should add a signed
+comment stating, “Passed review as of <code class="docutils literal notranslate"><span class="pre">&lt;LATEST_COMMIT&gt;</span></code> (or similar).
+The documentation maintainer then verifies that the pull request is
+mechanically sound (no merge conflicts, broken links, ANSI escapes,
+etc.). If so, the documentation maintainer then merges the pull request,
+adds a PGP-signed tag to the latest commit (usually the merge commit),
+then pushes to the remote. In cases in which another reviewer is not
+required, the documentation maintainer may review the pull request (in
+which case no signed comment is necessary, since it would be redundant
+with the signed tag).</p>
+</section>
+<section id="questions-problems-and-improvements">
+<h2>Questions, problems, and improvements<a class="headerlink" href="#questions-problems-and-improvements" title="連結到這個標頭"></a></h2>
+<p>If you have a question about something you read in the documentation or
+about how to edit the documentation, please post it on the <a class="reference external" href="https://forum.qubes-os.org/">forum</a>
+or send it to the appropriate <a class="reference internal" href="../../introduction/support.html"><span class="doc">mailing list</span></a>. If you see that something in the
+documentation should be fixed or improved, please
+<a class="reference internal" href="#how-to-submit-a-pull-request"><span class="std std-ref">contribute</span></a> the change yourself. To
+report an issue with the documentation, please follow our standard
+<a class="reference internal" href="../../introduction/issue-tracking.html"><span class="doc">issue reporting guidelines</span></a>. (If you report an
+issue with the documentation, you will likely be asked to submit a pull
+request for it, unless there is a clear indication in your report that
+you are not willing or able to do so.)</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gsod.html" class="btn btn-neutral float-left" title="Google Season of Docs (GSoD)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rst-documentation-style-guide.html" class="btn btn-neutral float-right" title="reStructuredText 文件風格指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/general/how-to-edit-the-rst-documentation.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

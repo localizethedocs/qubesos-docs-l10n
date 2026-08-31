@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="管理 qube 內核" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/advanced-topics/managing-vm-kernels.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="By default, VMs kernels are provided by dom0. (See here for information about upgrading kernels in dom0.) This means that: You can select the kernel version (using GUI VM Settings tool or qvm-prefs..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="By default, VMs kernels are provided by dom0. (See here for information about upgrading kernels in dom0.) This means that: You can select the kernel version (using GUI VM Settings tool or qvm-prefs..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>管理 qube 內核 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/advanced-topics/managing-vm-kernels.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="Salt (management software)" href="salt.html" />
+    <link rel="prev" title="USB qubes" href="usb-qubes.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">管理 qube 內核</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-different-kernel-using-qubes-kernel-package">使用 Qubes 內核包安裝不同的內核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-different-vm-kernel-based-on-dom0-kernel">Installing different VM kernel based on dom0 kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#kernel-files-structure">Kernel files structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-kernel-installed-in-the-vm">Using kernel installed in the VM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-kernel-in-fedora-vm">Installing kernel in Fedora VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fedora-distribution-kernel">Fedora 散佈版內核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fedora-custom-kernel">Fedora custom kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-kernel-in-debian-vm">Installing kernel in Debian VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debian-distribution-kernel">Debian distribution kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debian-custom-kernel">Debian custom kernel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">疑難排解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">管理 qube 內核</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/advanced-topics/managing-vm-kernels.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-qube-kernels">
+<h1>管理 qube 內核<a class="headerlink" href="#managing-qube-kernels" title="連結到這個標頭"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This page is intended for advanced users.</p>
+</div>
+<p>By default, VMs kernels are provided by dom0. (See <a class="reference internal" href="how-to-install-software-in-dom0.html#kernel-upgrade"><span class="std std-ref">here</span></a> for information about upgrading kernels in dom0.) This means that:</p>
+<ol class="arabic simple">
+<li><p>You can select the kernel version (using GUI VM Settings tool or <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> commandline tool);</p></li>
+<li><p>You can modify kernel options (using <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> commandline tool);</p></li>
+<li><p>You can <strong>not</strong> modify any of the above from inside a VM;</p></li>
+<li><p>Installing additional kernel modules is cumbersome.</p></li>
+</ol>
+<p><em>Note</em>: In the examples below, although the specific version numbers might be old, the commands have been verified on R3.2 and R4.0 with debian-9 and fedora-26 templates.</p>
+<p>To select which kernel a given VM will use, you can either use Qubes Manager (VM settings, advanced tab), or the <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> tool:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>dnf<span class="w"> </span>list<span class="w"> </span>--installed<span class="w"> </span>kernel
+<span class="go">Installed Packages</span>
+<span class="go">kernel.x86_64            1000:6.12.47-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">kernel.x86_64            1000:6.12.54-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">kernel.x86_64            1000:6.12.59-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-appvm<span class="w"> </span>kernel
+<span class="go">6.12.59-1.fc37</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-appvm<span class="w"> </span>kernel<span class="w"> </span><span class="m">6</span>.12.54-1.fc37
+<span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>-D<span class="w"> </span>my-appvm<span class="w"> </span>kernel
+</pre></div>
+</div>
+<p>To check/change the default kernel you can either go to “Global settings” in Qubes Manager, or use the <code class="docutils literal notranslate"><span class="pre">qubes-prefs</span></code> tool:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qubes-prefs<span class="w"> </span>default-kernel
+<span class="go">6.12.59-1.fc37</span>
+<span class="gp">[user@dom0 ~]$ </span>qubes-prefs<span class="w"> </span>default-kernel<span class="w"> </span><span class="m">6</span>.12.54-1.fc37
+</pre></div>
+</div>
+<p>To view kernel options, you can use the GUI VM Settings tool; to view and change them, use <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> commandline tool:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-appvm<span class="w"> </span>kernelopts
+<span class="go">swiotlb=2048</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-appvm<span class="w"> </span>kernelopts<span class="w"> </span><span class="s2">&quot;swiotlb=10240 apparmor=1 security=apparmor&quot;</span>
+</pre></div>
+</div>
+<section id="installing-different-kernel-using-qubes-kernel-package">
+<h2>使用 Qubes 內核包安裝不同的內核<a class="headerlink" href="#installing-different-kernel-using-qubes-kernel-package" title="連結到這個標頭"></a></h2>
+<p>VM kernels are packaged by the Qubes team in the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> packages. Generally, the system will keep the three newest available versions. You can list them using <code class="docutils literal notranslate"><span class="pre">rpm</span></code> or <code class="docutils literal notranslate"><span class="pre">dnf</span></code> commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>rpm<span class="w"> </span>-qa<span class="w"> </span><span class="s1">&#39;kernel&#39;</span>
+<span class="go">kernel-6.12.47-1.qubes.fc37.x86_64</span>
+<span class="go">kernel-6.12.54-1.qubes.fc37.x86_64</span>
+<span class="go">kernel-6.12.59-1.qubes.fc37.x86_64</span>
+<span class="gp">[user@dom0 ~]$ </span>dnf<span class="w"> </span>list<span class="w"> </span>--installed<span class="w"> </span>kernel
+<span class="go">Installed Packages</span>
+<span class="go">kernel.x86_64            1000:6.12.47-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">kernel.x86_64            1000:6.12.54-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">kernel.x86_64            1000:6.12.59-1.qubes.fc37             @qubes-dom0-cached</span>
+</pre></div>
+</div>
+<p>If you want a more recent version, you can check <code class="docutils literal notranslate"><span class="pre">qubes-dom0-unstable</span></code> and <code class="docutils literal notranslate"><span class="pre">qubes-dom0-current-testing</span></code> repositories. There is also <code class="docutils literal notranslate"><span class="pre">kernel-latest</span></code> package which should provide a more recent (non-LTS) kernel, but has received much less testing. As the names suggest, keep in mind that those packages may be less stable than the default ones.</p>
+<p>To check available versions in the <code class="docutils literal notranslate"><span class="pre">qubes-dom0-current-testing</span></code> repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@dom0 ~]# </span>qubes-dom0-update<span class="w"> </span>--enablerepo<span class="o">=</span>qubes-dom0-current-testing<span class="w"> </span>--action<span class="o">=</span>list<span class="w"> </span>kernel-latest<span class="w"> </span>kernel
+<span class="go">Using sys-whonix as UpdateVM for Dom0</span>
+<span class="go">Updating package lists. This may take a while...</span>
+<span class="go">Fedora 37 - x86_64                              3.1 kB/s | 5.1 kB     00:01</span>
+<span class="go">Fedora 37 - x86_64 - Updates                    3.2 kB/s | 5.0 kB     00:01</span>
+<span class="go">Qubes Host Repository (updates)                 2.4 kB/s | 2.7 kB     00:01</span>
+<span class="go">Qubes Host Repository (updates-testing)         3.1 kB/s | 2.8 kB     00:00</span>
+<span class="go">Installed Packages</span>
+<span class="go">kernel.x86_64           1000:6.12.47-1.qubes.fc37     @System</span>
+<span class="go">kernel.x86_64           1000:6.12.54-1.qubes.fc37     @System</span>
+<span class="go">kernel.x86_64           1000:6.12.59-1.qubes.fc37     @System</span>
+<span class="go">Available Packages</span>
+<span class="go">kernel.src              1000:6.12.63-1.qubes.fc37     qubes-dom0-current-testing</span>
+<span class="go">kernel.x86_64           1000:6.12.63-1.qubes.fc37     qubes-dom0-current-testing</span>
+<span class="go">kernel-latest.src       1000:6.18.2-1.qubes.fc37      qubes-dom0-current-testing</span>
+<span class="go">kernel-latest.x86_64    1000:6.18.2-1.qubes.fc37      qubes-dom0-current-testing</span>
+<span class="go">No packages downloaded</span>
+</pre></div>
+</div>
+<p>Installing a new version from <code class="docutils literal notranslate"><span class="pre">qubes-dom0-current-testing</span></code> repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@dom0 ~]# </span>qubes-dom0-update<span class="w"> </span>--enablerepo<span class="o">=</span>qubes-dom0-current-testing<span class="w"> </span>kernel
+<span class="go">Using sys-whonix as UpdateVM for Dom0</span>
+<span class="go">Downloading packages. This may take a while...</span>
+<span class="go">Fedora 37 - x86_64                              1.8 kB/s | 5.1 kB     00:02</span>
+<span class="go">Fedora 37 - x86_64 - Updates                    3.5 kB/s | 5.0 kB     00:01</span>
+<span class="go">Qubes Host Repository (updates)                 2.1 kB/s | 2.7 kB     00:01</span>
+<span class="go">Qubes Host Repository (updates-testing)         2.2 kB/s | 2.8 kB     00:01</span>
+<span class="go">Last metadata expiration check: 0:00:01 ago on Fri Dec 26 21:49:54 2025.</span>
+<span class="go">Package kernel-1000:6.12.47-1.qubes.fc37.x86_64 is already installed.</span>
+<span class="go">Package kernel-1000:6.12.54-1.qubes.fc37.x86_64 is already installed.</span>
+<span class="go">Package kernel-1000:6.12.59-1.qubes.fc37.x86_64 is already installed.</span>
+<span class="go">Dependencies resolved.</span>
+<span class="go">================================================================================</span>
+<span class="go"> Package      Arch   Version                   Repository                  Size</span>
+<span class="go">================================================================================</span>
+<span class="go">Installing:</span>
+<span class="go"> kernel       x86_64 1000:6.12.63-1.qubes.fc37 qubes-dom0-current-testing  13 M</span>
+<span class="go"> kernel-modules</span>
+<span class="go">              x86_64 1000:6.12.63-1.qubes.fc37 qubes-dom0-current-testing  84 M</span>
+<span class="go">Removing:</span>
+<span class="go"> kernel       x86_64 1000:6.12.47-1.qubes.fc37 @System                     42 M</span>
+<span class="go"> kernel-modules</span>
+<span class="go">              x86_64 1000:6.12.47-1.qubes.fc37 @System                    508 M</span>
+
+<span class="go">Transaction Summary</span>
+<span class="go">================================================================================</span>
+<span class="go">Install  2 Packages</span>
+<span class="go">Remove   2 Packages</span>
+
+<span class="go">Total download size: 97 M</span>
+<span class="go">DNF will only download packages for the transaction.</span>
+<span class="go">Downloading Packages:</span>
+
+<span class="go">...</span>
+
+<span class="go">Complete!</span>
+<span class="go">The downloaded packages were saved in cache until the next successful transaction.</span>
+<span class="go">You can remove cached packages by executing &#39;dnf clean packages&#39;.</span>
+<span class="go">Qubes OS Repository for Dom0                      2.9 MB/s | 3.0 kB     00:00</span>
+<span class="go">Qubes OS Repository for Dom0                      2.2 MB/s |  66 kB     00:00</span>
+<span class="go">Package kernel-1000:6.12.47-1.qubes.fc37.x86_64 is already installed.</span>
+<span class="go">Package kernel-1000:6.12.54-1.qubes.fc37.x86_64 is already installed.</span>
+<span class="go">Package kernel-1000:6.12.59-1.qubes.fc37.x86_64 is already installed.</span>
+<span class="go">Dependencies resolved.</span>
+<span class="go">Nothing to do.</span>
+<span class="go">Complete!</span>
+<span class="gp">[root@dom0 ~]# </span>dnf<span class="w"> </span>list<span class="w"> </span>kernel
+<span class="go">Qubes OS Repository for Dom0                      2.9 MB/s | 3.0 kB     00:00</span>
+<span class="go">Installed Packages</span>
+<span class="go">kernel.x86_64             1000:6.12.47-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">kernel.x86_64             1000:6.12.54-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">kernel.x86_64             1000:6.12.59-1.qubes.fc37             @qubes-dom0-cached</span>
+<span class="go">Available Packages</span>
+<span class="go">kernel.x86_64             1000:6.12.63-1.qubes.fc37             qubes-dom0-cached</span>
+<span class="gp">[root@dom0 ~]# </span>dnf<span class="w"> </span>install<span class="w"> </span>kernel-1000:6.12.63-1.qubes.fc37
+<span class="go">Qubes OS Repository for Dom0                      2.9 MB/s | 3.0 kB     00:00</span>
+<span class="go">Dependencies resolved.</span>
+<span class="go">==================================================================================</span>
+<span class="go"> Package          Arch     Version                     Repository            Size</span>
+<span class="go">==================================================================================</span>
+<span class="go">Installing:</span>
+<span class="go"> kernel           x86_64   1000:6.12.63-1.qubes.fc37   qubes-dom0-cached     13 M</span>
+<span class="go"> kernel-modules   x86_64   1000:6.12.63-1.qubes.fc37   qubes-dom0-cached     84 M</span>
+<span class="go">Removing:</span>
+<span class="go"> kernel           x86_64   1000:6.12.47-1.qubes.fc37   @qubes-dom0-cached    42 M</span>
+<span class="go"> kernel-modules   x86_64   1000:6.12.47-1.qubes.fc37   @qubes-dom0-cached   508 M</span>
+
+<span class="go">Transaction Summary</span>
+<span class="go">==================================================================================</span>
+<span class="go">Install  2 Packages</span>
+<span class="go">Remove   2 Packages</span>
+
+<span class="go">Total size: 97 M</span>
+<span class="go">Is this ok [y/N]: y</span>
+<span class="go">Downloading Packages:</span>
+<span class="go">Running transaction check</span>
+<span class="go">Transaction check succeeded.</span>
+<span class="go">Running transaction test</span>
+<span class="go">Transaction test succeeded.</span>
+<span class="go">Running transaction</span>
+
+<span class="go">...</span>
+
+<span class="go">Installed:</span>
+<span class="go">  kernel-1000:6.12.63-1.qubes.fc37.x86_64</span>
+<span class="go">  kernel-modules-1000:6.12.63-1.qubes.fc37.x86_64</span>
+<span class="go">Removed:</span>
+<span class="go">  kernel-1000:6.12.47-1.qubes.fc37.x86_64</span>
+<span class="go">  kernel-modules-1000:6.12.47-1.qubes.fc37.x86_64</span>
+
+<span class="go">Complete!</span>
+</pre></div>
+</div>
+<p>The newly installed package is set as the default VM kernel.</p>
+</section>
+<section id="installing-different-vm-kernel-based-on-dom0-kernel">
+<h2>Installing different VM kernel based on dom0 kernel<a class="headerlink" href="#installing-different-vm-kernel-based-on-dom0-kernel" title="連結到這個標頭"></a></h2>
+<p>It is possible to package a kernel installed in dom0 as a VM kernel. This makes it possible to use a VM kernel which is not packaged by the Qubes team. This includes:</p>
+<ul class="simple">
+<li><p>using a Fedora kernel package</p></li>
+<li><p>using a manually compiled kernel</p></li>
+</ul>
+<p>To prepare such a VM kernel, you need to install the <code class="docutils literal notranslate"><span class="pre">qubes-kernel-vm-support</span></code> package in dom0 and also have matching kernel headers installed (<code class="docutils literal notranslate"><span class="pre">kernel-devel</span></code> package in the case of a Fedora kernel package). You can install requirements using <code class="docutils literal notranslate"><span class="pre">qubes-dom0-update</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>sudo<span class="w"> </span>qubes-dom0-update<span class="w"> </span>qubes-kernel-vm-support<span class="w"> </span>kernel-devel
+<span class="go">Using sys-firewall as UpdateVM to download updates for Dom0; this may take some time...</span>
+<span class="go">Running command on VM: &#39;sys-firewall&#39;...</span>
+<span class="go">Loaded plugins: langpacks, post-transaction-actions, yum-qubes-hooks</span>
+<span class="go">Package 1000:kernel-devel-4.1.9-6.pvops.qubes.x86_64 already installed and latest version</span>
+<span class="go">Resolving Dependencies</span>
+<span class="gp gp-VirtualEnv">(...)</span>
+
+<span class="go">================================================================================</span>
+<span class="go"> Package                      Arch        Version        Repository        Size</span>
+<span class="go">================================================================================</span>
+<span class="go">Installing:</span>
+<span class="go"> qubes-kernel-vm-support      x86_64      3.1.2-1.fc20   qubes-dom0-cached 9.2 k</span>
+
+<span class="go">Transaction Summary</span>
+<span class="go">================================================================================</span>
+<span class="go">Install  1 Package</span>
+
+<span class="go">Total download size: 9.2 k</span>
+<span class="go">Installed size: 13 k</span>
+<span class="go">Is this ok [y/d/N]: y</span>
+<span class="go">Downloading packages:</span>
+<span class="go">Running transaction check</span>
+<span class="go">Running transaction test</span>
+<span class="go">Transaction test succeeded</span>
+<span class="go">Running transaction (shutdown inhibited)</span>
+<span class="go">  Installing : qubes-kernel-vm-support-3.1.2-1.fc20.x86_64                  1/1</span>
+
+<span class="go">Creating symlink /var/lib/dkms/u2mfn/3.1.2/source -&gt;</span>
+<span class="go">                 /usr/src/u2mfn-3.1.2</span>
+
+<span class="go">DKMS: add completed.</span>
+<span class="go">  Verifying  : qubes-kernel-vm-support-3.1.2-1.fc20.x86_64                  1/1</span>
+
+<span class="go">Installed:</span>
+<span class="go">  qubes-kernel-vm-support.x86_64 0:3.1.2-1.fc20</span>
+
+<span class="go">Complete!</span>
+</pre></div>
+</div>
+<p>Then you can call the <code class="docutils literal notranslate"><span class="pre">qubes-prepare-vm-kernel</span></code> tool to actually package the kernel. The first parameter is kernel version (exactly as seen by the kernel), the second one (optional) is short name. This is visible in Qubes Manager and the <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> tool.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>sudo<span class="w"> </span>qubes-prepare-vm-kernel<span class="w"> </span><span class="m">4</span>.1.9-6.pvops.qubes.x86_64<span class="w"> </span><span class="m">4</span>.1.qubes
+<span class="go">--&gt; Building files for 4.1.9-6.pvops.qubes.x86_64 in /var/lib/qubes/vm-kernels/4.1.qubes</span>
+<span class="go">---&gt; Recompiling kernel module (u2mfn)</span>
+<span class="go">---&gt; Generating modules.img</span>
+<span class="go">mke2fs 1.42.12 (29-Aug-2014)</span>
+<span class="go">---&gt; Generating initramfs</span>
+<span class="go">--&gt; Done.</span>
+</pre></div>
+</div>
+</section>
+<section id="kernel-files-structure">
+<h2>Kernel files structure<a class="headerlink" href="#kernel-files-structure" title="連結到這個標頭"></a></h2>
+<p>Kernel for a VM is stored in <code class="docutils literal notranslate"><span class="pre">/var/lib/qubes/vm-kernels/KERNEL_VERSION</span></code> directory (<code class="docutils literal notranslate"><span class="pre">KERNEL_VERSION</span></code> replaced with actual version). Qubes 4.x supports the following files there:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vmlinuz</span></code> - kernel binary (may not be a Linux kernel)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initramfs</span></code> - initramfs for the kernel to load</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modules.img</span></code> - ext4 filesystem image containing Linux kernel modules (to be mounted at <code class="docutils literal notranslate"><span class="pre">/lib/modules</span></code>); additionally it should contain a copy of <code class="docutils literal notranslate"><span class="pre">vmlinuz</span></code> and <code class="docutils literal notranslate"><span class="pre">initramfs</span></code> in its root directory (for loading by qemu inside stubdomain)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default-kernelopts-common.txt</span></code> - default kernel options, in addition to those specified with <code class="docutils literal notranslate"><span class="pre">kernelopts</span></code> qube property (can be disabled with <code class="docutils literal notranslate"><span class="pre">no-default-kernelopts</span></code> feature)</p></li>
+</ul>
+<p>All the files besides <code class="docutils literal notranslate"><span class="pre">vmlinuz</span></code> are optional in Qubes R4.2 or newer.</p>
+</section>
+<section id="using-kernel-installed-in-the-vm">
+<h2>Using kernel installed in the VM<a class="headerlink" href="#using-kernel-installed-in-the-vm" title="連結到這個標頭"></a></h2>
+<p>Non-minimal debian and fedora templates already have grub and related tools preinstalled so if you want to use one of the distribution kernels, all you need to do is clone either template to a new one, then:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;clonetemplatename&gt;<span class="w"> </span>virt_mode<span class="w"> </span>hvm
+<span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;clonetemplatename&gt;<span class="w"> </span>kernel<span class="w"> </span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Depending on vm and kernel you're running, you may also want to disable memory balancing and change the amount of memory vm has:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;clonedtemplatename&gt;<span class="w"> </span>maxmem<span class="w"> </span><span class="m">0</span>
+<span class="gp">[user@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>&lt;clonedtemplatename&gt;<span class="w"> </span>memory<span class="w"> </span><span class="m">2000</span>
+</pre></div>
+</div>
+<section id="installing-kernel-in-fedora-vm">
+<h3>Installing kernel in Fedora VM<a class="headerlink" href="#installing-kernel-in-fedora-vm" title="連結到這個標頭"></a></h3>
+</section>
+<section id="fedora-distribution-kernel">
+<h3>Fedora 散佈版內核<a class="headerlink" href="#fedora-distribution-kernel" title="連結到這個標頭"></a></h3>
+<p>Install kernel and the packages required to run vm with its own kernel:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@fedora-vm ~]# </span>dnf<span class="w"> </span>install<span class="w"> </span>kernel<span class="w"> </span>qubes-kernel-vm-support<span class="w"> </span>grub2
+</pre></div>
+</div>
+<p>Once the kernel is installed, you need to setup <code class="docutils literal notranslate"><span class="pre">grub2</span></code> by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@fedora-vm ~]# </span>grub2-install<span class="w"> </span>/dev/xvda
+</pre></div>
+</div>
+<p>Finally, you need to create a GRUB configuration. You may want to adjust some settings in <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code>; for example, lower <code class="docutils literal notranslate"><span class="pre">GRUB_TIMEOUT</span></code> to speed up VM startup. Then, you need to generate the actual configuration. In Fedora it can be done using the <code class="docutils literal notranslate"><span class="pre">grub2-mkconfig</span></code> tool:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@fedora-vm ~]# </span>grub2-mkconfig<span class="w"> </span>-o<span class="w"> </span>/boot/grub2/grub.cfg
+</pre></div>
+</div>
+</section>
+<section id="fedora-custom-kernel">
+<h3>Fedora custom kernel<a class="headerlink" href="#fedora-custom-kernel" title="連結到這個標頭"></a></h3>
+<p>If you are using a manually built kernel, you need to handle the initramfs and kernel modules on your own. Take a look at the <code class="docutils literal notranslate"><span class="pre">dkms</span></code> documentation, especially the <code class="docutils literal notranslate"><span class="pre">dkms</span> <span class="pre">autoinstall</span></code> command may be useful. If you did not see the <code class="docutils literal notranslate"><span class="pre">kernel</span></code> install rebuild your initramfs, or are using a manually built kernel, you will need to rebuild it yourself. Replace the version numbers in the example below with the ones appropriate to the kernel you are installing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@fedora-vm ~]# </span>dracut<span class="w"> </span>-f<span class="w"> </span>/boot/initramfs-4.15.14-200.fc26.x86_64.img<span class="w"> </span><span class="m">4</span>.15.14-200.fc26.x86_64
+</pre></div>
+</div>
+<p>Once the kernel is installed, you need to setup <code class="docutils literal notranslate"><span class="pre">grub2</span></code> by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@fedora-vm ~]# </span>grub2-install<span class="w"> </span>/dev/xvda
+</pre></div>
+</div>
+<p>Finally, you need to create a GRUB configuration. You may want to adjust some settings in <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code>; for example, lower <code class="docutils literal notranslate"><span class="pre">GRUB_TIMEOUT</span></code> to speed up VM startup. Then, you need to generate the actual configuration. In Fedora it can be done using the <code class="docutils literal notranslate"><span class="pre">grub2-mkconfig</span></code> tool:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@fedora-vm ~]# </span>grub2-mkconfig<span class="w"> </span>-o<span class="w"> </span>/boot/grub2/grub.cfg
+</pre></div>
+</div>
+<p>You can safely ignore this error message:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">grub2-probe: error: cannot find a GRUB drive for /dev/mapper/dmroot. Check your device.map</span>
+</pre></div>
+</div>
+<p>Then shutdown the VM.</p>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>You may also use <code class="docutils literal notranslate"><span class="pre">PV</span></code> mode instead of <code class="docutils literal notranslate"><span class="pre">HVM</span></code> but this is not recommended for security purposes.</p></li>
+<li><p>If you require <code class="docutils literal notranslate"><span class="pre">PV</span></code> mode, install <code class="docutils literal notranslate"><span class="pre">grub2-xen-pvh</span></code> in dom0 and change the template’s kernel to <code class="docutils literal notranslate"><span class="pre">pvgrub2-pvh</span></code>.</p></li>
+<li><p>If you require <code class="docutils literal notranslate"><span class="pre">PVH</span></code> mode, install <code class="docutils literal notranslate"><span class="pre">grub2-xen-pvh</span></code> in dom0 and change the kernel to <code class="docutils literal notranslate"><span class="pre">pvgrub2-pvh</span></code>.</p></li>
+<li><p>To install <code class="docutils literal notranslate"><span class="pre">grub2-xen-pvh</span></code> run the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">qubes-dom0-update</span> <span class="pre">pvgrub2-pvh</span></code> in dom0.</p></li>
+</ul>
+</section>
+<section id="installing-kernel-in-debian-vm">
+<h3>Installing kernel in Debian VM<a class="headerlink" href="#installing-kernel-in-debian-vm" title="連結到這個標頭"></a></h3>
+</section>
+<section id="debian-distribution-kernel">
+<h3>Debian distribution kernel<a class="headerlink" href="#debian-distribution-kernel" title="連結到這個標頭"></a></h3>
+<p>Apply the following instruction in a Debian template or in a Debian standalone.</p>
+<p>Using a distribution kernel package the initramfs and kernel modules should be handled automatically.</p>
+<p>Install distribution kernel image, kernel headers and the grub.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@debian-vm ~]# </span>apt<span class="w"> </span>install<span class="w"> </span>linux-image-amd64<span class="w"> </span>linux-headers-amd64<span class="w"> </span>grub2<span class="w"> </span>qubes-kernel-vm-support
+</pre></div>
+</div>
+<p>If you are doing that on a qube based on “Debian Minimal” template, a grub gui will popup during the installation, asking you where you want to install the grub loader. You must select <code class="docutils literal notranslate"><span class="pre">/dev/xvda</span></code> (check the box using the space bar, and validate your choice with “Enter”.) If this popup does not appear during the installation, you must manually setup <code class="docutils literal notranslate"><span class="pre">grub2</span></code> by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@debian-vm ~]# </span>grub-install<span class="w"> </span>/dev/xvda
+</pre></div>
+</div>
+<p>You can safely ignore this error message: <code class="docutils literal notranslate"><span class="pre">grub2-probe:</span> <span class="pre">error:</span> <span class="pre">cannot</span> <span class="pre">find</span> <span class="pre">a</span> <span class="pre">GRUB</span> <span class="pre">drive</span> <span class="pre">for</span> <span class="pre">/dev/mapper/dmroot.</span> <span class="pre">Check</span> <span class="pre">your</span> <span class="pre">device.map</span></code></p>
+<p>You may want to adjust some settings in <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code> (or better <code class="docutils literal notranslate"><span class="pre">/etc/default/grub.d</span></code>). For example, lower <code class="docutils literal notranslate"><span class="pre">GRUB_TIMEOUT</span></code> to speed up VM startup. You need to re-run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">update-grub</span></code> after making grub configuration changes.</p>
+<p>Then shutdown the VM.</p>
+<p>Go to dom0: <span class="menuselection">Qubes VM Manager ‣ right click on the VM ‣ Qube settings ‣ Advanced</span></p>
+<p>Depends on <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode setting:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode <code class="docutils literal notranslate"><span class="pre">PV</span></code>: Possible, however use of <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode <code class="docutils literal notranslate"><span class="pre">PV</span></code> is discouraged for security purposes.</p>
+<ul>
+<li><p>If you require <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode <code class="docutils literal notranslate"><span class="pre">PV</span></code>, install <code class="docutils literal notranslate"><span class="pre">grub2-xen-pvh</span></code> in dom0. This can be done by running command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">qubes-dom0-update</span> <span class="pre">pvgrub2-pvh</span></code> in dom0.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode <code class="docutils literal notranslate"><span class="pre">PVH</span></code>: Possible. Install <code class="docutils literal notranslate"><span class="pre">grub2-xen-pvh</span></code> in dom0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode <code class="docutils literal notranslate"><span class="pre">HVM</span></code>: Possible.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> setting of the <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> mode setting:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> is set to <code class="docutils literal notranslate"><span class="pre">PVH</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> -&gt; choose <code class="docutils literal notranslate"><span class="pre">pvgrub2-pvh</span></code> -&gt; OK</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> is set to <code class="docutils literal notranslate"><span class="pre">PV</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> -&gt; choose <code class="docutils literal notranslate"><span class="pre">pvgrub2</span></code> -&gt; OK</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">Virtualization</span></code> is set to <code class="docutils literal notranslate"><span class="pre">HVM</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> -&gt; choose <code class="docutils literal notranslate"><span class="pre">none</span></code> -&gt; OK</p></li>
+</ul>
+<p>啟動虛擬機。</p>
+<p>The process of using Qubes VM kernel with distribution kernel is complete.</p>
+</section>
+<section id="debian-custom-kernel">
+<h3>Debian custom kernel<a class="headerlink" href="#debian-custom-kernel" title="連結到這個標頭"></a></h3>
+<p>Any kernel can be installed. Just make sure to install kernel headers as well.</p>
+<p>If you are building the kernel manually, do this using <code class="docutils literal notranslate"><span class="pre">dkms</span></code> and <code class="docutils literal notranslate"><span class="pre">initramfs-tools</span></code>.</p>
+<p>Run DKMS. Replace this with actual kernel version.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@debian-vm ~]# </span>dkms<span class="w"> </span>autoinstall<span class="w"> </span>-k<span class="w"> </span>&lt;kernel-version&gt;
+</pre></div>
+</div>
+<p>For example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@debian-vm ~]# </span>dkms<span class="w"> </span>autoinstall<span class="w"> </span>-k<span class="w"> </span><span class="m">4</span>.19.0-6-amd64
+</pre></div>
+</div>
+<p>Update initramfs.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@debian-vm ~]# </span>update-initramfs<span class="w"> </span>-u
+</pre></div>
+</div>
+<p>The output should look like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[root@debian-vm ~]# </span>dkms<span class="w"> </span>autoinstall<span class="w"> </span>-k<span class="w"> </span><span class="m">3</span>.16.0-4-amd64
+
+<span class="go">    u2mfn:</span>
+<span class="go">    Running module version sanity check.</span>
+<span class="go">      - Original module</span>
+<span class="go">        - No original module exists within this kernel</span>
+<span class="go">      - Installation</span>
+<span class="go">        - Installing to /lib/modules/3.16.0-4-amd64/updates/dkms/</span>
+
+<span class="go">    depmod....</span>
+
+<span class="go">      DKMS: install completed.</span>
+<span class="gp">    $ </span>sudo<span class="w"> </span>update-initramfs<span class="w"> </span>-u
+<span class="go">    update-initramfs: Generating /boot/initrd.img-3.16.0-4-amd64</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h3>疑難排解<a class="headerlink" href="#troubleshooting" title="連結到這個標頭"></a></h3>
+<p>In case of problems, visit the <a class="reference internal" href="../troubleshooting/vm-troubleshooting.html#vm-kernel-troubleshooting"><span class="std std-ref">VM Troubleshooting guide</span></a> to learn how to access the VM console, view logs and fix a VM kernel installation.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usb-qubes.html" class="btn btn-neutral float-left" title="USB qubes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="salt.html" class="btn btn-neutral float-right" title="Salt (management software)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/advanced-topics/managing-vm-kernels.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

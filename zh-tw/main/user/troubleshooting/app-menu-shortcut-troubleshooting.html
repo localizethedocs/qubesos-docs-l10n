@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="App menu shortcut troubleshooting" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/troubleshooting/app-menu-shortcut-troubleshooting.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="For ease of use Qubes aggregates shortcuts to applications that are installed in app qubes and shows them in one application menu (aka “app menu” or “start menu”) in dom0. Clicking on such shortcut..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="For ease of use Qubes aggregates shortcuts to applications that are installed in app qubes and shows them in one application menu (aka “app menu” or “start menu”) in dom0. Clicking on such shortcut..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App menu shortcut troubleshooting &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/troubleshooting/app-menu-shortcut-troubleshooting.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="Qube 疑難排解" href="vm-troubleshooting.html" />
+    <link rel="prev" title="Suspend/resume troubleshooting" href="resume-suspend-troubleshooting.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">App menu shortcut troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-add-a-shortcut">How-to add a shortcut</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#with-the-graphical-user-interface">With the graphical user interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-the-command-line-interface">With the command-line interface</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-if-my-application-has-not-been-automatically-included-in-the-list-of-available-apps">What if my application has not been automatically included in the list of available apps?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#missing-desktop-entry">Missing desktop entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unavailable-desktop-entry">Unavailable desktop entry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-about-applications-in-disposables">What about applications in disposables?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-if-a-removed-application-is-still-in-the-app-menu">What if a removed application is still in the app menu?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-if-my-application-is-shown-in-app-menu-but-doesn-t-run-anything">What if my application is shown in app menu, but doesn't run anything?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#behind-the-scenes">Behind the scenes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">App menu shortcut troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/troubleshooting/app-menu-shortcut-troubleshooting.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="app-menu-shortcut-troubleshooting">
+<span id="app-menu-troubleshooting"></span><h1>App menu shortcut troubleshooting<a class="headerlink" href="#app-menu-shortcut-troubleshooting" title="連結到這個標頭"></a></h1>
+<p>For ease of use Qubes aggregates shortcuts to applications that are installed in app qubes and shows them in one application menu (aka “app menu” or “start menu”) in dom0. Clicking on such shortcut runs the assigned application in its app qube.</p>
+<a class="reference internal image-reference" href="../../_images/app-menu.png"><img alt="" src="../../_images/app-menu.png" style="width: 100%;" />
+</a>
+<section id="how-to-add-a-shortcut">
+<span id="id1"></span><h2>How-to add a shortcut<a class="headerlink" href="#how-to-add-a-shortcut" title="連結到這個標頭"></a></h2>
+<section id="with-the-graphical-user-interface">
+<h3>With the graphical user interface<a class="headerlink" href="#with-the-graphical-user-interface" title="連結到這個標頭"></a></h3>
+<p>To make applications newly installed show up in the menu, you can use the qube’s <em>Settings</em>. Under the <span class="guilabel">Applications</span> tab, use the <span class="guilabel">Refresh Applications</span> button. Linux qubes do this automatically, if the <em>Settings</em> are opened after the installation of the package.</p>
+<a class="reference internal image-reference" href="../../_images/settings-applications.png"><img alt="" src="../../_images/settings-applications.png" style="width: 100%;" />
+</a>
+<p>After that, use the directional buttons (<span class="guilabel">&gt;</span>, <span class="guilabel">&gt;&gt;</span>, <span class="guilabel">&lt;</span> or <span class="guilabel">&lt;&lt;</span>) to customize which applications are shown, by moving them to the <em>Applications shown in App Menu</em> part (on the right side). Use the <span class="guilabel">Apply</span> (or <span class="guilabel">Ok</span>) button to see the changes in the app menu.</p>
+</section>
+<section id="with-the-command-line-interface">
+<h3>With the command-line interface<a class="headerlink" href="#with-the-command-line-interface" title="連結到這個標頭"></a></h3>
+<p>To update the list of available applications, use the <code class="docutils literal notranslate"><span class="pre">qvm-sync-appmenus</span></code> command in dom0, replacing <code class="docutils literal notranslate"><span class="pre">&lt;QUBE_NAME&gt;</span></code> by the qube name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-sync-appmenus<span class="w"> </span>&lt;QUBE_NAME&gt;
+</pre></div>
+</div>
+<p>When using the <span class="guilabel">Refresh Applications</span> button in a qube’s settings, the command <code class="docutils literal notranslate"><span class="pre">qvm-sync-appmenus</span></code> is used at least one time. When refreshing an AppVM application, it is also run against the template. So the console equivalent of clicking the <span class="guilabel">Refresh Applications</span> button is the following (always in dom0):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-sync-appmenus<span class="w"> </span>&lt;APPVM_NAME&gt;
+<span class="gp">[user@dom0] $ </span>qvm-sync-appmenus<span class="w"> </span>&lt;TEMPLATE_NAME&gt;
+</pre></div>
+</div>
+<p>In dom0, the <code class="docutils literal notranslate"><span class="pre">qvm-appmenus</span></code> tool allows the user to see the list of available applications (unstable feature), the whitelist of currently show application (unstable feature) and to change this list:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-appmenus<span class="w"> </span>--set-whitelist<span class="w"> </span>&lt;FILE_PATH&gt;<span class="w"> </span>&lt;QUBE_NAME&gt;
+</pre></div>
+</div>
+<p>To change the whitelist shown in app menu, you need to provide a list of the desktop entries. Each line contains a desktop entry name, with its <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> extension, like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>qubes-open-file-manager.desktop
+qubes-run-terminal.desktop
+[...]
+</pre></div>
+</div>
+<p>You can replace the file path by a single hyphen (<code class="docutils literal notranslate"><span class="pre">-</span></code>) to read it from standard input.</p>
+</section>
+</section>
+<section id="what-if-my-application-has-not-been-automatically-included-in-the-list-of-available-apps">
+<h2>What if my application has not been automatically included in the list of available apps?<a class="headerlink" href="#what-if-my-application-has-not-been-automatically-included-in-the-list-of-available-apps" title="連結到這個標頭"></a></h2>
+<section id="missing-desktop-entry">
+<h3>Missing desktop entry<a class="headerlink" href="#missing-desktop-entry" title="連結到這個標頭"></a></h3>
+<p>Sometimes applications may not have included a <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file and may not be detected by <code class="docutils literal notranslate"><span class="pre">qvm-sync-appmenus</span></code>. Other times, you may want to make a web shortcut available from the Qubes start menu.</p>
+<p>You can manually create new entries in the “available applications” list of shortcuts for all app qubes based on a template. To do this:</p>
+<ol class="arabic">
+<li><p>Open a terminal window to the template.</p></li>
+<li><p>Create a custom <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file in <code class="file docutils literal notranslate"><span class="pre">/usr/share/applications</span></code> (you may need to first create the subdirectory). Look in <code class="file docutils literal notranslate"><span class="pre">/usr/share/applications</span></code> for existing examples, or see the full <a class="reference external" href="https://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html">.desktop file format</a> specification. It will be something like:</p>
+<div class="highlight-desktop notranslate"><div class="highlight"><pre><span></span><span class="k">[Desktop Entry]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">Application</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">VueScan</span>
+<span class="na">Exec</span><span class="o">=</span><span class="s">vuescan</span>
+</pre></div>
+</div>
+</li>
+<li><p>Follow the instructions in <a class="reference internal" href="#how-to-add-a-shortcut"><span class="std std-ref">How-to add a shortcut</span></a></p></li>
+</ol>
+<p>If you only want to create a shortcut for a single app qube:</p>
+<ol class="arabic simple">
+<li><p>Open a terminal window to the template.</p></li>
+<li><p>Create a custom <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file in either <code class="file docutils literal notranslate"><span class="pre">~/.local/share/applications</span></code> or <code class="file docutils literal notranslate"><span class="pre">/usr/local/share/applications</span></code> (you may need to first create the subdirectory). See the previous instructions about the desktop entry format.</p></li>
+<li><p>Follow the instructions in <a class="reference internal" href="#how-to-add-a-shortcut"><span class="std std-ref">How-to add a shortcut</span></a></p></li>
+</ol>
+<p>To add a custom menu entry instead:</p>
+<ol class="arabic">
+<li><p>Open a terminal window to Dom0.</p></li>
+<li><p>Create a custom <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/applications</span></code>. Look in the same directory for existing examples, or see the full <a class="reference external" href="https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html">file specification</a>. You may use <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code> inside the <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file; see <a class="reference internal" href="#behind-the-scenes"><span class="std std-ref">Behind the scenes</span></a> for more details.</p></li>
+<li><p>Edit the <code class="file docutils literal notranslate"><span class="pre">~/.config/menus/applications-merged/</span><em><span class="pre">&lt;vmname&gt;</span></em><span class="pre">-vm.menu</span></code> file for the app qube.</p></li>
+<li><p>Add a custom menu entry referring to your newly created <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Menu&gt;</span>
+<span class="w">     </span><span class="nt">&lt;Name&gt;</span>Webmail<span class="nt">&lt;/Name&gt;</span>
+<span class="w">     </span><span class="nt">&lt;Include&gt;</span>
+<span class="w">             </span><span class="nt">&lt;Filename&gt;</span>custom.desktop<span class="nt">&lt;/Filename&gt;</span>
+<span class="w">     </span><span class="nt">&lt;/Include&gt;</span>
+<span class="nt">&lt;/Menu&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="unavailable-desktop-entry">
+<h3>Unavailable desktop entry<a class="headerlink" href="#unavailable-desktop-entry" title="連結到這個標頭"></a></h3>
+<p>If you created a desktop entry but it doesn’t show up, there are some steps to run inside the qube, to identify the problem:</p>
+<ol class="arabic simple">
+<li><p>make sure the name is a valid name (only ASCII letters, numbers, hyphens and point)</p></li>
+<li><p>if this program is available, run <code class="samp docutils literal notranslate"><span class="pre">desktop-file-validate</span> <em><span class="pre">&lt;DESKTOP_FILE_PATH&gt;</span></em></code></p></li>
+<li><p>run it through <code class="docutils literal notranslate"><span class="pre">gtk-launch</span></code></p></li>
+<li><p>run <code class="file docutils literal notranslate"><span class="pre">/etc/qubes-rpc/qubes.GetAppmenus</span></code> and check that your desktop entry is listed in the output</p></li>
+</ol>
+</section>
+</section>
+<section id="what-about-applications-in-disposables">
+<h2>What about applications in disposables?<a class="headerlink" href="#what-about-applications-in-disposables" title="連結到這個標頭"></a></h2>
+<p>See <a class="reference internal" href="../advanced-topics/disposable-customization.html#add-programs-to-the-app-menu"><span class="std std-ref">Add programs to the app menu in Disposable customization</span></a>.</p>
+</section>
+<section id="what-if-a-removed-application-is-still-in-the-app-menu">
+<h2>What if a removed application is still in the app menu?<a class="headerlink" href="#what-if-a-removed-application-is-still-in-the-app-menu" title="連結到這個標頭"></a></h2>
+<p>First, try this in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-appmenus<span class="w"> </span>--update<span class="w"> </span>--force<span class="w"> </span>&lt;QUBE_NAME&gt;
+</pre></div>
+</div>
+<p>You can also try:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-appmenus<span class="w"> </span>--remove<span class="w"> </span>&lt;QUBE_NAME&gt;
+</pre></div>
+</div>
+<p>If that doesn’t work, you can manually modify the files in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/applications/</span></code> or in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/qubes-appmenus/</span><em><span class="pre">&lt;QUBE_NAME&gt;</span></em></code>.</p>
+<p>For example, suppose you’ve deleted <code class="docutils literal notranslate"><span class="pre">my-old-vm</span></code>, but there is a leftover Application Menu shortcut, and you find a related file in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/applications/</span></code>, try to delete it. The hyphens in the name of the qube are replaced by an underscore and the letter, so instead of looking for <code class="docutils literal notranslate"><span class="pre">my-old-vm</span></code>, try <code class="docutils literal notranslate"><span class="pre">my_dold_dvm</span></code>.</p>
+</section>
+<section id="what-if-my-application-is-shown-in-app-menu-but-doesn-t-run-anything">
+<h2>What if my application is shown in app menu, but doesn't run anything?<a class="headerlink" href="#what-if-my-application-is-shown-in-app-menu-but-doesn-t-run-anything" title="連結到這個標頭"></a></h2>
+<p>First, check in the corresponding <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/qubes-appmenus/</span><em><span class="pre">&lt;QUBE_NAME&gt;</span></em><span class="pre">/</span></code>, inside dom0.</p>
+<p>The line starting with <code class="docutils literal notranslate"><span class="pre">Exec=</span></code> points out the exact command run by dom0 to start the application. It should be something like:</p>
+<div class="highlight-desktop notranslate"><div class="highlight"><pre><span></span><span class="na">Exec</span><span class="o">=</span><span class="s">qvm-run -q -a --service -- &lt;QUBE_NAME&gt; qubes.StartApp+&lt;APPLICATION_NAME&gt;</span>
+</pre></div>
+</div>
+<p>It’s possible to run the command to check the output, by copying this line without <code class="docutils literal notranslate"><span class="pre">Exec=</span></code>, and remove <code class="docutils literal notranslate"><span class="pre">-q</span></code> (quiet option). But it could be more useful to run it in the qube, with the <code class="docutils literal notranslate"><span class="pre">qubes.StartApp</span></code> service:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@any-qube] $ </span>/etc/qubes-rpc/qubes.StartApp<span class="w"> </span>&lt;APPLICATION_NAME&gt;
+</pre></div>
+</div>
+</section>
+<section id="behind-the-scenes">
+<h2>Behind the scenes<a class="headerlink" href="#behind-the-scenes" title="連結到這個標頭"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">qvm-sync-appmenus</span></code> works by invoking the <em>GetAppMenus</em> <a class="reference internal" href="../../developer/services/qrexec.html"><span class="doc">Qubes service</span></a> in the target domain. This service enumerates applications installed in that qube and sends formatted info back to dom0 which creates <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> files in the app qube/template directory of dom0.</p>
+<blockquote>
+<div><p>For Linux qubes the service script is in <code class="file docutils literal notranslate"><span class="pre">/etc/qubes-rpc/qubes.GetAppMenus`</span></code>. In Windows it’s a PowerShell script located in <code class="file docutils literal notranslate"><span class="pre">c:Program</span> <span class="pre">FilesInvisible</span> <span class="pre">Things</span> <span class="pre">LabQubes</span> <span class="pre">OS</span> <span class="pre">Windows</span> <span class="pre">Toolsqubes-rpc-servicesget-appmenus.ps1</span></code> by default.</p>
+</div></blockquote>
+<p>The list of installed applications for each app qube is stored in dom0’s <code class="file docutils literal notranslate"><span class="pre">~/.local/share/qubes-appmenus/</span><em><span class="pre">&lt;QUBE_NAME&gt;</span></em><span class="pre">/apps.templates</span></code>. Each menu entry is a file that follows the <a class="reference external" href="https://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html">.desktop file format</a> with some wildcards (<code class="docutils literal notranslate"><span class="pre">%VMNAME%</span></code>, <code class="docutils literal notranslate"><span class="pre">%VMDIR%</span></code>). Applications selected to appear in the menu are stored in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/qubes-appmenus/</span><em><span class="pre">&lt;QUBE_NAME&gt;</span></em><span class="pre">/apps</span></code> and in <code class="file docutils literal notranslate"><span class="pre">~/.local/share/applications/</span></code>.</p>
+<p>The whitelist given to <code class="docutils literal notranslate"><span class="pre">qvm-appmenu</span> <span class="pre">--set-whitelist</span></code> is stored as a feature called <code class="docutils literal notranslate"><span class="pre">menu-items</span></code>, where each desktop entry is separated by a space.</p>
+<p>Actual command lines for the menu shortcuts involve the <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code> command which starts a process in another domain. Examples:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>-q<span class="w"> </span>-a<span class="w"> </span>--service<span class="w"> </span>--<span class="w"> </span>%VMNAME%<span class="w"> </span>qubes.StartApp+firefox
+<span class="gp">$ </span>qvm-run<span class="w"> </span>-q<span class="w"> </span>-a<span class="w"> </span>--service<span class="w"> </span>--<span class="w"> </span>%VMNAME%<span class="w"> </span>qubes.StartApp+7-Zip-7-Zip_File_Manager
+</pre></div>
+</div>
+<p>Note that you can create a shortcut that points to a <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file in your app qube with e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>-q<span class="w"> </span>-a<span class="w"> </span>--service<span class="w"> </span>--<span class="w"> </span>personal<span class="w"> </span>qubes.StartApp+firefox
+</pre></div>
+</div>
+<p>While this works well for standard applications, creating a menu entry for Windows applications running under <em>wine</em> may need an additional step in order to establish the necessary environment in <em>wine</em>. Installing software under <em>wine</em> will create the needed <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file in the target Linux qube in the directory <code class="file docutils literal notranslate"><span class="pre">~/.local/share/applications/wine/Programs/</span></code> or a subdirectory thereof, depending on the Windows menu structure seen under <em>wine</em>. If the name of this file contains spaces, it will not be found, because the <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code> command is falsely seen as terminating at this space. The solution is to remove these spaces by renaming the <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> file accordingly, e.g. by renaming <code class="file docutils literal notranslate"><span class="pre">Microsoft</span> <span class="pre">Excel.desktop</span></code> to <code class="file docutils literal notranslate"><span class="pre">Excel.desktop</span></code>. Refreshing the menu structure will then build working menu entries.</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Applications installed under <em>wine</em> are installed in AppVMs, not in the template on which these AppVMs are based, as the file structure used by <em>wine</em> is stored under <code class="file docutils literal notranslate"><span class="pre">~/.wine</span></code>, which is part of the persistent data of the AppVM and not inherited from its template.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="resume-suspend-troubleshooting.html" class="btn btn-neutral float-left" title="Suspend/resume troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vm-troubleshooting.html" class="btn btn-neutral float-right" title="Qube 疑難排解" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/troubleshooting/app-menu-shortcut-troubleshooting.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

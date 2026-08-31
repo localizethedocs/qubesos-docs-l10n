@@ -1,0 +1,1483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Admin API" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/services/admin-api.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="You may also be interested in the article Introducing the Qubes Admin API. Goals: The goals of the Admin API system is to provide a way for the user to manage the domains without direct access to d..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="You may also be interested in the article Introducing the Qubes Admin API. Goals: The goals of the Admin API system is to provide a way for the user to manage the domains without direct access to d..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin API &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/services/admin-api.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="Qfileexchgd (deprecated)" href="qfileexchgd.html" />
+    <link rel="prev" title="Qrexec: socket-based services" href="qrexec-socket-services.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Admin API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#goals">Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#threat-model">Threat model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-calls">The calls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#returned-messages">Returned messages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ok-0">OK (0)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#event-1">EVENT (1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exception-2">EXCEPTION (2)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tags">Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backup-profile">Backup profile</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#device-serialization">Device Serialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#general-notes">General notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#policy-admin-api">Policy admin API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#todo">TODO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Admin API</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/services/admin-api.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="admin-api">
+<h1>Admin API<a class="headerlink" href="#admin-api" title="連結到這個標頭"></a></h1>
+<p><em>You may also be interested in the article</em> <a class="reference external" href="https://www.qubes-os.org/news/2017/06/27/qubes-admin-api/">Introducing the Qubes Admin API</a><em>.</em></p>
+<section id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="連結到這個標頭"></a></h2>
+<p>The goals of the Admin API system is to provide a way for the user to
+manage the domains without direct access to dom0.</p>
+<p>Foreseen benefits include:</p>
+<ul class="simple">
+<li><p>Ability to remotely manage the Qubes OS.</p></li>
+<li><p>Possibility to create multi-user system, where different users are
+able to use different sets of domains, possibly overlapping. This
+would also require to have separate GUI domain.</p></li>
+</ul>
+<p>The API would be used by:</p>
+<ul class="simple">
+<li><p>Qubes OS Manager (or any tools that would replace it)</p></li>
+<li><p>CLI tools, when run from another VM (and possibly also from dom0)</p></li>
+<li><p>remote management tools</p></li>
+<li><p>any custom tools</p></li>
+</ul>
+</section>
+<section id="threat-model">
+<h2>Threat model<a class="headerlink" href="#threat-model" title="連結到這個標頭"></a></h2>
+<p>TBD</p>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="連結到這個標頭"></a></h2>
+<figure class="align-default">
+<img alt="Admin API Architecture" src="../../_images/admin-api-architecture.png" />
+</figure>
+<p>A central entity in the Qubes Admin API system is a <code class="docutils literal notranslate"><span class="pre">qubesd</span></code> daemon,
+which holds information about all domains in the system and mediates all
+actions (like starting and stopping a qube) with <code class="docutils literal notranslate"><span class="pre">libvirtd</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">qubesd</span></code> daemon also manages the <code class="docutils literal notranslate"><span class="pre">qubes.xml</span></code> file, which stores all
+persistent state information and dispatches events to extensions. Last
+but not least, <code class="docutils literal notranslate"><span class="pre">qubesd</span></code> is responsible for querying the RPC policy for
+qrexec daemon.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">qubesd</span></code> daemon may be accessed from other domains through a set
+of qrexec API calls called the “Admin API”. This API is the intended
+management interface supported by the Qubes OS. The API is stable. When
+called, the RPC handler performs basic validation and forwards the
+request to the <code class="docutils literal notranslate"><span class="pre">qubesd</span></code> via UNIX domain socket. The socket API is
+private, unstable, and not yet documented.</p>
+</section>
+<section id="the-calls">
+<h2>The calls<a class="headerlink" href="#the-calls" title="連結到這個標頭"></a></h2>
+<p>The API should be implemented as a set of qrexec calls. This is to make
+it easy to set the policy using current mechanism.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 16.5%" />
+<col style="width: 8.8%" />
+<col style="width: 8.8%" />
+<col style="width: 11.0%" />
+<col style="width: 22.0%" />
+<col style="width: 33.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>dest</p></th>
+<th class="head"><p>argument</p></th>
+<th class="head"><p>inside</p></th>
+<th class="head"><p>return</p></th>
+<th class="head"><p>note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vmclass.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;class&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0|&lt;vm&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span> <span class="pre">class=&lt;class&gt;</span> <span class="pre">state=&lt;state&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Create.&lt;class&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>template</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">name=&lt;name&gt;</span> <span class="pre">label=&lt;label&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.CreateInPool.&lt;class&gt;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>template</p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">name=&lt;name&gt;</span> <span class="pre">label=&lt;label&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pool=&lt;pool&gt;</span> <span class="pre">pool:&lt;volume&gt;=&lt;pool&gt;</span></code></div>
+</div>
+</td>
+<td><p><cite>-</cite></p></td>
+<td><div class="line-block">
+<div class="line">either use <code class="docutils literal notranslate"><span class="pre">pool=</span></code> to put all volumes there,</div>
+<div class="line">or <code class="docutils literal notranslate"><span class="pre">pool:&lt;volume&gt;=</span></code> for individual volumes - both forms are not allowed at the same time</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.CreateDisposable</span></code></p></td>
+<td><p>template</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>name</p></td>
+<td><p>Create new DisposableVM, <code class="docutils literal notranslate"><span class="pre">template</span></code> is any AppVM with <code class="docutils literal notranslate"><span class="pre">dispvm_allowed</span></code> set to True, or <code class="docutils literal notranslate"><span class="pre">dom0</span></code> to use default defined in <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> property of calling VM; VM created with this call will be automatically removed after its shutdown; the main difference from <code class="docutils literal notranslate"><span class="pre">admin.vm.Create.DispVM</span></code> is automatic (random) name generation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Remove</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.label.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.label.Create</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>label</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0xRRGGBB</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.label.Get</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>label</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0xRRGGBB</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.label.Index</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>label</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;label-index&gt;</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.label.Remove</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>label</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.Get</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">default={True|False}</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">type={str|int|bool|vm|label|list}</span> <span class="pre">&lt;value&gt;</span></code></div>
+</div>
+</td>
+<td><p>Type <code class="docutils literal notranslate"><span class="pre">list</span></code> is added in R4.1. Values are of type <code class="docutils literal notranslate"><span class="pre">str</span></code> and each entry is suffixed with newline character.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.GetAll</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property-name&gt;</span> <span class="pre">&lt;full-value-as-in-property.Get&gt;\n</span></code></p></td>
+<td><p>Get all the properties in one call. Each property is returned on a separate line and use the same value encoding as property.Get method, with an exception that newlines are encoded as literal <code class="docutils literal notranslate"><span class="pre">\n</span></code> and literal <code class="docutils literal notranslate"><span class="pre">\</span></code> are encoded as <code class="docutils literal notranslate"><span class="pre">\\</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.GetDefault</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type={str|int|bool|vm|label|list}</span> <span class="pre">&lt;value&gt;</span></code></p></td>
+<td><p>Type <code class="docutils literal notranslate"><span class="pre">list</span></code> is added in R4.1. Values are of type <code class="docutils literal notranslate"><span class="pre">str</span></code> and each entry is suffixed with newline character.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.Help</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">help</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.HelpRst</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">help.rst</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.Reset</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.property.Set</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>property</p></td>
+<td><p>value</p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.List</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.Get</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">default={True|False}</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">type={str|int|bool|vm|label|list}</span> <span class="pre">&lt;value&gt;</span></code></div>
+</div>
+</td>
+<td><p>Type <code class="docutils literal notranslate"><span class="pre">list</span></code> is added in R4.1. Each list entry is suffixed with a newline character.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.GetAll</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property-name&gt;</span> <span class="pre">&lt;full-value-as-in-property.Get&gt;\n</span></code></p></td>
+<td><p>Get all the properties in one call. Each property is returned on a separate line and use the same value encoding as property.Get method, with an exception that newlines are encoded as literal <code class="docutils literal notranslate"><span class="pre">\n</span></code> and literal <code class="docutils literal notranslate"><span class="pre">\</span></code> are encoded as <code class="docutils literal notranslate"><span class="pre">\\</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.GetDefault</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type={str|int|bool|vm|label|type}</span> <span class="pre">&lt;value&gt;</span></code></p></td>
+<td><p>Type <code class="docutils literal notranslate"><span class="pre">list</span></code> is added in R4.1. Each list entry is suffixed with a newline character</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.Help</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">help</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.HelpRst</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">help.rst</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.Reset</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>property</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.property.Set</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>property</p></td>
+<td><p>value</p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.List</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.Get</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>value</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.CheckWithTemplate</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>value</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.CheckWithNetvm</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>value</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.CheckWithAdminVM</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>value</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.CheckWithTemplateAndAdminVM</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>value</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.Remove</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.feature.Set</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>feature</p></td>
+<td><p>value</p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.notes.Get</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>notes</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.notes.Set</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>notes</p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.tag.List</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;tag&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.tag.Get</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>tag</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>retcode?</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.tag.Remove</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>tag</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.tag.Set</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>tag</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.firewall.Get</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;rule&gt;\n</span></code></p></td>
+<td><p>rules syntax as in <a class="reference internal" href="../debugging/vm-interface.html#firewall-rules-in-4-x"><span class="std std-ref">firewall interface</span></a> with addition of <code class="docutils literal notranslate"><span class="pre">expire=</span></code> and <code class="docutils literal notranslate"><span class="pre">comment=</span></code> options; <code class="docutils literal notranslate"><span class="pre">comment=</span></code> (if present) must be the last option</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.firewall.Set</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;rule&gt;\n</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>set firewall rules, see <code class="docutils literal notranslate"><span class="pre">admin.vm.firewall.Get</span></code> for syntax</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.firewall.Reload</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>force reload firewall without changing any rule</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Attach</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device</p></td>
+<td><p>assignment-serialization</p></td>
+<td><p><cite>-</cite></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">device</span></code> is in form <code class="docutils literal notranslate"><span class="pre">&lt;backend-name&gt;+&lt;device-ident&gt;</span></code></div>
+<div class="line">optional options given in <code class="docutils literal notranslate"><span class="pre">key=value</span></code> format, separated with spaces;</div>
+<div class="line">options can include <code class="docutils literal notranslate"><span class="pre">persistent=True</span></code> to &quot;persistently&quot; attach the device (default is temporary)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Detach</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">device</span></code> is in form <code class="docutils literal notranslate"><span class="pre">&lt;backend-name&gt;+&lt;device-ident&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Assign</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device</p></td>
+<td><p>assignment-serialization</p></td>
+<td><p><cite>-</cite></p></td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">device</span></code> is in form <code class="docutils literal notranslate"><span class="pre">&lt;backend-name&gt;+&lt;device-ident&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assignment-serialization</span></code> is specified in the section Device Serialization.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Unassign</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">device</span></code> is in form <code class="docutils literal notranslate"><span class="pre">&lt;backend-name&gt;+&lt;device-ident&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Set.required</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True|False</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">device</span></code> is in form <code class="docutils literal notranslate"><span class="pre">&lt;backend-name&gt;+&lt;device-ident&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.deviceclass.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;deviceclass&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Available</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device-ident</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;device-ident&gt;</span> <span class="pre">&lt;device-serialization&gt;\n</span></code></p></td>
+<td><div class="line-block">
+<div class="line">optional service argument may be used to get info about a single device,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">device-serialization</span></code> is specified in the section Device Serialization.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Assigned</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device-ident</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;device-ident&gt;</span> <span class="pre">&lt;assignment-serialization&gt;\n</span></code></p></td>
+<td><div class="line-block">
+<div class="line">optional service argument may be used to get info about a single device,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assignment-serialization</span></code> is specified in the section Device Serialization.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.device.&lt;class&gt;.Attached</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>device-ident</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;device-ident&gt;</span> <span class="pre">&lt;assignment-serialization&gt;\n</span></code></p></td>
+<td><div class="line-block">
+<div class="line">optional service argument may be used to get info about a single device,</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">assignment-serialization</span></code> is specified in the section Device Serialization.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;pool&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.ListDrivers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;pool-driver&gt;</span> <span class="pre">&lt;property&gt;</span> <span class="pre">...\n</span></code></p></td>
+<td><p>Properties allowed in <code class="docutils literal notranslate"><span class="pre">admin.pool.Add</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.Info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;=&lt;value&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.Add</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>driver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;=&lt;value&gt;\n</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.Set.revisions_to_keep</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;value&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.Remove</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.List</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>volume id</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.Info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p>vid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;=&lt;value&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.Set.revisions_to_keep</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;vid&gt;</span> <span class="pre">&lt;value&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.ListSnapshots</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p>vid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;snapshot&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.Snapshot</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p>vid</p></td>
+<td><p>snapshot</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.Revert</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;vid&gt;</span> <span class="pre">&lt;snapshot&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.Resize</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;vid&gt;</span> <span class="pre">&lt;size_in_bytes&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.Import</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;vid&gt;\n&lt;raw</span> <span class="pre">volume</span> <span class="pre">data&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.CloneFrom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p>vid</p></td>
+<td><p>token, to be used in <code class="docutils literal notranslate"><span class="pre">admin.pool.volume.CloneTo</span></code></p></td>
+<td><div class="line-block">
+<div class="line">obtain a token to copy volume <code class="docutils literal notranslate"><span class="pre">vid</span></code> in <code class="docutils literal notranslate"><span class="pre">pool</span></code>;</div>
+<div class="line">the token is one time use only, it's invalidated by <code class="docutils literal notranslate"><span class="pre">admin.pool.volume.CloneTo</span></code>, even if the operation fails</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.pool.volume.CloneTo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>pool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;vid&gt;</span> <span class="pre">&lt;token&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>copy volume pointed by a token to volume <code class="docutils literal notranslate"><span class="pre">vid</span></code> in <code class="docutils literal notranslate"><span class="pre">pool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.List</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;volume&gt;\n</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;volume&gt;</span></code> is per-VM volume name (<code class="docutils literal notranslate"><span class="pre">root</span></code>, <code class="docutils literal notranslate"><span class="pre">private</span></code>, etc), <code class="docutils literal notranslate"><span class="pre">&lt;vid&gt;</span></code> is pool-unique volume id</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Info</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;property&gt;=&lt;value&gt;\n</span></code></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Set.revisions_to_keep</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p>value</p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.ListSnapshots</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>snapshot</p></td>
+<td><p>duplicate of <code class="docutils literal notranslate"><span class="pre">admin.pool.volume.</span></code>, but with other call params</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Snapshot</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>snapshot</p></td>
+<td><p>id.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Revert</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p>snapshot</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Resize</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p>size_in_bytes</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>id.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Import</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p>raw volume data</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>id.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.ImportWithSize</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;size_in_bytes&gt;\n&lt;raw</span> <span class="pre">volume</span> <span class="pre">data&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>new version of <code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Import</span></code>, allows new volume to be different size</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.Clear</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>clear contents of volume</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.CloneFrom</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>token, to be used in <code class="docutils literal notranslate"><span class="pre">admin.vm.volume.CloneTo</span></code></p></td>
+<td><div class="line-block">
+<div class="line">obtain a token to copy <code class="docutils literal notranslate"><span class="pre">volume</span></code> of <code class="docutils literal notranslate"><span class="pre">vm</span></code>;</div>
+<div class="line">the token is one time use only, it's invalidated by <code class="docutils literal notranslate"><span class="pre">admin.vm.volume.CloneTo</span></code>, even if the operation fails</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.volume.CloneTo</span></code></p></td>
+<td><p>vm</p></td>
+<td><p>volume</p></td>
+<td><p>token, obtained with <code class="docutils literal notranslate"><span class="pre">admin.vm.volume.CloneFrom</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>copy volume pointed by a token to <code class="docutils literal notranslate"><span class="pre">volume</span></code> of <code class="docutils literal notranslate"><span class="pre">vm</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.CurrentState</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;state-property&gt;=&lt;value&gt;\n</span></code></p></td>
+<td><p>state properties: <code class="docutils literal notranslate"><span class="pre">power_state</span></code>, <code class="docutils literal notranslate"><span class="pre">mem</span></code>, <code class="docutils literal notranslate"><span class="pre">mem_static_max</span></code>, <code class="docutils literal notranslate"><span class="pre">cputime</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Start</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Shutdown</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Pause</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Unpause</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Kill</span></code></p></td>
+<td><p>vm</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.backup.Execute</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>config id</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>config in <code class="docutils literal notranslate"><span class="pre">/etc/qubes/backup/&lt;id&gt;.conf</span></code>, only one backup operation of given <code class="docutils literal notranslate"><span class="pre">config</span> <span class="pre">id</span></code> can be running at once</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.backup.Info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>config id</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>backup info</p></td>
+<td><p>info what would be included in the backup</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.backup.Cancel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0</span></code></p></td>
+<td><p>config id</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>cancel running backup operation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">admin.Events</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0|vm</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p>events</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">admin.vm.Stats</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">dom0|vm</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vm-stats</span></code> events, see below</p></td>
+<td><p>emit VM statistics (CPU, memory usage) in form of events</p></td>
+</tr>
+</tbody>
+</table>
+<p>Volume properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pool</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vid</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rw</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save_on_stop</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">snap_on_start</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">revisions_to_keep</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_outdated</span></code></p></li>
+</ul>
+<p>Method <code class="docutils literal notranslate"><span class="pre">admin.vm.Stats</span></code> returns <code class="docutils literal notranslate"><span class="pre">vm-stats</span></code> events every
+<code class="docutils literal notranslate"><span class="pre">stats_interval</span></code> seconds, for every running VM. Parameters of
+<code class="docutils literal notranslate"><span class="pre">vm-stats</span></code> events:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">memory_kb</span></code> - memory usage in kB</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpu_time</span></code> - absolute CPU time (in milliseconds) spent by the VM
+since its startup, normalized for one CPU</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpu_usage</span></code> - CPU usage in percents</p></li>
+</ul>
+</section>
+<section id="returned-messages">
+<h2>Returned messages<a class="headerlink" href="#returned-messages" title="連結到這個標頭"></a></h2>
+<p>First byte of a message is a message type. This is 8 bit non-zero
+integer. Values start at 0x30 (48, <code class="docutils literal notranslate"><span class="pre">'0'</span></code>, zero digit in ASCII) for
+readability in hexdump. Next byte must be 0x00 (a separator).</p>
+<p>This alternatively can be thought of as zero-terminated string
+containing single ASCII digit.</p>
+<section id="ok-0">
+<h3>OK (0)<a class="headerlink" href="#ok-0" title="連結到這個標頭"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>30 00 &lt;content&gt;
+</pre></div>
+</div>
+<p>Server will close the connection after delivering single message.</p>
+</section>
+<section id="event-1">
+<h3>EVENT (1)<a class="headerlink" href="#event-1" title="連結到這個標頭"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>31 00 &lt;subject&gt; 00 &lt;event&gt; 00 ( &lt;key&gt; 00 &lt;value&gt; 00 )* 00
+</pre></div>
+</div>
+<p>Events are returned as stream of messages in selected API calls.
+Normally server will not close the connection.</p>
+<p>A method yielding events will not ever return a <code class="docutils literal notranslate"><span class="pre">OK</span></code> or <code class="docutils literal notranslate"><span class="pre">EXCEPTION</span></code>
+message.</p>
+<p>When calling such method, it will produce an artificial event
+<code class="docutils literal notranslate"><span class="pre">connection-established</span></code> just after connection, to help avoiding race
+conditions during event handler registration.</p>
+</section>
+<section id="exception-2">
+<h3>EXCEPTION (2)<a class="headerlink" href="#exception-2" title="連結到這個標頭"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>32 00 &lt;type&gt; 00 ( &lt;traceback&gt; )? 00 &lt;format string&gt; 00 ( &lt;field&gt; 00 )*
+</pre></div>
+</div>
+<p>Server will close the connection.</p>
+<p>Traceback may be empty, can be enabled server-side as part of debug
+mode. Delimiting zero-byte is always present.</p>
+<p>Fields should be formatted to <code class="docutils literal notranslate"><span class="pre">%</span></code>-style format string, possibly
+after client-side translation, to form final message to be displayed
+to the user. Server does not by itself support translation.</p>
+</section>
+</section>
+<section id="tags">
+<h2>Tags<a class="headerlink" href="#tags" title="連結到這個標頭"></a></h2>
+<p>The tags provided can be used to write custom policies. They are not
+used in a default Qubes OS installation. However, they are created
+anyway.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">created-by-&lt;vm&gt;</span></code> — Created in an extension to <cite>qubesd</cite> at the moment
+of creation of the VM. Cannot be changed via API, which is also
+enforced by this extension.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">managed-by-&lt;vm&gt;</span></code> — Can be used for the same purpose, but it is not
+created automatically, nor is it forbidden to set or reset this tag.</p></li>
+</ul>
+</section>
+<section id="backup-profile">
+<h2>Backup profile<a class="headerlink" href="#backup-profile" title="連結到這個標頭"></a></h2>
+<p>Backup-related calls do not allow (yet) to specify what should be
+included in the backup. This needs to be configured separately in dom0,
+with a backup profile, stored in <code class="docutils literal notranslate"><span class="pre">/etc/qubes/backup/&lt;profile&gt;.conf</span></code>.
+The file use yaml syntax and have following settings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">include</span></code> - list of VMs to include, can also contains tags using
+<code class="docutils literal notranslate"><span class="pre">$tag:some-tag</span></code> syntax or all VMs of given type using
+<code class="docutils literal notranslate"><span class="pre">$type:AppVM</span></code>, known from qrexec policy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exclude</span></code> - list of VMs to exclude, after evaluating <code class="docutils literal notranslate"><span class="pre">include</span></code>
+setting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">destination_vm</span></code> - VM to which the backup should be send</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">destination_path</span></code> - path to which backup should be written in
+<code class="docutils literal notranslate"><span class="pre">destination_vm</span></code>. This setting is given to <code class="docutils literal notranslate"><span class="pre">qubes.Backup</span></code> service
+and technically it’s up to it how to interpret it. In current
+implementation it is interpreted as a directory where a new file
+should be written (with a name based on the current timestamp), or a
+command where the backup should be piped to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compression</span></code> - should the backup be compressed (default: True)?
+The value can be either <code class="docutils literal notranslate"><span class="pre">False</span></code> or <code class="docutils literal notranslate"><span class="pre">True</span></code> for default
+compression, or a compression command (needs to accept <code class="docutils literal notranslate"><span class="pre">-d</span></code>
+argument for decompression)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passphrase_text</span></code> - passphrase used to encrypt and integrity
+protect the backup</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">passphrase_vm</span></code> - VM which should be asked what backup passphrase
+should be used. The asking is performed using
+<code class="docutils literal notranslate"><span class="pre">qubes.BackupPassphrase+profile_name</span></code> service, which is expected to
+output chosen passphrase to its stdout. Empty output cancel the
+backup operation. This service can be used either to ask the user
+interactively, or to have some automated passphrase handling (for
+example: generate randomly, then encrypt with a public key and send
+somewhere)</p></li>
+</ul>
+<p>Not all settings needs to be set.</p>
+<p>Example backup profile:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backup only selected VMs</span>
+<span class="nt">include</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">work</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">personal</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">banking</span>
+
+<span class="c1"># Store the backup on external disk</span>
+<span class="nt">destination_vm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sys-usb</span>
+<span class="nt">destination_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/media/my-backup-disk</span>
+
+<span class="c1"># Use static passphrase</span>
+<span class="nt">passphrase_text</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;My$Very!@Strong23Passphrase&quot;</span>
+</pre></div>
+</div>
+<p>And slightly more advanced one:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Include all VMs with a few exceptions</span>
+<span class="nt">include</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$type:AppVM</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$type:TemplateVM</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$type:StandaloneVM</span>
+<span class="nt">exclude</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">untrusted</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$tag:do-not-backup</span>
+
+<span class="c1"># parallel gzip for faster backup</span>
+<span class="nt">compression</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pigz</span>
+
+<span class="c1"># ask &#39;vault&#39; VM for the backup passphrase</span>
+<span class="nt">passphrase_vm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+
+<span class="c1"># send the (encrypted) backup directly to remote server</span>
+<span class="nt">destination_vm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sys-net</span>
+<span class="nt">destination_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ncftpput -u my-ftp-username -p my-ftp-pass -c my-ftp-server /directory/for/backups</span>
+</pre></div>
+</div>
+<section id="device-serialization">
+<h3>Device Serialization<a class="headerlink" href="#device-serialization" title="連結到這個標頭"></a></h3>
+<p>Both device and assignment serialization is ASCII-encoded and contains space-separated key-value pairs. The format includes an <code class="docutils literal notranslate"><span class="pre">=</span></code> between the key and value, and the value is always enclosed in single quotes (<code class="docutils literal notranslate"><span class="pre">'</span></code>). Values may contain spaces or even single quotes, which are escaped with a backslash. If a value is not set (<code class="docutils literal notranslate"><span class="pre">None</span></code>), it is represented as <code class="docutils literal notranslate"><span class="pre">'unknown'</span></code>. For boolean values, <code class="docutils literal notranslate"><span class="pre">True</span></code> is represented as <code class="docutils literal notranslate"><span class="pre">'yes'</span></code>, and <code class="docutils literal notranslate"><span class="pre">False</span></code> as <code class="docutils literal notranslate"><span class="pre">'no'</span></code>. The order of key-value pairs is irrelevant. Keys starting with <code class="docutils literal notranslate"><span class="pre">_</span></code> are considered extra properties and are saved in <code class="docutils literal notranslate"><span class="pre">data</span></code> or <code class="docutils literal notranslate"><span class="pre">options</span></code> for device or assignment respectively.</p>
+<p>Information about the serialization format of specific properties can be found below.</p>
+<p>Format:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;ident&gt; &lt;property_1&gt;=&#39;&lt;value_1&gt;&#39; &lt;property_2&gt;=&#39;&lt;value_2&gt;&#39; &lt;property_3&gt;=&#39;&lt;value_3&gt;&#39;...
+</pre></div>
+</div>
+<p>Detailed serialization format for a device:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ident='&lt;ident&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backend_domain='&lt;backend_domain.name&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">devclass='&lt;devclass&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vendor='&lt;vendor&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">product='&lt;product&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">manufacturer='&lt;manufacturer&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name='&lt;name&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">serial='&lt;serial&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self_identity='&lt;self_identity&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interfaces='&lt;interface1&gt;&lt;interface2&gt;...'</span></code> Each device interface is represented with a 7-character length. Each device has at least one interface. Since the length of the interface representation is known, they are serialized as a single string with each interface representation concatenated one after another. The order is irrelevant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parent_ident='&lt;parent.ident&gt;'</span> <span class="pre">parent_devclass='&lt;parent.devclass&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">attachment='&lt;attachment.name&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_&lt;key1&gt;='&lt;value1&gt;'</span> <span class="pre">_&lt;key2&gt;='&lt;value2&gt;'</span> <span class="pre">...</span></code> (extra parameters)</p></li>
+</ul>
+<p>Detailed serialization format for an assignment:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ident='&lt;ident&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backend_domain='&lt;backend_domain.name&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">devclass='&lt;devclass&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frontend_domain='&lt;frontend_domain.name&gt;'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">required='&lt;yes/no&gt;'</span></code> (default ‘no’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">attach_automatically='&lt;yes/no&gt;'</span></code> (default ‘no’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_&lt;key1&gt;='&lt;str(value1)&gt;'</span> <span class="pre">_&lt;key2&gt;='&lt;str(value2)&gt;'</span> <span class="pre">...</span></code> (options)</p></li>
+</ul>
+<p>Example device serialization:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1-1.1.1 manufacturer=&#39;unknown&#39; self_identity=&#39;0000:0000::?******&#39; serial=&#39;unknown&#39; ident=&#39;1-1.1.1&#39; product=&#39;Qubes&#39; vendor=&#39;ITL&#39; name=&#39;Some untrusted garbage&#39; devclass=&#39;bus&#39; backend_domain=&#39;vm&#39; interfaces=&#39; ******u03**01&#39; _additional_info=&#39;&#39; _date=&#39;06.12.23&#39; parent_ident=&#39;1-1.1&#39; parent_devclass=&#39;None&#39;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="general-notes">
+<h2>General notes<a class="headerlink" href="#general-notes" title="連結到這個標頭"></a></h2>
+<ul class="simple">
+<li><p>there is no provision for <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code>, but there already exists
+<code class="docutils literal notranslate"><span class="pre">qubes.VMShell</span></code> call</p></li>
+<li><p>generally actions <code class="docutils literal notranslate"><span class="pre">*.List</span></code> return a list of objects and have
+“object identifier” as first word in a row. Such action can be also
+called with “object identifier” in argument to get only a single
+entry (in the same format).</p></li>
+<li><p>closing qrexec connection normally does <em>not</em> interrupt running
+operation; this is important to avoid leaving the system in
+inconsistent state</p></li>
+<li><p>actual operation starts only after caller send all the parameters
+(including a payload), signaled by sending EOF mark; there is no
+support for interactive protocols, to keep the protocol reasonable
+simple</p></li>
+</ul>
+</section>
+<section id="policy-admin-api">
+<h2>Policy admin API<a class="headerlink" href="#policy-admin-api" title="連結到這個標頭"></a></h2>
+<p>There is also an API to view and update <a class="reference internal" href="qrexec.html"><span class="doc">Qubes RPC policy files</span></a> in dom0. All of the following calls have dom0 as
+destination:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>argument</p></th>
+<th class="head"><p>inside</p></th>
+<th class="head"><p>return</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">policy.List</span></code>
+<code class="docutils literal notranslate"><span class="pre">policy.include.List</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;name1&gt;</span>
+<span class="pre">\n&lt;name2&gt;\n...</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">policy.Get</span></code>
+<code class="docutils literal notranslate"><span class="pre">policy.include.Get</span></code></p></td>
+<td><p>name</p></td>
+<td><p><cite>-</cite></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span>
+<span class="pre">\n&lt;content&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">policy.Replace</span></code>
+<code class="docutils literal notranslate"><span class="pre">policy.include.Replace</span></code></p></td>
+<td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;\n&lt;content&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">policy.Remove</span></code>
+<code class="docutils literal notranslate"><span class="pre">policy.include.Remove</span></code></p></td>
+<td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;token&gt;</span></code></p></td>
+<td><p><cite>-</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">policy.*</span></code> calls refer to main policy files
+(<code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/</span></code>), and the <code class="docutils literal notranslate"><span class="pre">policy.include.*</span></code> calls refer to
+the include directory (<code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/include/</span></code>). The
+<code class="docutils literal notranslate"><span class="pre">.policy</span></code> extension for files in the main directory is always omitted.</p>
+<p>The responses do not follow admin API protocol, but signal error using
+an exit code and a message on stdout.</p>
+<p>The changes are validated before saving, so that the policy cannot end
+up in an invalid state (e.g. syntax error, missing include file).</p>
+<p>In addition, there is a mechanism to prevent concurrent modifications of
+the policy files:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">*.Get</span></code> call returns a file along with a <em>token</em> (currently
+implemented as a hash of the file).</p></li>
+<li><p>When calling <code class="docutils literal notranslate"><span class="pre">Replace</span></code> or <code class="docutils literal notranslate"><span class="pre">Remove</span></code>, you need to include the
+current token as first line. If the token does not match, the
+modification will fail.</p></li>
+<li><p>When adding a new file using <code class="docutils literal notranslate"><span class="pre">Replace</span></code>, pass <code class="docutils literal notranslate"><span class="pre">new</span></code> as token. This
+will ensure that the file does not exist before adding.</p></li>
+<li><p>To skip the check, pass <code class="docutils literal notranslate"><span class="pre">any</span></code> as token.</p></li>
+</ul>
+</section>
+<section id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="連結到這個標頭"></a></h2>
+<ul class="simple">
+<li><p>notifications</p>
+<ul>
+<li><p>how to constrain the events?</p></li>
+<li><p>how to pass the parameters? maybe XML, since this is trusted
+anyway and parser may be complicated</p></li>
+</ul>
+</li>
+<li><p>how to constrain the possible values for <code class="docutils literal notranslate"><span class="pre">admin.vm.property.Set</span></code>
+etc, like “you can change <code class="docutils literal notranslate"><span class="pre">netvm</span></code>, but you have to pick from this
+set”; this currently can be done by writing an extension</p></li>
+<li><p>a call for executing <code class="docutils literal notranslate"><span class="pre">*.desktop</span></code> file from
+<code class="docutils literal notranslate"><span class="pre">/usr/share/applications</span></code>, for use with appmenus without giving
+access to <code class="docutils literal notranslate"><span class="pre">qubes.VMShell</span></code>; currently this can be done by writing
+custom qrexec calls</p></li>
+<li><p>maybe some generator for <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> for appmenus, which would wrap
+calls in <code class="docutils literal notranslate"><span class="pre">qrexec-client-vm</span></code></p></li>
+</ul>
+<!-- vim: set ts=4 sts=4 sw=4 et : --></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qrexec-socket-services.html" class="btn btn-neutral float-left" title="Qrexec: socket-based services" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qfileexchgd.html" class="btn btn-neutral float-right" title="Qfileexchgd (deprecated)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/services/admin-api.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

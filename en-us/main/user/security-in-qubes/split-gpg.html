@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Split GPG" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/security-in-qubes/split-gpg.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Split GPG implements a concept similar to having a smart card with your private GPG keys, except that the role of the “smart card” is played by another Qubes app qube. This way one not-so-trusted d..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Split GPG implements a concept similar to having a smart card with your private GPG keys, except that the role of the “smart card” is played by another Qubes app qube. This way one not-so-trusted d..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split GPG &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/security-in-qubes/split-gpg.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Split GPG-2" href="split-gpg-2.html" />
+    <link rel="prev" title="Anti evil maid (AEM)" href="anti-evil-maid.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Split GPG-1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#advantages-of-split-gpg-vs-traditional-gpg-with-a-smart-card">Advantages of Split GPG vs. traditional GPG with a smart card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-split-gpg">Configuring Split GPG</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-gpg-backend-domain">Setting up the GPG backend domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-client-apps-to-use-split-gpg-backend">Configuring the client apps to use Split GPG backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-configuration">Advanced Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-thunderbird">Using Thunderbird</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#thunderbird-78-and-higher">Thunderbird 78 and higher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#older-thunderbird-versions">Older Thunderbird versions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-keybase-with-split-gpg">Using Keybase with Split GPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-git-with-split-gpg">Using Git with Split GPG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-public-keys">Importing public keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-using-split-gpg-with-subkeys">Advanced: Using Split GPG with Subkeys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-description">Setup Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security-benefits">Security Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subkey-tutorials-and-discussions">Subkey Tutorials and Discussions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#current-limitations">Current limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Split GPG</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/security-in-qubes/split-gpg.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="split-gpg">
+<h1>Split GPG<a class="headerlink" href="#split-gpg" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The implementation has been updated to provide more features in <a class="reference internal" href="split-gpg-2.html"><span class="doc">Split GPG-2</span></a>.</p>
+</div>
+<p>Split GPG implements a concept similar to having a smart card with your private GPG keys, except that the role of the “smart card” is played by another Qubes app qube. This way one not-so-trusted domain, e.g. the one where Thunderbird is running, can delegate all crypto operations – such as encryption/decryption and signing – to another, more trusted, network-isolated domain. This way the compromise of your domain where Thunderbird or another client app is running – arguably a not-so-unthinkable scenario – does not allow the attacker to automatically also steal all your keys. (We should make a rather obvious comment here that the so-often-used passphrases on private keys are pretty meaningless because the attacker can easily set up a simple backdoor which would wait until the user enters the passphrase and steal the key then.)</p>
+<p><img alt="split-gpg-diagram.png" src="../../_images/split-gpg-diagram.png" /></p>
+<p>This diagram presents an overview of the Split GPG architecture.</p>
+<section id="advantages-of-split-gpg-vs-traditional-gpg-with-a-smart-card">
+<h2>Advantages of Split GPG vs. traditional GPG with a smart card<a class="headerlink" href="#advantages-of-split-gpg-vs-traditional-gpg-with-a-smart-card" title="Link to this heading"></a></h2>
+<p>It is often thought that the use of smart cards for private key storage guarantees ultimate safety. While this might be true (unless the attacker can find a usually-very-expensive-and-requiring-physical-presence way to extract the key from the smart card) but only with regards to the safety of the private key itself. However, there is usually nothing that could stop the attacker from requesting the smart card to perform decryption of all the user documents the attacker has found or need to decrypt. In other words, while protecting the user’s private key is an important task, we should not forget that ultimately it is the user data that are to be protected and that the smart card chip has no way of knowing the requests to decrypt documents are now coming from the attacker’s script and not from the user sitting in front of the monitor. (Similarly the smart card doesn’t make the process of digitally signing a document or a transaction in any way more secure – the user cannot know what the chip is really signing. Unfortunately this problem of signing reliability is not solvable by Split GPG.)</p>
+<p>With Qubes Split GPG this problem is drastically minimized, because each time the key is to be used the user is asked for consent (with a definable time out, 5 minutes by default), plus is always notified each time the key is used via a tray notification from the domain where GPG backend is running. This way it would be easy to spot unexpected requests to decrypt documents.</p>
+<p><img alt="r2-split-gpg-1.png" src="../../_images/r2-split-gpg-1.png" /> <img alt="r2-split-gpg-3.png" src="../../_images/r2-split-gpg-3.png" /></p>
+</section>
+<section id="configuring-split-gpg">
+<h2>Configuring Split GPG<a class="headerlink" href="#configuring-split-gpg" title="Link to this heading"></a></h2>
+<p>In dom0, make sure the <code class="docutils literal notranslate"><span class="pre">qubes-gpg-split-dom0</span></code> package is installed.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>sudo<span class="w"> </span>qubes-dom0-update<span class="w"> </span>qubes-gpg-split-dom0
+</pre></div>
+</div>
+<p>Make sure you have the <code class="docutils literal notranslate"><span class="pre">qubes-gpg-split</span></code> package installed in the template you will use for the GPG domain.</p>
+<p>For Debian or Whonix:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@debian-10 ~]$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qubes-gpg-split
+</pre></div>
+</div>
+<p>For Fedora:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@fedora-32 ~]$ </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>qubes-gpg-split
+</pre></div>
+</div>
+<section id="setting-up-the-gpg-backend-domain">
+<h3>Setting up the GPG backend domain<a class="headerlink" href="#setting-up-the-gpg-backend-domain" title="Link to this heading"></a></h3>
+<p>First, create a dedicated app qube for storing your keys (we will be calling it the GPG backend domain). It is recommended that this domain be network disconnected (set its netvm to <code class="docutils literal notranslate"><span class="pre">none</span></code>) and only used for this one purpose. In later examples this app qube is named <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code>, but of course it might have any other name.</p>
+<p>Make sure that gpg is installed there. At this stage you can add the private keys you want to store there, or you can now set up Split GPG and add the keys later. To check which private keys are in your GPG keyring, use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-gpg ~]$ </span>gpg<span class="w"> </span>-K
+<span class="go">/home/user/.gnupg/secring.gpg</span>
+<span class="go">-----------------------------</span>
+<span class="go">sec   4096R/3F48CB21 2012-11-15</span>
+<span class="go">uid                  Qubes OS Security Team &lt;security@qubes-os.org&gt;</span>
+<span class="go">ssb   4096R/30498E2A 2012-11-15</span>
+<span class="gp gp-VirtualEnv">(...)</span>
+</pre></div>
+</div>
+<p>This is pretty much all that is required. However, you might want to modify the default timeout: this tells the backend for how long the user’s approval for key access should be valid. (The default is 5 minutes.) You can change this via the <code class="docutils literal notranslate"><span class="pre">QUBES_GPG_AUTOACCEPT</span></code> environment variable. You can override it e.g. in <code class="docutils literal notranslate"><span class="pre">~/.profile</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-gpg ~]$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;export QUBES_GPG_AUTOACCEPT=86400&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+</pre></div>
+</div>
+<p>Please note that previously, this parameter was set in ~/.bash_profile. This will no longer work. If you have the parameter set in ~/.bash_profile you <em>must</em> update your configuration.</p>
+<p>Please be aware of the caveat regarding passphrase-protected keys in the <a class="reference internal" href="#current-limitations"><span class="std std-ref">Current limitations</span></a> section.</p>
+</section>
+<section id="configuring-the-client-apps-to-use-split-gpg-backend">
+<h3>Configuring the client apps to use Split GPG backend<a class="headerlink" href="#configuring-the-client-apps-to-use-split-gpg-backend" title="Link to this heading"></a></h3>
+<p>Normally it should be enough to set the <code class="docutils literal notranslate"><span class="pre">QUBES_GPG_DOMAIN</span></code> to the GPG backend domain name and use <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client</span></code> in place of <code class="docutils literal notranslate"><span class="pre">gpg</span></code>, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-email ~]$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">QUBES_GPG_DOMAIN</span><span class="o">=</span>work-gpg
+<span class="gp">[user@work-email ~]$ </span>gpg<span class="w"> </span>-K
+<span class="gp">[user@work-email ~]$ </span>qubes-gpg-client<span class="w"> </span>-K
+<span class="go">/home/user/.gnupg/secring.gpg</span>
+<span class="go">-----------------------------</span>
+<span class="go">sec   4096R/3F48CB21 2012-11-15</span>
+<span class="go">uid                  Qubes OS Security Team &lt;security@qubes-os.org&gt;</span>
+<span class="go">ssb   4096R/30498E2A 2012-11-15</span>
+<span class="gp gp-VirtualEnv">(...)</span>
+
+<span class="gp">[user@work-email ~]$ </span>qubes-gpg-client<span class="w"> </span>secret_message.txt.asc
+<span class="gp gp-VirtualEnv">(...)</span>
+</pre></div>
+</div>
+<p>Note that running normal <code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">-K</span></code> in the demo above shows no private keys stored in this app qube.</p>
+<p>A note on <code class="docutils literal notranslate"><span class="pre">gpg</span></code> and <code class="docutils literal notranslate"><span class="pre">gpg2</span></code>:</p>
+<p>Throughout this guide, we refer to <code class="docutils literal notranslate"><span class="pre">gpg</span></code>, but note that Split GPG uses <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> under the hood for compatibility with programs like Enigmail (which now supports only <code class="docutils literal notranslate"><span class="pre">gpg2</span></code>). If you encounter trouble while trying to set up Split GPG, make sure you’re using <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> for your configuration and testing, since keyring data may differ between the two installations.</p>
+</section>
+<section id="advanced-configuration">
+<h3>Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client-wrapper</span></code> script sets the <code class="docutils literal notranslate"><span class="pre">QUBES_GPG_DOMAIN</span></code> variable automatically based on the content of the file <code class="docutils literal notranslate"><span class="pre">/rw/config/gpg-split-domain</span></code>, which should be set to the name of the GPG backend VM. This file survives the app qube reboot, of course.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-email ~]$ </span>sudo<span class="w"> </span>bash
+<span class="gp">[root@work-email ~]$ </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;work-gpg&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/rw/config/gpg-split-domain
+</pre></div>
+</div>
+<p>Split GPG’s default qrexec policy requires the user to enter the name of the app qube containing GPG keys on each invocation. To improve usability for applications like Thunderbird with Enigmail, in <code class="docutils literal notranslate"><span class="pre">dom0</span></code> place the following line at the top of the file <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/policy/qubes.Gpg</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>work-email  work-gpg  allow
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">work-email</span></code> is the Thunderbird + Enigmail app qube and <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> contains your GPG keys.</p>
+<p>You may also edit the qrexec policy file for Split GPG in order to tell Qubes your default gpg vm (qrexec prompts will appear with the gpg vm preselected as the target, instead of the user needing to type a name in manually). To do this, append <code class="docutils literal notranslate"><span class="pre">default_target=&lt;vmname&gt;</span></code> to <code class="docutils literal notranslate"><span class="pre">ask</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/policy/qubes.Gpg</span></code>. For the examples given on this page:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@anyvm  @anyvm  ask default_target=work-gpg
+</pre></div>
+</div>
+<p>Note that, because this makes it easier to accept Split GPG’s qrexec authorization prompts, it may decrease security if the user is not careful in reviewing presented prompts. This may also be inadvisable if there are multiple app qubes with Split GPG set up.</p>
+</section>
+</section>
+<section id="using-thunderbird">
+<h2>Using Thunderbird<a class="headerlink" href="#using-thunderbird" title="Link to this heading"></a></h2>
+<section id="thunderbird-78-and-higher">
+<h3>Thunderbird 78 and higher<a class="headerlink" href="#thunderbird-78-and-higher" title="Link to this heading"></a></h3>
+<p>Starting with version 78, Thunderbird has a built-in PGP feature and no longer requires the Enigmail extension. For users coming from the Enigmail extension, the built-in functionality is more limited currently, including that <strong>public keys must live in your</strong> <code class="docutils literal notranslate"><span class="pre">work-email</span></code> <strong>qube with Thunderbird rather than your offline</strong> <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> <strong>qube</strong>.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">work-email</span></code>, use the Thunderbird config editor (found at the bottom of preferences/options), and search for <code class="docutils literal notranslate"><span class="pre">mail.openpgp.allow_external_gnupg</span></code>. Switch the value to true. Still in config editor, search for <code class="docutils literal notranslate"><span class="pre">mail.openpgp.alternative_gpg_path</span></code>. Set its value to <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code>. Restart Thunderbird after this change.</p>
+<p><img alt="tb78-1.png" src="../../_images/tb78-1.png" /> <img alt="tb78-2.png" src="../../_images/tb78-2.png" /> <img alt="tb78-3.png" src="../../_images/tb78-3.png" /></p>
+<p>You need to obtain your key ID which should be <strong>exactly 16 characters</strong>. Enter the command <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client-wrapper</span> <span class="pre">-K</span> <span class="pre">--keyid-format</span> <span class="pre">long</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-email ~]$ </span>qubes-gpg-client-wrapper<span class="w"> </span>-K<span class="w"> </span>--keyid-format<span class="w"> </span>long
+<span class="go">/home/user/.gnupg/pubring.kbx</span>
+<span class="go">-----------------------------</span>
+<span class="go">sec   rsa2048/777402E6D301615C 2020-09-05 [SC] [expires: 2022-09-05]</span>
+<span class="go">      F7D2D4E922DFB7B2589AF3E9777402E6D301615C</span>
+<span class="go">uid                 [ultimate] Qubes test &lt;user@localhost&gt;</span>
+<span class="go">ssb   rsa2048/370CE932085BA13B 2020-09-05 [E] [expires: 2022-09-05]</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-email ~]$ </span>qubes-gpg-client-wrapper<span class="w"> </span>--armor<span class="w"> </span>--export<span class="w"> </span>777402E6D301615C<span class="w"> </span>&gt;<span class="w"> </span>777402E6D301615C.asc
+</pre></div>
+</div>
+<p>Open the Account Settings and open the <em>End-to-End Encryption</em> tab of the respective email account. Click the <em>Add Key</em> button. You’ll be offered the choice <em>Use your external key through GnuPG</em>. Select it and click Continue.</p>
+<p><img alt="tb78-4.png" src="../../_images/tb78-4.png" /> <img alt="tb78-5.png" src="../../_images/tb78-5.png" /></p>
+<p>The key ID reference you would need here is <code class="docutils literal notranslate"><span class="pre">777402E6D301615C</span></code>. Now paste or type the ID of the secret key that you would like to use. Be careful to enter it correctly, because your input isn’t verified. Confirm to save this key ID. Now you can select the key ID to use.</p>
+<p><img alt="tb78-6.png" src="../../_images/tb78-6.png" /> <img alt="tb78-7.png" src="../../_images/tb78-7.png" /></p>
+<p>This key ID will be used to digitally sign or send an encrypted message with your account. For this to work, Thunderbird needs a copy of your public key. At this time, Thunderbird doesn’t fetch the public key from <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code>, you must manually import it. Export the key as follow (assuming the key ID would be <code class="docutils literal notranslate"><span class="pre">777402E6D301615C</span></code>):</p>
+<p><img alt="tb78-8.png" src="../../_images/tb78-8.png" /> <img alt="tb78-9.png" src="../../_images/tb78-9.png" /></p>
+<p>Use Thunderbird’s Tools menu to open <em>OpenPGP Key Management</em>. In that window, use the File menu to access the <em>Import Public Key(s) From File</em> command. Open the file with your public key. After the import was successful, right click on the imported key in the list and select <em>Key Properties</em>. You must mark your own key as <em>Yes, I’ve verified in person this key has the correct fingerprint</em>.</p>
+<p>Once this is done, you should be able to send an encrypted and signed email by selecting <em>Require Encryption</em> or <em>Digitally Sign This Message</em> in the compose menu <em>Options</em> or <em>Security</em> toolbar button. You can try it by sending an email to yourself.</p>
+<p><img alt="tb78-10.png" src="../../_images/tb78-10.png" /></p>
+<p>For more details about using smart cards/Split GPG with Thunderbird PGP feature, please see <a class="reference external" href="https://wiki.mozilla.org/Thunderbird:OpenPGP:Smartcards">Thunderbird:OpenPGP:Smartcards</a> from which the above documentation is inspired.</p>
+</section>
+<section id="older-thunderbird-versions">
+<h3>Older Thunderbird versions<a class="headerlink" href="#older-thunderbird-versions" title="Link to this heading"></a></h3>
+<p>For Thunderbird versions below 78, the traditional Enigmail + Split GPG setup is required. It is recommended to set up and use <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code>, as discussed above, in Thunderbird through the Enigmail addon.</p>
+<p><strong>Warning:</strong> Before adding any account, configuring Enigmail with <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code> is <strong>required</strong>. By default, Enigmail will generate a default GPG key in <code class="docutils literal notranslate"><span class="pre">work-email</span></code> associated with the newly created Thunderbird account. Generally, it corresponds to the email used in <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> associated to your private key. In consequence, a new, separate private key will be stored in <code class="docutils literal notranslate"><span class="pre">work-email</span></code> but it <em>does not</em> correspond to your private key in <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code>. Comparing the <code class="docutils literal notranslate"><span class="pre">fingerprint</span></code> or <code class="docutils literal notranslate"><span class="pre">expiration</span> <span class="pre">date</span></code> will show that they are not the same private key. In order to prevent Enigmail using this default generated local key in <code class="docutils literal notranslate"><span class="pre">work-email</span></code>, you can safely remove it.</p>
+<p>On a fresh Enigmail install, your need to change the default <code class="docutils literal notranslate"><span class="pre">Enigmail</span> <span class="pre">Junior</span> <span class="pre">Mode</span></code>. Go to Thunderbird preferences and then privacy tab. Select <code class="docutils literal notranslate"><span class="pre">Force</span> <span class="pre">using</span> <span class="pre">S/MIME</span> <span class="pre">and</span> <span class="pre">Enigmail</span></code>. Then, in the preferences of Enigmail, make it point to <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code> instead of the standard GnuPG binary:</p>
+<p><img alt="tb-enigmail-split-gpg-settings-2.png" src="../../_images/tb-enigmail-split-gpg-settings-2.png" /></p>
+</section>
+</section>
+<section id="using-keybase-with-split-gpg">
+<h2>Using Keybase with Split GPG<a class="headerlink" href="#using-keybase-with-split-gpg" title="Link to this heading"></a></h2>
+<p>Keybase, a security focused messaging and file-sharing app with GPG integration, can be configured to use Split GPG.</p>
+<p>The Keybase service does not preserve/pass the <code class="docutils literal notranslate"><span class="pre">QUBES_GPG_DOMAIN</span></code> environment variable through to underlying GPG processes, so it <strong>must</strong> be configured to use <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code> (as discussed above) rather than <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client</span></code>.</p>
+<p>The following command will configure Keybase to use <code class="docutils literal notranslate"><span class="pre">/usr/bin/qubes-gpg-client-wrapper</span></code> instead of its built-in GPG client:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>keybase<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>gpg.command<span class="w"> </span>/usr/bin/qubes-gpg-client-wrapper
+</pre></div>
+</div>
+<p>Now that Keybase is configured to use <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client-wrapper</span></code>, you will be able to use <code class="docutils literal notranslate"><span class="pre">keybase</span> <span class="pre">pgp</span> <span class="pre">select</span></code> to choose a GPG key from your backend GPG app qube and link that key to your Keybase identity.</p>
+</section>
+<section id="using-git-with-split-gpg">
+<h2>Using Git with Split GPG<a class="headerlink" href="#using-git-with-split-gpg" title="Link to this heading"></a></h2>
+<p>Git can be configured to utilize Split GPG, something useful if you would like to contribute to the Qubes OS Project as every commit is required to be signed. The most basic <code class="docutils literal notranslate"><span class="pre">~/.gitconfig</span></code> file enabling Split GPG looks something like this.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[user]</span>
+<span class="w">    </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;YOUR_NAME&gt;</span>
+<span class="w">    </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;YOUR_EMAIL_ADDRESS&gt;</span>
+<span class="w">    </span><span class="na">signingKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;YOUR_KEY_ID&gt;</span>
+
+<span class="k">[gpg]</span>
+<span class="w">    </span><span class="na">program</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">qubes-gpg-client-wrapper</span>
+</pre></div>
+</div>
+<p>Your key id is the public id of your signing key, which can be found by running <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client</span> <span class="pre">--list-keys</span></code>. In this instance, the key id is E142F75A6B1B610E0E8F874FB45589245791CACB.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-email ~]$ </span>qubes-gpg-client<span class="w"> </span>--list-keys
+<span class="go">/home/user/.gnupg/pubring.kbx</span>
+<span class="go">-----------------------------</span>
+<span class="go">pub   ed25519 2022-08-16 [C]</span>
+<span class="go">      E142F75A6B1B610E0E8F874FB45589245791CACB</span>
+<span class="go">uid           [ultimate] Qubes User &lt;user@example.com&gt;</span>
+<span class="go">sub   ed25519 2022-08-16 [S]</span>
+<span class="go">sub   cv25519 2022-08-16 [E]</span>
+<span class="go">sub   ed25519 2022-08-16 [A]</span>
+</pre></div>
+</div>
+<p>To sign commits, you now add the “-S” flag to your commit command, which should prompt for Split GPG usage. If you would like to automatically sign all commits, you can add the following snippet to <code class="docutils literal notranslate"><span class="pre">~/.gitconfig</span></code>.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[commit]</span>
+<span class="w">    </span><span class="na">gpgSign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+</pre></div>
+</div>
+<p>Lastly, if you would like to add aliases to sign and verify tags using the conventions the Qubes OS Project recommends, refer to the <a class="reference internal" href="../../developer/code/code-signing.html#using-pgp-with-git"><span class="std std-ref">code signing documentation</span></a>.</p>
+</section>
+<section id="importing-public-keys">
+<h2>Importing public keys<a class="headerlink" href="#importing-public-keys" title="Link to this heading"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">qubes-gpg-import-key</span></code> in the client app qube to import the key into the GPG backend VM.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work-email ~]$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">QUBES_GPG_DOMAIN</span><span class="o">=</span>work-gpg
+<span class="gp">[user@work-email ~]$ </span>qubes-gpg-import-key<span class="w"> </span>~/Downloads/marmarek.asc
+</pre></div>
+</div>
+<p>A safe, unspoofable user consent dialog box is displayed.</p>
+<p><img alt="r2-split-gpg-5.png" src="../../_images/r2-split-gpg-5.png" /></p>
+<p>Selecting “Yes to All” will add a line in the corresponding <a class="reference internal" href="../advanced-topics/rpc-policy.html"><span class="doc">RPC Policy</span></a> file.</p>
+</section>
+<section id="advanced-using-split-gpg-with-subkeys">
+<span id="using-split-gpg-with-subkeys"></span><h2>Advanced: Using Split GPG with Subkeys<a class="headerlink" href="#advanced-using-split-gpg-with-subkeys" title="Link to this heading"></a></h2>
+<p>Users with particularly high security requirements may wish to use Split GPG with <a class="reference external" href="https://wiki.debian.org/Subkeys">subkeys</a>. However, this setup comes at a significant cost: It will be impossible to sign other people’s keys with the master secret key without breaking this security model. Nonetheless, if signing others’ keys is not required, then Split GPG with subkeys offers unparalleled security for one’s master secret key.</p>
+<section id="setup-description">
+<h3>Setup Description<a class="headerlink" href="#setup-description" title="Link to this heading"></a></h3>
+<p>In this example, the following keys are stored in the following locations (see below for definitions of these terms):</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>PGP Key(s)</p></th>
+<th class="head"><p>VM Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sec</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vault</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ssb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">work-gpg</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pub</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">work-email</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sec</span></code> (master secret key)</p>
+<ul>
+<li><p>Depending on your needs, you may wish to create this as a <strong>certify-only (C)</strong> key, i.e., a key which is capable only of signing (a.k.a., “certifying”) other keys. This key may be created <em>without</em> an expiration date. This is for two reasons. First, the master secret key is never to leave the <code class="docutils literal notranslate"><span class="pre">vault</span></code> VM, so it is extremely unlikely ever to be obtained by an adversary (see below). Second, an adversary who <em>does</em> manage to obtain the master secret key either possesses the passphrase to unlock the key (if one is used) or does not. An adversary who <em>does</em> possess the passphrase can simply use it to legally extend the expiration date of the key (or remove it entirely). An adversary who does <em>not</em> possess the passphrase cannot use the key at all. In either case, an expiration date provides no additional benefit.</p></li>
+<li><p>By the same token, however, having a passphrase on the key is of little value. An adversary who is capable of stealing the key from your <code class="docutils literal notranslate"><span class="pre">vault</span></code> would almost certainly also be capable of stealing the passphrase as you enter it. An adversary who obtains the passphrase can then use it in order to change or remove the passphrase from the key. Therefore, using a passphrase at all should be considered optional. It is, however, recommended that a <strong>revocation certificate</strong> be created and safely stored in multiple locations so that the master keypair can be revoked in the (exceedingly unlikely) event that it is ever compromised.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ssb</span></code> (secret subkey)</p>
+<ul>
+<li><p>Depending on your needs, you may wish to create two different subkeys: one for <strong>signing (S)</strong> and one for <strong>encryption (E)</strong>. You may also wish to give these subkeys reasonable expiration dates (e.g., one year). Once these keys expire, it is up to you whether to <em>renew</em> these keys by extending the expiration dates or to create <em>new</em> subkeys when the existing set expires.</p></li>
+<li><p>On the one hand, an adversary who obtains any existing encryption subkey (for example) will be able to use it in order to decrypt all emails (for example) which were encrypted to that subkey. If the same subkey were to continue to be used–and its expiration date continually extended–only that one key would need to be stolen (e.g., as a result of the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM being compromised; see below) in order to decrypt <em>all</em> of the user’s emails. If, on the other hand, each encryption subkey is used for at most approximately one year, then an adversary who obtains the secret subkey will be capable of decrypting at most approximately one year’s worth of emails.</p></li>
+<li><p>On the other hand, creating a new signing subkey each year without renewing (i.e., extending the expiration dates of) existing signing subkeys would mean that all of your old signatures would eventually read as “EXPIRED” whenever someone attempts to verify them. This can be problematic, since there is no consensus on how expired signatures should be handled. Generally, digital signatures are intended to last forever, so this is a strong reason against regularly retiring one’s signing subkeys.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pub</span></code> (public key)</p>
+<ul>
+<li><p>This is the complement of the master secret key. It can be uploaded to keyservers (or otherwise publicly distributed) and may be signed by others.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vault</span></code></p>
+<ul>
+<li><p>This is a network-isolated VM. The initial master keypair and subkeys are generated in this VM. The master secret key <em>never</em> leaves this VM under <em>any</em> circumstances. No files or text is <em>ever</em> <a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html#security"><span class="std std-ref">copied</span></a> or <a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html#security"><span class="std std-ref">pasted</span></a> into this VM under <em>any</em> circumstances.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">work-gpg</span></code></p>
+<ul>
+<li><p>This is a network-isolated VM. This VM is used <em>only</em> as the GPG backend for <code class="docutils literal notranslate"><span class="pre">work-email</span></code>. The secret subkeys (but <em>not</em> the master secret key) are <a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html#security"><span class="std std-ref">copied</span></a> from the <code class="docutils literal notranslate"><span class="pre">vault</span></code> VM to this VM. Files from less trusted VMs are <em>never</em> <a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html#security"><span class="std std-ref">copied</span></a> into this VM under <em>any</em> circumstances.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">work-email</span></code></p>
+<ul>
+<li><p>This VM has access to the mail server. It accesses the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM via the Split GPG protocol. The public key may be stored in this VM so that it can be attached to emails and for other such purposes.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="security-benefits">
+<h3>Security Benefits<a class="headerlink" href="#security-benefits" title="Link to this heading"></a></h3>
+<p>In the standard Split GPG setup, there are at least two ways in which the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM might be compromised. First, an attacker who is capable of exploiting a hypothetical bug in <code class="docutils literal notranslate"><span class="pre">work-email</span></code>’s <a class="reference external" href="https://en.wikipedia.org/wiki/Mail_user_agent">MUA</a> could gain control of the <code class="docutils literal notranslate"><span class="pre">work-email</span></code> VM and send a malformed request which exploits a hypothetical bug in the GPG backend (running in the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM), giving the attacker control of the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM. Second, a malicious public key file which is imported into the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM might exploit a hypothetical bug in the GPG backend which is running there, again giving the attacker control of the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM. In either case, such an attacker might then be able to leak both the master secret key and its passphrase (if any is used, it would regularly be input in the work-gpg VM and therefore easily obtained by an attacker who controls this VM) back to the <code class="docutils literal notranslate"><span class="pre">work-email</span></code> VM or to another VM (e.g., the <code class="docutils literal notranslate"><span class="pre">netvm</span></code>, which is always untrusted by default) via the Split GPG protocol or other <a class="reference internal" href="data-leaks.html"><span class="doc">covert channels</span></a>. Once the master secret key is in the <code class="docutils literal notranslate"><span class="pre">work-email</span></code> VM, the attacker could simply email it to himself (or to the world).</p>
+<p>In the alternative setup described in this section (i.e., the subkey setup), even an attacker who manages to gain access to the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM will not be able to obtain the user’s master secret key since it is simply not there. Rather, the master secret key remains in the <code class="docutils literal notranslate"><span class="pre">vault</span></code> VM, which is extremely unlikely to be compromised, since nothing is ever copied or transferred into it.  <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> The attacker might nonetheless be able to leak the secret subkeys from the <code class="docutils literal notranslate"><span class="pre">work-gpg</span></code> VM in the manner described above, but even if this is successful, the secure master secret key can simply be used to revoke the compromised subkeys and to issue new subkeys in their place. (This is significantly less devastating than having to create a new <em>master</em> keypair.)</p>
+</section>
+<section id="subkey-tutorials-and-discussions">
+<h3>Subkey Tutorials and Discussions<a class="headerlink" href="#subkey-tutorials-and-discussions" title="Link to this heading"></a></h3>
+<p>(<strong>Note:</strong> Although the tutorials below were not written with Qubes Split GPG in mind, they can be adapted with a few commonsense adjustments. As always, exercise caution and use your good judgment.)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/Kwfuern-R2U/discussion">“OpenPGP in Qubes OS” on the qubes-users mailing list</a></p></li>
+<li><p><a class="reference external" href="https://alexcabal.com/creating-the-perfect-gpg-keypair/">“Creating the Perfect GPG Keypair” by Alex Cabal</a></p></li>
+<li><p><a class="reference external" href="https://gist.github.com/abeluck/3383449">“GPG Offline Master Key w/ smartcard” maintained by Abel Luck</a></p></li>
+<li><p><a class="reference external" href="https://apapadop.wordpress.com/2013/08/21/using-gnupg-with-qubesos/">“Using GnuPG with QubesOS” by Alex</a></p></li>
+</ul>
+</section>
+</section>
+<section id="current-limitations">
+<h2>Current limitations<a class="headerlink" href="#current-limitations" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Current implementation requires importing of public keys to the vault domain. This opens up an avenue to attack the gpg running in the backend domain via a hypothetical bug in public key importing code. See ticket <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/474">#474</a> for more details and plans how to get around this problem, as well as the section on <a class="reference internal" href="#using-split-gpg-with-subkeys"><span class="std std-ref">Advanced: Using Split GPG with Subkeys</span></a>.</p></li>
+<li><p>It doesn’t solve the problem of allowing the user to know what is to be signed before the operation gets approved. Perhaps the GPG backend domain could start a disposable and have the to-be-signed document displayed there? To Be Determined.</p></li>
+<li><p>The Split GPG client will fail to sign or encrypt if the private key in the GnuPG backend is protected by a passphrase. It will give an <code class="docutils literal notranslate"><span class="pre">Inappropriate</span> <span class="pre">ioctl</span> <span class="pre">for</span> <span class="pre">device</span></code> error. Do not set passphrases for the private keys in the GPG backend domain. Doing so won’t provide any extra security anyway, as explained in the introduction and in <a class="reference internal" href="#using-split-gpg-with-subkeys"><span class="std std-ref">Advanced: Using Split GPG with Subkeys</span></a>. If you are generating a new key pair, or if you have a private key that already has a passphrase, you can use <code class="docutils literal notranslate"><span class="pre">gpg2</span> <span class="pre">--edit-key</span> <span class="pre">&lt;key_id&gt;</span></code> then <code class="docutils literal notranslate"><span class="pre">passwd</span></code> to set an empty passphrase. Note that <code class="docutils literal notranslate"><span class="pre">pinentry</span></code> might show an error when you try to set an empty passphrase, but it will still make the change. (See <a class="reference external" href="https://unix.stackexchange.com/a/379373">this StackExchange answer</a> for more information.) <strong>Note:</strong> The error shows only if you <strong>do not</strong> have graphical pinentry installed.</p></li>
+</ul>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>In order to gain access to the <code class="docutils literal notranslate"><span class="pre">vault</span></code> VM, the attacker would require the use of, e.g., a general Xen VM escape exploit or a <a class="reference internal" href="../templates/templates.html#trusting-your-templates"><span class="std std-ref">signed, compromised package which is already installed in the template</span></a> upon which the <code class="docutils literal notranslate"><span class="pre">vault</span></code> VM is based.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="anti-evil-maid.html" class="btn btn-neutral float-left" title="Anti evil maid (AEM)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="split-gpg-2.html" class="btn btn-neutral float-right" title="Split GPG-2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/security-in-qubes/split-gpg.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

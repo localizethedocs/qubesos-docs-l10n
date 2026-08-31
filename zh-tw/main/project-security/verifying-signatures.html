@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="驗證簽章" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="project-security/verifying-signatures.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Qubes OS 專案使用`數位簽章 &lt; https://en.wikipedia.org/wiki/Digital_signature&gt;`__ 來保證某些重要資產的真實性和完整性。此頁面說明如何驗證這些簽章。理解並應用這些做法對您的安全性極為重要。 數位簽章可以證明和不能證明的範圍: 大多數人——即使是程式設計師——都對數位簽章的基本概念感到困惑。因此，大多數人都應該閱讀本節，..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Qubes OS 專案使用`數位簽章 &lt; https://en.wikipedia.org/wiki/Digital_signature&gt;`__ 來保證某些重要資產的真實性和完整性。此頁面說明如何驗證這些簽章。理解並應用這些做法對您的安全性極為重要。 數位簽章可以證明和不能證明的範圍: 大多數人——即使是程式設計師——都對數位簽章的基本概念感到困惑。因此，大多數人都應該閱讀本節，..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>驗證簽章 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/project-security/verifying-signatures.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=cbf116e0"></script>
+      <script src="../_static/custom.js?v=01ac952c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="軟體包貢獻" href="../developer/general/package-contributions.html" />
+    <link rel="prev" title="Qubes security pack (qubes-secpack)" href="security-pack.html" />
+
+   
+
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">驗證簽章</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-digital-signatures-can-and-cannot-prove">數位簽章可以證明和不能證明的範圍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openpgp-software">OpenPGP 軟體</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-import-and-authenticate-the-qubes-master-signing-key">如何匯入和驗證 Qubes Master Signing Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-import-and-authenticate-release-signing-keys">如何匯入和驗證發布簽署金鑰</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-obtain-and-authenticate-other-signing-keys">如何取得和驗證其他簽署金鑰</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos">如何驗證 Qubes ISO 上的分離式 PGP 簽章</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-re-verify-installation-media-after-writing">如何重新驗證寫入後的安裝媒體</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-verify-signatures-on-git-repository-tags-and-commits">如何驗證 Git 儲存庫標籤和送交上的簽章</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-verify-a-signature-on-a-git-tag">如何驗證 Git 標籤上的簽章</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-verify-a-signature-on-a-git-commit">如何驗證 Git 送交上的簽章</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-faq">疑難排解常見問題</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-can-t-check-signature-public-key-not-found">為什麼我收到「Can't check signature: public key not found」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-bad-signature-from-qubes-os-release-x-signing-key">為什麼我收到「BAD signature from 'Qubes OS Release X Signing Key'」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-bash-gpg2-command-not-found">為什麼我收到「bash: gpg2: command not found」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-no-such-file-or-directory">為什麼我收到「No such file or directory」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-can-t-open-signed-data-qubes-rx-x86-64-iso-no-signed-data-can-t-hash-datafile-no-data">為什麼我收到「can't open signed data 'Qubes-RX-x86_64.iso'」/「no signed data」/「can't hash datafile: No data」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-can-t-open-qubes-rx-x86-64-iso-asc-verify-signatures-failed-file-open-error">為什麼我收到「can't open 'Qubes-RX-x86_64.iso.asc' / verify signatures failed: file open error」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-no-valid-openpgp-data-found">為什麼我收到「no valid OpenPGP data found」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-warning-this-key-is-not-certified-with-a-trusted-signature-there-is-no-indication-that-the-signature-belongs-to-the-owner">為什麼我收到「WARNING: This key is not certified with a trusted signature! There is no indication that the signature belongs to the owner.」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-x-signature-not-checked-due-to-a-missing-key">為什麼我收到「X signature not checked due to a missing key」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-seeing-additional-signatures-on-a-key-with-user-id-not-found-or-from-a-revoked-key">為什麼我在金鑰上看到帶有「[User ID not found]」或來自已撤銷金鑰的額外簽章？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-verify-signatures-failed-unexpected-data">為什麼我收到「verify signatures failed: unexpected data」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-not-a-detached-signature">為什麼我收到「not a detached signature」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-crc-error-no-signature-found">為什麼我收到「CRC error; […] no signature found […]」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-warning-1-listed-file-could-not-be-read">為什麼我收到「WARNING: 1 listed file could not be read」？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-have-another-problem-that-isn-t-mentioned-here">我遇到此處未提及的其他問題。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">驗證簽章</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/project-security/verifying-signatures.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="verifying-signatures">
+<h1>驗證簽章<a class="headerlink" href="#verifying-signatures" title="連結到這個標頭"></a></h1>
+<p>Qubes OS 專案使用`數位簽章 &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Digital_signature">https://en.wikipedia.org/wiki/Digital_signature</a>&gt;`__ 來保證某些重要資產的真實性和完整性。此頁面說明如何驗證這些簽章。理解並應用這些做法對您的安全性極為重要。</p>
+<section id="what-digital-signatures-can-and-cannot-prove">
+<h2>數位簽章可以證明和不能證明的範圍<a class="headerlink" href="#what-digital-signatures-can-and-cannot-prove" title="連結到這個標頭"></a></h2>
+<p>大多數人——即使是程式設計師——都對數位簽章的基本概念感到困惑。因此，大多數人都應該閱讀本節，即使它乍看之下很 trivial。</p>
+<p>數位簽章可以在合理的確定程度上證明**真實性**和**完整性**。<a href="#id1"><span class="problematic" id="id2">**</span></a>真實性**確保給定檔案確實由簽署它的人建立（即第三方未偽造它）。<a href="#id3"><span class="problematic" id="id4">**</span></a>完整性**確保檔案的內容未被篡改（即第三方未在傳輸過程中未被察覺地更改其內容）。</p>
+<p>數位簽章**不能**證明簽署的檔案不是惡意的。事實上，沒有什麼能阻止某人簽署惡意程式（這種情況在現實中時有發生）。</p>
+<p>重點是我們必須決定信任誰（例如 Linus Torvalds、Microsoft 或 Qubes 專案），並假設如果一個受信任方簽署了給定檔案，那麼它不應該是惡意的或有疏忽的錯誤。是否信任任何特定方的決定超出了數位簽章的範圍。這更像是一個社會和政治決定。</p>
+<p>一旦我們決定信任某些方，數位簽章就很有用，因為它們使我們能夠僅信任我們選擇的那少數幾方，而不必擔心在他們和我們之間可能發生的所有壞事，例如伺服器被入侵（qubes-os.org 總有一天會被入侵，所以 <a class="reference internal" href="../introduction/faq.html#should-i-trust-this-website"><span class="std std-ref">don’t blindly trust the live version of this site</span></a>）、託管公司不誠實的 IT 人員、ISP 不誠實的工作人員、Wi-Fi 攻擊等。我們將這種理念稱為 <a class="reference internal" href="../introduction/faq.html#what-does-it-mean-to-distrust-the-infrastructure"><span class="std std-ref">distrusting the infrastructure</span></a>。</p>
+<p>透過驗證我們下載的所有聲稱由我們選擇信任的一方撰寫的檔案，我們消除了對上述壞事的擔憂，因為我們可以輕鬆檢測是否有任何檔案被篡改（然後選擇不執行、不安裝或不開啟它們）。</p>
+<p>然而，為了使數位簽章有意義，我們必須確保用於簽章驗證的公鑰是真實的。任何人都可以產生一個聲稱屬於「Qubes OS 專案」的加密金鑰，但當然只有我們（真正的 Qubes 開發者）產生的金鑰才是真實的。此頁面的其餘部分說明了如何驗證專案中使用的各種金鑰的真實性，以及如何使用這些金鑰來驗證某些重要資產。</p>
+</section>
+<section id="openpgp-software">
+<h2>OpenPGP 軟體<a class="headerlink" href="#openpgp-software" title="連結到這個標頭"></a></h2>
+<p>我們使用 <a class="reference external" href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">PGP &lt;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&gt;`__（具體來說是 `OpenPGP</a> 標準）。在開始之前，您需要可以管理 PGP 金鑰和驗證 PGP 簽章的軟體。任何符合 OpenPGP 標準的程式都可以，以下是流行作業系統的一些範例：</p>
+<p><strong>Linux：</strong> <a class="reference external" href="https://www.gnupg.org/documentation/">GnuPG &lt;https://gnupg.org/download/index.html&gt;`__（`文件</a>）。開啟終端機並使用 <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> 命令。如果您尚未安裝 GnuPG，請透過您的發行版套件管理器或從 GnuPG 網站安裝。</p>
+<p><strong>Mac：</strong> <a class="reference external" href="https://gpgtools.tenderapp.com/kb">GPG Suite &lt;https://gpgtools.org/&gt;`__（`文件</a>）。開啟終端機來輸入命令。</p>
+<p><strong>Windows：</strong> <a class="reference external" href="https://www.gpg4win.org/documentation.html">Gpg4win &lt;https://gpg4win.org/download.html&gt;`__（`文件</a>）。使用 Windows 命令列（<code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>）來輸入命令。</p>
+<p>在本頁面中，我們將透過 <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> 命令使用 GnuPG。如果對您不起作用，請嘗試使用 <code class="docutils literal notranslate"><span class="pre">gpg</span></code>。如果仍然不行，請查閱您特定程式的文件（請參閱上面的連結）和下面的 <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">疑難排解常見問題</span></a>。</p>
+</section>
+<section id="how-to-import-and-authenticate-the-qubes-master-signing-key">
+<span id="how-to-import-qmsk"></span><h2>如何匯入和驗證 Qubes Master Signing Key<a class="headerlink" href="#how-to-import-and-authenticate-the-qubes-master-signing-key" title="連結到這個標頭"></a></h2>
+<p>許多重要的 Qubes OS 專案資產（例如 ISO、RPM、TGZ 和 Git 物件）都由官方團隊成員的金鑰或發布簽署金鑰（RSK）進行數位簽章。每個此類金鑰又由 <cite>Qubes Master Signing Key (QMSK) &lt;https://keys.qubes-os.org/keys/qubes-master-signing-key.asc&gt;`__（``0x427F11FD0FAA4B080123F01CDDFA1A3E36879494`</cite>）簽署。透過這種方式，QMSK 是 Qubes OS 專案的終極信任根。</p>
+<p>開發者簽署金鑰設定為一年後到期，而 QMSK 和 RSK 沒有到期日。QMSK 是在一台專用的、氣隙隔離的「vault」機器上產生並僅保存在該機器上，私密部分（希望）永遠不會離開這台隔離的機器。</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>在繼續之前，您必須先完成 <a class="reference internal" href="#openpgp-software"><span class="std std-ref">安裝 OpenPGP 軟體</span></a> 的先決步驟。</p>
+</div>
+<p>一旦您安裝了合適的 OpenPGP 軟體，有幾種方法可以取得 QMSK。</p>
+<ul>
+<li><p><strong>如果您使用的是 Qubes OS</strong>，它在每個 qube 中都可用（<a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/2544">除了 dom0</a>）：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/usr/share/qubes/qubes-master-key.asc
+</pre></div>
+</div>
+</li>
+<li><p><strong>如果您使用的是 Fedora</strong>，您可以在 <a class="reference external" href="https://github.com/xsuchy/distribution-gpg-keys">distribution-gpg-keys</a> 套件中取得：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dnf<span class="w"> </span>install<span class="w"> </span>distribution-gpg-keys
+<span class="gp">$ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/usr/share/distribution-gpg-keys/qubes/*
+</pre></div>
+</div>
+</li>
+<li><p><strong>如果您使用的是 Debian</strong>，它可能已包含在您的金鑰環中。</p></li>
+<li><p>您也可以**使用 GPG 取得它**：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--fetch-keys<span class="w"> </span>https://keys.qubes-os.org/keys/qubes-master-signing-key.asc
+</pre></div>
+</div>
+</li>
+<li><p>從公開的 <a class="reference external" href="https://en.wikipedia.org/wiki/Key_server_%28cryptographic%29#Keyserver_examples">keyserver</a> 取得（首次使用時使用 <code class="docutils literal notranslate"><span class="pre">--keyserver</span> <span class="pre">&lt;URI&gt;</span></code> 指定，並包含 keyserver 選項以包含金鑰簽章），例如：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--keyserver-options<span class="w"> </span>no-self-sigs-only,no-import-clean<span class="w"> </span>--keyserver<span class="w"> </span>hkp://keyserver.ubuntu.com<span class="w"> </span>--recv-keys<span class="w"> </span>0x427F11FD0FAA4B080123F01CDDFA1A3E36879494
+</pre></div>
+</div>
+</li>
+<li><p>或者**以檔案形式下載**，然後匯入該檔案。以下是一些範例下載位置：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="security-pack.html"><span class="doc">Qubes 安全包</span></a></p></li>
+<li><p><a class="reference external" href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">Qubes keyserver</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/d/msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">發送郵件至 qubes-devel</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/d/msg/qubes-users/CLnB5uFu_YQ/ZjObBpz0S9UJ">發送郵件至 qubes-users</a></p></li>
+</ul>
+<p>一旦您有了金鑰檔案，<strong>匯入它</strong>：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/&lt;PATH_TO_FILE&gt;/qubes-master-signing-key.asc
+</pre></div>
+</div>
+</li>
+</ul>
+<p>一旦您取得了 QMSK，您必須驗證它是真實的而非偽造的。任何人都可以建立一個名為「Qubes Master Signing Key」且短金鑰 ID 為 <code class="docutils literal notranslate"><span class="pre">0x36879494</span></code> 的 PGP 金鑰，因此您不能僅依賴這些。您也不應該依賴任何單一網站，即使是 HTTPS 也不行。</p>
+<p>那麼，您*應該*怎麼做？一種選擇是使用 PGP <a class="reference external" href="https://en.wikipedia.org/wiki/Web_of_trust">信任網絡</a>。此外，一些作業系統包含安全取得 QMSK 的方法。例如，在 Fedora 上，<code class="docutils literal notranslate"><span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">distribution-gpg-keys</span></code> 將為您取得 QMSK 以及其他幾個 Qubes 金鑰。在 Debian 上，您的金鑰環可能已包含必要的金鑰。</p>
+<p>也許最常見的方法是依賴金鑰的指紋，這是一個由 40 個字母數字字元組成的字串，像這樣：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
+</pre></div>
+</div>
+<p>每個 PGP 金鑰都有一個這樣的指紋，它在所有 PGP 金鑰中唯一地識別它。（在命令列上，您可以使用 <code class="docutils literal notranslate"><span class="pre">gpg2</span> <span class="pre">--fingerprint</span> <span class="pre">&lt;KEY_ID&gt;</span></code> 命令檢視金鑰的指紋。）因此，如果您知道真實的 QMSK 指紋，那麼您總是有一種簡單的方法來確認任何聲稱的副本是否真實，只需比較指紋即可。</p>
+<p>但是您如何知道哪個指紋是真實的呢？畢竟，<a class="reference internal" href="../introduction/faq.html#should-i-trust-this-website"><span class="std std-ref">這個網站可能被入侵</span></a>，因此您在這裡看到的指紋可能不是真實的。這就是為什麼我們強烈建議從<em>多個獨立來源以多種不同方式</em>取得指紋，然後比較字母和數字字串以確保它們匹配。</p>
+<p>為了說服自己知道真實的 QMSK 指紋，空格和大小寫並不重要。換句話說，所有這些指紋都被認為是相同的：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
+427f 11fd 0faa 4b08 0123  f01c ddfa 1a3e 3687 9494
+427F11FD0FAA4B080123F01CDDFA1A3E36879494
+427f11fd0faa4b080123f01cddfa1a3e36879494
+</pre></div>
+</div>
+<p>相反地，重要的是<em>所有</em>字元必須以<em>完全</em>相同的順序出現。即使只有一個字元不同，指紋就不應被認為是相同的。即使兩個指紋擁有所有相同的字元，如果任何字元的順序、序列或位置不同，則指紋不應被認為是相同的。</p>
+<p>然而，在*搜尋*、<a href="#id1"><span class="problematic" id="id2">*</span></a>查詢*或*輸入*金鑰時，空格和大小寫可能會因您使用的軟體或工具而有所不同。您可能需要嘗試不同的變體（例如有空格和無空格）。您有時也可能看到（或需要輸入）帶有 <code class="docutils literal notranslate"><span class="pre">0x</span></code> 前綴的完整指紋，如下所示：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0x427F11FD0FAA4B080123F01CDDFA1A3E36879494
+0x427f11fd0faa4b080123f01cddfa1a3e36879494
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">0x</span></code> 前綴有時用於表示其後的字串是十六進位值，某些 PGP 相關工具可能需要此前綴。同樣地，為了說服自己知道真實的 QMSK 指紋，您可以安全地忽略 <code class="docutils literal notranslate"><span class="pre">0x</span></code> 前綴，因為它不是指紋的一部分。只要 <code class="docutils literal notranslate"><span class="pre">0x</span></code> 之後的 40 個字元字串完全匹配，指紋就被認為是相同的。<code class="docutils literal notranslate"><span class="pre">0x</span></code> 前綴只有在您使用的軟體或工具關心它時才重要。</p>
+<p>「比對指紋」的一般概念是到現實世界中（無論是數位、實體或兩者兼備）尋找其他聲稱是 QMSK 指紋的 40 個字元字串，然後將它們與您自己聲稱的 QMSK 指紋進行比較，以確保字母數字字元的序列完全相同（同樣，無論空格或大小寫）。如果任何字元不匹配或順序不同，那麼至少其中一個指紋是偽造的。以下是一些幫助您入門的想法：</p>
+<ul class="simple">
+<li><p>在各個網站上檢查指紋（例如 <a class="reference external" href="https://groups.google.com/g/qubes-devel/c/RqR9WPxICwg/m/kaQwknZPDHkJ">郵寄清單</a>、<a class="reference external" href="https://forum.qubes-os.org/t/1441/9">討論區</a>、<a class="reference external" href="https://x.com/rootkovska/status/496976187491876864">社群媒體</a> <a class="reference external" href="https://www.reddit.com/r/Qubes/comments/5bme9n/fingerprint_verification/">社交平台</a>、<a class="reference external" href="https://andrewdavidwong.com/fingerprints.txt">個人網站</a>）。</p></li>
+<li><p>針對出現指紋的 PDF、照片和影片進行檢查（例如 <a class="reference external" href="https://hyperelliptic.org/PSC/slides/psc2015_qubesos.pdf">演講投影片</a>、在 <a class="reference external" href="https://x.com/legind/status/813847907858337793/photo/2">T恤上</a> 或 <a class="reference external" href="https://youtu.be/S0TVw7U3MkE?t=2563">演講錄影</a>）。</p></li>
+<li><p>請人們在各種郵寄清單、論壇和聊天室中發布指紋。</p></li>
+<li><p>從不同來源下載舊版 Qubes ISO 並檢查其中包含的 Qubes Master Signing Key。</p></li>
+<li><p>透過 Tor 重複上述操作。</p></li>
+<li><p>透過各種 VPN 和代理伺服器重複上述操作。</p></li>
+<li><p>在不同網路（工作、學校、網咖等）上重複上述操作。</p></li>
+<li><p>透過簡訊、電子郵件、通話、視訊聊天、傳統郵件或與您認識的人會面來確認指紋。</p></li>
+<li><p>從不同的電腦和裝置重複上述操作。</p></li>
+</ul>
+<p>一旦您從足夠多的獨立來源以足夠多的不同方式觀察到足夠多的匹配指紋，並確信您擁有真實的指紋，請將其保存在安全的地方。每次您需要檢查聲稱是 QMSK 的金鑰是否真實時，請將該金鑰的指紋與您信任的副本進行比較，並確認它們匹配。</p>
+<p>既然您已匯入真實的 QMSK，請將其信任等級設定為「ultimate」，以便它可以用來自動驗證所有由 QMSK 簽署的金鑰（特別是 RSK）。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--edit-key<span class="w"> </span>0x427F11FD0FAA4B080123F01CDDFA1A3E36879494
+<span class="go">gpg (GnuPG) 1.4.18; Copyright (C) 2014 Free Software Foundation, Inc.</span>
+<span class="go">This is free software: you are free to change and redistribute it.</span>
+<span class="go">There is NO WARRANTY, to the extent permitted by law.</span>
+
+<span class="go">pub  4096R/36879494  created: 2010-04-01  expires: never       usage: SC</span>
+<span class="go">                     trust: unknown       validity: unknown</span>
+<span class="go">[ unknown] (1). Qubes Master Signing Key</span>
+
+<span class="gp">$ </span>gpg&gt;<span class="w"> </span>fpr
+<span class="go">pub   4096R/36879494 2010-04-01 Qubes Master Signing Key</span>
+<span class="go">Primary key fingerprint: 427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494</span>
+
+<span class="gp">$ </span>gpg&gt;<span class="w"> </span>trust
+<span class="go">pub  4096R/36879494  created: 2010-04-01  expires: never       usage: SC</span>
+<span class="go">                     trust: unknown       validity: unknown</span>
+<span class="go">[ unknown] (1). Qubes Master Signing Key</span>
+
+<span class="go">Please decide how far you trust this user to correctly verify other users&#39; keys</span>
+<span class="gp gp-VirtualEnv">(by looking at passports, checking fingerprints from different sources, etc.)</span>
+
+<span class="go">   1 = I don&#39;t know or won&#39;t say</span>
+<span class="go">   2 = I do NOT trust</span>
+<span class="go">   3 = I trust marginally</span>
+<span class="go">   4 = I trust fully</span>
+<span class="go">   5 = I trust ultimately</span>
+<span class="go">   m = back to the main menu</span>
+
+<span class="go">Your decision? 5</span>
+<span class="go">Do you really want to set this key to ultimate trust? (y/N) y</span>
+
+<span class="go">pub  4096R/36879494  created: 2010-04-01  expires: never       usage: SC</span>
+<span class="go">                     trust: ultimate      validity: unknown</span>
+<span class="go">[ unknown] (1). Qubes Master Signing Key</span>
+<span class="go">Please note that the shown key validity is not necessarily correct</span>
+<span class="go">unless you restart the program.</span>
+
+<span class="gp">$ </span>gpg&gt;<span class="w"> </span>q
+</pre></div>
+</div>
+<p>現在，當您匯入任何發布簽署金鑰和許多 Qubes 團隊成員金鑰時，它們將因為由 QMSK 簽署而已經受到信任。</p>
+<p>作為最終的合理性檢查，請確保 QMSK 在您的金鑰環中具有正確的信任等級。</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;Qubes Master Signing Key&quot;</span>
+<span class="go">pub   rsa4096 2010-04-01 [SC]</span>
+<span class="go">      427F11FD0FAA4B080123F01CDDFA1A3E36879494</span>
+<span class="hll"><span class="go">uid           [ultimate] Qubes Master Signing Key</span>
+</span></pre></div>
+</div>
+<p>如果您在這裡沒有看到信任等級為「ultimate」的 QMSK，請返回並仔細遵循本節中的說明，並查閱下面的 <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">疑難排解常見問題</span></a>。</p>
+</section>
+<section id="how-to-import-and-authenticate-release-signing-keys">
+<span id="how-to-import-rsk"></span><h2>如何匯入和驗證發布簽署金鑰<a class="headerlink" href="#how-to-import-and-authenticate-release-signing-keys" title="連結到這個標頭"></a></h2>
+<p>每個 Qubes OS 發布版本都由一個**發布簽署金鑰 (RSK)** 簽署，而該金鑰又由 Qubes Master Signing Key (QMSK) 簽署。</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>在繼續之前，您必須先完成以下先決步驟：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#openpgp-software"><span class="std std-ref">安裝 OpenPGP 軟體。</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">匯入和驗證 QMSK。</span></a></p></li>
+</ol>
+</div>
+<p>完成這兩個先決步驟後，下一步是取得正確的 RSK。RSK 的檔名模式為 <code class="file docutils literal notranslate"><span class="pre">qubes-release-</span><em><span class="pre">*</span></em><span class="pre">-signing-key.asc</span></code>，其中 <code class="samp docutils literal notranslate"><em><span class="pre">*</span></em></code> 是 Qubes 的主要或次要版本號，例如 <code class="samp docutils literal notranslate"><span class="pre">4</span></code> 或 <code class="samp docutils literal notranslate"><span class="pre">4.3</span></code>。有幾種方法可以取得您 Qubes 版本的 RSK。</p>
+<ul>
+<li><p><strong>如果您可以存取現有的 Qubes 安裝</strong>，發布金鑰可在 <a href="#id1"><span class="problematic" id="id2">**</span></a>dom0 中**或**官方 Fedora 範本中**（以及基於它們的 qube 中）取得，位於 <code class="file docutils literal notranslate"><span class="pre">/etc/pki/rpm-gpg/RPM-GPG-KEY-qubes-</span><em><span class="pre">*</span></em></code>。</p>
+<p>這些可以 <a class="reference internal" href="../user/how-to-guides/how-to-copy-from-dom0.html"><span class="doc">從 dom0 複製</span></a> 或 <a class="reference internal" href="../user/how-to-guides/how-to-copy-and-move-files.html"><span class="doc">從任何基於 fedora 的 qube</span></a> 複製到其他 qube 中以供進一步使用。</p>
+<p>如果您希望使用其中一個金鑰，<strong>請確保將其匯入您的金鑰環</strong>，例如：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@fedora-based-qube] $ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/etc/pki/rpm-gpg/RPM-GPG-KEY-qubes-*
+</pre></div>
+</div>
+</li>
+<li><p><strong>使用 GPG 取得它</strong>：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@any-online-qube] $ </span>gpg2<span class="w"> </span>--keyserver-options<span class="w"> </span>no-self-sigs-only,no-import-clean<span class="w"> </span>--fetch-keys<span class="w"> </span>https://keys.qubes-os.org/keys/qubes-release-X-signing-key.asc
+</pre></div>
+</div>
+</li>
+<li><p><strong>以檔案形式下載</strong>。您可以在`下載頁面 &lt;<a class="reference external" href="https://www.qubes-os.org/downloads/">https://www.qubes-os.org/downloads/</a>&gt;`__ 上找到您 Qubes 版本的 RSK。您也可以從 <a class="reference internal" href="security-pack.html"><span class="doc">Qubes 安全包</span></a> 和 <a class="reference external" href="https://keys.qubes-os.org/keys/">Qubes keyserver</a> 下載所有目前使用的開發者簽署金鑰、RSK 和 Qubes Master Signing Key。下載 RSK 後，<strong>使用 GPG 匯入它</strong>：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@any-qube] $ </span>gpg2<span class="w"> </span>--keyserver-options<span class="w"> </span>no-self-sigs-only,no-import-clean<span class="w"> </span>--import<span class="w"> </span>./qubes-release-X-signing-key.asc
+</pre></div>
+</div>
+</li>
+</ul>
+<p>既然您有了正確的 RSK，您只需要驗證它是由 QMSK 簽署的：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--check-signatures<span class="w"> </span><span class="s2">&quot;Qubes OS Release X Signing Key&quot;</span>
+<span class="go">pub   rsa4096 YYYY-MM-DD [SC]</span>
+<span class="go">      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="go">uid           [  full  ] Qubes OS Release X Signing Key</span>
+<span class="go">sig!3        XXXXXXXXXXXXXXXX YYYY-MM-DD  Qubes OS Release X Signing Key</span>
+<span class="hll"><span class="go">sig!         DDFA1A3E36879494 YYYY-MM-DD  Qubes Master Signing Key</span>
+</span>
+<span class="go">gpg: 2 good signatures</span>
+</pre></div>
+</div>
+<p>這只是一個範例，因此您收到的輸出可能不完全相同（<code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> 將被版本號取代）。重要的是帶有 <code class="docutils literal notranslate"><span class="pre">sig!</span></code> 前綴的行，顯示 QMSK 已簽署此金鑰。這驗證了 RSK 的真實性。請注意，<code class="docutils literal notranslate"><span class="pre">sig</span></code> 標籤後的 <code class="docutils literal notranslate"><span class="pre">!</span></code> 標誌很重要，因為它表示金鑰簽章是有效的。<code class="docutils literal notranslate"><span class="pre">sig-</span></code> 前綴將表示簽章錯誤，而 <code class="docutils literal notranslate"><span class="pre">sig%</span></code> 則表示 gpg 在驗證簽章時遇到錯誤。您不需要獨立驗證 RSK 的真實性，因為您已經驗證了 QMSK 的真實性。</p>
+<p>作為最終的合理性檢查，請確保 RSK 在您的金鑰環中具有正確的信任等級：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;Qubes OS Release X Signing Key&quot;</span>
+<span class="go">pub   rsa4096 YYYY-MM-DD [SC]</span>
+<span class="go">      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="hll"><span class="go">uid           [  full  ] Qubes OS Release X Signing Key</span>
+</span></pre></div>
+</div>
+<p>如果您在這裡沒有看到具有「full」或更高信任等級的正確 RSK，請返回並仔細遵循本節中的說明，並查閱下面的 <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">疑難排解常見問題</span></a>。</p>
+</section>
+<section id="how-to-obtain-and-authenticate-other-signing-keys">
+<h2>如何取得和驗證其他簽署金鑰<a class="headerlink" href="#how-to-obtain-and-authenticate-other-signing-keys" title="連結到這個標頭"></a></h2>
+<p>請參閱 <a class="reference internal" href="security-pack.html"><span class="doc">Qubes 安全包</span></a> 文件。</p>
+</section>
+<section id="how-to-verify-detached-pgp-signatures-on-qubes-isos">
+<h2>如何驗證 Qubes ISO 上的分離式 PGP 簽章<a class="headerlink" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos" title="連結到這個標頭"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>在繼續之前，您必須先完成以下先決步驟：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#openpgp-software"><span class="std std-ref">安裝 OpenPGP 軟體。</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">匯入和驗證 Qubes Master Signing Key。</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">匯入和驗證您的發布簽署金鑰。</span></a></p></li>
+</ol>
+</div>
+<p>每個 Qubes ISO 都附帶一個**分離式 PGP 簽章**檔案，您可以在`下載頁面 &lt;<a class="reference external" href="https://www.qubes-os.org/downloads/">https://www.qubes-os.org/downloads/</a>&gt;`__ 上與 ISO 一起找到。如果您 ISO 的檔名是 <code class="file docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em><span class="pre">-86_64.iso</span></code>，則該 ISO 的簽章檔名為 <code class="file docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em><span class="pre">-86_64.iso.asc</span></code>，其中 <code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> 是特定的 Qubes 版本。簽章檔名始終與 ISO 檔名相同，後接 <code class="docutils literal notranslate"><span class="pre">.asc</span></code>。</p>
+<p><strong>下載 ISO 和其簽章檔案</strong>。將它們都放在**同一個目錄**中，然後導航到該目錄。現在，您可以在包含這兩個檔案的目錄中執行此 GPG 命令來驗證 ISO，請確保將 <code class="samp docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em></code> 替換為正確的版本號（例如 <code class="samp docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">4.3</span></em></code>）：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>-v<span class="w"> </span>--verify<span class="w"> </span>Qubes-RX-x86_64.iso.asc<span class="w"> </span>Qubes-RX-x86_64.iso
+<span class="go">gpg: armor header: Version: GnuPG v1</span>
+<span class="go">gpg: Signature made &lt;TIME&gt; using RSA key ID 03FA5082</span>
+<span class="go">gpg: using PGP trust model</span>
+<span class="hll"><span class="go">gpg: Good signature from &quot;Qubes OS Release X Signing Key&quot;</span>
+</span><span class="go">gpg: binary signature, digest algorithm SHA256</span>
+</pre></div>
+</div>
+<p>這只是一個範例，因此您收到的輸出不會完全相同。重要的是顯示 <code class="docutils literal notranslate"><span class="pre">Good</span> <span class="pre">signature</span> <span class="pre">from</span> <span class="pre">&quot;Qubes</span> <span class="pre">OS</span> <span class="pre">Release</span> <span class="pre">X</span> <span class="pre">Signing</span> <span class="pre">Key&quot;</span></code> 的那一行。這確認了 ISO 上的簽章是有效的。</p>
+<p>如果您在這裡沒有看到有效的簽章，請返回並仔細遵循本節中的說明，並查閱下面的 <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">疑難排解常見問題</span></a>。</p>
+</section>
+<section id="how-to-re-verify-installation-media-after-writing">
+<h2>如何重新驗證寫入後的安裝媒體<a class="headerlink" href="#how-to-re-verify-installation-media-after-writing" title="連結到這個標頭"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>這是一個可選章節，適用於進階使用者。</p>
+</div>
+<p><strong>為什麼在已經驗證原始 ISO 之後還要重新驗證已寫入的資料？</strong> 可以想像，一個足夠老練的對手可能會讓您的初始 ISO 驗證成功（例如以免警覺到您的機器已被入侵），然後在資料寫入安裝媒體時暗中修改資料，導致 Qubes 安裝程式被入侵。這可能會增加攻擊不被檢測到的機率。減輕此風險的一種方法是在將安裝程式寫入無法更改的安裝媒體（例如具有正確實作物理寫入保護開關和不可刷新或經加密簽章（或兩者兼備）的韌體的 USB 隨身碟）後重新驗證，如我們的 <a class="reference internal" href="../user/downloading-installing-upgrading/install-security.html"><span class="doc">安裝安全考量</span></a> 中所述。</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>在繼續之前，您必須具備：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">一個真實的 RSK</span></a></p></li>
+<li><p>:ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>將 Qubes ISO 寫入您想要的媒體 &lt;user/downloading-installing-upgrading/installation-guide:copying the iso onto the installation medium&gt;`（例如 USB 隨身碟或光碟）</p></li>
+</ul>
+</div>
+<p><strong>首先</strong>，拔下您的 USB 隨身碟並撥動寫入保護開關，使隨身碟上的資料無法再被更改。</p>
+<p>然後，您有兩個選項：</p>
+<ul class="simple">
+<li><p><strong>如果您有與建立安裝媒體不同的電腦</strong>，請考慮使用該電腦，最好是從未見過原始 ISO 的離線電腦。</p></li>
+<li><p><strong>如果沒有</strong>，請至少嘗試使用一個全新的 VM（例如如果是 Qubes 系統則使用新的 qube），最好是離線的，且儲存空間小到無法容納原始 ISO。</p></li>
+</ul>
+<p>其概念是原始系統可能已被入侵，而使用不同的系統進行重新驗證迫使您的假想對手必須再入侵另一個系統才能成功。畢竟，如果您的對手知道您正在尋找的答案——也就是與真實 ISO 匹配——並且可以在同一個重新驗證環境中存取該 ISO，那麼幾乎沒有什麼可以阻止他們直接讀取原始 ISO 並將該結果提供給您（可能同時從 USB 隨身碟讀取資料並將其導入 <code class="docutils literal notranslate"><span class="pre">/dev/null</span></code>，讓您看到 USB 隨身碟上的燈閃爍，以營造正在從 USB 隨身碟讀取資料的假象）。</p>
+<p>現在，我們的目標是執行**與原始 ISO 相同的驗證步驟**，但這次我們將直接從已寫入保護的 USB 隨身碟讀取安裝程式資料，而不是從原始 ISO 檔案。</p>
+<p>為了做到這一點，<strong>我們必須知道原始 ISO 的準確大小（以位元組為單位）</strong>。有兩種方法可以取得此資訊：</p>
+<ul class="simple">
+<li><p><strong>從 Qubes 網站</strong>，將滑鼠懸停在`下載頁面 &lt;<a class="reference external" href="https://www.qubes-os.org/downloads/">https://www.qubes-os.org/downloads/</a>&gt;`__ 上的任何 ISO 下載按鈕上。您也可以直接在`下載頁面的原始資料 &lt;<a class="reference external" href="https://github.com/QubesOS/qubesos.github.io/blob/master/_data/downloads.yml">https://github.com/QubesOS/qubesos.github.io/blob/master/_data/downloads.yml</a>&gt;`__ 中檢視這些值。</p></li>
+<li><p><strong>從 ISO 本身</strong>：</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>stat<span class="w"> </span>-c<span class="w"> </span>%s<span class="w"> </span>Qubes-RX-x86_64.iso
+<span class="go">8176568320</span>
+</pre></div>
+</div>
+<p>其中 <code class="file docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em><span class="pre">-x86_64.iso</span></code> 是您的 Qubes ISO（<code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> 被版本號取代）。請注意，您實際的位元組數將取決於您使用的 Qubes ISO。這只是一個範例。</p>
+<p>您現在可以使用 <strong class="program">gpg</strong> 直接針對 USB 隨身碟上的資料驗證分離式 PGP 簽章。以下命令從您的 USB 隨身碟讀取精確的位元組數，並將它們透過管道傳入 <strong class="program">gpg</strong>：</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span>&lt;SIZE&gt;<span class="w"> </span><span class="nv">iflag</span><span class="o">=</span>count_bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>-v<span class="w"> </span>--verify<span class="w"> </span>Qubes-RX-x86_64.iso.asc<span class="w"> </span>-
+<span class="go">7797+1 records in</span>
+<span class="go">7797+1 records out</span>
+<span class="go">8176568320 bytes (8.2 GB, 7.6 GiB) copied, 277.332 s, 29.5 MB/s</span>
+<span class="go">gpg: Signature made &lt;TIME&gt;</span>
+<span class="go">gpg:                using RSA key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="go">gpg: using pgp trust model</span>
+<span class="hll"><span class="go">gpg: Good signature from &quot;Qubes OS Release X Signing Key&quot; [full]</span>
+</span><span class="go">gpg: binary signature, digest algorithm SHA256, key algorithm rsa4096</span>
+</pre></div>
+</div>
+<p>其中 <code class="file docutils literal notranslate"><span class="pre">/dev/</span><em><span class="pre">sdX</span></em></code> 是您的 USB 隨身碟，<code class="samp docutils literal notranslate"><span class="pre">&lt;SIZE&gt;</span></code> 是原始 ISO 的準確大小（以位元組為單位），<code class="docutils literal notranslate"><span class="pre">Qubes-RX-x86_64.iso.asc</span></code> 是原始 ISO 的分離式 PGP 簽章檔案。</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p><strong class="program">gpg</strong> 驗證命令的通常形式是 <code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--verify</span> <span class="pre">&lt;簽章&gt;</span> <span class="pre">&lt;簽署資料&gt;</span></code>。我們的命令使用 shell 重新導向，以便將來自 USB 隨身碟的資料用作 <code class="docutils literal notranslate"><span class="pre">&lt;簽署資料&gt;</span></code>，這就是為什麼命令末尾需要 <code class="docutils literal notranslate"><span class="pre">-</span></code> 的原因。</p>
+</div>
+<p><strong>您收到的輸出不會完全相同</strong>，重要的是您應該收到一個針對 <a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">適當的 RSK</span></a> 的 <code class="docutils literal notranslate"><span class="pre">Good</span> <span class="pre">signature</span></code> 訊息，而該 RSK 應由 <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">真實 QMSK</span></a> 的副本簽署。</p>
+</section>
+<section id="how-to-verify-signatures-on-git-repository-tags-and-commits">
+<h2>如何驗證 Git 儲存庫標籤和送交上的簽章<a class="headerlink" href="#how-to-verify-signatures-on-git-repository-tags-and-commits" title="連結到這個標頭"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>在繼續之前，您必須先完成以下先決步驟：</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#openpgp-software"><span class="std std-ref">安裝 OpenPGP 軟體。</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">匯入和驗證 Qubes Master Signing Key。</span></a></p></li>
+<li><p><a class="reference internal" href="security-pack.html"><span class="doc">從 Qubes 安全包 (qubes-secpack) 匯入和驗證金鑰。</span></a> 請參閱我們的 <a class="reference internal" href="security-pack.html#pgp-key-policies"><span class="std std-ref">PGP 金鑰政策</span></a> 以了解關於這些金鑰的重要資訊。</p></li>
+</ol>
+</div>
+<p>每當您使用任何 <a class="reference external" href="https://github.com/QubesOS">Qubes 儲存庫</a>時，您應該使用 Git 驗證最新送交上的標籤或最新送交本身的 PGP 簽章。（可能兩者都存在，但只需要一個。）如果頂端沒有可信任的已簽署標籤或送交，則最新可信任已簽署標籤或送交之後的任何送交都<strong>不應</strong>被信任。如果您遇到包含任何未簽署送交的儲存庫，您不應在其之上添加任何自己的已簽署標籤或送交，除非您個人擔保這些未簽署送交的可信度。相反地，請要求推送未簽署送交的人對它們進行簽署。</p>
+<p>GitHub 正確執行了簽章檢查、帳戶身份是真實的、管理員未更換使用者的金鑰、GitHub 的伺服器未被入侵等。由於您無法確定所有這些條件都成立，因此最好自己驗證簽章。（另請參閱：<a class="reference internal" href="../introduction/faq.html#what-does-it-mean-to-distrust-the-infrastructure"><span class="std std-ref">distrusting the infrastructure</span></a>。）</p>
+<section id="how-to-verify-a-signature-on-a-git-tag">
+<h3>如何驗證 Git 標籤上的簽章<a class="headerlink" href="#how-to-verify-a-signature-on-a-git-tag" title="連結到這個標頭"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>tag<span class="w"> </span>-v<span class="w"> </span>&lt;tag<span class="w"> </span>name&gt;
+</pre></div>
+</div>
+<p>或</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>verify-tag<span class="w"> </span>&lt;tag<span class="w"> </span>name&gt;
+</pre></div>
+</div>
+</section>
+<section id="how-to-verify-a-signature-on-a-git-commit">
+<h3>如何驗證 Git 送交上的簽章<a class="headerlink" href="#how-to-verify-a-signature-on-a-git-commit" title="連結到這個標頭"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--show-signature<span class="w"> </span>&lt;commit<span class="w"> </span>ID&gt;
+</pre></div>
+</div>
+<p>或</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>verify-commit<span class="w"> </span>&lt;commit<span class="w"> </span>ID&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting-faq">
+<h2>疑難排解常見問題<a class="headerlink" href="#troubleshooting-faq" title="連結到這個標頭"></a></h2>
+<section id="why-am-i-getting-can-t-check-signature-public-key-not-found">
+<h3>為什麼我收到「Can't check signature: public key not found」？<a class="headerlink" href="#why-am-i-getting-can-t-check-signature-public-key-not-found" title="連結到這個標頭"></a></h3>
+<p>您沒有正確的<a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">發佈簽署金鑰</span></a>。</p>
+</section>
+<section id="why-am-i-getting-bad-signature-from-qubes-os-release-x-signing-key">
+<h3>為什麼我收到「BAD signature from 'Qubes OS Release X Signing Key'」？<a class="headerlink" href="#why-am-i-getting-bad-signature-from-qubes-os-release-x-signing-key" title="連結到這個標頭"></a></h3>
+<p>問題可能是以下一項或多項：</p>
+<ul class="simple">
+<li><p>您正在嘗試驗證錯誤的檔案。仔細重新閱讀此頁面。</p></li>
+<li><p>您使用了錯誤的 GPG 命令。仔細遵循提供的範例，或嘗試使用 <code class="docutils literal notranslate"><span class="pre">gpg</span></code> 代替 <a href="#id1"><span class="problematic" id="id2">``</span></a>gpg2``（反之亦然）。</p></li>
+<li><p>ISO 或 <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">分離式 PGP 簽章檔案</span></a> 有問題（例如下載不完整或損毀）。請嘗試從其他來源重新下載簽章檔案，然後再次嘗試驗證。如果仍然得到相同的結果，請嘗試從其他來源重新下載 ISO，然後再次嘗試驗證。</p></li>
+</ul>
+</section>
+<section id="why-am-i-getting-bash-gpg2-command-not-found">
+<h3>為什麼我收到「bash: gpg2: command not found」？<a class="headerlink" href="#why-am-i-getting-bash-gpg2-command-not-found" title="連結到這個標頭"></a></h3>
+<p>您尚未安裝 <code class="docutils literal notranslate"><span class="pre">gpg2</span></code>。請使用適合您環境的方法（例如透過套件管理器）安裝它，或嘗試使用 <code class="docutils literal notranslate"><span class="pre">gpg</span></code> 代替。</p>
+</section>
+<section id="why-am-i-getting-no-such-file-or-directory">
+<h3>為什麼我收到「No such file or directory」？<a class="headerlink" href="#why-am-i-getting-no-such-file-or-directory" title="連結到這個標頭"></a></h3>
+<p>您的工作目錄不包含所需的檔案。返回並更仔細地遵循說明，確保將所有所需檔案放在同一個目錄中<em>並</em>導航到該目錄。</p>
+</section>
+<section id="why-am-i-getting-can-t-open-signed-data-qubes-rx-x86-64-iso-no-signed-data-can-t-hash-datafile-no-data">
+<h3>為什麼我收到「can't open signed data 'Qubes-RX-x86_64.iso'」/「no signed data」/「can't hash datafile: No data」？<a class="headerlink" href="#why-am-i-getting-can-t-open-signed-data-qubes-rx-x86-64-iso-no-signed-data-can-t-hash-datafile-no-data" title="連結到這個標頭"></a></h3>
+<p>正確的 ISO 不在您的工作目錄中。</p>
+</section>
+<section id="why-am-i-getting-can-t-open-qubes-rx-x86-64-iso-asc-verify-signatures-failed-file-open-error">
+<h3>為什麼我收到「can't open 'Qubes-RX-x86_64.iso.asc' / verify signatures failed: file open error」？<a class="headerlink" href="#why-am-i-getting-can-t-open-qubes-rx-x86-64-iso-asc-verify-signatures-failed-file-open-error" title="連結到這個標頭"></a></h3>
+<p>正確的 <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">分離式 PGP 簽章檔案</span></a> 不在您的工作目錄中。</p>
+</section>
+<section id="why-am-i-getting-no-valid-openpgp-data-found">
+<h3>為什麼我收到「no valid OpenPGP data found」？<a class="headerlink" href="#why-am-i-getting-no-valid-openpgp-data-found" title="連結到這個標頭"></a></h3>
+<p>您沒有正確的 <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">分離式 PGP 簽章檔案</span></a>，或者您將 <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> 的引數順序顛倒了。（簽章檔案在前。）</p>
+</section>
+<section id="why-am-i-getting-warning-this-key-is-not-certified-with-a-trusted-signature-there-is-no-indication-that-the-signature-belongs-to-the-owner">
+<h3>為什麼我收到「WARNING: This key is not certified with a trusted signature! There is no indication that the signature belongs to the owner.」？<a class="headerlink" href="#why-am-i-getting-warning-this-key-is-not-certified-with-a-trusted-signature-there-is-no-indication-that-the-signature-belongs-to-the-owner" title="連結到這個標頭"></a></h3>
+<p>有幾種可能性：</p>
+<ul class="simple">
+<li><p>您沒有 <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Qubes Master Signing Key</span></a>。</p></li>
+<li><p>您尚未<a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">正確設定 Qubes Master Signing Key 的信任等級。</span></a></p></li>
+<li><p>對於非由 Qubes Master Signing Key 直接簽署的金鑰，您尚未 <a class="reference internal" href="#how-to-verify-signatures-on-git-repository-tags-and-commits"><span class="std std-ref">正確設定該金鑰的信任等級。</span></a></p></li>
+</ul>
+</section>
+<section id="why-am-i-getting-x-signature-not-checked-due-to-a-missing-key">
+<h3>為什麼我收到「X signature not checked due to a missing key」？<a class="headerlink" href="#why-am-i-getting-x-signature-not-checked-due-to-a-missing-key" title="連結到這個標頭"></a></h3>
+<p>您的金鑰環中沒有建立這些簽章的金鑰。就驗證 Qubes ISO 而言，只要您擁有 <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Qubes Master Signing Key</span></a> 和您 Qubes 版本的<a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">發佈簽署金鑰</span></a>，就不需要它們。</p>
+</section>
+<section id="why-am-i-seeing-additional-signatures-on-a-key-with-user-id-not-found-or-from-a-revoked-key">
+<h3>為什麼我在金鑰上看到帶有「[User ID not found]」或來自已撤銷金鑰的額外簽章？<a class="headerlink" href="#why-am-i-seeing-additional-signatures-on-a-key-with-user-id-not-found-or-from-a-revoked-key" title="連結到這個標頭"></a></h3>
+<p>這只是 OpenPGP 運作方式的基本部分。任何人都可以簽署他人的公鑰並將簽署後的金鑰上傳到 keyserver。每個人也可以隨時自由撤銷自己的金鑰（假設他們擁有或可以建立撤銷憑證）。這不影響驗證 Qubes ISO、程式碼或金鑰。</p>
+</section>
+<section id="why-am-i-getting-verify-signatures-failed-unexpected-data">
+<h3>為什麼我收到「verify signatures failed: unexpected data」？<a class="headerlink" href="#why-am-i-getting-verify-signatures-failed-unexpected-data" title="連結到這個標頭"></a></h3>
+<p>您驗證的對象不是正確的 <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">獨立 PGP 簽章檔案</span></a>。</p>
+</section>
+<section id="why-am-i-getting-not-a-detached-signature">
+<h3>為什麼我收到「not a detached signature」？<a class="headerlink" href="#why-am-i-getting-not-a-detached-signature" title="連結到這個標頭"></a></h3>
+<p>您驗證的對象不是正確的 <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">獨立 PGP 簽章檔案</span></a>。</p>
+</section>
+<section id="why-am-i-getting-crc-error-no-signature-found">
+<h3>為什麼我收到「CRC error; […] no signature found […]」？<a class="headerlink" href="#why-am-i-getting-crc-error-no-signature-found" title="連結到這個標頭"></a></h3>
+<p>您驗證的對象不是正確的 <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">獨立 PGP 簽章檔案</span></a>，或者簽章檔案已被修改。請嘗試重新下載或從其他來源下載。</p>
+</section>
+<section id="why-am-i-getting-warning-1-listed-file-could-not-be-read">
+<h3>為什麼我收到「WARNING: 1 listed file could not be read」？<a class="headerlink" href="#why-am-i-getting-warning-1-listed-file-could-not-be-read" title="連結到這個標頭"></a></h3>
+<p>正確的 ISO 不在您的工作目錄中。</p>
+</section>
+<section id="i-have-another-problem-that-isn-t-mentioned-here">
+<h3>我遇到此處未提及的其他問題。<a class="headerlink" href="#i-have-another-problem-that-isn-t-mentioned-here" title="連結到這個標頭"></a></h3>
+<p>仔細重新閱讀此頁面，以確認您沒有跳過任何步驟。特別是，請確保您擁有 <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Qubes Master Signing Key</span></a>、適用於您 Qubes 版本的<a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">發布簽署金鑰</span></a>，<em>以及</em><a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">分離式 PGP 簽章檔案</span></a>，全部都是針對*正確的* Qubes OS 版本。如果您的問題是關於 GPG，請參閱 <a class="reference external" href="https://www.gnupg.org/documentation/">GnuPG 文件</a>。還有問題嗎？請參閱<a class="reference internal" href="../introduction/support.html"><span class="doc">協助、支援、郵件列表與論壇</span></a>尋找可以提問的地方！</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="security-pack.html" class="btn btn-neutral float-left" title="Qubes security pack (qubes-secpack)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../developer/general/package-contributions.html" class="btn btn-neutral float-right" title="軟體包貢獻" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/project-security/verifying-signatures.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
