@@ -8,30 +8,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-08-31 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../developer/services/qfilecopy.rst:3 c2c16e6ca9d5485d98cbf51521b94cdb
+#: ../../../developer/services/qfilecopy.rst:3 d7d581ae2f1345f98e73fdb41c457988
 msgid "Inter-qube file copying (qfilecopy)"
 msgstr ""
 
-#: ../../../developer/services/qfilecopy.rst:6 8505009931a2428888b7fdf8e88eb2c0
+#: ../../../developer/services/qfilecopy.rst:6 149a23a966a84e9191b655ac57af17a3
 msgid "There are two cases when we need a mechanism to copy files between VMs:"
 msgstr ""
 
-#: ../../../developer/services/qfilecopy.rst:8 deec97ac72d045c69812704b13bf88a8
+#: ../../../developer/services/qfilecopy.rst:8 e90052da1a56433a897eea1d4a1fea28
 msgid ""
 "“regular” file copy - when user instructs file manager to copy a given files/"
 "directories to a different VM"
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:10
-#: a67518c2c6c94651ae456efe897c84a8
+#: 6260321bbcd14a51815dcc4ae2103909
 msgid ""
 "DispVM copy - user selects “open in DispVM” on a file; this file must be "
 "copied to a DisposableVM, edited by user, and possibly a modified file "
@@ -39,7 +40,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:14
-#: e5dce0f358bc441fb9a0088c868896aa
+#: 68b2f868b0144704ae99ba370e8314cf
 msgid ""
 "In the early days of Qubes OS, for both cases, a block device (backed by a "
 "file in dom0 with a vfat filesystem on it) was attached to VM, file(s) "
@@ -49,26 +50,26 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:16
-#: 690c1f16b46f439d8fcfac0754abb65f
+#: 5a02f3dc4f444d10920427ccec6c8b4c
 msgid "This has the following disadvantages:"
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:18
-#: 2408c2d2d6e1462fb83873b16aab5993
+#: 22692146346b42f3b06e82628d8ffdf4
 msgid ""
 "performance - dom0 has to prepare and attach/detach block devices, which is "
 "slow because of hotplug scripts involvement."
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:20
-#: e9f736a59dd64074b4005f2dc1864a81
+#: fa646fdb616845bdaf32fa91ffb87f5b
 msgid ""
 "security - VM kernel parses partition table and filesystem metadata from the "
 "block device; they are controlled by (potentially untrusted) sender VM."
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:24
-#: ff3a589a9bf049faab9c1929fa097252
+#: 04a3e374dde34c879217b6035d9cdc7b
 msgid ""
 "In modern Qubes OS releases, we have reimplemented interVM file copy using "
 "qrexec, which addresses the above mentioned disadvantages. Nowadays, even "
@@ -79,7 +80,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:26
-#: 31ec88a5abf34084a16a45bc8dc16e0d
+#: 498fdd5f94ff4145bfcd8ade2c6bfdaf
 msgid ""
 "The rpc action for regular file copy is *qubes.Filecopy*, the rpc client is "
 "named *qfile-agent*, the rpc server is named *qfile-unpacker*. For DispVM "
@@ -89,7 +90,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/qfilecopy.rst:28
-#: fa4a8a2091064a7facea2a1ecc3ff89c
+#: e8250c3a47e64fd6b3340d69a0b4e3b5
 msgid ""
 "Being a rpc server, *qfile-unpacker* must be coded securely, as it processes "
 "potentially untrusted data format. Particularly, we do not want to use "

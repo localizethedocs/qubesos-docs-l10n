@@ -8,31 +8,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-08-31 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../user/advanced-topics/bind-dirs.rst:3
-#: 6bfb79e2c2c14ed8bffbe19e806b328e
+#: 107d2951ae6e4ffd9c1624e65c1b3540
 msgid "How to make any file persistent (bind-dirs)"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:7
-#: ab350c8a4efe483d942fbec13e817d93
+#: 44f1e614b1014c83a2c1756e52e55e62
 msgid "This page is intended for advanced users."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:10
-#: 0c2a23a2843a4c44897a32f18094b523
+#: 85cfb39d86d04e15b114c62f47d2e289
 msgid "What are bind-dirs?"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:13
-#: 8a5394599c48442caa10d55e09a5a6b1
+#: 8b9242daccd94d87a053d359def9b5d5
 msgid ""
 "With `bind-dirs <https://github.com/QubesOS/qubes-core-agent-linux/blob/"
 "master/vm-systemd/bind-dirs.sh>`__ any arbitrary files or folders can be "
@@ -40,12 +41,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:16
-#: 881b393c8d314be68bc1b5bbfd3790f6
+#: c8225e1d9e404d26b5eada2bc7b42099
 msgid "What is it useful for?"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:19
-#: b043d31cbdd94daca76a099fb0decccb
+#: f90d3dfb0f914be6b50e102fd6edc83b
 msgid ""
 "In an app qube all of the file system comes from the template except ``/"
 "home``, ``/usr/local``, and ``/rw``. This means that changes in the rest of "
@@ -55,7 +56,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:21
-#: cc4f679f88d64533a6447d9ba609b6ce
+#: 6c83901b64c94e93a754dc02011b1268
 msgid ""
 "For example, in Whonix, Tor’s data dir ``/var/lib/tor`` `has been made "
 "persistent in the TemplateBased ProxyVM sys-whonix <https://github.com/"
@@ -66,43 +67,43 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:24
-#: 0bd2af071d4a4d8698395845a08ec2b8
+#: de83b49404bc43c0b00ff3fdd0114bca
 msgid "How to use bind-dirs.sh?"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:27
-#: a6b2b744913b40359182ee6e194405bc
+#: d7f111de95a044518189b6d13a4d9169
 msgid ""
 "In this example, we want to make ``/var/lib/tor`` persistent. Enter all of "
 "the following commands in your app qube."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:29
-#: df85d128bbd04fb89182e45880c9018d
+#: 4cd9a605aa0141b9af24fc9ea302b761
 msgid "Make sure the directory ``/rw/config/qubes-bind-dirs.d`` exists."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:37
-#: 664e4dcea91b41e19c52c8fa26c6eaa6
+#: f197133fb1bd4c61b2b99d3c935e1196
 msgid ""
 "Create the file ``/rw/config/qubes-bind-dirs.d/50_user.conf`` with root "
 "permissions, if it doesn’t already exist."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:45
-#: 2b6a6805bf85428fb1960b9bb583ee3b
+#: 1a78f1619ddf4c448ad153fdbd6261b0
 msgid ""
 "Add a line to ``/rw/config/qubes-bind-dirs.d/50_user.conf`` that appends a "
 "folder or file to the ``binds`` variable."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:53
-#: d66a1607b8f94421948686013f9e38e8
+#: 22cdef9a908d4321a47f65a3b2678452
 msgid "Save."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:55
-#: fefaf4cf8b794a8186c684d386cb1db1
+#: 4dd8303b29de4c7fbf5214c269b7c017
 msgid ""
 "If the directory you wish to make persistent doesn’t exist in the template "
 "on which the app qube is based, you’ll need to create the directory (with "
@@ -112,7 +113,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:63
-#: cadc7aa80cf248b5bb8e4936305f0cdf
+#: 46b89e51931f428db95fd5de0166fe86
 msgid ""
 "(optional) If the directory you want to persist across reboots (``/var/lib/"
 "tor`` in this case) needs special ownership and permissions, make sure the "
@@ -121,24 +122,24 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:65
-#: 13133f92af6e47038b58ea503e01901e
+#: dcababe592cd4096af4eeecb75e2dbcd
 msgid "Reboot the app qube."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:67
-#: 62146891aa044c0388c3c17720910d7d
+#: 1821213ad5124acbb57c70e6312ff65e
 msgid "Done."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:71
-#: 620b1a0ad59f439ebbf3eb35d4fc2620
+#: c75259ad9cbb47e79b559f1294507cb7
 msgid ""
 "From now on, all files in the ``/var/lib/tor`` directory will persist across "
 "reboots."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:73
-#: a6b62b86a1984c60abe7d0846c42dcf9
+#: 5092d0d994cb432ba9ede8718818bbc3
 msgid ""
 "You can make as many files or folders persist as you want simply by making "
 "multiple entries in the ``50_user.conf`` file, each on a separate line. For "
@@ -147,35 +148,35 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:83
-#: 952bd7bf2d5f4e5b8b11c4956f9fcef5
+#: 51e031e073454593aa0d9426352c762b
 msgid "Other Configuration Folders"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:86
-#: 90b368ed77b9451887d3c4970961e7c9
+#: 8b306cd334204faabfeb5553deb1d8d8
 msgid "``/usr/lib/qubes-bind-dirs.d`` (lowest priority, for packages)"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:88
-#: d58c1b1775ed4fd8b9145170ad8dc38b
+#: f4e049614d064db4bda2b7910659199a
 msgid ""
 "``/etc/qubes-bind-dirs.d`` (intermediate priority, for template wide "
 "configuration)"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:90
-#: ae4f211c2da64e19983fb4e542d75faa
+#: 952ff3cd6aa34b7dbc823a39b1ca5bac
 msgid ""
 "``/rw/config/qubes-bind-dirs.d`` (highest priority, for per VM configuration)"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:95
-#: 5f39a7a3473e44aa83df122aaf5b2bcc
+#: f88957e7561e480b9559fa9a650427bb
 msgid "How does it work?"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:98
-#: cb83de97a55e4688ae99f4c2fb74fc34
+#: 874e8fdc1373492589c2d836aa94c398
 msgid ""
 "bind-dirs.sh is called at startup of an app qube, and configuration files in "
 "the above configuration folders are parsed to build a bash array. Files or "
@@ -185,14 +186,14 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:100
-#: e01e067aec6741bba5f6a2553b94d6aa
+#: 08a6c2950b6745cc82be0e644a998100
 msgid ""
 "Creation of the files and folders in ``/rw/bind-dirs`` should be automatic "
 "the first time the app qube is restarted after configuration."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:102
-#: 550185097f584c6f8b2142b287e1bb36
+#: e845ae64e17b42b9881e134e112c8fdc
 msgid ""
 "If you want to circumvent this process, you can create the relevant file "
 "structure under ``/rw/bind-dirs`` and make any changes at the same time that "
@@ -202,33 +203,33 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:105
-#: 8d369a3a054d4094acbf185baf8a9e68
+#: 75f5283a649942b28618cfd711bb4047
 msgid "Limitations"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:108
-#: 94055bd8cd924cc88e3128d2bfc91a91
+#: 59b90b4ebc7f4faa94727b0689189eff
 msgid ""
 "Files that exist in the template root image cannot be deleted in the app "
 "qubes root image using bind-dirs.sh."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:110
-#: 6e40de99b6634949ba1304ac08000019
+#: e1c4555bfd6a4da5afb6f3a1867c8653
 msgid ""
 "Re-running ``sudo /usr/lib/qubes/init/bind-dirs.sh`` without a previous "
 "``sudo /usr/lib/qubes/init/bind-dirs.sh umount`` does not work."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:112
-#: 09471d9dbd7a4f3a90406f485608fea0
+#: 79eca1946e444eb09d1d91b7a5fc5f14
 msgid ""
 "Running ``sudo /usr/lib/qubes/init/bind-dirs.sh umount`` after boot (before "
 "shutdown) is probably not sane and nothing can be done about that."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:114
-#: 2a9ecfa9c1f5408c91a2e927c098bbb5
+#: 5a3c5a1dc2774056aaeed2abe93a1e59
 msgid ""
 "Many editors create a temporary file and copy it over the original file. If "
 "you have bind mounted an individual file this will break the mount. Any "
@@ -239,7 +240,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:116
-#: 6bd765e0f6af47d5ae83906bb8375195
+#: 13244de153214d8282ec1659179f8f42
 msgid ""
 "Some files are altered when a qube boots - e.g. ``/etc/hosts``. If you try "
 "to use bind-dirs on such files you may break your qube in unpredictable "
@@ -248,12 +249,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:121
-#: 20233107435f4a22b92a839fe08f9a93
+#: 806397bb981d435bb3bc1bebd82cdea9
 msgid "How to remove binds from bind-dirs.sh?"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:124
-#: f2288da1b27648d6b258b03bff8ec4d7
+#: 2fc31fdf9a804eee9e4da783453b3ea2
 msgid ""
 "``binds`` is actually just a bash variable (an array) and the bind-dirs.sh "
 "configuration folders are sourced as bash snippets in lexical order. "
@@ -265,12 +266,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:126
-#: c28f9ac5de494d01b21ccc9440855979
+#: 3434ebd693aa4a86b952305e99ef6d88
 msgid "``/rw/config/qubes-bind-dirs.d/50_user.conf``"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:134
-#: 6b02d65a2c144b6e87deee57045b2a01
+#: d4eaead647954a0d86db315113dfd8de
 msgid ""
 "(Editing ``/usr/lib/qubes-bind-dirs.d/40_qubes-whonix.conf`` directly is "
 "strongly discouraged, since such changes get lost when that file is changed "
@@ -278,12 +279,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:137
-#: 59da149394e349f3a8afaef5cf3eeae8
+#: 3141ee906a40411b91b4092313124d0b
 msgid "Custom persist feature"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:140
-#: 0fd7b56f78e94215b66d387578231dfd
+#: 3d6a4fc921c641a386cb8c0d19528546
 msgid ""
 "Custom persist is an optional advanced feature allowing the creation of "
 "minimal state AppVM. The purpose of such an AppVM is to avoid unwanted data "
@@ -292,35 +293,35 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:142
-#: 746085c647214339bc5d6a40c6a6de9a
+#: 63f4812715874e6ea4d690ef38f7394a
 msgid "``/rw/config/rc.local`` is no longer executed"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:144
-#: 2dfd088857c6413b898fb4c5a16d2424
+#: 4f3b6e35357d4771abe63a0ee55e2758
 msgid "``/rw/config/qubes-firewall-user-script`` is ignored"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:146
-#: faaabf65d4794ff89086e72e22747812
+#: f1093ffde3cf456886251dd43935d2bf
 msgid "``/rw/config/suspend-module-blacklist`` is ignored"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:148
-#: ac67dff35758461eaa7bc27233be5f73
+#: 55a57d9d04dc415786b26dc808249ba9
 msgid ""
 "User bind dirs defined in ``/rw/config/qubes-bind-dirs.d`` are no longer read"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:150
-#: 21ea1b408d0241fb84a41ca4c12440fc
+#: ff4275a7c76847dc9d105c74542668d2
 msgid ""
 "``/home`` and ``/user/local`` are not persistent anymore unless explicitly "
 "configured."
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:154
-#: de96c0272ab946f9ba7c9e14ea5e941f
+#: 55ba3c9f07db4f4b89ead430d67b3939
 msgid ""
 "Bind dirs are obviously still supported but this must be configured either "
 "in the template (``/usr/lib/qubes-bind-dirs.d`` and ``/etc/qubes-bind-dirs."
@@ -330,24 +331,24 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:156
-#: 616a2549331d47ef99c638700343e790
+#: c008008adb2d463da122051ede626f6c
 msgid "To use this feature, first, enable it:"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:164
-#: 179030005dc941daa55bbde22726dd97
+#: 83e73f8c7dff4fcb9b2d593abf34ccbb
 msgid "Then, configure a persistent directory with ``qvm-features``:"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:172
-#: a63f58e9ea5647ffb8c350fd37414304
+#: 03fa825d972b4d0b8408185367ec69be
 msgid ""
 "To re-enable ``/home`` and ``/usr/local`` persistence, just add them to the "
 "list:"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:181
-#: 1ae12b7be1a842eea8dce58a441aea72
+#: 8ced3a09511e4249b17638d534cd87a7
 msgid ""
 "When starting the VM, declared custom-persist bind dirs are automatically "
 "added to the ``binds`` variable described above and are handled in the same "
@@ -355,7 +356,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:183
-#: abfd40184c5e424e890ba7e7fca8aa6c
+#: 19db17e4436647a98787cc14031f2da9
 msgid ""
 "A user may want their bind-dirs to be automatically pre-created in ``/rw/"
 "bind-dirs``. Custom persist can do this for you by providing the type of the "
@@ -363,12 +364,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:193
-#: 03a4868861a64a41b2cf03bdc7d1016a
+#: c6a8f79d992a4c61903156acca406acf
 msgid "Discussion"
 msgstr ""
 
 #: ../../../user/advanced-topics/bind-dirs.rst:196
-#: e2350bbe4dce4fd8b2f818c134e3c22b
+#: f516159d72b04fedb8a1ad1e3a2d3c2c
 msgid ""
 "`app qubes: make selected files and folders located in the root image "
 "persistent- review bind-dirs.sh <https://groups.google.com/forum/#!topic/"
