@@ -1,0 +1,526 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/code/coding-style.rst:3 7e5cd4c4f56e47f69b88b7a09720b38b
+msgid "Coding style"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:7 ec7f8b3688be4483b44cbae41555209a
+msgid "Rationale"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:10 819ca6faebc445aa97315132fa7a972b
+msgid ""
+"Maintaining proper coding style is very important for any large software "
+"project, such as Qubes. Here’s why:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:12 50229d2b01e5491ba788074a013b3bc1
+msgid ""
+"It eases maintenance tasks, such as adding new functionality or generalizing "
+"code later,"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:14 f57a90869a6c48a1abc1f6ec65bd075b
+msgid ""
+"It allows others (as well as the future you!) to easily understand fragments "
+"of code and what they were supposed to do, and thus makes it easier to later "
+"extend them with newer functionality or bug fixes,"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:16 17936cb1bc504cf1ab0bb100363abf76
+msgid "It allows others to easily review the code and catch various bugs,"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:18 051e5621e86d42269c2e39690110f093
+msgid ""
+"It provides for an aesthetically pleasing experience when one reads the code…"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:22 ad19bfcef7484f09b072f6f19436fa45
+msgid ""
+"Often, developers, usually smart ones, undersell the value of proper coding "
+"style, thinking that it’s much more important how their code works. These "
+"developers expect that if their code solves some problem using a nice and "
+"neat trick, then that’s all that is really required. Such thinking shows, "
+"however, immaturity and is a signal that the developer, no matter how bright "
+"and smart, might not be a good fit for larger projects. Writing a clever "
+"exploit for a Black Hat show is one thing - writing useful software supposed "
+"to be used and maintained for years is quite a different story. If you want "
+"to show off what a smart programmer you are, then you should become a "
+"researcher and write exploits. If, on the other hand, you want to be part of "
+"a team that makes real, useful software, you should ensure your coding style "
+"is impeccable. At Qubes project, we often took shortcuts and wrote nasty "
+"code, and this has always back fired at us, sometime months, sometime years "
+"later, the net result being we had to spend time fixing code, rather than "
+"implementing new functionality."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:24 d4a141b2d4294994813102c04e83bc2a
+msgid ""
+"And here’s a `link to the real case <https://groups.google.com/forum/#!msg/"
+"qubes-devel/XgTo6L8-5XA/JLOadvBqnqMJ>`__ (one Qubes Security Bulletin) "
+"demonstrating how the lackadaisical coding style lead to a real security "
+"bug. Never assume you’re smart enough to disregard clean and rigorous coding!"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:27 4f462adf23e74cf7a40514ca14c91fbd
+msgid "General typographic conventions"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:30 115b13a0785f4e6ba5b4c5ddd19370e7
+msgid ""
+"**Use space-expanded tabs that equal 4 spaces.** Yes, we know, there are "
+"many arguments for using “real” tabs instead of space-expanded tabs, but we "
+"need to pick one convention to make the project consistent. One argument for "
+"using space-expanded tabs is that this way the programmer is in control of "
+"how the code will look like, despite how other users have configured their "
+"editors to visualize the tabs (of course, we assume any sane person uses a "
+"fixed-width font for viewing the source code). If it makes you feel any "
+"better, assume this is just an arbitrary choice made to enforce a unified "
+"style."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:32 357ceab1bc1740ceb86a0ba0b6182240
+msgid ""
+"**Maintain max. line length of 80 characters**. Even though today’s monitors "
+"often are very wide and it’s often not a problem to have 120 characters "
+"displayed in an editor, maintaining shorter line lengths improves "
+"readability. It also allows others to have two parallel windows open, side "
+"by side, each with different parts of the source code."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:34 3574f513a07a4373b54d1435ae5825ea
+msgid "**Naming conventions for any OS other than Windows**:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:36 69a25b2476ea47b0a913871fc644ee1e
+msgid "``ClassName``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:38 150b7e16b19043a2b7b0d7b0f1b55585
+msgid "``some_variable``, ``some_function``, ``some_argument``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:42 9822c960a2ac45bfbe6d1a420b6aa1b5
+msgid ""
+"**Naming convention for Windows OS** – exceptionally to preserve Windows "
+"conventions please use the following:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:44 4f055399969045f8bb3c7d1e98825a45
+msgid "``ClassName``, ``FunctionName``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:46 cf43ceaef3954c289d489d249bdb4d90
+msgid ""
+"``pszArgumentOne``, ``hPipe`` – use Hungarian notation for argument and "
+"variables"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:50 3a20a298c14c41f08ab5b597402efad3
+msgid ""
+"**Maintain a decent amount of horizontal spacing**, e.g. add a space after "
+"``if`` or before ``{`` in C, and similar in other languages. Whether and "
+"where to also use spaces within expressions, such as (x*2+5) vs. (x * 2 + 5) "
+"is left to the developer’s judgment. Do not put spaces immediately after or "
+"before the brackets in expressions, so avoid constructs like this: ``if "
+"( condition )`` and use ones like this: ``if (condition)`` instead."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:52 5302b2b5cf6b4789bb72bd46e8f935b1
+msgid ""
+"**Use single new lines** (‘\\\\n’ aka LF) in any non-Windows source code. On "
+"Windows, exceptionally, use the CRLF line endings (–). This will allow the "
+"source code to be easily viewable in various Windows-based programs."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:54 dc3f970b9bd14ec7a43fbd4898a2ed1e
+msgid ""
+"**Use descriptive names for variables and functions**! Really, at a time "
+"when most editors have auto-completion features, there is no excuse for "
+"using short variable names."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:56 2d5891f310364669bbdf8677d211d3d9
+msgid "**Comments should be indented together with the code**, e.g. like this:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:72 46cf016adc024be0a4e7aa3082a8936a
+msgid "File naming conventions"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:75 605c5f5e18e04f5e874360a0a16c9c46
+msgid ""
+"All file names written with small letters, use dash to separate words, "
+"rather than underscores, e.g. ``qubes-dom0-update``. Never use spaces!"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:79 8e1b18773fcc46bebb16ce3fabaa8929
+msgid "**File naming in Linux/Unix-like systems:**"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:81 6510d3b4f5d941008cec33261aab0602
+msgid ""
+"User commands that operate on particular VMs (also those accessible in VMs): "
+"``/usr/bin/qvm-*``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:83 d5958135ad0b4458bc74550997d9d4da
+msgid ""
+"User commands that apply to the whole system (Dom0 only): ``/usr/bin/qubes-"
+"*``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:85 b1f475d18ee140b2a3c612370a9ccb90
+msgid ""
+"Auxiliary executables and scripts in ``/usr/libexec/qubes/`` (**Note:** "
+"previously we used ``/usr/lib/qubes`` but decided to change that)"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:87 31585e6b66264284bc9521d743e75ec1
+msgid "Helper, non-executable files in ``/usr/share/qubes/``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:89 ae580580048f471caae5fcb386b21581
+msgid "Various config files in ``/etc/qubes``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:91 a38ecbbbe3004c8bae39c2dfe4ef5089
+msgid ""
+"Qubes RPC services in ``/etc/qubes-rpc``. Qubes RPC Policy definitions (only "
+"in Dom0) in ``/etc/qubes-rpc/policy/``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:93 5b8552c3e2c74d3fbbe6e333c2e2394c
+msgid "All VM-related configs, images, and other files in ``/var/lib/qubes/``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:95 944c6c7eb03544dabe189fba87ec7d9d
+msgid ""
+"System-wide temporary files which reflect the current state of system in ``/"
+"var/run/qubes``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:97 453ab151844549be87eace7173f56513
+msgid "Logs: either log to the system-wide messages, or to ``/var/log/qubes/``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:101
+#: 70e7d91524ee4b33a143980a4d942371
+msgid "**File naming in Windows systems:**"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:103
+#: d6047e15c96e42d9b1f20dde7c237b6b
+msgid ""
+"All base qubes-related files in ``C:\\Program Files\\Invisible Things "
+"Lab\\Qubes\\`` (Exceptionally spaces are allowed here to adhere to Windows "
+"naming conventions)"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:105
+#: 7e1502c85cb540a1851aa7a6abaaf335
+msgid ""
+"Other, third-party files, not Qubes-specific, such as e.g. Xen PV drivers "
+"might be in different vendor subdirs, e.g. ``C:\\Program Files\\Xen PV "
+"Drivers``"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:110
+#: 0ea7224de7b64d2d8760ef810e0a05f1
+msgid "General programming style guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:113
+#: d103d4e4178c4d47ad91aaed5a64ca1b
+msgid ""
+"Do not try to impress with your coding kung-fu, do not use tricks to save 2 "
+"lines of code, always prefer readability over trickiness!"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:115
+#: 067fde5fe5474678800803ae9b011875
+msgid "Make sure your code compiles and builds without warnings."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:117
+#: e58f6d98690c4f5389378510085037e0
+msgid ""
+"Always think first about interfaces (e.g. function arguments, or class "
+"methods) and data structures before you start writing the actual code."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:119
+#: cad9763055864755a12bfc71318bd291
+msgid ""
+"Use comments to explain non-trivial code fragments, or expected behavior of "
+"more complex functions, if it is not clear from their name."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:121
+#: abcc6c3de0844461ae46744169f19954
+msgid ""
+"Do **not** use comments for code fragments where it is immediately clear "
+"what the code does. E.g. avoid constructs like this:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:133
+#: 21d960b78c4847bf86e686934695b00c
+msgid ""
+"Do **not** use comments to disable code fragments. In production code there "
+"should really be no commented or disabled code fragments. If you really, "
+"really have a good reason to retain some fragment of unused code, use #if or "
+"#ifdef to disable it, e.g.:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:142
+#: b520c5c4b2c142568bf7c849b988f885
+msgid ""
+"… and preferably use some descriptive macro instead of just ``0``, e.g.:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:151
+#: 3732e623f1ee4c0284da1e77b55eceb7
+msgid "Not sure how to do similar thing in Python… Anyone?"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:155
+#: bbcb12ae53be4a15a80fc72945866579
+msgid ""
+"But generally, there is little excuse to keep old, unused code fragments in "
+"the code. One should really use the functionality provided by the source "
+"code management system, such as git, instead. E.g. create a special branch "
+"for storing the old, unused code – this way you will always be able to merge "
+"this code into upstream in the future."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:157
+#: 7166bc5bf637471e8ab5e3fc935ecfdf
+msgid ""
+"Do not hardcode values in the code! The only three numbers that are an "
+"exception here and for which it is acceptable to hardcode them are: ``0``, "
+"``1`` and ``-1``, and frankly the last two are still controversial…"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:162
+#: 972054af232648cc9e08243c7d560ece
+msgid "Source Code management (Git) guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:165
+#: da8465f2f08b4e388024dceec2817ce1
+msgid "Use git to maintain all code for Qubes project."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:167
+#: 538ba657becf494d875a6dd5ca7e4e5c
+msgid ""
+"Before you start using git, make sure you understand that git is a "
+"decentralized Source Code Management system, and that it doesn’t behave like "
+"traditional, centralized source code management systems, such as SVN. Here’s "
+"a good `introductory book on git <https://git-scm.com/book>`__. Read it."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:169
+#: 3ed5bb65d9554b52bc898916184393ad
+msgid ""
+"Qubes code is divided into many git repositories. There are several reasons "
+"for that:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:171
+#: a6626280f4e041469fe9616326d5339f
+msgid ""
+"This creates natural boundaries between different code blocks, enforcing "
+"proper interfaces, and easing independent development to be conducted on "
+"various code parts at the same time, without the fear of running into "
+"conflicts."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:173
+#: 6e79d9141a0d455bb5add987c94a1356
+msgid ""
+"By maintaining relatively small git repositories, it is easy for new "
+"developers to understand the code and contribute new patches, without the "
+"need to understand all the other code."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:175
+#: 99ce19cddbdd4ec1aed1b54532d78d39
+msgid ""
+"Code repositories represent also licensing boundaries. So, e.g. because "
+"``core-agent-linux`` and ``core-agent-windows`` are maintained in two "
+"different repositories, it is possible to have the latter under a "
+"proprietary, non-GPL license, while keeping the former fully open source."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:177
+#: b9f1832f788e4cc5a43b9e0ac82fc566
+msgid ""
+"We have drastically changed the layout and naming of the code repositories "
+"shortly after Qubes OS R2 Beta 2 release. For details on the current code "
+"layout, please read `this article <https://blog.invisiblethings."
+"org/2013/03/21/introducing-qubes-odyssey-framework.html>`__."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:184
+#: 725acbffcb0740ecb5d9b274f9fabed3
+msgid "Commit message guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:187
+#: 33c4c22c0cbb4b918a6835899f27dac4
+msgid ""
+"Please attempt to follow these conventions when writing your Git commit "
+"messages:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:189
+#: 87012cc7752941a9850c58d9274441a3
+msgid "Separate the subject line from the body with a blank line."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:191
+#: ef33807f5bf747abb69580b9e89cd3c3
+msgid "Limit the subject line to approximately 50 characters."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:193
+#: 34ef4871d7f14ef2811f13366597ddb8
+msgid "Capitalize the subject line."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:195
+#: 855ce331db214d44b71d0520a7a94871
+msgid "Do not end the subject line with a period."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:197
+#: 4290759950804cedb75082a37027205c
+msgid "Use the imperative mood in the subject line."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:199
+#: 12fca0ffc0924762803156d9491fb23e
+msgid "Wrap the body at 72 characters."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:201
+#: 8f4e999aa6bb41c8b4c08dbead7cf5c2
+msgid "Use the body to explain *what* and *why* rather than *how*."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:205
+#: fe04a30a14774f7eb1b288dbee51ae2e
+msgid ""
+"For details, examples, and the rationale behind each of these conventions, "
+"please see `this blog post <https://chris.beams.io/posts/git-commit/>`__, "
+"which is the source of this list."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:208
+#: 1f74576e9ec1463e8022928ee63b5244
+msgid "Security coding guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:211
+#: c90e68214e444982bafa58bc675790e1
+msgid "As a general rule: **untrusted input** is our #1 enemy!"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:213
+#: a2bfd022a9ab415b8f607c1015251f7f
+msgid ""
+"Any input that comes from untrusted, or less trusted, or just differently-"
+"trusted, entity should always be considered as malicious and should always "
+"be sanitized and verified. So, if your software runs in Dom0 and processes "
+"some input from any of the VMs, this input should be considered to be "
+"malicious. Even if your software runs in a VM, and processes input from some "
+"other VM, you should also assume that the input is malicious and verify it."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:215
+#: 5de7af230ddd4da1a3f0afb623faa6ad
+msgid ""
+"Use ``untrusted_`` prefix for all variables that hold values read from "
+"untrusted party and which have not yet been verified to be decent, e.g.:"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:230
+#: 3ddf1e81d9594a0a964a99e5edb84481
+msgid ""
+"Use others variables, without the ``untrusted_`` prefix to hold the "
+"sanitized values, as shown above."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:235
+#: 410fd3eae66b4b9c815cd409dceadd6a
+msgid "Python-specific guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:238
+#: 340cdd8afd604eb6bb490e66c6e52d0f
+msgid ""
+"Please follow the guidelines `here <https://peps.python.org/pep-0008/>`__, "
+"unless they were in conflict with what is written on this page."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:243
+#: 8501ae3d955a4a4da355014ae26f97b0
+msgid "C and C++ specific guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:246
+#: 2c8efe58b354479bb3c9d8379d794268
+msgid "Do not place code in ``*.h`` files."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:248
+#: 89c69a18bf0d44ffb72ab1e449c90282
+msgid ""
+"Use ``const`` whenever possible, e.g. in function arguments passed via "
+"pointers."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:250
+#: 2112516abb1f4c9b88c8afd0814be17a
+msgid ""
+"Do not mix procedural and objective code together – if you write in C++, use "
+"classes and objects."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:252
+#: 154909238c4c41af99f8be58d4a31919
+msgid ""
+"Think about classes hierarchy, before starting to implement specific methods."
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:257
+#: 731425340a8849f7a417f1bdc611f8bc
+msgid "Bash-specific guidelines"
+msgstr ""
+
+#: ../../../developer/code/coding-style.rst:260
+#: e0fac950fc2146bb97c0fd810f749732
+msgid ""
+"Avoid writing scripts in bash whenever possible. Use python instead. Bash-"
+"scripts are Unix-specific and will not work under Windows VMs, or in Windows "
+"admin domain, or Windows gui domain."
+msgstr ""
