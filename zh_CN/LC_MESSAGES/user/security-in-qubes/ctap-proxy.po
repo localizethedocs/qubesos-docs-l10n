@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:3
+#: a1f28fc385864b16aa4b7f64d89d3b29
+msgid "CTAP proxy"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:6
+#: c5674d1608c44429a3b2e628042f8f46
+msgid ""
+"The `Qubes CTAP Proxy <https://github.com/QubesOS/qubes-app-u2f>`__ is a "
+"secure proxy intended to make use of CTAP two-factor authentication devices "
+"with web browsers without exposing the browser to the full USB stack, not "
+"unlike the :doc:`USB keyboard and mouse proxies </user/how-to-guides/how-to-"
+"use-usb-devices>` implemented in Qubes."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:9
+#: 56dcc1188e9343eb8696a20a868aa144
+msgid "What is CTAP, U2F, FIDO2?"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:12
+#: 272d517831a3405a96513b9cdab295db
+msgid ""
+"CTAP, U2F, and FIDO2 are all related to authentication protocols and "
+"standards developed by the FIDO Alliance. CTAP has two versions: CTAP1 and "
+"CTAP2:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:14
+#: 9e61ce27b0c34c00a277b4e7180e00a1
+msgid ""
+"`CTAP1/U2F <https://en.wikipedia.org/wiki/Universal_2nd_Factor>`__ "
+"(Universal 2nd Factor): U2F is an earlier protocol developed by the FIDO "
+"Alliance as part of the FIDO U2F standard. It provides a strong second-"
+"factor authentication method using dedicated hardware security keys. U2F "
+"allows users to authenticate to online services by simply plugging in a U2F-"
+"compliant security key and pressing a button, providing a higher level of "
+"security compared to traditional passwords."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:16
+#: 89587f2e3e81430aa167b41e93841b17
+msgid ""
+"`CTAP2 <https://en.wikipedia.org/wiki/Client_to_Authenticator_Protocol>`__ "
+"(Client to Authenticator Protocol): CTAP2 is a protocol within the FIDO2 "
+"framework that enables communication between a client device (e.g., a "
+"computer or smartphone) and an authenticator (e.g., a hardware device). CTAP "
+"allows for secure and convenient authentication using public key "
+"cryptography and strong authentication factors."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:18
+#: bc5a49f00c444cd3a307720da4387335
+msgid ""
+"`FIDO2 <https://en.wikipedia.org/wiki/FIDO_Alliance>`__: FIDO2 is a set of "
+"standards and protocols developed by the FIDO Alliance for passwordless and "
+"strong authentication. It combines two main components: CTAP (Client to "
+"Authenticator Protocol) and WebAuthn (Web Authentication API). FIDO2 enables "
+"users to authenticate to online services using various authentication "
+"methods, such as biometrics, PINs, or hardware tokens, instead of relying on "
+"passwords."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:22
+#: 53685fd2b2ce47c8a7c73036044a8a69
+msgid ""
+"The aim of these protocols is to introduce additional control which provides "
+"`good protection <https://krebsonsecurity.com/2018/07/google-security-keys-"
+"neutralized-employee-phishing/>`__ in cases in which the passphrase is "
+"stolen (e.g. by phishing or keylogging). While passphrase compromise may not "
+"be obvious to the user, a physical device that cannot be duplicated must be "
+"stolen to be used outside the owner’s control. Nonetheless, it is important "
+"to note at the outset that CTAP cannot guarantee security when the host "
+"system is compromised (e.g. a malware-infected operating system under an "
+"adversary’s control)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:24
+#: 35f92962761f4f6d84873794f1a5d9db
+msgid ""
+"The CTAP specification defines protocols for multiple layers from USB to the "
+"browser API, and the whole stack is intended to be used with web "
+"applications (most commonly websites) in browsers. In most cases, "
+"authenticators are USB dongles. The protocol is very simple, allowing the "
+"devices to store very little state inside (so the tokens may be reasonably "
+"cheap) while simultaneously authenticating a virtually unlimited number of "
+"services (so each person needs only one token, not one token per "
+"application). The user interface is usually limited to a single LED and a "
+"button that is pressed to confirm each transaction, so the devices "
+"themselves are also easy to use. Both CTAP1 and CTAP2 share the same "
+"underlying transports: USB Human Interface Device (USB HID), Near Field "
+"Communication (NFC), and Bluetooth Smart / Bluetooth Low Energy Technology "
+"(BLE)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:26
+#: f55975475365445cba5b63872b1251e0
+msgid ""
+"Currently, the most common form of two-step authentication consists of a "
+"numeric code that the user manually types into a web application. These "
+"codes are typically generated by an app on the user’s smartphone or sent via "
+"SMS. By now, it is well-known that this form of two-step authentication is "
+"vulnerable to phishing and man-in-the-middle attacks due to the fact that "
+"the application requesting the two-step authentication code is typically not "
+"itself authenticated by the user. (In other words, users can accidentally "
+"give their codes to attackers because they do not always know who is really "
+"requesting the code.) In the CTAP model, by contrast, the browser ensures "
+"that the token receives valid information about the web application "
+"requesting authentication, so the token knows which application it is "
+"authenticating (for details, see `here <https://fidoalliance.org/specs/fido-"
+"u2f-v1.2-ps-20170411/fido-u2f-overview-v1.2-ps-20170411.html#site-specific-"
+"public-private-key-pairs>`__). Nonetheless, `some attacks are still possible "
+"<https://www.wired.com/story/chrome-yubikey-phishing-webusb/>`__ even with "
+"CTAP (more on this below)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:29
+#: aaa69f594aef424fbc297841b0bbe833
+msgid "The Qubes approach to CTAP"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:32
+#: 44cac987dc47437eb24be41cd0b2ceee
+msgid ""
+"In a conventional setup, web browsers and the USB stack (to which the "
+"authenticator is connected) are all running in the same monolithic OS. Since "
+"the CTAP model assumes that the browser is trustworthy, any browser in the "
+"OS is able to access any key stored on the authenticator. The user has no "
+"way to know which keys have been accessed by which browsers for which "
+"services. If any of the browsers are compromised, it should be assumed that "
+"all the token’s keys have been compromised. (This problem can be mitigated, "
+"however, if the CTAP device has a special display to show the user what’s "
+"being authenticated.) Moreover, since the USB stack is in the same "
+"monolithic OS, the system is vulnerable to attacks like `BadUSB <https://www."
+"blackhat.com/us-14/briefings.html#badusb-on-accessories-that-turn-evil>`__."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:34
+#: bc07fa2f49874d76addd819724ad6108
+msgid ""
+"In Qubes OS, by contrast, it is possible to securely compartmentalise the "
+"browser in one qube and the USB stack in another so that they are always "
+"kept separate from each other. The Qubes CTAP Proxy then allows the token "
+"connected to the USB stack in one qube to communicate with the browser in a "
+"separate qube. We operate under the assumption that the USB stack is "
+"untrusted from the point of view of the browser and also that the browser is "
+"not to be trusted blindly by the token. Therefore, the token is never in the "
+"same qube as the browser. Our proxy forwards only the data necessary to "
+"actually perform the authentication, leaving all unnecessary data out, so it "
+"won’t become a vector of attack. This is depicted in the diagram below "
+"(click for full size)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:36
+#: 1a562a66bc45407c888c264ad6371227
+msgid "|Qubes CTAP Proxy diagram|"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:124
+#: 0f193dcef5aa45389f4eed4f76d36861
+msgid "Qubes CTAP Proxy diagram"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:38
+#: a472cc072fc7427d9eb0dfb4d2d7c46e
+msgid ""
+"The Qubes CTAP Proxy has two parts: the frontend and the backend. The "
+"frontend runs in the same qube as the browser and presents a fake USB-like "
+"HID device using ``uhid``. The backend runs in ``sys-usb`` and behaves like "
+"a browser. This is done using the ``fido2`` reference library. All of our "
+"code was written in Python. The standard :doc:`qrexec </developer/services/"
+"qrexec>` policy is responsible for directing calls to the appropriate "
+"domains."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:40
+#: 6bcecabc9e33428c873740afd64e2d57
+msgid ""
+"The ``vault`` qube with a dashed line in the bottom portion of the diagram "
+"depicts future work in which we plan to implement the Qubes CTAP Proxy with "
+"a software token in an isolated qube rather than a physical hardware token. "
+"This is similar to the manner in which :doc:`Split GPG </user/security-in-"
+"qubes/split-gpg>` allows us to emulate the smart card model without physical "
+"smart cards."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:42
+#: ee1ad46024ca44f2af02a5c8712564b5
+msgid ""
+"One very important assumption of protocol is that the browser verifies every "
+"request sent to the authenticator — in particular, that the web application "
+"sending an authentication request matches the application that would be "
+"authenticated by answering that request (in order to prevent, e.g., a "
+"phishing site from sending an authentication request for your bank’s site). "
+"With the WebUSB feature in Chrome, however, a malicious website can `bypass "
+"<https://www.wired.com/story/chrome-yubikey-phishing-webusb/>`__ this "
+"safeguard by connecting directly to the token instead of using the browser’s "
+"CTAP API."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:44
+#: f0e42c4ddac243a19cbf67a3092ee294
+msgid ""
+"The Qubes CTAP Proxy also prevents this class of attacks by implementing an "
+"additional verification layer. This verification layer allows you to "
+"enforce, for example, that the web browser in your ``twitter`` qube can only "
+"access the CTAP key associated with ``https://twitter.com``. This means that "
+"if anything in your ``twitter`` qube were compromised — the browser or even "
+"the OS itself — it would still not be able to access the CTAP keys on your "
+"token for any other websites or services, like your email and bank accounts. "
+"This is another significant security advantage over monolithic systems. For "
+"details and instructions, see :ref:`per-qube-key-access`."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:46
+#: a3a5a1d79c434429a75d9d313e9e1965
+msgid ""
+"For even more protection, you can combine this with the :doc:`Qubes firewall "
+"</user/security-in-qubes/firewall>` to ensure, for example, that the browser "
+"in your ``banking`` qube accesses only one website (your bank’s website). By "
+"configuring the Qubes firewall to prevent your ``banking`` qube from "
+"accessing any other websites, you reduce the risk of another website "
+"compromising the browser in an attempt to bypass CTAP authentication."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:49
+#: f9115a90bb76440f9e90d0227836a8af
+msgid "Installation"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:52
+#: daa4cd3bd3054a398e060e7c0af3fb18
+msgid ""
+"These instructions assume that there is a ``sys-usb`` qube that holds the "
+"USB stack, which is the default configuration in most Qubes OS installations."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:54
+#: f2c9af8d123b467588f914cc127caf85
+msgid "In dom0:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:63
+#: 5346ee32abe94036998fdd586c58657c
+msgid ""
+"The above assumes a ``work`` qube in which you would like to enable ctap. "
+"Repeat the ``qvm-service`` command for all qubes that should have the client "
+"proxy enabled. Alternatively, you can add ``qubes-ctap-proxy`` in :"
+"menuselection:`VM settings -> Services` in the Qube Manager of each qube you "
+"would like to enable the service. Attempting to start the ``qubes-ctap-"
+"proxy`` service in the device-hosting qube (``sys-usb``) will fail."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:65
+#: f06f87f8b9054346a03bdfdcb4530907
+msgid "In Fedora templates:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:73
+#: 5405f9ee0bae460881618b842ba930b2
+msgid "In Debian templates:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:81
+#: b0277214c7e642c6baaaf7c50929c715
+msgid ""
+"As usual with software updates, shut down the templates after installation, "
+"then restart ``sys-usb`` and all qubes that use the proxy. After that, you "
+"may use your CTAP authenticator (but see :ref:`Browser support <user/"
+"security-in-qubes/ctap-proxy:template and browser support>` below)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:86
+#: 029a1dcc015b48fd82f1e0af674f1a5b
+msgid "Advanced usage: per-qube key access"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:89
+#: d075e3141f824b30ba6ca16ad81f6401
+msgid ""
+"If you are using Qubes 4.0, you can further compartmentalise your CTAP keys "
+"by restricting each qube’s access to specific keys. For example, you could "
+"make it so that your ``twitter`` qube (and, therefore, all web browsers in "
+"your ``twitter`` qube) can access only the key on your CTAP token for "
+"``https://twitter.com``, regardless of whether any of the web browsers in "
+"your ``twitter`` qube or the ``twitter`` qube itself are compromised. If "
+"your ``twitter`` qube makes an authentication request for your bank website, "
+"it will be denied at the Qubes policy level."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:91
+#: 084e8b0794554e6580206fb71b6d2d6e
+msgid ""
+"To enable this, create a file in dom0 named ``/etc/qubes/policy.d/30-user-"
+"ctapproxy.policy`` with the following content:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:99
+#: 43200746964647ec8906a219c01023e4
+msgid ""
+"Next, empty the contents of ``/etc/qubes-rpc/policy/u2f.Authenticate`` so "
+"that it is a blank file. Do not delete the file itself. (If you do, the "
+"default file will be recreated the next time you update, so it will no "
+"longer be empty.) Finally, follow your web application’s instructions to "
+"enroll your token and use it as usual. (This enrollment process depends on "
+"the web application and is in no way specific to Qubes CTAP.)"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:101
+#: d5dee08b7fe54a728e6bdbe6b5da8752
+msgid ""
+"The default model is to allow a qube to access all and only the keys that "
+"were enrolled by that qube. For example, if your ``banking`` qube enrolls "
+"your banking key, and your ``twitter`` qube enrolls your Twitter key, then "
+"your ``banking`` qube will have access to your banking key but not your "
+"Twitter key, and your ``twitter`` qube will have access to your Twitter key "
+"but not your banking key."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:104
+#: b15cf970c6ef465db998c66258a0f437
+msgid "Non-default USB qube name"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:106
+#: f61c846913f54445a5b029a86e5e5e7f
+msgid ""
+"If your USB qube has a different name (not ``sys-usb``), you need to update "
+"in two places:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:108
+#: 0f5108d22d354c86ae2c778ad94c430b
+msgid ""
+"In the **template**, run these commands (replace ``YOUR_USB_QUBE`` with your "
+"actual USB qube name):"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:115
+#: ea6fbe3f8aa54c38af7a81c586076b79
+msgid ""
+"In **dom0**, :doc:`edit the policy file </user/how-to-guides/how-to-edit-a-"
+"policy>` ``30-user-ctapproxy`` and replace ``sys-usb`` with your USB qube "
+"name."
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:119
+#: e2b24d187427402d88d4356ea9cb737d
+msgid "Template and browser support"
+msgstr ""
+
+#: ../../../user/security-in-qubes/ctap-proxy.rst:122
+#: 353c1744d846465fb6cc4d9a7cb84ff9
+msgid ""
+"The large number of possible combinations of template (Fedora 37, 38; Debian "
+"10, 11) and browser (multiple Google Chrome versions, multiple Chromium "
+"versions, multiple Firefox versions) made it impractical for us to test "
+"every combination that users are likely to attempt with the Qubes CTAP "
+"Proxy. In some cases, you may be the first person to try a particular "
+"combination. Consequently, (and as with any new feature), users will "
+"inevitably encounter bugs. We ask for your patience and understanding in "
+"this regard. As always, please :doc:`report any bugs you encounter </"
+"introduction/issue-tracking>`."
+msgstr ""

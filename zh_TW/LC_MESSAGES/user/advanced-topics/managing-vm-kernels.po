@@ -1,0 +1,507 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:3
+#: 01f57581021d4345b496fe6b7b5cb543
+msgid "Managing qube kernels"
+msgstr "管理 qube 內核"
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:7
+#: 85d1650c50004d0587a4c807d8a4fd85
+msgid "This page is intended for advanced users."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:9
+#: 20c24b1c0c13423192e6f857cc4b4762
+msgid ""
+"By default, VMs kernels are provided by dom0. (See :ref:`here <user/advanced-"
+"topics/how-to-install-software-in-dom0:kernel upgrade>` for information "
+"about upgrading kernels in dom0.) This means that:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:11
+#: 480a3d9c9d494d9589629fb20131c65b
+msgid ""
+"You can select the kernel version (using GUI VM Settings tool or ``qvm-"
+"prefs`` commandline tool);"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:13
+#: dd601382151e4c09af6b68dd395b935e
+msgid "You can modify kernel options (using ``qvm-prefs`` commandline tool);"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:15
+#: aa5b2d75ace145df926152a106bfa610
+msgid "You can **not** modify any of the above from inside a VM;"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:17
+#: f0b65894e1514e47b8f139ca28dd170f
+msgid "Installing additional kernel modules is cumbersome."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:21
+#: c036bc3d0baa4ce0aa8b97c5f4c92f54
+msgid ""
+"*Note*: In the examples below, although the specific version numbers might "
+"be old, the commands have been verified on R3.2 and R4.0 with debian-9 and "
+"fedora-26 templates."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:23
+#: 084e203b7c714a58b7ed18f49273a06e
+msgid ""
+"To select which kernel a given VM will use, you can either use Qubes Manager "
+"(VM settings, advanced tab), or the ``qvm-prefs`` tool:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:38
+#: efbd4f5eb9bb473c9a2ac7b4fed7ab0a
+msgid ""
+"To check/change the default kernel you can either go to “Global settings” in "
+"Qubes Manager, or use the ``qubes-prefs`` tool:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:47
+#: 0857b27f4495470db3dcf36276d7dcd3
+msgid ""
+"To view kernel options, you can use the GUI VM Settings tool; to view and "
+"change them, use ``qvm-prefs`` commandline tool:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:57
+#: 0010e58f01e345d1826ad42b3463b3ab
+msgid "Installing different kernel using Qubes kernel package"
+msgstr "使用 Qubes 內核包安裝不同的內核"
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:60
+#: c334af36ef6741c8b3db35cbe9de1c3f
+msgid ""
+"VM kernels are packaged by the Qubes team in the ``kernel`` packages. "
+"Generally, the system will keep the three newest available versions. You can "
+"list them using ``rpm`` or ``dnf`` commands:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:75
+#: a4d7b1469ef148c9a0b7da482ba4b7f0
+msgid ""
+"If you want a more recent version, you can check ``qubes-dom0-unstable`` and "
+"``qubes-dom0-current-testing`` repositories. There is also ``kernel-latest`` "
+"package which should provide a more recent (non-LTS) kernel, but has "
+"received much less testing. As the names suggest, keep in mind that those "
+"packages may be less stable than the default ones."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:77
+#: bb81890f1d1843d0874efa821514bdb4
+msgid ""
+"To check available versions in the ``qubes-dom0-current-testing`` repository:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:100
+#: c63e364bdfea415bb5725ebcc324e847
+msgid ""
+"Installing a new version from ``qubes-dom0-current-testing`` repository:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:197
+#: a1f01381ed6649cf9bfc7e19fdda01c1
+msgid "The newly installed package is set as the default VM kernel."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:200
+#: 34e84a9b6cc743f8a9d234f1293b3a45
+msgid "Installing different VM kernel based on dom0 kernel"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:203
+#: 5695c713e8f747e8b08b34f38e1cdcbb
+msgid ""
+"It is possible to package a kernel installed in dom0 as a VM kernel. This "
+"makes it possible to use a VM kernel which is not packaged by the Qubes "
+"team. This includes:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:205
+#: 37b8b99e8fba43e9b0fef0e3d5afaead
+msgid "using a Fedora kernel package"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:207
+#: 0306434ffa5241c4b86941b2236c4082
+msgid "using a manually compiled kernel"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:211
+#: 2da2bde574854723b05a59b06f3b029d
+msgid ""
+"To prepare such a VM kernel, you need to install the ``qubes-kernel-vm-"
+"support`` package in dom0 and also have matching kernel headers installed "
+"(``kernel-devel`` package in the case of a Fedora kernel package). You can "
+"install requirements using ``qubes-dom0-update``:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:255
+#: 1ae1922413a0431ebb6f190281b7e917
+msgid ""
+"Then you can call the ``qubes-prepare-vm-kernel`` tool to actually package "
+"the kernel. The first parameter is kernel version (exactly as seen by the "
+"kernel), the second one (optional) is short name. This is visible in Qubes "
+"Manager and the ``qvm-prefs`` tool."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:269
+#: 8265b931158345daaee61f4cf5ce792e
+msgid "Kernel files structure"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:272
+#: 6c5b6d15a3de47c39c2c9f3f4dd84781
+msgid ""
+"Kernel for a VM is stored in ``/var/lib/qubes/vm-kernels/KERNEL_VERSION`` "
+"directory (``KERNEL_VERSION`` replaced with actual version). Qubes 4.x "
+"supports the following files there:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:274
+#: 7ad42fe05d8f45d2b08f6fd558f738b8
+msgid "``vmlinuz`` - kernel binary (may not be a Linux kernel)"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:276
+#: b055844fe16241f2b7750b41521eea28
+msgid "``initramfs`` - initramfs for the kernel to load"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:278
+#: e63d57c1134540d4ad0cfff142d7ca0a
+msgid ""
+"``modules.img`` - ext4 filesystem image containing Linux kernel modules (to "
+"be mounted at ``/lib/modules``); additionally it should contain a copy of "
+"``vmlinuz`` and ``initramfs`` in its root directory (for loading by qemu "
+"inside stubdomain)"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:280
+#: 8eea29157b1148e49c4fd96cc30888ba
+msgid ""
+"``default-kernelopts-common.txt`` - default kernel options, in addition to "
+"those specified with ``kernelopts`` qube property (can be disabled with ``no-"
+"default-kernelopts`` feature)"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:284
+#: e43e51249a8d4f5e9f1966cf55088bde
+msgid "All the files besides ``vmlinuz`` are optional in Qubes R4.2 or newer."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:287
+#: b79afbaca67841eeadde5bbf377a0d6b
+msgid "Using kernel installed in the VM"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:290
+#: 7aef3884ca5445e28084afe9afa3581c
+msgid ""
+"Non-minimal debian and fedora templates already have grub and related tools "
+"preinstalled so if you want to use one of the distribution kernels, all you "
+"need to do is clone either template to a new one, then:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:298
+#: 3674c50474ac4262a8f1cea2b0e3352a
+msgid ""
+"Depending on vm and kernel you're running, you may also want to disable "
+"memory balancing and change the amount of memory vm has:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:307
+#: 2a2ba14d2387417da5621d9fd9405d5a
+msgid "Installing kernel in Fedora VM"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:310
+#: c270b0211fdc4d958a6615e65773d55b
+msgid "Fedora distribution kernel"
+msgstr "Fedora 散佈版內核"
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:312
+#: f2378efd52e14defb62aa546c92670c8
+msgid "Install kernel and the packages required to run vm with its own kernel:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:320
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:347
+#: 5031133916fe4ed28212090215c4f431 ade989e0649a42389330f0c91d891a0e
+msgid "Once the kernel is installed, you need to setup ``grub2`` by running:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:328
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:355
+#: 57b5976da34b4cc19e6b0f851415acc0 7ef34d676a0f42988e1df57c2513751d
+msgid ""
+"Finally, you need to create a GRUB configuration. You may want to adjust "
+"some settings in ``/etc/default/grub``; for example, lower ``GRUB_TIMEOUT`` "
+"to speed up VM startup. Then, you need to generate the actual configuration. "
+"In Fedora it can be done using the ``grub2-mkconfig`` tool:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:337
+#: ca83a607ebbc4394b6e6165401379d18
+msgid "Fedora custom kernel"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:339
+#: 7a1b5e0da81f4a1d8c9f1e05633465ed
+msgid ""
+"If you are using a manually built kernel, you need to handle the initramfs "
+"and kernel modules on your own. Take a look at the ``dkms`` documentation, "
+"especially the ``dkms autoinstall`` command may be useful. If you did not "
+"see the ``kernel`` install rebuild your initramfs, or are using a manually "
+"built kernel, you will need to rebuild it yourself. Replace the version "
+"numbers in the example below with the ones appropriate to the kernel you are "
+"installing:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:363
+#: 881485a6bcb0460f83fa74937378d8ee
+msgid "You can safely ignore this error message:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:371
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:417
+#: 7dc93dba875940bcb5a8213d26e1302c 4858eece2b1b4db3a4715e118f9543a7
+msgid "Then shutdown the VM."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:373
+#: d0faed6a570d4cbd91c137e5eb94fad9
+msgid "**Notes:**"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:375
+#: bd99cc08e48c4611aa71427f4fc9bd82
+msgid ""
+"You may also use ``PV`` mode instead of ``HVM`` but this is not recommended "
+"for security purposes."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:377
+#: 379c20ec5f0242ffa8bd7eec891ee465
+msgid ""
+"If you require ``PV`` mode, install ``grub2-xen-pvh`` in dom0 and change the "
+"template’s kernel to ``pvgrub2-pvh``."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:379
+#: 83e877dace004755bc3e974a40634679
+msgid ""
+"If you require ``PVH`` mode, install ``grub2-xen-pvh`` in dom0 and change "
+"the kernel to ``pvgrub2-pvh``."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:381
+#: 9d3311a0458e46b796f77cbf7d4f6f9f
+msgid ""
+"To install ``grub2-xen-pvh`` run the command ``sudo qubes-dom0-update "
+"pvgrub2-pvh`` in dom0."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:386
+#: 829facfbb360452192fc0e2da24f18ad
+msgid "Installing kernel in Debian VM"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:390
+#: a5f8c52a72de4c3d9f393c55291407f6
+msgid "Debian distribution kernel"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:393
+#: c3dcbabe88ab44b7b42a964050a08f28
+msgid ""
+"Apply the following instruction in a Debian template or in a Debian "
+"standalone."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:395
+#: 65a5f3da868e487c9a79d46da4853080
+msgid ""
+"Using a distribution kernel package the initramfs and kernel modules should "
+"be handled automatically."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:397
+#: 8d67601849ca4a1a8bc8b5a8b1ece8b8
+msgid "Install distribution kernel image, kernel headers and the grub."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:405
+#: be819f05b0054e7792909c56db4db035
+msgid ""
+"If you are doing that on a qube based on “Debian Minimal” template, a grub "
+"gui will popup during the installation, asking you where you want to install "
+"the grub loader. You must select ``/dev/xvda`` (check the box using the "
+"space bar, and validate your choice with “Enter”.) If this popup does not "
+"appear during the installation, you must manually setup ``grub2`` by running:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:413
+#: a61fee497ba74a39a1c6a1c4311e7a48
+msgid ""
+"You can safely ignore this error message: ``grub2-probe: error: cannot find "
+"a GRUB drive for /dev/mapper/dmroot. Check your device.map``"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:415
+#: 337c7259e9374760a585be47d9ad6710
+msgid ""
+"You may want to adjust some settings in ``/etc/default/grub`` (or better ``/"
+"etc/default/grub.d``). For example, lower ``GRUB_TIMEOUT`` to speed up VM "
+"startup. You need to re-run ``sudo update-grub`` after making grub "
+"configuration changes."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:419
+#: 2f69212a16b8447daf99b3640b4f336d
+msgid ""
+"Go to dom0: :menuselection:`Qubes VM Manager --> right click on the VM --> "
+"Qube settings --> Advanced`"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:421
+#: cecb0238f1114317948f81dae039937e
+msgid "Depends on ``Virtualization`` mode setting:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:423
+#: f8bd423bbf6e475fa0c4db9048636091
+msgid ""
+"``Virtualization`` mode ``PV``: Possible, however use of ``Virtualization`` "
+"mode ``PV`` is discouraged for security purposes."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:425
+#: 5acf11bbbfbd400a845a7aa81b868d31
+msgid ""
+"If you require ``Virtualization`` mode ``PV``, install ``grub2-xen-pvh`` in "
+"dom0. This can be done by running command ``sudo qubes-dom0-update pvgrub2-"
+"pvh`` in dom0."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:429
+#: b762ed41cfc6430c9cb1d8262cc05060
+msgid ""
+"``Virtualization`` mode ``PVH``: Possible. Install ``grub2-xen-pvh`` in dom0."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:431
+#: d05f9ddcd1b94d38bf43340dfe9ba9fe
+msgid "``Virtualization`` mode ``HVM``: Possible."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:435
+#: e1a37dfe81ac40599e5a8def11b0acc2
+msgid "The ``Kernel`` setting of the ``Virtualization`` mode setting:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:437
+#: bf61bc5363a04b28bb24465821e1942f
+msgid ""
+"If ``Virtualization`` is set to ``PVH`` -> ``Kernel`` -> choose ``pvgrub2-"
+"pvh`` -> OK"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:439
+#: aec915a52ce84e0f9fd910b48d085b06
+msgid ""
+"If ``Virtualization`` is set to ``PV`` -> ``Kernel`` -> choose ``pvgrub2`` -"
+"> OK"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:441
+#: 18a4f45c6e574f29b40cc94dc8586ac6
+msgid ""
+"If ``Virtualization`` is set to ``HVM`` -> ``Kernel`` -> choose ``none`` -> "
+"OK"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:445
+#: 7790e4f42892464b987d1c09af91ea55
+msgid "Start the VM."
+msgstr "啟動虛擬機。"
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:447
+#: e43db1fd4014474091445c4911537758
+msgid ""
+"The process of using Qubes VM kernel with distribution kernel is complete."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:450
+#: d3d3a978a01842de8f6e9527db513f03
+msgid "Debian custom kernel"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:453
+#: e05cde262ed348678a1be81d1461d60b
+msgid ""
+"Any kernel can be installed. Just make sure to install kernel headers as "
+"well."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:455
+#: 2eb97bd218904f72a74f28ee9106a46b
+msgid ""
+"If you are building the kernel manually, do this using ``dkms`` and "
+"``initramfs-tools``."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:457
+#: a81d797dd72e4594adfb6810cf23b852
+msgid "Run DKMS. Replace this with actual kernel version."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:466
+#: 124a30d91c04422ea6804af05abf9f1e
+msgid "For example."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:475
+#: 54ba882977bc4285b3676cc1e443ed6f
+msgid "Update initramfs."
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:484
+#: 01eca21d87f6466b9a4d2dd81aafa206
+msgid "The output should look like this:"
+msgstr ""
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:505
+#: 14e6de908a364506be9fac576c98d863
+msgid "Troubleshooting"
+msgstr "疑難排解"
+
+#: ../../../user/advanced-topics/managing-vm-kernels.rst:508
+#: 9ad99ab789ac4739bac5091144bb29ec
+msgid ""
+"In case of problems, visit the :ref:`VM Troubleshooting guide <user/"
+"troubleshooting/vm-troubleshooting:vm kernel troubleshooting>` to learn how "
+"to access the VM console, view logs and fix a VM kernel installation."
+msgstr ""

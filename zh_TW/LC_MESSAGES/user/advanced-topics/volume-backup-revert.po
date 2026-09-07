@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:3
+#: b90b97d9d10c461c9bacf6efc5783849
+msgid "Volume backup and revert"
+msgstr ""
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:7
+#: 29b3e9f4e2ed4fcc93538d9a5a491923
+msgid "This page is intended for advanced users."
+msgstr ""
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:9
+#: cf2be6929d564f56b75d690939d10702
+msgid ""
+"With Qubes, it is possible to revert one of a VM’s storage volumes to a "
+"previous state using the automatic snapshot that is normally saved every "
+"time a VM is shutdown. (Note that this is a different, lower level activity "
+"than the :doc:`Backup, Restoration, and Migration </user/how-to-guides/how-"
+"to-back-up-restore-and-migrate>` process.)"
+msgstr ""
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:11
+#: 96319051bc8d44cfb5d5707b32a16c56
+msgid ""
+"In Qubes, when you create a new VM, it’s volumes are stored in one of the "
+"system’s :doc:`Storage Pools </user/advanced-topics/secondary-storage>`. On "
+"pool creation, a ``revisions_to_keep`` default value is set for the entire "
+"pool. (For a pool creation example, see :doc:`Storing app qubes on Secondary "
+"Drives </user/advanced-topics/secondary-storage>`.) Thereafter, each volume "
+"associated with a VM that is stored in this pool inherits the pool default "
+"``revisions_to_keep``."
+msgstr ""
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:13
+#: 63fe8f2443124d5cb6df0fdb37117423
+msgid ""
+"For the private volume associated with a VM named *vmname*, you may inspect "
+"the value of ``revisions_to_keep`` from the dom0 CLI as follows:"
+msgstr ""
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:21
+#: 7cc563d5575d493ca937020511935c04
+msgid ""
+"The output of the above command will also display the “Available revisions "
+"(for revert)” at the bottom. For a very large volume in a small pool, "
+"``revisions_to_keep`` should probably be set to the maximum value of 1 to "
+"minimize the possibility of the pool being accidentally filled up by "
+"snapshots. For a smaller volume for which you would like to have the future "
+"option of reverting, ``revisions_to_keep`` should probably be set to at "
+"least 2. To set ``revisions_to_keep`` for this same VM / volume example:"
+msgstr ""
+
+#: ../../../user/advanced-topics/volume-backup-revert.rst:29
+#: 6fd7227bd51d485fbbb1a1079a76fea8
+msgid ""
+"With the VM stopped, you may revert to an older snapshot of the private "
+"volume from the above list of “Available revisions (for revert)”, where the "
+"last item on the list with the largest integer is the most recent snapshot:"
+msgstr ""

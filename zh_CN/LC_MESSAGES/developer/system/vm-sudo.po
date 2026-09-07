@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/system/vm-sudo.rst:3 5a5430e18deb431c92f8cd65baea8904
+msgid "Passwordless root access implementation"
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:6 1703fd302f2b4cc08013666356d41da5
+msgid ""
+"The rationale behind passwordless root in qubes is set out :doc:`here </user/"
+"security-in-qubes/vm-sudo>`. Implementation is by the qubes-core-agent-"
+"passwordless-root package."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:8 1e5c1771574d4e3983ae89f13b67d922
+msgid ""
+"This page sets out the configuration changes made, with (not necessary "
+"complete) list of mechanisms depending on each of them:"
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:10 cda1f60ae768413c995d6c3c96f23766
+msgid "sudo (``/etc/sudoers.d/qubes``):"
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:21 63478851c6c64e1f9e0ee740d6bef2e1
+msgid "Easy user -> root access (main option for the user)."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:23 1cbf6b4a40ec490f951a941d53d5a8fd
+msgid "``qvm-usb`` (not really working, as of R2)."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:27 61a828bcade543658b49ea424221aca7
+msgid "PolicyKit (``/etc/polkit-1/rules.d/00-qubes-allow-all.rules``):"
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:35 64f81560638e43a18434106659dc6d46
+msgid ""
+"PAM (``/etc/pam.d/su.qubes`` or ``/usr/share/pam-configs/su.qubes``) "
+"``auth        sufficient  pam_succeed_if.so use_uid user ingroup qubes``"
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:37 a9de14a4ad084933aa8465c8a2c14043
+msgid "NetworkManager configuration from normal user (``nm-applet``)."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:39 11714122be2944748580b22a9289aede
+msgid "Updates installation (``gpk-update-viewer``)."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:41 c379299576c946648ffdc533a0fcdd38
+msgid ""
+"User can use pkexec just like sudo **Note:** above is needed mostly because "
+"Qubes user GUI session isn’t treated by PolicyKit/logind as “local” session "
+"because of the way in which X server and session is started. Perhaps we will "
+"address this issue in the future, but this is really low priority. Patches "
+"welcomed anyway."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:45 e804deafcafd4b609a36870d8cd5beb2
+msgid "Empty root password:"
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:47 3d06f1148bd64eb685288a45b9464212
+msgid ""
+"Used for access to ‘root’ account from text console (``qvm-console-dispvm``) "
+"- the only way to access the VM when GUI isn’t working."
+msgstr ""
+
+#: ../../../developer/system/vm-sudo.rst:49 1661f55682cd421d9b5859d36003b98e
+msgid "Can be used for easy ‘su -’ from user to root."
+msgstr ""
