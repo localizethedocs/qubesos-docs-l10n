@@ -8,26 +8,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-07 14:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/services/dom0-secure-updates.rst:3
-#: 9cedd4a662724b79b687b59d05a71490
+#: 0398b8a0a0914db6b174002b0616ed33
 msgid "Dom0 secure updates"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:7
-#: 3579241c35794e57a7a80219bfb4c201
+#: 97f42e128e8941b38ec7ef53b3f85aa2
 msgid "Reasons for Dom0 updates"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:10
-#: 978394265c9c44959fbb90ec4a0f7c79
+#: f46080acd7a941b38c35832a286123ed
 msgid ""
 "Normally there should be few reasons for updating software in Dom0. This is "
 "because there is no networking in Dom0, which means that even if some bugs "
@@ -41,35 +42,35 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:12
-#: 18b2a1394f644354a6a472471812fa47
+#: b0ce4b520dd74d4abd5875121e382937
 msgid ""
 "However, we anticipate some other situations when updating Dom0 software "
 "might be required:"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:14
-#: 51841137d2e44beb87b297034d0ab0fb
+#: cd856b7c0b834911944523046b7fd03e
 msgid "Updating drivers/libs for new hardware support"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:16
-#: 25aa2bcc9d5f414e805147ab3f968318
+#: cdfbba91a8034554bd4a93cb89241359
 msgid ""
 "Correcting non-security related bugs (e.g. new buttons for qubes manager)"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:18
-#: 4028ed2f6e584b93bc16038408de692d
+#: 4502c45f7c0441c99bb6083eb77dc486
 msgid "Adding new features (e.g. GUI backup tool)"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:23
-#: 843e003e18b1448e9b232893b26d770f
+#: 416f7b03399240bb8def2374e50a3c48
 msgid "Problems with traditional network-based update mechanisms"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:26
-#: 7bff487330c9476aa2d44de7902a8e03
+#: d4d513016d50414683be62fb672eac82
 msgid ""
 "Dom0 is the most trusted domain on Qubes OS, and for this reason we decided "
 "to design Qubes in such a way that Dom0 is not connected to any network. In "
@@ -80,12 +81,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:29
-#: 998c5575119a45f5a4ea1f395f0eb614
+#: daef9e9491974f8186b8f32dfccb66ec
 msgid "Secure update mechanism we use in Qubes (starting from Beta 2)"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:32
-#: adbf004dd90a4ff8af49e38bc8386e84
+#: 398087a59b94492bb670db00ec1d4a19
 msgid ""
 "Keeping Dom0 not connected to any network makes it hard, however, to provide "
 "updates for software in Dom0. For this reason we have come up with the "
@@ -94,7 +95,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:34
-#: b4786c0583ae4b738fdd17a08b45c42d
+#: bede7307b4374a60b3a1672054cc7566
 msgid ""
 "The update process is initiated by `qubes-dom0-update script <https://github."
 "com/QubesOS/qubes-core-admin-linux/blob/release2/dom0-updates/qubes-dom0-"
@@ -102,7 +103,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:36
-#: 6a0aa7f94dcb464dac7e272cfa3d77b9
+#: 28965f525f15455dae9594fc7812fc27
 msgid ""
 "Updates (``*.rpm`` files) are checked and downloaded by UpdateVM, which by "
 "default is the same as the firewall VM, but can be configured to be any "
@@ -119,7 +120,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:38
-#: 84983783ee18489390f760e730590002
+#: 48d4260434894a61a6952f762ead0519
 msgid ""
 "Once updates are downloaded, the update script that runs in UpdateVM "
 "requests an RPM service `qubes.ReceiveUpdates <https://github.com/QubesOS/"
@@ -132,7 +133,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:40
-#: 76bb0a4778cc469f9210ddf5d43b4d6d
+#: 83d5387542eb479ea206f92684448bcd
 msgid ""
 "The qubes-receive-updates script processes the untrusted input from Update "
 "VM: it first extracts the received ``*.rpm`` files (that are sent over "
@@ -145,7 +146,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:42
-#: 96957b99246e47f59cfd5c15b96ac269
+#: 1f5fc99c4c694dc5b3db58c94d6a67d2
 msgid ""
 "Once qubes-receive-updates finished unpacking and verifying the updates, the "
 "updates are placed in ``qubes-receive-updates`` directory in Dom0 "
@@ -156,19 +157,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:44
-#: b6f4a0aed0b24692b471a9fe248ddcb9
+#: dc353cd3d44b41c38f7ec1a8c1680633
 msgid ""
 "Finally, qubes-dom0-update runs ``yum update`` that fetches the RPMs from "
 "qubes-cached repo and installs them as usual."
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:47
-#: 21174fd295d14ea784596fa38cfb6a09
+#: b18e22f1029e48279d51e1f59fecb55c
 msgid "Security benefit of our update mechanism"
 msgstr ""
 
 #: ../../../developer/services/dom0-secure-updates.rst:50
-#: 86333d7e933a496e8393331f4c3a48a5
+#: 154287bcbcb745cd9d4de5b0fea53422
 msgid ""
 "The benefit of the above scheme is that one doesn’t need to trust the TCP/IP "
 "stack, the HTTP stack, and wget implementation in order to safely deliver "
