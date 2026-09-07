@@ -8,609 +8,1837 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-07 14:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/general/usability-ux.rst:3
-#: 8db36b8de01b40af974bc9e3a3015051
-msgid "Usability & UX"
+#: 2e6dbabe7dbd41279ff0cf159361b1a9
+msgid "Usability & UX Guidelines"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:5
-#: b69f68170d6c409695537aa140f4c186
+#: 50d84634df074f11aebaf60801c85d68
 msgid ""
-"Software that is too complicated to use, is often unused. Because we want as "
-"many people as possible to benefit from its unique security properties, the "
-"usability and user experience of Qubes OS is an utmost priority!"
+"Unnecessary complexity and bad UI often scare users away from good software. "
+"To avoid this terrible fate, please always take usability and good user "
+"experience into account when contributing to Qubes OS."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:7
-#: 3e05b07286c347dd83a97b8788040f71
+#: 66a4c4e569a241958735fbc2fdb2147f
 msgid ""
-"We ask anyone developing for Qubes OS to please read through this guide to "
-"better understand the user experience we strive to achieve. We also ask them "
-"to review `our visual style guide <https://www.qubes-os.org/doc/visual-style-"
-"guide/>`__ for other design related information."
+"If you plan to contribute to GUI tools, please read these guidelines. "
+"Additional information can also be found in our `visual style guide <https://"
+"www.qubes-os.org/doc/visual-style-guide/>`__."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:10
+#: bb1a75b6070c4c8c8680b933cb16d868
+msgid "Ease of Use"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:12
-#: 6bb984df0835412ba2195ed263caa5ae
-msgid "Easy To Use"
+#: 781572ef74c04c9d9a94256d83799cf5
+msgid ""
+"In open source software, a good user interface should not only enable users "
+"to achieve their goals, but also allow them to remain in control of the "
+"process. The UI should neither overwhelm the users with the amount of "
+"information presented nor hide important context from them. In the words "
+"falsely attributed to Albert Einstein: our goal is to make things as simple "
+"as possible, but not simpler. Make things simple, but removing important "
+"elements in the name of simplicity or getting rid of valuable functionality "
+"for simplicity's sake is making them too simple."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:14
-#: efc0a398f75a44b9936476581f1c35fd
-msgid ""
-"An ideal user experience is friendly, and it beckons a new user to explore "
-"the interface. In this process, they can naturally discover how to use the "
-"software. Below are some guidelines that will help you design a user "
-"interface that accomplishes this goal."
+#: 1df33d3074384c4697713bb81dce542a
+msgid "Make sure that the UI you design adheres to the following principles."
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:16
-#: 3f557561e79f4ab9bc64445ebc32bd9a
-msgid "|redx| **Interfaces Should Not**"
+#: ../../../developer/general/usability-ux.rst:17
+#: 7ced4f0e34bc4b41b04adfb266a2e898
+msgid "Do not waste the user's time"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:245
-#: 8f9bb42e31cd4d0d8db35499d5f01a4a fad26286417748c89a69dec6fe360e1b
-#: 09157fcc6803418fbc7272884c811f8b 1081d08b7f3e4ba7bd8728b32ab533cb
-#: ba2190f5113647488036307364ce0742 4519142647f746b0b52e8a4692d53c88
-msgid "redx"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:18
-#: 560159dfb4d449a3bb57ab104319a5c1
-msgid "Require extensive configuration before a user can *begin* doing things"
+#: ../../../developer/general/usability-ux.rst:19
+#: 2c7581c7dbad4fac99fb576d5934b2e4
+msgid "the program should not *require* extensive configuration"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:20
-#: 72bff8ef9ab64acca824cc4a736c7aba
+#: 55af642a1e8f4c2f94af1784951942a2
 msgid ""
-"Make it possible to break provided features or actions in unrecoverable ways"
+"**example**: you don't need to set the policy directory used by the :program:"
+"`Qubes Policy Editor` - the program lists available policy files for you"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:21
+#: fefbf964575842ea81c6002cb07ba49a
+msgid ""
+"the most typical and most recommended workflows should require the least "
+"user time and attention"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:22
-#: 95c3bd6ec8e34230b3061db0a5f2c4c8
-msgid "Perform actions which compromise security and data"
+#: 8df5b1f06f2e406a8065bbe1dce72f2b
+msgid ""
+"**example**: :guilabel:`Create New Qube` opens at the typical use-case (a "
+"new app qube) with options such as \"template\" and \"networking\" set to "
+"system defaults; the user only has to enter qube name and click ``Create``"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:23
+#: bd32905717094b19b0624ba2bc2e706f
+msgid ""
+"the defaults should be sensible - they should work for most use cases and "
+"not require changes in most situations, if at all possible"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:24
-#: de201039944a4bb7b78bd1850d936528
-msgid "Overwhelm the user with too much information and cognitive load"
+#: 58b67e1fd998458da463bb5a14f7d2c0
+msgid "**example**: default settings for newly created qubes"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:25
+#: 42dc40044a734730895f26e15b8552e2
+msgid ""
+"minimize repetitiveness: if possible, avoid multiple clicks or multiple "
+"steps for operations that can be implemented with less clicks/steps"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:26
-#: f107458b23994e70998f5fe29c3f8c8b
+#: 90f451a434674838b3b6757c55049490
 msgid ""
-"Perhaps the most common cause of mistakes is complexity. If there is a "
-"configuration setting that will significantly affect the user’s experience, "
-"choose a safe and smart default then tuck this setting in an ``Advanced "
-"Settings`` panel."
+"**example**: in the ``Devices widget``, if a device is already attached to a "
+"qube, you have an option to ``Detach`` the device, but also to ``Detach and "
+"Attach`` to another qube - the user doesn't have to do two actions, but only "
+"one"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:28
-#: 7b910eb7007541f1a97689f780397403
-msgid "|checkmark| **Interfaces Should**"
+#: ../../../developer/general/usability-ux.rst:29
+#: f35daea65996439a8a4253ba31ccb5c2
+msgid "Make the UI resilient to errors"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:244
-#: ac1a6e4134df43d28ba1354a81e67add edbcb780cf9c4edea7425a5fa7ce84b3
-#: b7beef57f87d41a18d47a243f4889e9f 3cb0de1b36e34f0ba7868446a5775d4b
-#: 182258a68dc24db5b7f36e7f4c3fb831 1c788cd9377540899032b4e78ac25caf
-#: dd76e82f10f44cf6bbdcbde5d6d74c7d
-msgid "checkmark"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:30
-#: e80034c67694476f92cfd6cc9250a8fb
-msgid "Make it easy to discover features and available actions"
+#: ../../../developer/general/usability-ux.rst:31
+#: 350b7ff34c1a483fa303ed158eef1bcc
+msgid ""
+"users should not be able to break the program (or the entire system) or "
+"enter an unrecoverable state"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:32
-#: 2f5296e405204906bdd4ea7a776a9c6b
-msgid "Provide some understanding of what discovered features do"
+#: fd815c4b24144332a30cfd7763a282a0
+msgid ""
+"users should not be able to compromise the integrity and security of their "
+"system accidentally"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:33
+#: 028a954bd8a14ce28f88bd30e0006160
+msgid "as far as possible, there should be a possibility to undo actions"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:34
-#: 0b83e6c05e7c4f14832ee5358f119681
-msgid "Offer the ability to easily undo mistakes"
+#: 78e4a26ec28642ff871e4d488440f484
+msgid ""
+"if some actions cannot be undone (for example deleting a qube), they should "
+"be impossible to perform accidentally (in case of Qubes OS, you have to type "
+"the qube name to delete it, even using GUI tools)"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:35
+#: bf716b727c0d44928c98c2877d472c04
+msgid "the defaults should be reasonably secure"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:36
-#: 00e788e7d04e408eb24ff5688e7ab136
-msgid "Choose intelligent defaults for settings"
+#: 4702c46b0d464b4988b0443e3e06fb62
+msgid ""
+"avoid leaving users stranded - if there is an error message, there should "
+"also be guidance on how to recover or (preferably) an actionable solution"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:38
-#: 2cd3634efad845cebdd5b8715b121540
+#: ../../../developer/general/usability-ux.rst:39
+#: 8f0334e8c36746b2aee12a59c352afb9
+msgid "Reduce cognitive load"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:41
+#: 7205edb97b794b9bbc361fcf7e840d2d
+msgid "show only the relevant information"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:42
+#: 3a579a4a02164d8ea852fbb253aa01a5
 msgid ""
-"In making software easy to use, it is crucial to be mindful of `cognitive "
-"load <https://en.wikipedia.org/wiki/Cognitive_load>`__ which dictates that "
-"*“humans are generally able to hold only seven +/- two units of information "
-"in short-term memory.”* Making sure your interfaces don’t pass this short-"
-"term memory limit is perhaps the most important factor in helping a user "
-"feel comfortable instead of overwhelmed."
+"**example**: domains widget does not show qubes that are not running and not "
+"consuming resources"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:43
-#: 34ed83eb04cd4c8b9df9c6038c2b0043
-msgid "Easy to Understand"
+#: aa16cae421b647c083c658b7560fdc3d
+msgid "use simple and understandable language"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:44
+#: 6dd6fb02c4564fb0b12e499026d42f89
+msgid ""
+"when in doubt, like the author of this document, always use the simpler word "
+"and don't write like it's a master's thesis in English literature"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:45
-#: 9a4ce9e1531d4bd1afec6e284112690a
+#: 84e5d07941cd4c68b83222b7d20d2643
+msgid "make it easy to discover and understand features and available options"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:46
+#: 31782213b57242b29f046fb20443f5c0
 msgid ""
-"There will always be the need to communicate things to users. In these "
-"cases, an interface should aim to make this information easy to understand. "
-"The following are simple guides to help achieve this - none of these are "
-"absolute maxims!"
+"**example**: :guilabel:`Qubes Global Config` aims to show and describe "
+"multiple configuration settings that otherwise were only available via CLI "
+"and knowing about them"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:47
-#: 3c7d4a5cea8543dc89e3b89e1266558e
-msgid "|redx| **Avoid Acronyms**"
+#: b3f4cfccaac1486c802f224fd4b93fea
+msgid ""
+"do not expect the user to remember: remind them of past actions and choices"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:48
+#: 082ca77c9b9245b79d3829c461a9d128
+msgid ""
+"**example**: during the update process, show which qubes are being updated "
+"right now, which are still queued for updated and which are done updating"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:49
-#: c57adad8809642ac8adee8dd2b32b10f
+#: 89988c4112aa44b59746e6343359f8f7
 msgid ""
-"Acronyms are compact and make good names for command line tools. They do not "
-"make graphical user interfaces more intuitive for non-technical users. Until "
-"one learns an acronym’s meaning, it is gibberish. Avoid acronyms in your "
-"interfaces whenever possible!"
+"the defaults should make sense for most use cases and not require the user "
+"to verify them thoroughly"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:51
-#: 6d41c5d08d184632944530802c0a1ae2
-msgid "``DVM`` - Disposable Virtual Machine"
+#: ../../../developer/general/usability-ux.rst:50
+#: 20c7580eef0a433bbf2766de00484781
+msgid ""
+"**example**: a new qube will use the default template and default networking "
+"settings"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:53
-#: b3213be3b62d4999b7f715303471ac43
-msgid "``GUID`` - Global Unique Identifier"
+#: ../../../developer/general/usability-ux.rst:54
+#: 49a225675d7941d79f4f8f26ac996b3f
+msgid "Language"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:55
-#: 4597c6ea125a4bf1b1173477c9d7b650
-msgid "``PID`` - Process Identification Number"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:57
-#: 71032da3b3d4411bb1d095c631663001
-msgid "``NetVM`` - Networking Virtual Machine"
+#: ../../../developer/general/usability-ux.rst:56
+#: 10554992a53a4f53adbe99849e97898e
+msgid ""
+"There will always be the need to communicate things to users. In these "
+"cases, an interface should aim to make this information easy to understand. "
+"The following are simple hints to help achieve this - as with any writing "
+"advice, those are guidelines, not laws."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:59
-#: 64168ff804be49239c63978ea9490f14
-msgid ""
-"Despite this rule, some acronyms like ``USB`` are widely used and understood "
-"due to being in common use for over a decade. It is good to use these "
-"acronyms when the full words like ``Universal Serial Bus`` are more likely "
-"to confuse users."
+#: c1d4bf5e01374f5f8937af5ca4e93bdb
+msgid "Avoid acronyms"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:61
-#: 8331126c80434e91aa3a219ca45eb384
-msgid "|checkmark| **Use Simple Words**"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:63
-#: c8efad8f5ea745e5b17db56e2c94ee71
+#: 3115a5b6e96f45c685dfd5304758c869
 msgid ""
-"Use the minimum amount of words needed to be descriptive, but also "
-"informative. Go with common words that are as widely understood. Sometimes, "
-"inventing a word such as ``Qube`` to describe a ``virtual machine`` makes "
-"the life of the user much easier."
+"Acronyms are compact and make good names for command line tools, but until "
+"the user learns an acronym’s meaning, it is gibberish. Avoid introducing new "
+"acronyms, unless necessary, and provide explanations if the acronym is "
+"uncommon. Some acronyms are more familiar than the full name - it is "
+"strongly recommended to use USB instead of Universal Serial Bus, for example."
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:65
-#: 0a8d628adf3d4bfab588ff765a7eca13
+#: ../../../developer/general/usability-ux.rst:64
+#: 31091e2e1f114961985664231fb9981c
+msgid "Use simple words"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:66
+#: 394041258334453eb40b54e55b422482
 msgid ""
-"Use ``Disposable Qube`` instead of ``DVM`` or ``Disposable Virtual Machine``"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:67
-#: 16bbe0dcfae34f65b715f011281af8af
-msgid "Use ``interface`` instead of ``GUI`` or ``Graphical User Interface``"
+"Use the minimum amount of words needed to be informative. Go with common "
+"words that are as widely understood. \"Unneeded\" is better than "
+"\"superfluous\", \"correct\" is better than \"rectify\" and \"pointless\" is "
+"better than \"nugatory\"."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:69
-#: 4971dd68fce6447c806414149427a758
-msgid ""
-"Use ``application number`` instead of ``PID`` or ``Process Identification "
-"Number``"
+#: 6867eddf5ef44fa5bb69a78a219bb208
+msgid "Follow current Qubes OS terminology"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:71
-#: a9d4ef9ca4a24a5992671145b9544c5f
+#: 7f82db5d161d416aa431693ee1db6767
 msgid ""
-"Use ``Networking`` or ``Networking Qube`` instead of ``NetVM`` given context"
+"use **disposable [qube]** instead of ``DVM`` or ``Disposable Virtual "
+"Machine``"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:75
-#: a2301a02142c4bd4972bbe700b3bc50f
-msgid "|redx| **Avoid Technical Words**"
+#: ../../../developer/general/usability-ux.rst:72
+#: 1e3668e83dab4eaea3970523a8a0b201
+msgid "use **networking** or **net qube** instead of ``NetVM``"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:73
+#: bba32eec21264e75b3a5f136f4e13d17
+msgid ""
+"use **qube** instead of ``virtual machine``, ``container``, ``domain`` or "
+"``domU``"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:74
+#: fe24d1bb9ee04169b9ccfab92a72704a
+msgid ""
+"use terminology consistent with other user-facing tools, not necessarily "
+"with internal programming details"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:77
-#: d702431d8acd4a2ba2fa2b1d166214c3
-msgid ""
-"Technical words are usually more accurate, but they often *only* make sense "
-"to technical users and are confusing and unhelpful to non-technical users. "
-"Examples of technical words that might show up in Qubes OS are:"
+#: 273c38213dec48a986749ac76b5de975
+msgid "Avoid technical words"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:79
-#: 9a60c46f57ae4b7897a95f4d30585f26
-msgid "``root.img``"
+#: 12a5841010c04bcb9bc0efe229b27157
+msgid ""
+"Technical words are usually more accurate, but they often *only* make sense "
+"to technical users and are confusing and unhelpful to non-technical users. "
+"Strive for accuracy and usefulness above strict technical correctness. If at "
+"any point you wish to add to a label a \"well, actually\", resist the "
+"temptation."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:81
-#: 631ec2f6f7e548aeaa4b674be2d4f988
-msgid "``savefile``"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:83
-#: de584c639e0d4c0cb8b362930fe2b789
-msgid "``qrexec-daemon``"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:85
-#: 23b2437ad4ce49908ba57583b5497c44
+#: 25ae11efdbc0478c8f9906fe02b28c87
 msgid ""
-"These are all terms that have at some point showed up in users’ notification "
-"messages. Each term is very specific, but requires the user to understand "
-"virtualization to interpret."
+"Prefer a common, understandable concept to detailed technical explanations "
+"of a particular implementation"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:87
-#: a68be1d1c5f14fd188af222574f6703b
-msgid "|checkmark| **Use Common Concepts**"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:89
-#: d10714e0a7374e1e8ef5785537ad19c2
-msgid ""
-"Large amounts of the global population have been using computers for one or "
-"two decades and have formed some mental models of how things work. "
-"Leveraging these mental models are a huge gain."
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:91
-#: ae20ee93b7184fcc854647067237eaaf
+#: ../../../developer/general/usability-ux.rst:82
+#: b4352dc414914e949c91b79abb4fe554
 msgid ""
 "Use ``disk space`` instead of ``root.img``, since while not quite accurate, "
 "it makes contextual sense"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:93
-#: 57459e15d6ae40d6929bf399078a1086
+#: ../../../developer/general/usability-ux.rst:83
+#: 81925d9b19554e99be9884c43bce9604
 msgid ""
 "Use ``saving`` instead of ``savefile`` as the former is the action trying to "
 "be completed"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:95
-#: eed975c95065444a9251d78284ba21e0
+#: ../../../developer/general/usability-ux.rst:84
+#: cded87de70184b7094e98c625ad7b77f
 msgid ""
 "Use ``Qubes`` instead of ``qrexec-daemon`` as it gives better context on "
 "what is happening"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:97
-#: e1ae0c96282249d1bf7f65e20315faa8
-msgid ""
-"These words are more abstract and user relevant- they help a user understand "
-"what is happening based on already known concepts (disk space) or start to "
-"form a mental model of something new (Qubes)."
+#: ../../../developer/general/usability-ux.rst:87
+#: 6fc6e3f6696343d5bbe3fa0902ff8115
+msgid "Avoid redundancy"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:101
-#: bd7affcb3fc848258ab3294b502ed83e
-msgid "|redx| **Avoid Inconsistencies**"
+#: ../../../developer/general/usability-ux.rst:89
+#: a68b1bb8dd4f480887b0f08eec2d0021
+msgid "do not over-use words like ``qube`` or ``domain`` in long lists"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:103
-#: 3ee47c181ca14fb78fc984af8701f72d
+#: ../../../developer/general/usability-ux.rst:90
+#: b97a7bf7faa045edaaf2564d3271e24d
 msgid ""
-"It is easy to start abbreviating (or making acronyms) of long terms like "
-"``Disposable Virtual Machine`` depending on where the term shows up in an "
-"interface."
+"it is preferable to create common categories/headers than to repeat a single "
+"category multiple times"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:92
+#: 00d38d4540ff4093849ffa40514141fa
+msgid "Qubes 3.2 system menu with redundant 'domain' prefix to every qube name"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:95
+#: 4a590fb007f24a2885d308db80d78349
+msgid ""
+"System menu in Qubes 3.2 used to make both of those mistakes: redundant "
+"'domain' prefix and no category headers."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:98
+#: f993556d60ef4f56abec2c237e84911b
+msgid "Usability and Accessibility"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:100
+#: c7e03be73b93464880da0ef5ff925a19
+msgid ""
+"Usability and accessibility are always tied together. When designing "
+"interfaces for Qubes OS, follow general good UI practices, striving for "
+"understandability, clarity of interactions, avoid surprising the user, avoid "
+"- as far as possible - actions that cannot be undone and strive to make it "
+"easy to do the correct/secure action and difficult to do the insecure action."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:102
+#: 092c1bfebfb342749b1660bca5615220
+msgid ""
+"Use the checklist below to verify fundamental accessibility and usability "
+"principles:"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:104
+#: ff70bdb4508e4726b5eff0defeb76f77
+msgid "**visual readability**"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:105
-#: 8b961b2f9ac7489791fa75ca4e1e1211
-msgid "``DVM``"
+#: 1e37ef7f3baa4edab42c8f4972ffce98
+msgid ""
+"there is sufficient contrast between text and background (use `WCAG level AA "
+"guidelines <https://www.w3.org/TR/WCAG21/>`__ as minimum when in doubt)"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:106
+#: 812dc115458847ad88d99e5848e4e222
+msgid "UI remains readable in dark mode and in light mode"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:107
-#: 0367800656e84768aeb2b7a2e09655ac
-msgid "``DispVM``"
+#: 67830d4e039d41f8a5b8adc7ac43ef17
+msgid "**color independence**"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:108
+#: 8206bf403b574afb9e6a605e8bdf6d60
+msgid ""
+"important information is never communicated solely through color: labels, "
+"text, shapes etc. accompany all color-coded information"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:109
-#: 0239dde0685f4e9088d5c9c6bd5e58bc
-msgid "``DisposableVM``"
+#: 90d08fc34dcb43f1a1042c2ca4855a27
+msgid "**text scaling support**"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:110
+#: fc54c183ff38493daa6bb1cac8dc3f64
+msgid ""
+"the program works for large font sizes (including what you might consider "
+"absurdly large)"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:111
-#: fccf31ea01e145d88238185faef536f4
+#: 6056367e4e454009b829f91520ea8eb0
+msgid "**keyboard/mouse accessibility**"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:112
+#: a96406a029204540b31c8ce5e60bb000
 msgid ""
-"This variation in terms can cause new users to question or second guess what "
-"the three different variations mean, which can lead to inaction or mistakes."
+"all actions can be reached and performed when using only the keyboard and "
+"only the mouse without exorbitant leaps of logic or reading the documentation"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:113
-#: d5cb4fab1bb941f686e45689ebdaec89
-msgid "|checkmark| **Make Things Consistent**"
+#: 06f9722d218e46e18a800a05aa06abdb
+msgid "tab-order for controls is logical"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:114
+#: 6eee0f67d0c240ea844962245e74fbe3
+msgid "**focus visibility**"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:115
-#: 9656a120bbf444d8a98dfbdbeceb06d7
+#: e2aeb4796c6e43ed9403f71c72c8ce9e
 msgid ""
-"Always strive to keep things consistent in the interfaces as well as "
-"documentation and other materials."
+"it is always visible which element has focus, when using keyboard navigation"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:116
+#: 0f3acfc8553d4b51964fa82ad8e91164
+msgid "focus is not irrevocably lost on some operations"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:117
-#: 0359bf5e98344ee096b38490373b9d01
+#: ad709ab7e29f472a850bc3f3a60ac0d9
+msgid "**clarity and communication**"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:118
+#: e708aa1dd96e43b4afdaa4bc5456f6ca
 msgid ""
-"Use ``Disposable Qube`` at all times as it meets other criteria as well."
+"language used in the GUI is clear, understandable and simple; avoid complex "
+"sentences and overly complex vocabulary"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:119
-#: 010070acf4324b74af5d34128588d571
+#: 48fd3650319047efa21d2dbe9ba1a98f
 msgid ""
-"By using the same term throughout an interface, a user can create a mental "
-"model and relationship with that term allowing them to feel empowered."
+"error messages are specific and visible; if possible, errors are accompanied "
+"by information about how to recover from them (ideally, this would be done "
+"automatically, but of course this is not always possible)"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:123
-#: 3d9e4984e553421d81a7b827d89bff4a
-msgid "|redx| **Avoid Duplicate Words**"
+#: ../../../developer/general/usability-ux.rst:120
+#: 73ad4ad8d5484cbea43b00c528172cdb
+msgid ""
+"validation is always clearly communicated: the user can easily understand "
+"why certain inputs are incorrect"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:125
-#: e12d851ba1df46cdbc2a4838498d77e5
-msgid ""
-"It is easy to add words like ``Domain`` before items in a list or menu in an "
-"attempt to be descriptive, such as:"
+#: ../../../developer/general/usability-ux.rst:121
+#: 85c84dcc19df43b1a84771e24cb024f8
+msgid "error and validation feedback does not rely on timing"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:134
-#: ea55fb54616044da877ca33a1964b612
+#: ../../../developer/general/usability-ux.rst:124
+#: 66aa571478f342d99d4fa3bb4747a104
+msgid "Consistency and UI Elements"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:126
+#: 2b1588863c4a4cf5b609ff2dc1cb0fe1
 msgid ""
-"The repeated use of the word ``Domain`` requires a user to read it for each "
-"item in the list, which makes extra work for the eye in parsing out the "
-"relevant word like ``work, banking, or personal``. This also affects "
-"horizontal space on fixed width lines."
+"Concepts, names, icons, interaction patters and styling should be consistent "
+"across different tools. When in doubt, pattern the behavior of your "
+"application on other Qubes OS tools."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:128
+#: 66f3e74c1e4a4f9b8de475a3d12aa281
+msgid "Particular GUI patterns used in Qubes OS are:"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:131
+#: e8f5ac7eb3a84981aa6cfc340e8478a4
+msgid "Qube names"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:133
+#: 530de370e5b24713a7dcc35d13edfd83
+msgid ""
+"Qube name should be whenever possible accompanied by the appropriate qube "
+"icon in the correct color."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:136
-#: 9dbb89c5b3b549b194b7c07775e86d0a
-msgid "|checkmark| **Create Groups & Categories**"
+#: ../../../developer/general/usability-ux.rst:182
+#: 6cab4e95b376421e86d7505ff58b305d 63a2366dd2b6412c979f8763ac9a5dac
+msgid "Examples:"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:138
-#: 4cdaddc7972040e383c91bf53698cd08
+#: d80055abf0214637a75fa8c82ce4c7b1
 msgid ""
-"It is more efficient to group things under headings instead as this allows "
-"the eye to easily scan the uniqueness of the items. (As per our previous "
-"example:)"
+"part of Qubes OS Global Config: two dropdowns used to configure Clock qube "
+"and Default net qube. In both dropdowns, the qube names are accompanied by "
+"the qube icon to their left"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:150
-#: de231d01b10143719277c5e22a090f8e
-msgid "Easy To Complete"
+#: ../../../developer/general/usability-ux.rst:141
+#: 950f878441cf42cf91891c652da75f17
+msgid ""
+"Dropdowns in :guilabel:`Qubes OS Global Config` contain icons. Always use "
+"existing dropdown widgets if possible: they generally already provide the "
+"icon display."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:144
+#: ebf73a082d784903ae23e868fb6a85d8
+msgid ""
+"part of Create New Qube Dialog showing selected net qube with its icon to "
+"the left of the qube name"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:147
+#: 36743a30fda149808ed4a76dd8dafb13
+msgid ""
+"In :guilabel:`Create New Qube` Dialog, selected network qube is displayed "
+"with its icon and also with the qube color used to color the qube name, to "
+"reinforce the qube-label association."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:149
+#: d88cb22b03cb4e4fb29b9c729ccc8cec
+msgid ""
+"list of running qubes from the domains widget; each qube name has the qube "
+"icon to the left of it"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:152
-#: 249669ffd7614d3ca62265c2cbfa9780
+#: d6e26ea06a0f40baa24a51248149f591
+msgid "In the domains widgets, every qube is always accompanied by its icon."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:155
+#: 517c1f1ddc4e4e6698cd5751416f6e02
+msgid "Action buttons"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:157
+#: 1409e02549f7495ea060a22334a3d298
 msgid ""
-"Lastly, expected (and unexpected) situations often require user actions or "
-"input. Make resolving these occurences as easy as possible to complete the "
-"action."
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:154
-#: 6d9f9470e1d84128b08e727fbb10d25c
-msgid "|redx| **Don’t Leave Users Stranded**"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:156
-#: f4dfa95af5e244b49a47b45f019eaaad
-msgid "Consider the following notifications:"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:158
-#: a57c2f2f20794198bc5ff7718cc3d372
-msgid "``The disk space of your Qube \"Work\" is full``"
+"If possible, any button should have a brief and understandable description "
+"of the action it will cause if pressed written on the button itself. Avoid "
+"generic \"OK\" buttons. Usually only one button should be marked visually as "
+"the main \"confirmation\" button. If there are multiple buttons who could "
+"serve this role, individual discernment must be used."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:160
-#: 46956379b6274275912d9fb0cebf68c8
-msgid "``There was an error saving Qube \"Personal\"``"
+#: 012aaa3c2f8b410bb90647acf34eb812
+msgid "Use flat buttons."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:162
-#: 4c4d8d8b0acf4d60be3e00d7c406e0ef
+#: 2b6cbc1f23e84a93a60da74e29a4582d
 msgid ""
-"Instead of displaying solvable errors like these and neglecting to provide a "
-"fix:"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:164
-#: 482c6fec43294825849c496601e682b7
-msgid "|checkmark| **Offer Actionable Solutions**"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:166
-#: e6f27a11ee3848ec8cdb8358e6dce8f3
-msgid ""
-"Error messages and limits such as those in the previous example can be "
-"greatly improved by adding buttons or links to helpful information."
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:168
-#: eb22e2acaa404dddb047aa87008fd2e6
-msgid "Add a button to ``Increase Disk Space``"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:170
-#: 27a420a3d7f64b86a3ce6c930fb0d3df
-msgid "Add a link to a documentation page called ``Troubleshoot saving data``"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:172
-#: f837a73e7a90470586e8259b23141f68
-msgid ""
-"In adhering to these principles, you’ll make undesirable situations more "
-"manageable for users instead of feeling stranded."
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:176
-#: 3e1cee42d89e4856896035974fed7a32
-msgid "|checkmark| **Minimize Repetitive Steps**"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:178
-#: a85642bde17b455983d3b8b7f6f43fb4
-msgid ""
-"There are many cases where a user wants to perform an action on more than "
-"one file or folder. However in order to do the action, the user must repeat "
-"certain steps such as:"
+"Use the following CSS classes (with appropriate text size and padding) for "
+"confirm and cancel buttons:"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:180
-#: ../../../developer/general/usability-ux.rst:198
-#: f3dbe2de150c4e4580f1f424625281da da2949ce97a949f88cb1e2a0f1bb2434
-msgid "Click on ``Open File`` from a menu or button"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:182
-#: b43972b75e2c4c108bd6ba804309a66b
-msgid "Navigate through file system"
+#: 9a3f23a386b14ea98ad362ebecbf31c4
+msgid ""
+"For color definitions, see :ref:`below <developer/general/usability-ux:"
+"Colors>`."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:184
-#: f101972f27544a289f9ef90d31a147b4
-msgid "Click Folder One"
+#: 875dbaca5b694e63bd05a0631c9f4423
+msgid ""
+"part of Qubes OS Global Config: three buttons at the bottom of the screen. "
+"Blue button with text \"Apply Changes and Close\", and two flat normal "
+"buttons with text \"Apply Changes\" and \"Cancel\""
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:186
-#: 99a47c70cb6f48e7b00ae914372ddec9
-msgid "Click Folder Two"
+#: ../../../developer/general/usability-ux.rst:187
+#: 966d47094a2042c1b05a0aa528eab808
+msgid ""
+"The visually marked button is \"Apply Changes and Close\", because this is "
+"assumed to be the typical interaction with the tool."
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:188
-#: b251fd918d64469584d1da8e3eeef88e
-msgid "Click Folder Three"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:190
-#: 8c5b4033334e4ee89fa436c382d7b036
-msgid "Click Folder Four"
+#: ../../../developer/general/usability-ux.rst:189
+#: d9e92de686b64580ba645b2ab850f540
+msgid ""
+"part of Policy Editor: three buttons at the bottom of the screen. Flat "
+"button with text \"Quit\" and two blue buttons with \"Save changes\" and "
+"\"Save and exit\""
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:192
-#: ../../../developer/general/usability-ux.rst:202
-#: af2a710b0e8744d78d50bcc73d29d26d 2a835f0890ea4fc590441de6cbb668d2
-msgid "Select proper file"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:194
-#: b6dbb834bb394f19ac06202c68ad4876
-msgid "Complete task on file"
+#: 42d1834779ff48078c3f148958e47e83
+msgid ""
+"Button text should be brief and clear. Two actions seemed to be typical for "
+"the interaction with the tool (saving and exiting and saving without "
+"exiting), so both are emphasised."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:196
-#: 4dcf94e983fb49b7922086536b346795
+#: d79042e0d4d44c5486a5c4a29abb2a8f
+msgid "Icons"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:198
+#: c0abc80168e14beab6bb268aa022c3ba
 msgid ""
-"That subtle act of clicking through a file system can prove to be "
-"significant if a user needs to open more than a couple files in the same "
-"directory. We can alleviate some of the work by changing the process:"
+"Core of Qubes OS Icon Set is the set of qube-related icons that can be found "
+"in the `qubes-artwork <https://github.com/QubesOS/qubes-artwork/tree/main/"
+"icons/scalable/apps>`__ repository."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:200
-#: 591278a96c6040c99ab94cdd2d0cfedb
-msgid "Remember last open folder/file system"
+#: dc16b6b5876a4f1d863fc4de2ab88173
+msgid ""
+"Those icons represent possible qube classes and colors. For mapping of qube "
+"icon to qube type, see the :doc:`/user/reference/glossary`."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:202
+#: 87c4ac2a34fb449e80341b18d8a378cb
+msgid ""
+"Most symbolic icons in Qubes GUI are taken from `lucide.dev <https://lucide."
+"dev>`__ (MIT-licensed open source icon set)."
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:204
-#: c30c476436eb4722b1d513e34a9e59a7
-msgid "Complete task"
+#: a59f91ac4d644492864c0cbd6ff09133
+msgid ""
+"The following stroke width is generally recommended for the following icon "
+"sizes (adjusted when needed for clarity and cohesion):"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:206
-#: 3f9fd41cd2a24d4bb7c2427feabda6ff
+#: f8a66d02b9aa4116ade097ba3c59219e
+msgid "16px = 1.5px stroke"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:207
+#: fb66004329554e248effe9141b8f1f60
+msgid "24px = 2px stroke"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:208
+#: 579370e0c2df4152bdc3fbfc29f28a71
+msgid "32px = 3px stroke"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:209
+#: 86f3bdb287134dec9245f09fb4f1ee0b
+msgid "48px = 4px stroke"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:210
+#: e9fd917f376a4166847ebbc987a92cc3
+msgid "64px = 6px stroke"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:212
+#: 30746d9271f54d7e90aef4060c103c2d
 msgid ""
-"Clearly, cutting out something as simple as navigating through the file "
-"system can save a user quite a bit of time. Alternatively, adding a button "
-"or menu item like ``Open Multiple Files`` might be even better, because "
-"remembering and using relevant hotkeys is often something only power users "
-"know how to do!"
+"If any further icons are needed, base them on `lucide.dev <https://lucide."
+"dev>`__ icon set."
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:211
-#: abfe9a6658544b1bb3476beeed4e65cf
-msgid "GNOME, KDE, and Xfce"
+#: ../../../developer/general/usability-ux.rst:216
+#: ../../../developer/general/usability-ux.rst:220
+#: 41becf4a5f8e44a3ad384a1a251ddc63 5a71f44890724742bedeb7a810e29d27
+msgid "Colors"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:213
-#: 76a7377e60f2490e9a7ba674082a35e5
+#: ../../../developer/general/usability-ux.rst:218
+#: 981e2e21be844bb8ac4bc6afa65594bb
 msgid ""
-"The desktop GUIs that QubesOS versions 1 - 4.1 offer are `KDE <https://kde."
-"org>`__ and `Xfce <https://xfce.org>`__. We are currently migrating towards "
-"using `GNOME <https://www.gnome.org>`__. We know some people prefer KDE, but "
-"we believe Gnome is easier to use for average non-technical users. Xfce will "
-"always be supported, and technical users will always have the choice to use "
-"KDE or other desktop environments."
+"For GUI elements, use the following subset of Tailwind color system (from "
+"`Tailwind CSS system <https://www.tailwindcss.com>`__)."
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:215
-#: 91efcf2d9e23464ab95bd2e567ff6856
-msgid ""
-"This change means you should use `GTK <https://gtk.org/>`__ rather than Qt "
-"for new GUIs."
+#: ../../../developer/general/usability-ux.rst:226
+#: 46981fdd96fd4de296315f4e3908b03c
+msgid "Color"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:217
-#: b3944fd69ace4409ace7abd64de7643a
-msgid ""
-"All three of these mentioned desktop environments have their own `human "
-"interface guidelines <https://en.wikipedia.org/wiki/"
-"Human_interface_guidelines>`__, and we suggest you familiarize yourself with "
-"the platform you developing for."
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:219
-#: d9090c0058c041d9a98715a42e7522d5
-msgid "`GNOME Human Interface Guidelines <https://developer.gnome.org/hig/>`__"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:221
-#: f924ba261cd24a6c8f51dfef776e73e5
-msgid "`KDE HIG <https://hig.kde.org/>`__"
-msgstr ""
-
-#: ../../../developer/general/usability-ux.rst:223
-#: efc0802a70f2464badbeb0373353bdb8
-msgid "`Xfce UI Guidlines <https://wiki.xfce.org/dev/hig/general>`__"
+#: ../../../developer/general/usability-ux.rst:227
+#: 0cac446862bc49aeab19a38609598cc9
+msgid "50"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:228
-#: 87e6897be14d479ea8551c7b3a08d306
-msgid "Further Learning & Inspiration"
+#: a308645af12b4dd584ebfb37f1189d41
+msgid "100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:229
+#: b847e1bffc7b451aa7624b121f100d05
+msgid "200"
 msgstr ""
 
 #: ../../../developer/general/usability-ux.rst:230
-#: 571a5f76def445c9a994ab490d0ae4d6
+#: b302720279a64d7b8352a16a5b737fcb
+msgid "300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:231
+#: d687e1be221041f7952714c59b5b78c4
+msgid "400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:232
+#: ecd2d8d9a0c545588380589d6a5fcbaa
+msgid "500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:233
+#: c3f4968e77ab4c3f9be210f1855c1fb0
+msgid "600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:234
+#: b9044a29d15746fcbeeb409bd084a864
+msgid "700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:235
+#: 6403bb1ad9f74403beaeb1c4f25da04a
+msgid "800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:236
+#: 7bb4dc1ee6a54a348c44a5105372d4ed
+msgid "900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:237
+#: f85697dc80024d11ab192bf9c916490a
+msgid "950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:238
+#: 99ae4fb2e5a94e04982b524f858396b3
+msgid "Gray"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:239
+#: 930090a1ae704b1eaedd4dec1beebc77 2a92a6e5ce8344edb49ff47251ea0ab4
+msgid "gray-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: a6ca65f92cb2454d80753b6c0d6ee928
+msgid "#f9fafb"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:247
+#: f4d77da7e4824e208141ce8e5b30d6b0 bcdddf3eb38347c086a07c2a07faf390
+msgid "gray-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: fb9fbec0f4dc41d2848165ad4cc19ab5
+msgid "#f3f4f6"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:255
+#: 38902307282e419fa4aa9a3b587a8437 f088d297e68b47088afeee35f0a7acc7
+msgid "gray-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 66f16d05bcde428898223794754b627e
+msgid "#e5e7eb"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:263
+#: 864e28957fe341c8a91188475079a6c3 dc85354f48c44bb6bbfc97eb1d975b7b
+msgid "gray-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 5e83cb1f7b9c480fb91c812f3fd35ed8
+msgid "#d1d5db"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:271
+#: b0d0bda3af3d4ae0ad1402066006f974 c1d46ff0aa2a4eb5bcb17050996b8082
+msgid "gray-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 9915f11ba806434ab70653f192527fe5
+msgid "#9ca3af"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:279
+#: 7c66b28d0c8f4559b0e7acfb521e5582 fead084f898b4369bbed9e17800dec49
+msgid "gray-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 8af8202bc0d34939a5b973543e25fd9b
+msgid "#6b7280"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:287
+#: 45587b2add5e43889bf7cd2bc9b20d94 c6afa2da34f94bf9ab9876cb2d918204
+msgid "gray-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 535d243950f1444282f669d9d6cac179
+msgid "#4b5563"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:295
+#: b3d60db29709492dbd4b0b4e02ade7af 224ed69778034c39a161f3a0303cc93b
+msgid "gray-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 53001ef6f9bd46e18044fb8f740438c8
+msgid "#374151"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:303
+#: e152e2786b5c41d493b0c814d8ce31ad 6880612ca55b49a8b867b1f4fde41882
+msgid "gray-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e5e929fdcff84887b3b847f853f4cc7a
+msgid "#1f2937"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:311
+#: b83efab71bc94b8aa6c4d52a746bd977 c8ce3d7c7e36444aa82b3f90bbcaaa85
+msgid "gray-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 309bbec4cd8c47748d1221e00eb34f71
+msgid "#111827"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:319
+#: 39b17b53b7b8430b982cb38ece47234b 16e5a59958c545f78de2ee47d8af3717
+msgid "gray-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 8aa704f660ed458e80d4f8796a6b37b1
+msgid "#030712"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:327
+#: ca06eba33cf9465a8885505d4906caf1
+msgid "Neutral"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:328
+#: c66f3a6750fa411c948eba3cd2fbfbab 193edb565c724a38b88540c7cb7273f4
+msgid "neutral-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 454d1faf50524d28801de00e1c216a17
+msgid "#fafafa"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:336
+#: d532f85c48c0453d9095e4847e5441eb 02513b14c1694d4e94d3f81da932d297
+msgid "neutral-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 29f479502e70439d82de03b22a1ffc0c
+msgid "#f5f5f5"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:344
+#: 6df9a962436b46d3b5646f1b7a462466 540e651462354976b45d92bd1fdaa0ca
+msgid "neutral-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: be32f60a873940af89dc8e441bd76056
+msgid "#e5e5e5"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:352
+#: 224ca92372f04e969f3af9da7ec8e883 f8dcec9e20f54c3a8086e4b49da1323a
+msgid "neutral-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 7e73c7ecff6f49e180120d2d93d40f61
+msgid "#d4d4d4"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:360
+#: 029da55e7b1244dc8b542774b993a5f6 f4e8e49298b64cd28a57f7412278142b
+msgid "neutral-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 123e43a7333b4f71a999e9ddeb599751
+msgid "#a3a3a3"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:368
+#: ef3a497fb62e498f9a3e440a7bc3d804 b6f83520e32e4bcd88a91ab7fd67aac6
+msgid "neutral-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e92909fd40444bc19b515ec6e1583bc4
+msgid "#737373"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:376
+#: 06566d9adcc94c0cba651f31756ff425 b6704d220ef247fc80fccdf7db0ccc1d
+msgid "neutral-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 2d55e69e879c4993bf4ec021759cfb15
+msgid "#525252"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:384
+#: 09adbefe936441bf94b7a68c68e8213e 2ec77f17933c4b5db6fba935feb233db
+msgid "neutral-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 9165affa7e7d4175a8946d201fe79110
+msgid "#404040"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:392
+#: f8862364c2ab4f93982ea8b0201f3765 97e3401cce7f49f1bd0972a146450934
+msgid "neutral-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 21ced640bccc43a2b4f43a1f1a4f4941
+msgid "#262626"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:400
+#: 5e7ccf69ef09470bbcce5cb2d50c13c4 5d7ce5dee88c4c1ba3712d30a4f2a12a
+msgid "neutral-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 3c96f35c58234c4db4b316801368dcde
+msgid "#171717"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:408
+#: e1ece45a4c324126802c19167ce06026 3bf31270fb514c5b986805f2b08bf7be
+msgid "neutral-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 1f1ba8ac783c4b9eaf145decf5c4f6a2
+msgid "#0a0a0a"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:416
+#: 8f34692e9a4b449ca2e69547fc3e826c
+msgid "Red"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:417
+#: e233fd2f32f349fd88caf0bbeb171ec8 ab39fbd4fc6f42118ce2450db0afb744
+msgid "red-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 317219e5cb9a482a8381cd1bec0ad3db
+msgid "#fef2f2"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:425
+#: 28efa385627245d7a3b60a0d8729d074 22c64b7d7c9843e28c25207125dffd03
+msgid "red-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ffa5727be9e441fab577014ccb6fbe9a
+msgid "#fee2e2"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:433
+#: 75466348695c47a0bb4e5c2c9a705226 202069dab1a74de4810e12205dc103f6
+msgid "red-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 61c7d0c06ec54d84be89495cb3a2b4c9
+msgid "#fecaca"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:441
+#: bcd42f26984c4fb7a0507403d40b2f74 833d21df0c99429e8629e696b1de8ac0
+msgid "red-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 77d45e7a3bd14f03a2b1589c5b287607
+msgid "#fca5a5"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:449
+#: 095263b9165647da9e9099bbc239a5b2 a6252ace7e6c417b9152c6d9e7f34e1e
+msgid "red-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 4f344e6b7b354f36b5f9e8afbf34cda2
+msgid "#f87171"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:457
+#: 18c9e76ab8d14eaeb3515182f670bbbb 69d1959dcc43418b91e9683127201b47
+msgid "red-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e3ddb51a53de4f89ae38e32d56b28e0e
+msgid "#ef4444"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:465
+#: 8f07d205a46d4447a84e7a9f99e812f8 12216f33302849a1b5ef7f38f9c20d58
+msgid "red-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: f6e168493f7d4c90bf80d3143bf222b3
+msgid "#dc2626"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:473
+#: 4d1da858743142719c9e02134d42c258 cae9c75de4144c90859e9e30795b5c6c
+msgid "red-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 63ee7f5688644b0686265932891d97fa
+msgid "#b91c1c"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:481
+#: ff332912237d43d18daf141bf4f47f52 57b88ecc5d5242209b265c308af84c67
+msgid "red-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 712a43667b6f41a08fdd573ee56e4524
+msgid "#991b1b"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:489
+#: 163d60f3902844dc8eff3b2bd4ac919a 6670da546e3d479abbe7ee525f9c8b96
+msgid "red-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 1b8f744d80f54e4991d169a32fce21e2
+msgid "#7f1d1d"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:497
+#: 9233043cc3ce45b6ba15e08c8d971625 2fcb34f433024566b14841411612143a
+msgid "red-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 37e1d449bd7c4d9d8016afcdc27b884f
+msgid "#450a0a"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:505
+#: 7d88397500b345db9594ece6717968fe
+msgid "Orange"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:506
+#: c61eee7d37254c1a860d594147f9989b 0dc721dfa68240838c828dd09d913e66
+msgid "orange-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e0b54db040724c8e84ee5e1fab41ad51
+msgid "#fff7ed"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:514
+#: f7b76fa5c2ef43c1b196b5cb90bc1e91 57d5caffbc5842be81c92ff9a43dcde1
+msgid "orange-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 4e0405476f6745158a82829e5042bc50
+msgid "#ffedd5"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:522
+#: 4bd8cc5d48bb4a7d9c0139eee7950dd4 5b6e3db176f74cc8b167b3e787851793
+msgid "orange-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: fb093610e8ae4f3cbca79eeeb0bd798e
+msgid "#fed7aa"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:530
+#: 7ec082c196ed423bb935a77136484219 964b27ae1c1043c397897f15fb47ce33
+msgid "orange-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 1e484e60df534846b7727dc145f5b032
+msgid "#fdba74"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:538
+#: 27bec90bde224fca9f9c6036f2ae5217 dd8e29ef50c247b1a8cebe79b9e5caf6
+msgid "orange-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: f1ea774747964f28850f5def218c0a12
+msgid "#fb923c"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:546
+#: ee965f8d09e14d56a7395fe01ceaa170 360016d9cf7f47e49b6da967e5965000
+msgid "orange-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 5c65dab706ca49f5837d535bdcdb272e
+msgid "#f97316"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:554
+#: ac2d4589d7a14dd4867d9d849f116fc0 e5d5f18d8aa14687a1d6c1bd2b1a3581
+msgid "orange-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 008b81d888734b3a9cfa7cd5ec859ef7
+msgid "#ea580c"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:562
+#: 16da94a240074b4db4763c9994202323 a733df888e694dd0a3eb3081406a9493
+msgid "orange-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: c9a14f61761b458bbb549605e153e7b3
+msgid "#c2410c"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:570
+#: d36787868c9a416db6f557f110d22664 16406de75ab24abdaf65bc70dbd01e81
+msgid "orange-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 93eb216edf8945d38bb1a81c1b813bf7
+msgid "#9a3412"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:578
+#: 46aba73ecb2f4457aa17704a5c443081 cad4390f1b814c12b677fd4946acad24
+msgid "orange-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 03239e627f6c4a20b1382f1222cd4b38
+msgid "#7c2d12"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:586
+#: 0344742d3b0e4058bac2a657308f809f 28240fb7e9bc47e0b6fd4e93840c7709
+msgid "orange-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 63c7c96833d9426fb64d00baea3958c9
+msgid "#431407"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:594
+#: 3768e5957b3547fab1c4e19a29a2e540
+msgid "Yellow"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:595
+#: 7a132caee252438f98c885210b4fdc6c 56aff230eb4c459fbd647564c2c5fd1d
+msgid "yellow-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 16e591cb144c4f61a86d3fd2b11821ed
+msgid "#fefce8"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:603
+#: 6c7eff000d8e4c47bcf84c47a8c0033b 9dce69ae802940efae215072891f5160
+msgid "yellow-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 58c5a2dafebf43faa173bb89db525cd0
+msgid "#fef9c3"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:611
+#: e3d0b0a5b1264de4992bc059bd7f7284 d41b5d2537b04b018ee1f664f6e2975f
+msgid "yellow-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 12b3b1f67acc43d6a4c98b7c5c11a48d
+msgid "#fef08a"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:619
+#: 22b6948d203f44c1824165d787dac405 24dbdb13eb414e088a32e9d091012454
+msgid "yellow-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 9d3e832d7aaf4cf981774b0cfd393d71
+msgid "#fde047"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:627
+#: 509ba1db74e74bb295dbb6197396715f 2a45985f42bd44e59d5aca6b85c4ee7c
+msgid "yellow-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ca797cd0deb145099eea634bba169d4b
+msgid "#facc15"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:635
+#: c4cdae695ced4624b702760c7512077a f105339e09504ac8af009beb2c790f1b
+msgid "yellow-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 78d318fb51a2425bb6ee17914227bb0b
+msgid "#eab308"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:643
+#: ba5e715df3d844239832bf0ab784f401 da7919573ab042a694f271dba4a0f7f5
+msgid "yellow-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: d3deae6707e9486bb96b169b22624208
+msgid "#ca8a04"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:651
+#: c2a9ba996cad41c39bd02a2d56692f6f b01f7cafc9ba49719bfae44db22e7e78
+msgid "yellow-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 7ca9a5dd0c1c4f318fcf7246d4bab9f7
+msgid "#a16207"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:659
+#: 55d9305985f7418c9be89537f2f19642 4848f984a0e249068b9147ed8648bc83
+msgid "yellow-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 6a09c4824c8340d9bdb50585aee91bfa
+msgid "#854d0e"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:667
+#: b1dfd534b20f401f9f1882df5e27190f 9d4336e903474bffbb5307fd68206d6d
+msgid "yellow-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 40b538fcff3743089debced2f48d1428
+msgid "#713f12"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:675
+#: c4445dd36ac34174b1730c1ba0b3912a d773692b0eb243e0898ec36ac3985e87
+msgid "yellow-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: d0263289b9314551b5b2953545597f24
+msgid "#422006"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:683
+#: ac1227d7f7724eb5b7b394e291dd0f5a
+msgid "Green"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:684
+#: c9f7e6ec658d43a090cc5a1e5b82dffa 7b6f834cf447439d8088d8f01761cf34
+msgid "green-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 02f93c96244f497ab34030328f87d3c9
+msgid "#f0fdf4"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:692
+#: 0944ad1354414258b164e6fba87a90a4 864f33af9551496599c9853590285b65
+msgid "green-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 692a60e094244e6483f042f024c43cfb
+msgid "#dcfce7"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:700
+#: 18a905328aaf4f82836928b0287a3070 80ee1434b25a47a7ad39c6d22a145794
+msgid "green-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: d93754aa853d4911a62e80d0d3f4a8c6
+msgid "#bbf7d0"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:708
+#: 22e00cf5f94f451492ebef889e728ddb b94c222d513f400db4630efbaff2ec88
+msgid "green-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: d13562346d0f461b88c9967af7601f33
+msgid "#86efac"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:716
+#: 63799dba4b2e4db2a6453816d1d2e138 707189c7652d4a21a60c79d760940bfc
+msgid "green-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e793c630c611443b9ad4a5e8d826ea5a
+msgid "#4ade80"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:724
+#: eadb694d4a4044528bce3501e9fa200f 46d8dfa8e4994999a02e9954493022c7
+msgid "green-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 54f1ed94556b49f987097298094dc091
+msgid "#22c55e"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:732
+#: aaf1b89ab776412089a9f3a6601a20f5 b23afc83a4b14a4393c70911dd42df35
+msgid "green-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: c1f94c7f31424a7384df641092d839eb
+msgid "#16a34a"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:740
+#: 704c578d821546169825c6e0c1faf4b7 622d6be9e8a34fb1b21ae7fd29a5f253
+msgid "green-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 564c161644dd423faee10fea9a5b9449
+msgid "#15803d"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:748
+#: ee46a60f40204859bd64382b47e1fa32 38b876d8912e491c9cae9a4df4b7f2d3
+msgid "green-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ec9fcaa512044ba988e489e25caee143
+msgid "#166534"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:756
+#: 1caa9ef44e4b459690fb2811dd32d346 dd9ca7021e7541e29e5705200cf0ee96
+msgid "green-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: b7748d2607f547489194f9ede4eae485
+msgid "#14532d"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:764
+#: 89aebe99a8964e28ac57f98794f511ca 2e96a28a06e745b380ce9f37d4572a95
+msgid "green-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 468ee2a3c5df42f09b9d448809606b1e
+msgid "#052e16"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:772
+#: c5262b34123b4fb68bd491b20f1e52ea
+msgid "Blue"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:773
+#: b144afdf58d84b919e2c3ca40ac1bb47 146226f2abb04f6bb02a73903d97b48a
+msgid "blue-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: fd14668e0b344d22b9c4f2b45d96448e
+msgid "#eff6ff"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:781
+#: 2b6debc02d854926877734d2a837e9c9 bbf2a61537ca421ea67e6e367fc6723f
+msgid "blue-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 85047e5e27a44c4caf47867276463139
+msgid "#dbeafe"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:789
+#: 5d45cbeeb12d4c26b105b1b6b6831d5d efacc3433b844bf595a2aa6a56858869
+msgid "blue-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 77f4c7bb73ad43eda76fe80e24fa9f58
+msgid "#bfdbfe"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:797
+#: 337f5049f15e457bb51c158475e63d66 4e13dc1bcd1942068300d6e9792a332a
+msgid "blue-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 58d7716f2a024e029283c51c9eccc3e1
+msgid "#93c5fd"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:805
+#: 74807f48f75b452d8b5caeeb03f62759 ef0991a29eef415a84efc950c8236f4f
+msgid "blue-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e4532d563f9147c6b949ba702285eed0
+msgid "#60a5fa"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:813
+#: f9c2c6f6a7a1458bb56a4f9ea9ac3594 6d826636f2944a869475b76b75393b55
+msgid "blue-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 62cec4fe9cb641769d72b7b659e75d96
+msgid "#3b82f6"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:821
+#: 487e52ce9b334f8a9526067ca60953b0 b776ceec23b240aca9e8ed22f2adf1e2
+msgid "blue-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: f0cc3ea4f46a4c9393c9d7911fed4f1c
+msgid "#2563eb"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:829
+#: cc380d3aba16431990ef6117921f7ff4 ced7f64e694a42baa833f9b6c03ebb2e
+msgid "blue-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: aa59e0f901254eed95d015bf71267f91
+msgid "#1d4ed8"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:837
+#: 59c00d921c4d4006925f85b46bca0aaa ca1ce058d2564f83a0c18e95a50f5539
+msgid "blue-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 0deee0f439444894876099926ae85799
+msgid "#1e40af"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:845
+#: cf2d40036f6c4465b91bcd7f3ea35e45 be8991d44f0c4b16941eeb48466a98f9
+msgid "blue-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 206a770bc75b4555aae359cfaa009dd3
+msgid "#1e3a8a"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:853
+#: d6d568ddc49b4cea87a413794525fcfd 595e39b19fc84b6fb21267a4a88df3b3
+msgid "blue-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 2e281ead688f4a739b87e3012f3e4133
+msgid "#172554"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:861
+#: 95c955cb21f44e15b34ff371ec6edfd9
+msgid "Purple"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:862
+#: bc28c9fdcdc54fb7a99764ebd5cb47e8 0c9e57f03bc64cdbb8225e83e130a590
+msgid "purple-50"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ab776dfd95a448eeb0445a14c22eacce
+msgid "#faf5ff"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:870
+#: f214c8830db4474dbb6cd1f0b40268bb 7edb1fa248ea421ca221b0984f534ba9
+msgid "purple-100"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: e1fcd52b0a96493da9c19a427d40e584
+msgid "#f3e8ff"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:878
+#: d404271e80224c29b9eabf69cf4f855f 78d897da446949d8900c16aa58fa52f3
+msgid "purple-200"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: d3671c228f4a4133871094ff13006e5f
+msgid "#e9d5ff"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:886
+#: fd761ccc9c804e7c9be397996b80d9eb 6aa515483edc4472a896240e486a2de5
+msgid "purple-300"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 2c1bdb19a2c5484686a98fb84ed7fe79
+msgid "#d8b4fe"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:894
+#: 4eafa212c06b47629042f778a712e3fd bfc2b777888b4d1dad8c16ec4b216040
+msgid "purple-400"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: f9f97740fd13455c9d9c284bfa626b70
+msgid "#c084fc"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:902
+#: 04de70c3654b40ea985b5ebcc559d2d8 0314c08ec5fb44d9b2454adab4dae028
+msgid "purple-500"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 9e4ce884a7c542128d3b218d702386d1
+msgid "#a855f7"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:910
+#: d4252f5ae8fa4ad083830fc234b30991 99728eb191744d42bc456ce36e3f0e45
+msgid "purple-600"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 6d0498577b8c47249bc680c38d02b542
+msgid "#9333ea"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:918
+#: a95ddbb5900f4cdcb91a1e6b8034f29f e03dd00199d04e0faf2696294a068043
+msgid "purple-700"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 3e247df81dee49d2b0a64b60b909fb74
+msgid "#7e22ce"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:926
+#: 5cb1a575a1a04dd19a863fd0fc1c7aaa d0c2987f90c8485ca62f6243397d0dd5
+msgid "purple-800"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 67209d62e6134a5fa59a4ac664c9464c
+msgid "#6b21a8"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:934
+#: 4614212568eb45c99c055c265003c7a3 de1c611ebcbf43efb6f84c2212cc63af
+msgid "purple-900"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 00f42c2c4a84486e8e4a33be67ed01fe
+msgid "#581c87"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: ../../../developer/general/usability-ux.rst:942
+#: 3878e844437640a69de94de687f8c4ec 75db004253494c17949cb57f032c17a7
+msgid "purple-950"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:0
+#: 57cdfb1f9c9a40b484f91d7153f4d667
+msgid "#3b0764"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:951
+#: 5727bd96e85146ba986fd104b54eae73
+msgid "Desktop Environments"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:953
+#: b09f88005cb74bc6ad694eb7eec941a4
+msgid ""
+"The desktop GUIs that QubesOS supports out of the box are `KDE <https://kde."
+"org>`__ and `Xfce <https://xfce.org>`__. All GUI tools should function well "
+"under both of those desktop environments. There is also a significant "
+"minority of users who use tiling desktop environments. Ideally, GUI tools "
+"should also function in those desktop environments."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:955
+#: 720672237fcb4e53b98a77e5ea69aebc
+msgid ""
+"Both of those desktop environments have their own `human interface "
+"guidelines <https://en.wikipedia.org/wiki/Human_interface_guidelines>`__, "
+"and we suggest you familiarize yourself with the platform you developing for."
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:957
+#: 9f9c8359153644a19151fd065ca80688
+msgid "`KDE HIG <https://hig.kde.org/>`__"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:959
+#: c9a17ae2c4594caeba42f845fc35d0a0
+msgid "`Xfce UI Guidlines <https://wiki.xfce.org/dev/hig/general>`__"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:962
+#: 6119ae9acd10463091d5f16de56fc4f7
+msgid "Further Learning & Inspiration"
+msgstr ""
+
+#: ../../../developer/general/usability-ux.rst:964
+#: 0b5e563ec6584ae98bc31dbbd375c0f4
 msgid ""
 "Learning to make well designing intuitive interfaces and software is "
 "specialized skillset that can take years to cultivate, but if you are "
@@ -618,42 +1846,42 @@ msgid ""
 "resources:"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:232
-#: e3d9abd9f8614e7fbf7bfde70edb7af3
+#: ../../../developer/general/usability-ux.rst:966
+#: a0148e003d624f7bb8902118e2397afc
 msgid ""
 "`Learn Design Principles <https://web.archive.org/web/20180101172357/http://"
 "learndesignprinciples.com/>`__ by Melissa Mandelbaum"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:234
-#: a61917d7e5b942d0835e8dd34f94e0ad
+#: ../../../developer/general/usability-ux.rst:968
+#: 843077969e9b4b78825dbe09730bb396
 msgid ""
 "`Usability in Free Software <https://jancborchardt.net/usability-in-free-"
 "software>`__ by Jan C. Borchardt"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:236
-#: c82d930295d24a0fbb743228f62cead0
+#: ../../../developer/general/usability-ux.rst:970
+#: a6a8dac6377443ada5bebe597e541123
 msgid ""
 "`Superheroes & Villains in Design <https://vimeo.com/70030549>`__ by Aral "
 "Balkan"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:238
-#: dd778f92a0a14aa58c23d2a514110372
+#: ../../../developer/general/usability-ux.rst:972
+#: 9dc8a58690f04d78befde8ecad7a0c9d
 msgid ""
 "`First Rule of Usability? Don’t Listen to Users <https://www.nngroup.com/"
 "articles/first-rule-of-usability-dont-listen-to-users/>`__ by Jakob Nielsen"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:240
-#: c0ec0d2d0e7d4f49a17e3fc26e7c6643
+#: ../../../developer/general/usability-ux.rst:974
+#: 4d9e360c7e8848d9914d278e4dbb94cd
 msgid ""
 "`10 Usability Heuristics for User Interface Design <https://www.nngroup.com/"
 "articles/ten-usability-heuristics/>`__ by Jakob Nielsen"
 msgstr ""
 
-#: ../../../developer/general/usability-ux.rst:242
-#: 400edb4919aa4e689b96b800b4a9f0db
+#: ../../../developer/general/usability-ux.rst:976
+#: faf9182c9ba543af85838b2dde568a37
 msgid "`Hack Design <https://hackdesign.org/>`__ - online learning program"
 msgstr ""

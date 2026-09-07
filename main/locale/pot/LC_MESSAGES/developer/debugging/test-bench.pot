@@ -8,21 +8,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-07 14:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/debugging/test-bench.rst:3
-#: 1c6842d9f8f6441ab3ea02a1a86cce52
+#: bc4bd5bfebc14cb993b044e091deda40
 msgid "How to set up a test bench"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:6
-#: f3bacb81c4a24b58b1398663edc6d415
+#: da4a3630ce8941b997bf640ac64ef682
 msgid ""
 "This guide shows how to set up simple test bench that automatically test "
 "your code you’re about to push. It is written especially for ``core3`` "
@@ -30,7 +31,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:8
-#: 5750b2faaa024d3195fc4f943354e1eb
+#: d6f24402e48747499b8c6a37b194a838
 msgid ""
 "We will set up a spare machine (bare metal, not a virtual) that will be "
 "hosting our experimental Dom0. We will communicate with it via Ethernet and "
@@ -40,7 +41,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:10
-#: b4b486a0c98e481ebc05f75362755528
+#: fd13ea24b5e24340a8ff5cb90c5ef139
 msgid ""
 "**Notice:** This setup intentionally weakens some security properties in the "
 "testing system. So make sure you understand the risks and use exclusively "
@@ -48,17 +49,17 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:13
-#: 188b048dc6784f3c97bc28ecf5f591f3
+#: 88b734688191468ba6a2c8a50b12c275
 msgid "Setting up the Machine"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:17
-#: 1461788728184ee595f682935e14d2eb
+#: d91911db5d4c47208027849ea809e2aa
 msgid "Install ISO"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:20
-#: 6a884c0b95e945019323dfbf8adc375b
+#: ad33baf338ca457d8f17da36e5dc027b
 msgid ""
 "First, do a clean install from the ``.iso`` :doc:`you built </developer/"
 "building/qubes-iso-building>` or grabbed elsewhere (for example `here "
@@ -67,12 +68,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:23
-#: 2afd1342af474b31896edbeba891615b
+#: 355852888f2c444fb6f678e86fd7ff34
 msgid "Enabling Network Access in Dom0"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:26
-#: 3308e2c73e3841188b1a504c1d0e648d
+#: 971b62d3a41d40baa94737b3a209d2aa
 msgid ""
 "Internet access is intentionally disabled by default in dom0. But to ease "
 "the deployment process we will give it access. The following steps should be "
@@ -80,30 +81,30 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:28
-#: 07a97b65a0e34b179163077646ed484c
+#: 4d93fe4dc84249b390c2b494fb1660ac
 msgid ""
 "**Note:** the following assume you have only one network card. If you have "
 "two, pick one and leave the other attached to ``sys-net``."
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:30
-#: 54870a8961b04f2d9de7eed574877384
+#: 77905c63f2984ec98c550add5a32a17a
 msgid "Remove the network card (PCI device) from ``sys-net``"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:32
-#: 5551a788cbbc4162af140ea9226c2faf
+#: 35f3ab5b88204c0bb26258cfc04471d2
 msgid "Restart your computer (for the removal to take effect)"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:34
-#: 3ab6fe6ffaa04161ad8451c7067b7eaa
+#: 9ee6bbae06be4a279235264e6d837057
 msgid ""
 "Install ``dhcp-client`` and ``openssh-server`` on your testbench’s dom0."
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:36
-#: bd7598894f414329ab03f20508f41842
+#: e5a689ab504e4a9581d7c9ca9fad52bf
 msgid ""
 "Save the following script in ``/home/user/bin/dom0_network.sh`` and make it "
 "executable. It should enable your network card in dom0. *Be sure to adjust "
@@ -111,7 +112,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:77
-#: ff39e4b90b434c6da4e470b0ae33c130
+#: 44874bf13b6045f9af5e955a982a9627
 msgid ""
 "Configure your DHCP server so your testbench gets static IP and connect your "
 "machine to your local network. You should ensure that your testbench can "
@@ -119,7 +120,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:79
-#: f6ee8ffad7264fb3991228f03bb13728
+#: f092371d552f4f74aed83e900e4becbe
 msgid ""
 "You’ll need to run the above script on every startup. To automate this save "
 "the following systemd service ``/etc/systemd/system/dom0-network-direct."
@@ -127,12 +128,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:95
-#: fcbdf0cdabf34d20bef172b79dca77fe
+#: 3e3421aaebdc4782a1d6245bb9738ec0
 msgid "Then, enable and start the SSH Server and the script on boot:"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:108
-#: 98185b35593047a9afb147b36f509219
+#: 75276c51a40c4ad19508f8c13b13e6be
 msgid ""
 "**Note:** If you want to install additional software in dom0 and your only "
 "network card was assigned to dom0, then *instead* of the usual ``sudo qubes-"
@@ -141,12 +142,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:111
-#: e5a7e3aed601436098e93e82bcaf7bc4
+#: ebd28b815cac438f93842faaf62256b0
 msgid "Install Tests and Their Dependencies"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:114
-#: 8dc7a42dad7a4bca96564f82b1de9f3a
+#: 0d7d6b53256e4271bd25d7d5be42df20
 msgid ""
 "A regular Qubes installation isn’t ready to run the full suite of tests. For "
 "example, in order to run the `Split GPG tests <https://github.com/QubesOS/"
@@ -156,7 +157,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:116
-#: 79066bbdae9e4074be3a878307463019
+#: 9a572e1535ee492b9c242938a38016d1
 msgid ""
 "Because of the above reason, some additional configurations need to be done "
 "to your testing environment. This can be done in an automated manner with "
@@ -166,7 +167,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:118
-#: c329324096384b6fad10a71de494b0b3
+#: ae913f6764f247ab929444cbb2854c55
 msgid ""
 "The following commands should work for you, but do keep in mind that the "
 "provisioning scripts are designed for the `openQA environment <https://"
@@ -175,34 +176,34 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:149
-#: bb2e1d65550643f7a9615252014bb905
+#: cb0fde98849044a9a7ec62b9328864aa
 msgid "Development VM"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:153
-#: 4933fa6a7db349e68a4df7c5ad08c281
+#: fd3172b716a44c458604222c25602264
 msgid "SSH"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:156
-#: 926b45a5bf074abc8959ae2a366564d4
+#: 3567246711f040e4ac83596a441a7310
 msgid ""
 "Arrange firewall so you can reach the testbench from your ``qubes-dev`` VM. "
 "Generate SSH key in ``qubes-dev``:"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:164
-#: a0518c920afa4ff1b3533498e3870ec7
+#: 928356e6d15a4ae2b8289c5df9273cff
 msgid "Add the following section in ``.ssh/config`` in ``qubes-dev``:"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:177
-#: f6f911c9995845fe9111c2bd396becab
+#: 92937667179845caa2e974b231faac32
 msgid "Passwordless SSH Login"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:180
-#: 7050ba91c6f8426b966cf31a67e74418
+#: 80660bbd45b842ec9af63aadb27387e6
 msgid ""
 "To log to your testbench without entering password every time, copy your "
 "newly generated public key (``id_ecdsa.pub``) to ``~/.ssh/authorized_keys`` "
@@ -212,39 +213,39 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:183
-#: 39be55289ed6435a898eead0773b361b
+#: 6f80c101a45943fbbc209388084384ba
 msgid "Scripting"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:186
-#: 6a25694d84f6439a93638400203ae8be
+#: 93aba0aeb8e249f4ae570a98a4939418
 msgid ""
 "This step is optional, but very helpful. Put these scripts somewhere in your "
 "``${PATH}``, like ``/usr/local/bin``."
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:188
-#: 128fd082c500489f86cf34e649967d9c
+#: 330f740b816a4b61a0078bd485396a5b
 msgid "``qtb-runtests``:"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:197
-#: b1f47cd3a80f44cdb196359081296730
+#: 23d47139c2134cf0acfaf01234a43fdf
 msgid "``qtb-install``:"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:221
-#: 7869ded4bcce420e9874f8411d3d7143
+#: 55c399a9ea464feca7fceea660f3be1a
 msgid "``qtb-iterate``:"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:243
-#: 93abc23b545f4094a583362d5b42a34e
+#: 38e8f76a2c4e4d308c8eab57e52f4784
 msgid "Hooking git"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:246
-#: 3b60f5fcc58241389d5e7bf56506faac
+#: e043a0daa3bf4232a818584602114dc4
 msgid ""
 "I (woju) have those two git hooks. They ensure tests are passing (or are "
 "marked as expected failure) when committing and pushing. For committing it "
@@ -254,13 +255,13 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:248
-#: d4e2e35435a74791b29f8c619693c6db
+#: 72aa4e401e234785ae0e2773380e96cf
 msgid ""
 "``core-admin/.git/hooks/pre-commit``: (you may retain also the default hook, "
 "here omitted for readability)"
 msgstr ""
 
 #: ../../../developer/debugging/test-bench.rst:259
-#: 0e8b46f156164fe0b42c42d9d22e6e6b
+#: ca49e1e4539c4cd2be2249265e5c821b
 msgid "``core-admin/.git/hooks/pre-push``:"
 msgstr ""
