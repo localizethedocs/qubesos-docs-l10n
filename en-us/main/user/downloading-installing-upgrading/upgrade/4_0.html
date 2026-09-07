@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Upgrading to R4.0" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/downloading-installing-upgrading/upgrade/4_0.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Before attempting either an in-place upgrade or a clean installation, we strongly recommend that users back up their systems. Current Qubes R3.2 systems cannot be upgraded in-place to R4.0. A full ..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Before attempting either an in-place upgrade or a clean installation, we strongly recommend that users back up their systems. Current Qubes R3.2 systems cannot be upgraded in-place to R4.0. A full ..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrading to R4.0 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/downloading-installing-upgrading/upgrade/4_0.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="How to upgrade to Qubes 4.1" href="4_1.html" />
+    <link rel="prev" title="Upgrading to R3.2" href="3_2.html" />
+
+   
+
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install-security.html">Installation security</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="upgrade.html">Upgrade guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2b1.html">Upgrade from 1 to 2 Beta 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2b2.html">Upgrade from 1 to 2 Beta 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2b3.html">Upgrade from 2 Beta 2 to 2 Beta 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2.html">Upgrade from 2 Beta 3 to 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_0.html">Upgrade from 2 to 3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_1.html">Upgrade from 3.0 to 3.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_2.html">Upgrade from 3.1 to 3.2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade from 3.2 to 4.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preparation">Preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup-r3-2">Backup R3.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-r4-0">Install R4.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restore-from-your-backup">Restore from your backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-about-additional-disp-qubes-created-during-restore">Note about additional disp-* qubes created during restore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-all-template-and-standalone-vm-s">Upgrade all Template and Standalone VM(s)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="4_1.html">Upgrade from 4.0 to 4.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_2.html">Upgrade from 4.1 to 4.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_3.html">Upgrade from 4.2 to 4.3</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="upgrade.html">Upgrade guides</a></li>
+      <li class="breadcrumb-item active">Upgrading to R4.0</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/downloading-installing-upgrading/upgrade/4_0.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrading-to-r4-0">
+<h1>Upgrading to R4.0<a class="headerlink" href="#upgrading-to-r4-0" title="Link to this heading"></a></h1>
+<p><strong>Before attempting either an in-place upgrade or a clean installation, we strongly recommend that users</strong> <a class="reference internal" href="../../how-to-guides/how-to-back-up-restore-and-migrate.html"><span class="doc">back up their systems</span></a> <strong>.</strong></p>
+<p>Current Qubes R3.2 systems cannot be upgraded in-place to R4.0. A full backup, clean 4.0 install, and restore is required. This can be done by following the procedure below.</p>
+<section id="preparation">
+<h2>Preparation<a class="headerlink" href="#preparation" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https://www.qubes-os.org/downloads/">downloads</a> and prepare a USB drive or DVD with the R4.0 installer.</p></li>
+<li><p>If this is your only computer, and you do not have a R3.2 installer, you should also create a separate R3.2 USB drive or DVD installer at this time.</p></li>
+</ol>
+</section>
+<section id="backup-r3-2">
+<h2>Backup R3.2<a class="headerlink" href="#backup-r3-2" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Attach the backup drive you will be using. These steps assume it is a USB drive.</p></li>
+<li><p>Shutdown all non-essential VMs. Typically, <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> will be the only VM you need to leave running.</p></li>
+<li><p>Follow the <strong>Creating a Backup</strong> section in the <a class="reference internal" href="../../how-to-guides/how-to-back-up-restore-and-migrate.html"><span class="doc">Backup, Restoration, and Migration</span></a> guide to back up <strong>all VMs</strong> except sys-usb.</p></li>
+<li><p>Verify the integrity of your backup by following the <strong>Restoring from a Backup</strong> section in the <a class="reference internal" href="../../how-to-guides/how-to-back-up-restore-and-migrate.html"><span class="doc">Backup, Restoration, and Migration</span></a> guide and:</p>
+<ul class="simple">
+<li><p>If you’re using Qubes Manager, check the box under “Restore options” that says, “Verify backup integrity, do not restore the data.”</p></li>
+<li><p>If you’re using <code class="docutils literal notranslate"><span class="pre">qvm-backup-restore</span></code> from the command-line, use the <code class="docutils literal notranslate"><span class="pre">--verify-only</span></code> option.</p></li>
+</ul>
+</li>
+<li><p>If your backup verifies successfully, proceed to the next section. If it does not, <strong>stop</strong>. Go back and repeat the backup steps, review the documentation, and ask for <a class="reference internal" href="../../../introduction/support.html"><span class="doc">help</span></a>.</p></li>
+</ol>
+</section>
+<section id="install-r4-0">
+<h2>Install R4.0<a class="headerlink" href="#install-r4-0" title="Link to this heading"></a></h2>
+<p>This section provides general guidance on installing R4.0 as part of migrating from R3.2. For further details, please see the <a class="reference internal" href="../installation-guide.html"><span class="doc">installation guide</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Shut down R3.2 and boot the R4.0 installer.</p></li>
+<li><p>Follow the installation prompts until you get to the drive selection screen. Choose <strong>I want to make additional space available</strong>. Select the box at the top of the list in order to select all partitions. <strong>This will erase the entire drive</strong>, so do this only if Qubes is the only OS installed on your computer. If you did not successfully verify your backup in the previous section, cancel the installation, and go back to do that now.</p></li>
+<li><p>Complete the R4.0 installation. Ask for <a class="reference internal" href="../../../introduction/support.html"><span class="doc">help</span></a> if you run into trouble.</p></li>
+<li><p>If you are unable to successfully install R4.0 on your system, all is not lost. Use the R3.2 installer to reinstall R3.2, then restore from your backup.</p></li>
+</ol>
+</section>
+<section id="restore-from-your-backup">
+<h2>Restore from your backup<a class="headerlink" href="#restore-from-your-backup" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Welcome to Qubes R4.0! The first thing you might notice is that <strong>Qubes Manager</strong> is not started by default. We won’t need it for the next step, but we will be starting it later.</p></li>
+<li><p>Since patches may have been released since your installation image was created, update Qubes R4.0 by going to the dom0 command line (<strong>Qubes menu -&gt; Terminal Emulator</strong>) then running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubes-dom0-update
+</pre></div>
+</div>
+</li>
+<li><p>Reboot dom0.</p></li>
+<li><p>Go to <strong>Qubes menu -&gt; System Tools -&gt; Qubes Manager</strong> to start it.</p></li>
+<li><p>Follow the <strong>Restoring from a Backup</strong> section in the <a class="reference internal" href="../../how-to-guides/how-to-back-up-restore-and-migrate.html"><span class="doc">Backup, Restoration, and Migration</span></a> guide. We recommend that you restore only your <a class="reference internal" href="../../reference/glossary.html#term-app-qube"><span class="xref std std-term">app qubes</span></a> and <a class="reference internal" href="../../reference/glossary.html#term-standalone"><span class="xref std std-term">standalones</span></a> from R3.2. Using <a class="reference internal" href="../../templates/templates.html"><span class="doc">templates</span></a> and <a class="reference internal" href="../../reference/glossary.html#term-service-qube"><span class="xref std std-term">service qubes</span></a> from R3.2 is not fully supported (see <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/3514">#3514</a>). Instead, we recommend using the templates that were created specifically for R4.0, which you can <a class="reference internal" href="../../how-to-guides/how-to-install-software.html"><span class="doc">customize</span></a> according to your needs. For the template OS versions supported in R4.0, see <a class="reference internal" href="../supported-releases.html#templates"><span class="std std-ref">supported releases</span></a>. If the restore tool complains about missing templates, you can select the option to restore the app qubes anyway, then change them afterward to use one of the default R4.0 templates.</p></li>
+</ol>
+</section>
+<section id="note-about-additional-disp-qubes-created-during-restore">
+<h2>Note about additional disp-* qubes created during restore<a class="headerlink" href="#note-about-additional-disp-qubes-created-during-restore" title="Link to this heading"></a></h2>
+<p>One of differences between R3.2 and R4.0 is the handling of disposables. In R3.2, a disposable inherited its network settings (NetVM and firewall rules) from the calling qube. In R4.0, this is no longer the case. Instead, in R4.0 it’s possible to create multiple disposable templates and choose which one should be used by each qube. It’s even possible to use different disposable templates for different operations from the same qube. This allows much more flexibility, since it allows you to differentiate not only network settings, but all of a qube’s properties (including its template, memory settings, etc.).</p>
+<p>Restoring a backup from R3.2 preserves the old behavior by creating separate disposable template for each network-providing qube (and also <code class="docutils literal notranslate"><span class="pre">disp-no-netvm</span></code> for network-isolated qubes). Then, each restored qube is configured to use the appropriate disposable template according to its <code class="docutils literal notranslate"><span class="pre">netvm</span></code> or <code class="docutils literal notranslate"><span class="pre">dispvm_netvm</span></code> property from R3.2. This way, disposables started on R4.0 by qubes restored from a R3.2 backup have the same NetVM settings as they had on R3.2.</p>
+<p>If you find this behavior undesirable and want to configure it differently, you can remove those <code class="docutils literal notranslate"><span class="pre">disp-*</span></code> disposable templates. But, to do so, you must first make sure they are not set as the value for the <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> property on any other qube. Both Qubes Manager and the <code class="docutils literal notranslate"><span class="pre">qvm-remove</span></code> tool will show you where a disposable template is being used, so you can go there and change the setting.</p>
+</section>
+<section id="upgrade-all-template-and-standalone-vm-s">
+<h2>Upgrade all Template and Standalone VM(s)<a class="headerlink" href="#upgrade-all-template-and-standalone-vm-s" title="Link to this heading"></a></h2>
+<p>We strongly recommend that you update <strong>all</strong> templates and standalones before use so that you have the latest security patches from upstream distributions. In addition, if the default templates have reached EOL (end-of-life) by the time you install R4.0, we strongly recommend that you upgrade them before use. Please see <a class="reference internal" href="../supported-releases.html"><span class="doc">supported releases</span></a> for information on supported OS versions and consult the guides below for specific upgrade instructions:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../templates/fedora/fedora.html#upgrading"><span class="std std-ref">Upgrading Fedora templates</span></a></p></li>
+<li><p><a class="reference internal" href="../../templates/debian/debian.html#upgrading"><span class="std std-ref">Upgrading Debian templates</span></a></p></li>
+<li><p><a class="reference external" href="https://www.whonix.org/wiki/Qubes/Update">Updating Whonix templates</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="3_2.html" class="btn btn-neutral float-left" title="Upgrading to R3.2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_1.html" class="btn btn-neutral float-right" title="How to upgrade to Qubes 4.1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/downloading-installing-upgrading/upgrade/4_0.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

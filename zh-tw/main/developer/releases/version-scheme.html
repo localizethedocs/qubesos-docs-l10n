@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="版本方案" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/releases/version-scheme.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Qubes OS 專案使用 語意化版本控制 標準。版本號碼寫為&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt; 。當省略&lt;patch&gt; （例如 4.1 ）時，通常是因為&lt;patch&gt; 為零（如 4.1.0 ），或者因為我們指的是某個特定的次要版本，而不考慮其中的任何特定補釘發行版。同樣地，單獨的主要版本號碼（例如 R4 ）有時用於指包..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Qubes OS 專案使用 語意化版本控制 標準。版本號碼寫為&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt; 。當省略&lt;patch&gt; （例如 4.1 ）時，通常是因為&lt;patch&gt; 為零（如 4.1.0 ），或者因為我們指的是某個特定的次要版本，而不考慮其中的任何特定補釘發行版。同樣地，單獨的主要版本號碼（例如 R4 ）有時用於指包..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>版本方案 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/releases/version-scheme.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="關於外部文件" href="../../introduction/external-documentation.html" />
+    <link rel="prev" title="Release checklist" href="todo.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="todo.html">Release checklist</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">版本方案</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-distributions-and-products">Qubes 散佈版與產品</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-versioning">發行版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-schedule-policy">發行時程政策</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bug-priorities">臭蟲優先級</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#component-version">組件版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-tags-and-branches">Git 標記與分支</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-installed-version">檢查已安裝的版本</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">版本方案</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/releases/version-scheme.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="version-scheme">
+<h1>版本方案<a class="headerlink" href="#version-scheme" title="連結到這個標頭"></a></h1>
+<p>Qubes OS 專案使用<a class="reference external" href="https://semver.org/">語意化版本控制</a>標準。版本號碼寫為 <code class="docutils literal notranslate"><span class="pre">&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</span></code>。當省略 <code class="docutils literal notranslate"><span class="pre">&lt;patch&gt;</span></code>（例如 <code class="docutils literal notranslate"><span class="pre">4.1</span></code>）時，通常是因為 <code class="docutils literal notranslate"><span class="pre">&lt;patch&gt;</span></code> 為零（如 <code class="docutils literal notranslate"><span class="pre">4.1.0</span></code>），或者因為我們指的是某個特定的次要版本，而不考慮其中的任何特定補釘發行版。同樣地，單獨的主要版本號碼（例如 <code class="docutils literal notranslate"><span class="pre">R4</span></code>）有時用於指包含其中所有次要和補釘發行版的整個版本系列。</p>
+<p>一般來說，補釘發行版用於向後相容的臭蟲修復，次要版本用於向後相容的增強功能和新功能，主要版本用於任何向後不相容的變更。這意味著，一般來說，不應在補釘發行版中引入功能或增強功能，也不應在修補或次要版本中引入任何向後不相容的變更。（模板是一個明顯的例外，因為上游作業系統幾乎總是有自己的發行時程。）所有版本都允許臭蟲修復，所有主要和次要版本都允許向後相容的變更。</p>
+<p>Qubes OS 次要版本通常包含新功能、新模板，有時還有新的預設值，但它們仍然是向後相容的，因為在先前的版本中可用的 qube 和功能仍然可以運作，儘管 UI 在某些情況下可能不同。一般來說，已棄用的功能僅在主要版本中移除，並且不保證主要版本之間的就地升級。</p>
+<p>遵循標準慣例，<strong>version</strong> 指任何被賦予版本名稱或編號的建置，例如 <code class="docutils literal notranslate"><span class="pre">3.2-rc2</span></code>、<code class="docutils literal notranslate"><span class="pre">4.0.4</span></code>、<code class="docutils literal notranslate"><span class="pre">4.1-beta1</span></code>。相比之下，<strong>release</strong> 指任何預期供一般用戶群使用的版本。例如，<code class="docutils literal notranslate"><span class="pre">4.0.4</span></code> 既是 <strong>version</strong> 也是 <strong>release</strong>，因為它是穩定的且預期供大眾使用，而 <code class="docutils literal notranslate"><span class="pre">4.1-beta1</span></code> 是 <strong>version</strong> 但<em>不是</em> <strong>release</strong>，因為它不穩定且僅供<a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html"><span class="doc">測試</span></a>使用。所有發行版（release）都是版本（version），但並非所有版本（version）都是發行版（release）。</p>
+<p>字母 <strong>R</strong>，如 <code class="docutils literal notranslate"><span class="pre">R4.1</span></code>，代表<strong>發行版</strong>。縮寫 <strong>RC</strong>，如 <code class="docutils literal notranslate"><span class="pre">3.2-rc2</span></code>，代表<strong>發行候選版</strong>。</p>
+<section id="qubes-distributions-and-products">
+<h2>Qubes 散佈版與產品<a class="headerlink" href="#qubes-distributions-and-products" title="連結到這個標頭"></a></h2>
+<p>我們希望讓製作 Qubes 的重混版變得容易，可針對其他虛擬機器管理程式或隔離提供者。我們也可能建立針對特定情況的商業產品。有一個著名的發行版稱為 <strong>Qubes OS</strong>。其所有原始碼均可根據 <a class="reference internal" href="../code/license.html"><span class="doc">免費和開源授權</span></a> 下載，並在 <a class="reference external" href="https://github.com/QubesOS">GitHub</a> 和我們的 <a class="reference internal" href="../../introduction/support.html"><span class="doc">郵件列表</span></a> 上公開開發。本文檔的其餘部分討論的是 Qubes OS。其他重混版可能有自己的版本系列。</p>
+</section>
+<section id="release-versioning">
+<h2>發行版本控制<a class="headerlink" href="#release-versioning" title="連結到這個標頭"></a></h2>
+<p>Qubes OS 整體會不定期發行。在準備新版本時，我們會決定 <code class="docutils literal notranslate"><span class="pre">&lt;major&gt;.&lt;minor&gt;</span></code> 號碼（例如 <code class="docutils literal notranslate"><span class="pre">3.0</span></code>，即 <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code> 的縮寫）。然後我們發佈第一個發行候選版，例如 <code class="docutils literal notranslate"><span class="pre">3.0.0-rc1</span></code>。當我們認為取得了足夠的進展時，我們會發佈 <code class="docutils literal notranslate"><span class="pre">3.0.0-rc2</span></code>，依此類推。所有這些版本（尚未發行）都被認為是不穩定的，不適用於生產環境。歡迎您<a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html"><span class="doc">幫助我們測試</span></a>這些版本。</p>
+<p>當取得足夠進展時，我們會宣布第一個穩定版本，例如 <code class="docutils literal notranslate"><span class="pre">3.0.0</span></code>。這不僅是一個版本，而且是一個實際的發行版。它被認為是穩定的，我們承諾根據我們的 <a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html"><span class="doc">支援時程</span></a> 對其提供支援。核心組件在此時建立分支，臭蟲修復從主分支反向移植。請參閱 <a class="reference internal" href="../../introduction/support.html"><span class="doc">協助、支援、郵件列表與論壇</span></a> 以了解提問的地方。此版本不應包含主要功能或介面不相容的內容。我們以補釘發行版（<code class="docutils literal notranslate"><span class="pre">3.0.1</span></code>、<code class="docutils literal notranslate"><span class="pre">3.0.2</span></code> 等）發行臭蟲修復，而向後相容的增強功能和新功能則在下一g主要發行版中引入。</p>
+<p>請參見<a class="reference internal" href="../../introduction/issue-tracking.html"><span class="doc">議題追蹤</span></a>以了解議題追蹤器中如何處理發行版。</p>
+</section>
+<section id="release-schedule-policy">
+<span id="id1"></span><h2>發行時程政策<a class="headerlink" href="#release-schedule-policy" title="連結到這個標頭"></a></h2>
+<p>除了一般路線圖外，<strong>沒有具體的發行時程</strong>。時機到來時，我們會宣布功能凍結，標記 <code class="docutils literal notranslate"><span class="pre">-rc1</span></code>，並發行 ISO。從此時起，不再接受新功能，我們的時程開始。</p>
+<p>每個發行候選版期間如下：</p>
+<ol class="arabic simple">
+<li><p>在前兩週，<strong>我們接受並分配臭蟲報告</strong>，以便在下一個發行候選版之前修復。</p></li>
+<li><p>在接下來的兩週，我們通常<strong>專注於修復已分配的臭蟲報告</strong>，因此在此期間發現的問題可能會推遲到之後的 RC。</p></li>
+<li><p>最後，有一週的 current-testing 凍結期，在此期間<strong>不會發行新軟體包</strong>，以期它們能被更廣泛的用戶群安裝和測試。</p></li>
+</ol>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>階段</p></th>
+<th class="head"><p>持續時間</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>初始測試</p></td>
+<td><p>兩週</p></td>
+</tr>
+<tr class="row-odd"><td><p>臭蟲修復</p></td>
+<td><p>兩週</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-testing</span></code> 凍結</p></td>
+<td><p>一週</p></td>
+</tr>
+</tbody>
+</table>
+<p>下一個 RC 通常<strong>在前一個之後五週發行</strong>。所有軟體包都發佈在 <code class="docutils literal notranslate"><span class="pre">current</span></code> 儲存庫中，然後週期重新開始。在最終發行版之前，應始終至少有一個發行候選版。</p>
+<p>從第二個週期開始（即在 <code class="docutils literal notranslate"><span class="pre">-rc1</span></code> 之後），在週期開始兩週後（在主要臭蟲報告期之後），我們決定是否應該有另一個 RC。如果根據已回報的臭蟲，我們決定將最新的 RC 指定為穩定版本，那麼我們會決定其發行日期，該日期應不超過一週後。</p>
+<p>要查看實際範例，請參閱 <a class="reference internal" href="4_1/schedule.html"><span class="doc">Qubes R4.1 發行時程</span></a>。</p>
+<p><img alt="發行週期" src="../../_images/release-cycle.png" /></p>
+</section>
+<section id="bug-priorities">
+<h2>臭蟲優先級<a class="headerlink" href="#bug-priorities" title="連結到這個標頭"></a></h2>
+<p>在決定當前發行候選版是否為最終版本時，委員會會考慮臭蟲的 <a class="reference internal" href="../../introduction/issue-tracking.html#priority"><span class="std std-ref">優先級</span></a>。它們的含義如下：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">blocker</span></code> — 當當前發行候選版中存在任何此類臭蟲時，它就不能被視為最終版本。具有此優先級的臭蟲必須在下一個發行候選版之前修復，即使這意味著延遲其發行（這應被視為最後手段）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">critical</span></code> — 當當前發行候選版中存在任何此類臭蟲時，它就不能被視為最終版本。但此類臭蟲不足以延遲下一個發行候選版的發行。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">major</span></code> — 此類臭蟲的存在並不嚴格阻止當前發行候選版被視為最終版本（但我們當然應盡力不讓它們存在）。修復此優先級的臭蟲可以延遲，並作為最終穩定版本的更新。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code> 和 <code class="docutils literal notranslate"><span class="pre">minor</span></code> — 此類臭蟲的存在並不阻止當前發行候選版被視為最終版本。修復此類臭蟲可以推遲到下一個 Qubes OS 版本。最終這些修復可能會被反向移植為穩定版本的更新。（<code class="docutils literal notranslate"><span class="pre">default</span></code> 實際上應被分配更具體的優先級，但實際上問題太多、時間不夠，所以 <code class="docutils literal notranslate"><span class="pre">default</span></code> 最終停留在許多問題上。）</p></li>
+</ul>
+<p>以上所有內容都是關於臭蟲的，在第一次 <code class="docutils literal notranslate"><span class="pre">-rc</span></code> 之後，不應將任何功能分配給當前版本。最高委員會可以自由地適當調整優先級。</p>
+</section>
+<section id="component-version">
+<h2>組件版本<a class="headerlink" href="#component-version" title="連結到這個標頭"></a></h2>
+<p>Qubes 版本由組件的特定版本定義，這些組件或多或少是獨立開發的。它們的版本由目標 Qubes OS 版本的主要和次要版本號組成，後接僅遞增的第三個組件。沒有明顯的標示表明給定版本是否穩定。</p>
+<p>有一些非必要組件（如 <code class="docutils literal notranslate"><span class="pre">qubes-apps-*</span></code>）在版本之間共享。它們的版本表示支援的最舊 qubes-release。我們努力透過一個分支支援多個版本，以簡化程式碼維護。</p>
+<p>不同的 Qubes 版本重混版可能包含不同的組件，並且不保證版本在版本之間是單調遞增的。我們可能會決定，對於較新的版本，某些組件應降級。無法保證隨機組件的不同版本的任意組合會產生可用的（甚至可安裝的）編譯。</p>
+</section>
+<section id="git-tags-and-branches">
+<h2>Git 標記與分支<a class="headerlink" href="#git-tags-and-branches" title="連結到這個標頭"></a></h2>
+<p>我們透過包含 <code class="docutils literal notranslate"><span class="pre">v&lt;version&gt;</span></code> 的標記來標註儲存庫中的每個組件版本。同樣地，每個 Qubes OS 發行版都透過 <code class="docutils literal notranslate"><span class="pre">R&lt;release&gt;</span></code> 標記標註。</p>
+<p>在發行某些發行版時，我們會建立名為 <code class="docutils literal notranslate"><span class="pre">release2</span></code> 之類的分支。只有臭蟲修復和相容性改進會被反向移植到這些分支。這些分支應能編譯。所有新的開發都在 <code class="docutils literal notranslate"><span class="pre">main</span></code> 分支中進行。此分支完全不受支援，甚至可能無法編譯，具體取決於儲存庫維護者。</p>
+<p>所有版本和發行版標記都應由 ITL 成員製作和簽署。公鑰包含在 <code class="docutils literal notranslate"><span class="pre">qubes-builder</span></code> 中，可從 <a class="reference external" href="https://keys.qubes-os.org/keys/">https://keys.qubes-os.org/keys/</a> 取得。</p>
+</section>
+<section id="check-installed-version">
+<h2>檢查已安裝的版本<a class="headerlink" href="#check-installed-version" title="連結到這個標頭"></a></h2>
+<p>如果您想知道您執行的版本，例如要回報問題，您可以在 Qubes Manager 選單的 <code class="docutils literal notranslate"><span class="pre">About</span> <span class="pre">&gt;</span> <span class="pre">Qubes</span> <span class="pre">OS</span></code> 中檢查，或在 dom0 的 <code class="docutils literal notranslate"><span class="pre">/etc/qubes-release</span></code> 檔案中檢查。對於後者，您可以在 dom0 終端機中使用 <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">/etc/qubes-release</span></code> 之類的命令。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="todo.html" class="btn btn-neutral float-left" title="Release checklist" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../introduction/external-documentation.html" class="btn btn-neutral float-right" title="關於外部文件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/releases/version-scheme.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

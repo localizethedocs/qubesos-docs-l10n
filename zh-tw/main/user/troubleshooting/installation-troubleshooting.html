@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="安裝疑難排解" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/troubleshooting/installation-troubleshooting.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="&quot;An unknown error has occurred&quot; error during installation: Some people have encountered this error message when trying to install Qubes on drives that already have data on them. The solut..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="&quot;An unknown error has occurred&quot; error during installation: Some people have encountered this error message when trying to install Qubes on drives that already have data on them. The solut..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>安裝疑難排解 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/troubleshooting/installation-troubleshooting.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="更新疑難排解" href="update-troubleshooting.html" />
+    <link rel="prev" title="Migrate Windows qubes from old Qubes versions" href="../templates/windows/qubes-windows-migrate.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">安裝疑難排解</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#an-unknown-error-has-occurred-error-during-installation">&quot;An unknown error has occurred&quot; error during installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trouble-installing-from-usb-stick">Trouble installing from USB stick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#warning-dracut-initqueue-timeout-starting-timeout-scripts-during-installation">&quot;<strong>Warning:</strong> dracut-initqueue timeout - starting timeout scripts&quot; during installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boot-screen-does-not-appear-system-does-not-detect-your-installation-medium">Boot screen does not appear / system does not detect your installation medium</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#not-asking-for-vnc-because-we-don-t-have-a-network-x-startup-failed-aborting-installation-pane-is-dead-error-during-installation">&quot;Not asking for VNC because we don't have a network&quot; / &quot;X startup failed, aborting installation&quot; / &quot;Pane is dead&quot; error during installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation-freezes-at-setting-up-networking">Installation freezes at &quot;Setting up Networking&quot;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unsupported-hardware-detected-error">&quot;Unsupported Hardware Detected&quot; 錯誤</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">安裝疑難排解</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/troubleshooting/installation-troubleshooting.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-troubleshooting">
+<h1>安裝疑難排解<a class="headerlink" href="#installation-troubleshooting" title="連結到這個標頭"></a></h1>
+<section id="an-unknown-error-has-occurred-error-during-installation">
+<h2>&quot;An unknown error has occurred&quot; error during installation<a class="headerlink" href="#an-unknown-error-has-occurred-error-during-installation" title="連結到這個標頭"></a></h2>
+<p>Some people have encountered this error message when trying to install Qubes on drives that already have data on them. The solution is to exit the installer, wipe all data or delete all partitions, then restart the Qubes installation.</p>
+</section>
+<section id="trouble-installing-from-usb-stick">
+<h2>Trouble installing from USB stick<a class="headerlink" href="#trouble-installing-from-usb-stick" title="連結到這個標頭"></a></h2>
+<p>If you are facing issues when booting using UEFI mode, see the <a class="reference internal" href="uefi-troubleshooting.html"><span class="doc">UEFI troubleshooting guide</span></a>.</p>
+<p>There are a variety of other problems that could arise when using a USB installation medium, and some of the issues can be fixed by doing one or more of the following:</p>
+<ul class="simple">
+<li><p><strong>Use a different USB drive:</strong> If possible, try several drives of different sizes and formats. This determines whether the problem stems from the flash drive or Qubes installer. Some laptops cannot read from an external boot device larger than 8GB. If you encounter a black screen when performing an installation from a USB stick, ensure you are using a USB drive less than 8GB, or a partition on that USB less than 8GB and of format FAT32. Note that the Qubes installation image is over 4GB, so it may not fit on a smaller USB. If a machine can not boot from a bigger USB, it may be too old to run Qubes.</p></li>
+<li><p><strong>Verify your Qubes ISO:</strong> Errors will occur if the Qubes installer is corrupted. Ensure that the installer is correct and complete before writing it to a flash drive by <a class="reference internal" href="../../project-security/verifying-signatures.html"><span class="doc">verifying the ISO</span></a>.</p></li>
+<li><p><strong>Change the method you used to</strong> <a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html#copying-the-iso-onto-the-installation-medium"><span class="std std-ref">write your ISO to a USB key</span></a> <strong>:</strong> Some people use the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command (recommended), others use tools like Rufus, balenaEtcher or the GNOME Disk Utility. If installation fails after using one tool, try a different one. For example, if you are facing trouble installing Qubes after writing the ISO using Rufus, then try using other tools like balenaEtcher or the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command. In case the boot partition is not set to “active” after copying the ISO, you can use some other tool like <code class="docutils literal notranslate"><span class="pre">gparted</span></code> on a Linux system to activate it.</p></li>
+</ul>
+</section>
+<section id="warning-dracut-initqueue-timeout-starting-timeout-scripts-during-installation">
+<h2>&quot;<strong>Warning:</strong> dracut-initqueue timeout - starting timeout scripts&quot; during installation<a class="headerlink" href="#warning-dracut-initqueue-timeout-starting-timeout-scripts-during-installation" title="連結到這個標頭"></a></h2>
+<p>This error message is related to the faulty creation of the USB installation medium. If you receive this error message during installation, please make sure you have followed the instructions on <a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html#copying-the-iso-onto-the-installation-medium"><span class="std std-ref">how to write your ISO to a USB key</span></a>. Specifically, the <code class="docutils literal notranslate"><span class="pre">dd</span></code> command listed on that page has been verified to solve this issue on multiple Qubes installation versions.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>Qubes-RX-x86_64.iso<span class="w"> </span><span class="nv">of</span><span class="o">=</span>/dev/sdY<span class="w"> </span><span class="nv">status</span><span class="o">=</span>progress<span class="w"> </span><span class="nv">bs</span><span class="o">=</span><span class="m">1048576</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sync
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/6447">here</a> for a discussion of this error message.</p>
+</section>
+<section id="boot-screen-does-not-appear-system-does-not-detect-your-installation-medium">
+<h2>Boot screen does not appear / system does not detect your installation medium<a class="headerlink" href="#boot-screen-does-not-appear-system-does-not-detect-your-installation-medium" title="連結到這個標頭"></a></h2>
+<p>If the boot screen does not appear, there are several options to troubleshoot. First, try rebooting your computer. If it still loads your currently installed operating system or does not detect your installation medium, make sure the boot order is set up appropriately.</p>
+<p>The process to change the boot order varies depending on the currently installed system and the motherboard manufacturer.</p>
+<p>If <strong>Windows 10</strong> is installed on your machine, you may need to follow specific instructions to change the boot order. This may require an <a class="reference external" href="https://support.microsoft.com/en-us/help/4026206/windows-10-find-safe-mode-and-other-startup-settings">advanced reboot</a>.</p>
+</section>
+<section id="not-asking-for-vnc-because-we-don-t-have-a-network-x-startup-failed-aborting-installation-pane-is-dead-error-during-installation">
+<h2>&quot;Not asking for VNC because we don't have a network&quot; / &quot;X startup failed, aborting installation&quot; / &quot;Pane is dead&quot; error during installation<a class="headerlink" href="#not-asking-for-vnc-because-we-don-t-have-a-network-x-startup-failed-aborting-installation-pane-is-dead-error-during-installation" title="連結到這個標頭"></a></h2>
+<p>The boot mode in use may be causing these error messages. Try to install after enabling both UEFI and legacy boot modes. If that doesn’t help, then disable one and try the other. Visit the <a class="reference internal" href="uefi-troubleshooting.html"><span class="doc">UEFI Troubleshooting guide</span></a> if other errors arise during UEFI booting.</p>
+<p>These errors may also occur due to an incompatible Nvidia graphics card. If you have one, follow the following instructions:</p>
+<ol class="arabic simple">
+<li><p>Disable secure/fast boot and use legacy mode</p></li>
+<li><p>Enter GRUB, move the selection to the first choice, and then press the Tab key.</p></li>
+<li><p>Now, you are in edit mode. Move the text cursor with your arrow key and after <code class="docutils literal notranslate"><span class="pre">kernel=</span></code> line, add:</p></li>
+</ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>nouveau.modeset=0 rd.driver.blacklist=nouveau video=vesa:off
+</pre></div>
+</div>
+<p>If the above code doesn’t fix the problem, replace it with:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>noexitboot=1 modprobe.blacklist=nouveau rd.driver.blacklist=nouveau --- intitrd.img
+</pre></div>
+</div>
+<p>For more information, look at the <a class="reference external" href="https://forum.qubes-os.org/t/19021#disabling-nouveau">Nvidia Troubleshooting guide</a>.</p>
+</section>
+<section id="installation-freezes-at-setting-up-networking">
+<h2>Installation freezes at &quot;Setting up Networking&quot;<a class="headerlink" href="#installation-freezes-at-setting-up-networking" title="連結到這個標頭"></a></h2>
+<p>If you are facing this problem on an Apple computer, check out the <a class="reference external" href="https://forum.qubes-os.org/t/19020">Macbook Troubleshooting guide</a>.</p>
+<p>If you are installing Qubes 4.0 on an external storage device, you may have forgotten to disable <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> during the <a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html#initial-setup"><span class="std std-ref">initial setup</span></a>, which is generally required for that setup to work.</p>
+<p>This issue occurs due to the network card, which may be missing some drivers or is incompatible with Qubes.</p>
+<p>First, install all available drivers for the card. You can install the drivers without internet access by first downloading them on another machine, then transferring them over to the current machine (e.g., with a USB drive).</p>
+<p>If installing the available drivers does not help, disable the network card in the BIOS and perform the installation before re-enabling the card. If this solves the issue, it confirms the PCI card is incompatible with Qubes. In this case, you may want to consider replacing it with a network card of a different brand. Broadcom cards are notoriously problematic with Qubes.</p>
+</section>
+<section id="unsupported-hardware-detected-error">
+<h2>&quot;Unsupported Hardware Detected&quot; 錯誤<a class="headerlink" href="#unsupported-hardware-detected-error" title="連結到這個標頭"></a></h2>
+<p>During Qubes installation, you may come across the error message which reads “Unsupported Hardware Detected. Missing features: IOMMU/VT-d/AMD-Vi, Interrupt Remapping. Without these features, Qubes OS will not function normally”.</p>
+<p>This error message indicates that IOMMU-virtualization hasn’t been activated in the BIOS. Return to the <a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html#hardware-requirements"><span class="std std-ref">hardware requirements</span></a> section to learn how to activate it. If the setting is not configured correctly, it means that your hardware won’t be able to leverage some Qubes security features, such as a strict isolation of the networking and USB hardware.</p>
+<p>In Qubes 4.0, the default installation won’t function properly without IOMMU, as default sys-net and sys-usb qubes require IOMMU. It is possible to configure them to reduce isolation and not use IOMMU by changing virtualization mode of these two VMs to “PV”.</p>
+<p>In Qubes 4.1, the default sys-net and sys-usb qubes need additional configuration to be usable without an IOMMU. Otherwise they will fail to start with this error message:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Start failed: internal error: libxenlight failed to create new domain &#39;sys-net&#39;, see /var/log/libvirt/libxl/libxl-driver.log for details
+</pre></div>
+</div>
+<p>To confirm that a missing IOMMU is causing this problem, check for the following error message in <code class="docutils literal notranslate"><span class="pre">/var/log/libvirt/libxl/libxl-driver.log</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2022-03-01 13:27:17.117+0000: libxl: libxl_create.c:1146:libxl__domain_config_setdefault: passthrough not supported on this platform
+</pre></div>
+</div>
+<p>Here are the steps to fix this. Note that this allows sys-net and sys-usb to take complete control of the system, as described in the <a class="reference internal" href="../../introduction/faq.html#why-is-vt-d-amd-vi-amd-iommu-important"><span class="std std-ref">FAQ here</span></a>:</p>
+<ol class="arabic simple">
+<li><p>Change the virtualization mode of sys-net and sys-usb to “PV”</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">qubes.enable_insecure_pv_passthrough</span></code> to <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code></p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">grub-mkconfig</span> <span class="pre">-o</span> <span class="pre">/boot/grub2/grub.cfg</span></code></p></li>
+<li><p>重新開機</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../templates/windows/qubes-windows-migrate.html" class="btn btn-neutral float-left" title="Migrate Windows qubes from old Qubes versions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="update-troubleshooting.html" class="btn btn-neutral float-right" title="更新疑難排解" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/troubleshooting/installation-troubleshooting.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

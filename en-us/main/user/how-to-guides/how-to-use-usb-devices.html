@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="How to use USB devices" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/how-to-guides/how-to-use-usb-devices.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="This page is part of device handling in qubes. If you are looking to handle USB storage devices (thumbdrives or USB-drives), please have a look at the block device page. Note: Attaching USB devices..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="This page is part of device handling in qubes. If you are looking to handle USB storage devices (thumbdrives or USB-drives), please have a look at the block device page. Note: Attaching USB devices..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to use USB devices &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/how-to-guides/how-to-use-usb-devices.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How to use PCI devices" href="how-to-use-pci-devices.html" />
+    <link rel="prev" title="How to use block storage devices" href="how-to-use-block-storage-devices.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to use USB devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#attaching-and-detaching-a-usb-device">Attaching and detaching a USB device</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#with-qubes-device-widget">With Qubes Device Widget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#with-the-command-line-tool">With the command line tool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#maintenance-and-customisation">Maintenance and customisation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-and-using-a-usb-qube">Creating and using a USB qube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-of-qubes-usb-proxy">Installation of <code class="docutils literal notranslate"><span class="pre">qubes-usb-proxy</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-usb-keyboards-and-other-input-devices">Using USB keyboards and other input devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#finding-the-right-usb-controller">Finding the right USB controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identifying-controllers-using-the-qube-manager">Identifying controllers using the Qube Manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">How to use USB devices</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/how-to-guides/how-to-use-usb-devices.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-use-usb-devices">
+<h1>How to use USB devices<a class="headerlink" href="#how-to-use-usb-devices" title="Link to this heading"></a></h1>
+<p><em>This page is part of</em> <a class="reference internal" href="how-to-use-devices.html"><span class="doc">device handling in qubes</span></a> <em>.</em></p>
+<p>If you are looking to handle USB <em>storage</em> devices (thumbdrives or USB-drives), please have a look at the <a class="reference internal" href="how-to-use-block-storage-devices.html"><span class="doc">block device</span></a> page.</p>
+<p><strong>Note:</strong> Attaching USB devices to qubes requires a <a class="reference internal" href="../advanced-topics/usb-qubes.html"><span class="doc">USB qube</span></a>.</p>
+<p><strong>Important security warning:</strong> USB passthrough comes with many security implications. Please make sure you carefully read and understand the <a class="reference internal" href="../security-in-qubes/device-handling-security.html#usb-security"><span class="std std-ref">security considerations</span></a>. Whenever possible, attach a <a class="reference internal" href="how-to-use-block-storage-devices.html"><span class="doc">block device</span></a> instead.</p>
+<p>Examples of valid cases for USB-passthrough:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.arduino.cc/en/Main/Howto">microcontroller programming</a></p></li>
+<li><p><a class="reference external" href="https://forum.qubes-os.org/t/18984">external audio devices</a></p></li>
+<li><p><a class="reference internal" href="how-to-use-optical-discs.html"><span class="doc">optical drives</span></a> for recording</p></li>
+</ul>
+<p>(If you are thinking to use a two-factor-authentication device, <a class="reference internal" href="../security-in-qubes/ctap-proxy.html"><span class="doc">there is an app for that</span></a>. But it has some <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4661">issues</a>.)</p>
+<section id="attaching-and-detaching-a-usb-device">
+<h2>Attaching and detaching a USB device<a class="headerlink" href="#attaching-and-detaching-a-usb-device" title="Link to this heading"></a></h2>
+<section id="with-qubes-device-widget">
+<h3>With Qubes Device Widget<a class="headerlink" href="#with-qubes-device-widget" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/qubes-devices.svg"><img alt="" src="../../_images/qubes-devices.svg" style="width: 48.0px; height: 50.0px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Qubes Devices Widget tray icon</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Click the Device Widget: a list of available devices appears. USB-devices have a USB-icon to their right: <img alt="usb icon" src="../../_images/generic-usb.png" /></p>
+<p>Hover on one device to display a list of qubes you may attach it to.</p>
+<p>Click one of those. The USB device will be attached to it. You’re done.</p>
+<p>After you finished using the USB-device, you can detach it the same way by clicking on the Devices Widget. You will see an entry in bold for your device such as <code class="docutils literal notranslate"><span class="pre">sys-usb:2-5</span> <span class="pre">-</span> <span class="pre">058f_USB_2.0_Camera</span></code>. Hover on the attached device to display a list of running qubes The one to which your device is connected will have an eject button <img alt="eject icon" src="../../_images/media-eject.png" /> next to it. Click that and your device will be detached.</p>
+</section>
+<section id="with-the-command-line-tool">
+<h3>With the command line tool<a class="headerlink" href="#with-the-command-line-tool" title="Link to this heading"></a></h3>
+<p>In dom0, you can use <code class="docutils literal notranslate"><span class="pre">qvm-usb</span></code> from the commandline to attach and detach devices.</p>
+<p>Listing available USB devices:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-usb
+<span class="go">BACKEND:DEVID   DESCRIPTION                    USED BY</span>
+<span class="go">sys-usb:2-4     04ca:300d 04ca_300d</span>
+<span class="go">sys-usb:2-5     058f:3822 058f_USB_2.0_Camera</span>
+<span class="go">sys-usb:2-1     03f0:0641 PixArt_HP_X1200_USB_Optical_Mouse</span>
+</pre></div>
+</div>
+<p>Attaching selected USB device:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-usb<span class="w"> </span>attach<span class="w"> </span>work<span class="w"> </span>sys-usb:2-5
+<span class="gp">[user@dom0 ~]$ </span>qvm-usb
+<span class="go">BACKEND:DEVID   DESCRIPTION                    USED BY</span>
+<span class="go">sys-usb:2-4     04ca:300d 04ca_300d</span>
+<span class="go">sys-usb:2-5     058f:3822 058f_USB_2.0_Camera  work</span>
+<span class="go">sys-usb:2-1     03f0:0641 PixArt_Optical_Mouse</span>
+</pre></div>
+</div>
+<p>Now, you can use your USB device (camera in this case) in the <code class="docutils literal notranslate"><span class="pre">work</span></code> qube. If you see the error <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">qubes-usb-proxy</span> <span class="pre">not</span> <span class="pre">installed</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">qube</span></code> instead, please refer to the <a class="reference external" href="#installation-of-qubes-usb-proxy">Installation Section</a>.</p>
+<p>When you finish, detach the device.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 ~]$ </span>qvm-usb<span class="w"> </span>detach<span class="w"> </span>work<span class="w"> </span>sys-usb:2-5
+<span class="gp">[user@dom0 ~]$ </span>qvm-usb
+<span class="go">BACKEND:DEVID   DESCRIPTION                    USED BY</span>
+<span class="go">sys-usb:2-4     04ca:300d 04ca_300d</span>
+<span class="go">sys-usb:2-5     058f:3822 058f_USB_2.0_Camera</span>
+<span class="go">sys-usb:2-1     03f0:0641 PixArt_Optical_Mouse</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="maintenance-and-customisation">
+<h2>Maintenance and customisation<a class="headerlink" href="#maintenance-and-customisation" title="Link to this heading"></a></h2>
+<section id="creating-and-using-a-usb-qube">
+<h3>Creating and using a USB qube<a class="headerlink" href="#creating-and-using-a-usb-qube" title="Link to this heading"></a></h3>
+<p>If you’ve selected to install a usb-qube during system installation, everything is already set up for you in <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code>. If you’ve later decided to create a usb-qube, please follow <a class="reference internal" href="../advanced-topics/usb-qubes.html"><span class="doc">this guide</span></a>.</p>
+</section>
+<section id="installation-of-qubes-usb-proxy">
+<span id="id1"></span><h3>Installation of <code class="docutils literal notranslate"><span class="pre">qubes-usb-proxy</span></code><a class="headerlink" href="#installation-of-qubes-usb-proxy" title="Link to this heading"></a></h3>
+<p>To use this feature, the <code class="docutils literal notranslate"><span class="pre">qubes-usb-proxy</span></code> package needs to be installed in the templates used for the USB qube and qubes you want to connect USB devices to. This section exists for reference or in case something broke and you need to reinstall <code class="docutils literal notranslate"><span class="pre">qubes-usb-proxy</span></code>. Under normal conditions, <code class="docutils literal notranslate"><span class="pre">qubes-usb-proxy</span></code> should already be installed and good to go.</p>
+<p>If you receive this error: <code class="docutils literal notranslate"><span class="pre">ERROR:</span> <span class="pre">qubes-usb-proxy</span> <span class="pre">not</span> <span class="pre">installed</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">qube</span></code>, you can install the <code class="docutils literal notranslate"><span class="pre">qubes-usb-proxy</span></code> with the package manager in the qube you want to attach the USB device to.</p>
+<ul>
+<li><p>Fedora:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>qubes-usb-proxy
+</pre></div>
+</div>
+</li>
+<li><p>Debian/Ubuntu:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>qubes-usb-proxy
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="using-usb-keyboards-and-other-input-devices">
+<h3>Using USB keyboards and other input devices<a class="headerlink" href="#using-usb-keyboards-and-other-input-devices" title="Link to this heading"></a></h3>
+<p><strong>Warning:</strong> especially keyboards need to be accepted by default when using them to login! Please make sure you carefully read and understood the <a class="reference internal" href="../security-in-qubes/device-handling-security.html#usb-security"><span class="std std-ref">security considerations</span></a> before continuing!</p>
+<p>Mouse and keyboard setup are part of <a class="reference internal" href="../advanced-topics/usb-qubes.html"><span class="doc">setting up a USB qube</span></a>.</p>
+</section>
+<section id="finding-the-right-usb-controller">
+<h3>Finding the right USB controller<a class="headerlink" href="#finding-the-right-usb-controller" title="Link to this heading"></a></h3>
+<p>Some USB devices are not compatible with the USB pass-through method Qubes employs. In situations like these, you can try to pass through the entire USB controller to a qube as PCI device. However, with this approach you cannot attach single <em>USB devices</em> but have to attach the whole <em>USB controller</em> with whatever USB devices are connected to it.</p>
+<p>You can find your controller and its BDF address using the method described below, using the command-line tools <code class="docutils literal notranslate"><span class="pre">lsusb</span></code> and <code class="docutils literal notranslate"><span class="pre">readlink</span></code>. If you have multiple USB controllers, you must first figure out which PCI device is the right controller.</p>
+<p>First, find out which USB bus the device is connected to (note that these steps need to be run from a terminal inside your USB qube):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lsusb
+</pre></div>
+</div>
+<p>For example, I want to attach a broadband modem to the NetVM. In the output of <code class="docutils literal notranslate"><span class="pre">lsusb</span></code> it may be listed as something like:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">Bus 003 Device 003: ID 413c:818d Dell Computer Corp.</span>
+</pre></div>
+</div>
+<p>(In this case, the device isn’t fully identified)</p>
+<p>The device is connected to USB bus #3. Check which other devices are connected to the same bus, since <em>all</em> of them will be attached to the target qube.</p>
+<p>To find the right controller, follow the usb bus:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>readlink<span class="w"> </span>/sys/bus/usb/devices/usb3
+</pre></div>
+</div>
+<p>This should output something like:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">../../../devices/pci-0/pci0000:00/0000:00:1a.0/usb3</span>
+</pre></div>
+</div>
+<p>Now you see the path: the text between <code class="docutils literal notranslate"><span class="pre">/pci0000:00/0000:</span></code> and <code class="docutils literal notranslate"><span class="pre">/usb3</span></code> i.e. <code class="docutils literal notranslate"><span class="pre">00:1a.0</span></code> is the BDF address. Strip the address and pass it to the <a class="reference internal" href="how-to-use-pci-devices.html"><span class="doc">qvm-pci tool</span></a> to attach the controller to the target qube, like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-pci<span class="w"> </span>attach<span class="w"> </span>--persistent<span class="w"> </span>personal<span class="w"> </span>dom0:00_1a.0
+</pre></div>
+</div>
+<p>It is possible that on some system configurations the readlink method produces output which is different from the example above, For example, you might see output like this:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">../../../devices/pci0000:00/0000:00:1c.0/0000:01:00.0/usb1</span>
+</pre></div>
+</div>
+<p>In this case, there is a PCI bridge, and the BDF address of the controller is the <em>last</em> item, 01:00.0</p>
+<p>If the output format does not match this example, or you are unsure if it contains the correct BDF address, you can try finding the address using using the Qube Manager instead.</p>
+</section>
+<section id="identifying-controllers-using-the-qube-manager">
+<h3>Identifying controllers using the Qube Manager<a class="headerlink" href="#identifying-controllers-using-the-qube-manager" title="Link to this heading"></a></h3>
+<p>Using Qube Manager you can quickly determine the controllers on your system and their BDF addresses, but not which controller a particular device is attached to.</p>
+<p>Open the Qube Manager, then right click on one of the qubes and open the settings. Go to the tab “Devices”. Here you should see your available devices along with their BDF addresses. Look for the lines containing “USB controller”. They should look something like: <code class="docutils literal notranslate"><span class="pre">01:00.0</span> <span class="pre">USB</span> <span class="pre">controller:</span> <span class="pre">Name</span> <span class="pre">of</span> <span class="pre">manufacturer</span></code></p>
+<p>The first part is the BDF address, in this example: <code class="docutils literal notranslate"><span class="pre">01:00.0</span></code></p>
+<p>If, for example, you have 2 USB controllers in your system because you added one you should see 2 such lines and you can probably guess which controller is the one on the mainboard and which one you added. For example, if you have a mainboard with an Intel chipset, it is possible that all of the mainboard devices show as “Intel Corporation”, while the added controller shows another manufacturer’s name.</p>
+<p>Now you should be able to tell which is the BDF address of the mainboard USB controller or the added USB controller.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="how-to-use-block-storage-devices.html" class="btn btn-neutral float-left" title="How to use block storage devices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="how-to-use-pci-devices.html" class="btn btn-neutral float-right" title="How to use PCI devices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/how-to-guides/how-to-use-usb-devices.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Disposable customization" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/advanced-topics/disposable-customization.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Introduction: A disposable can be based on any disposable template. You can have as many disposables or disposable templates as you’d like. This page contains information on advanced methods to use..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Introduction: A disposable can be based on any disposable template. You can have as many disposables or disposable templates as you’d like. This page contains information on advanced methods to use..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disposable customization &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/advanced-topics/disposable-customization.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Installing contributed packages" href="installing-contributed-packages.html" />
+    <link rel="prev" title="GUI domain" href="gui-domain.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Disposable customization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#disposables-and-local-forensics">Disposables and local forensics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disposables-settings-inheritance">Disposables settings inheritance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-disposable-usage">Advanced disposable usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#open-a-program-in-a-disposable-via-command-line-from-app-qube">Open a program in a disposable via command line (from app qube)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-a-link-in-a-disposable-based-on-a-non-default-disposable-template-via-command-line-from-app-qube">Open a link in a disposable based on a non-default disposable template via command line (from app qube)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-a-particular-application-open-everything-in-a-disposable">Make a particular application open everything in a disposable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-a-particular-file-type-in-a-disposable">Open a particular file type in a disposable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#set-the-default-disposable-template">Set the default disposable template</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-system-s-default-disposable-template">Set the system’s default disposable template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-qube-s-default-disposable-template">Set the qube’s default disposable template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customize-a-disposable">Customize a disposable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#change-qube-settings">Change qube settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-programs-to-the-app-menu">Add programs to the app menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-application-settings-manually">Change application settings manually</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-application-settings-dynamically">Change application settings dynamically</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-disposable-template">Create a new disposable template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-named-disposables-for-service-qubes">Creating named disposables for service qubes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#named-disposable-for-service-qubes-without-pci-devices-via-gui">Named disposable for service qubes without PCI devices via GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#named-disposable-for-service-qubes-without-pci-devices-via-command-line">Named disposable for service qubes without PCI devices via command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#named-disposable-for-service-qubes-with-pci-devices-via-gui">Named disposable for service qubes with PCI devices via GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#named-disposable-for-service-qubes-with-pci-devices-via-command-line">Named disposable for service qubes with PCI devices via command line</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deleting-disposable-templates">Deleting disposable templates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#retire-the-qube-from-being-the-system-s-default-disposable-template">Retire the qube from being the system’s default disposable template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retire-the-qube-from-being-a-qube-s-default-disposable-template">Retire the qube from being a qube’s default disposable template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disposable-template-deletion-troubleshooting">Disposable template deletion troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Disposable customization</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/advanced-topics/disposable-customization.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disposable-customization">
+<h1>Disposable customization<a class="headerlink" href="#disposable-customization" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is intended for advanced users.</p>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>A <a class="reference internal" href="../how-to-guides/how-to-use-disposables.html"><span class="doc">disposable</span></a> can be based on any <a class="reference internal" href="../reference/glossary.html#term-disposable-template"><span class="xref std std-term">disposable template</span></a>. You can have as many disposables or disposable templates as you’d like. This page contains information on advanced methods to use disposables, how to customize them, how to deal with multiple disposable templates and how to delete them.</p>
+</section>
+<section id="security">
+<h2>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
+<p>If a disposable template becomes compromised, then any disposable based on that disposable template could be compromised. Therefore, you should not make any risky customization (e.g., installing untrusted browser plugins) in important disposable templates. In particular, the <em>default</em> disposable template is important because it is used by most app qubes. This means that a compromised disposable template could be used to derive disposables that will have access to everything that you choose to open in a disposable. For this reason, it is strongly recommended that you base the default disposable template on a trusted template and refrain from making any risky customization to it.</p>
+<section id="disposables-and-local-forensics">
+<h3>Disposables and local forensics<a class="headerlink" href="#disposables-and-local-forensics" title="Link to this heading"></a></h3>
+<p>At this time, disposables should not be relied upon to circumvent local forensics, as they <a class="reference external" href="https://groups.google.com/d/topic/qubes-devel/QwL5PjqPs-4/discussion">do not run entirely in RAM</a>. When it is essential to avoid leaving any trace, consider using <a class="reference external" href="https://tails.net">Tails</a> on bare-metal, as using Tails on a <a class="reference external" href="https://tails.net/doc/advanced_topics/virtualization/index.en.html#index2h1">qube cannot be relied on for amnesiac purposes</a>.</p>
+</section>
+<section id="disposables-settings-inheritance">
+<h3>Disposables settings inheritance<a class="headerlink" href="#disposables-settings-inheritance" title="Link to this heading"></a></h3>
+<p>Similarly to how app qubes are based on their underlying <a class="reference internal" href="../reference/glossary.html#term-template"><span class="xref std std-term">template</span></a>, disposables are based on their underlying <a class="reference internal" href="../reference/glossary.html#term-disposable-template"><span class="xref std std-term">disposable template</span></a>.</p>
+<p>By default, a disposable will inherit the network and firewall settings of the disposable template on which it is based. Therefore, launching a disposable from an app qube will result in it using the network/firewall settings of the disposable template on which it is based. For example, if an app qube uses <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> as its net qube, but the default system disposable uses <code class="docutils literal notranslate"><span class="pre">sys-whonix</span></code>, any disposable launched from this app qube will have <code class="docutils literal notranslate"><span class="pre">sys-whonix</span></code> as its net qube.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing the net qube setting for the system’s default disposable template <em>does</em> affect the net qube of its new disposables. Different disposable templates with individual net qube settings can be added to the app menu.</p>
+</div>
+<p>You can set an app qube that has also been configured as a disposable template to use itself, so disposables launched from within the app qube/disposable template would inherit the same settings. This is recommended to avoid sharing too much information about your system, as inhering the same configuration means it helps prevent network leaks. For example, <code class="docutils literal notranslate"><span class="pre">anon-whonix</span></code> has its <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> a Whonix-Workstation qube such as <code class="samp docutils literal notranslate"><span class="pre">whonix-workstation-</span><em><span class="pre">12</span></em><span class="pre">-dvm</span></code> (where <code class="samp docutils literal notranslate"><em><span class="pre">12</span></em></code> is the template’s release number), instead of the system default. This ensures that all traffic goes through the intended network chain.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The opposite is also true. If you have changed <code class="docutils literal notranslate"><span class="pre">anon-whonix</span></code>’s <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> to use the system default, and the system default disposable template uses <code class="docutils literal notranslate"><span class="pre">sys-net</span></code>, launching a disposable from inside <code class="docutils literal notranslate"><span class="pre">anon-whonix</span></code> will result in the disposable using <code class="docutils literal notranslate"><span class="pre">sys-net</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="advanced-disposable-usage">
+<h2>Advanced disposable usage<a class="headerlink" href="#advanced-disposable-usage" title="Link to this heading"></a></h2>
+<section id="open-a-program-in-a-disposable-via-command-line-from-app-qube">
+<h3>Open a program in a disposable via command line (from app qube)<a class="headerlink" href="#open-a-program-in-a-disposable-via-command-line-from-app-qube" title="Link to this heading"></a></h3>
+<p>Sometimes it can be useful to start an arbitrary program in a disposable. This can be done from an app qube with <strong class="program">qvm-run-vm</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@work ~]$ </span>qvm-run-vm<span class="w"> </span>--<span class="w"> </span><span class="s1">&#39;@dispvm&#39;</span><span class="w"> </span>qubes-run-terminal
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">work</span></code> qube default disposable template spawns a disposable to execute the program.</p>
+<p>Caution: this disposable will shut down when the program is closed.</p>
+</section>
+<section id="open-a-link-in-a-disposable-based-on-a-non-default-disposable-template-via-command-line-from-app-qube">
+<h3>Open a link in a disposable based on a non-default disposable template via command line (from app qube)<a class="headerlink" href="#open-a-link-in-a-disposable-based-on-a-non-default-disposable-template-via-command-line-from-app-qube" title="Link to this heading"></a></h3>
+<p>Suppose that you have a qube named <code class="docutils literal notranslate"><span class="pre">email</span></code> and its default disposable template <code class="docutils literal notranslate"><span class="pre">email-dvm</span></code> has no networking (e.g., so that untrusted attachments can’t phone home). However, sometimes you want to open email links in disposables. Obviously, you can’t use the default disposable template, since it has no networking, so you need to be able to specify a different disposable template, such as <code class="docutils literal notranslate"><span class="pre">net-dvm</span></code></p>
+<p>Open the <a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html"><span class="doc">user policy</span></a> and insert the following rule:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># SERVICE      ARGUMENT  FROM   TO               ACTION
+qubes.OpenURL  *         email  @dispvm:net-dvm  allow
+</pre></div>
+</div>
+<p>The line above means:</p>
+<ul class="simple">
+<li><p>SERVICE: <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">URL</span></code> request from <code class="docutils literal notranslate"><span class="pre">Qubes</span></code> vendor.</p></li>
+<li><p>ARGUMENT: Any argument is allowed.</p></li>
+<li><p>FROM: <code class="docutils literal notranslate"><span class="pre">email</span></code> qube.</p></li>
+<li><p>TO: A disposable based on the disposable template <code class="docutils literal notranslate"><span class="pre">net-dvm</span></code>.</p></li>
+<li><p>ACTION: Allow action to proceed.</p></li>
+</ul>
+<p>In other words, the <code class="docutils literal notranslate"><span class="pre">email</span></code> qube will be allowed to create a new disposable based on <code class="docutils literal notranslate"><span class="pre">net-dvm</span></code> and open a URL inside of that disposable. For more information about qrexec usage, checkout <a class="reference internal" href="../../developer/services/qrexec.html#specifying-vms-tags-types-targets-etc"><span class="std std-ref">the policy directives</span></a>.</p>
+<p>To check if everything is working as expected, from the <code class="docutils literal notranslate"><span class="pre">email</span></code> qube with <strong class="program">qvm-open-in-vm</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@email ~] $ </span>qvm-open-in-vm<span class="w"> </span>--<span class="w"> </span><span class="s1">&#39;@dispvm:net-dvm&#39;</span><span class="w"> </span><span class="s1">&#39;https://www.qubes-os.org&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">email</span></code> qube requests to open an URL in a non default disposable template <code class="docutils literal notranslate"><span class="pre">net-dvm</span></code>, which will derive a disposable and navigate to the link.</p>
+</section>
+<section id="make-a-particular-application-open-everything-in-a-disposable">
+<h3>Make a particular application open everything in a disposable<a class="headerlink" href="#make-a-particular-application-open-everything-in-a-disposable" title="Link to this heading"></a></h3>
+<p>You can enable a <a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html#how-to-enable-a-qube-service"><span class="std std-ref">qube service</span></a> to cause an application in a qube to open files and URLs in a disposable. In order to accomplish this, enable a service named <code class="samp docutils literal notranslate"><span class="pre">app-dispvm.</span><em><span class="pre">X</span></em></code> in that qube, where <code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> is the application ID, which is the application name minus the <code class="file docutils literal notranslate"><span class="pre">.desktop</span></code> extension.</p>
+<p>For instance, to have Mozilla Thunderbird application open all attachments in a disposable, find its application name with <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ TEMPLATES ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Settings ‣ Applications</span>, hover your mouse over the application to see the <code class="docutils literal notranslate"><span class="pre">.desktop</span> <span class="pre">filename</span></code>. Or use the command line equivalent:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">qvm-appmenus --get-available --i-understand-format-is-unstable &lt;QUBE&gt; | grep -i thunderbird</span>
+</pre></div>
+</div>
+<p>In the current case, we identified the application ID to be <code class="docutils literal notranslate"><span class="pre">net.thunderbird.Thunderbird</span></code> (in your case it may as well be <code class="docutils literal notranslate"><span class="pre">thunderbird</span></code>). Finally, enable the <code class="docutils literal notranslate"><span class="pre">app-dispvm.net.thunderbird.Thunderbird</span></code> service via the <a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html#how-to-enable-a-service-in-the-settings"><span class="std std-ref">qube settings</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This feature is currently somewhat experimental, and only works for Linux qubes. It is known to work with Thunderbird and Wire, but it may fail to work with some applications that do not honor all XDG environment variables. If the feature does not work for you, please file a bug report.</p>
+</div>
+</section>
+<section id="open-a-particular-file-type-in-a-disposable">
+<h3>Open a particular file type in a disposable<a class="headerlink" href="#open-a-particular-file-type-in-a-disposable" title="Link to this heading"></a></h3>
+<p>You can set <code class="file docutils literal notranslate"><span class="pre">qvm-open-in-dvm.desktop</span></code> as the handler for a given MIME type (such as <em class="mimetype">application/pdf</em>). This will cause all files of that type to open in a disposable. This works in disposable templates too, but be careful: if your disposable template is set to use <code class="file docutils literal notranslate"><span class="pre">qvm-open-in-dvm.desktop</span></code> to open a certain kind of file, every disposable based on it will be as well.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the disposable template is its own default disposable template (as is often the case), this will result in a loop: <strong class="program">qvm-open-in-dvm</strong> will attempt to execute <strong class="program">qubes.OpenURL</strong> in a new disposable, but that will in turn execute <strong class="program">qvm-open-in-dvm</strong>. A question dialog will appear to confirm if this is the intended behavior or not.</p>
+</div>
+<p>This will <em>not</em> override the internal handling of PDF documents in Web browsers. This is typically okay, though, in-browser PDF viewers have a fairly good security record, especially when compared to non-browser PDF viewers. In particular, the attack surface of PDF viewing in Firefox is usually less than that of viewing an ordinary Web page.</p>
+</section>
+</section>
+<section id="set-the-default-disposable-template">
+<h2>Set the default disposable template<a class="headerlink" href="#set-the-default-disposable-template" title="Link to this heading"></a></h2>
+<section id="set-the-system-s-default-disposable-template">
+<h3>Set the system’s default disposable template<a class="headerlink" href="#set-the-system-s-default-disposable-template" title="Link to this heading"></a></h3>
+<p>The system’s default disposable template can be configured in <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ Settings (icon) ‣ Qubes Tools ‣ Qubes Global Config ‣ General ‣ Default disposable template</span>, choose to your liking and click <span class="guilabel">Apply Changes and Close</span>.</p>
+<img alt="Global config window with system's default disposable template item emphasized." src="../../_images/r4.3-disp-default-global.png" />
+<p>This can also be changed from the command line with with <strong class="program">qubes-prefs</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qubes-prefs<span class="w"> </span>default_dispvm<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;
+</pre></div>
+</div>
+<p>The above setting is used whenever a qube has the property <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> set to default, request starting a new disposable and do not specify which one, for example, via file manager context menu <span class="guilabel">Edit/View in disposable qube</span> or <strong class="program">qvm-open-in-dvm</strong> tool), also with <span class="guilabel">Convert in disposable qube</span> (<strong class="program">qvm-convert-img</strong>, <strong class="program">qvm-convert-pdf</strong>).</p>
+</section>
+<section id="set-the-qube-s-default-disposable-template">
+<h3>Set the qube’s default disposable template<a class="headerlink" href="#set-the-qube-s-default-disposable-template" title="Link to this heading"></a></h3>
+<p>The per qube default disposable template can be configured in the app menu, for example, to change the setting for the <code class="docutils literal notranslate"><span class="pre">work</span></code> qube, in <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ APPS ‣ work ‣ Settings ‣ Advanced ‣ Default disposable template</span>, select your preference and click <span class="guilabel"><span class="accelerator">O</span>K</span> to apply the changes and close the window.</p>
+<img alt="Qube settings of ``work`` with qube's default disposable template item emphasized." src="../../_images/r4.3-disp-default-local.png" />
+<p>This can also be changed from the command line with <strong class="program">qvm-prefs</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>work<span class="w"> </span>default_dispvm<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;
+</pre></div>
+</div>
+<p>A qube can be allowed to use <a class="reference internal" href="#open-a-link-in-a-disposable-based-on-a-non-default-disposable-template-via-command-line-from-app-qube"><span class="std std-ref">multiple disposable templates</span></a> if you choose so and have configured the <a class="reference internal" href="../../developer/services/qrexec.html#specifying-vms-tags-types-targets-etc"><span class="std std-ref">policy to allow</span></a>.</p>
+</section>
+</section>
+<section id="customize-a-disposable">
+<h2>Customize a disposable<a class="headerlink" href="#customize-a-disposable" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are trying to customize Tor Browser in a Whonix disposable, please consult the <a class="reference external" href="https://www.whonix.org/wiki/Tor_Browser/Advanced_Users#disposable_Template_Customization">Whonix documentation</a> instead.</p>
+</div>
+<section id="change-qube-settings">
+<h3>Change qube settings<a class="headerlink" href="#change-qube-settings" title="Link to this heading"></a></h3>
+<p>It is possible to change the disposable settings just like any other qube. You might, for example, want to disable all networking for the specific disposable template by default, which can be done by setting the net qube to <code class="docutils literal notranslate"><span class="pre">none</span></code>. Then, whenever you start a new disposable, you can choose your desired net qube manually by changing the newly-started disposable’s settings.</p>
+</section>
+<section id="add-programs-to-the-app-menu">
+<h3>Add programs to the app menu<a class="headerlink" href="#add-programs-to-the-app-menu" title="Link to this heading"></a></h3>
+<p>For added convenience, arbitrary programs can be added to the app menu of the disposable template <a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html#how-to-add-a-shortcut"><span class="std std-ref">just like for any other qube</span></a>.</p>
+<p>In order to do that, go to <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ TEMPLATES ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Settings ‣ Applications</span> and select desired applications as for any other qube.</p>
+<p>Only applications whose <a class="reference internal" href="../how-to-guides/how-to-use-disposables.html#call-to-the-application-succeeds-but-disposable-exits-too-soon"><span class="std std-ref">main process keeps running until you close the application</span></a> will work.</p>
+</section>
+<section id="change-application-settings-manually">
+<h3>Change application settings manually<a class="headerlink" href="#change-application-settings-manually" title="Link to this heading"></a></h3>
+<p>It is also possible to change application settings of a disposable by customizing the disposable template:</p>
+<ol class="arabic">
+<li><p>Start a terminal (or your chosen application) in the <code class="samp docutils literal notranslate"><em><span class="pre">&lt;DISPOSABLE_TEMPLATE&gt;</span></em></code> qube with <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ TEMPLATES ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Run Terminal</span> or by running the following command in a <a class="reference internal" href="../reference/glossary.html#term-GUI-domain"><span class="xref std std-term">GUI domain</span></a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-run<span class="w"> </span>--service<span class="w"> </span>--<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;<span class="w"> </span>qubes.StartApp+qubes-run-terminal
+</pre></div>
+</div>
+</li>
+<li><p>Change the applications settings, as desired. Some examples of changes you may want to make include:</p>
+<ul class="simple">
+<li><p>Firefox’s default startup settings and homepage.</p></li>
+<li><p>Default editor, image viewer. In Debian derivatives, this can be done with the <strong class="program">mimeopen</strong> command.</p></li>
+</ul>
+</li>
+<li><p>Shutdown the qube, either with Qubes Domains widget, <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ TEMPLATES ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Shutdown</span>, <strong class="program">qvm-shutdown</strong> from the <a class="reference internal" href="../reference/glossary.html#term-GUI-domain"><span class="xref std std-term">GUI domain</span></a> terminal or with <strong class="program">poweroff</strong> from qube’s terminal.</p></li>
+</ol>
+</section>
+<section id="change-application-settings-dynamically">
+<h3>Change application settings dynamically<a class="headerlink" href="#change-application-settings-dynamically" title="Link to this heading"></a></h3>
+<p>It is possible to specify data from the <a class="reference internal" href="../reference/glossary.html#term-GUI-domain"><span class="xref std std-term">GUI domain</span></a> to be read inside the qube using <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin-client/en/latest/manpages/qvm-features.html" title="(in Qubes Admin client v4.4.0)"><span class="xref std std-doc">vm-config.* features</span></a>. This is useful to pass secrets to a single qube instead of writing to the disposable template, which would be shared with all descendants of it.</p>
+<p>Let’s take for example <code class="docutils literal notranslate"><span class="pre">sys-net</span></code>, which could be a disposable if you enabled that option during installation. In that case, it’s template is <code class="docutils literal notranslate"><span class="pre">default-dvm</span></code>, but that is also the template for disposables that launch applications which you don’t trust. It would be improper to write the Wi-Fi password to <code class="docutils literal notranslate"><span class="pre">default-dvm</span></code>, as it would expose it to numerous qubes. Instead, write the data as a qube feature using the <code class="samp docutils literal notranslate"><span class="pre">vm-config.</span><em><span class="pre">X</span></em></code> syntax, where <code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> is any valid identification string you’d like.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is up to each qube to handle these entries. In this case, <strong class="program">nmcli</strong> command should be called from somewhere during qube startup to configure the network, it is up to the user to manage it.</p>
+</div>
+<p>From the <a class="reference internal" href="../reference/glossary.html#term-GUI-domain"><span class="xref std std-term">GUI domain</span></a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>sys-net<span class="w"> </span>vm-config.wifi-ssid<span class="w"> </span>&lt;SSID&gt;
+<span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>sys-net<span class="w"> </span>vm-config.wifi-pass<span class="w"> </span>&lt;PASSWORD&gt;
+</pre></div>
+</div>
+<p>From the configured qube, <code class="docutils literal notranslate"><span class="pre">sys-net</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@sys-net ~] $ </span>qubesdb-read<span class="w"> </span>/vm-config/wifi-ssid
+<span class="gp">[user@sys-net ~] $ </span>qubesdb-read<span class="w"> </span>/vm-config/wifi-pass
+</pre></div>
+</div>
+</section>
+</section>
+<section id="create-a-new-disposable-template">
+<h2>Create a new disposable template<a class="headerlink" href="#create-a-new-disposable-template" title="Link to this heading"></a></h2>
+<p>You can create as many disposable templates as you want. First, you need to <a class="reference internal" href="../../introduction/getting-started.html#adding-removing-and-listing-qubes"><span class="std std-ref">create an app qube</span></a>.</p>
+<p>Next, go to <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ APPS ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Settings ‣ Advanced ‣ Disposable template</span> and enable it, at last, click on <span class="guilabel"><span class="accelerator">O</span>K</span> to accept the changes and close the window. To modify settings of the disposable template itself or how programs are run on it, use the <span class="guilabel">TEMPLATES</span> tab.</p>
+<p>You can also use the command line equivalent:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-create<span class="w"> </span>--template<span class="w"> </span>&lt;TEMPLATE&gt;<span class="w"> </span>--label<span class="w"> </span>red<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;<span class="w"> </span>template_for_dispvms<span class="w"> </span>True
+<span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">appmenus-dispvm</span></code> feature is only necessary if you intend to launch disposables derived from this disposable template via graphical applications. When enabled, new entries will be available for each application in <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ APPS ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ &lt;APPLICATION&gt; ‣ New disposable qube from &lt;DISPOSABLE_TEMPLATE&gt;</span> while disposable qube desktop entries will have <code class="docutils literal notranslate"><span class="pre">(dvm)</span></code> string inserted. Clicking on this entry will launch the application in a new disposable based on the disposable template (not in the disposable template itself).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Application shortcuts that existed before setting this feature will not be updated automatically. Please go to <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ APPS ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Settings</span>, in the <span class="guilabel">Applications</span> tab, unselect all existing shortcuts by clicking <span class="guilabel">&lt;&lt;</span>, then click <span class="guilabel"><span class="accelerator">O</span>K</span> and close the dialog. Give it a few seconds and then reopen and re-select all the shortcuts you want to see in the menu. See <a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html"><span class="doc">app menu shortcut troubleshooting</span></a> for background information.</p>
+</div>
+</section>
+<section id="creating-named-disposables-for-service-qubes">
+<h2>Creating named disposables for service qubes<a class="headerlink" href="#creating-named-disposables-for-service-qubes" title="Link to this heading"></a></h2>
+<p>You can use a <a class="reference internal" href="../reference/glossary.html#term-named-disposable"><span class="xref std std-term">named disposable</span></a> for a <a class="reference internal" href="../reference/glossary.html#term-service-qube"><span class="xref std std-term">service qube</span></a> (such as those with the <code class="docutils literal notranslate"><span class="pre">sys-*</span></code> naming scheme) as long as they are stateless. For example, a <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> using DHCP or <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> will work. In most cases <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code> will also work, even if you have configured app qube firewall rules. The only exception is if you require something like qube to qube communication and have manually edited <strong class="program">nftables</strong> or other items directly inside the firewall app qube.</p>
+<section id="named-disposable-for-service-qubes-without-pci-devices-via-gui">
+<span id="disposable-with-pci-devices"></span><h3>Named disposable for service qubes without PCI devices via GUI<a class="headerlink" href="#named-disposable-for-service-qubes-without-pci-devices-via-gui" title="Link to this heading"></a></h3>
+<p>To create one that has no PCI devices attached, such as for <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code>, create a <a class="reference internal" href="../how-to-guides/how-to-use-disposables.html#how-to-create-named-disposables"><span class="std std-ref">named disposable</span></a>. Write a name, choose a label and select <span class="guilabel">Launch Qube Settings after creation</span>. Click <span class="guilabel">Create new qube</span> to complete creation. When the <span class="guilabel">Qube Settings</span> opens:</p>
+<ul class="simple">
+<li><p>In <span class="guilabel">Basic</span> tab:</p>
+<ul>
+<li><p>Check <span class="guilabel">Start qube automatically on boot</span></p></li>
+<li><p>Set <span class="guilabel">Net qube</span> to <span class="guilabel">sys-net</span></p></li>
+</ul>
+</li>
+<li><p>In <span class="guilabel">Advanced</span> tab:</p>
+<ul>
+<li><p>Check <span class="guilabel">Provides network</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Click <span class="guilabel"><span class="accelerator">O</span>K</span> to save changes and close the window.</p>
+<p>On the <a class="reference internal" href="../reference/glossary.html#term-GUI-domain"><span class="xref std std-term">GUI domain</span></a> terminal, disable disposable’s appmenus:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Next, set the old service qube’s autostart to false, and update any references to the old one to instead point to the new in the Qube Settings of each qube as well as Global Config. For example, <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span> <span class="pre">work</span> <span class="pre">netvm</span> <span class="pre">&lt;SERVICE_QUBE&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">qubes-prefs</span> <span class="pre">default_netvm</span> <span class="pre">&lt;SERVICE_QUBE</span></code>.</p>
+</section>
+<section id="named-disposable-for-service-qubes-without-pci-devices-via-command-line">
+<h3>Named disposable for service qubes without PCI devices via command line<a class="headerlink" href="#named-disposable-for-service-qubes-without-pci-devices-via-command-line" title="Link to this heading"></a></h3>
+<p>To create one that has no PCI devices attached, such as for <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-create<span class="w"> </span>-C<span class="w"> </span>DispVM<span class="w"> </span>-l<span class="w"> </span>green<span class="w"> </span>&lt;SERVICE_QUBE&gt;
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>autostart<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>netvm<span class="w"> </span>&lt;NET_QUBE&gt;
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>provides_network<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Next, set the old service qube’s <code class="docutils literal notranslate"><span class="pre">autostart</span></code> to false, and update any references to the old one to instead point to the new in the Qube Settings of each qube as well as Global Config. Also make sure to update any <a class="reference internal" href="rpc-policy.html"><span class="doc">RPC policies</span></a>, if needed.</p>
+<p>Here is an example of a complete <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code> replacement:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-create<span class="w"> </span>-C<span class="w"> </span>DispVM<span class="w"> </span>-l<span class="w"> </span>green<span class="w"> </span>sys-net2
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>autostart<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>netvm<span class="w"> </span>&lt;NET_QUBE&gt;
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>provides_network<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>sys-net2<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="gp">user@dom0:~$ </span>qubes-prefs<span class="w"> </span>default_netvm<span class="w"> </span>sys-net2
+<span class="gp">user@dom0:~$ </span>qubes-prefs<span class="w"> </span>updatevm<span class="w"> </span>sys-net2
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-firewall<span class="w"> </span>netvm<span class="w"> </span>sys-net2
+</pre></div>
+</div>
+</section>
+<section id="named-disposable-for-service-qubes-with-pci-devices-via-gui">
+<h3>Named disposable for service qubes with PCI devices via GUI<a class="headerlink" href="#named-disposable-for-service-qubes-with-pci-devices-via-gui" title="Link to this heading"></a></h3>
+<p>To create one with a PCI device attached, such as for <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> or <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code>, create a <a class="reference internal" href="../how-to-guides/how-to-use-disposables.html#how-to-create-named-disposables"><span class="std std-ref">named disposable</span></a>. Write a name, choose a label and select <span class="guilabel">Launch Qube Settings after creation</span>. Click <span class="guilabel">Create new qube</span> to complete creation. When the <span class="guilabel">Qube Settings</span> opens:</p>
+<ul class="simple">
+<li><p>In <span class="guilabel">Basic</span> tab:</p>
+<ul>
+<li><p>Check <span class="guilabel">Start qube automatically on boot</span></p></li>
+<li><p>Set <span class="guilabel">Net qube</span> to <span class="guilabel">(none)</span></p></li>
+</ul>
+</li>
+<li><p>In <span class="guilabel">Advanced</span> tab:</p>
+<ul>
+<li><p>In <span class="guilabel">Virtualization</span> section, set <span class="guilabel">Mode</span> to <span class="guilabel">HVM</span></p></li>
+<li><p>In <span class="guilabel">Memory/CPU</span> section, uncheck <span class="guilabel">Include in memory balancing</span></p></li>
+</ul>
+</li>
+<li><p>In <span class="guilabel">Devices</span> tab:</p>
+<ul>
+<li><p>Select devices in the <span class="guilabel">Available devices</span> section and attach them to the qube by clicking on <span class="guilabel">&gt;</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Optionally, if this disposable will also provide network access to other qubes:</p>
+<ul class="simple">
+<li><p>In <span class="guilabel">Advanced</span> tab:</p>
+<ul>
+<li><p>Check <span class="guilabel">Provides network</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Click <span class="guilabel"><span class="accelerator">O</span>K</span> to save changes and close the window.</p>
+<p>On the <a class="reference internal" href="../reference/glossary.html#term-GUI-domain"><span class="xref std std-term">GUI domain</span></a> terminal, disable disposable’s appmenus:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Next, set the old service qube’s autostart to false, and update any references to the old one, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-firewall<span class="w"> </span>netvm<span class="w"> </span>&lt;SERVICE_QUBE&gt;
+</pre></div>
+</div>
+<p>Also make sure to update any <a class="reference internal" href="rpc-policy.html"><span class="doc">RPC policies</span></a>, if needed.</p>
+</section>
+<section id="named-disposable-for-service-qubes-with-pci-devices-via-command-line">
+<h3>Named disposable for service qubes with PCI devices via command line<a class="headerlink" href="#named-disposable-for-service-qubes-with-pci-devices-via-command-line" title="Link to this heading"></a></h3>
+<p>To create one with a PCI device attached, such as for <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> or <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code>:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">qvm-pci</span></code> to <a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html#qvm-pci-usage"><span class="std std-ref">determine</span></a> the <code class="docutils literal notranslate"><span class="pre">&lt;BDF&gt;</span></code>. Also, you will often need to include the <code class="docutils literal notranslate"><span class="pre">-o</span> <span class="pre">no-strict-reset=True</span></code> <a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html#no-strict-reset"><span class="std std-ref">option</span></a> with USB controllers.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-create<span class="w"> </span>-C<span class="w"> </span>DispVM<span class="w"> </span>-l<span class="w"> </span>red<span class="w"> </span>&lt;SERVICE_QUBE&gt;
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>virt_mode<span class="w"> </span>hvm
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>maxmem<span class="w"> </span><span class="m">0</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>autostart<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>netvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="gp">user@dom0:~$ </span>qvm-pci<span class="w"> </span>attach<span class="w"> </span>--persistent<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>dom0:&lt;BDF&gt;
+</pre></div>
+</div>
+<p>Optionally, if this disposable will also provide network access to other qubes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;SERVICE_QUBE&gt;<span class="w"> </span>provides_network<span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>Next, set the old service qube’s autostart to false, and update any references to the old one, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-firewall<span class="w"> </span>netvm<span class="w"> </span>&lt;SERVICE_QUBE&gt;
+</pre></div>
+</div>
+<p>Also make sure to update any <a class="reference internal" href="rpc-policy.html"><span class="doc">RPC policies</span></a>, if needed.</p>
+<p>Here is an example of a complete <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> replacement:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-create<span class="w"> </span>-C<span class="w"> </span>DispVM<span class="w"> </span>-l<span class="w"> </span>red<span class="w"> </span>sys-net2
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>virt_mode<span class="w"> </span>hvm
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>maxmem<span class="w"> </span><span class="m">0</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>autostart<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>netvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net2<span class="w"> </span>provides_network<span class="w"> </span><span class="nb">true</span>
+<span class="gp">user@dom0:~$ </span>qvm-features<span class="w"> </span>sys-net2<span class="w"> </span>appmenus-dispvm<span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="gp">user@dom0:~$ </span>qvm-pci<span class="w"> </span>attach<span class="w"> </span>--persistent<span class="w"> </span>sys-net2<span class="w"> </span>dom0:00_1a.0
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-net<span class="w"> </span>autostart<span class="w"> </span><span class="nb">false</span>
+<span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>sys-firewall<span class="w"> </span>netvm<span class="w"> </span>sys-net2
+<span class="gp">user@dom0:~$ </span>qubes-prefs<span class="w"> </span>clockvm<span class="w"> </span>sys-net2
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deleting-disposable-templates">
+<h2>Deleting disposable templates<a class="headerlink" href="#deleting-disposable-templates" title="Link to this heading"></a></h2>
+<p>It is only possible to delete a disposable template if certain state is met:</p>
+<ul class="simple">
+<li><p>No disposables based on it (preloaded disposables can be ignored).</p></li>
+<li><p>No system or qube property links to it (such as <code class="docutils literal notranslate"><span class="pre">template</span></code> or <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code>).</p></li>
+</ul>
+<p>Let’s delete a disposable template with <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ TEMPLATES ‣ &lt;DISPOSABLE_TEMPLATE&gt; ‣ Settings ‣ Basic ‣ Delete qube</span>.</p>
+<p>Or with the command line equivalent:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-remove<span class="w"> </span>&lt;DISPOSABLE_TEMPLATE&gt;
+<span class="go">This will completely remove the selected VM(s)</span>
+<span class="go">  &lt;DISPOSABLE_TEMPLATE&gt;</span>
+<span class="go">Are you sure? [y/N]</span>
+</pre></div>
+</div>
+<p>The deletion may fail if the qube is still referenced, in that case, proceed to the next sections.</p>
+<section id="retire-the-qube-from-being-the-system-s-default-disposable-template">
+<h3>Retire the qube from being the system’s default disposable template<a class="headerlink" href="#retire-the-qube-from-being-the-system-s-default-disposable-template" title="Link to this heading"></a></h3>
+<p>The system’s default disposable template may reference the <code class="samp docutils literal notranslate"><em><span class="pre">&lt;DISPOSABLE_TEMPLATE&gt;</span></em></code>. Let’s check if it is being used with <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ Settings (icon) ‣ Qubes Tools ‣ Qubes Global Config ‣ General ‣ Default disposable template</span>. Or the command line equivalent.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qubes-prefs<span class="w"> </span>default_dispvm
+<span class="go">&lt;DISPOSABLE_TEMPLATE&gt;</span>
+</pre></div>
+</div>
+<p>If the <code class="samp docutils literal notranslate"><em><span class="pre">&lt;DISPOSABLE_TEMPLATE&gt;</span></em></code> is referenced, set an alternative, and if no alternative is available, set it to an empty value.</p>
+</section>
+<section id="retire-the-qube-from-being-a-qube-s-default-disposable-template">
+<h3>Retire the qube from being a qube’s default disposable template<a class="headerlink" href="#retire-the-qube-from-being-a-qube-s-default-disposable-template" title="Link to this heading"></a></h3>
+<p>Now let’s check the per qube <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> property for any qube, in this case, the <code class="docutils literal notranslate"><span class="pre">work</span></code> qube, in <img alt="Qubes logo icon" class="no-scaled-link" src="../../_images/qubes-logo-icon.png" style="height: 1em;" /><span class="menuselection">Qubes App Menu (Q icon) ‣ APPS ‣ work ‣ Settings ‣ Advanced ‣ Default disposable template</span>. Or use the command line equivalent:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>qvm-prefs<span class="w"> </span>&lt;QUBE&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>default_dispvm
+<span class="go">default_dispvm        -  &lt;DISPOSABLE_TEMPLATE&gt;</span>
+</pre></div>
+</div>
+<p>If the <code class="samp docutils literal notranslate"><em><span class="pre">&lt;DISPOSABLE_TEMPLATE&gt;</span></em></code> is referenced, set an alternative, and if no alternative is available, set it to an empty value.</p>
+<p>This process must be repeated for every qube that references the <code class="samp docutils literal notranslate"><em><span class="pre">&lt;DISPOSABLE_TEMPLATE&gt;</span></em></code>.</p>
+</section>
+<section id="disposable-template-deletion-troubleshooting">
+<h3>Disposable template deletion troubleshooting<a class="headerlink" href="#disposable-template-deletion-troubleshooting" title="Link to this heading"></a></h3>
+<p>If you still encounter a problem, you may have forgotten to clean an entry. Looking at the system logs will help you:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">user@dom0:~$ </span>journalctl<span class="w"> </span>-S<span class="w"> </span>60s
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gui-domain.html" class="btn btn-neutral float-left" title="GUI domain" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installing-contributed-packages.html" class="btn btn-neutral float-right" title="Installing contributed packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/advanced-topics/disposable-customization.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,839 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Firewall" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/security-in-qubes/firewall.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Introduction: Understanding firewalling in Qubes: Every qube in Qubes OS is connected to the network via a net qube, which is used to enforce network-level policies. By default there is one default..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Introduction: Understanding firewalling in Qubes: Every qube in Qubes OS is connected to the network via a net qube, which is used to enforce network-level policies. By default there is one default..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firewall &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/security-in-qubes/firewall.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Data leaks" href="data-leaks.html" />
+    <link rel="prev" title="Media troubleshooting" href="../troubleshooting/media-troubleshooting.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Firewall</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-firewalling-in-qubes">Understanding firewalling in Qubes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-edit-rules">How to edit rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-edit-rules-using-qube-s-settings">How to edit rules using qube's Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-edit-rules-using-qvm-firewall">How to edit rules using <strong class="program">qvm-firewall</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-edit-rules-from-the-qube-itself">How to edit rules from the qube itself</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#where-are-the-rules">Where are the rules?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reconnecting-qubes-after-a-net-qube-reboot">Reconnecting qubes after a net qube reboot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-service-qubes">Network service qubes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-networking-between-two-qubes">Enabling networking between two qubes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#opening-a-single-tcp-port-to-other-network-isolated-qube">Opening a single TCP port to other network-isolated qube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#port-forwarding-to-a-qube-from-the-outside-world">Port forwarding to a qube from the outside world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-put-firewall-rules">Where to put firewall rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#firewall-troubleshooting">Firewall troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nftables-tips">Nftables tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#historical-note">Historical note</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Firewall</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/security-in-qubes/firewall.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="firewall">
+<h1>Firewall<a class="headerlink" href="#firewall" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+</section>
+<section id="understanding-firewalling-in-qubes">
+<h2>Understanding firewalling in Qubes<a class="headerlink" href="#understanding-firewalling-in-qubes" title="Link to this heading"></a></h2>
+<p>Every qube in Qubes OS is connected to the network via a <a class="reference internal" href="../reference/glossary.html#term-net-qube"><span class="xref std std-term">net qube</span></a>, which is used to enforce network-level policies. By default there is one default <a class="reference internal" href="../reference/glossary.html#term-net-qube"><span class="xref std std-term">net qube</span></a> used as firewall, but the user is free to create more, if needed.</p>
+<p>For more information, see the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://groups.google.com/group/qubes-devel/browse_thread/thread/9e231b0e14bf9d62">https://groups.google.com/group/qubes-devel/browse_thread/thread/9e231b0e14bf9d62</a></p></li>
+<li><p><a class="reference external" href="https://blog.invisiblethings.org/2011/09/28/playing-with-qubes-networking-for-fun.html">https://blog.invisiblethings.org/2011/09/28/playing-with-qubes-networking-for-fun.html</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Connections to <a class="reference internal" href="../how-to-guides/how-to-install-software.html#using-the-updates-proxy"><span class="std std-ref">updates proxy</span></a> are not made over a network so can not be allowed or blocked with firewall rules, but are controlled using the relevant policy file.</p>
+</div>
+<p>Note that if you specify a rule by DNS name it will be resolved to IP(s) <em>at the moment the rules take effect</em> (including each time the qube or netvm starts), and not on the fly for each new connection. This means it will not work reliably for servers that have different IPs at different times as a result of DNS-based load balancing.</p>
+</section>
+<section id="how-to-edit-rules">
+<h2>How to edit rules<a class="headerlink" href="#how-to-edit-rules" title="Link to this heading"></a></h2>
+<p>You have several methods to edit the rules:</p>
+<ul class="simple">
+<li><p>using the <strong class="program">qube's Settings</strong></p></li>
+<li><p>using the <strong class="program">qvm-firewall</strong> command-line program in dom0. This gives you greater control than the previous method.</p></li>
+<li><p>from the qube itself, using standard firewalling controls</p></li>
+</ul>
+<section id="how-to-edit-rules-using-qube-s-settings">
+<h3>How to edit rules using qube's Settings<a class="headerlink" href="#how-to-edit-rules-using-qube-s-settings" title="Link to this heading"></a></h3>
+<p>In order to edit rules for a given qube, open the qube's Settings and go to the <span class="guilabel">Firewall rules</span> tab.</p>
+<a class="reference internal image-reference" href="../../_images/settings-firewall.png"><img alt="" src="../../_images/settings-firewall.png" style="width: 100%;" />
+</a>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>ICMP and DNS are not accessible with this method, but can be changed via the <strong class="program">qvm-firewall</strong> program.</p>
+</div>
+<p>If you previously used the <strong class="program">qvm-firewall</strong> program with a qube, the settings will warn you that:</p>
+<blockquote>
+<div><p>Firewall has been modified manually. Please use the 'qvm-firewall' command in dom0 for any further configuration.</p>
+</div></blockquote>
+<p>In that case, you can remove every firewall rules by using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-firewall<span class="w"> </span>&lt;QUBE&gt;<span class="w"> </span>reset
+</pre></div>
+</div>
+<p>Where <code class="samp docutils literal notranslate"><em><span class="pre">QUBE</span></em></code> is the name of the qube.</p>
+</section>
+<section id="how-to-edit-rules-using-qvm-firewall">
+<h3>How to edit rules using <strong class="program">qvm-firewall</strong><a class="headerlink" href="#how-to-edit-rules-using-qvm-firewall" title="Link to this heading"></a></h3>
+<p>See: <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin-client/en/latest/manpages/qvm-firewall.html" title="（在 Qubes Admin client v4.4.0）"><span>qvm-firewall – Manage VM outbound firewall</span></a></p>
+</section>
+<section id="how-to-edit-rules-from-the-qube-itself">
+<h3>How to edit rules from the qube itself<a class="headerlink" href="#how-to-edit-rules-from-the-qube-itself" title="Link to this heading"></a></h3>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#where-to-put-firewall-rules"><span class="std std-ref">Where to put firewall rules</span></a>.</p>
+</div>
+<p>You can also manually create rules in the qube itself using standard firewalling controls. In complex cases, it might be appropriate to load a ruleset using <code class="docutils literal notranslate"><span class="pre">nft</span> <span class="pre">-f</span> <span class="pre">/path/to/ruleset</span></code> called from <code class="docutils literal notranslate"><span class="pre">/rw/config/rc.local</span></code>, the ruleset file can be populated from the current ruleset using <code class="docutils literal notranslate"><span class="pre">nft</span> <span class="pre">list</span> <span class="pre">ruleset</span> <span class="pre">&gt;</span> <span class="pre">/path/to/ruleset</span></code>, you should add <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">ruleset</span></code> at the top of the file to remove all existing rules before loading them. if you do this, be aware that <code class="docutils literal notranslate"><span class="pre">rc.local</span></code> is called <em>after</em> the network is up, so local rules should not be relied upon to block leaks.</p>
+</section>
+</section>
+<section id="where-are-the-rules">
+<h2>Where are the rules?<a class="headerlink" href="#where-are-the-rules" title="Link to this heading"></a></h2>
+<p>The firewall rules for each qube are saved in an XML file in that qube’s directory in dom0:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/var/lib/qubes/appvms/&lt;vm-name&gt;/firewall.xml
+</pre></div>
+</div>
+<p>Rules are implemented on the <a class="reference internal" href="../reference/glossary.html#term-net-qube"><span class="xref std std-term">net qube</span></a>: If a rule is set for a qube that uses <em>sys-firewall</em> as its net qube, <em>sys-firewall</em> will implement the rules. This is done by the <a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/en/latest/manpages/qvm-service.html#supported-services">qubes-firewall</a> service. You can verify that the service is running by executing the following command in the net qube:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@net-qube] $ </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>qubes-firewall.service
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>The firewall rules described above only take effect if the qubes-firewall service is running in the net qube. If the service is stopped or has crashed in the net qube <strong>changes to the firewall rules will not be implemented</strong>. If the service is stopped and a new qube is started, the firewall will fail closed: no traffic will pass. For qubes that are <em>already</em> attached, changes to the firewall configuration will not be processed until the firewall service is restarted.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>The Whonix-Gateway (e.g. <code class="docutils literal notranslate"><span class="pre">sys-whonix</span></code>) does not respect the qubes-firewall service. Firewall rules configured via <code class="docutils literal notranslate"><span class="pre">qvm-firewall</span></code> or in the Qubes Manager will have no effect. See the <a class="reference external" href="https://www.whonix.org/wiki/Qubes">Whonix documentation</a> for more details on networking in this configuration.</p>
+</div>
+</section>
+<section id="reconnecting-qubes-after-a-net-qube-reboot">
+<h2>Reconnecting qubes after a net qube reboot<a class="headerlink" href="#reconnecting-qubes-after-a-net-qube-reboot" title="Link to this heading"></a></h2>
+<p>Qubes OS tries to prevent stopping a net qube if there are other qubes running which use it as their own net qube. But in case the net qube stops for whatever reason (e.g. it crashes, or the user forces its shutdown via qvm-kill via terminal in Dom0), Qubes OS will often automatically repair the connection. If it does not, then there is an easy way to restore the connection to the net qube by issuing the following command in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-prefs<span class="w"> </span>&lt;QUBE&gt;<span class="w"> </span>netvm<span class="w"> </span>&lt;NET_QUBE&gt;
+</pre></div>
+</div>
+<p>Where <code class="samp docutils literal notranslate"><em><span class="pre">&lt;QUBE&gt;</span></em></code> is the qube connected to the stopped net qube and <code class="samp docutils literal notranslate"><em><span class="pre">&lt;NET_QUBE&gt;</span></em></code> is the net qube that stopped.</p>
+<p>A qube should normally not connect directly to the actual net qube which has networking devices (<em>sys-net</em> by default), but rather to another net qube first (<em>sys-firewall</em> by default). In most cases it would be the net qube with networking devices that will crash, e.g. in response to S3 sleep/restore or other issues with WiFi drivers. In that case it is only necessary to issue the above command once, for the <em>sys-firewall</em> qube (following named conventions used by the default Qubes installation):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span>qvm-prefs<span class="w"> </span>sys-firewall<span class="w"> </span>netvm<span class="w"> </span>sys-net
+</pre></div>
+</div>
+</section>
+<section id="network-service-qubes">
+<h2>Network service qubes<a class="headerlink" href="#network-service-qubes" title="Link to this heading"></a></h2>
+<p>Qubes does not support running any networking services (e.g. VPN, local DNS server, IPS, …) directly in a qube that is used to run the Qubes firewall service (usually sys-firewall) for good reasons. In particular, if you want to ensure proper functioning of the Qubes firewall, you should not tinker with firewall rules in such qubes.</p>
+<p>Instead, you should deploy a network infrastructure such as</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sys-net &lt;--&gt; sys-firewall-1 &lt;--&gt; network service qube &lt;--&gt; sys-firewall-2 &lt;--&gt; [client qubes]
+</pre></div>
+</div>
+<p>Thereby <em>sys-firewall-1</em> is only needed if you have other client qubes connected there, or you want to manage the traffic of the local network service qube. The <em>sys-firewall-2</em> proxy ensures that:</p>
+<ol class="arabic simple">
+<li><p>Firewall changes done in the network service qube cannot render the Qubes firewall ineffective.</p></li>
+<li><p>Changes to the Qubes firewall by the Qubes maintainers cannot lead to unwanted information leakage in combination with user rules deployed in the network service qube.</p></li>
+<li><p>A compromise of the network service qube does not compromise the Qubes firewall.</p></li>
+</ol>
+<p>If you adopt this model, you should be aware that all traffic will arrive at the <em>network service qube</em> appearing to originate from the IP address of <em>sys-firewall-2</em>.</p>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p>For the VPN service, see the <a class="reference external" href="https://forum.qubes-os.org/t/meta-topic-list-of-all-vpn-guides/38466">Meta-topic: List of all VPN guides</a> on the forum.</p>
+</div>
+</section>
+<section id="enabling-networking-between-two-qubes">
+<h2>Enabling networking between two qubes<a class="headerlink" href="#enabling-networking-between-two-qubes" title="Link to this heading"></a></h2>
+<p>Normally any networking traffic between qubes is prohibited for security reasons. However, in special situations, you might want to selectively allow specific qubes to establish networking connectivity between each other. For example, this might be useful in some development work, when you want to test networking code, or to allow file exchange between HVM domains (which do not have Qubes tools installed) via SMB/SSH/NFS protocols.</p>
+<p>In order to allow networking from qube A (client) to qube B (server) follow these steps:</p>
+<ul class="simple">
+<li><p>Make sure both A and B are connected to the same firewall vm (by default all VMs use the same firewall VM).</p></li>
+<li><p>Note the Qubes IP addresses assigned to both qubes. This can be done using the <code class="docutils literal notranslate"><span class="pre">qvm-ls</span> <span class="pre">-n</span></code> command, or via the Qubes Manager using the IP column.</p></li>
+<li><p>Start both qubes, and also open a terminal in the firewall VM</p></li>
+<li><p>In the firewall VM’s terminal enter the following nftables rule:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>ip<span class="w"> </span>qubes<span class="w"> </span>custom-forward<span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span>&lt;IP<span class="w"> </span>address<span class="w"> </span>of<span class="w"> </span>A&gt;<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span>&lt;IP<span class="w"> </span>address<span class="w"> </span>of<span class="w"> </span>B&gt;<span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In qube B’s terminal enter the following nftables rule:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-input<span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span>&lt;IP<span class="w"> </span>address<span class="w"> </span>of<span class="w"> </span>A&gt;<span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Now you should be able to reach B from A – test it using e.g. ping issued from A. Note however, that this doesn’t allow you to reach A from B – for this you would need two more rules, with A and B swapped.</p></li>
+<li><p>If everything works as expected, then you should write the above nftables rules into firewallVM’s <code class="docutils literal notranslate"><span class="pre">qubes-firewall-user-script</span></code> script (see section <a class="reference internal" href="#where-to-put-firewall-rules"><span class="std std-ref">Where to put firewall rules</span></a>). This script is run when the netvm starts up. You should also write relevant rules in A and B’s <code class="docutils literal notranslate"><span class="pre">rc.local</span></code> script which is run when the qube is launched. Here’s an example how to update the script:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@sys-firewall ~]$ </span>sudo<span class="w"> </span>-i
+<span class="gp">[root@sys-firewall user]# </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;nft add rule ip qubes custom-forward ip saddr 10.137.2.25 ip daddr 10.137.2.6 ct state new,established,related counter accept&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/rw/config/qubes-firewall-user-script
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Here is an example how to update <code class="docutils literal notranslate"><span class="pre">rc.local</span></code>:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@B ~]$ </span>sudo<span class="w"> </span>-i
+<span class="gp">[root@B user]# </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;nft add rule qubes custom-input ip saddr 10.137.2.25 accept&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/rw/config/rc.local
+</pre></div>
+</div>
+</section>
+<section id="opening-a-single-tcp-port-to-other-network-isolated-qube">
+<h2>Opening a single TCP port to other network-isolated qube<a class="headerlink" href="#opening-a-single-tcp-port-to-other-network-isolated-qube" title="Link to this heading"></a></h2>
+<p>In the case where a specific TCP port needs to be exposed from a qubes to another one, you do not need to enable networking between them but you can use the qubes RPC service <code class="docutils literal notranslate"><span class="pre">qubes.ConnectTCP</span></code>.</p>
+<p><strong>1. Simple port binding</strong></p>
+<p>Consider the following example. <code class="docutils literal notranslate"><span class="pre">mytcp-service</span></code> qube has a TCP service running on port <code class="docutils literal notranslate"><span class="pre">444</span></code> and <code class="docutils literal notranslate"><span class="pre">untrusted</span></code> qube needs to access this service.</p>
+<ul>
+<li><p>In dom0, add the following to <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-user-networking.policy</span></code>: (it could be <code class="docutils literal notranslate"><span class="pre">another-other-name.policy</span></code> – just remember to keep it consistent)</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>qubes.ConnectTCP * untrusted @default allow target=mytcp-service
+</pre></div>
+</div>
+</li>
+<li><p>In untrusted, use the Qubes tool <code class="docutils literal notranslate"><span class="pre">qvm-connect-tcp</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@untrusted #]$ </span>qvm-connect-tcp<span class="w"> </span><span class="m">444</span>:@default:444
+</pre></div>
+</div>
+</li>
+<li><p><strong>Note:</strong> The syntax is the same as SSH tunnel handler. The first <code class="docutils literal notranslate"><span class="pre">444</span></code> correspond to the localport destination of <code class="docutils literal notranslate"><span class="pre">untrusted</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;default</span></code> the remote machine and the second <code class="docutils literal notranslate"><span class="pre">444</span></code> to the remote machine port.</p></li>
+</ul>
+<p>The service of <code class="docutils literal notranslate"><span class="pre">mytcp-service</span></code> running on port <code class="docutils literal notranslate"><span class="pre">444</span></code> is now accessible in <code class="docutils literal notranslate"><span class="pre">untrusted</span></code> as <code class="docutils literal notranslate"><span class="pre">localhost:444</span></code>.</p>
+<p>Here <code class="docutils literal notranslate"><span class="pre">&#64;default</span></code> is used to hide the destination qube which is specified in the Qubes RPC policy by <code class="docutils literal notranslate"><span class="pre">target=mytcp-service</span></code>. Equivalent call is to use the tool as follow:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@untrusted #]$ </span>qvm-connect-tcp<span class="w"> </span>::444
+</pre></div>
+</div>
+<p>which means to use default local port of <code class="docutils literal notranslate"><span class="pre">unstrusted</span></code> as the same of the remote port and unspecified destination qube is <code class="docutils literal notranslate"><span class="pre">&#64;default</span></code> by default in <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> call.</p>
+<p><strong>2. Binding remote port on another local port</strong></p>
+<p>Consider now the case where someone prefers to specify the destination qube and use another port in untrusted, for example <code class="docutils literal notranslate"><span class="pre">10044</span></code>. Instead of previous case, add</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>qubes.ConnectTCP * untrusted mytcp-service allow
+</pre></div>
+</div>
+<p>in <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-user-networking.policy</span></code> and in untrusted, use the tool as follow:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@untrusted #]$ </span>qvm-connect-tcp<span class="w"> </span><span class="m">10444</span>:mytcp-service:444
+</pre></div>
+</div>
+<p>The service of <code class="docutils literal notranslate"><span class="pre">mytcp-service</span></code> running on port <code class="docutils literal notranslate"><span class="pre">444</span></code> is now accessible in <code class="docutils literal notranslate"><span class="pre">untrusted</span></code> as <code class="docutils literal notranslate"><span class="pre">localhost:10444</span></code>.</p>
+<p><strong>3. Binding to different qubes using RPC policies</strong></p>
+<p>One can go further than the previous examples by redirecting different ports to different qubes. For example, let assume that another qube <code class="docutils literal notranslate"><span class="pre">mytcp-service-bis</span></code> with a TCP service is running on port <code class="docutils literal notranslate"><span class="pre">445</span></code>. If someone wants <code class="docutils literal notranslate"><span class="pre">untrusted</span></code> to be able to reach this service but port <code class="docutils literal notranslate"><span class="pre">445</span></code> is reserved to <code class="docutils literal notranslate"><span class="pre">mytcp-service-bis</span></code> then, in dom0, add the following to <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-user-networking.policy</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>qubes.ConnectTCP +445 untrusted @default allow target=mytcp-service-bis
+</pre></div>
+</div>
+<p>In that case, calling <code class="docutils literal notranslate"><span class="pre">qvm-connect-tcp</span></code> like previous examples, will still bind TCP port <code class="docutils literal notranslate"><span class="pre">444</span></code> of <code class="docutils literal notranslate"><span class="pre">mytcp-service</span></code> to <code class="docutils literal notranslate"><span class="pre">untrusted</span></code> but now, calling it with port <code class="docutils literal notranslate"><span class="pre">445</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@untrusted #]$ </span>qvm-connect-tcp<span class="w"> </span>::445
+</pre></div>
+</div>
+<p>will restrict the binding to only the corresponding TCP port of <code class="docutils literal notranslate"><span class="pre">mytcp-service-bis</span></code>.</p>
+<p><strong>4. Permanent port binding</strong></p>
+<p>For creating a permanent port bind between two qubes, <code class="docutils literal notranslate"><span class="pre">systemd</span></code> can be used. We use the case of the first example. In <code class="docutils literal notranslate"><span class="pre">/rw/config</span></code> (or any place you find suitable) of qube <code class="docutils literal notranslate"><span class="pre">untrusted</span></code>, create <code class="docutils literal notranslate"><span class="pre">my-tcp-service.socket</span></code> with content:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">my-tcp-service</span>
+
+<span class="k">[Socket]</span>
+<span class="na">ListenStream</span><span class="o">=</span><span class="s">127.0.0.1:444</span>
+<span class="na">Accept</span><span class="o">=</span><span class="s">true</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">sockets.target</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">my-tcp-service&#64;.service</span></code> with content:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">my-tcp-service</span>
+
+<span class="k">[Service]</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">qrexec-client-vm &#39;&#39; qubes.ConnectTCP+444</span>
+<span class="na">StandardInput</span><span class="o">=</span><span class="s">socket</span>
+<span class="na">StandardOutput</span><span class="o">=</span><span class="s">inherit</span>
+</pre></div>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">/rw/config/rc.local</span></code>, append the lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>-r<span class="w"> </span>/rw/config/my-tcp-service.socket<span class="w"> </span>/rw/config/my-tcp-service@.service<span class="w"> </span>/lib/systemd/system/
+systemctl<span class="w"> </span>daemon-reload
+systemctl<span class="w"> </span>start<span class="w"> </span>my-tcp-service.socket
+</pre></div>
+</div>
+<p>When the qube <code class="docutils literal notranslate"><span class="pre">unstrusted</span></code> has started (after a first reboot), you can directly access the service of <code class="docutils literal notranslate"><span class="pre">mytcp-service</span></code> running on port <code class="docutils literal notranslate"><span class="pre">444</span></code> as <code class="docutils literal notranslate"><span class="pre">localhost:444</span></code>.</p>
+</section>
+<section id="port-forwarding-to-a-qube-from-the-outside-world">
+<h2>Port forwarding to a qube from the outside world<a class="headerlink" href="#port-forwarding-to-a-qube-from-the-outside-world" title="Link to this heading"></a></h2>
+<p>In order to allow a service present in a qube to be exposed to the outside world in the default setup (where the qube has <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code> as network VM, which in turn has <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> as network VM) the following needs to be done:</p>
+<ul class="simple">
+<li><p>In the sys-net VM:</p>
+<ul>
+<li><p>Route packets from the outside world to the sys-firewall VM</p></li>
+<li><p>Allow packets through the sys-net VM firewall</p></li>
+</ul>
+</li>
+<li><p>In the sys-firewall VM:</p>
+<ul>
+<li><p>Route packets from the sys-net VM to the VM</p></li>
+<li><p>Allow packets through the sys-firewall VM firewall</p></li>
+</ul>
+</li>
+<li><p>In the qube QubeDest:</p>
+<ul>
+<li><p>Allow packets through the qube firewall to reach the service</p></li>
+</ul>
+</li>
+</ul>
+<p>As an example we can take the use case of qube QubeDest running a web server listening on port 443 that we want to expose on our physical interface ens6, but only to our local network 192.168.x.y/24.</p>
+<ul class="simple">
+<li><p><strong>Note:</strong> To have all interfaces available and configured, make sure the 3 qubes are up and running</p></li>
+<li><p><strong>Note:</strong> <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4028">Issue #4028</a> discusses adding a command to automate exposing the port.</p></li>
+</ul>
+<p><strong>1. Identify the IP addresses you will need to use for sys-net, sys-firewall and the destination qube.</strong></p>
+<p>You can get this information using various methods. Only the first method can be used for <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> to find the external IP:</p>
+<ul class="simple">
+<li><p>by running this command in each qube: <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">-4</span> <span class="pre">-br</span> <span class="pre">a</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">UP</span></code></p></li>
+<li><p>using <code class="docutils literal notranslate"><span class="pre">qvm-ls</span> <span class="pre">-n</span></code></p></li>
+<li><p>in the Qubes Manager window using the column IP</p></li>
+<li><p>from the Settings Window for the qube</p></li>
+</ul>
+<p>Note the IP addresses you will need, they will be required in the next steps.</p>
+<ul class="simple">
+<li><p><strong>Note:</strong> The vifx.0 interface is the one used by qubes connected to this netvm so it is <em>not</em> an outside world interface.</p></li>
+</ul>
+<p><strong>2. Route packets from the outside world to the FirewallVM</strong></p>
+<p>For the following example, we assume that the physical interface ens6 in sys-net is on the local network 192.168.x.y with the IP 192.168.x.n, and that the IP address of sys-firewall is 10.137.1.z.</p>
+<p>When writing rules in sys-net, you can use <code class="docutils literal notranslate"><span class="pre">iif</span></code> or <code class="docutils literal notranslate"><span class="pre">iifname</span></code>. <code class="docutils literal notranslate"><span class="pre">iif</span></code> is faster, but can change where interfaces are dynamically created and destroyed, eg. ppp0. In that case use <code class="docutils literal notranslate"><span class="pre">iifname</span></code>, like this <code class="docutils literal notranslate"><span class="pre">iifname</span> <span class="pre">ens6</span></code>. <code class="docutils literal notranslate"><span class="pre">iifname</span></code> can also match wildcards - <code class="docutils literal notranslate"><span class="pre">iifname</span> <span class="pre">&quot;eth*&quot;</span></code></p>
+<p>In the sys-net VM’s Terminal, the first step is to define an nftables chain that will receive DNAT rules to relay the network traffic on a given port to the qube NetVM, we recommend to define a new chain for each destination qube to ease rules management:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span><span class="s1">&#39;{ type nat hook prerouting priority filter +1 ; policy accept; }&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Note:</strong> the name <code class="docutils literal notranslate"><span class="pre">custom-dnat-qubeDST</span></code> is arbitrary</p></li>
+<li><p><strong>Note:</strong> while we use a DNAT chain for a single qube, it’s possible to have a single DNAT chain for multiple qubes</p></li>
+</ul>
+<p>Second step, code a natting firewall rule to route traffic on the outside interface for the service to the sys-firewall VM</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span>iifname<span class="w"> </span>ens6<span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>dnat<span class="w"> </span><span class="m">10</span>.137.1.z
+</pre></div>
+</div>
+<p>Third step, code the appropriate new filtering firewall rule to allow new connections for the service</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-forward<span class="w"> </span>iifname<span class="w"> </span>ens6<span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">10</span>.137.1.z<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Note:</strong> If you do not wish to limit the IP addresses connecting to the service, remove <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">saddr</span> <span class="pre">192.168.x.y/24</span></code> from the rules.</p></li>
+<li><p>If you want to expose the service on multiple interfaces, repeat steps 2 and 3 above, for each interface. Alternatively, you can leave out the interface completely.</p></li>
+</ul>
+<p>Verify the rules on the sys-net firewall correctly match the packets you want by looking at the counters: check for the counter lines in the chains <code class="docutils literal notranslate"><span class="pre">custom-forward</span></code> and <code class="docutils literal notranslate"><span class="pre">custom-dnat-qubeDEST</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>list<span class="w"> </span>table<span class="w"> </span>ip<span class="w"> </span>qubes
+</pre></div>
+</div>
+<p>In this example, we can see 7 packets in the forward rule, and 3 packets in the dnat rule:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">chain custom-forward {</span>
+<span class="go">  iifname ens6 ip saddr 192.168.x.y/24 ip daddr 10.137.1.z tcp dport 443 ct state new,established,related counter packets 7 bytes 448 accept</span>
+<span class="go">}</span>
+
+<span class="go">chain custom-dnat-qubeDEST {</span>
+<span class="go">  type nat hook prerouting priority filter + 1; policy accept;</span>
+<span class="go">  iifname ens6 ip saddr 192.168.x.y/24 tcp dport 443 ct state new,established,related counter packets 3 bytes 192 dnat to 10.138.33.59</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>(Optional) You can send a test packet by trying to connect to the service from an external device using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>telnet<span class="w"> </span><span class="m">192</span>.168.x.n<span class="w"> </span><span class="m">443</span>
+</pre></div>
+</div>
+<p>Once you have confirmed that the counters increase, store the commands used in the previous steps in <code class="docutils literal notranslate"><span class="pre">/rw/config/qubes-firewall-user-script</span></code> so they get set on sys-net start-up (see section <a class="reference internal" href="#where-to-put-firewall-rules"><span class="std std-ref">Where to put firewall rules</span></a>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@sys-net user]$ </span>sudo<span class="w"> </span>-i
+<span class="gp">[root@sys-net user]# </span>nano<span class="w"> </span>/rw/config/qubes-firewall-user-script
+</pre></div>
+</div>
+<p>Content of <code class="docutils literal notranslate"><span class="pre">/rw/config/qubes-firewall-user-script</span></code> in <code class="docutils literal notranslate"><span class="pre">sys-net</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1"># create the dnat chain for qubeDEST if it doesn&#39;t already exist</span>
+<span class="k">if</span><span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span><span class="s1">&#39;{ type nat hook prerouting priority filter +1 ; policy accept; }&#39;</span>
+<span class="k">then</span>
+<span class="w">  </span><span class="c1"># create the dnat rule</span>
+<span class="w">  </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span>iifname<span class="w"> </span>ens6<span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>dnat<span class="w"> </span><span class="m">10</span>.137.1.z
+
+<span class="w">  </span><span class="c1"># allow forwarded traffic</span>
+<span class="w">  </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-forward<span class="w"> </span>iifname<span class="w"> </span>ens6<span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">10</span>.137.1.z<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p><strong>3. Route packets from the FirewallVM to the VM</strong></p>
+<p>For the following example, we use the fact that the interface of sys-firewall facing sys-net, is eth0. This is allocated to iifgroup 1. Furthermore, we assume that the IP address of sys-firewall is 10.137.1.z, and the target VM running the web server has the IP address 10.137.0.xx.</p>
+<p>In the sys-firewall Terminal, add a DNAT chain that will contain routing rules:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span><span class="s1">&#39;{ type nat hook prerouting priority filter +1 ; policy accept; }&#39;</span>
+</pre></div>
+</div>
+<p>Second step, code a natting firewall rule to route traffic on the outside interface for the service to the destination qube</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span>iifgroup<span class="w"> </span><span class="m">1</span><span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>dnat<span class="w"> </span><span class="m">10</span>.137.0.xx
+</pre></div>
+</div>
+<p>Third step, code the appropriate new filtering firewall rule to allow new connections for the service</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-forward<span class="w"> </span>iifgroup<span class="w"> </span><span class="m">1</span><span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">10</span>.137.0.xx<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Note:</strong> If you do not wish to limit the IP addresses connecting to the service, remove <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">saddr</span> <span class="pre">192.168.x.y/24</span></code> from the rules</p></li>
+</ul>
+<p>Once you have confirmed that the counters increase, store these commands in the script <code class="docutils literal notranslate"><span class="pre">/rw/config/qubes-firewall-user-script</span></code> (see section <a class="reference internal" href="#where-to-put-firewall-rules"><span class="std std-ref">Where to put firewall rules</span></a>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@sys-net user]$ </span>sudo<span class="w"> </span>-i
+<span class="gp">[root@sys-net user]# </span>nano<span class="w"> </span>/rw/config/qubes-firewall-user-script
+</pre></div>
+</div>
+<p>Content of <code class="docutils literal notranslate"><span class="pre">/rw/config/qubes-firewall-user-script</span></code> in <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1"># create the dnat chain for qubeDEST if it doesn&#39;t already exist</span>
+<span class="k">if</span><span class="w"> </span>nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span><span class="s1">&#39;{ type nat hook prerouting priority filter +1 ; policy accept; }&#39;</span>
+<span class="k">then</span>
+<span class="w">  </span><span class="c1"># create the dnat rule</span>
+<span class="w">  </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-dnat-qubeDEST<span class="w"> </span>iifgroup<span class="w"> </span><span class="m">1</span><span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>dnat<span class="w"> </span><span class="m">10</span>.137.0.xx
+
+<span class="w">  </span><span class="c1"># allow forwarded traffic</span>
+<span class="w">  </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-forward<span class="w"> </span>iifgroup<span class="w"> </span><span class="m">1</span><span class="w"> </span>ip<span class="w"> </span>saddr<span class="w"> </span><span class="m">192</span>.168.x.y/24<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">10</span>.137.0.xx<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>If the service should be available to other VMs on the same system, do not forget to specify the additional rules described earlier in this guide.</p>
+<p><strong>4. Allow packets into the qube to reach the service</strong></p>
+<p>No routing is required in the destination qube, only filtering.</p>
+<p>For the following example, we assume that the target VM running the web server has the IP address 10.137.0.xx</p>
+<p>The according rule to allow the traffic is:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>qubes<span class="w"> </span>custom-input<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">10</span>.137.0.xx<span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>new,established,related<span class="w"> </span>counter<span class="w"> </span>accept
+</pre></div>
+</div>
+<p>To make it persistent, you need to add this command in the script <code class="docutils literal notranslate"><span class="pre">/rw/config/rc.local</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@qubeDEST user]$ </span>sudo<span class="w"> </span>-i
+<span class="gp">[root@qubeDEST user]# </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;nft add rule qubes custom-input tcp dport 443 ip daddr 10.137.0.xx ct state new,established,related counter accept&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/rw/config/rc.local
+</pre></div>
+</div>
+<p>This time testing should allow connectivity to the service as long qubeDEST is running and the service is up :-)</p>
+</section>
+<section id="where-to-put-firewall-rules">
+<h2>Where to put firewall rules<a class="headerlink" href="#where-to-put-firewall-rules" title="Link to this heading"></a></h2>
+<p>Implicit in the above example <a class="reference internal" href="../advanced-topics/config-files.html"><span class="doc">scripts</span></a>, but worth calling attention to: for all qubes <em>except</em> those supplying networking, nftables commands should be added to the <code class="docutils literal notranslate"><span class="pre">/rw/config/rc.local</span></code> script. For service qubes supplying networking (<code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code> and <code class="docutils literal notranslate"><span class="pre">sys-net</span></code> inclusive), nftables commands should be added to <code class="docutils literal notranslate"><span class="pre">/rw/config/qubes-firewall-user-script</span></code>.</p>
+<p>Remember that you have to perform these changes in the corresponding disposable templates if the VMs are disposable VMs; otherwise the changes will get lost on restart of the VMs.</p>
+</section>
+<section id="firewall-troubleshooting">
+<h2>Firewall troubleshooting<a class="headerlink" href="#firewall-troubleshooting" title="Link to this heading"></a></h2>
+<p>Firewall logs are stored in the systemd journal of the qube the firewall is running in (probably <code class="docutils literal notranslate"><span class="pre">sys-firewall</span></code>). You can view them by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">qubes-firewall.service</span></code> in the relevant qube. Sometimes these logs can contain useful information about errors that are preventing the firewall from behaving as you would expect.</p>
+<p>An effective console utility to troubleshoot network is <a class="reference external" href="https://www.tcpdump.org/">tcpdump</a>, it can be used to display network packets entering or leaving network interfaces.</p>
+<p>For instance, if you want to check if your network interface <code class="docutils literal notranslate"><span class="pre">eth0</span></code> is receiving packets on port TCP 443 from the network 192.168.x.y, you can run this command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>eth0<span class="w"> </span>-nn<span class="w"> </span>dst<span class="w"> </span>port<span class="w"> </span><span class="m">443</span><span class="w"> </span>and<span class="w"> </span>src<span class="w"> </span>net<span class="w"> </span><span class="m">192</span>.168.x.y/24
+</pre></div>
+</div>
+<p>This can be used effectively in a destination qube and its Network VM to see if forwarding / NAT rules are working.</p>
+</section>
+<section id="nftables-tips">
+<h2>Nftables tips<a class="headerlink" href="#nftables-tips" title="Link to this heading"></a></h2>
+<p>A simple way to experiment changes with your ruleset can be achieved by saving the current working ruleset in two files, one for backup and the other for making changes.</p>
+<p>By adding <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">ruleset</span></code> at the top of the file, you can achieve atomic update, which mean the new ruleset would replace the current one only if it fully succeed to load.</p>
+<p>You can dump the ruleset in two files using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>list<span class="w"> </span>ruleset<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>nft_backup<span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>nft_new_ruleset
+</pre></div>
+</div>
+<p>Then, edit <code class="docutils literal notranslate"><span class="pre">nft_new_ruleset</span></code>, add <code class="docutils literal notranslate"><span class="pre">flush</span> <span class="pre">ruleset</span></code> on top and make changes, load it with <code class="docutils literal notranslate"><span class="pre">nft</span> <span class="pre">-f</span> <span class="pre">nft_new_ruleset</span></code>.</p>
+<p>You can revert to the original ruleset with the following commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nft<span class="w"> </span>flush<span class="w"> </span>ruleset<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>nft<span class="w"> </span>-f<span class="w"> </span>nft_backup
+</pre></div>
+</div>
+</section>
+<section id="historical-note">
+<h2>Historical note<a class="headerlink" href="#historical-note" title="Link to this heading"></a></h2>
+<p>In Qubes 4.1 and prior versions, all firewall components used <code class="docutils literal notranslate"><span class="pre">iptables</span></code>.</p>
+<p><strong>See also:</strong> <a class="reference internal" href="../../developer/releases/4_2/release-notes.html#known-issues"><span class="std std-ref">Known issues in Qubes OS 4.2 release notes</span></a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../troubleshooting/media-troubleshooting.html" class="btn btn-neutral float-left" title="Media troubleshooting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="data-leaks.html" class="btn btn-neutral float-right" title="Data leaks" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/security-in-qubes/firewall.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

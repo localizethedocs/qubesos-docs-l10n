@@ -1,0 +1,570 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="USB qubes" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/advanced-topics/usb-qubes.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="A USB qube acts as a secure handler for potentially malicious USB devices, preventing them from coming into contact with dom0 (which could otherwise be fatal to the security of the whole system). I..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="A USB qube acts as a secure handler for potentially malicious USB devices, preventing them from coming into contact with dom0 (which could otherwise be fatal to the security of the whole system). I..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USB qubes &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/advanced-topics/usb-qubes.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Managing qube kernels" href="managing-vm-kernels.html" />
+    <link rel="prev" title="RPC policies" href="rpc-policy.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">USB qubes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usb-keyboards">USB keyboards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-create-a-usb-qube-for-use-with-a-usb-keyboard">How to create a USB qube for use with a USB keyboard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-setup-for-usb-keyboards">Manual setup for USB keyboards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-4-1-how-to-enable-a-usb-keyboard-on-a-separate-usb-controller">Qubes 4.1: How to enable a USB keyboard on a separate USB controller</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usb-mice">USB mice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-create-a-usb-qube">How to create a USB qube</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#manual-creation">Manual creation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-hide-usb-controllers-from-dom0">How to hide USB controllers from dom0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-remove-a-usb-qube">How to remove a USB qube</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">USB qubes</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/advanced-topics/usb-qubes.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usb-qubes">
+<h1>USB qubes<a class="headerlink" href="#usb-qubes" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This page is intended for advanced users.</p>
+</div>
+<p>A USB qube acts as a secure handler for potentially malicious USB devices, preventing them from coming into contact with dom0 (which could otherwise be fatal to the security of the whole system). It thereby mitigates some of the <a class="reference internal" href="../security-in-qubes/device-handling-security.html#usb-security"><span class="std std-ref">security risks of using USB devices</span></a>. Nonetheless, we strongly recommend carefully reading the <a class="reference internal" href="../security-in-qubes/device-handling-security.html#security-warning-on-usb-input-devices"><span class="std std-ref">security warning on USB input devices</span></a> before proceeding.</p>
+<p>With a USB qube, every time you connect an untrusted USB device to a USB port managed by that USB controller, you will have to attach it to the qube in which you wish to use it (if different from the USB qube itself).</p>
+<p>If you opted to allow the Qubes installer to create a USB qube for you during the installation process, then you should already have a working USB qube, and no further action should be required. However, if you do not have a USB qube, wish to remove the one you have, or have run into some other related problem, this page can help.</p>
+<section id="usb-keyboards">
+<h2>USB keyboards<a class="headerlink" href="#usb-keyboards" title="Link to this heading"></a></h2>
+<p>If you use a USB keyboard, there is a high risk of locking yourself out of your system when experimenting with USB qubes. For example, if a USB qube takes over your sole USB controller (to which your USB keyboard is connected), then your keyboard will no longer be able to control dom0. This will prevent you from performing many essential tasks, such as entering your decryption and login passphrases, rendering your system unusable until you reinstall. This section covers various options for addressing this problem.</p>
+<p>In general, PS/2 keyboards are preferable to USB keyboards. However, many newer computer models lack PS/2 ports. Moreover, while most laptops use PS/2 connections for the keyboard internally, some use USB. (Check yours by examining the output of the <code class="docutils literal notranslate"><span class="pre">lsusb</span></code> command.) If you have a PS/2 port but still wish to use a USB keyboard, then having a backup PS/2 keyboard handy can be useful in case you accidentally lock yourself out of your system.</p>
+<section id="how-to-create-a-usb-qube-for-use-with-a-usb-keyboard">
+<h3>How to create a USB qube for use with a USB keyboard<a class="headerlink" href="#how-to-create-a-usb-qube-for-use-with-a-usb-keyboard" title="Link to this heading"></a></h3>
+<p>If you’re reading this section, it’s likely because the installer did not allow you to create a USB qube automatically because you’re using a USB keyboard. This section will explain how to create a USB qube that you can use with your USB keyboard. This section assumes that you have only a single USB controller. If you have more than one USB controller, see <a class="reference internal" href="#qubes-4-1-how-to-enable-a-usb-keyboard-on-a-separate-usb-controller"><span class="std std-ref">how to enable a USB keyboard on a separate USB controller</span></a>.</p>
+<p>First, make sure you have the latest <code class="docutils literal notranslate"><span class="pre">qubes-mgmt-salt-dom0-virtual-machines</span></code> package by <a class="reference internal" href="how-to-install-software-in-dom0.html#how-to-update-dom0"><span class="std std-ref">updating dom0</span></a>. Then, enter the following command in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubesctl<span class="w"> </span>state.sls<span class="w"> </span>qvm.usb-keyboard
+</pre></div>
+</div>
+<p>This command will take care of all required configuration, including creating a USB qube if not already present. Note, however, that this setup will expose dom0 to USB devices while you are entering your LUKS passphrase. While only input devices (keyboards, mice, etc.) are initialized at this stage, users are advised to physically disconnect other devices from the system during this vulnerable window in order to minimize the risk.</p>
+<p>To undo these changes, see <a class="reference internal" href="#how-to-remove-a-usb-qube"><span class="std std-ref">How to remove a USB qube</span></a>.</p>
+<p>If you wish to perform only a subset of this configuration (for example, you do not wish to enable the USB keyboard during boot), see the manual instructions below.</p>
+</section>
+<section id="manual-setup-for-usb-keyboards">
+<h3>Manual setup for USB keyboards<a class="headerlink" href="#manual-setup-for-usb-keyboards" title="Link to this heading"></a></h3>
+<p>In order to use a USB keyboard, you must first attach it to a USB qube, then give that qube permission to pass keyboard input to dom0. Edit the <code class="docutils literal notranslate"><span class="pre">qubes.InputKeyboard</span></code> policy file in dom0, which is located here:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/etc/qubes-rpc/policy/qubes.InputKeyboard
+</pre></div>
+</div>
+<p>Add a line like this one to the top of the file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sys-usb dom0 allow
+</pre></div>
+</div>
+<p>(Change <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> to your desired USB qube.)</p>
+<p>You can now use your USB keyboard to log in to your dom0 user account (after LUKS decryption).</p>
+<p>You can set up your system so that there’s a confirmation prompt each time the USB keyboard is connected. However, this will effectively disable your USB keyboard for dom0 user account login and the screen locker, so <strong>don’t do this if you want to log into and unlock your device with a USB keyboard!</strong> If you’re sure you wish to proceed, change the previous line to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sys-usb dom0 ask,default_target=dom0
+</pre></div>
+</div>
+<p>If you wish to use a USB keyboard to enter your LUKS passphrase, you cannot <a class="reference internal" href="#how-to-hide-usb-controllers-from-dom0"><span class="std std-ref">hide its USB controller from dom0</span></a>. If you’ve already hidden that USB controller from dom0, you must revert the procedure by removing the <code class="docutils literal notranslate"><span class="pre">rd.qubes.hide_all_usb</span></code> option and employ an alternative strategy for protecting your system by physically disconnecting other devices during startup.</p>
+<p><strong>Qubes 4.1 only:</strong> You should also add the <code class="docutils literal notranslate"><span class="pre">usbcore.authorized_default=0</span></code> option, which prevents the initialization of non-input devices. (Qubes ships with a USBGuard configuration that allows only input devices when <code class="docutils literal notranslate"><span class="pre">usbcore.authorized_default=0</span></code> is set.)</p>
+</section>
+<section id="qubes-4-1-how-to-enable-a-usb-keyboard-on-a-separate-usb-controller">
+<h3>Qubes 4.1: How to enable a USB keyboard on a separate USB controller<a class="headerlink" href="#qubes-4-1-how-to-enable-a-usb-keyboard-on-a-separate-usb-controller" title="Link to this heading"></a></h3>
+<p>When using a USB keyboard on a system with multiple USB controllers, we recommend that you designate one of them exclusively for the keyboard (and possibly the mouse) and keep other devices connected to the other controller(s). This is often an option on desktop systems, where additional USB controllers can be plugged in as PCIe cards. In this case, the designated controller for input devices should remain in dom0 but be limited to input devices only. To set it up:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html#finding-the-right-usb-controller"><span class="std std-ref">Find the controller used for input devices</span></a>.</p></li>
+<li><p>Open the file <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code> in dom0.</p></li>
+<li><p>Find the line that begins with <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">usbcore.authorized_default=0</span></code> and <code class="docutils literal notranslate"><span class="pre">rd.qubes.dom0_usb=&lt;BDF&gt;</span></code> to that line, where <code class="docutils literal notranslate"><span class="pre">&lt;BDF&gt;</span></code> is the USB controller identifier.</p></li>
+<li><p>Save and close the file.</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">grub2-mkconfig</span> <span class="pre">-o</span> <span class="pre">/boot/grub2/grub.cfg</span></code></p></li>
+<li><p>Reboot.</p></li>
+<li><p>Proceed with <a class="reference internal" href="#how-to-create-a-usb-qube"><span class="std std-ref">creating a USB qube</span></a> normally. The selected USB controller will remain in dom0.</p></li>
+</ol>
+<p>These options can be added during installation. (When the installer prompts for a reboot, you can switch to tty2 and perform the steps from there, after using the <code class="docutils literal notranslate"><span class="pre">chroot</span> <span class="pre">/mnt/sysimage</span></code> command.) In that case, the initial setup will create a USB qube automatically, even when a USB keyboard is in use (as long as it is connected to the designated controller).</p>
+</section>
+</section>
+<section id="usb-mice">
+<h2>USB mice<a class="headerlink" href="#usb-mice" title="Link to this heading"></a></h2>
+<p>Handling a USB mouse isn’t as critical as handling a keyboard, since you can log in and proceed through confirmation prompts using the keyboard alone.</p>
+<p>If you want to attach the USB mouse automatically anyway, you have to edit the <code class="docutils literal notranslate"><span class="pre">qubes.InputMouse</span></code> policy file in dom0, located at:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/etc/qubes-rpc/policy/qubes.InputMouse
+</pre></div>
+</div>
+<p>The first line should read similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sys-usb dom0 ask,default_target=dom0
+</pre></div>
+</div>
+<p>There will now be a confirmation prompt each time a USB mouse is attached.</p>
+<p>If the file is empty or does not exist, something might have gone wrong during setup. Try to rerun <code class="docutils literal notranslate"><span class="pre">qubesctl</span> <span class="pre">state.sls</span> <span class="pre">qvm.sys-usb</span></code> in dom0.</p>
+<p>In case you are absolutely sure you do not want to confirm mouse access from <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> to <code class="docutils literal notranslate"><span class="pre">dom0</span></code>, you may add the following line to the top of the file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sys-usb dom0 allow
+</pre></div>
+</div>
+<p>(Change <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code> to your desired USB qube.)</p>
+</section>
+<section id="how-to-create-a-usb-qube">
+<h2>How to create a USB qube<a class="headerlink" href="#how-to-create-a-usb-qube" title="Link to this heading"></a></h2>
+<p>If <a class="reference internal" href="#how-to-create-a-usb-qube-for-use-with-a-usb-keyboard"><span class="std std-ref">automatically creating a USB qube for use with a USB keyboard</span></a> does not apply to your situation, then you may be interested in more general methods for creating USB qubes.</p>
+<p>You can create a USB qube using the management stack by executing the following command as root in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>qubesctl<span class="w"> </span>state.sls<span class="w"> </span>qvm.sys-usb
+</pre></div>
+</div>
+<section id="manual-creation">
+<h3>Manual creation<a class="headerlink" href="#manual-creation" title="Link to this heading"></a></h3>
+<p>You can create a USB qube manually as follows:</p>
+<ol class="arabic simple">
+<li><p>Read the <a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html"><span class="doc">PCI devices</span></a> page to learn how to list and identify your USB controllers. Carefully check whether you have a USB controller that would be appropriate to assign to a USB qube. Note that it should be free of input devices, programmable devices, and any other devices that must be directly available to dom0. If you find a free controller, note its name and proceed to the next step.</p></li>
+<li><p>Create a new qube. Give it an appropriate name and color label (recommended: <code class="docutils literal notranslate"><span class="pre">sys-usb</span></code>, red).</p></li>
+<li><p>In the qube’s settings, go to the “Devices” tab. Find the USB controller that you identified in step 1 in the “Available” list. Move it to the “Selected” list by highlighting it and clicking the single arrow <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> button. (<strong>Warning:</strong> By assigning a USB controller to a USB qube, it will no longer be available to dom0. This can make your system unusable if, for example, you have only one USB controller, and you are running Qubes off of a USB drive.)</p></li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">OK</span></code>. Restart the qube.</p></li>
+<li><p>Recommended: Check the box on the “Basic” tab that says “Start VM automatically on boot.” (This will help to mitigate attacks in which someone forces your system to reboot, then plugs in a malicious USB device.)</p></li>
+</ol>
+<p>If the USB qube will not start, please have a look at <a class="reference internal" href="../../introduction/faq.html#i-created-a-usb-vm-and-assigned-usb-controllers-to-it-now-the-usb-vm-won-t-boot"><span class="std std-ref">this FAQ entry</span></a>.</p>
+</section>
+</section>
+<section id="how-to-hide-usb-controllers-from-dom0">
+<h2>How to hide USB controllers from dom0<a class="headerlink" href="#how-to-hide-usb-controllers-from-dom0" title="Link to this heading"></a></h2>
+<p>USB controllers are automatically hidden from dom0 if you opt to create a USB qube during installation. This also occurs automatically if you choose to <a class="reference internal" href="#how-to-create-a-usb-qube"><span class="std std-ref">create a USB qube</span></a> using the <code class="docutils literal notranslate"><span class="pre">qubesctl</span></code> method. However, if you create a USB qube manually and do not hide USB controllers from dom0, there will be a brief period of time during the boot process when dom0 will be exposed to your USB controllers (and any attached devices). This is a potential security risk, since even brief exposure to a malicious USB device could result in dom0 being compromised. There are two approaches to this problem:</p>
+<ol class="arabic simple">
+<li><p>Physically disconnect all USB devices whenever you reboot the host.</p></li>
+<li><p>Hide (i.e., blacklist) all USB controllers from dom0.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p><strong>If you use a USB keyboard</strong>, hiding your USB controllers from dom0 could lock you out of your system. See <a class="reference internal" href="#usb-keyboards"><span class="std std-ref">USB keyboards</span></a> for more information.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p><strong>Using a USB AEM device</strong> requires dom0 to have access to the USB controller to which your USB AEM device is attached. If dom0 cannot read your USB AEM device, AEM will hang.</p>
+</div>
+<p>The following procedure will hide all USB controllers from dom0:</p>
+<ol class="arabic simple">
+<li><p>Open the file <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code> in dom0.</p></li>
+<li><p>Find the line that begins with <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX</span></code>.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">rd.qubes.hide_all_usb</span></code> to that line.</p></li>
+<li><p>Save and close the file.</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">grub2-mkconfig</span> <span class="pre">-o</span> <span class="pre">/boot/grub2/grub.cfg</span></code></p></li>
+<li><p>Reboot.</p></li>
+</ol>
+</section>
+<section id="how-to-remove-a-usb-qube">
+<h2>How to remove a USB qube<a class="headerlink" href="#how-to-remove-a-usb-qube" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This procedure will result in your USB controller(s) being attached directly to dom0.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Shut down the USB qube.</p></li>
+<li><p>In Qubes Manager, right-click on the USB qube and select “Remove VM.”</p></li>
+<li><p>Open the file <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code> in dom0.</p></li>
+<li><p>Find the line(s) that begins with <code class="docutils literal notranslate"><span class="pre">GRUB_CMDLINE_LINUX</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">rd.qubes.hide_all_usb</span></code> appears anywhere in those lines, remove it.</p></li>
+<li><p>Save and close the file.</p></li>
+<li><p>Run the command <code class="docutils literal notranslate"><span class="pre">grub2-mkconfig</span> <span class="pre">-o</span> <span class="pre">/boot/grub2/grub.cfg</span></code> in dom0.</p></li>
+<li><p>Reboot.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="rpc-policy.html" class="btn btn-neutral float-left" title="RPC policies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="managing-vm-kernels.html" class="btn btn-neutral float-right" title="Managing qube kernels" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/advanced-topics/usb-qubes.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

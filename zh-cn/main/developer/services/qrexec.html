@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Qrexec: secure communication across domains" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/services/qrexec.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="( This page is about qrexec v3. For qrexec v2, see here.) The qrexec framework is used by core Qubes components to implement communication between domains. Qubes domains are strictly isolated by de..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="( This page is about qrexec v3. For qrexec v2, see here.) The qrexec framework is used by core Qubes components to implement communication between domains. Qubes domains are strictly isolated by de..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qrexec: secure communication across domains &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/services/qrexec.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Qrexec v2 (deprecated)" href="qrexec2.html" />
+    <link rel="prev" title="Dom0 secure updates" href="dom0-secure-updates.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Qrexec: secure communication across domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qrexec-basics-architecture-and-examples">Qrexec basics: architecture and examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-rpc-services">Qubes RPC services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-rpc-administration">Qubes RPC administration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#policy-files">Policy files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-an-rpc-call">Making an RPC call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#answering-an-rpc-call">Answering an RPC call</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specifying-vms-tags-types-targets-etc">Specifying VMs: tags, types, targets, etc.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rpc-services-and-security">RPC services and security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-policies-with-arguments">Service policies with arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#qubes-rpc-examples">Qubes RPC examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-rpc-service-addition">Simple RPC service (addition)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rpc-service-with-argument-file-reader">RPC service with argument (file reader)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Qrexec: secure communication across domains</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/services/qrexec.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qrexec-secure-communication-across-domains">
+<h1>Qrexec: secure communication across domains<a class="headerlink" href="#qrexec-secure-communication-across-domains" title="Link to this heading"></a></h1>
+<p>(<em>This page is about qrexec v3. For qrexec v2, see</em> <a class="reference internal" href="qrexec2.html"><span class="doc">here</span></a> <em>.</em>)</p>
+<p>The <strong>qrexec framework</strong> is used by core Qubes components to implement communication between domains. Qubes domains are strictly isolated by design. However, the OS needs a mechanism to allow the administrative domain (dom0) to force command execution in another domain (VM). For instance, when a user selects an application from the KDE menu, it should start in the selected VM. Also, it is often useful to be able to pass stdin/stdout/stderr from an application running in a VM to dom0 (and the other way around). (For example, so that a VM can notify dom0 that there are updates available for it). By default, Qubes allows VMs to initiate such communications in specific circumstances. The qrexec framework generalizes this process by providing a remote procedure call (RPC) for the Qubes architecture. It allows users and developers to use and design secure inter-VM tools.</p>
+<section id="qrexec-basics-architecture-and-examples">
+<h2>Qrexec basics: architecture and examples<a class="headerlink" href="#qrexec-basics-architecture-and-examples" title="Link to this heading"></a></h2>
+<p>Qrexec is built on top of <em>vchan</em>, a Xen library providing data links between VMs. During domain startup, a process named <code class="docutils literal notranslate"><span class="pre">qrexec-daemon</span></code> is started in dom0, and a process named <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code> is started in the VM. They are connected over a <strong>vchan</strong> channel. <code class="docutils literal notranslate"><span class="pre">qrexec-daemon</span></code> listens for connections from a dom0 utility named <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code>. Let’s say we want to start a process (call it <code class="docutils literal notranslate"><span class="pre">VMprocess</span></code>) in a VM (<code class="docutils literal notranslate"><span class="pre">someVM</span></code>). Typically, the first thing that a <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> instance does is to send a request to the <code class="docutils literal notranslate"><span class="pre">qrexec-daemon</span></code>, which in turn relays it to <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code> running in <code class="docutils literal notranslate"><span class="pre">someVM</span></code>. <code class="docutils literal notranslate"><span class="pre">qrexec-daemon</span></code> assigns unique vchan connection details and sends them to both <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> (in dom0) and <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code> (in <code class="docutils literal notranslate"><span class="pre">someVM</span></code>). <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> starts a vchan server, which <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code> then connects to. Once this channel is established, stdin/stdout/stderr from the VMprocess is passed between <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code> and the <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> process.</p>
+<figure class="align-default">
+<img alt="qrexec basics diagram" src="../../_images/qrexec3-basics.png" />
+</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> command is used to make connections to VMs from dom0. For example, the following command creates an empty file called <code class="docutils literal notranslate"><span class="pre">hello-world.txt</span></code> in the home folder of <code class="docutils literal notranslate"><span class="pre">someVM</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client<span class="w"> </span>-e<span class="w"> </span>-d<span class="w"> </span>someVM<span class="w"> </span>user:<span class="s1">&#39;touch hello-world.txt&#39;</span>
+</pre></div>
+</div>
+<p>The string before the colon specifies which user will run the command. The <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag tells <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> to exit immediately after sending the execution request and receiving a status code from <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code> (if the process creation succeeded). With this option, no further data is passed between the domains. The following command demonstrates an open channel between dom0 and someVM (in this case, a remote shell):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client<span class="w"> </span>-d<span class="w"> </span>someVM<span class="w"> </span>user:bash
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code> command is heavily based on <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code>. It also handles additional activities, e.g. starting the domain if the domain is not up yet and starting the GUI daemon. It is usually more convenient to use <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code>.</p>
+<p>There can be an almost arbitrary number of <code class="docutils literal notranslate"><span class="pre">qrexec-client</span></code> processes for a given domain. The limiting factor is the number of available vchan channels, which depends on the underlying hypervisor, as well the domain’s OS.</p>
+<p>For more details on the qrexec framework and protocol, see “<a class="reference internal" href="qrexec-internals.html"><span class="doc">Qubes RPC internals</span></a>.”</p>
+</section>
+<section id="qubes-rpc-services">
+<h2>Qubes RPC services<a class="headerlink" href="#qubes-rpc-services" title="Link to this heading"></a></h2>
+<p>Some common tasks (like copying files between VMs) have an RPC-like structure: a process in one VM (say, the file sender) needs to invoke and send/receive data to some process in other VM (say, the file receiver). The Qubes RPC framework was created to securely facilitate a range of such actions.</p>
+<p>Inter-VM communication must be tightly controlled to prevent one VM from taking control of another, possibly more privileged, VM. The design decision was made to pass all control communication via dom0 which can enforce proper authorization. It is therefore natural to reuse the already-existing qrexec framework.</p>
+<p>Note that bare qrexec provides <code class="docutils literal notranslate"><span class="pre">VM</span> <span class="pre">&lt;-&gt;</span> <span class="pre">dom0</span></code> connectivity, but the command execution is always initiated by dom0. There are cases when a VM needs to invoke and send data to a command in dom0 (e.g. to pass information on newly installed <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> files). This framework allows dom0 to be the RPC target as well.</p>
+<p>Thanks to the framework, RPC programs are very simple – both RPC client and server just use their stdin/stdout to pass data. The framework does all the inner work to connect the processes to eachother via <code class="docutils literal notranslate"><span class="pre">qrexec-daemon</span></code> and <code class="docutils literal notranslate"><span class="pre">qrexec-agent</span></code>. Disposable VMs are tightly integrated – RPC to a DisposableVM is identical to RPC to an AppVM or StandaloneVM: all one needs is to pass <code class="docutils literal notranslate"><span class="pre">&#64;dispvm</span></code> as the remote domain name.</p>
+</section>
+<section id="qubes-rpc-administration">
+<h2>Qubes RPC administration<a class="headerlink" href="#qubes-rpc-administration" title="Link to this heading"></a></h2>
+<section id="policy-files">
+<h3>Policy files<a class="headerlink" href="#policy-files" title="Link to this heading"></a></h3>
+<div class="line-block">
+<div class="line">The dom0 directories <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/</span></code> and <code class="docutils literal notranslate"><span class="pre">/run/qubes/policy.d/</span></code> contain files that set policy for each available RPC action that a VM might call. For example, <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/90-default.policy</span></code> contains the default policy settings.</div>
+<div class="line">When making changes to existing policies it is recommended that you create a <em>new</em> policy file starting with a lower number, like <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-user.policy</span></code>.</div>
+<div class="line">You may keep your custom policies in one file like <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-user.policy</span></code>, or you may choose to have multiple files, like <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/10-copy.policy</span></code>, <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/10-open.policy</span></code>.</div>
+<div class="line">Together the contents of these files make up the RPC access policy database: the files are merged, with policies in lower number files overriding policies in higher numbered files. If there are entries in both <code class="docutils literal notranslate"><span class="pre">/run/qubes/policy.d/</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/</span></code> with the same name, it isn’t specified which takes precedence, so you should avoid this situation.</div>
+</div>
+<p>Policies are defined in lines with the following format:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>service-name|* +argument|* source destination action  [options]
+</pre></div>
+</div>
+<p>You can specify the source and destination by name or by one of the reserved keywords such as <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;dispvm</span></code>, or <code class="docutils literal notranslate"><span class="pre">dom0</span></code>. (Of these three, only <code class="docutils literal notranslate"><span class="pre">*</span></code> keyword makes sense in the source field. Service calls from dom0 are currently always allowed, and <code class="docutils literal notranslate"><span class="pre">&#64;dispvm</span></code> means “new VM created for this particular request,” so it is never a source of request.) Other methods using <em>tags</em> and <em>types</em> are also available (and discussed below).</p>
+<p>Whenever a RPC request for an action is received, the domain checks the first matching line of the files in <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/</span></code> and <code class="docutils literal notranslate"><span class="pre">/run/qubes/policy.d/</span></code> to determine access: whether to allow the request, what VM to redirect the execution to, and what user account the program should run under. Note that if the request is redirected (<code class="docutils literal notranslate"><span class="pre">target=</span></code> parameter), policy action remains the same – even if there is another rule which would otherwise deny such request. If no policy rule is matched, the action is denied.</p>
+<p>Files in <code class="docutils literal notranslate"><span class="pre">/run/qubes/policy.d/</span></code> are deleted when the system is rebooted. This is useful for temporary policy that contains the name or UUID of a disposable VM, which will not be meaningful after the system has rebooted. Such policy files can be created manually, but they are usually created automatically by a qrexec call to dom0.</p>
+</section>
+<section id="making-an-rpc-call">
+<h3>Making an RPC call<a class="headerlink" href="#making-an-rpc-call" title="Link to this heading"></a></h3>
+<p>From outside of dom0, RPC calls take the following form:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client-vm<span class="w"> </span>target_vm_name<span class="w"> </span>RPC_ACTION_NAME<span class="w"> </span>rpc_client_path<span class="w"> </span>client<span class="w"> </span>arguments
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client-vm<span class="w"> </span>work<span class="w"> </span>qubes.StartApp+firefox
+</pre></div>
+</div>
+<p>Note that only stdin/stdout is passed between RPC server and client – notably, no command line arguments are passed. By default, stderr of client and server is logged in the syslog/journald of the VM where the process is running.</p>
+<p>It is also possible to call service without specific client program – in which case server stdin/out will be connected with the terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client-vm<span class="w"> </span>target_vm_name<span class="w"> </span>RPC_ACTION_NAME
+</pre></div>
+</div>
+</section>
+<section id="answering-an-rpc-call">
+<h3>Answering an RPC call<a class="headerlink" href="#answering-an-rpc-call" title="Link to this heading"></a></h3>
+<p>In order for a RPC call to be answered in the target VM, a file in either of the following locations must exist, containing the file name of the program that will be invoked, or being that program itself – in which case it must have executable permission set (<code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/RPC_ACTION_NAME</span></code> when you make it in the template qube;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/usr/local/etc/qubes-rpc/RPC_ACTION_NAME</span></code> for making it only in an app qube.</p></li>
+</ul>
+<p>The source VM name can then be accessed in the server process via <code class="docutils literal notranslate"><span class="pre">QREXEC_REMOTE_DOMAIN</span></code> environment variable. (Note the source VM has <em>no</em> control over the name provided in this variable–the name of the VM is provided by dom0, and so is trusted.)</p>
+</section>
+<section id="specifying-vms-tags-types-targets-etc">
+<h3>Specifying VMs: tags, types, targets, etc.<a class="headerlink" href="#specifying-vms-tags-types-targets-etc" title="Link to this heading"></a></h3>
+<p>There are severals methods for specifying source/target VMs in RPC policies.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;tag:some-tag</span></code> - meaning a VM with tag <code class="docutils literal notranslate"><span class="pre">some-tag</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;type:type</span></code> - meaning a VM of <code class="docutils literal notranslate"><span class="pre">type</span></code> (like <code class="docutils literal notranslate"><span class="pre">AppVM</span></code>, <code class="docutils literal notranslate"><span class="pre">TemplateVM</span></code> etc)</p></li>
+</ul>
+<p>Target VM can be also specified as <code class="docutils literal notranslate"><span class="pre">&#64;default</span></code>, which matches the case when calling VM didn’t specified any particular target (either by using <code class="docutils literal notranslate"><span class="pre">&#64;default</span></code> target, or empty target). For DisposableVMs, <code class="docutils literal notranslate"><span class="pre">&#64;dispvm:DISP_VM</span></code> is very similar to <code class="docutils literal notranslate"><span class="pre">&#64;dispvm</span></code> but forces using a particular VM (<code class="docutils literal notranslate"><span class="pre">DISP_VM</span></code>) as a base VM to be started as DisposableVM. For example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* * anon-whonix @dispvm:anon-whonix-dvm allow
+</pre></div>
+</div>
+<p>Adding such policy itself will not force usage of this particular <code class="docutils literal notranslate"><span class="pre">DISP_VM</span></code> - it will only allow it when specified by the caller. But <code class="docutils literal notranslate"><span class="pre">&#64;dispvm:DISP_VM</span></code> can also be used as target in request redirection, so <em>it is possible</em> to force particular <code class="docutils literal notranslate"><span class="pre">DISP_VM</span></code> usage, when caller didn’t specify it:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* * anon-whonix @dispvm allow target=@dispvm:anon-whonix-dvm
+</pre></div>
+</div>
+<p>Note that without redirection, this rule would allow using default Disposable VM (<code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> VM property, which itself defaults to global <code class="docutils literal notranslate"><span class="pre">default_dispvm</span></code> property). Also note that the request will be allowed (<code class="docutils literal notranslate"><span class="pre">allow</span></code> action) even if there is no second rule allowing calls to <code class="docutils literal notranslate"><span class="pre">&#64;dispvm:anon-whonix-dvm</span></code>, or even if there is a rule explicitly denying it. This is because the redirection happens <em>after</em> considering the action.</p>
+<p>The policy confirmation dialog (<code class="docutils literal notranslate"><span class="pre">ask</span></code> action) allows the user to specify target VM. User can choose from VMs that, according to policy, would lead to <code class="docutils literal notranslate"><span class="pre">ask</span></code> or <code class="docutils literal notranslate"><span class="pre">allow</span></code> actions. It is not possible to select VM that policy would deny. By default no VM is selected, even if the caller provided some, but policy can specify default value using <code class="docutils literal notranslate"><span class="pre">default_target=</span></code> parameter. For example:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>* * work-mail work-archive allow
+* * work-mail @tag:work ask default_target=work-files
+* * work-mail @default  ask default_target=work-files
+</pre></div>
+</div>
+<p>The first rule allows calls from <code class="docutils literal notranslate"><span class="pre">work-mail</span></code> to <code class="docutils literal notranslate"><span class="pre">work-archive</span></code>, without any confirmation. The second rule will ask the user about calls from <code class="docutils literal notranslate"><span class="pre">work-mail</span></code> VM to any VM with tag <code class="docutils literal notranslate"><span class="pre">work</span></code>. And the confirmation dialog will have <code class="docutils literal notranslate"><span class="pre">work-files</span></code> VM chosen by default, regardless of the VM specified by the caller (<code class="docutils literal notranslate"><span class="pre">work-mail</span></code> VM). The third rule allows the caller to not specify target VM at all and let the user choose, still - from VMs with tag <code class="docutils literal notranslate"><span class="pre">work</span></code> (and <code class="docutils literal notranslate"><span class="pre">work-archive</span></code>, regardless of tag), and with <code class="docutils literal notranslate"><span class="pre">work-files</span></code> as default.</p>
+</section>
+<section id="rpc-services-and-security">
+<h3>RPC services and security<a class="headerlink" href="#rpc-services-and-security" title="Link to this heading"></a></h3>
+<p>Be very careful when coding and adding a new RPC service. Unless the offered functionality equals full control over the target (it is the case with e.g. <code class="docutils literal notranslate"><span class="pre">qubes.VMShell</span></code> action), any vulnerability in an RPC server can be fatal to Qubes security. On the other hand, this mechanism allows to delegate processing of untrusted input to less privileged (or disposable) AppVMs, thus wise usage of it increases security.</p>
+<p>For example, this command will run the <code class="docutils literal notranslate"><span class="pre">firefox</span></code> command in a DisposableVM based on <code class="docutils literal notranslate"><span class="pre">work</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>--dispvm<span class="o">=</span>work<span class="w"> </span>firefox
+</pre></div>
+</div>
+<p>By contrast, consider this command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>--dispvm<span class="o">=</span>work<span class="w"> </span>--service<span class="w"> </span>qubes.StartApp+firefox
+</pre></div>
+</div>
+<p>This will look for a <code class="docutils literal notranslate"><span class="pre">firefox.desktop</span></code> file in a standard location in a DisposableVM based on <code class="docutils literal notranslate"><span class="pre">work</span></code>, then launch the application described by that file. The practical difference is that the bare <code class="docutils literal notranslate"><span class="pre">qvm-run</span></code> command uses the <code class="docutils literal notranslate"><span class="pre">qubes.VMShell</span></code> service, which allows you to run an arbitrary command with arbitrary arguments, essentially providing full control over the target VM. By contrast, the <code class="docutils literal notranslate"><span class="pre">qubes.StartApp</span></code> service allows you to run only applications that are advertised in <code class="docutils literal notranslate"><span class="pre">/usr/share/applications</span></code> (or other standard locations) <em>without</em> control over the arguments, so giving a VM access to <code class="docutils literal notranslate"><span class="pre">qubes.StartApp</span></code> is much safer. While there isn’t much practical difference between the two commands above when starting an application from dom0 in Qubes 4.0, there is a significant security risk when launching applications from a domU (e.g., from a separate GUI domain). This is why <code class="docutils literal notranslate"><span class="pre">qubes.StartApp</span></code> uses our standard <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> argument grammar to strictly filter the permissible grammar of the <code class="docutils literal notranslate"><span class="pre">Exec=</span></code> lines in <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> files that are passed from untrusted domUs to dom0, thereby protecting dom0 from command injection by maliciously-crafted <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> files.</p>
+</section>
+<section id="service-policies-with-arguments">
+<h3>Service policies with arguments<a class="headerlink" href="#service-policies-with-arguments" title="Link to this heading"></a></h3>
+<p>Sometimes a service name alone isn’t enough to make reasonable qrexec policy. One example of such a situation is <a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html"><span class="doc">qrexec-based USB passthrough</span></a>. Using just a service name would make it difficult to express the policy “allow access to devices X and Y, but deny to all others.” It isn’t feasible to create a separate service for every device: we would need to change the code in multiple files any time we wanted to update the service.</p>
+<p>For this reason it is possible to specify a service argument, which will be subject to a policy. A service argument can make service policies more fine-grained. With arguments, it is easier to write more precise policies using the “allow” and “deny” actions, instead of relying on the “ask” method. (Writing too many “ask” policies offloads additional decisions to the user. Generally, the fewer choices the user must make, the lower the chance to make a mistake.)</p>
+<p>The argument is specified in the second column of the policy line, as +ARGUMENT. If the policy uses “*” as an argument, then it will match any argument (including no argument). As rules are processed in order, any lines with a specific argument below the line with the wildcard argument will be ignored. So for instance, we might have policies which are different depending on the argument:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Device +device1 * * allow
+Device +device2 * * deny
+Device *        * * ask
+</pre></div>
+</div>
+<p>When calling a service that takes an argument, just add the argument to the service name separated with <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client-vm<span class="w"> </span>target_vm_name<span class="w"> </span>RPC_ACTION_NAME+ARGUMENT
+</pre></div>
+</div>
+<p>The script will receive <code class="docutils literal notranslate"><span class="pre">ARGUMENT</span></code> as its argument. The argument will also become available as the <code class="docutils literal notranslate"><span class="pre">QREXEC_SERVICE_ARGUMENT</span></code> environment variable. This means it is possible to install a different script for a particular service argument.</p>
+<p>See <a class="reference internal" href="#rpc-service-with-argument-file-reader"><span class="std std-ref">RPC service with argument (file reader)</span></a> for an example of an RPC service using an argument.</p>
+</section>
+</section>
+<section id="qubes-rpc-examples">
+<h2>Qubes RPC examples<a class="headerlink" href="#qubes-rpc-examples" title="Link to this heading"></a></h2>
+<p>To demonstrate some of the possibilities afforded by the qrexec framework, here are two examples of custom RPC services.</p>
+<section id="simple-rpc-service-addition">
+<h3>Simple RPC service (addition)<a class="headerlink" href="#simple-rpc-service-addition" title="Link to this heading"></a></h3>
+<p>We can create an RPC service that adds two integers in a target domain (the server, call it “anotherVM”) and returns back the result to the invoker (the client, “someVM”). In someVM, create a file with the following contents and save it with the path <code class="docutils literal notranslate"><span class="pre">/usr/bin/our_test_add_client</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="nv">$2</span><span class="w">             </span><span class="c1"># pass data to RPC server</span>
+<span class="nb">exec</span><span class="w"> </span>cat<span class="w"> </span>&gt;<span class="p">&amp;</span><span class="nv">$SAVED_FD_1</span><span class="w"> </span><span class="c1"># print result to the original stdout, not to the other RPC endpoint</span>
+</pre></div>
+</div>
+<p>Our server will be anotherVM at <code class="docutils literal notranslate"><span class="pre">/usr/bin/our_test_add_server</span></code>. The code for this file is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="nb">read</span><span class="w"> </span>arg1<span class="w"> </span>arg2<span class="w">        </span><span class="c1"># read from stdin, which is received from the RPC client</span>
+<span class="nb">echo</span><span class="w"> </span><span class="k">$((</span><span class="nv">$arg1</span><span class="o">+</span><span class="nv">$arg2</span><span class="k">))</span><span class="w"> </span><span class="c1"># print to stdout, which is passed to the RPC client</span>
+</pre></div>
+</div>
+<p>We’ll need to create a service called <code class="docutils literal notranslate"><span class="pre">test.Add</span></code> with its own definition and policy file in dom0. Now we need to define what the service does. In this case, it should call our addition script. We define the service with a symlink at <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/test.Add</span></code> pointing to our server script (the script can be also placed directly in <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/test.Add</span></code> - make sure the file has executable bit set!):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>/usr/bin/our_test_add_server<span class="w"> </span>/etc/qubes-rpc/test.Add
+</pre></div>
+</div>
+<p>The administrative domain will direct traffic based on the current RPC policies. In dom0, create a file at <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-test.policy</span></code> containing the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>test.Add * * * ask
+</pre></div>
+</div>
+<p>This will allow our client and server to communicate.</p>
+<p>Before we make the call, ensure that the client and server scripts have executable permissions. Finally, invoke the RPC service.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qrexec-client-vm<span class="w"> </span>anotherVM<span class="w"> </span>test.Add<span class="w"> </span>/usr/bin/our_test_add_client<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span>
+</pre></div>
+</div>
+<p>We should get “3” as answer. (dom0 will ask for confirmation first.)</p>
+<p><strong>Note:</strong> For a real world example of writing a qrexec service, see this <a class="reference external" href="https://blog.invisiblethings.org/2013/02/21/converting-untrusted-pdfs-into-trusted.html">blog post</a>.</p>
+</section>
+<section id="rpc-service-with-argument-file-reader">
+<h3>RPC service with argument (file reader)<a class="headerlink" href="#rpc-service-with-argument-file-reader" title="Link to this heading"></a></h3>
+<p>Here we create an RPC call that reads a specific file from a predefined directory on the target. This example uses an <a class="reference internal" href="#service-policies-with-arguments"><span class="std std-ref">argument</span></a> to the policy. In this example a simplified workflow will be used. The service code is placed directly in the service definition file on the target VM. No separate client script will be needed.</p>
+<p>First, on your target VM, create two files in the home directory: <code class="docutils literal notranslate"><span class="pre">testfile1</span></code> and <code class="docutils literal notranslate"><span class="pre">testfile2</span></code>. Have them contain two different “Hello world!” lines.</p>
+<p>Next, we define the RPC service. On the target VM, place the code below at <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/test.File</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="nv">argument</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># service argument, also available as $QREXEC_SERVICE_ARGUMENT</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$argument</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: No argument given!&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+cat<span class="w"> </span><span class="s2">&quot;/home/user/</span><span class="nv">$argument</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Make sure the file is executable! (The service argument is already sanitized by qrexec framework. It is guaranteed to not contain any spaces or slashes, so there should be no need for additional path sanitization.)</p>
+<p>Now we create the policy file in dom0, at <code class="docutils literal notranslate"><span class="pre">/etc/qubes/policy.d/30-test.policy</span></code>. The contents of the file are below. Replace “source_vm1” and others with the names of your own chosen domains.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>test.File +testfile1 source_vm1 target_vm allow
+test.File +testfile2 source_vm2 target_vm allow
+test.File *          *          *         deny
+</pre></div>
+</div>
+<p>With this done, we can run some tests. Invoke RPC from <code class="docutils literal notranslate"><span class="pre">source_vm1</span></code> via</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@source_vm1] $ </span>qrexec-client-vm<span class="w"> </span>target_vm<span class="w"> </span>test.File+testfile1
+</pre></div>
+</div>
+<p>We should get the contents of <code class="docutils literal notranslate"><span class="pre">/home/user/testfile1</span></code> printed to the terminal. Invoking the service from <code class="docutils literal notranslate"><span class="pre">source_vm2</span></code> should result in a denial, but <code class="docutils literal notranslate"><span class="pre">testfile2</span></code> should work.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@source_vm2] $ </span>qrexec-client-vm<span class="w"> </span>target_vm<span class="w"> </span>test.File+testfile1
+<span class="go">Request refused</span>
+<span class="gp">[user@source_vm2] $ </span>qrexec-client-vm<span class="w"> </span>target_vm<span class="w"> </span>test.File+testfile2
+</pre></div>
+</div>
+<p>And when invoked with other arguments or from a different VM, it should also be denied.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="dom0-secure-updates.html" class="btn btn-neutral float-left" title="Dom0 secure updates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="qrexec2.html" class="btn btn-neutral float-right" title="Qrexec v2 (deprecated)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/services/qrexec.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
