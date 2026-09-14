@@ -8,21 +8,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-14 14:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/general/developing-gui-applications.rst:3
-#: 385d5f5b96e340eca5461c3bf4a381fa
+#: 15e00e92143041938d57e9485f76594f
 msgid "Developing Qubes OS GUI tools"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:6
-#: 97bd67f9b6084307aeee245f09bbc52f
+#: efff555cc943480a8b14006a577e746a
 msgid ""
 "In order to avoid installing Qubes OS frontend tools you are working on in "
 "your own ``dom0`` or just to test them with less problems, you can use the "
@@ -30,19 +31,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:9
-#: f67b1ebd03ed40d698eff369d28aa7cd
+#: 643bf8cdbd0248528f035def5669779d
 msgid "Running programs using mock Qubes object"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:12
-#: 939a5ee762b346be8fd7fd132ea7d395
+#: 2976603b61134aeba0b6bfeb93baa0f9
 msgid ""
 "Where you would normally provide the Qubes object, use the ``qubesadmin."
 "tests.mock_app`` package and one of the mock Qubes objects from it."
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:14
-#: 30a99a8e759c411a812a0e841c613e3e
+#: 46f0f9e9c4934a9f9468707bafd325b6
 msgid ""
 "For example, the following code can be used to run the ``qui-domains`` tool "
 "using the mock Qubes object (this code would replace the initial part of the "
@@ -50,31 +51,31 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:33
-#: bf66a1c57ed64598acbdca5a9ef6f682
+#: d023746f9cd24386af19dc5432a0df8d
 msgid ""
 "To run a mocked program without installing it in a qube, remember to extend "
 "PYTHONPATH appropriately, for example:"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:40
-#: b102610798d84fbc9763916bb79af524
+#: 121676f7c5f04c10b30688c9a1505cc1
 msgid "The mock object does not provide events (yet)."
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:42
-#: f268f2faf6a740d7a375bdb1a187f7ba
+#: f88b8cb4682c454fba1cfc0f70136de1
 msgid ""
 "**Note:** in order to see all qubes-relevant icons (like VM icons), install "
 "the ``qubes-artwork`` package."
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:45
-#: 89634d27f1af477f9b3436b806efc121
+#: df602d396448442aa5a47d7373babce5
 msgid "How does it actually work"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:48
-#: e52ee5b44782465aab47f4d87fd1618a
+#: 05905434239a47c085a81c502c33ffd2
 msgid ""
 "The mock Qubes object has a collection of expected Qubes RPC calls and the "
 "responses that a real system would provide. Writing these calls manually is "
@@ -84,68 +85,68 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:50
-#: 3bb2dd61ae5f41b783f4c6807e97ebc4
+#: b56943bfab794591a281b454eb1b6962
 msgid ""
 "If you need more calls, you can add them to the mock object using the "
 "following syntax (the following example adds listing available vm kernels):"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:58
-#: 3911d9940f964a959c68cfca9dea3204
+#: af76b0a6a6ff432aa493caf1ccb22a7f
 msgid ""
 "If error should be thrown, you need to provide the error code and name, for "
 "example:"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:66
-#: 0b9c080cdc224f5aa3b1f746e53ba20b
+#: cbd7042fb83a400aaab60a58a2ab65eb
 msgid ""
 "For details of particular calls, you can use :ref:`developer/general/"
 "developing-gui-applications:extending the mock qubes object`."
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:69
-#: e1b0bf1a5d844adabd890b1155a6b6d0
+#: e479499b686f40849f1905af2b7dc365
 msgid "Available mocks"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:72
-#: 9670a79a5a314a909cdf39a281c0fa6c
+#: feb9b84fe6d04ad4929c49f235012a12
 msgid "Three mocks are available in the ``mock_app`` file:"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:74
-#: c2908427c2924b74a4065f08f86e149e
+#: 475adb088c024a3c9d8b44369d23d5ab
 msgid ""
 "MockQubes, an extremely bare-bones Qubes testing instance, with just dom0, "
 "sys-net, and one template (fedora-36)."
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:76
-#: 4427c95c920b40a69fed8e0889488082
+#: 7616068d6b1e460595f7f8c3539f0569
 msgid ""
 "MockQubesComplete, a more complex setup |Qubes Manager running "
 "MockQubesComplete|"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:115
-#: f0b283e3811d4cdcbbfcacfd21043785
+#: 69034aa858584d95b2a3f5f5e44b1d26
 msgid "Qubes Manager running MockQubesComplete"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:78
-#: 034d877b03b74b6c9ede074a24a58fb1
+#: a72b2a619d2b458d99fb1cd961a938a0
 msgid ""
 "MockQubesWhonix, the setup above extended with several Whonix-related qubes"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:83
-#: 4ffd3b831b50404b9e2d02f0af31a67c
+#: a38d4fea9cb84c05b2d82452f257a048
 msgid "Extending the mock Qubes object"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:86
-#: 40d75049ffb640dfa9855e37533dd4b8
+#: c33c466076e0440baa5023e54a3010fe
 msgid ""
 "To collect information to modify this script, you can use the wrapper "
 "function to wrap and output all qubesd calls used by a program running on a "
@@ -153,12 +154,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:97
-#: e34f8f17718848cfbe0a8ffffa0ddb91
+#: 4f0529a50d3846d099b28cb1089a251b
 msgid "Writing tests"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:100
-#: d0b25310a5994d24af7f2072629952bb
+#: 072aa5cbbd6f470d9863a1ed93b07398
 msgid ""
 "The same mock Qubes can also be used to write tests. You can use the "
 "wrappers above to check which calls are made when certain actions are "
@@ -166,14 +167,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:111
-#: ed90c713b8244bbf861b075582f49d49
+#: 98284183421044cf96e45e48b12c3253
 msgid ""
 "If the call is made correctly, the test will continue successfully; if an "
 "unexpected call is made, the test will fail."
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:113
-#: 5218db99d9fe4f1b9581aca353a78a72
+#: 516e765fb7ed422e99a259f809d0f570
 msgid ""
 "Caution: the mock Qubes object does not react to changes like a normal Qubes "
 "object does. Further queries to the test object will continue to return "
@@ -181,12 +182,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:119
-#: fb10b789edc14be0b2db312e34d1510a
+#: 063634ce195940d1a42cdc97158affeb
 msgid "More information"
 msgstr ""
 
 #: ../../../developer/general/developing-gui-applications.rst:121
-#: 631b3bb2c3b94275bfdd61da772b7f89
+#: 56ec9ef3eeb4450a9501ce4c6f7eb0b0
 msgid ""
 "For more insight into developing GUI tools for Qubes and some UX tips and "
 "tricks, you can watch marmarta's talk from the Qubes OS Summit `Design for "
