@@ -1,0 +1,1607 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="reStructuredText documentation style guide" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/general/rst-documentation-style-guide.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Also see How to edit the documentation. This page explains the standards we follow for writing, formatting, and organizing the documentation. Please follow these guidelines and conventions when edi..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Also see How to edit the documentation. This page explains the standards we follow for writing, formatting, and organizing the documentation. Please follow these guidelines and conventions when edi..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>reStructuredText documentation style guide &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/general/rst-documentation-style-guide.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="How to edit the website" href="how-to-edit-the-website.html" />
+    <link rel="prev" title="How to edit the documentation" href="how-to-edit-the-rst-documentation.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">reStructuredText documentation style guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#restructuredtext-conventions">reStructuredText conventions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#directives">Directives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#images">Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lists">Lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-blocks">Code blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tables">Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#admonitions-messages-and-warnings">Admonitions, messages, and warnings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#roles">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-referencing">Cross-referencing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cross-referencing-a-page">Cross-referencing a page</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-referencing-a-section-with-a-header">Cross-referencing a section with a header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-referencing-a-custom-label">Cross-referencing a custom label</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-the-text-content-of-a-link">Customizing the text content of a link</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-cross-referencing">External cross-referencing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-referencing-code">Cross-referencing code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hyperlink-to-other-websites-syntax">Hyperlink to other websites syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#html-and-css">HTML and CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headings">Headings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-decorations">Text decorations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paragraph">Paragraph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indentation">Indentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line-wrapping">Line wrapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-guidelines">Writing guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#correct-use-of-terminology">Correct use of terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sentence-case-in-headings">Sentence case in headings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-command-line-examples">Writing command-line examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-names-in-commands">Variable names in commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capitalization-of-qube">Capitalization of &quot;qube&quot;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#english-language-conventions">English language conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#organizational-guidelines">Organizational guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#do-not-duplicate-documentation">Do not duplicate documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-vs-external-documentation">Core vs. external documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-specific-documentation">Release-specific documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#git-conventions">Git conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cheatsheet-markdown-vs-restructuredtext">Cheatsheet: Markdown vs. reStructuredText</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cheatsheet-headings">Cheatsheet: Headings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cheatsheet-hyperlinks-and-cross-references">Cheatsheet: Hyperlinks and cross-references</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cheatsheet-text-decorations">Cheatsheet: Text Decorations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cheatsheet-lists">Cheatsheet: Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cheatsheet-tables">Cheatsheet: Tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cheatsheet-code-blocks">Cheatsheet: Code Blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alerts-and-warnings">Alerts and Warnings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-the-roles-used-in-documentation">List of the roles used in documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">reStructuredText documentation style guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/general/rst-documentation-style-guide.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="restructuredtext-documentation-style-guide">
+<h1>reStructuredText documentation style guide<a class="headerlink" href="#restructuredtext-documentation-style-guide" title="Link to this heading"></a></h1>
+<p><em>Also see</em> <a class="reference internal" href="how-to-edit-the-rst-documentation.html"><span class="doc">How to edit the documentation</span></a>.</p>
+<p>This page explains the standards we follow for writing, formatting, and organizing the documentation.
+Please follow these guidelines and conventions when editing the rST documentation.
+For the standards governing the website (as opposed to the rST documentation hosted on <a class="reference external" href="https://doc.qubes-os.org">https://doc.qubes-os.org</a>),
+please see the <a class="reference internal" href="website-style-guide.html"><span class="doc">Website style guide</span></a>.
+If you wish to submit a pull request regarding content hosted on the website, please refer to
+<a class="reference internal" href="how-to-edit-the-website.html"><span class="doc">How to edit the website</span></a>.</p>
+<section id="restructuredtext-conventions">
+<h2>reStructuredText conventions<a class="headerlink" href="#restructuredtext-conventions" title="Link to this heading"></a></h2>
+<p>All the documentation is written in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText (rST)</a>. When making contributions, please observe the following style conventions.
+If you’re not familiar with reStructuredText syntax, <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">the Sphinx primer</a>
+is a great resource, as well as <a class="reference external" href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">this quick reStructuredText</a>.
+Please always be mindful that rST syntax is sensitive to indentation!</p>
+<section id="directives">
+<h3>Directives<a class="headerlink" href="#directives" title="Link to this heading"></a></h3>
+<p>A <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html">directive</a> is a generic block of explicit markup,
+provided by <a class="reference external" href="https://www.docutils.org/">Docutils</a> and extended by <a class="reference external" href="https://www.sphinx-doc.org/">Sphinx</a>.
+Directives are used to insert non-paragraph content, such as images, tables, and code blocks.
+Example directives are:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">image</span><span class="p">::</span>
+<span class="p">..</span> <span class="ow">code</span><span class="p">::</span>
+<span class="p">..</span> <span class="ow">figure</span><span class="p">::</span>
+</pre></div>
+</div>
+<p>Directives start with <code class="docutils literal notranslate"><span class="pre">..</span></code>, followed by directive name, arguments, options, and indented content.</p>
+<section id="images">
+<h4>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h4>
+<p>To include images (without a caption), use the <code class="docutils literal notranslate"><span class="pre">image</span></code> directive.
+You need to specify the path to the image and an alt text.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">image</span><span class="p">::</span> path/to/image.png
+   <span class="nc">:alt:</span> Alternative text
+   <span class="nc">:width:</span> 200px
+   <span class="nc">:align:</span> center
+</pre></div>
+</div>
+<p>Read The Docs and the HTML <a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/">sphinx-rtd-theme</a> in use
+have a responsive design, which allows the documentation to render appropriately across all screen sizes.</p>
+<p>Make sure to link only to images in the <code class="file docutils literal notranslate"><span class="pre">attachment/doc</span></code> folder of the <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> repository.
+<strong>Do not attempt to link to images hosted on other websites</strong>.</p>
+<p>See also <a class="reference internal" href="how-to-edit-the-rst-documentation.html#how-to-add-images"><span class="std std-ref">TL;DR: How to add images</span></a> for the further information and about using the <code class="docutils literal notranslate"><span class="pre">figure</span></code> directive.</p>
+</section>
+<section id="lists">
+<h4>Lists<a class="headerlink" href="#lists" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#lists-and-quote-like-blocks">Lists</a> can be bullet lists (*, +, -), enumerated lists (1., 2., etc.), definition lists, field lists.</p>
+<p>Nested lists must be separated from the parent list items by blank lines:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="m">-</span> Item 1
+<span class="m">-</span> Item 2
+
+  <span class="m">-</span> Subitem 2.1
+  <span class="m">-</span> Subitem 2.2
+
+<span class="m">-</span> Item 3
+</pre></div>
+</div>
+<p>Numbered lists can be autonumbered using the <code class="docutils literal notranslate"><span class="pre">#</span></code> sign.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="m">#.</span> Item 1
+<span class="m">#.</span> Item 2
+
+  <span class="m">#.</span> Subitem 2.1
+  <span class="m">#.</span> Subitem 2.2
+
+<span class="m">#.</span> Item 3
+</pre></div>
+</div>
+<p>Item 3 will start at 1.</p>
+</section>
+<section id="code-blocks">
+<h4>Code blocks<a class="headerlink" href="#code-blocks" title="Link to this heading"></a></h4>
+<p>When writing code blocks, use syntax highlighting within the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code">code</a>
+or <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-code-block">code-block</a>.</p>
+<p>By specifying the language, you enable pygments, which show syntax color coding for that code sample (see <a class="reference external" href="https://pygments.org/languages/">here</a> for a list of supported languages).</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> language
+
+   code
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">[...]</span></code> for anything omitted.</p>
+<p>For inlining small code snippets you can use the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-code">code role</a> as in</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:code:</span><span class="nv">`:term:`</span>qube<span class="s">``</span>
+</pre></div>
+</div>
+<p>You can add line numbers to code examples with the <code class="docutils literal notranslate"><span class="pre">:linenos:</span></code> parameter.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> python
+  <span class="nc">:linenos:</span>
+
+   def hello_world():
+     print(&quot;Hello, world!&quot;)
+</pre></div>
+</div>
+<p>You can have certain lines with the <code class="docutils literal notranslate"><span class="pre">:emphasize-lines:</span></code> parameter.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> python
+  <span class="nc">:emphasize-lines:</span> 1,3,4
+</pre></div>
+</div>
+<p>For Python use <code class="docutils literal notranslate"><span class="pre">python</span></code>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> python
+
+  string_var = &#39;python&#39;
+</pre></div>
+</div>
+<p>For Bash use <code class="docutils literal notranslate"><span class="pre">bash</span></code>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> bash
+
+   #!/bin/bash
+</pre></div>
+</div>
+<p>For a terminal session use <code class="docutils literal notranslate"><span class="pre">console</span></code>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> console
+
+   $ echo &quot;Hello&quot;
+</pre></div>
+</div>
+<p>For text output use <code class="docutils literal notranslate"><span class="pre">output</span></code>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> output
+
+   some output
+</pre></div>
+</div>
+<p>For text use <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> text
+
+   some text
+</pre></div>
+</div>
+</section>
+<section id="tables">
+<h4>Tables<a class="headerlink" href="#tables" title="Link to this heading"></a></h4>
+<p>We adhere to the list tables directive by docutils as described <a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/directives.html#list-table-1">here</a>.</p>
+<p>A simple example would be:</p>
+<blockquote>
+<div><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">list-table</span><span class="p">::</span>
+   <span class="nc">:widths:</span> 15 10
+   <span class="nc">:align:</span> center
+   <span class="nc">:header-rows:</span> 1
+
+   <span class="m">*</span> - Header 1
+     <span class="m">-</span> Header 2
+   <span class="m">*</span> - Cell 1
+     <span class="m">-</span> Cell 2
+   <span class="m">*</span> - Cell 3
+     <span class="m">-</span> Cell 4
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="admonitions-messages-and-warnings">
+<h4>Admonitions, messages, and warnings<a class="headerlink" href="#admonitions-messages-and-warnings" title="Link to this heading"></a></h4>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#admonitions-messages-and-warnings">Admonitions, messages, and warnings</a> are used to draw the reader’s attention to important information, such as warnings, and for stylistic purposes.
+They are typically styled as colored text boxes, usually accompanied by icons provided out of the box by Sphinx and rST.</p>
+<p><strong>Alerts should generally be used somewhat sparingly</strong>, so as not to cause <a class="reference external" href="https://en.wikipedia.org/wiki/Alarm_fatigue">alert fatigue</a>.</p>
+<p>Here are examples of several types of alerts:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">hint</span><span class="p">::</span>
+   If you would like to avoid prefixing commands with [...]
+
+<span class="p">..</span> <span class="ow">note</span><span class="p">::</span>
+  Using Rufus to create the installation medium means that you [...]
+
+<span class="p">..</span> <span class="ow">warning</span><span class="p">::</span>
+  Qubes OS is not meant to be installed inside a virtual machine as [...]
+
+<span class="p">..</span> <span class="ow">danger</span><span class="p">::</span>
+  Qubes has no control over what happens on your computer before [...]
+</pre></div>
+</div>
+<p>These render as:</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>If you would like to avoid prefixing commands with [...]</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Using Rufus to create the installation medium means that you [...]</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Qubes OS is not meant to be installed inside a virtual machine as [...]</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">危险</p>
+<p>Qubes has no control over what happens on your computer before [...]</p>
+</div>
+<p>You can also provide a <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-admonition">custom title to the admonition</a>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">admonition</span><span class="p">::</span> Did you know?
+
+   The Qubes OS installer is completely offline. It doesn&#39;t even load [...]
+</pre></div>
+</div>
+<p>Rendering as:</p>
+<div class="admonition-did-you-know admonition">
+<p class="admonition-title">Did you know?</p>
+<p>The Qubes OS installer is completely offline. It doesn't even load [...]</p>
+</div>
+</section>
+<section id="glossary">
+<h4>Glossary<a class="headerlink" href="#glossary" title="Link to this heading"></a></h4>
+<p>Most of the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#glossary">glossaries</a> are present in <code class="file docutils literal notranslate"><span class="pre">/user/reference/glossary.rst</span></code>, like:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">glossary</span><span class="p">::</span>
+
+   qube
+      A secure compartment in Qubes OS.
+</pre></div>
+</div>
+<p>Anywhere else in the documentation you can link to a term using the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-term">term role</a>: which automatically generates a hyperlink to the glossary entry. <code class="code docutils literal notranslate"><span class="pre">:term:`qube`</span></code> produces the following link: <a class="reference internal" href="../../user/reference/glossary.html#term-qube"><span class="xref std std-term">qube</span></a>.</p>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#customizing-text-link"><span class="std std-ref">Customizing the text content of a link</span></a></p>
+</div>
+</section>
+</section>
+<section id="roles">
+<span id="rst-roles"></span><h3>Roles<a class="headerlink" href="#roles" title="Link to this heading"></a></h3>
+<p>Sphinx uses interpreted text <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html">roles</a> to insert semantic markup into documents
+and thus enhance the readability and consistency of the documentation.</p>
+<p>Syntax is as follows:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:rolename:</span><span class="nv">`content`</span>
+</pre></div>
+</div>
+<p>In Qubes OS documentation the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-doc">doc</a> and
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-ref">ref</a> roles are used extensively
+as described in <a class="reference internal" href="#cross-referencing"><span class="std std-ref">Cross-referencing</span></a>.</p>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#list-roles-used-documentation"><span class="std std-ref">List of the roles used in documentation</span></a></p>
+</div>
+</section>
+<section id="cross-referencing">
+<span id="id1"></span><h3>Cross-referencing<a class="headerlink" href="#cross-referencing" title="Link to this heading"></a></h3>
+<p>You can reference other parts of the documentation such as:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cross-referencing-a-page"><span class="std std-ref">a whole page</span></a>, using <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-doc">doc role</a> and a path</p></li>
+<li><p><a class="reference internal" href="#cross-referencing-a-section-with-a-header"><span class="std std-ref">specific sections</span></a> such as headers, using <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-ref">ref</a> with a path and the header content</p></li>
+<li><p><a class="reference internal" href="#cross-referencing-a-custom-label"><span class="std std-ref">unique labels</span></a>, created for this purpose</p></li>
+<li><p><a class="reference internal" href="#glossary"><span class="std std-ref">glossary terms</span></a>, using <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-term">term</a></p></li>
+<li><p><a class="reference internal" href="#external-cross-referencing"><span class="std std-ref">external documentation</span></a> like <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/index.html" title="（在 core-admin v4.4.0）"><span class="xref std std-doc">core-admin's documentation</span></a></p></li>
+<li><p>a lot of <a class="reference internal" href="#cross-referencing-code"><span class="std std-ref">other items</span></a>: python objects, C constructs, program options</p></li>
+</ul>
+<section id="cross-referencing-a-page">
+<h4>Cross-referencing a page<a class="headerlink" href="#cross-referencing-a-page" title="Link to this heading"></a></h4>
+<p>To cross-reference a page, use the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-doc">doc role</a> with a path. To get a link to the file called <code class="file docutils literal notranslate"><span class="pre">intro.rst</span></code> in the <code class="file docutils literal notranslate"><span class="pre">introduction/</span></code> directory, use:</p>
+<blockquote>
+<div><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:doc:</span><span class="nv">`/introduction/intro`</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The path could be relative to the current document, or absolute. In that case, the path starts from the root of the <code class="docutils literal notranslate"><span class="pre">qubes-doc</span></code> repository, <strong>with a leading slash</strong> (<code class="docutils literal notranslate"><span class="pre">/</span></code>). You have to <strong>remove the file extension</strong> (<code class="docutils literal notranslate"><span class="pre">.rst</span></code>).</p>
+</section>
+<section id="cross-referencing-a-section-with-a-header">
+<h4>Cross-referencing a section with a header<a class="headerlink" href="#cross-referencing-a-section-with-a-header" title="Link to this heading"></a></h4>
+<p>To cross-reference a section with a header, use the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-ref">ref role</a> with a path and the reStructuredText content of the header, separated by a colon:</p>
+<blockquote>
+<div><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:ref:</span><span class="nv">`introduction/intro:What is Qubes OS?`</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Note that with the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-ref">ref role</a> the path starts <strong>without a leading slash</strong> (<code class="docutils literal notranslate"><span class="pre">/</span></code>). You might also encounter the normalized header content: in lowercase, with normalized spaces. This is another way to achieve the same result.</p>
+<p>You can get a list of the generated labels after building the documentation. If your build directory is <code class="file docutils literal notranslate"><span class="pre">_build/html</span></code>, run the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[~/qubes-doc] $ </span>python3<span class="w"> </span>-m<span class="w"> </span>sphinx.ext.intersphinx<span class="w"> </span>_build/html/objects.inv
+</pre></div>
+</div>
+<p>You can also run that command against the current online version of the docs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>sphinx.ext.intersphinx<span class="w"> </span>https://doc.qubes-os.org/en/latest/objects.inv
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Make sure to <strong>use the reStructuredText content</strong>, and not the built output.</p>
+<p>You can copy-paste headers from the HTML build but it might fail in some situations (i.e.: with quotation marks or any markup).</p>
+</div>
+</section>
+<section id="cross-referencing-a-custom-label">
+<h4>Cross-referencing a custom label<a class="headerlink" href="#cross-referencing-a-custom-label" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>No need to create a custom label if you don't reference it somewhere else</p>
+</div>
+<p>Frequently linked sections, especially when they have a long name can be referenced using a custom label.</p>
+<p>First, you have to create a custom label, <strong>only use lowercase alphanumeric characters and hyphens</strong>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_disposable-with-pci-devices:</span>
+
+<span class="gh">Named disposable for service qubes without PCI devices via GUI</span>
+<span class="gh">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+</pre></div>
+</div>
+<p>Now, to reference this label, use the custom label instead of the path and the header separated by a colon.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:ref:</span><span class="nv">`disposable-with-pci-devices`</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html#disposable-with-pci-devices"><span class="std std-ref">Named disposable for service qubes without PCI devices via GUI</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>You can create an arbitrary label anywhere, but make sure to reference it with an explicit title.</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>For further options and use cases please refer to <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html">Cross-references in the Sphinx project</a>.</p>
+</div>
+</section>
+<section id="customizing-the-text-content-of-a-link">
+<span id="customizing-text-link"></span><h4>Customizing the text content of a link<a class="headerlink" href="#customizing-the-text-content-of-a-link" title="Link to this heading"></a></h4>
+<p>Most cross-references can generate an automatic title. If it doesn't fit the sentence where it is placed, you can <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#xref-syntax">change the text content of the link</a> with the following markup. <strong>Avoid doing this if it only duplicates the automatic title.</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:ref:</span><span class="nv">`without PCI devices &lt;disposable-with-pci-devices&gt;`</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html#disposable-with-pci-devices"><span class="std std-ref">without PCI devices</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="external-cross-referencing">
+<h4>External cross-referencing<a class="headerlink" href="#external-cross-referencing" title="Link to this heading"></a></h4>
+<p>You can make a cross-reference to any of the projects of the external developer's documentation (hosted on <a class="reference external" href="https://dev.qubes-os.org/en/latest/">https://dev.qubes-os.org</a>):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/index.html" title="（在 core-admin v4.4.0）"><span class="xref std std-doc">core-admin</span></a></p></li>
+<li><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-admin-client/en/latest/index.html" title="（在 Qubes Admin client v4.4.0）"><span class="xref std std-doc">core-admin-client</span></a></p></li>
+<li><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-qrexec/en/stable/index.html" title="（在 qubes-core-qrexec v4.4.2）"><span class="xref std std-doc">core-qrexec</span></a></p></li>
+</ul>
+<p>To do such a cross-reference, use the usual cross-reference syntax but with the following prefix: <code class="samp docutils literal notranslate"><em><span class="pre">PROJECT_NAME</span></em><span class="pre">:</span></code> (replace <code class="samp docutils literal notranslate"><em><span class="pre">PROJECT_NAME</span></em></code> by the name of the project). As an example, if you want to link to the index of the core-admin documentation, use this:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:doc:</span><span class="nv">`core-admin:index`</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/index.html" title="（在 core-admin v4.4.0）"><span>Welcome to core-admin’s documentation!</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>This is equivalent to using <code class="docutils literal notranslate"><span class="pre">:doc:`index`</span></code> inside the core-admin documentation. This works with any role like <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-ref">ref</a>, <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-option">option</a>, etc. Write the role like you would normally do inside the target documentation, then prefix it with the name of the target (<code class="docutils literal notranslate"><span class="pre">core-admin</span></code> in the previous example). Something working as <code class="code docutils literal notranslate"><span class="pre">:ref:`some-title`</span></code> inside <code class="docutils literal notranslate"><span class="pre">core-admin</span></code>'s documentation will become <code class="samp docutils literal notranslate"><span class="pre">:ref:`core-admin:some-title`</span></code>. The only exception concerns the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-doc">doc role</a>: <strong>do not prepend the file path with a slash</strong> (<code class="docutils literal notranslate"><span class="pre">/</span></code>).</p>
+<p>Even if it works without it, <strong>always prefix the external cross-references</strong> with the name of the project, to help other contributors and maintainers figuring out what the target is while reading the reStructuredText source.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Intersphinx <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#showing-all-links-of-an-intersphinx-mapping-file">can list all the available links</a> to another project with the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m sphinx.ext.intersphinx https://dev.qubes-os.org/projects/core-admin/en/latest/objects.inv</span>
+</pre></div>
+</div>
+<p>You can replace <code class="docutils literal notranslate"><span class="pre">core-admin</span></code> by any of the projects listed above.</p>
+</div>
+</section>
+<section id="cross-referencing-code">
+<h4>Cross-referencing code<a class="headerlink" href="#cross-referencing-code" title="Link to this heading"></a></h4>
+<p>You can create a reference to <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/domains/python.html#python-xref-roles">any documented python objects</a> as well as <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-confval">configuration values</a>, <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-option">command-line options</a> or <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/domains/c.html#c-xref-roles">C language constructs</a>.</p>
+<p><strong>To link to the option</strong> called <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin-client/en/latest/manpages/qubes-prefs.html#cmdoption-qubes-prefs-help" title="（在 Qubes Admin client v4.4.0）"><code class="xref std std-option docutils literal notranslate"><span class="pre">--help</span></code></a> in <strong class="program">qvm-prefs</strong> described in core-admin-client documentation, use:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:option:</span><span class="nv">`core-admin-client:qubes-prefs --help`</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-admin-client/en/latest/manpages/qubes-prefs.html#cmdoption-qubes-prefs-help" title="（在 Qubes Admin client v4.4.0）"><code class="docutils literal notranslate"><span class="pre">qubes-prefs</span> <span class="pre">--help</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>To link to the python class</strong> <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM" title="（在 core-admin v4.4.0）"><code class="docutils literal notranslate"><span class="pre">qubes.vm.dispvm.DispVM</span></code></a> in the core-admin documentation use:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:py:class:</span><span class="nv">`core-admin:qubes.vm.dispvm.DispVM`</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM" title="（在 core-admin v4.4.0）"><code class="docutils literal notranslate"><span class="pre">qubes.vm.dispvm.DispVM</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Do not use a <a class="reference internal" href="#customizing-text-link"><span class="std std-ref">custom title</span></a> to shorten the link label. <strong>Use the tilde modifier</strong> (<code class="docutils literal notranslate"><span class="pre">~</span></code>) instead:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:py:class:</span><span class="nv">`~core-admin:qubes.vm.dispvm.DispVM`</span>
+</pre></div>
+</div>
+</td>
+<td><p><a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM" title="（在 core-admin v4.4.0）"><code class="xref py py-class docutils literal notranslate"><span class="pre">DispVM</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>If a cross-reference points to a missing reference</strong> (i.e.: reference to a removed component), prefix the reference with an exclamation mark (<code class="docutils literal notranslate"><span class="pre">!</span></code>). If the function <code class="xref py py-func docutils literal notranslate"><span class="pre">old_function()</span></code> has been removed but is still referenced, to discuss the old implementation use:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:py:func:</span><span class="nv">`!old_function`</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="hyperlink-to-other-websites-syntax">
+<h3>Hyperlink to other websites syntax<a class="headerlink" href="#hyperlink-to-other-websites-syntax" title="Link to this heading"></a></h3>
+<p>Use <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#external-links">embedded links</a> like</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">`website </span><span class="si">&lt;https://example.com/&gt;</span><span class="s">`__</span>
+</pre></div>
+</div>
+<p><strong>Do not use reference-style links</strong> like</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Some text link_
+
+ :: _link:: https://example.org
+</pre></div>
+</div>
+<p>This facilitates the localization process.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Always use <a class="reference internal" href="#cross-referencing"><span class="std std-ref">cross-references</span></a> rather than hyperlinks to link to the documentation (<code class="docutils literal notranslate"><span class="pre">doc.qubes-os.org</span></code> and <code class="docutils literal notranslate"><span class="pre">dev.qubes-os.org</span></code> domains), because using those hyperlinks breaks:</p>
+<ul class="simple">
+<li><p>Serving the documentation offline</p></li>
+<li><p>Documentation localization</p></li>
+<li><p>Generating offline documentation</p></li>
+</ul>
+</div>
+</section>
+<section id="html-and-css">
+<h3>HTML and CSS<a class="headerlink" href="#html-and-css" title="Link to this heading"></a></h3>
+<p><strong>Do not write HTML inside rST documents.</strong> In particular, never include HTML or CSS for styling, formatting, or white space control.
+That belongs to the Sphinx theme instead.</p>
+</section>
+<section id="headings">
+<h3>Headings<a class="headerlink" href="#headings" title="Link to this heading"></a></h3>
+<p>To create a section header use an underline filled with punctuation characters. The length of the underlining should be as long as the text of the header.</p>
+<p>Each punctuation character correspond to a header level. Qubes OS uses the convention in <a class="reference external" href="https://devguide.python.org/documentation/markup/#sections">Python Developer’s Guide for documenting</a> which are as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> with overline, for parts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> with overline, for chapters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> for sections, corresponding to the main title of a HTML page</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> for subsections</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> for subsubsections</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;</span></code> for paragraphs</p></li>
+</ul>
+<p>Although possible, using a level under the paragraph level should be avoided.</p>
+<p>Here is a simple example of a page with a title and three nested levels of heading:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">==========</span>
+<span class="gh">Main Title</span>
+<span class="gh">==========</span>
+
+<span class="gh">Subsection</span>
+<span class="gh">----------</span>
+
+<span class="gh">Sub-subsection</span>
+<span class="gh">^^^^^^^^^^^^^^</span>
+
+<span class="gh">Paragraph</span>
+<span class="gh">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="text-decorations">
+<h3>Text decorations<a class="headerlink" href="#text-decorations" title="Link to this heading"></a></h3>
+<p>Emphasis and Italics</p>
+<ul class="simple">
+<li><p><em>Italics</em>: Use single asterisks</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="ge">*italics*</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Bold</strong>: Use double asterisks.</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gs">**bold**</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Monospace</span></code>: Use backticks.</p></li>
+</ul>
+<blockquote>
+<div><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">``monospace``</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="paragraph">
+<h3>Paragraph<a class="headerlink" href="#paragraph" title="Link to this heading"></a></h3>
+<p>Paragraphs are plain texts where indentation matters. Separate paragraphs by leaving a blank line between them.</p>
+</section>
+<section id="indentation">
+<h3>Indentation<a class="headerlink" href="#indentation" title="Link to this heading"></a></h3>
+<p><strong>Use spaces instead of tabs.</strong> Use hanging indentations where appropriate.
+rST is an indentation sensitive markup language, similar to Python, please maintain consistent indentation (3 spaces) for readability.</p>
+</section>
+<section id="line-wrapping">
+<h3>Line wrapping<a class="headerlink" href="#line-wrapping" title="Link to this heading"></a></h3>
+<p><strong>Do not hard wrap text</strong>, except where necessary (e.g., inside code blocks).</p>
+</section>
+</section>
+<section id="writing-guidelines">
+<h2>Writing guidelines<a class="headerlink" href="#writing-guidelines" title="Link to this heading"></a></h2>
+<section id="correct-use-of-terminology">
+<h3>Correct use of terminology<a class="headerlink" href="#correct-use-of-terminology" title="Link to this heading"></a></h3>
+<p>Familiarize yourself with the terms defined in the <a class="reference internal" href="../../user/reference/glossary.html"><span class="doc">glossary</span></a>. Use these terms consistently and accurately throughout your writing.</p>
+</section>
+<section id="sentence-case-in-headings">
+<h3>Sentence case in headings<a class="headerlink" href="#sentence-case-in-headings" title="Link to this heading"></a></h3>
+<p><strong>Use sentence case</strong> (rather than title case) in headings for the reasons explained <a class="reference external" href="https://www.sallybagshaw.com.au/articles/sentence-case-v-title-case/">here</a>. In particular, since the authorship of the Qubes documentation is decentralized and widely distributed among users from around the world, many contributors come from regions with different conventions for implementing title case, not to mention that there are often differing style guide recommendations even within a single region. It is much easier for all of us to implement sentence case consistently across our growing body of pages, which is very important for managing the ongoing maintenance burden and sustainability of the documentation.</p>
+</section>
+<section id="writing-command-line-examples">
+<h3>Writing command-line examples<a class="headerlink" href="#writing-command-line-examples" title="Link to this heading"></a></h3>
+<p><strong>Tell the reader where to open a terminal</strong> (dom0 or a specific domU), and show the command along with its output (if any) in a code block, e.g.:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Open a terminal in dom0 and run:
+
+<span class="p">..</span> <span class="ow">code</span><span class="p">::</span> <span class="k">console</span>
+
+   <span class="gp">[user@dom0] $ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+   <span class="gp">[user@dom0 ~/test] $ </span><span class="nb">echo</span><span class="w"> </span>Hello
+   <span class="go">Hello</span>
+</pre></div>
+</div>
+</td>
+<td><p>Open a terminal in dom0 and run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0] $ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+<span class="gp">[user@dom0 ~/test] $ </span><span class="nb">echo</span><span class="w"> </span>Hello
+<span class="go">Hello</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Precede each command with the appropriate command prompt</strong>:</p>
+<ul>
+<li><p>at a minimum, the prompt should contain a trailing <code class="docutils literal notranslate"><span class="pre">#</span></code> (for the user <code class="docutils literal notranslate"><span class="pre">root</span></code>) or <code class="docutils literal notranslate"><span class="pre">$</span></code> (for other users) on Linux systems and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> on Windows systems, respectively.</p></li>
+<li><p>if possible, <strong>indicate the qube used</strong> (i.e.: <code class="docutils literal notranslate"><span class="pre">dom0</span></code>)</p></li>
+<li><p>if relevant, <strong>indicate the path</strong> where the command should occur.</p></li>
+<li><p>following all the previous recommendations and <strong>adding the username</strong> could provide a familiar prompt to the user.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9.1%" />
+<col style="width: 45.5%" />
+<col style="width: 45.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>style</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>minimal</p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> console
+
+   $ cd test
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>qube name</p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> console
+
+   [dom0] $ cd test
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[dom0] $ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>with path</p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> console
+
+   [dom0 /tmp] $ cd test
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[dom0 /tmp] $ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>full</p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> console
+
+   [user@dom0 /tmp] $ cd test
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@dom0 /tmp] $ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p><strong>Don’t try to add comments inside the code block</strong>. For example, <em>don’t</em> do this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Navigate<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>directory
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+<span class="gp"># </span>Generate<span class="w"> </span>a<span class="w"> </span>greeting
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>Hello
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol preceding each comment is ambiguous with a root command prompt. Instead, put your comments <em>outside</em> of the code block in normal prose.</p>
+</div>
+</section>
+<section id="variable-names-in-commands">
+<h3>Variable names in commands<a class="headerlink" href="#variable-names-in-commands" title="Link to this heading"></a></h3>
+<p><strong>Syntactically distinguish variables in commands</strong>. For example, this is ambiguous:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>--dispvm<span class="o">=</span>disposable-template<span class="w"> </span>--service<span class="w"> </span>qubes.StartApp+xterm
+</pre></div>
+</div>
+<p>It should instead be:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>--dispvm<span class="o">=</span>&lt;DISPOSABLE_TEMPLATE&gt;<span class="w"> </span>--service<span class="w"> </span>qubes.StartApp+xterm
+</pre></div>
+</div>
+<p>Note that we syntactically distinguish variables in three ways:</p>
+<ol class="arabic simple">
+<li><p><strong>Surrounding them in angled brackets</strong> (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">&gt;</span></code>)</p></li>
+<li><p><strong>Using underscores</strong> (<code class="docutils literal notranslate"><span class="pre">_</span></code>) instead of spaces between words</p></li>
+<li><p><strong>Using all capital letters</strong></p></li>
+</ol>
+<p>We have observed that many novices make the mistake of typing the surrounding angled brackets (<code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">&gt;</span></code>) on the command line, even after substituting the desired real value between them. Therefore, in documentation aimed at novices, we also recommend clarifying that the angled brackets should not be typed. This can be accomplished in one of several ways:</p>
+<ul class="simple">
+<li><p><strong>Explicitly say something like &quot;without the angled brackets&quot;.</strong></p></li>
+<li><p><strong>Provide an example command using real values</strong> that excludes the angled brackets.</p></li>
+<li><p>If you know that almost all users will want to use (or should use) a specific command containing all real values and no variables, you might consider <strong>providing exactly that command</strong> and forgoing the version with variables. Novices may not realize which parts of the command they can substitute with different values, but if you’ve correctly judged that they should use the command you’ve provided as is, then this shouldn’t matter.</p></li>
+</ul>
+</section>
+<section id="capitalization-of-qube">
+<h3>Capitalization of &quot;qube&quot;<a class="headerlink" href="#capitalization-of-qube" title="Link to this heading"></a></h3>
+<p>We introduced the term <a class="reference internal" href="../../user/reference/glossary.html#term-qube"><span class="xref std std-term">qube</span></a> as a user-friendly alternative to the term <a class="reference internal" href="../../user/reference/glossary.html#term-VM"><span class="xref std std-term">vm</span></a> in the context of Qubes OS. Nonetheless, “qube” is a common noun like the words “compartment” and “container.” Therefore, in English, “qube” follows the standard capitalization rules for common nouns. For example, “I have three qubes” is correct, while “I have three Qubes” is incorrect. Like other common nouns, “qube” should still be capitalized at the beginnings of sentences, the beginnings of sentence-case headings, and in title-case headings. Note, however, that starting a sentence with the plural of “qube” (e.g., “Qubes can be shut down…”) can be ambiguous, since it may not be clear whether the referent is a plurality of qubes, <a class="reference internal" href="../../user/reference/glossary.html#term-Qubes-OS"><span class="xref std std-term">qubes os</span></a>, or even the Qubes OS Project itself. Hence, it is generally a good idea to rephrase such sentences in order to avoid this ambiguity.</p>
+<p>Many people feel a strong temptation to capitalize the word “qube” all the time, like a proper noun, perhaps because it’s a new and unfamiliar term that’s closely associated with a particular piece of software (namely, Qubes OS). However, these factors are not relevant to the capitalization rules of English. In fact, it’s not unusual for new common nouns to be introduced into English, especially in the context of technology. For example, “blockchain” is a relatively recent technical term that’s a common noun. Why is it a common noun rather than a proper noun? Because proper nouns refer to <em>particular</em> people, places, things, and ideas. There are many different blockchains. However, even when there was just one, the word still denoted a collection of things rather than a particular thing. It happened to be the case that there was only one member in that collection at the time. For example, if there happened to be only one tree in the world, that wouldn’t change the way we capitalize sentences like, “John sat under a tree.” Intuitively, it makes sense that the addition and removal of objects from the world shouldn’t cause published books to become orthographically incorrect while sitting on their shelves.</p>
+<p>Accordingly, the reason “qube” is a common noun rather than a proper noun is because it doesn’t refer to any one specific thing (in this case, any one specific virtual machine). Rather, it’s the term for any virtual machine in a Qubes OS installation. (Technically, while qubes are currently implemented as virtual machines, Qubes OS is independent of its underlying compartmentalization technology. Virtual machines could be replaced with a different technology, and qubes would still be called “qubes.”)</p>
+<p>I have several qubes in my Qubes OS installation, and you have several in yours. Every Qubes OS user has their own set of qubes, just as each of us lives in some neighborhood on some street. Yet we aren’t tempted to treat words like “neighborhood” or “street” as proper nouns (unless, of course, they’re part of a name, like “Acorn Street”). Again, while this might seem odd because “qube” is a new word that we invented, that doesn’t change how English works. After all, <em>every</em> word was a new word that someone invented at some point (otherwise we wouldn’t have any words at all). We treat “telephone,” “computer,” “network,” “program,” and so on as common nouns, even though those were all new technological inventions in the not-too-distant past (on a historical scale, at least). So, we shouldn’t allow ourselves to be confused by irrelevant factors, like the fact that the inventors happened to be <em>us</em> or that the invention was <em>recent</em> or is not in widespread use among humanity.</p>
+</section>
+<section id="english-language-conventions">
+<h3>English language conventions<a class="headerlink" href="#english-language-conventions" title="Link to this heading"></a></h3>
+<p>For the sake of consistency and uniformity, the Qubes documentation aims to follow the conventions of American English, where applicable. (Please note that this is an arbitrary convention for the sake consistency and not a value judgment about the relative merits of British versus American English.)</p>
+</section>
+</section>
+<section id="organizational-guidelines">
+<h2>Organizational guidelines<a class="headerlink" href="#organizational-guidelines" title="Link to this heading"></a></h2>
+<section id="do-not-duplicate-documentation">
+<h3>Do not duplicate documentation<a class="headerlink" href="#do-not-duplicate-documentation" title="Link to this heading"></a></h3>
+<p><strong>Duplicating documentation is almost always a bad idea</strong>. There are many reasons for this. The main one is that almost all documentation has to be updated as some point. When similar documentation appears in more than one place, it is very easy for it to get updated in one place but not the others (perhaps because the person updating it doesn’t realize it’s in more than once place). When this happens, the documentation as a whole is now inconsistent, and the outdated documentation becomes a trap, especially for novice users. Such traps are often more harmful than if the documentation never existed in the first place. The solution is to <strong>link</strong> to existing documentation rather than duplicating it. There are some exceptions to this policy (e.g., information that is certain not to change for a very long time), but they are rare.</p>
+</section>
+<section id="core-vs-external-documentation">
+<span id="id2"></span><h3>Core vs. external documentation<a class="headerlink" href="#core-vs-external-documentation" title="Link to this heading"></a></h3>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../../introduction/external-documentation.html"><span class="doc">About external documentation</span></a></p>
+</div>
+<p>If you’ve written a piece of documentation that is not appropriate for <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a>, we encourage you to submit it to the <a class="reference external" href="https://forum.qubes-os.org/docs">Qubes Forum</a> instead. However, <em>linking</em> to external documentation from <a class="reference external" href="https://github.com/QubesOS/qubes-doc">qubes-doc</a> is perfectly fine. Indeed, the maintainers of the <a class="reference external" href="https://forum.qubes-os.org/">Qubes Forum</a> should regularly submit PRs against the <a class="reference internal" href="../../index.html#id1"><span class="std std-ref">About External documentation</span></a> index (see <a class="reference internal" href="how-to-edit-the-rst-documentation.html#edit-doc-index"><span class="std std-ref">TL;DR: How to edit the documentation index</span></a>) to add and update external links.</p>
+<p>Many contributors do not realize that there is a significant amount of work involved in <em>maintaining</em> documentation after it has been written. They may wish to write documentation and submit it to the core docs, but they see only their own writing process and fail to consider that it will have to be kept up-to-date and consistent with the rest of the docs for years afterward. Submissions to the core docs also have to <a class="reference internal" href="how-to-edit-the-rst-documentation.html#security"><span class="std std-ref">undergo a review process</span></a> to ensure accuracy before being merged, which takes up valuable time from the team. We aim to maintain high quality standards for the core docs (style and mechanics, formatting), which also takes up a lot of time.</p>
+<p><strong>If the documentation involves anything external to the Qubes OS Project</strong> (such as a website, platform, program, protocol, framework, practice, or even a reference to a version number), the documentation is likely to become outdated when that external thing changes. It’s also important to periodically review and update this documentation, especially when a new Qubes release comes out. Periodically, there may be technical or policy changes that affect all the core documentation. The more documentation there is relative to maintainers, the harder all of this will be. Since there are many more people who are willing to write documentation than to maintain it, these individually small incremental additions amount to a significant maintenance burden for the project.</p>
+<p>On the positive side, <strong>we consider the existence of community documentation to be a sign of a healthy ecosystem</strong>, and this is quite common in the software world. The community is better positioned to write and maintain documentation that applies, combines, and simplifies the official documentation, e.g., tutorials that explain how to install and use various programs in Qubes, how to create custom VM setups, and introductory tutorials that teach basic Linux concepts and commands in the context of Qubes. In addition, just because the Qubes OS Project has officially written and maintains some flexible framework, such as <code class="docutils literal notranslate"><span class="pre">qrexec</span></code>, it does not make sense to include every tutorial that says “here’s how to do something cool with <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> in the core docs. <strong>Such tutorials generally also belong in the community documentation.</strong></p>
+<p>See <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4693">#4693</a> for more background information.</p>
+</section>
+<section id="release-specific-documentation">
+<h3>Release-specific documentation<a class="headerlink" href="#release-specific-documentation" title="Link to this heading"></a></h3>
+<p>We maintain one set of documentation for each Qubes OS release, with source files in a named branch (eg Source for r4.3 documentation is in the r4.3 branch of qubes-doc). Documentation is updated on a continual, rolling basis. Our first priority is to document the <strong>current, stable releases</strong> of Qubes. Our second priority is to document the next, upcoming release (if any) that is currently in the beta or release candidate stage.</p>
+<p>Each version is available at Read The Docs. Documentation for the current release is loaded by default, but other versions can be accessed from the flyout version menu.</p>
+<p>In general, you do not need to mention the version in the body text of documentation for any release. Make sure that any PR you submit is relevant to the version you are targeting, and is a PR against the correct branch: if the change is relevant to more than one release, create a PR against one branch - the documentation maintainers should ensure that the PR is appropriately handled.</p>
+</section>
+</section>
+<section id="git-conventions">
+<h2>Git conventions<a class="headerlink" href="#git-conventions" title="Link to this heading"></a></h2>
+<p>Please follow our <a class="reference internal" href="../code/coding-style.html#commit-message-guidelines"><span class="std std-ref">Git commit message guidelines</span></a>.</p>
+</section>
+<section id="cheatsheet-markdown-vs-restructuredtext">
+<h2>Cheatsheet: Markdown vs. reStructuredText<a class="headerlink" href="#cheatsheet-markdown-vs-restructuredtext" title="Link to this heading"></a></h2>
+<p>For the documentation contributors more familiar with Markdown, here is a small cheatsheet
+highlighting essential differences.</p>
+<section id="cheatsheet-headings">
+<h3>Cheatsheet: Headings<a class="headerlink" href="#cheatsheet-headings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>[...]
+<span class="gh"># Title</span>
+[...]
+
+<span class="gu">## Subsection</span>
+[...]
+
+<span class="gu">### Subsubsection</span>
+[...]
+
+<span class="gu">#### Paragraph</span>
+[...]
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">=====</span>
+<span class="gh">Title</span>
+<span class="gh">=====</span>
+
+<span class="gh">Subsection</span>
+<span class="gh">----------</span>
+
+<span class="gh">Subsubsection</span>
+<span class="gh">^^^^^^^^^^^^^</span>
+
+<span class="gh">Paragraph</span>
+<span class="gh">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cheatsheet-hyperlinks-and-cross-references">
+<h3>Cheatsheet: Hyperlinks and cross-references<a class="headerlink" href="#cheatsheet-hyperlinks-and-cross-references" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>[<span class="nt">Link Text</span>](<span class="na">/doc/path/to/some-file</span>)
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:doc:</span><span class="nv">`/path/to/some-file`</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>[<span class="nt">Link Text</span>](<span class="na">/doc/path/to/some-file#some-title</span>)
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:ref:</span><span class="nv">`/path/to/some-file:Some title`</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>a [<span class="nt">qube</span>](<span class="na">/doc/glossary#qube</span>)
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:term:</span><span class="nv">`qube`</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>[<span class="nt">Link Text</span>](<span class="na">http://example.com</span>)
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">`Link Text </span><span class="si">&lt;http://example.com&gt;</span><span class="s">`__</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="cheatsheet-text-decorations">
+<h3>Cheatsheet: Text Decorations<a class="headerlink" href="#cheatsheet-text-decorations" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">*Italic*</span> or <span class="ge">_Italic_</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="ge">*Italic*</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gs">**Bold**</span> or <span class="gs">__Bold__</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gs">**Bold**</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gd">~~Strikethrough~~</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:strike:</span><span class="nv">`Strikethrough`</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>***Bold and italic***
+</pre></div>
+</div>
+</td>
+<td><div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Impossible!</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#text-decorations"><span class="std std-ref">Text decorations</span></a></p>
+</div>
+</section>
+<section id="cheatsheet-lists">
+<h3>Cheatsheet: Lists<a class="headerlink" href="#cheatsheet-lists" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>Item 1
+<span class="k">-</span><span class="w"> </span>Item 2
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Subitem 1
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Subitem 2
+
+<span class="k">1.</span> Item 1
+<span class="k">2.</span> Item 2
+   a. Subitem 1
+   b. Subitem 2
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="m">-</span> Item 1
+<span class="m">-</span> Item 2
+  <span class="m">-</span> Subitem 1
+  <span class="m">-</span> Subitem 2
+
+<span class="m">1.</span> Item 1
+<span class="m">2.</span> Item 2
+   a. Subitem 1
+   b. Subitem 2
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#lists"><span class="std std-ref">Lists</span></a></p></li>
+</ul>
+</div>
+</section>
+<section id="cheatsheet-tables">
+<h3>Cheatsheet: Tables<a class="headerlink" href="#cheatsheet-tables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>| Header 1 | Header 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">list-table</span><span class="p">::</span>
+   <span class="nc">:widths:</span> 10 10
+   <span class="nc">:header-rows:</span> 1
+
+   <span class="m">*</span> - Header 1
+     <span class="m">-</span> Header 2
+   <span class="m">*</span> - Cell 1
+     <span class="m">-</span> Cell 2
+   <span class="m">*</span> - Cell 3
+     <span class="m">-</span> Cell 4
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#tables"><span class="std std-ref">Tables</span></a></p>
+</div>
+</section>
+<section id="cheatsheet-code-blocks">
+<h3>Cheatsheet: Code Blocks<a class="headerlink" href="#cheatsheet-code-blocks" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">```python</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+<span class="sb">```</span>
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code</span><span class="p">::</span> python
+
+    print(&quot;Hello, world!&quot;)
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#code-blocks"><span class="std std-ref">Code blocks</span></a></p>
+</div>
+</section>
+<section id="alerts-and-warnings">
+<h3>Alerts and Warnings<a class="headerlink" href="#alerts-and-warnings" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Markdown markup</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;
+  &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;
+  &lt;b&gt;Note:&lt;/b&gt; This is a note
+&lt;/div&gt;
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">note</span><span class="p">::</span>
+
+   This is a note.
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#admonitions-messages-and-warnings"><span class="std std-ref">Admonitions, messages, and warnings</span></a></p>
+</div>
+</section>
+</section>
+<section id="list-of-the-roles-used-in-documentation">
+<span id="list-roles-used-documentation"></span><h2>List of the roles used in documentation<a class="headerlink" href="#list-of-the-roles-used-in-documentation" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9.1%" />
+<col style="width: 45.5%" />
+<col style="width: 45.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>name</p></th>
+<th class="head"><p>reStructuredText markup</p></th>
+<th class="head"><p>output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-guilabel">:guilabel:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:guilabel:</span><span class="nv">`&amp;Apply`</span>
+</pre></div>
+</div>
+</td>
+<td><p><span class="guilabel"><span class="accelerator">A</span>pply</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-file">:file:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:file:</span><span class="nv">`~/QubesIncoming/disp{XXXX}`</span>
+</pre></div>
+</div>
+</td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">~/QubesIncoming/disp</span><em><span class="pre">XXXX</span></em></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-program">:program:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:program:</span><span class="nv">`qvm-copy`</span>
+</pre></div>
+</div>
+</td>
+<td><p><strong class="program">qvm-copy</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-menuselection">:menuselection:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:menuselection:</span><span class="nv">`Settings --&gt; &amp;Advanced`</span>
+</pre></div>
+</div>
+</td>
+<td><p><span class="menuselection">Settings ‣ <span class="accelerator">A</span>dvanced</span></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-samp">:samp:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:samp:</span><span class="nv">`disp{XXXX}`</span>
+</pre></div>
+</div>
+</td>
+<td><p><code class="samp docutils literal notranslate"><span class="pre">disp</span><em><span class="pre">XXXX</span></em></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#role-kbd">:kbd:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:kbd:</span><span class="nv">`Ctrl`</span>
+</pre></div>
+</div>
+</td>
+<td><p><kbd class="kbd docutils literal notranslate">Ctrl</kbd></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-abbr">:abbr:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:abbr:</span><span class="nv">`OCR (Optical Character Recognition)`</span>
+</pre></div>
+</div>
+</td>
+<td><p><abbr title="Optical Character Recognition">OCR</abbr></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-code">:code:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:code:</span><span class="nv">`qvm-ls --help`</span>
+</pre></div>
+</div>
+</td>
+<td><p><code class="code docutils literal notranslate"><span class="pre">qvm-ls</span> <span class="pre">--help</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/referencing.html#role-mimetype">:mimetype:</a></p></td>
+<td><div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:mimetype:</span><span class="nv">`application/pdf`</span>
+</pre></div>
+</div>
+</td>
+<td><p><em class="mimetype">application/pdf</em></p></td>
+</tr>
+</tbody>
+</table>
+<p>Please continue using the above or new ones where appropriate.</p>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#rst-roles"><span class="std std-ref">Roles</span></a></p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="how-to-edit-the-rst-documentation.html" class="btn btn-neutral float-left" title="How to edit the documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="how-to-edit-the-website.html" class="btn btn-neutral float-right" title="How to edit the website" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/general/rst-documentation-style-guide.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

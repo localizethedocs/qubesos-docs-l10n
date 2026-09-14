@@ -1,0 +1,838 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Verifying signatures" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="project-security/verifying-signatures.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="The Qubes OS Project uses digital signatures to guarantee the authenticity and integrity of certain important assets. This page explains how to verify those signatures. It is extremely important fo..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="The Qubes OS Project uses digital signatures to guarantee the authenticity and integrity of certain important assets. This page explains how to verify those signatures. It is extremely important fo..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verifying signatures &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/project-security/verifying-signatures.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=c80d5b48"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+      <script src="../_static/custom.js?v=01ac952c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜索"
+          href="../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Package contributions" href="../developer/general/package-contributions.html" />
+    <link rel="prev" title="Qubes security pack (qubes-secpack)" href="security-pack.html" />
+
+   
+
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Verifying signatures</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-digital-signatures-can-and-cannot-prove">What digital signatures can and cannot prove</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openpgp-software">OpenPGP software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-import-and-authenticate-the-qubes-master-signing-key">How to import and authenticate the Qubes Master Signing Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-import-and-authenticate-release-signing-keys">How to import and authenticate release signing keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-obtain-and-authenticate-other-signing-keys">How to obtain and authenticate other signing keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos">How to verify detached PGP signatures on Qubes ISOs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-re-verify-installation-media-after-writing">How to re-verify installation media after writing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-verify-signatures-on-git-repository-tags-and-commits">How to verify signatures on Git repository tags and commits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-verify-a-signature-on-a-git-tag">How to verify a signature on a Git tag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-verify-a-signature-on-a-git-commit">How to verify a signature on a Git commit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-faq">Troubleshooting FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-can-t-check-signature-public-key-not-found">Why am I getting &quot;Can't check signature: public key not found&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-bad-signature-from-qubes-os-release-x-signing-key">Why am I getting &quot;BAD signature from ‘Qubes OS Release X Signing Key'&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-bash-gpg2-command-not-found">Why am I getting &quot;bash: gpg2: command not found&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-no-such-file-or-directory">Why am I getting &quot;No such file or directory&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-can-t-open-signed-data-qubes-rx-x86-64-iso-no-signed-data-can-t-hash-datafile-no-data">Why am I getting &quot;can't open signed data ‘Qubes-RX-x86_64.iso'&quot; / &quot;no signed data&quot; / &quot;can't hash datafile: No data&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-can-t-open-qubes-rx-x86-64-iso-asc-verify-signatures-failed-file-open-error">Why am I getting &quot;can't open ‘Qubes-RX-x86_64.iso.asc' / verify signatures failed: file open error&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-no-valid-openpgp-data-found">Why am I getting &quot;no valid OpenPGP data found&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-warning-this-key-is-not-certified-with-a-trusted-signature-there-is-no-indication-that-the-signature-belongs-to-the-owner">Why am I getting &quot;WARNING: This key is not certified with a trusted signature! There is no indication that the signature belongs to the owner.&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-x-signature-not-checked-due-to-a-missing-key">Why am I getting &quot;X signature not checked due to a missing key&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-seeing-additional-signatures-on-a-key-with-user-id-not-found-or-from-a-revoked-key">Why am I seeing additional signatures on a key with &quot;[User ID not found]&quot; or from a revoked key?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-verify-signatures-failed-unexpected-data">Why am I getting &quot;verify signatures failed: unexpected data&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-not-a-detached-signature">Why am I getting &quot;not a detached signature&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-crc-error-no-signature-found">Why am I getting &quot;CRC error; […] no signature found […]&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-am-i-getting-warning-1-listed-file-could-not-be-read">Why am I getting &quot;WARNING: 1 listed file could not be read&quot;?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i-have-another-problem-that-isn-t-mentioned-here">I have another problem that isn't mentioned here.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Verifying signatures</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/project-security/verifying-signatures.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="verifying-signatures">
+<h1>Verifying signatures<a class="headerlink" href="#verifying-signatures" title="Link to this heading"></a></h1>
+<p>The Qubes OS Project uses <a class="reference external" href="https://en.wikipedia.org/wiki/Digital_signature">digital signatures</a> to guarantee the authenticity and integrity of certain important assets. This page explains how to verify those signatures. It is extremely important for your security to understand and apply these practices.</p>
+<section id="what-digital-signatures-can-and-cannot-prove">
+<h2>What digital signatures can and cannot prove<a class="headerlink" href="#what-digital-signatures-can-and-cannot-prove" title="Link to this heading"></a></h2>
+<p>Most people — even programmers — are confused about the basic concepts underlying digital signatures. Therefore, most people should read this section, even if it looks trivial at first sight.</p>
+<p>Digital signatures can prove both <strong>authenticity</strong> and <strong>integrity</strong> to a reasonable degree of certainty. <strong>Authenticity</strong> ensures that a given file was indeed created by the person who signed it (i.e., that a third party did not forge it). <strong>Integrity</strong> ensures that the contents of the file have not been tampered with (i.e., that a third party has not undetectably altered its contents <em>en route</em>).</p>
+<p>Digital signatures <strong>cannot</strong> prove, e.g., that the signed file is not malicious. In fact, there is nothing that could stop someone from signing a malicious program (and it happens from time to time in reality).</p>
+<p>The point is that we must decide who we will trust (e.g., Linus Torvalds, Microsoft, or the Qubes Project) and assume that if a trusted party signed a given file, then it should not be malicious or negligently buggy. The decision of whether to trust any given party is beyond the scope of digital signatures. It’s more of a social and political decision.</p>
+<p>Once we decide to trust certain parties, digital signatures are useful, because they make it possible for us to limit our trust only to those few parties we choose and not to worry about all the bad things that can happen between them and us, e.g., server compromises (qubes-os.org will surely be compromised one day, so <a class="reference internal" href="../introduction/faq.html#should-i-trust-this-website"><span class="std std-ref">don’t blindly trust the live version of this site</span></a>), dishonest IT staff at the hosting company, dishonest staff at the ISPs, Wi-Fi attacks, etc. We call this philosophy <a class="reference internal" href="../introduction/faq.html#what-does-it-mean-to-distrust-the-infrastructure"><span class="std std-ref">distrusting the infrastructure</span></a>.</p>
+<p>By verifying all the files we download that purport to be authored by a party we’ve chosen to trust, we eliminate concerns about the bad things discussed above, since we can easily detect whether any files have been tampered with (and subsequently choose to refrain from executing, installing, or opening them).</p>
+<p>However, for digital signatures to make sense, we must ensure that the public keys we use for signature verification are the original ones. Anybody can generate a cryptographic key that purports to belong to “The Qubes OS Project,” but of course only the keys that we (the real Qubes developers) generate are the genuine ones. The rest of this page explains how to verify the authenticity of the various keys used in the project and how to use those keys to verify certain important assets.</p>
+</section>
+<section id="openpgp-software">
+<h2>OpenPGP software<a class="headerlink" href="#openpgp-software" title="Link to this heading"></a></h2>
+<p>We use <a class="reference external" href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a> (specifically, the <a class="reference external" href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP">OpenPGP</a> standard). Before we begin, you’ll need software that can manage PGP keys and verify PGP signatures. Any program that complies with the OpenPGP standard will do, but here are some examples for popular operating systems:</p>
+<p><strong>Linux:</strong> <a class="reference external" href="https://gnupg.org/download/index.html">GnuPG</a> (<a class="reference external" href="https://www.gnupg.org/documentation/">documentation</a>). Open a terminal and use the <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> command. If you don’t already have GnuPG installed, install it via your distro’s package manager or from the GnuPG website.</p>
+<p><strong>Mac:</strong> <a class="reference external" href="https://gpgtools.org/">GPG Suite</a> (<a class="reference external" href="https://gpgtools.tenderapp.com/kb">documentation</a>). Open a terminal to enter commands.</p>
+<p><strong>Windows:</strong> <a class="reference external" href="https://gpg4win.org/download.html">Gpg4win</a> (<a class="reference external" href="https://www.gpg4win.org/documentation.html">documentation</a>). Use the Windows command line (<code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>) to enter commands.</p>
+<p>Throughout this page, we’ll use GnuPG via the <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> command. If that doesn’t work for you, try <code class="docutils literal notranslate"><span class="pre">gpg</span></code> instead. If that still doesn’t work, please consult the documentation for your specific program (see links above) and the <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">Troubleshooting FAQ</span></a> below.</p>
+</section>
+<section id="how-to-import-and-authenticate-the-qubes-master-signing-key">
+<span id="how-to-import-qmsk"></span><h2>How to import and authenticate the Qubes Master Signing Key<a class="headerlink" href="#how-to-import-and-authenticate-the-qubes-master-signing-key" title="Link to this heading"></a></h2>
+<p>Many important Qubes OS Project assets (e.g., ISOs, RPMs, TGZs, and Git objects) are digitally signed by an official team member’s key or by a release signing key (RSK). Each such key is, in turn, signed by the <a class="reference external" href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">Qubes Master Signing Key (QMSK)</a> (<code class="docutils literal notranslate"><span class="pre">0x427F11FD0FAA4B080123F01CDDFA1A3E36879494</span></code>). In this way, the QMSK is the ultimate root of trust for the Qubes OS Project.</p>
+<p>The developer signing keys are set to expire after one year, while the QMSK and RSKs have no expiration date. The QMSK was generated on and is kept only on a dedicated, air-gapped “vault” machine, and the private portion will (hopefully) never leave this isolated machine.</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>Before we proceed, you must first complete the prerequisite step of <a class="reference internal" href="#openpgp-software"><span class="std std-ref">installing OpenPGP software</span></a>.</p>
+</div>
+<p>Once you have appropriate OpenPGP software installed, there are several ways to get the QMSK.</p>
+<ul>
+<li><p><strong>If you’re on Qubes OS</strong>, it’s available in every qube (<a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/2544">except dom0</a>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/usr/share/qubes/qubes-master-key.asc
+</pre></div>
+</div>
+</li>
+<li><p><strong>If you’re on Fedora</strong>, you can get it in the <a class="reference external" href="https://github.com/xsuchy/distribution-gpg-keys">distribution-gpg-keys</a> package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dnf<span class="w"> </span>install<span class="w"> </span>distribution-gpg-keys
+<span class="gp">$ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/usr/share/distribution-gpg-keys/qubes/*
+</pre></div>
+</div>
+</li>
+<li><p><strong>If you’re on Debian</strong>, it may already be included in your keyring.</p></li>
+<li><p>You can also <strong>fetch it with GPG</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--fetch-keys<span class="w"> </span>https://keys.qubes-os.org/keys/qubes-master-signing-key.asc
+</pre></div>
+</div>
+</li>
+<li><p>Get it from a public <a class="reference external" href="https://en.wikipedia.org/wiki/Key_server_%28cryptographic%29#Keyserver_examples">keyserver</a> (specified on first use with <code class="docutils literal notranslate"><span class="pre">--keyserver</span> <span class="pre">&lt;URI&gt;</span></code> along with keyserver options to include key signatures), e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--keyserver-options<span class="w"> </span>no-self-sigs-only,no-import-clean<span class="w"> </span>--keyserver<span class="w"> </span>hkp://keyserver.ubuntu.com<span class="w"> </span>--recv-keys<span class="w"> </span>0x427F11FD0FAA4B080123F01CDDFA1A3E36879494
+</pre></div>
+</div>
+</li>
+<li><p>Or <strong>download it as a file</strong>, then import the file. Here are some example download locations:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="security-pack.html"><span class="doc">Qubes security pack</span></a></p></li>
+<li><p><a class="reference external" href="https://keys.qubes-os.org/keys/qubes-master-signing-key.asc">Qubes keyserver</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/d/msg/qubes-devel/RqR9WPxICwg/kaQwknZPDHkJ">Email to qubes-devel</a></p></li>
+<li><p><a class="reference external" href="https://groups.google.com/d/msg/qubes-users/CLnB5uFu_YQ/ZjObBpz0S9UJ">Email to qubes-users</a></p></li>
+</ul>
+<p>Once you have the key as a file, <strong>import it</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/&lt;PATH_TO_FILE&gt;/qubes-master-signing-key.asc
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Once you’ve obtained the QMSK, you must verify that it’s authentic rather than a forgery. Anyone can create a PGP key with the name “Qubes Master Signing Key” and the short key ID <code class="docutils literal notranslate"><span class="pre">0x36879494</span></code>, so you cannot rely on these alone. You also should not rely on any single website, not even over HTTPS.</p>
+<p>So, what <em>should</em> you do? One option is to use the PGP <a class="reference external" href="https://en.wikipedia.org/wiki/Web_of_trust">Web of Trust</a>. In addition, some operating systems include the means to acquire the QMSK securely. For example, on Fedora, <code class="docutils literal notranslate"><span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">distribution-gpg-keys</span></code> will get you the QMSK along with several other Qubes keys. On Debian, your keyring may already contain the necessary keys.</p>
+<p>Perhaps the most common route is to rely on the key’s fingerprint, which is a string of 40 alphanumeric characters, like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
+</pre></div>
+</div>
+<p>Every PGP key has one of these fingerprints, which uniquely identifies it among all PGP keys. (On the command line, you can view a key’s fingerprint with the <code class="docutils literal notranslate"><span class="pre">gpg2</span> <span class="pre">--fingerprint</span> <span class="pre">&lt;KEY_ID&gt;</span></code> command.) Therefore, if you know the genuine QMSK fingerprint, then you always have an easy way to confirm whether any purported copy of it is authentic, simply by comparing the fingerprints.</p>
+<p>But how do you know which fingerprint is the real one? After all, <a class="reference internal" href="../introduction/faq.html#should-i-trust-this-website"><span class="std std-ref">this website could be compromised</span></a>, so the fingerprint you see here may not be genuine. That’s why we strongly suggest obtaining the fingerprint from <em>multiple independent sources in several different ways</em>, then comparing the strings of letters and numbers to make sure they match.</p>
+<p>For the purpose of convincing yourself that you know the authentic QMSK fingerprint, spaces and capitalization don’t matter. In other words, all of these fingerprints are considered the same:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494
+427f 11fd 0faa 4b08 0123  f01c ddfa 1a3e 3687 9494
+427F11FD0FAA4B080123F01CDDFA1A3E36879494
+427f11fd0faa4b080123f01cddfa1a3e36879494
+</pre></div>
+</div>
+<p>Instead, what matters is that <em>all</em> the characters are present in <em>exactly</em> the same order. If even one character is different, the fingerprints should not be considered the same. Even if two fingerprints have all the same characters, if any of those characters are in a different order, sequence, or position, then the fingerprints should not be considered the same.</p>
+<p>However, for the purpose of <em>searching for</em>, <em>looking up</em>, or <em>entering</em> keys, spaces and capitalization can matter, depending on the software or tool you’re using. You may need to try different variations (e.g., with and without spaces). You may also sometimes see (or need to enter) the entire fingerprint prefixed with <code class="docutils literal notranslate"><span class="pre">0x</span></code>, as in:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0x427F11FD0FAA4B080123F01CDDFA1A3E36879494
+0x427f11fd0faa4b080123f01cddfa1a3e36879494
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">0x</span></code> prefix is sometimes used to indicate that the string following it is a hexadecimal value, and some PGP-related tools may require this prefix. Again, for the purpose of convincing yourself that you know the authentic QMSK fingerprint, you may safely ignore the <code class="docutils literal notranslate"><span class="pre">0x</span></code> prefix, as it is not part of the fingerprint. As long as the 40-character string after the <code class="docutils literal notranslate"><span class="pre">0x</span></code> matches exactly, the fingerprint is considered the same. The <code class="docutils literal notranslate"><span class="pre">0x</span></code> prefix only matters if the software or tool you’re using cares about it.</p>
+<p>The general idea of “comparing fingerprints” is to go out into the world (whether digitally, physically, or both) and find other 40-character strings purporting to be the QMSK fingerprint, then compare them to your own purported QMSK fingerprint to ensure that the sequence of alphanumeric characters is exactly the same (again, regardless of spaces or capitalization). If any of the characters do not match or are not in the same order, then at least one of the fingerprints is a forgery. Here are some ideas to get you started:</p>
+<ul class="simple">
+<li><p>Check the fingerprint on various websites (e.g., <a class="reference external" href="https://groups.google.com/g/qubes-devel/c/RqR9WPxICwg/m/kaQwknZPDHkJ">mailing lists</a>, <a class="reference external" href="https://forum.qubes-os.org/t/1441/9">discussion forums</a>, <a class="reference external" href="https://x.com/rootkovska/status/496976187491876864">social</a> <a class="reference external" href="https://www.reddit.com/r/Qubes/comments/5bme9n/fingerprint_verification/">media</a>, <a class="reference external" href="https://andrewdavidwong.com/fingerprints.txt">personal websites</a>).</p></li>
+<li><p>Check against PDFs, photographs, and videos in which the fingerprint appears (e.g., <a class="reference external" href="https://hyperelliptic.org/PSC/slides/psc2015_qubesos.pdf">slides from a talk</a>, on a <a class="reference external" href="https://x.com/legind/status/813847907858337793/photo/2">T-shirt</a>, or in the <a class="reference external" href="https://youtu.be/S0TVw7U3MkE?t=2563">recording of a presentation</a>).</p></li>
+<li><p>Ask people to post the fingerprint on various mailing lists, forums, and chat rooms.</p></li>
+<li><p>Download old Qubes ISOs from different sources and check the included Qubes Master Signing Key.</p></li>
+<li><p>Repeat the above over Tor.</p></li>
+<li><p>Repeat the above over various VPNs and proxy servers.</p></li>
+<li><p>Repeat the above on different networks (work, school, internet cafe, etc.).</p></li>
+<li><p>Text, email, call, video chat, snail mail, or meet up with people you know to confirm the fingerprint.</p></li>
+<li><p>Repeat the above from different computers and devices.</p></li>
+</ul>
+<p>Once you’ve observed enough matching fingerprints from enough independent sources in enough different ways that you feel confident that you have the genuine fingerprint, keep it in a safe place. Every time you need to check whether a key claiming to be the QMSK is authentic, compare that key’s fingerprint to your trusted copy and confirm they match.</p>
+<p>Now that you’ve imported the authentic QMSK, set its trust level to “ultimate” so that it can be used to automatically verify all the keys signed by the QMSK (in particular, RSKs).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--edit-key<span class="w"> </span>0x427F11FD0FAA4B080123F01CDDFA1A3E36879494
+<span class="go">gpg (GnuPG) 1.4.18; Copyright (C) 2014 Free Software Foundation, Inc.</span>
+<span class="go">This is free software: you are free to change and redistribute it.</span>
+<span class="go">There is NO WARRANTY, to the extent permitted by law.</span>
+
+<span class="go">pub  4096R/36879494  created: 2010-04-01  expires: never       usage: SC</span>
+<span class="go">                     trust: unknown       validity: unknown</span>
+<span class="go">[ unknown] (1). Qubes Master Signing Key</span>
+
+<span class="gp">$ </span>gpg&gt;<span class="w"> </span>fpr
+<span class="go">pub   4096R/36879494 2010-04-01 Qubes Master Signing Key</span>
+<span class="go">Primary key fingerprint: 427F 11FD 0FAA 4B08 0123  F01C DDFA 1A3E 3687 9494</span>
+
+<span class="gp">$ </span>gpg&gt;<span class="w"> </span>trust
+<span class="go">pub  4096R/36879494  created: 2010-04-01  expires: never       usage: SC</span>
+<span class="go">                     trust: unknown       validity: unknown</span>
+<span class="go">[ unknown] (1). Qubes Master Signing Key</span>
+
+<span class="go">Please decide how far you trust this user to correctly verify other users&#39; keys</span>
+<span class="gp gp-VirtualEnv">(by looking at passports, checking fingerprints from different sources, etc.)</span>
+
+<span class="go">   1 = I don&#39;t know or won&#39;t say</span>
+<span class="go">   2 = I do NOT trust</span>
+<span class="go">   3 = I trust marginally</span>
+<span class="go">   4 = I trust fully</span>
+<span class="go">   5 = I trust ultimately</span>
+<span class="go">   m = back to the main menu</span>
+
+<span class="go">Your decision? 5</span>
+<span class="go">Do you really want to set this key to ultimate trust? (y/N) y</span>
+
+<span class="go">pub  4096R/36879494  created: 2010-04-01  expires: never       usage: SC</span>
+<span class="go">                     trust: ultimate      validity: unknown</span>
+<span class="go">[ unknown] (1). Qubes Master Signing Key</span>
+<span class="go">Please note that the shown key validity is not necessarily correct</span>
+<span class="go">unless you restart the program.</span>
+
+<span class="gp">$ </span>gpg&gt;<span class="w"> </span>q
+</pre></div>
+</div>
+<p>Now, when you import any of the release signing keys and many Qubes team member keys, they will already be trusted in virtue of being signed by the QMSK.</p>
+<p>As a final sanity check, make sure the QMSK is in your keyring with the correct trust level.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;Qubes Master Signing Key&quot;</span>
+<span class="go">pub   rsa4096 2010-04-01 [SC]</span>
+<span class="go">      427F11FD0FAA4B080123F01CDDFA1A3E36879494</span>
+<span class="hll"><span class="go">uid           [ultimate] Qubes Master Signing Key</span>
+</span></pre></div>
+</div>
+<p>If you don’t see the QMSK here with a trust level of “ultimate,” go back and follow the instructions in this section carefully and consult the <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">Troubleshooting FAQ</span></a> below.</p>
+</section>
+<section id="how-to-import-and-authenticate-release-signing-keys">
+<span id="how-to-import-rsk"></span><h2>How to import and authenticate release signing keys<a class="headerlink" href="#how-to-import-and-authenticate-release-signing-keys" title="Link to this heading"></a></h2>
+<p>Every Qubes OS release is signed by a <strong>release signing key (RSK)</strong>, which is, in turn, signed by the Qubes Master Signing Key (QMSK).</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>Before we proceed, you must first complete the following prerequisite steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#openpgp-software"><span class="std std-ref">Install OpenPGP software.</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Import and authenticate the QMSK.</span></a></p></li>
+</ol>
+</div>
+<p>After you have completed these two prerequisite steps, the next step is to obtain the correct RSK. The filename pattern for RSKs is <code class="file docutils literal notranslate"><span class="pre">qubes-release-</span><em><span class="pre">*</span></em><span class="pre">-signing-key.asc</span></code>, where <code class="samp docutils literal notranslate"><em><span class="pre">*</span></em></code> is either a major or minor Qubes release number, such as <code class="samp docutils literal notranslate"><span class="pre">4</span></code> or <code class="samp docutils literal notranslate"><span class="pre">4.3</span></code>. There are several ways to get the RSK for your Qubes release.</p>
+<ul>
+<li><p><strong>If you have access to an existing Qubes installation</strong>, the release keys are available <strong>in dom0</strong> or <strong>in the official Fedora templates</strong> (and qubes based on them), in <code class="file docutils literal notranslate"><span class="pre">/etc/pki/rpm-gpg/RPM-GPG-KEY-qubes-</span><em><span class="pre">*</span></em></code>.</p>
+<p>These can be <a class="reference internal" href="../user/how-to-guides/how-to-copy-from-dom0.html"><span class="doc">copied from dom0</span></a> or <a class="reference internal" href="../user/how-to-guides/how-to-copy-and-move-files.html"><span class="doc">any qube based on fedora</span></a> into other qubes for further use.</p>
+<p>If you wish to use one of these keys, <strong>make sure to import it into your keyring</strong>, e.g.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@fedora-based-qube] $ </span>gpg2<span class="w"> </span>--import<span class="w"> </span>/etc/pki/rpm-gpg/RPM-GPG-KEY-qubes-*
+</pre></div>
+</div>
+</li>
+<li><p><strong>Fetch it with GPG</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@any-online-qube] $ </span>gpg2<span class="w"> </span>--keyserver-options<span class="w"> </span>no-self-sigs-only,no-import-clean<span class="w"> </span>--fetch-keys<span class="w"> </span>https://keys.qubes-os.org/keys/qubes-release-X-signing-key.asc
+</pre></div>
+</div>
+</li>
+<li><p><strong>Download it as a file</strong>. You can find the RSK for your Qubes release on the <a class="reference external" href="https://www.qubes-os.org/downloads/">downloads</a> page. You can also download all the currently used developers’ signing keys, RSKs, and the Qubes Master Signing Key from the <a class="reference internal" href="security-pack.html"><span class="doc">Qubes security pack</span></a> and the <a class="reference external" href="https://keys.qubes-os.org/keys/">Qubes keyserver</a>. Once you’ve downloaded your RSK, <strong>import it with GPG</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@any-qube] $ </span>gpg2<span class="w"> </span>--keyserver-options<span class="w"> </span>no-self-sigs-only,no-import-clean<span class="w"> </span>--import<span class="w"> </span>./qubes-release-X-signing-key.asc
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Now that you have the correct RSK, you simply need to verify that it is signed by the QMSK:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>--check-signatures<span class="w"> </span><span class="s2">&quot;Qubes OS Release X Signing Key&quot;</span>
+<span class="go">pub   rsa4096 YYYY-MM-DD [SC]</span>
+<span class="go">      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="go">uid           [  full  ] Qubes OS Release X Signing Key</span>
+<span class="go">sig!3        XXXXXXXXXXXXXXXX YYYY-MM-DD  Qubes OS Release X Signing Key</span>
+<span class="hll"><span class="go">sig!         DDFA1A3E36879494 YYYY-MM-DD  Qubes Master Signing Key</span>
+</span>
+<span class="go">gpg: 2 good signatures</span>
+</pre></div>
+</div>
+<p>This is just an example, so the output you receive may not look exactly the same (<code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> will be replaced by the release number). What matters is the line with a <code class="docutils literal notranslate"><span class="pre">sig!</span></code> prefix showing that the QMSK has signed this key. This verifies the authenticity of the RSK. Note that the <code class="docutils literal notranslate"><span class="pre">!</span></code> flag after the <code class="docutils literal notranslate"><span class="pre">sig</span></code> tag is important because it means that the key signature is valid. A <code class="docutils literal notranslate"><span class="pre">sig-</span></code> prefix would indicate a bad signature, and <code class="docutils literal notranslate"><span class="pre">sig%</span></code> would mean that gpg encountered an error while verifying the signature. It is not necessary to independently verify the authenticity of the RSK, since you already verified the authenticity of the QMSK.</p>
+<p>As a final sanity check, make sure the RSK is in your keyring with the correct trust level:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;Qubes OS Release X Signing Key&quot;</span>
+<span class="go">pub   rsa4096 YYYY-MM-DD [SC]</span>
+<span class="go">      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="hll"><span class="go">uid           [  full  ] Qubes OS Release X Signing Key</span>
+</span></pre></div>
+</div>
+<p>If you don’t see the correct RSK here with a trust level of “full” or higher, go back and follow the instructions in this section carefully, and consult the <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">Troubleshooting FAQ</span></a> below.</p>
+</section>
+<section id="how-to-obtain-and-authenticate-other-signing-keys">
+<h2>How to obtain and authenticate other signing keys<a class="headerlink" href="#how-to-obtain-and-authenticate-other-signing-keys" title="Link to this heading"></a></h2>
+<p>Please see the <a class="reference internal" href="security-pack.html"><span class="doc">Qubes security pack</span></a> documentation.</p>
+</section>
+<section id="how-to-verify-detached-pgp-signatures-on-qubes-isos">
+<h2>How to verify detached PGP signatures on Qubes ISOs<a class="headerlink" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos" title="Link to this heading"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>Before we proceed, you must first complete the following prerequisite steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#openpgp-software"><span class="std std-ref">Install OpenPGP software.</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Import and authenticate the Qubes Master Signing Key.</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">Import and authenticate your release signing key.</span></a></p></li>
+</ol>
+</div>
+<p>Every Qubes ISO is released with a <strong>detached PGP signature</strong> file, which you can find on the <a class="reference external" href="https://www.qubes-os.org/downloads/">downloads</a> page alongside the ISO. If the filename of your ISO is <code class="file docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em><span class="pre">-86_64.iso</span></code>, then the name of the signature file for that ISO is <code class="file docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em><span class="pre">-86_64.iso.asc</span></code>, where <code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> is a specific release of Qubes. The signature filename is always the same as the ISO filename followed by <code class="docutils literal notranslate"><span class="pre">.asc</span></code>.</p>
+<p><strong>Download both the ISO and its signature file</strong>. Put both of them <strong>in the same directory</strong>, then navigate to that directory. Now, you can verify the ISO by executing this GPG command in the directory that contains both files, make sure to replace <code class="samp docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em></code> by the correct release number (i.e.: <code class="samp docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">4.3</span></em></code>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>gpg2<span class="w"> </span>-v<span class="w"> </span>--verify<span class="w"> </span>Qubes-RX-x86_64.iso.asc<span class="w"> </span>Qubes-RX-x86_64.iso
+<span class="go">gpg: armor header: Version: GnuPG v1</span>
+<span class="go">gpg: Signature made &lt;TIME&gt; using RSA key ID 03FA5082</span>
+<span class="go">gpg: using PGP trust model</span>
+<span class="hll"><span class="go">gpg: Good signature from &quot;Qubes OS Release X Signing Key&quot;</span>
+</span><span class="go">gpg: binary signature, digest algorithm SHA256</span>
+</pre></div>
+</div>
+<p>This is just an example, so the output you receive will not look exactly the same. What matters is the line that says <code class="docutils literal notranslate"><span class="pre">Good</span> <span class="pre">signature</span> <span class="pre">from</span> <span class="pre">&quot;Qubes</span> <span class="pre">OS</span> <span class="pre">Release</span> <span class="pre">X</span> <span class="pre">Signing</span> <span class="pre">Key&quot;</span></code>. This confirms that the signature on the ISO is good.</p>
+<p>If you don’t see a good signature here, go back and follow the instructions in this section carefully, and consult the <a class="reference internal" href="#troubleshooting-faq"><span class="std std-ref">Troubleshooting FAQ</span></a> below.</p>
+</section>
+<section id="how-to-re-verify-installation-media-after-writing">
+<h2>How to re-verify installation media after writing<a class="headerlink" href="#how-to-re-verify-installation-media-after-writing" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>This is an optional section intended for advanced users.</p>
+</div>
+<p><strong>Why would you want to re-verify the data that has been written when you’ve already verified the original ISO?</strong> Well, it’s conceivable that a sufficiently sophisticated adversary might allow your initial ISO verification to succeed (so as not to alert you that your machine has been compromised, for example), then surreptitiously modify the data as it is being written onto your installation medium, resulting in a compromised Qubes installer. This might increase the odds that the attack goes undetected. One way to mitigate this risk is to re-verify the installer after writing it onto an installation medium that cannot be altered, such as a USB drive with a properly implemented physical write-protect switch and firmware that is either unflashable or cryptographically signed (or both), as discussed in our <a class="reference internal" href="../user/downloading-installing-upgrading/install-security.html"><span class="doc">installation security considerations</span></a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>Before we proceed, you must have:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">an authentic RSK</span></a></p></li>
+<li><p><a class="reference internal" href="../user/downloading-installing-upgrading/installation-guide.html#copying-the-iso-onto-the-installation-medium"><span class="std std-ref">written a Qubes ISO onto your desired medium</span></a> (such as a USB drive or optical disc)</p></li>
+</ul>
+</div>
+<p><strong>First</strong>, unplug your USB drive and flip the write protect switch so that the data on the drive can no longer be altered.</p>
+<p>Then, you have two options:</p>
+<ul class="simple">
+<li><p><strong>If you have a different computer</strong> from the one you used to create the installation medium, consider using that computer, preferably an offline computer that has never seen the original ISO.</p></li>
+<li><p><strong>If not</strong>, try to at least use a fresh VM (e.g., a new qube if it’s a Qubes system), preferably offline and with a storage space that is too small to hold the original ISO</p></li>
+</ul>
+<p>The idea is that the original system may have been compromised, and using a different one for re-verification forces your hypothetical adversary to compromise an additional system in order to succeed. After all, if your adversary knows the answer you’re looking for — namely, a match to the genuine ISO — and has access to that very ISO in the same re-verification environment, then there is little to prevent them from simply reading the original ISO and feeding you that result (perhaps while also reading from the USB drive and piping it into <code class="docutils literal notranslate"><span class="pre">/dev/null</span></code> so that you see the light on the USB drive blinking to support the illusion that the data is being read from the USB drive).</p>
+<p>Now, our goal is to perform <strong>the same verification steps as we did with the original ISO</strong>, except, this time, we’ll be reading the installer data directly from the write-protected USB drive instead of from the original ISO file.</p>
+<p>In order to do this, <strong>we have to know the exact size, in bytes, of the original ISO</strong>. There are two ways to get this information:</p>
+<ul class="simple">
+<li><p><strong>from the Qubes website</strong>, by hovering over any ISO download button on the <a class="reference external" href="https://www.qubes-os.org/downloads/">downloads page</a>. You can also view these values directly in the <a class="reference external" href="https://github.com/QubesOS/qubesos.github.io/blob/master/_data/downloads.yml">downloads page’s source data</a>.</p></li>
+<li><p><strong>from the ISO itself</strong>:</p></li>
+</ul>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>stat<span class="w"> </span>-c<span class="w"> </span>%s<span class="w"> </span>Qubes-RX-x86_64.iso
+<span class="go">8176568320</span>
+</pre></div>
+</div>
+<p>Where <code class="file docutils literal notranslate"><span class="pre">Qubes-R</span><em><span class="pre">X</span></em><span class="pre">-x86_64.iso</span></code> is your Qubes ISO (with <code class="samp docutils literal notranslate"><em><span class="pre">X</span></em></code> replaced by the release number). Note that your actual byte number will depend on which Qubes ISO you’re using. This is just an example.</p>
+<p>You can now use <strong class="program">gpg</strong> to verify the detached PGP signature directly against the data on the USB drive. The following command reads the exact number of bytes from your USB drive and pipes them into <strong class="program">gpg</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dd<span class="w"> </span><span class="k">if</span><span class="o">=</span>/dev/sdX<span class="w"> </span><span class="nv">bs</span><span class="o">=</span>1M<span class="w"> </span><span class="nv">count</span><span class="o">=</span>&lt;SIZE&gt;<span class="w"> </span><span class="nv">iflag</span><span class="o">=</span>count_bytes<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>-v<span class="w"> </span>--verify<span class="w"> </span>Qubes-RX-x86_64.iso.asc<span class="w"> </span>-
+<span class="go">7797+1 records in</span>
+<span class="go">7797+1 records out</span>
+<span class="go">8176568320 bytes (8.2 GB, 7.6 GiB) copied, 277.332 s, 29.5 MB/s</span>
+<span class="go">gpg: Signature made &lt;TIME&gt;</span>
+<span class="go">gpg:                using RSA key XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+<span class="go">gpg: using pgp trust model</span>
+<span class="hll"><span class="go">gpg: Good signature from &quot;Qubes OS Release X Signing Key&quot; [full]</span>
+</span><span class="go">gpg: binary signature, digest algorithm SHA256, key algorithm rsa4096</span>
+</pre></div>
+</div>
+<p>Where <code class="file docutils literal notranslate"><span class="pre">/dev/</span><em><span class="pre">sdX</span></em></code> is your USB drive, <code class="samp docutils literal notranslate"><span class="pre">&lt;SIZE&gt;</span></code> is the exact size in bytes of the original ISO and <code class="docutils literal notranslate"><span class="pre">Qubes-RX-x86_64.iso.asc</span></code> is the detached PGP signature file of the original ISO.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>The usual form of a <strong class="program">gpg</strong> verification command is <code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">--verify</span> <span class="pre">&lt;SIGNATURE&gt;</span> <span class="pre">&lt;SIGNED_DATA&gt;</span></code>. Our command is using shell redirection in order to use data from your USB drive as the <code class="docutils literal notranslate"><span class="pre">&lt;SIGNED_DATA&gt;</span></code>, which is why the <code class="docutils literal notranslate"><span class="pre">-</span></code> at the end of the command is required.</p>
+</div>
+<p><strong>The output you receive will not look exactly the same</strong>, what matters is that you should receive a <code class="docutils literal notranslate"><span class="pre">Good</span> <span class="pre">signature</span></code> message for the <a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">appropriate RSK</span></a>, which should be signed by a copy of the <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">genuine QMSK</span></a>.</p>
+</section>
+<section id="how-to-verify-signatures-on-git-repository-tags-and-commits">
+<h2>How to verify signatures on Git repository tags and commits<a class="headerlink" href="#how-to-verify-signatures-on-git-repository-tags-and-commits" title="Link to this heading"></a></h2>
+<div class="admonition hint">
+<p class="admonition-title">提示</p>
+<p>Before we proceed, you must first complete the following prerequisite steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#openpgp-software"><span class="std std-ref">Install OpenPGP software.</span></a></p></li>
+<li><p><a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Import and authenticate the Qubes Master Signing Key.</span></a></p></li>
+<li><p><a class="reference internal" href="security-pack.html"><span class="doc">Import and authenticate keys from the Qubes security pack (qubes-secpack).</span></a> Please see our <a class="reference internal" href="security-pack.html#pgp-key-policies"><span class="std std-ref">PGP key policies</span></a> for important information about these keys.</p></li>
+</ol>
+</div>
+<p>Whenever you use one of the <a class="reference external" href="https://github.com/QubesOS">Qubes repositories</a>, you should use Git to verify the PGP signature in a tag on the latest commit or on the latest commit itself. (One or both may be present, but only one is required.) If there is no trusted signed tag or commit on top, any commits after the latest trusted signed tag or commit should <strong>not</strong> be trusted. If you come across a repo with any unsigned commits, you should not add any of your own signed tags or commits on top of them unless you personally vouch for the trustworthiness of the unsigned commits. Instead, ask the person who pushed the unsigned commits to sign them.</p>
+<p>You should always perform this verification on a trusted local machine with properly authenticated keys rather than relying on a third party, such as GitHub. While the GitHub interface may claim that a commit has a verified signature from a member of the Qubes team, this is only trustworthy if GitHub has performed the signature check correctly, the account identity is authentic, an admin has not replaced the user’s key, GitHub’s servers have not been compromised, and so on. Since there’s no way for you to be certain that all such conditions hold, you’re much better off verifying signatures yourself. (Also see: <a class="reference internal" href="../introduction/faq.html#what-does-it-mean-to-distrust-the-infrastructure"><span class="std std-ref">distrusting the infrastructure</span></a>.)</p>
+<section id="how-to-verify-a-signature-on-a-git-tag">
+<h3>How to verify a signature on a Git tag<a class="headerlink" href="#how-to-verify-a-signature-on-a-git-tag" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>tag<span class="w"> </span>-v<span class="w"> </span>&lt;tag<span class="w"> </span>name&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>verify-tag<span class="w"> </span>&lt;tag<span class="w"> </span>name&gt;
+</pre></div>
+</div>
+</section>
+<section id="how-to-verify-a-signature-on-a-git-commit">
+<h3>How to verify a signature on a Git commit<a class="headerlink" href="#how-to-verify-a-signature-on-a-git-commit" title="Link to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>log<span class="w"> </span>--show-signature<span class="w"> </span>&lt;commit<span class="w"> </span>ID&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>verify-commit<span class="w"> </span>&lt;commit<span class="w"> </span>ID&gt;
+</pre></div>
+</div>
+</section>
+</section>
+<section id="troubleshooting-faq">
+<h2>Troubleshooting FAQ<a class="headerlink" href="#troubleshooting-faq" title="Link to this heading"></a></h2>
+<section id="why-am-i-getting-can-t-check-signature-public-key-not-found">
+<h3>Why am I getting &quot;Can't check signature: public key not found&quot;?<a class="headerlink" href="#why-am-i-getting-can-t-check-signature-public-key-not-found" title="Link to this heading"></a></h3>
+<p>You don’t have the correct <a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">release signing key</span></a>.</p>
+</section>
+<section id="why-am-i-getting-bad-signature-from-qubes-os-release-x-signing-key">
+<h3>Why am I getting &quot;BAD signature from ‘Qubes OS Release X Signing Key'&quot;?<a class="headerlink" href="#why-am-i-getting-bad-signature-from-qubes-os-release-x-signing-key" title="Link to this heading"></a></h3>
+<p>The problem could be one or more of the following:</p>
+<ul class="simple">
+<li><p>You’re trying to verify the wrong file(s). Reread this page carefully.</p></li>
+<li><p>You’re using the wrong GPG command. Follow the provided examples carefully, or try using <code class="docutils literal notranslate"><span class="pre">gpg</span></code> instead of <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> (or vice versa).</p></li>
+<li><p>The ISO or <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a> is bad (e.g., incomplete or corrupt download). Try downloading the signature file again from a different source, then try verifying again. If you still get the same result, try downloading the ISO again from a different source, then try verifying again.</p></li>
+</ul>
+</section>
+<section id="why-am-i-getting-bash-gpg2-command-not-found">
+<h3>Why am I getting &quot;bash: gpg2: command not found&quot;?<a class="headerlink" href="#why-am-i-getting-bash-gpg2-command-not-found" title="Link to this heading"></a></h3>
+<p>You don’t have <code class="docutils literal notranslate"><span class="pre">gpg2</span></code> installed. Please install it using the method appropriate for your environment (e.g., via your package manager), or try using <code class="docutils literal notranslate"><span class="pre">gpg</span></code> instead.</p>
+</section>
+<section id="why-am-i-getting-no-such-file-or-directory">
+<h3>Why am I getting &quot;No such file or directory&quot;?<a class="headerlink" href="#why-am-i-getting-no-such-file-or-directory" title="Link to this heading"></a></h3>
+<p>Your working directory does not contain the required files. Go back and follow the instructions more carefully, making sure that you put all required files in the same directory <em>and</em> navigate to that directory.</p>
+</section>
+<section id="why-am-i-getting-can-t-open-signed-data-qubes-rx-x86-64-iso-no-signed-data-can-t-hash-datafile-no-data">
+<h3>Why am I getting &quot;can't open signed data ‘Qubes-RX-x86_64.iso'&quot; / &quot;no signed data&quot; / &quot;can't hash datafile: No data&quot;?<a class="headerlink" href="#why-am-i-getting-can-t-open-signed-data-qubes-rx-x86-64-iso-no-signed-data-can-t-hash-datafile-no-data" title="Link to this heading"></a></h3>
+<p>The correct ISO is not in your working directory.</p>
+</section>
+<section id="why-am-i-getting-can-t-open-qubes-rx-x86-64-iso-asc-verify-signatures-failed-file-open-error">
+<h3>Why am I getting &quot;can't open ‘Qubes-RX-x86_64.iso.asc' / verify signatures failed: file open error&quot;?<a class="headerlink" href="#why-am-i-getting-can-t-open-qubes-rx-x86-64-iso-asc-verify-signatures-failed-file-open-error" title="Link to this heading"></a></h3>
+<p>The correct <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a> is not in your working directory.</p>
+</section>
+<section id="why-am-i-getting-no-valid-openpgp-data-found">
+<h3>Why am I getting &quot;no valid OpenPGP data found&quot;?<a class="headerlink" href="#why-am-i-getting-no-valid-openpgp-data-found" title="Link to this heading"></a></h3>
+<p>Either you don’t have the correct <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a>, or you inverted the arguments to <code class="docutils literal notranslate"><span class="pre">gpg2</span></code>. (The signature file goes first.)</p>
+</section>
+<section id="why-am-i-getting-warning-this-key-is-not-certified-with-a-trusted-signature-there-is-no-indication-that-the-signature-belongs-to-the-owner">
+<h3>Why am I getting &quot;WARNING: This key is not certified with a trusted signature! There is no indication that the signature belongs to the owner.&quot;?<a class="headerlink" href="#why-am-i-getting-warning-this-key-is-not-certified-with-a-trusted-signature-there-is-no-indication-that-the-signature-belongs-to-the-owner" title="Link to this heading"></a></h3>
+<p>There are several possibilities:</p>
+<ul class="simple">
+<li><p>You don’t have the <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Qubes Master Signing Key</span></a>.</p></li>
+<li><p>You have not <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">set the Qubes Master Signing Key’s trust level correctly.</span></a></p></li>
+<li><p>In the case of a key that is not directly signed by the Qubes Master Signing Key, you have not <a class="reference internal" href="#how-to-verify-signatures-on-git-repository-tags-and-commits"><span class="std std-ref">set that key’s trust level correctly.</span></a></p></li>
+</ul>
+</section>
+<section id="why-am-i-getting-x-signature-not-checked-due-to-a-missing-key">
+<h3>Why am I getting &quot;X signature not checked due to a missing key&quot;?<a class="headerlink" href="#why-am-i-getting-x-signature-not-checked-due-to-a-missing-key" title="Link to this heading"></a></h3>
+<p>You don’t have the keys that created those signatures in your keyring. For the purpose of verifying a Qubes ISO, you don’t need them as long as you have the <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Qubes Master Signing Key</span></a> and the <a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">release signing key</span></a> for your Qubes release.</p>
+</section>
+<section id="why-am-i-seeing-additional-signatures-on-a-key-with-user-id-not-found-or-from-a-revoked-key">
+<h3>Why am I seeing additional signatures on a key with &quot;[User ID not found]&quot; or from a revoked key?<a class="headerlink" href="#why-am-i-seeing-additional-signatures-on-a-key-with-user-id-not-found-or-from-a-revoked-key" title="Link to this heading"></a></h3>
+<p>This is just a fundamental part of how OpenPGP works. Anyone can sign anyone else’s public key and upload the signed public key to keyservers. Everyone is also free to revoke their own keys at any time (assuming they possess or can create a revocation certificate). This has no impact on verifying Qubes ISOs, code, or keys.</p>
+</section>
+<section id="why-am-i-getting-verify-signatures-failed-unexpected-data">
+<h3>Why am I getting &quot;verify signatures failed: unexpected data&quot;?<a class="headerlink" href="#why-am-i-getting-verify-signatures-failed-unexpected-data" title="Link to this heading"></a></h3>
+<p>You’re not verifying against the correct <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a>.</p>
+</section>
+<section id="why-am-i-getting-not-a-detached-signature">
+<h3>Why am I getting &quot;not a detached signature&quot;?<a class="headerlink" href="#why-am-i-getting-not-a-detached-signature" title="Link to this heading"></a></h3>
+<p>You’re not verifying against the correct <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a>.</p>
+</section>
+<section id="why-am-i-getting-crc-error-no-signature-found">
+<h3>Why am I getting &quot;CRC error; […] no signature found […]&quot;?<a class="headerlink" href="#why-am-i-getting-crc-error-no-signature-found" title="Link to this heading"></a></h3>
+<p>You’re not verifying against the correct <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a>, or the signature file has been modified. Try downloading it again or from a different source.</p>
+</section>
+<section id="why-am-i-getting-warning-1-listed-file-could-not-be-read">
+<h3>Why am I getting &quot;WARNING: 1 listed file could not be read&quot;?<a class="headerlink" href="#why-am-i-getting-warning-1-listed-file-could-not-be-read" title="Link to this heading"></a></h3>
+<p>The correct ISO is not in your working directory.</p>
+</section>
+<section id="i-have-another-problem-that-isn-t-mentioned-here">
+<h3>I have another problem that isn't mentioned here.<a class="headerlink" href="#i-have-another-problem-that-isn-t-mentioned-here" title="Link to this heading"></a></h3>
+<p>Carefully reread this page to be certain that you didn’t skip any steps. In particular, make sure you have the <a class="reference internal" href="#how-to-import-qmsk"><span class="std std-ref">Qubes Master Signing Key</span></a>, the <a class="reference internal" href="#how-to-import-rsk"><span class="std std-ref">release signing key</span></a> for your Qubes release, <em>and</em> the <a class="reference internal" href="#how-to-verify-detached-pgp-signatures-on-qubes-isos"><span class="std std-ref">detached PGP signature file</span></a>, all for the <em>correct</em> Qubes OS release. If your question is about GPG, please see the <a class="reference external" href="https://www.gnupg.org/documentation/">GnuPG documentation</a>. Still have question? Please see <a class="reference internal" href="../introduction/support.html"><span class="doc">help, support, mailing lists, and forum</span></a> for places where you can ask!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="security-pack.html" class="btn btn-neutral float-left" title="Qubes security pack (qubes-secpack)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../developer/general/package-contributions.html" class="btn btn-neutral float-right" title="Package contributions" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; 版权所有 2026, Qubes OS Project and others。</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/project-security/verifying-signatures.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

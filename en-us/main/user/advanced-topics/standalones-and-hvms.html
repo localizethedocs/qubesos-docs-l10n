@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Standalones and HVMs" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/advanced-topics/standalones-and-hvms.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="A standalone is a type of qube that is created by cloning a template. Unlike templates, however, standalones do not supply their root filesystems to other qubes. Examples of situations in which sta..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="A standalone is a type of qube that is created by cloning a template. Unlike templates, however, standalones do not supply their root filesystems to other qubes. Examples of situations in which sta..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standalones and HVMs &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/advanced-topics/standalones-and-hvms.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Config files" href="config-files.html" />
+    <link rel="prev" title="Volume backup and revert" href="volume-backup-revert.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Standalones and HVMs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-virtualization-modes">Understanding Virtualization Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-standalone">Creating a standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-standalones">Updating standalones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-an-hvm">Creating an HVM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-gui">Using the GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-line">Command line</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-an-os-in-an-hvm">Installing an OS in an HVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-networking-for-hvms">Setting up networking for HVMs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#an-example-of-setting-up-a-network-network-manager-on-kde">An example of setting up a network - Network Manager on KDE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-template-based-hvms">Using template-based HVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloning-hvms">Cloning HVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assigning-pci-devices-to-hvms">Assigning PCI devices to HVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#converting-virtualbox-vms-to-qubes-hvms">Converting VirtualBox VMs to Qubes HVMs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#optional-ways-to-get-more-information">Optional ways to get more information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Standalones and HVMs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/advanced-topics/standalones-and-hvms.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="standalones-and-hvms">
+<h1>Standalones and HVMs<a class="headerlink" href="#standalones-and-hvms" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is intended for advanced users.</p>
+</div>
+<p>A <a class="reference internal" href="../reference/glossary.html#term-standalone"><span class="xref std std-term">standalone</span></a> is a type of qube that is created by cloning a <a class="reference internal" href="../reference/glossary.html#term-template"><span class="xref std std-term">template</span></a>. Unlike templates, however, standalones do not supply their root filesystems to other qubes. Examples of situations in which standalones can be useful include:</p>
+<ul class="simple">
+<li><p>Qubes used for development (dev environments often require a lot of specific packages and tools)</p></li>
+<li><p>Qubes used for installing untrusted packages. Normally, you install digitally signed software from Red Hat/Fedora repositories, and it’s reasonable that such software has non malicious <em>installation</em> scripts (rpm pre/post scripts). However, when you would like to install some packages from less trusted sources, or unsigned, then using a dedicated (untrusted) standalone might be a better way.</p></li>
+</ul>
+<p>Meanwhile, a <a class="reference internal" href="../reference/glossary.html#term-HVM"><span class="xref std std-term">Hardware-assisted Virtual Machine (HVM)</span></a>, also known as a “Fully-Virtualized Virtual Machine,” utilizes the virtualization extensions of the host CPU. These are typically contrasted with Paravirtualized (PV) VMs.</p>
+<p>HVMs allow you to create qubes based on any OS for which you have an installation ISO, so you can easily have qubes running Windows, <code class="docutils literal notranslate"><span class="pre">*BSD</span></code>, or any Linux distribution. You can also use HVMs to run “live” distros.</p>
+<p>By default, every qube runs in PVH mode (which has security advantages over both PV and HVM), except for those with attached PCI devices, which run in HVM mode. See <a class="reference external" href="https://blog.invisiblethings.org/2017/07/31/qubes-40-rc1.html">here</a> for a discussion of the switch from PV to HVM and <a class="reference external" href="https://www.qubes-os.org/news/2018/01/11/qsb-37/">here</a> for the announcement about the change to using PVH as default.</p>
+<p>The standalone/template distinction and the HVM/PV/PVH distinctions are orthogonal. The former is about root filesystem inheritance, whereas the latter is about the virtualization mode. In practice, however, it is most common for standalones to be HVMs and for HVMs to be standalones. Hence, this page covers both topics.</p>
+<section id="understanding-virtualization-modes">
+<h2>Understanding Virtualization Modes<a class="headerlink" href="#understanding-virtualization-modes" title="Link to this heading"></a></h2>
+<p>PVH has both better performance and better security than either PV or HVM:</p>
+<p>PVH has less attack surface than PV, as it relies on Second Level Address Translation (SLAT) hardware. Guests modify their own page tables natively, without hypervisor involvement. Xen does not need to perform complex checks to ensure that a guest cannot obtain write access to its own page tables, as is necessary for PV. Flaws in these checks have been a source of no fewer than four guest ⇒ host escapes: XSA-148, XSA-182, XSA-212, and XSA-213.</p>
+<p>PVH also has less attack surface than HVM, as it does not require QEMU to provide device emulation services. While QEMU is confined in a stubdomain, and again in a seccomp based sandbox, the stubdomain has significant attack surface against the hypervisor. Not only does it have the full attack surface of a PV domain, it also has access to additional hypercalls that allow it to control the guest it is providing emulation services for. XSA-109 was a vulnerability in one of these hypercalls.</p>
+<p>PVH has better performance than HVM, as the stubdomain in HVM consumes resources (both memory and a small amount of CPU). There is little difference in the I/O path at runtime, as both PVH and HVM guests usually use paravirtualized I/O protocols.</p>
+<p>Surprisingly, PVH often has better performance than PV. This is because PVH does not require hypercalls for page table updates, which are expensive. SLAT does raise the cost of TLB misses, but this is somewhat mitigated by a second-level TLB in recent hardware.</p>
+</section>
+<section id="creating-a-standalone">
+<h2>Creating a standalone<a class="headerlink" href="#creating-a-standalone" title="Link to this heading"></a></h2>
+<p>You can create a standalone in the Qube Manager by selecting the “Type” of “Standalone qube copied from a template” or “Empty standalone qube (install your own OS).”</p>
+<p>Alternatively, to create an empty standalone from the dom0 command line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-create<span class="w"> </span>--class<span class="w"> </span>StandaloneVM<span class="w"> </span>--label<span class="w"> </span>&lt;YOUR_COLOR&gt;<span class="w"> </span>--property<span class="w"> </span><span class="nv">virt_mode</span><span class="o">=</span>hvm<span class="w"> </span>&lt;NEW_STANDALONE_NAME&gt;
+</pre></div>
+</div>
+<p>Or to create a standalone copied from a template:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-create<span class="w"> </span>--class<span class="w"> </span>StandaloneVM<span class="w"> </span>--label<span class="w"> </span>&lt;YOUR_COLOR&gt;<span class="w"> </span>--property<span class="w"> </span><span class="nv">virt_mode</span><span class="o">=</span>hvm<span class="w"> </span>--template<span class="w"> </span>&lt;TEMPLATE_QUBE_NAME&gt;<span class="w"> </span>&lt;NEW_STANDALONE_NAME&gt;
+</pre></div>
+</div>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>Technically, <code class="docutils literal notranslate"><span class="pre">virt_mode=hvm</span></code> is not necessary for every standalone. However, it is needed if you want to use a kernel from within the qube.</p></li>
+<li><p>If you want to make software installed in a template available in your standalone, pass in the name of the template using the <code class="docutils literal notranslate"><span class="pre">--template</span></code> option.</p></li>
+</ul>
+</section>
+<section id="updating-standalones">
+<h2>Updating standalones<a class="headerlink" href="#updating-standalones" title="Link to this heading"></a></h2>
+<p>When you create a standalone from a template, the standalone is a complete clone of the template, including the entire filesystem. After the moment of creation, the standalone becomes completely independent from the template. Therefore, the standalone will not be updated merely by updating the template from which it was originally cloned. Rather, it must be updated as an independent qube. See <a class="reference internal" href="../how-to-guides/how-to-update.html"><span class="doc">How to Update</span></a>.</p>
+</section>
+<section id="creating-an-hvm">
+<h2>Creating an HVM<a class="headerlink" href="#creating-an-hvm" title="Link to this heading"></a></h2>
+<section id="using-the-gui">
+<h3>Using the GUI<a class="headerlink" href="#using-the-gui" title="Link to this heading"></a></h3>
+<p>In Qube Manager, use either the “New qube” button, or the “New qube” entry in the “Qube” menu. In the “Create new qube” dialog box click on tab “Standalone”. If “install system from device” is selected (which it is by default), then <code class="docutils literal notranslate"><span class="pre">virt_mode</span></code> will be set to <code class="docutils literal notranslate"><span class="pre">hvm</span></code> automatically. Otherwise, open the newly-created qube’s Settings GUI and, in the “Advanced” tab, select <code class="docutils literal notranslate"><span class="pre">HVM</span></code> in the virtualization mode drop-down list. Also, make sure “Kernel” is set to <code class="docutils literal notranslate"><span class="pre">(none)</span></code> on the same tab.</p>
+</section>
+<section id="command-line">
+<h3>Command line<a class="headerlink" href="#command-line" title="Link to this heading"></a></h3>
+<p>Qubes are template-based (i.e., <a class="reference internal" href="../reference/glossary.html#term-app-qube"><span class="xref std std-term">app qubes</span></a> by default, so you must set the <code class="docutils literal notranslate"><span class="pre">--class</span> <span class="pre">StandaloneVM</span></code> option to create a standalone. The name and label color used below are for illustration purposes.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-create<span class="w"> </span>my-new-vm<span class="w"> </span>--class<span class="w"> </span>StandaloneVM<span class="w"> </span>--property<span class="w"> </span><span class="nv">virt_mode</span><span class="o">=</span>hvm<span class="w"> </span>--property<span class="w"> </span><span class="nv">kernel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"> </span>--label<span class="o">=</span>green
+</pre></div>
+</div>
+<p>If you receive an error like this one, then you must first enable VT-x in your BIOS:</p>
+<div class="highlight-output notranslate"><div class="highlight"><pre><span></span><span class="go">libvirt.libvirtError: invalid argument: could not find capabilities for arch=x86_64</span>
+</pre></div>
+</div>
+<p>Make sure that you give the new qube adequate memory to install and run.</p>
+</section>
+</section>
+<section id="installing-an-os-in-an-hvm">
+<h2>Installing an OS in an HVM<a class="headerlink" href="#installing-an-os-in-an-hvm" title="Link to this heading"></a></h2>
+<p>You will have to boot the qube with the installation media “attached” to it. You may either use the GUI or use command line instructions. At the command line you can do this in three ways:</p>
+<ol class="arabic">
+<li><p>If you have the physical CD-ROM media and an optical disc drive:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-start<span class="w"> </span>&lt;YOUR_HVM&gt;<span class="w"> </span>--cdrom<span class="o">=</span>/dev/cdrom
+</pre></div>
+</div>
+</li>
+<li><p>If you have an ISO image of the installation media located in dom0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-start<span class="w"> </span>&lt;YOUR_HVM&gt;<span class="w"> </span>--cdrom<span class="o">=</span>dom0:/usr/local/iso/&lt;YOUR_INSTALLER.ISO&gt;
+</pre></div>
+</div>
+</li>
+<li><p>If you have an ISO image of the installation media located in a qube (the qube where the media is located must be running):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-start<span class="w"> </span>&lt;YOUR_HVM&gt;<span class="w"> </span>--cdrom<span class="o">=</span>&lt;YOUR_OTHER_QUBE&gt;:/home/user/&lt;YOUR_INSTALLER.ISO&gt;
+</pre></div>
+</div>
+</li>
+</ol>
+<p>For security reasons, you should <em>never</em> copy untrusted data to dom0.</p>
+<p>Next, the qube will start booting from the attached installation media, and you can start installation. Whenever the installer wants to “reboot the system” it actually shuts down the qube, and Qubes won’t automatically start it. You may have to restart the qube several times in order to complete installation (as is the case with Windows 7 installations). Several invocations of the <code class="docutils literal notranslate"><span class="pre">qvm-start</span></code> command (as shown above) might be needed.</p>
+</section>
+<section id="setting-up-networking-for-hvms">
+<h2>Setting up networking for HVMs<a class="headerlink" href="#setting-up-networking-for-hvms" title="Link to this heading"></a></h2>
+<p>Just like standard app qubes, an HVM gets a fixed IP addresses centrally assigned by Qubes. Normally, Qubes agent scripts (or services on Windows) running within each app qube are responsible for setting up networking within the qube according to the configuration created by Qubes (through <a class="reference internal" href="../../developer/debugging/vm-interface.html#qubesdb"><span class="std std-ref">keys</span></a> exposed by dom0 to the qube). Such centrally-managed networking infrastructure allows for <a class="reference external" href="https://blog.invisiblethings.org/2011/09/28/playing-with-qubes-networking-for-fun.html">advanced networking configurations</a>.</p>
+<p>A generic HVM such as a standard Windows or Ubuntu installation, however, has no Qubes agent scripts running inside it initially and thus requires manual configuration of networking so that it matches the values assigned by Qubes.</p>
+<p>Even though we do have a small DHCP server that runs inside the HVM’s untrusted stub domain to make the manual network configuration unnecessary for many qubes, this won’t work for most modern Linux distributions, which contain Xen networking PV drivers (but not Qubes tools), which bypass the stub-domain networking. (Their net frontends connect directly to the net backend in the <a class="reference internal" href="../reference/glossary.html#term-net-qube"><span class="xref std std-term">net qube</span></a>.) In this instance, our DHCP server is not useful.</p>
+<p>In order to manually configure networking in a qube, one should first find out the IP/netmask/gateway assigned to the particular qube by Qubes. This can be seen, e.g., in the Qube Manager in the qube’s properties:</p>
+<figure class="align-default">
+<img alt="r4.0-manager-networking-config.png" src="../../_images/r4.0-manager-networking-config.png" />
+</figure>
+<p>Alternatively, one can use the <code class="docutils literal notranslate"><span class="pre">qvm-ls</span> <span class="pre">-n</span></code> command to obtain the same information (IP/netmask/gateway). The Qube Settimgs shows a netmask of 255.255.255.255. This is not suitable for most standalones, and you will need to use a different value.</p>
+<p>In Qubes, the IP address is usually in range 10.137.0.0/16, with disposables in range 10.138.0.0/16, and DNS set to <code class="docutils literal notranslate"><span class="pre">10.139.1.1</span></code> and <code class="docutils literal notranslate"><span class="pre">10.139.1.2</span></code>. The simplest solution is to set the netmask to 255.0.0.0 - standard for a class A network. If you want a more restricted solution you could use 255.252.0.0, or 255.255.255.0</p>
+<p>There is <a class="reference internal" href="../../developer/system/networking.html#ipv6"><span class="std std-ref">opt-in support</span></a> for IPv6 forwarding.</p>
+<section id="an-example-of-setting-up-a-network-network-manager-on-kde">
+<h3>An example of setting up a network - Network Manager on KDE<a class="headerlink" href="#an-example-of-setting-up-a-network-network-manager-on-kde" title="Link to this heading"></a></h3>
+<p>Every guest operating system has its own way of handling networking, and the user is referred to the documentation that comes with that operating system. However, Network Manager is widely used on Linux systems, and so a worked example will prove useful. This example is for an HVM running EndeavourOS.</p>
+<figure class="align-default">
+<img alt="Image of Qube Settings" src="../../_images/EndeavourOS_Network.png" />
+</figure>
+<p>In this example, Network Manager on KDE, the network had the following values:</p>
+<ol class="arabic simple">
+<li><p>IPv4 networking</p></li>
+<li><p>IP address 10.137.0.17</p></li>
+<li><p>Netmask - qube settings showed 255.255.255.255, but we decided to use 255.255.255.0</p></li>
+<li><p>Gateway 10.138.24.248</p></li>
+<li><p>Virtual DNS 10.139.1.1 and 10.139.1.2</p></li>
+</ol>
+<figure class="align-default">
+<img alt="Image of Network Manager, annotated by numbers for reference below" src="../../_images/Network_Manager.png" />
+</figure>
+<p>The network was set up by entering Network Manager, selecting the Wi-Fi &amp; Networking tab, clicking on the Wired Ethernet item, and selecting tab IPv4 (1). The Manual method was selected (2), which revealed areas for data entry. The DNS Servers section takes a comma-separated list, here 10.139.1.1,10.1.139.2 (3). At the bottom of the tab (4), the ‘+ Add’ button was selected, and the IP address of 10.137.0.17 entered in the ‘Address’ column, the Netmask of 255.255.255.0 entered in the ‘Netmask’ column, and the Gateway of 10.138.24.248 under ‘Gateway’. Selecting the “Apply” button stored these changes</p>
+</section>
+</section>
+<section id="using-template-based-hvms">
+<h2>Using template-based HVMs<a class="headerlink" href="#using-template-based-hvms" title="Link to this heading"></a></h2>
+<p>Qubes allows HVMs to share a common root filesystem from a select template. This mode can be used for any HVM (e.g., FreeBSD running in an HVM).</p>
+<p>In order to create an HVM template, you use the following command, suitably adapted:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-create<span class="w"> </span>--class<span class="w"> </span>TemplateVM<span class="w"> </span>&lt;YOUR_HVM_TEMPLATE_NAME&gt;<span class="w"> </span>--property<span class="w"> </span><span class="nv">virt_mode</span><span class="o">=</span>HVM<span class="w"> </span>--property<span class="w"> </span><span class="nv">kernel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w">  </span>-l<span class="w"> </span>&lt;YOUR_COLOR&gt;
+</pre></div>
+</div>
+<p>Set memory as appropriate and install the OS into this template in the same way you would install it into a normal HVM. Generally, you should install in to the first “system” disk. (Resize it as needed before starting installation.)</p>
+<p>You can then create a new qube using the new template. If you use this Template as is, then any HVMs based on it will effectively be disposables. All file system changes will be wiped when the HVM is shut down.</p>
+<p><a class="reference internal" href="../templates/windows/qubes-windows.html#windows-as-a-template"><span class="std std-ref">Windows as a template</span></a> gives specific advice on installing and using Windows-based templates.</p>
+</section>
+<section id="cloning-hvms">
+<h2>Cloning HVMs<a class="headerlink" href="#cloning-hvms" title="Link to this heading"></a></h2>
+<p>Just like normal app qubes, HVMs can also be cloned either using the command <code class="docutils literal notranslate"><span class="pre">qvm-clone</span></code> or via the Qube Manager’s “Clone VM” option in the right-click menu.</p>
+<p>The cloned qube will get identical root and private images and will essentially be identical to the original qube, except that it will get a different MAC address for the networking interface:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[joanna@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-new-vm
+<span class="go">autostart           D  False</span>
+<span class="go">backup_timestamp    U</span>
+<span class="go">debug               D  False</span>
+<span class="go">default_dispvm      D  None</span>
+<span class="go">default_user        D  user</span>
+<span class="go">gateway             D</span>
+<span class="go">gateway6            D</span>
+<span class="go">include_in_backups  -  False</span>
+<span class="go">installed_by_rpm    D  False</span>
+<span class="go">ip                  D  10.137.0.122</span>
+<span class="go">ip6                 D  fd09:24ef:4179::a89:7a</span>
+<span class="go">kernel              -</span>
+<span class="go">kernelopts          D  nopat</span>
+<span class="go">klass               D  StandaloneVM</span>
+<span class="go">label               -  red</span>
+<span class="go">mac                 D  00:16:3e:5e:6c:00</span>
+<span class="go">management_dispvm   D  default-mgmt-dvm</span>
+<span class="go">maxmem              D  0</span>
+<span class="go">memory              -  1000</span>
+<span class="go">name                -  my-new-vm</span>
+<span class="go">netvm               -  sys-firewall</span>
+<span class="go">provides_network    -  False</span>
+<span class="go">qid                 -  122</span>
+<span class="go">qrexec_timeout      D  60</span>
+<span class="go">shutdown_timeout    D  60</span>
+<span class="go">start_time          D</span>
+<span class="go">stubdom_mem         U</span>
+<span class="go">stubdom_xid         D  -1</span>
+<span class="go">updateable          D  True</span>
+<span class="go">uuid                -  54387f94-8617-46b0-8806-0c18bc387f34</span>
+<span class="go">vcpus               D  2</span>
+<span class="go">virt_mode           -  hvm</span>
+<span class="go">visible_gateway     D  10.137.0.14</span>
+<span class="go">visible_gateway6    D  fd09:24ef:4179::a89:e</span>
+<span class="go">visible_ip          D  10.137.0.122</span>
+<span class="go">visible_ip6         D  fd09:24ef:4179::a89:7a</span>
+<span class="go">visible_netmask     D  255.255.255.255</span>
+<span class="go">xid                 D  -1</span>
+
+<span class="gp">[joanna@dom0 ~]$ </span>qvm-clone<span class="w"> </span>my-new-vm<span class="w"> </span>my-new-vm-copy
+
+<span class="go">/.../</span>
+
+<span class="gp">[joanna@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-new-vm-copy
+<span class="go">autostart           D  False</span>
+<span class="go">backup_timestamp    U</span>
+<span class="go">debug               D  False</span>
+<span class="go">default_dispvm      D  None</span>
+<span class="go">default_user        D  user</span>
+<span class="go">gateway             D</span>
+<span class="go">gateway6            D</span>
+<span class="go">include_in_backups  -  False</span>
+<span class="go">installed_by_rpm    D  False</span>
+<span class="go">ip                  D  10.137.0.137</span>
+<span class="go">ip6                 D  fd09:24ef:4179::a89:89</span>
+<span class="go">kernel              -</span>
+<span class="go">kernelopts          D  nopat</span>
+<span class="go">klass               D  StandaloneVM</span>
+<span class="go">label               -  red</span>
+<span class="go">mac                 D  00:16:3e:5e:6c:00</span>
+<span class="go">management_dispvm   D  default-mgmt-dvm</span>
+<span class="go">maxmem              D  0</span>
+<span class="go">memory              -  1000</span>
+<span class="go">name                -  my-new-vm-copy</span>
+<span class="go">netvm               -  sys-firewall</span>
+<span class="go">provides_network    -  False</span>
+<span class="go">qid                 -  137</span>
+<span class="go">qrexec_timeout      D  60</span>
+<span class="go">shutdown_timeout    D  60</span>
+<span class="go">start_time          D</span>
+<span class="go">stubdom_mem         U</span>
+<span class="go">stubdom_xid         D  -1</span>
+<span class="go">updateable          D  True</span>
+<span class="go">uuid                -  9ad109a9-d95a-4e03-b977-592f8424f42b</span>
+<span class="go">vcpus               D  2</span>
+<span class="go">virt_mode           -  hvm</span>
+<span class="go">visible_gateway     D  10.137.0.14</span>
+<span class="go">visible_gateway6    D  fd09:24ef:4179::a89:e</span>
+<span class="go">visible_ip          D  10.137.0.137</span>
+<span class="go">visible_ip6         D  fd09:24ef:4179::a89:89</span>
+<span class="go">visible_netmask     D  255.255.255.255</span>
+<span class="go">xid                 D  -1</span>
+</pre></div>
+</div>
+<p>Note that the MAC addresses differ between those two otherwise identical qubes. The IP addresses assigned by Qubes will also be different, of course, to allow networking to function properly:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[joanna@dom0 ~]$ </span>qvm-ls<span class="w"> </span>-n
+
+<span class="go">NAME                 STATE   NETVM         IP            IPBACK  GATEWAY</span>
+<span class="go">my-new-hvm           Halted  sys-firewall  10.137.0.122  -       10.137.0.14</span>
+<span class="go">my-new-hvm-clone     Halted  sys-firewall  10.137.0.137  -       10.137.0.14</span>
+</pre></div>
+</div>
+<p>If, for any reason, you would like to make sure that the two qubes have the same MAC address, you can use <code class="docutils literal notranslate"><span class="pre">qvm-prefs</span></code> to set a fixed MAC address:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[joanna@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-new-vm-copy<span class="w"> </span>-s<span class="w"> </span>mac<span class="w"> </span><span class="m">00</span>:16:3E:5E:6C:05
+<span class="gp">[joanna@dom0 ~]$ </span>qvm-prefs<span class="w"> </span>my-new-vm-copy
+<span class="go">name              : my-new-vm-copy</span>
+<span class="go">label             : green</span>
+<span class="go">type              : HVM</span>
+<span class="go">netvm             : firewallvm</span>
+<span class="go">updateable?       : True</span>
+<span class="go">installed by RPM? : False</span>
+<span class="go">include in backups: False</span>
+<span class="go">dir               : /var/lib/qubes/appvms/my-new-vm-copy</span>
+<span class="go">config            : /var/lib/qubes/appvms/my-new-vm-copy/my-new-vm-copy.conf</span>
+<span class="go">pcidevs           : []</span>
+<span class="go">root img          : /var/lib/qubes/appvms/my-new-vm-copy/root.img</span>
+<span class="go">private img       : /var/lib/qubes/appvms/my-new-vm-copy/private.img</span>
+<span class="go">vcpus             : 4</span>
+<span class="go">memory            : 512</span>
+<span class="go">maxmem            : 512</span>
+<span class="go">MAC               : 00:16:3E:5E:6C:05</span>
+<span class="go">debug             : off</span>
+<span class="go">default user      : user</span>
+<span class="go">qrexec_installed  : False</span>
+<span class="go">qrexec timeout    : 60</span>
+<span class="go">drive             : None</span>
+<span class="go">timezone          : localtime</span>
+</pre></div>
+</div>
+</section>
+<section id="assigning-pci-devices-to-hvms">
+<h2>Assigning PCI devices to HVMs<a class="headerlink" href="#assigning-pci-devices-to-hvms" title="Link to this heading"></a></h2>
+<p>HVMs (including Windows qubes) can be <a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html"><span class="doc">assigned PCI devices</span></a> just like normal app qubes. For example, you can assign a USB controller to a Windows qube, and you should be able to use various devices that require Windows software, such as phones, electronic devices that are configured via FTDI, etc.</p>
+<p>One problem at the moment, however, is that after the whole system gets suspended into S3 sleep and subsequently resumed, some attached devices may stop working and should be restarted within the qube. This can be achieved under a Windows HVM by opening the Device Manager, selecting the actual device (such as a USB controller), ‘Disabling’ the device, and then ‘Enabling’ the device again. This is illustrated in the screenshot below:</p>
+<figure class="align-default">
+<img alt="r2b1-win7-usb-disable.png" src="../../_images/r2b1-win7-usb-disable.png" />
+</figure>
+</section>
+<section id="converting-virtualbox-vms-to-qubes-hvms">
+<h2>Converting VirtualBox VMs to Qubes HVMs<a class="headerlink" href="#converting-virtualbox-vms-to-qubes-hvms" title="Link to this heading"></a></h2>
+<p>You can convert any VirtualBox VM to a Qubes HVM using this method.</p>
+<p>For example, Microsoft provides <a class="reference external" href="https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/">virtual machines containing an evaluation version of Windows</a>.</p>
+<p>About 60 GB of disk space is required for conversion. Use an external hard drive if needed. The final <code class="docutils literal notranslate"><span class="pre">root.img</span></code> size is 40 GB.</p>
+<p>In a Debian app qube, install <code class="docutils literal notranslate"><span class="pre">qemu-utils</span></code> and <code class="docutils literal notranslate"><span class="pre">unzip</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qemu-utils<span class="w"> </span>unzip
+</pre></div>
+</div>
+<p>In a Fedora app qube:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>qemu-img
+</pre></div>
+</div>
+<p>Unzip VirtualBox zip file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unzip<span class="w"> </span>*.zip
+</pre></div>
+</div>
+<p>Extract OVA tar archive:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar<span class="w"> </span>-xvf<span class="w"> </span>*.ova
+</pre></div>
+</div>
+<p>Convert vmdk to raw:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>convert<span class="w"> </span>-O<span class="w"> </span>raw<span class="w"> </span>*.vmdk<span class="w"> </span>win10.raw
+</pre></div>
+</div>
+<p>Copy the root image file from the originating qube (here called <code class="docutils literal notranslate"><span class="pre">untrusted</span></code>) to a temporary location in dom0, typing this in a dom0 terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-run<span class="w"> </span>--pass-io<span class="w"> </span>untrusted<span class="w"> </span><span class="s1">&#39;cat &quot;/media/user/externalhd/win10.raw&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/home/user/win10-root.img
+</pre></div>
+</div>
+<p>From within dom0, create a new HVM (here called <code class="docutils literal notranslate"><span class="pre">win10</span></code>) with the root image we just copied to dom0 (change the amount of RAM in GB as you wish):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-create<span class="w"> </span>--property<span class="o">=</span><span class="nv">virt_mode</span><span class="o">=</span>hvm<span class="w"> </span>--property<span class="o">=</span><span class="nv">memory</span><span class="o">=</span><span class="m">4096</span><span class="w"> </span>--property<span class="o">=</span><span class="nv">kernel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="w"> </span>--label<span class="w"> </span>red<span class="w"> </span>--standalone<span class="w"> </span>--root-move-from<span class="w"> </span>/home/user/win10-root.img<span class="w"> </span>win10
+</pre></div>
+</div>
+<p>Start <code class="docutils literal notranslate"><span class="pre">win10</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qvm-start<span class="w"> </span>win10
+</pre></div>
+</div>
+<section id="optional-ways-to-get-more-information">
+<h3>Optional ways to get more information<a class="headerlink" href="#optional-ways-to-get-more-information" title="Link to this heading"></a></h3>
+<p>Filetype of OVA file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>file<span class="w"> </span>*.ova
+</pre></div>
+</div>
+<p>List files of OVA tar archive:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar<span class="w"> </span>-tf<span class="w"> </span>*.ova
+</pre></div>
+</div>
+<p>List filetypes supported by qemu-img:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>qemu-img<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n1
+</pre></div>
+</div>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<p>Other documents related to HVMs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://forum.qubes-os.org/search?q=windows%20hvm%20%23guides">Windows VMs</a></p></li>
+<li><p><a class="reference external" href="https://forum.qubes-os.org/t/19008">Linux HVM Tips</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="volume-backup-revert.html" class="btn btn-neutral float-left" title="Volume backup and revert" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config-files.html" class="btn btn-neutral float-right" title="Config files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/advanced-topics/standalones-and-hvms.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,730 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Split GPG-2" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="user/security-in-qubes/split-gpg-2.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Qubes OS allows you to split the management and usage of GPG keys. You can store your secret keys in one trusted qube and use them in another less trusted qube. This way the compromise of your less..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Qubes OS allows you to split the management and usage of GPG keys. You can store your secret keys in one trusted qube and use them in another less trusted qube. This way the compromise of your less..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Split GPG-2 &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/user/security-in-qubes/split-gpg-2.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="Multi-factor Login" href="mfa.html" />
+    <link rel="prev" title="Split GPG" href="split-gpg.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Split GPG-2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-split-your-gpg-keys-between-two-qubes">How-to split your GPG keys between two qubes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-split-gpg-2">Install Split GPG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-policy-for-split-gpg-2">Create a policy for Split GPG-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generate-or-import-the-secret-keys-in-the-server-qube">Generate or import the secret keys in the <em>server qube</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-the-client-qube">Set up the <em>client qube</em></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enable-the-split-gpg2-client-service-in-the-client-qube">Enable the <code class="docutils literal notranslate"><span class="pre">split-gpg2-client</span></code> service in the <em>client qube</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-the-public-keys-and-ownertrust">Import the public keys and ownertrust</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check-that-split-gpg-2-works">Check that Split GPG-2 works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">疑難排解</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gpg-agent-only-shows-the-keygrip"><code class="docutils literal notranslate"><span class="pre">gpg-agent</span></code> only shows the &quot;keygrip&quot;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#subkeys-vs-primary-keys">Subkeys vs primary keys</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#server-options">Server options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#confval-autoaccept"><code class="docutils literal notranslate"><span class="pre">autoaccept</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-pksign_autoaccept"><code class="docutils literal notranslate"><span class="pre">pksign_autoaccept</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-pkdecrypt_autoaccept"><code class="docutils literal notranslate"><span class="pre">pkdecrypt_autoaccept</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-verbose_notifications"><code class="docutils literal notranslate"><span class="pre">verbose_notifications</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-allow_keygen"><code class="docutils literal notranslate"><span class="pre">allow_keygen</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-gnupghome"><code class="docutils literal notranslate"><span class="pre">gnupghome</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-isolated_gnupghome"><code class="docutils literal notranslate"><span class="pre">isolated_gnupghome</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confval-debug_log"><code class="docutils literal notranslate"><span class="pre">debug_log</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#notes-about-split-gpg-2">Notes about Split GPG-2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-split-gpg-2-with-split-gpg-1">Using Split GPG-2 with Split GPG-1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-usage-checking-what-is-signed-etc">Advanced usage: checking what is signed, etc.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advantages-of-split-gpg-vs-traditional-gpg-with-a-smart-card">Advantages of Split GPG vs. traditional GPG with a smart card</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer/releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Split GPG-2</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/user/security-in-qubes/split-gpg-2.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="split-gpg-2">
+<h1>Split GPG-2<a class="headerlink" href="#split-gpg-2" title="連結到這個標頭"></a></h1>
+<p>Qubes OS allows you to split the management and usage of GPG keys. You can store your secret keys in one trusted qube and use them in another less trusted qube.</p>
+<p>This way the compromise of your less trusted qube does not allow the attacker to automatically also steal all your keys.</p>
+<section id="how-to-split-your-gpg-keys-between-two-qubes">
+<h2>How-to split your GPG keys between two qubes<a class="headerlink" href="#how-to-split-your-gpg-keys-between-two-qubes" title="連結到這個標頭"></a></h2>
+<p>The following how-to will set up Split GPG-2 with two qubes:</p>
+<ul class="simple">
+<li><p>one qube holding the private keys, called <strong>server-qube</strong>. This qube is offline and should be trusted.</p></li>
+<li><p>the other qube using the keys, called <strong>client-qube</strong>. This qube doesn't have to be trusted as much as the server.</p></li>
+</ul>
+<p>Each time you want to do something with a GPG key, the <em>client qube</em> will delegate the operation to the <em>server qube</em>. This qube will ask you to confirm the operation.</p>
+<section id="install-split-gpg-2">
+<h3>Install Split GPG-2<a class="headerlink" href="#install-split-gpg-2" title="連結到這個標頭"></a></h3>
+<p>In the template(s) qube(s) used by the <em>server qube</em> and the <em>client qube</em>, <a class="reference internal" href="../how-to-guides/how-to-install-software.html#installing-software-from-default-repositories"><span class="std std-ref">install the split-gpg2 package</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>If you use a minimal template, make sure to install <code class="docutils literal notranslate"><span class="pre">zenity</span></code> package.</p>
+</div>
+</section>
+<section id="create-a-policy-for-split-gpg-2">
+<h3>Create a policy for Split GPG-2<a class="headerlink" href="#create-a-policy-for-split-gpg-2" title="連結到這個標頭"></a></h3>
+<p><strong>In dom0</strong>, <a class="reference internal" href="../how-to-guides/how-to-edit-a-policy.html"><span class="doc">create or edit an RPC policy</span></a>. Add a line like the following and make sure to replace <code class="samp docutils literal notranslate"><em><span class="pre">client-qube</span></em></code> and <code class="samp docutils literal notranslate"><em><span class="pre">server-qube</span></em></code> by the appropriate values.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>qubes.Gpg2 + client-qube @default allow target=server-qube
+</pre></div>
+</div>
+</section>
+<section id="generate-or-import-the-secret-keys-in-the-server-qube">
+<h3>Generate or import the secret keys in the <em>server qube</em><a class="headerlink" href="#generate-or-import-the-secret-keys-in-the-server-qube" title="連結到這個標頭"></a></h3>
+<p><strong>In the server qube</strong>, you have two options:</p>
+<ul>
+<li><p>either generate your secret keys, like this:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@server-qube] $ </span>gpg<span class="w"> </span>--gen-key
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>or, if you want to use some old keys, previously generated in another qube, import them and the ownertrust. Make sure to replace <code class="file docutils literal notranslate"><span class="pre">/home/user/QubesIncoming/</span><em><span class="pre">&lt;SOME_OTHER_QUBE&gt;</span></em><span class="pre">/</span><em><span class="pre">[...]</span></em></code> by the path of the expected file:</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@server-qube] $ </span>gpg<span class="w"> </span>--import<span class="w"> </span>/home/user/QubesIncoming/&lt;SOME_OTHER_QUBE&gt;/secret-keys-export
+<span class="gp">[user@server-qube] $ </span>gpg<span class="w"> </span>--import-ownertrust<span class="w"> </span>/home/user/QubesIncoming/&lt;SOME_OTHER_QUBE&gt;/ownertrust-export
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Ensure your key doesn't have a passphrase set.</p>
+</div>
+<p>In both situations, you have to export the public part of your keys and the &quot;ownertrust&quot; values in the <em>client qube</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@server-qube] $ </span>gpg<span class="w"> </span>--export<span class="w"> </span>&gt;<span class="w"> </span>public-keys-export
+<span class="gp">[user@server-qube] $ </span>gpg<span class="w"> </span>--export-ownertrust<span class="w"> </span>&gt;<span class="w"> </span>ownertrust-export
+<span class="gp">[user@server-qube] $ </span>qvm-copy<span class="w"> </span>public-keys-export<span class="w"> </span>ownertrust-export
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Do not export the private keys!</p>
+</div>
+</section>
+<section id="set-up-the-client-qube">
+<h3>Set up the <em>client qube</em><a class="headerlink" href="#set-up-the-client-qube" title="連結到這個標頭"></a></h3>
+<section id="enable-the-split-gpg2-client-service-in-the-client-qube">
+<h4>Enable the <code class="docutils literal notranslate"><span class="pre">split-gpg2-client</span></code> service in the <em>client qube</em><a class="headerlink" href="#enable-the-split-gpg2-client-service-in-the-client-qube" title="連結到這個標頭"></a></h4>
+<p>The first step is to <a class="reference internal" href="../how-to-guides/how-to-enable-a-service.html"><span class="doc">enable the qube service</span></a> called <code class="docutils literal notranslate"><span class="pre">split-gpg2-client</span></code>. Restarting the <em>client qube</em> is needed.</p>
+</section>
+<section id="import-the-public-keys-and-ownertrust">
+<h4>Import the public keys and ownertrust<a class="headerlink" href="#import-the-public-keys-and-ownertrust" title="連結到這個標頭"></a></h4>
+<p>If you have previously exported the public keys and the &quot;ownertrust&quot; values from the <em>server qube</em>. Now, you have to import them in the <em>client qube</em>. Replace the following paths by the correct values.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@client-qube] $ </span>gpg<span class="w"> </span>--import<span class="w"> </span>/home/user/QubesIncoming/server-qube/public-keys-export
+<span class="gp">[user@client-qube] $ </span>gpg<span class="w"> </span>--import-ownertrust<span class="w"> </span>/home/user/QubesIncoming/server-qube/ownertrust-export
+</pre></div>
+</div>
+</section>
+</section>
+<section id="check-that-split-gpg-2-works">
+<h3>Check that Split GPG-2 works<a class="headerlink" href="#check-that-split-gpg-2-works" title="連結到這個標頭"></a></h3>
+<p>You should be able to run <code class="docutils literal notranslate"><span class="pre">gpg</span> <span class="pre">-K</span></code> in the <em>client qube</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@client-qube] $ </span>gpg<span class="w"> </span>-K
+<span class="go">/home/user/.gnupg/pubring.kbx</span>
+<span class="go">-----------------------------</span>
+<span class="go">sec#  rsa2048 2019-12-18 [SC] [expires: 2021-12-17]</span>
+<span class="go">      50C2035AF57B98CD6E4010F1B808E4BB07BA9EFB</span>
+<span class="go">uid           [ultimate] test</span>
+<span class="go">ssb#  rsa2048 2019-12-18 [E]</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h3>疑難排解<a class="headerlink" href="#troubleshooting" title="連結到這個標頭"></a></h3>
+<section id="gpg-agent-only-shows-the-keygrip">
+<h4><code class="docutils literal notranslate"><span class="pre">gpg-agent</span></code> only shows the &quot;keygrip&quot;<a class="headerlink" href="#gpg-agent-only-shows-the-keygrip" title="連結到這個標頭"></a></h4>
+<p>If you have a passphrase on your keys and <code class="docutils literal notranslate"><span class="pre">gpg-agent</span></code> only shows the “keygrip” (something like the fingerprint of the private key) when asking for the passphrase, then make sure that you have imported the public key part in the server domain.</p>
+</section>
+<section id="subkeys-vs-primary-keys">
+<h4>Subkeys vs primary keys<a class="headerlink" href="#subkeys-vs-primary-keys" title="連結到這個標頭"></a></h4>
+<p>Split GPG-2 only knows a hash of the data being signed. Therefore, it cannot differentiate between e.g. signatures of a piece of data or signatures of another key. This means that a client can use Split GPG-2 to sign other keys, which <a class="reference internal" href="split-gpg.html"><span class="doc">Split GPG</span></a> did not allow.</p>
+<p>To prevent this, Split GPG-2 creates a new GnuPG home directory and imports the secret subkeys (<strong>not</strong> the primary key!) to it. Clients will be able to use the secret parts of the subkeys, but not of the primary key. If your primary key is able to sign data and certify other keys, and your only subkey can only perform encryption, this means that all signing will fail. To make signing work again, generate a subkey that is capable of signing but <strong>not</strong> certification. Split GPG-2 does not generate this key for you, so you need to generate it yourself. If you want to generate a key in software, use the <code class="docutils literal notranslate"><span class="pre">addkey</span></code> command of <code class="docutils literal notranslate"><span class="pre">gpg2</span> <span class="pre">--edit-key</span></code>. If you want to generate a key on a smartcard or other hardware token, use <code class="docutils literal notranslate"><span class="pre">addcardkey</span></code> instead. You will need to import your public keys again.</p>
+</section>
+</section>
+</section>
+<section id="server-options">
+<h2>Server options<a class="headerlink" href="#server-options" title="連結到這個標頭"></a></h2>
+<p>If you want to change some server option, copy <code class="file docutils literal notranslate"><span class="pre">/usr/share/doc/split-gpg2/examples/qubes-split-gpg2.conf.example</span></code> to <code class="file docutils literal notranslate"><span class="pre">/home/user/.config/qubes-split-gpg2/qubes-split-gpg2.conf</span></code> and change it as desired, it will take precedence over other loaded files, such as the drop-in configuration files with the suffix <code class="docutils literal notranslate"><span class="pre">.conf</span></code> in <cite>/home/user/.config/qubes-split-gpg2/conf.d/</cite>.</p>
+<p>By setting up some values in the configuration file, you can change some parameters. The configurations files are INI files, you can set global options in the <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> section, or provide some client specific options in their own <code class="samp docutils literal notranslate"><span class="pre">client:</span><em><span class="pre">QUBE_NAME</span></em></code> section (where <code class="docutils literal notranslate"><span class="pre">QUBE_NAME</span></code> is the name of the client). The following configuration is an example where no qube is automatically accepted besides <em>personal</em> qube:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DEFAULT]</span>
+<span class="na">autoaccept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+
+<span class="k">[client:personal]</span>
+<span class="na">autoaccept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">yes</span>
+</pre></div>
+</div>
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-autoaccept">
+<span class="sig-name descname"><span class="pre">autoaccept</span></span><a class="headerlink" href="#confval-autoaccept" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean or integer</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p>
+</dd>
+<dt class="field-odd">Allowed values<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">no</span></code>, <code class="docutils literal notranslate"><span class="pre">yes</span></code> or any integer</p>
+</dd>
+</dl>
+<p>By default, all requests made to the <em>server qube</em> need to be confirmed. You can tell Split GPG-2 to accept requests: never (<code class="docutils literal notranslate"><span class="pre">no</span></code>), always (<code class="docutils literal notranslate"><span class="pre">yes</span></code>) or during a period of time after a successful request. To accept all requests following a successful one during one minute, use a value of <code class="docutils literal notranslate"><span class="pre">60</span></code> seconds.</p>
+</dd></dl>
+
+<p>This option has two alternatives:</p>
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-pksign_autoaccept">
+<span class="sig-name descname"><span class="pre">pksign_autoaccept</span></span><a class="headerlink" href="#confval-pksign_autoaccept" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean or integer</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p>
+</dd>
+<dt class="field-odd">Allowed values<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">no</span></code>, <code class="docutils literal notranslate"><span class="pre">yes</span></code> or any integer</p>
+</dd>
+</dl>
+<p>same as <a class="reference internal" href="#confval-autoaccept"><code class="xref std std-confval docutils literal notranslate"><span class="pre">autoaccept</span></code></a> but only for signing requests</p>
+</dd></dl>
+
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-pkdecrypt_autoaccept">
+<span class="sig-name descname"><span class="pre">pkdecrypt_autoaccept</span></span><a class="headerlink" href="#confval-pkdecrypt_autoaccept" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean or integer</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p>
+</dd>
+<dt class="field-odd">Allowed values<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">no</span></code>, <code class="docutils literal notranslate"><span class="pre">yes</span></code> or any integer</p>
+</dd>
+</dl>
+<p>same as <a class="reference internal" href="#confval-autoaccept"><code class="xref std std-confval docutils literal notranslate"><span class="pre">autoaccept</span></code></a> but only for decrypt requests</p>
+</dd></dl>
+
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-verbose_notifications">
+<span class="sig-name descname"><span class="pre">verbose_notifications</span></span><a class="headerlink" href="#confval-verbose_notifications" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p>
+</dd>
+<dt class="field-odd">Allowed values<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">no</span></code> or <code class="docutils literal notranslate"><span class="pre">yes</span></code></p>
+</dd>
+</dl>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">verbose_notifications</span></code> to <code class="docutils literal notranslate"><span class="pre">yes</span></code> will provide more notifications.</p>
+</dd></dl>
+
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-allow_keygen">
+<span class="sig-name descname"><span class="pre">allow_keygen</span></span><a class="headerlink" href="#confval-allow_keygen" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">no</span></code></p>
+</dd>
+<dt class="field-odd">Allowed values<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">no</span></code> or <code class="docutils literal notranslate"><span class="pre">yes</span></code></p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This feature is new and not much tested. Therefore it’s not security supported!</p>
+</div>
+<p>By setting <a class="reference internal" href="#confval-allow_keygen"><code class="xref std std-confval docutils literal notranslate"><span class="pre">allow_keygen</span></code></a> to <code class="docutils literal notranslate"><span class="pre">yes</span></code>, you can allow the client to generate new keys. Normal usage should not need this.</p>
+</dd></dl>
+
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-gnupghome">
+<span class="sig-name descname"><span class="pre">gnupghome</span></span><a class="headerlink" href="#confval-gnupghome" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>full path</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p>empty</p>
+</dd>
+</dl>
+<p>You can set up a different GnuPG home from the default <code class="file docutils literal notranslate"><span class="pre">/home/user/gpg-home</span></code>, using <a class="reference internal" href="#confval-gnupghome"><code class="xref std std-confval docutils literal notranslate"><span class="pre">gnupghome</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-isolated_gnupghome">
+<span class="sig-name descname"><span class="pre">isolated_gnupghome</span></span><a class="headerlink" href="#confval-isolated_gnupghome" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>full path</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p>empty</p>
+</dd>
+</dl>
+<p>If you store different keys for different <em>client qubes</em> in the same <em>server qube</em>, you can isolate each GnuPG home, by setting <a class="reference internal" href="#confval-isolated_gnupghome"><code class="xref std std-confval docutils literal notranslate"><span class="pre">isolated_gnupghome</span></code></a>. The value points at a directory where each client will get its own subdirectory. For example, when this option is set to <code class="file docutils literal notranslate"><span class="pre">/home/user/gpg-home</span></code>, then the qube <em>personal</em> will use <code class="file docutils literal notranslate"><span class="pre">/home/user/gpg-home/</span><em><span class="pre">personal</span></em></code> as GnuPG home.</p>
+<p>If you do this, don't forget to use the option <code class="docutils literal notranslate"><span class="pre">--gnupg-home</span></code> or the environment variable <code class="docutils literal notranslate"><span class="pre">GNUPGHOME</span></code> when using <strong class="program">gpg</strong> commands.</p>
+</dd></dl>
+
+<dl class="std confval">
+<dt class="sig sig-object std" id="confval-debug_log">
+<span class="sig-name descname"><span class="pre">debug_log</span></span><a class="headerlink" href="#confval-debug_log" title="連結到這個定義"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>path</p>
+</dd>
+<dt class="field-even">Default<span class="colon">:</span></dt>
+<dd class="field-even"><p>empty</p>
+</dd>
+</dl>
+<p>Enable debug logging and set the debug log path.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This is for debugging purpose only, <strong>everything will be logged</strong> including potentially confidential data/keys/etc</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="notes-about-split-gpg-2">
+<h2>Notes about Split GPG-2<a class="headerlink" href="#notes-about-split-gpg-2" title="連結到這個標頭"></a></h2>
+<figure class="align-default" id="id1">
+<img alt="" src="../../_images/split-gpg-diagram.png" />
+<figcaption>
+<p><span class="caption-text">Example of the Split GPG-2 architecture</span><a class="headerlink" href="#id1" title="連結到這個圖片"></a></p>
+<div class="legend">
+<p>In a qube called <em>work-email</em> (with a green level of trust), <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client</span></code> pretends to be a standard <code class="docutils literal notranslate"><span class="pre">/usr/bin/gpg</span></code> to other apps, here with Thunderbird.</p>
+<p>In the <em>work-email</em> qube, <code class="docutils literal notranslate"><span class="pre">qubes-gpg-client</span></code> is communicating with <code class="docutils literal notranslate"><span class="pre">qubes-gpg-server</span></code> located in the <em>work-gpg</em> qube (with a black level of trust). The communication is made through the <code class="docutils literal notranslate"><span class="pre">qubes.Gpg2</span></code> remote procedure call using the <code class="docutils literal notranslate"><span class="pre">qrexec</span></code> protocol.</p>
+<p>Inside the <em>work-gpg</em> qube, <code class="docutils literal notranslate"><span class="pre">qubes-gpg-server</span></code> has access to the GPG key, through <code class="docutils literal notranslate"><span class="pre">/usr/bin/gpg</span></code>.</p>
+</div>
+</figcaption>
+</figure>
+<section id="using-split-gpg-2-with-split-gpg-1">
+<h3>Using Split GPG-2 with Split GPG-1<a class="headerlink" href="#using-split-gpg-2-with-split-gpg-1" title="連結到這個標頭"></a></h3>
+<p>Using Split GPG-2 as the “backend” for <a class="reference internal" href="split-gpg.html"><span class="doc">Split GPG</span></a> is known to work.</p>
+</section>
+<section id="advanced-usage-checking-what-is-signed-etc">
+<h3>Advanced usage: checking what is signed, etc.<a class="headerlink" href="#advanced-usage-checking-what-is-signed-etc" title="連結到這個標頭"></a></h3>
+<p>Similar to a smartcard, Split GPG-2 only tries to protect the private key. For advanced usages, consider if a specialized RPC service would be better. It could do things like checking what data is signed, detailed logging, exposing the encrypted content only to a VM without network, etc.</p>
+</section>
+<section id="advantages-of-split-gpg-vs-traditional-gpg-with-a-smart-card">
+<h3>Advantages of Split GPG vs. traditional GPG with a smart card<a class="headerlink" href="#advantages-of-split-gpg-vs-traditional-gpg-with-a-smart-card" title="連結到這個標頭"></a></h3>
+<p>It is often thought that the use of smart cards for private key storage guarantees ultimate safety. While this might be true (unless the attacker can find a usually-very-expensive-and-requiring-physical-presence way to extract the key from the smart card) but only with regards to the safety of the private key itself. However, there is usually nothing that could stop the attacker from requesting the smart card to perform decryption of all the user documents the attacker has found or need to decrypt. In other words, while protecting the user’s private key is an important task, we should not forget that ultimately it is the user data that are to be protected and that the smart card chip has no way of knowing the requests to decrypt documents are now coming from the attacker’s script and not from the user sitting in front of the monitor. (Similarly the smart card doesn't make the process of digitally signing a document or a transaction in any way more secure – the user cannot know what the chip is really signing. Unfortunately this problem of signing reliability is not solvable by Split GPG.)</p>
+<p>With Qubes Split GPG-2 this problem is drastically minimized, because each time the key is to be used the user is asked for consent (with a definable time out, 5 minutes by default), plus is always notified each time the key is used via a tray notification from the domain where GPG backend is running. This way it would be easy to spot unexpected requests to decrypt documents.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="split-gpg.html" class="btn btn-neutral float-left" title="Split GPG" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mfa.html" class="btn btn-neutral float-right" title="Multi-factor Login" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/user/security-in-qubes/split-gpg-2.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

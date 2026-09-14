@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Development workflow" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/building/development-workflow.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="A workflow for developing Qubes OS+ To begin, setup QubesBuilder. This guide assumes you’re using qubes-builder v2 to build Qubes. Repositories and committing Code: Qubes source code is split into ..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="A workflow for developing Qubes OS+ To begin, setup QubesBuilder. This guide assumes you’re using qubes-builder v2 to build Qubes. Repositories and committing Code: Qubes source code is split into ..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Development workflow &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/building/development-workflow.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Qubes ISO building" href="qubes-iso-building.html" />
+    <link rel="prev" title="Qubes builder details" href="qubes-builder-details.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#repositories-and-committing-code">Repositories and committing Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kernel-specific-notes">Kernel-specific notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-fresh-version-of-kernel-sources-with-qubes-specific-patches-applied">Prepare fresh version of kernel sources, with Qubes-specific patches applied</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#go-to-the-kernel-tree-and-update-the-version">Go to the kernel tree and update the version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-the-config">Changing the config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#patching-the-code">Patching the code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-rpms">Building RPMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-qubesbuilder-commands">Useful <span class="xref std std-doc">QubesBuilder</span> commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#copying-code-to-dom0">Copying Code to dom0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#syncing-dom0-files">Syncing dom0 files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-qvm-tools">Apply qvm-tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-from-dom0-to-an-appvm">Copy from dom0 to an appvm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#git-connection-between-vms">Git connection between VMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sending-packages-to-different-vm">Sending packages to different VM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rpm-packages-yum-repo">RPM packages - yum repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deb-packages-apt-repo">Deb packages - Apt repo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Development workflow</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/building/development-workflow.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="development-workflow">
+<h1>Development workflow<a class="headerlink" href="#development-workflow" title="Link to this heading"></a></h1>
+<p>A workflow for developing Qubes OS+</p>
+<p>To begin, setup <a class="reference internal" href="qubes-builder-v2.html"><span class="doc">QubesBuilder</span></a>. This guide assumes you’re using qubes-builder v2 to build Qubes.</p>
+<section id="repositories-and-committing-code">
+<h2>Repositories and committing Code<a class="headerlink" href="#repositories-and-committing-code" title="Link to this heading"></a></h2>
+<p>Qubes source code is split into many git repos. These are all contained in the <code class="docutils literal notranslate"><span class="pre">artifacts/sources</span></code> directory under qubes-builder. Subdirectories there are separate components, stored in separate git repositories.</p>
+<p>The best way to write and contribute code is to create a git repo somewhere (e.g., GitHub) for the repo you are interested in editing (e.g., <code class="docutils literal notranslate"><span class="pre">qubes-manager</span></code>, <code class="docutils literal notranslate"><span class="pre">core-agent-linux</span></code>, etc). To integrate your repo with the rest of Qubes, cd to the repo directory and add your repository as a remote in git</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>qubes-builder/artifacts/sources/qubes-manager
+<span class="gp">$ </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>abel<span class="w"> </span>git@GitHub.com:abeluck/qubes-manager.git
+</pre></div>
+</div>
+<p>You can then proceed to easily develop in your own branches, pull in new commits from the dev branches, merge them, and eventually push to your own repo.</p>
+<p>When you are ready to submit your changes to Qubes to be merged, push your changes, then create a signed git tag (using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">-s</span></code>). Finally, send a letter to the Qubes listserv describing the changes, and including a link to your repository. If you are using GitHub you can instead create a pull request. Don’t forget to include the public PGP key you use to sign your tags.</p>
+<section id="kernel-specific-notes">
+<h3>Kernel-specific notes<a class="headerlink" href="#kernel-specific-notes" title="Link to this heading"></a></h3>
+</section>
+<section id="prepare-fresh-version-of-kernel-sources-with-qubes-specific-patches-applied">
+<h3>Prepare fresh version of kernel sources, with Qubes-specific patches applied<a class="headerlink" href="#prepare-fresh-version-of-kernel-sources-with-qubes-specific-patches-applied" title="Link to this heading"></a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">qubes-builder/artifacts/sources/linux-kernel</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>prep
+</pre></div>
+</div>
+<p>The resulting tree will be in kernel-&lt;VERSION&gt;/linux-&lt;VERSION&gt;:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>-ltrd<span class="w"> </span>kernel*/linux*
+<span class="go">drwxr-xr-x 23 user user 4096 Nov  5 09:50 kernel-3.4.18/linux-3.4.18</span>
+<span class="go">drwxr-xr-x  6 user user 4096 Nov 21 20:48 kernel-3.4.18/linux-obj</span>
+</pre></div>
+</div>
+</section>
+<section id="go-to-the-kernel-tree-and-update-the-version">
+<h3>Go to the kernel tree and update the version<a class="headerlink" href="#go-to-the-kernel-tree-and-update-the-version" title="Link to this heading"></a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">qubes-builder/artifacts/sources/linux-kernel</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>kernel-3.4.18/linux-3.4.18
+</pre></div>
+</div>
+</section>
+<section id="changing-the-config">
+<h3>Changing the config<a class="headerlink" href="#changing-the-config" title="Link to this heading"></a></h3>
+<p>In <code class="docutils literal notranslate"><span class="pre">kernel-3.4.18/linux-3.4.18</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp<span class="w"> </span>../../config<span class="w"> </span>.config
+<span class="gp">$ </span>make<span class="w"> </span>oldconfig
+</pre></div>
+</div>
+<p>Now change the configuration. For example, in <code class="docutils literal notranslate"><span class="pre">kernel-3.4.18/linux-3.4.18</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>menuconfig
+</pre></div>
+</div>
+<p>Copy the modified config back into the kernel tree:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cp<span class="w"> </span>.config<span class="w"> </span>../../../config
+</pre></div>
+</div>
+</section>
+<section id="patching-the-code">
+<h3>Patching the code<a class="headerlink" href="#patching-the-code" title="Link to this heading"></a></h3>
+<p>TODO: describe the workflow for patching the code, below are some random notes, not working well</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>../../patches.xen
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">QUILT_PATCHES</span><span class="o">=</span>patches.xen
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">QUILT_REFRESH_ARGS</span><span class="o">=</span><span class="s2">&quot;-p ab --no-timestamps --no-index&quot;</span>
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">QUILT_SERIES</span><span class="o">=</span>../../series-pvops.conf
+
+<span class="gp">$ </span>quilt<span class="w"> </span>new<span class="w"> </span>patches.xen/pvops-3.4-0101-usb-xen-pvusb-driver-bugfix.patch
+<span class="gp">$ </span>quilt<span class="w"> </span>add<span class="w"> </span>drivers/usb/host/Kconfig<span class="w"> </span>drivers/usb/host/Makefile<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>drivers/usb/host/xen-usbback/*<span class="w"> </span>drivers/usb/host/xen-usbfront.c<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>include/xen/interface/io/usbif.h
+
+<span class="go">*edit something*</span>
+
+<span class="gp">$ </span>quilt<span class="w"> </span>refresh
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>../..
+<span class="go">vi series.conf</span>
+</pre></div>
+</div>
+</section>
+<section id="building-rpms">
+<h3>Building RPMs<a class="headerlink" href="#building-rpms" title="Link to this heading"></a></h3>
+<p>Now is a good moment to make sure you have changed the kernel release name in rel file. For example, if you change it to ‘1debug201211116c’ the resulting RPMs will be named ‘kernel-3.4.18-1debug20121116c.pvops.qubes.x86_64.rpm’. This will help distinguish between different versions of the same package.</p>
+<p>You might want to take a moment here to review (git diff, git status), commit your changes locally.</p>
+<p>To actually build RPMs, in qubes-builder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./qb<span class="w"> </span>-c<span class="w"> </span>linux-kernel<span class="w"> </span>package<span class="w"> </span>fetch<span class="w"> </span>prep<span class="w"> </span>build
+</pre></div>
+</div>
+<p>RPMs will appear in <code class="docutils literal notranslate"><span class="pre">artifacts/repository/destination_name/package_name</span></code> (for example <code class="docutils literal notranslate"><span class="pre">artifacts/repository/host-fc37/linux-kernel-6.6.31-1.1/</span></code></p>
+</section>
+<section id="useful-qubesbuilder-commands">
+<h3>Useful <a class="reference internal" href="qubes-builder-v2.html"><span class="doc">QubesBuilder</span></a> commands<a class="headerlink" href="#useful-qubesbuilder-commands" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">./qb</span> <span class="pre">package</span> <span class="pre">diff</span></code> - show uncommitted changes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./qb</span> <span class="pre">repository</span> <span class="pre">check-release-status-for-component</span></code> and <code class="docutils literal notranslate"><span class="pre">./qb</span> <span class="pre">repository</span> <span class="pre">check-release-status-for-template</span></code> - show version of each component/template (based on git tags)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./qb</span> <span class="pre">package</span> <span class="pre">sign</span></code> - sign built packages</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./qb</span> <span class="pre">package</span> <span class="pre">publish</span></code> and <code class="docutils literal notranslate"><span class="pre">./qb</span> <span class="pre">package</span> <span class="pre">upload</span></code> - publish signed packages and upload published repository</p></li>
+</ol>
+</section>
+</section>
+<section id="copying-code-to-dom0">
+<h2>Copying Code to dom0<a class="headerlink" href="#copying-code-to-dom0" title="Link to this heading"></a></h2>
+<p>When developing it is convenient to be able to rapidly test changes. Assuming you’re developing Qubes on Qubes, you should be working in a special VM for Qubes and occasionally you will want to transfer code or RPMs back to dom0 for testing.</p>
+<p>Here are some handy scripts Marek has shared to facilitate this.</p>
+<p>You may also like to run your <a class="reference internal" href="../debugging/test-bench.html"><span class="doc">test environment on separate machine</span></a>.</p>
+<section id="syncing-dom0-files">
+<h3>Syncing dom0 files<a class="headerlink" href="#syncing-dom0-files" title="Link to this heading"></a></h3>
+<p>TODO: edit this script to be more generic</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nb">set</span><span class="w"> </span>-x
+<span class="nb">set</span><span class="w"> </span>-e
+
+<span class="nv">QUBES_PY_DIR</span><span class="o">=</span>/usr/lib64/python2.6/site-packages/qubes
+<span class="nv">QUBES_PY</span><span class="o">=</span><span class="nv">$QUBES_PY_DIR</span>/qubes.py
+<span class="nv">QUBESUTILS_PY</span><span class="o">=</span><span class="nv">$QUBES_PY_DIR</span>/qubesutils.py
+
+qvm-run<span class="w"> </span>-p<span class="w"> </span>qubes-devel<span class="w"> </span><span class="s1">&#39;cd qubes-builder/qubes-src/core/dom0; tar c qmemman/qmemman*.py qvm-core/*.py qvm-tools/* misc/vm-template-hvm.conf misc/qubes-start.desktop ../misc/block-snapshot aux-tools ../qrexec&#39;</span><span class="w"> </span><span class="p">|</span>tar<span class="w"> </span>xv
+cp<span class="w"> </span><span class="nv">$QUBES_PY</span><span class="w"> </span>qubes.py.bak<span class="nv">$$</span>
+cp<span class="w"> </span><span class="nv">$QUBESUTILS_PY</span><span class="w"> </span>qubesutils.py.bak<span class="nv">$$</span>
+cp<span class="w"> </span>/etc/xen/scripts/block-snapshot<span class="w"> </span>block-snapshot.bak<span class="nv">$$</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>qvm-core/qubes.py<span class="w"> </span><span class="nv">$QUBES_PY</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>qvm-core/qubesutils.py<span class="w"> </span><span class="nv">$QUBESUTILS_PY</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>qvm-core/guihelpers.py<span class="w"> </span><span class="nv">$QUBES_PY_DIR</span>/
+sudo<span class="w"> </span>cp<span class="w"> </span>qmemman/qmemman*.py<span class="w"> </span><span class="nv">$QUBES_PY_DIR</span>/
+sudo<span class="w"> </span>cp<span class="w"> </span>misc/vm-template-hvm.conf<span class="w"> </span>/usr/share/qubes/
+sudo<span class="w"> </span>cp<span class="w"> </span>misc/qubes-start.desktop<span class="w"> </span>/usr/share/qubes/
+sudo<span class="w"> </span>cp<span class="w"> </span>misc/block-snapshot<span class="w"> </span>/etc/xen/scripts/
+sudo<span class="w"> </span>cp<span class="w"> </span>aux-tools/qubes-dom0-updates.cron<span class="w"> </span>/etc/cron.daily/
+<span class="c1"># FIXME(Abel Luck): I hope to</span>
+</pre></div>
+</div>
+</section>
+<section id="apply-qvm-tools">
+<h3>Apply qvm-tools<a class="headerlink" href="#apply-qvm-tools" title="Link to this heading"></a></h3>
+<p>TODO: make it more generic</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nv">BAK</span><span class="o">=</span>qvm-tools.bak<span class="nv">$$</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$BAK</span>
+cp<span class="w"> </span>-a<span class="w"> </span>/usr/bin/qvm-*<span class="w"> </span>/usr/bin/qubes-*<span class="w"> </span><span class="nv">$BAK</span>/
+sudo<span class="w"> </span>cp<span class="w"> </span>qvm-tools/qvm-*<span class="w"> </span>qvm-tools/qubes-*<span class="w"> </span>/usr/bin/
+</pre></div>
+</div>
+</section>
+<section id="copy-from-dom0-to-an-appvm">
+<h3>Copy from dom0 to an appvm<a class="headerlink" href="#copy-from-dom0-to-an-appvm" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#/bin/sh</span>
+<span class="c1">#</span>
+<span class="c1"># usage ./cp-domain &lt;vm_name&gt; &lt;file_to_copy&gt;</span>
+<span class="c1">#</span>
+<span class="nv">domain</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">file</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">fname</span><span class="o">=</span><span class="sb">`</span>basename<span class="w"> </span><span class="nv">$file</span><span class="sb">`</span>
+
+qvm-run<span class="w"> </span><span class="nv">$domain</span><span class="w"> </span><span class="s1">&#39;mkdir /home/user/incoming/dom0 -p&#39;</span>
+cat<span class="w"> </span><span class="nv">$file</span><span class="p">|</span><span class="w"> </span>qvm-run<span class="w"> </span>--pass-io<span class="w"> </span><span class="nv">$domain</span><span class="w"> </span><span class="s2">&quot;cat &gt; /home/user/incoming/dom0/</span><span class="nv">$fname</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="git-connection-between-vms">
+<h2>Git connection between VMs<a class="headerlink" href="#git-connection-between-vms" title="Link to this heading"></a></h2>
+<p>Sometimes it’s useful to transfer git commits between VMs. You can use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">format-patch</span></code> for that and simply copy the files. But you can also setup custom qrexec service for it.</p>
+<p>Below example assumes that you use <code class="docutils literal notranslate"><span class="pre">builder-RX</span></code> directory in target VM to store sources in qubes-builder layout (where <code class="docutils literal notranslate"><span class="pre">X</span></code> is some number). Make sure that all the scripts are executable.</p>
+<p>Service file (save in <code class="docutils literal notranslate"><span class="pre">/usr/local/etc/qubes-rpc/local.Git</span></code> in target VM):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nb">exec</span><span class="w"> </span><span class="m">2</span>&gt;/tmp/log2
+
+<span class="nb">read</span><span class="w"> </span>service<span class="w"> </span>rel<span class="w"> </span>repo
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Params: </span><span class="nv">$service</span><span class="s2"> </span><span class="nv">$rel</span><span class="s2"> </span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="c1"># Adjust regexps if needed</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;^[A-Za-z0-9-]\+$&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$rel</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;^[0-9.]\+$&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">path</span><span class="o">=</span><span class="s2">&quot;/home/user/builder-R</span><span class="nv">$rel</span><span class="s2">/qubes-src/</span><span class="nv">$repo</span><span class="s2">&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$repo</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;builder&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">path</span><span class="o">=</span><span class="s2">&quot;/home/user/builder-R</span><span class="nv">$rel</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+<span class="k">case</span><span class="w"> </span><span class="nv">$service</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span>git-receive-pack<span class="p">|</span>git-upload-pack<span class="o">)</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;starting </span><span class="nv">$service</span><span class="s2"> </span><span class="nv">$path</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">        </span><span class="nb">exec</span><span class="w"> </span><span class="nv">$service</span><span class="w"> </span><span class="nv">$path</span>
+<span class="w">        </span><span class="p">;;</span>
+<span class="w">    </span>*<span class="o">)</span>
+<span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Unsupported service: </span><span class="nv">$service</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+<span class="w">        </span><span class="p">;;</span>
+<span class="k">esac</span>
+</pre></div>
+</div>
+<p>Client script (save in <code class="docutils literal notranslate"><span class="pre">~/bin/git-qrexec</span></code> in source VM):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nv">VMNAME</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$GIT_EXT_SERVICE</span><span class="w"> </span><span class="nv">$2</span><span class="w"> </span><span class="nv">$3</span><span class="p">;</span><span class="w"> </span><span class="nb">exec</span><span class="w"> </span>cat<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>qrexec-client-vm<span class="w"> </span><span class="nv">$VMNAME</span><span class="w"> </span>local.Git
+</pre></div>
+</div>
+<p>You will also need to setup qrexec policy in dom0 (<code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/policy/local.Git</span></code>).</p>
+<p>Usage:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[user@source core-agent-linux]$ </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>testbuilder<span class="w"> </span><span class="s2">&quot;ext::git-qrexec testbuilder 3 core-agent-linux&quot;</span>
+<span class="gp">[user@source core-agent-linux]$ </span>git<span class="w"> </span>push<span class="w"> </span>testbuilder<span class="w"> </span>master
+</pre></div>
+</div>
+<p>You can create <code class="docutils literal notranslate"><span class="pre">~/bin/add-remote</span></code> script to ease adding remotes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="o">[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tb&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span><span class="nv">$1</span><span class="w"> </span><span class="s2">&quot;ext::git-qrexec testbuilder 3 `basename </span><span class="nv">$PWD</span><span class="s2">`&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="nv">$?</span>
+<span class="k">fi</span>
+
+git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>git@GitHub.com:<span class="nv">$1</span>/qubes-<span class="sb">`</span>basename<span class="w"> </span><span class="nv">$PWD</span><span class="sb">`</span>
+</pre></div>
+</div>
+<p>It should be executed from component top level directory. This script takes one argument - remote name. If it is <code class="docutils literal notranslate"><span class="pre">tb</span></code>, then it creates qrexec-based git remote to <code class="docutils literal notranslate"><span class="pre">testbuilder</span></code> VM. Otherwise it creates remote pointing at GitHub account of the same name. In any case it points at repository matching current directory name.</p>
+</section>
+<section id="sending-packages-to-different-vm">
+<h2>Sending packages to different VM<a class="headerlink" href="#sending-packages-to-different-vm" title="Link to this heading"></a></h2>
+<p>Other useful script(s) can be used to setup local package repository hosted in some VM. This way you can keep your development VM behind firewall, while having an option to expose some yum/apt repository to the local network (to have them installed on test machine).</p>
+<p>To achieve this goal, a dummy repository can be created, which instead of populating metadata locally, will upload the packages to some other VM and trigger repository update there (using qrexec). You can use <code class="docutils literal notranslate"><span class="pre">unstable</span></code> repository flavor, because there is no release managing rules bundled (unlike current and current-testing).</p>
+<section id="rpm-packages-yum-repo">
+<h3>RPM packages - yum repo<a class="headerlink" href="#rpm-packages-yum-repo" title="Link to this heading"></a></h3>
+<p>In source VM, grab <a class="reference external" href="https://github.com/QubesOS/qubes-linux-yum">linux-yum</a> repository (below is assumed you’ve made it in <code class="docutils literal notranslate"><span class="pre">~/repo-yum-upload</span></code> directory) and replace <code class="docutils literal notranslate"><span class="pre">update_repo.sh</span></code> script with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nv">VMNAME</span><span class="o">=</span>repo-vm
+
+<span class="nb">set</span><span class="w"> </span>-e
+qvm-copy-to-vm<span class="w"> </span><span class="nv">$VMNAME</span><span class="w"> </span><span class="nv">$1</span>
+<span class="c1"># remove only files, leave directory structure</span>
+find<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.rpm&#39;</span><span class="w"> </span>-delete
+<span class="c1"># trigger repo update</span>
+qrexec-client-vm<span class="w"> </span><span class="nv">$VMNAME</span><span class="w"> </span>local.UpdateYum
+</pre></div>
+</div>
+<p>In target VM, setup actual yum repository (also based on <a class="reference external" href="https://github.com/QubesOS/qubes-linux-yum">linux-yum</a>, this time without modifications). You will also need to setup some gpg key for signing packages (it is possible to force yum to install unsigned packages, but it isn’t possible for <code class="docutils literal notranslate"><span class="pre">qubes-dom0-update</span></code> tool). Fill <code class="docutils literal notranslate"><span class="pre">~/.rpmmacros</span></code> with key description:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>%_gpg_name Test packages signing key
+</pre></div>
+</div>
+<p>Then setup <code class="docutils literal notranslate"><span class="pre">local.UpdateYum</span></code> qrexec service (<code class="docutils literal notranslate"><span class="pre">/usr/local/etc/qubes-rpc/local.UpdateYum</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QREXEC_REMOTE_DOMAIN</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">real_repository</span><span class="o">=</span>/home/user/linux-yum
+<span class="nv">incoming</span><span class="o">=</span>/home/user/QubesIncoming/<span class="nv">$QREXEC_REMOTE_DOMAIN</span>
+
+find<span class="w"> </span><span class="nv">$incoming</span><span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.rpm&#39;</span><span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span>rpm<span class="w"> </span>-K<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-iv<span class="w"> </span>pgp<span class="w"> </span><span class="p">|</span>cut<span class="w"> </span>-f1<span class="w"> </span>-d:<span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span>-r<span class="w"> </span>setsid<span class="w"> </span>-w<span class="w"> </span>rpm<span class="w"> </span>--addsign<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+
+rsync<span class="w"> </span>-lr<span class="w"> </span>--remove-source-files<span class="w"> </span><span class="nv">$incoming</span>/<span class="w"> </span><span class="nv">$real_repository</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$real_repository</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SKIP_REPO_CHECK</span><span class="o">=</span><span class="m">1</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$incoming</span>/r3.1<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>./update_repo-unstable.sh<span class="w"> </span>r3.1
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$incoming</span>/r3.0<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>./update_repo-unstable.sh<span class="w"> </span>r3.0
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$incoming</span>/r2<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>./update_repo-unstable.sh<span class="w"> </span>r2
+<span class="k">fi</span>
+find<span class="w"> </span><span class="nv">$incoming</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-empty<span class="w"> </span>-delete
+<span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>Of course you will also need to setup qrexec policy in dom0 <code class="docutils literal notranslate"><span class="pre">/etc/qubes-rpc/policy/local.UpdateYum</span></code>.</p>
+<p>If you want to access the repository from network, you need to setup HTTP server serving it, and configure the system to let other machines actually reach this HTTP server. You can use for example using <a class="reference internal" href="../../user/security-in-qubes/firewall.html#port-forwarding-to-a-qube-from-the-outside-world"><span class="std std-ref">port forwarding</span></a> or setting up Tor hidden service. Configuration details of those services are outside of the scope of this page.</p>
+<p>Usage: setup <code class="docutils literal notranslate"><span class="pre">builder.conf</span></code> in source VM to use your dummy-uploader repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">LINUX_REPO_BASEDIR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>../../repo-yum-upload/r3.1
+</pre></div>
+</div>
+<p>Then use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">update-repo-unstable</span></code> to upload the packages. You can also specify selected components on command line, then build them and upload to the repository:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class="nv">COMPONENTS</span><span class="o">=</span><span class="s2">&quot;core-agent-linux gui-agent-linux linux-utils&quot;</span><span class="w"> </span>qubes<span class="w"> </span>update-repo-unstable
+</pre></div>
+</div>
+<p>On the test machine, add yum repository (<code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d</span></code>) pointing at just configured HTTP server. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[local-test]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">Test</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">http://local-test.lan/linux-yum/r$releasever/unstable/dom0/fc20</span>
+</pre></div>
+</div>
+<p>Remember to also import gpg public key using <code class="docutils literal notranslate"><span class="pre">rpm</span> <span class="pre">--import</span></code>.</p>
+</section>
+<section id="deb-packages-apt-repo">
+<h3>Deb packages - Apt repo<a class="headerlink" href="#deb-packages-apt-repo" title="Link to this heading"></a></h3>
+<p>Steps are mostly the same as in the case of yum repo. The only details that differ:</p>
+<ul class="simple">
+<li><p>use <a class="reference external" href="https://github.com/QubesOS/qubes-linux-deb">linux-deb</a> instead of <a class="reference external" href="https://github.com/QubesOS/qubes-linux-yum">linux-yum</a> as a base - both in source and target VM</p></li>
+<li><p>use different <code class="docutils literal notranslate"><span class="pre">update_repo.sh</span></code> script in source VM (below)</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">local.UpdateApt</span></code> qrexec service in target VM (code below)</p></li>
+<li><p>in target VM additionally place <code class="docutils literal notranslate"><span class="pre">update-local-repo.sh</span></code> script in repository dir (code below)</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">update_repo.sh</span></code> script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nb">set</span><span class="w"> </span>-e
+
+<span class="nv">current_release</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">VMNAME</span><span class="o">=</span>repo-vm
+
+qvm-copy-to-vm<span class="w"> </span><span class="nv">$VMNAME</span><span class="w"> </span><span class="nv">$1</span>
+find<span class="w"> </span><span class="nv">$current_release</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.deb&#39;</span><span class="w"> </span>-delete
+rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$current_release</span>/vm/db/*
+qrexec-client-vm<span class="w"> </span><span class="nv">$VMNAME</span><span class="w"> </span>local.UpdateApt
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">local.UpdateApt</span></code> service code (<code class="docutils literal notranslate"><span class="pre">/usr/local/etc/qubes-rpc/local.UpdateApt</span></code> in repo-serving VM):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$QREXEC_REMOTE_DOMAIN</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">incoming</span><span class="o">=</span>/home/user/QubesIncoming/<span class="nv">$QREXEC_REMOTE_DOMAIN</span>
+
+rsync<span class="w"> </span>-lr<span class="w"> </span>--remove-source-files<span class="w"> </span><span class="nv">$incoming</span>/<span class="w"> </span>/home/user/linux-deb/
+<span class="nb">cd</span><span class="w"> </span>/home/user/linux-deb
+<span class="nb">export</span><span class="w"> </span><span class="nv">SKIP_REPO_CHECK</span><span class="o">=</span><span class="m">1</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$incoming</span>/r3.1<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>dist<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>ls<span class="w"> </span>r3.1/vm/dists<span class="sb">`</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span>./update-local-repo.sh<span class="w"> </span>r3.1/vm<span class="w"> </span><span class="nv">$dist</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$incoming</span>/r3.0<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>dist<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>ls<span class="w"> </span>r3.0/vm/dists<span class="sb">`</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span>./update-local-repo.sh<span class="w"> </span>r3.0/vm<span class="w"> </span><span class="nv">$dist</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$incoming</span>/r2<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>dist<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>ls<span class="w"> </span>r2/vm/dists<span class="sb">`</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span>./update-local-repo.sh<span class="w"> </span>r2/vm<span class="w"> </span><span class="nv">$dist</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="k">fi</span>
+find<span class="w"> </span><span class="nv">$incoming</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-empty<span class="w"> </span>-delete
+<span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">update-local-repo.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nb">set</span><span class="w"> </span>-e
+
+<span class="c1"># Set this to your local repository signing key</span>
+<span class="nv">SIGN_KEY</span><span class="o">=</span>01ABCDEF
+
+<span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> &lt;repo&gt; &lt;dist&gt;&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+
+<span class="nv">REPO_DIR</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">DIST</span><span class="o">=</span><span class="nv">$2</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIST</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;wheezy-unstable&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">DIST_TAG</span><span class="o">=</span>deb7
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIST</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;jessie-unstable&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">DIST_TAG</span><span class="o">=</span>deb8
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DIST</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;stretch-unstable&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">DIST_TAG</span><span class="o">=</span>deb9
+<span class="k">fi</span>
+
+<span class="nb">pushd</span><span class="w"> </span><span class="nv">$REPO_DIR</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>dists/<span class="nv">$DIST</span>/main/binary-amd64
+dpkg-scanpackages<span class="w"> </span>--multiversion<span class="w"> </span>--arch<span class="w"> </span><span class="s2">&quot;*</span><span class="nv">$DIST_TAG</span><span class="s2">*&quot;</span><span class="w"> </span>.<span class="w"> </span>&gt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/main/binary-amd64/Packages
+gzip<span class="w"> </span>-9c<span class="w"> </span>dists/<span class="nv">$DIST</span>/main/binary-amd64/Packages<span class="w"> </span>&gt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/main/binary-amd64/Packages.gz
+cat<span class="w"> </span>&gt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/Release<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">Label: Test repo</span>
+<span class="s">Suite: $DIST</span>
+<span class="s">Codename: $DIST</span>
+<span class="s">Date: `date -R`</span>
+<span class="s">Architectures: amd64</span>
+<span class="s">Components: main</span>
+<span class="s">SHA1:</span>
+<span class="s">EOF</span>
+<span class="k">function</span><span class="w"> </span>calc_sha1<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">f</span><span class="o">=</span>dists/<span class="nv">$DIST</span>/<span class="nv">$1</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="sb">`</span>sha1sum<span class="w"> </span><span class="nv">$f</span><span class="p">|</span>cut<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span>-f<span class="w"> </span><span class="m">1</span><span class="sb">`</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="sb">`</span>stat<span class="w"> </span>-c<span class="w"> </span>%s<span class="w"> </span><span class="nv">$f</span><span class="sb">`</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$1</span>
+<span class="o">}</span>
+calc_sha1<span class="w"> </span>main/binary-amd64/Packages<span class="w"> </span>&gt;&gt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/Release
+
+rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DIST</span>/Release.gpg
+rm<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DIST</span>/InRelease
+gpg<span class="w"> </span>-abs<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SIGN_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/Release<span class="w"> </span>&gt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/Release.gpg
+gpg<span class="w"> </span>-a<span class="w"> </span>-s<span class="w"> </span>--clearsign<span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SIGN_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/Release<span class="w"> </span>&gt;<span class="w"> </span>dists/<span class="nv">$DIST</span>/InRelease
+<span class="nb">popd</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="sb">`</span>id<span class="w"> </span>-u<span class="sb">`</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>chown<span class="w"> </span>-R<span class="w"> </span>--reference<span class="o">=</span><span class="nv">$REPO_DIR</span><span class="w"> </span><span class="nv">$REPO_DIR</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Usage: add this line to <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list</span></code> on test machine (adjust host and path):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>deb http://local-test.lan/linux-deb/r3.1 jessie-unstable main
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qubes-builder-details.html" class="btn btn-neutral float-left" title="Qubes builder details" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qubes-iso-building.html" class="btn btn-neutral float-right" title="Qubes ISO building" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/building/development-workflow.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
