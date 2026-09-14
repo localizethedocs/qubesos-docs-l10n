@@ -8,21 +8,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-14 14:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/system/template-manager.rst:3
-#: e9cf233d4e354cdbbbd97fddd83d8e27
+#: ab474e590b484b128fc975e8e4d20074
 msgid "Template manager"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:6
-#: b6b5b3f60ee3409e9fe6e7d1cc8755d6
+#: c81aeb8ea794471ba8a78b8efca472e0
 msgid ""
 "This document discusses the designs and technical details of ``qvm-"
 "template``, a template manager application. The goal of the project is to "
@@ -31,19 +32,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:9
-#: ab7ba9b2ebd14485aeed5184a25d55e1
+#: 66824c53e02044758f5289599b8b5810
 msgid "Motivation"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:12
-#: 0fb14e78b29943db80e9a5af1a95d1ce
+#: 9e0abcec4dd1458092f2507f3541d37e
 msgid ""
 "This project was originally proposed in the 2020 Google Summer of Code "
 "program."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:14
-#: e433ee0663424029beb1105c8c35bdf4
+#: a86ca0817c8a497ea6cfd524d24c380f
 msgid ""
 "Previously, templates were distributed by RPM packages and managed by "
 "``yum``/``dnf``. However, tracking inherently dynamic VM images with a "
@@ -68,14 +69,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:16
-#: 6050cda8c3f94de68353a36c665af807
+#: da12d123dc244215abfdc1e29705ea14
 msgid ""
 "Also, the usage of RPM packages meant that installing a template results in "
 "arbitrary code execution, which is not ideal."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:18
-#: f9a0f30243424915a651605abff4d137
+#: 94545febfa0e4043b037225278de00cb
 msgid ""
 "Besides distribution, users may also wish to have an integrated template "
 "management application (`#2062 <https://github.com/QubesOS/qubes-issues/"
@@ -88,7 +89,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:20
-#: 49cf6632842c4baebd93b579dfb6d4a4
+#: 0bf17461b5f64bff95e466fe83c134c2
 msgid ""
 "To tackle these issues, ``qvm-template`` was created. It strives to provide "
 "not only a better mechanism for handling template installation but also a "
@@ -96,88 +97,88 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:23
-#: c4f1a736374e4485a2ae560ee45b40e1
+#: d357ceb078054e83b5be138208a62684
 msgid "Features"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:26
-#: 1e2a32719a59418bbd6932b064658c4c
+#: f90b32d43b684e92a9df28e6c08d0e3f
 msgid ""
 "Install/reinstall/downgrade/upgrade templates, either from local packages or "
 "remote repositories"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:28
-#: fb0307bf681541a9ab9ea0a4a55f3ca3
+#: ef4ebe26967040d4a8751d27f1bd0252
 msgid "Ability to install templates in alternative pools"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:30
-#: 86ffa17866a541a6a842002b5e3cd14c
+#: f40012ffb9b347b3b3a370d72c4e1d3f
 msgid ""
 "Possibility for the template package to specify options such as the kernel "
 "or ``virt_mode`` used by the resulting template"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:34
-#: 8b0cf35005704af2a3dc616ce524c639
+#: f668ad8b82804a26a3640878a18aaf17
 msgid "List and show information about local and available templates"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:36
-#: 2f45574da33c406ead2ad816aa44ccfc
+#: 0fe9317fa4dd48c4b0a191818eac7199
 msgid "Machine-readable output for easy extension"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:40
-#: 7796de93eeab4ccaa4c22684d10daa6c
+#: ed12351032e2433396e2cb19a8cdf7f3
 msgid "Search for templates"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:42
-#: 4fffa7eeb06e4966922e26bc05562f9c
+#: a76510d2e573424d8514193b2879429d
 msgid "Remove templates"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:44
-#: 18bfb792227d42618b840c3f2e554385
+#: c7bab5a747ea4ae8bb66dedd0de08bb3
 msgid ""
 "Optionally, VMs based on the template to be removed can be either removed or "
 "“disassociated” – namely, have their templates changed to a “dummy” one."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:48
-#: dbb2c205121149719b463bc74ad78cba
+#: 32daff38ad94482e8ca7f2cf37ca78b6
 msgid "Show available repositories"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:50
-#: 9d76a4cc51504ce4b330333db3b86a32
+#: 5326c34095af4a4a93b164460221628c
 msgid "Works in both dom0 and management VMs by utilizing the Admin API"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:52
-#: b1b0e2c1bd6f4fdeb96de3828005d9cf
+#: 5ecc3b6acc044cf5a5afe97ef60de216
 msgid "Works well with existing tools"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:54
-#: a1997b3dc33f42f19198c9597b2d16dd
+#: 865bba9e3ebe4005af18988d0eb89299
 msgid "Command-line interface with DNF-like usage"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:56
-#: 02540f41ab9d4feaa591fa4bb24e430a
+#: 7ea18371e17045f1aeee2e71cda57785
 msgid "A graphical interface also available"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:61
-#: b3a90a55273942efa88c7f3de8d3cbe8
+#: b830c992b07e424eabd3def83574230e
 msgid "Package format"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:64
-#: 953d2ce2789e472387c223eebfb09738
+#: ede1fdcd27db478aa0ae24859bec29c1
 msgid ""
 "The RPM package format is still used. However, the contents are manually "
 "extracted instead of installing the whole package. This allows us to take "
@@ -187,13 +188,13 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:66
-#: e4084837512e43d09eaa7b010e98432b
+#: 885af3559bbb4e7797fbf7c42d5630b4
 msgid ""
 "The package name should be in the form ``qubes-template-<TEMPLATE_NAME>``."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:68
-#: 41e0ac72ea3546259d673687a400a8c2
+#: 89e95307788a4b9e8098bee805308d69
 msgid ""
 "The package metadata (summary, description, etc.) should not contain the ``|"
 "`` character to avoid possibly cryptic errors. This is because of its use as "
@@ -202,25 +203,25 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:70
-#: 5c52b24dfefb4572ac54107db08864b4
+#: de863c4f5db542deb40e82231789758a
 msgid ""
 "The file structure should be quite similar to previous template RPMs. "
 "Namely, there should be the following files in the package:"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:72
-#: b35ed24584914132b776fa6afa80cb61
+#: 29c876ed6e0e40d8aeffd0dafe740d68
 msgid ""
 "``var/lib/qubes/vm-templates/<TEMPLATE_NAME>/root.img.part.[00,01,...]``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:74
-#: 08544c3df84a48e594e884682beca906
+#: c7aa9bd85f044fdb91ec1921f1432095
 msgid "Split tarball of template ``root.img``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:76
-#: 8eef373c8ef94198bca20c0c7c250e60
+#: 50b37a57fb0e48ebb61592ad8e02f238
 msgid ""
 "Note that the file is still split due to tools such as ``rpm2cpio`` not "
 "supporting large files. (Notably, the cpio format does not support files "
@@ -228,23 +229,23 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:80
-#: 5cef762670894e01ae2266b4faf4ae5c
+#: 869224d7e1bc4637be0d086efcb90cb0
 msgid "``var/lib/qubes/vm-templates/<TEMPLATE_NAME>/template.conf``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:82
-#: 52a821e358ff4a7983d020d47cf6cce1
+#: 1416afd8113a45c49dff90a4fbb9a039
 msgid ""
 "Stores custom package metadata (as RPM does not support custom attributes)."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:84
-#: 8b65501095494bdc9512878cc315c917
+#: a9c9138340794df98652131564571fe9
 msgid "Uses ``KEY=VALUE`` format."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:86
-#: d89efec6a8fb44b8881e2e2acc059fa6
+#: 0f0853347ff3490598f5d3d2039d35a2
 msgid ""
 "Fields (corresponding to :doc:`qvm-prefs <core-admin-client:manpages/qvm-"
 "prefs>` and :doc:`qvm-features <core-admin-client:manpages/qvm-features>` "
@@ -252,143 +253,143 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:88
-#: e93fce3dbf0d4f33a4d63cf9aba5defd
+#: 5c61e2578ff84c0085d648c688239741
 msgid "``virt_mode``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:90
-#: 54d9b10977df40c6ad3c720b87ef8067
+#: 86cedbc336ba439fa1cbba8d9525f94d
 msgid "Setting this to ``pv`` requires user confirmation."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:92
-#: f92f868393f6468b80243fc6c54d3790
+#: be48364ecd264e7983d1c7adca976356
 msgid "Permitted values: ``pv``, ``pvh``, ``hvm``."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:96
-#: a096719753ca4ea9919d14a8ef9363eb
+#: 89ada7ac4f5c43b89130af45b0dd8d4a
 msgid "``kernel``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:98
-#: e42a6e3ec8dd443f92874684b2755167
+#: 9e8f6238c07443388c7fda8f743dab65
 msgid ""
 "Only allowed to be set to “” (without quotes), i.e., “none”, for PVGrub."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:102
-#: 6cdb9fc8b9084a3c8de90a5e73d6d055
+#: 8dbb85a5a1b8487783704ae5c4c28096
 msgid ""
 "Network-related flags: (Must be set to IPv4 addresses in the form of ``x.x.x."
 "x``.)"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:104
-#: 3823907dd881425990ef99d7dcb511f4
+#: febd3e8a78144da2a41cf3b9b0bdd6bc
 msgid "``net.fake-ip``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:106
-#: 235d327e1cdc4661b06f4d7fb84e6a7b
+#: 215f6e9a0a2e491e935fed0b55053a1f
 msgid "``net.fake-gateway``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:108
-#: f7283bb55c3949f3acc2d11348359be6
+#: b7807c5287f54efb9fe4d01d6b11a035
 msgid "``net.fake-netmask``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:112
-#: 54b16b8e868548be8cd7b6afdd89538d
+#: 9c75e0b2cdce43d2b48c0f91a6351537
 msgid ""
 "Boolean flags: (Permitted values are “1” and “0”, denoting “true” and "
 "“false” respectively.)"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:114
-#: 8d623c45c57642aea13ebec6ce304a75
+#: d5175a0c419d4464be08ac388a3e8c92
 msgid "``no-monitor-layout``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:116
-#: 9cf0aa5a25b043f9bc5c0701f13c60d5
+#: 5ffaa64aef934716ac70488c990b3bf2
 msgid "``pci-e820-host``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:118
-#: aac29705c5ec4ecaa0d0cb72fd110844
+#: 6f49dd255f724630ae76f2dc46e32f26
 msgid "``linux-stubdom``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:120
-#: a29de86a60c94de7aac7cbbcd0184cec
+#: 5d3e3e258ce848eebc58001efba9f782
 msgid "``gui``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:122
-#: 70513c9aac974d6d862aa0a4c66fe1b7
+#: d4dd805e1cd842d3817760015ad55743
 msgid "``gui-emulated``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:124
-#: 8356a2ca59814b2e96012c14b991d423
+#: 6b4393dc90eb476694c6e5e6664fc4f0
 msgid "``qrexec``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:132
-#: 4b16a77ea51940129bfbec4c2f0afc64
+#: 187ed11a7fd84dc7add4b179fad6af96
 msgid ""
 "``var/lib/qubes/vm-templates/<TEMPLATE_NAME>/whitelisted-appmenus.list``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:134
-#: d9a4da1b6d674694aaa25575256b6f5f
+#: 88c7c665d938483aadd93c3307114926
 msgid "Contains default app menu entries of the template itself."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:138
-#: 3c700cc560294880b636687b45ec5441
+#: 95082312a7b1416198cabc801a895556
 msgid ""
 "``var/lib/qubes/vm-templates/<TEMPLATE_NAME>/vm-whitelisted-appmenus.list``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:140
-#: e4a8b72fd8b845e090908a67e275bb95
+#: c67c1ef4534c4e2ebcc51df9fe4b3d72
 msgid "Contains default app menu entries of VMs based on the template."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:144
-#: 2ca5ba2e8a4545dab495fb0261de3fe6
+#: dbea3b12c6294a288b34c3f0da959ca8
 msgid ""
 "``var/lib/qubes/vm-templates/<TEMPLATE_NAME>/netvm-whitelisted-appmenus."
 "list``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:146
-#: 4ea82fb982de4e77bfdb868d1dc63257
+#: ed48ebae04984f22bd4e5ea595e4b335
 msgid "Contains default app menu entries of NetVMs based on the template."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:148
-#: 1170df7b6b1a4223acdc8b90fb1548af
+#: c114fc0872df4b719d8742133a0ed613
 msgid "These three files are the same as the current format."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:150
-#: 0253f6f334354b0ea15bbdbfd2fa65a3
+#: cf4c93a41d2a43f2b32bea85262478bd
 msgid ""
 "Note that the contents of these files are stored in ``qvm-features`` upon "
 "installation. See the section below for details."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:157
-#: 31ea641871e245da9ac32f7bceb40521
+#: ad4a7ff586c44f5fb85231efba20197d
 msgid "Metadata storage"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:160
-#: ca86b52dc625475fb341537345d57760
+#: 944ce313f6b74eecb80a4e46845d9bcb
 msgid ""
 "The template manager needs to keep metadata of installed templates such as "
 "versions and origin. This data can be stored via ``qvm-features`` to keep "
@@ -397,113 +398,113 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:162
-#: 6b52293ff08a455e862637d558732abc
+#: 2a2b1deb8266446c9cb1da9363e74735
 msgid ""
 "Also, the fields can serve as an indicator of whether a template is "
 "installed by ``qvm-template``."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:165
-#: 0c512900abe642a79f6e510cd1033264
+#: 4bf4a11e6f1d42478b01cbed64871100
 msgid "Fields"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:168
-#: 906610dd2cdf49bd9a31d5ef5b9f3ef9
+#: 4459747c6e314a97a584061b022492ff
 msgid "Most of the fields should be fairly self-explanatory."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:170
-#: 31e3cac95a3a4cd897a5e4fb89ff9709
+#: 75888cd018d648d687cd2d535f18580f
 msgid "``template-name``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:172
-#: 431572b4a8554fdf9cf83adeb01c9cd5
+#: e26ee223d8f647b683ec5ce2d869af82
 msgid ""
 "Note that this field needs to be consistent with the template name to be "
 "considered valid."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:176
-#: 2feddf804cec41668c1f1be760bed654
+#: e8451fb0dfc244a688ace3f67224880f
 msgid "``template-epoch``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:178
-#: 5098dd1d8ff94c448ed553716ce598c8
+#: 5365431f949a4443a8eb6eeaa53022af
 msgid "``template-version``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:180
-#: fd2b89573a034731b729b6ca0330f907
+#: 8e6066a55b6d4f8294c12a88fdbb2c3a
 msgid "``template-release``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:182
-#: cda1bd3734a94fab9c61872fd7030f7a
+#: e1b677a670444fca8d003126aff5b7c7
 msgid "``template-reponame``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:184
-#: a39c48b5c11f449baa2d685b9b389092
+#: 76ced4bcb3ad4ee2a00bc6e41da45402
 msgid "``template-buildtime``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:186
-#: eeea463674f843ec9ddfe01d8e0b4190
+#: 321c6aaaceb44170bf96a838229476e3
 msgid "``template-installtime``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:188
-#: 6292cd7cbc134d08b1b496ecfdcfd05c
+#: dd72bcd3e6784d73a8afa485add651b7
 msgid "The times are in UTC, and are of the format ``YYYY-MM-DD HH:MM:SS``."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:192
-#: 12a9f5ed9d794a8a899fff68673b16a0
+#: 175ae8cc6b99431ca78be0fb0cbc516c
 msgid "``template-license``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:194
-#: c124e68ffe2e44c589e60d06ee365704
+#: 58e9f078f14b441d94ba2bea3ca452ea
 msgid "``template-url``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:196
-#: d5e0da882e8843f1a34c315c25616632
+#: 3aa7c9b6e36e4ddab139b97029d8cabd
 msgid "``template-summary``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:198
-#: 2aa34b8c7d8a4e7795d0833f07491359
+#: ecca28525978483aaada00280a455410
 msgid "``template-description``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:200
-#: ae26594de7554ae0a8b89bfb7d0d3883
+#: dd1b30740ecc406b94a272407be66ac9
 msgid ""
 "Note that the newlines in this field are converted to ``|`` to work better "
 "with existing tools like ``qvm-features``."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:204
-#: 8abeb1d3e675450b9463e5db68b309ef
+#: 46b6477898e14fd4b41ca1bd1c07f0c1
 msgid "``menu-items``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:206
-#: caca6c2773ad4a21893fef70092dc8a1
+#: 53ad9d497c46446ea4104649356bb32a
 msgid "``default-menu-items``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:208
-#: e25db82b9e0c4122b5fcfabaff7577e2
+#: acaa7423343a41f295a1a7e5242b61eb
 msgid "``netvm-menu-items``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:210
-#: 38ebe109f7084a098cedf7d52a5251cc
+#: fdf65a4e836940429296a4799339ff8f
 msgid ""
 "The ``*menu-items`` entries store the contents of ``var/lib/qubes/vm-"
 "templates/<TEMPLATE_NAME>/whitelisted-appmenus.list``, ``var/lib/qubes/vm-"
@@ -512,7 +513,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:212
-#: 5dd104dfa6ef40fdbbee634601d248b0
+#: 273ec544e88c4477a55e01a739831161
 msgid ""
 "Note that newlines are converted to spaces, again for it to work better with "
 "existing tools. This should not cause ambiguity as `the FreeDesktop "
@@ -521,12 +522,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:219
-#: 6d794e863017415085e45a0cc9965ab4
+#: 1720f38115ed46dab01843ae72fd7884
 msgid "Repository management"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:222
-#: 719bfe01235047168a70829fea87624d
+#: 4e95ccf78ae84ff6bf82f9f30f3e74f3
 msgid ""
 "For UpdateVMs to access the repository configuration, the package `qubes-"
 "repo-templates <https://github.com/WillyPillow/qubes-repo-templates>`__ is "
@@ -534,29 +535,29 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:224
-#: 7ba0f606be254190ac6b6a0ec8d8ba77
+#: 426405eb66584553932ed40bd397ed87
 msgid "``/etc/qubes/repo-templates/*.repo``: repository configuration"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:226
-#: 8e3bc80611e34c628f4052aa84b88c38
+#: 3b821d3edb9446908b2eda323e70b61d
 msgid "``/etc/qubes/repo-templates/keys``: PGP keys"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:230
-#: a6c1b9fb13234c1483c26e7fa10b7b13
+#: 91132a7eca8f4887bfa77ac5b99310b3
 msgid ""
 "As template keys may be less trusted, they are *not* added to the system RPM "
 "keychain but instead managed separately."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:233
-#: 5ebd8baa6cb948dbaef1d0db55cfdbe1
+#: d3c933ee3d574a1cbe626811cc1d8107
 msgid "Qrexec protocol"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:236
-#: 2c7046f87f6c4eebb510e989aeb56b70
+#: 60fbd8da3bc1486a93be82dbc601c6ff
 msgid ""
 "Dom0 and management VMs without network access also need to interact with "
 "template repositories. The following qrexec calls that list and download "
@@ -564,27 +565,27 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:238
-#: b97e33068deb460bb6ad89231982fb84
+#: 778665df5a984f20b00bb5b1133acdd5
 msgid "``qubes.TemplateSearch``: wraps ``dnf repoquery``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:240
-#: 65a42080425f4c1d96ff5221f24b317a
+#: f038bed2815943c2a932b8e5794d6a6c
 msgid "``qubes.TemplateDownload``: wraps ``dnf download``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:245
-#: ef6554958b9642768e7ebe7480cbce78
+#: 92e99539d9d243c89cc07c0a27e99ff0
 msgid "Input"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:248
-#: e7a16df0d0f84d758d8d1cad9aa749c0
+#: 03617a93b3c24071b8a4cd7c7b780eeb
 msgid "Both calls accept the following format from standard input:"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:262
-#: c85ad2968caa46f59d3fe3ba3e1c4077
+#: 751e3fa2677a4e6c97f96c05c75d204f
 msgid ""
 "In other words, the input consists of two parts separated by the line ``---"
 "``. The first part contains some arguments and ``package-file-spec`` that "
@@ -593,56 +594,56 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:264
-#: 635b324fb36a48408674fcda8225c766
+#: d5d418aa0193425eb6ccb7cf4be0ff51
 msgid "``--enablerepo=<repoid>``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:266
-#: 9b8a531b9e3441d18b63eced2c881a3f
+#: 87fe8e2474c4432a8824db572a89c7a7
 msgid "``--disablerepo=<repoid>``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:268
-#: 4997471f63f544558beba97a806f8468
+#: 5d38724ebe1a4eb6bfd6c0e26a9ee96c
 msgid "``--repoid=<repoid>``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:270
-#: d2999b99cc5040468138de93899431ff
+#: 6b790ca9738c487a9d613ff4615b3898
 msgid "``--releasever=<release>``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:272
-#: c2549574028e432fab4b0075bc7350b6
+#: dcd0cb7c36fd46b69e8c7ab883169c60
 msgid "``--refresh``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:276
-#: 7479174f60ba4c938ffb80b3c6de04f2
+#: ada41425a7394adebb090d3e4867e7db
 msgid "where the usage is identical to that of DNF."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:278
-#: 2f437bfefc914d5bb3beeb4308fe270c
+#: 51a6d0f965b94cc8a99ae512260eb3ae
 msgid ""
 "For the exact definition of ``package-file-spec``, refer to the DNF "
 "documentation."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:280
-#: 176cb43c2a7246d8ba8909a43c9265e1
+#: 03e9982246854308a62a3000c7dd021e
 msgid ""
 "The second part contains the repository configurations in ``yum.repos.d`` "
 "format."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:283
-#: 8f87fab9955349fa906b1ddbca53ce84
+#: effc2485d80c483cb5f77db7c1487ba6
 msgid "Output"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:286
-#: ecd08de04d834ee597b40e4634d95b26
+#: e3e595fd4e904251b80fb2eb7fe6d0d5
 msgid ""
 "``qubes.TemplateSearch`` prints each package in ``%{name}|%{epoch}|"
 "%{version}|%{release}|%{reponame}|%{downloadsize}|%{buildtime}|%{license}|"
@@ -654,19 +655,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:288
-#: 470c9c19aa4744bc81f118e1562b8d8b
+#: 9702d67af8764e5bb4f84d9b3ea080fb
 msgid ""
 "``qubes.TemplateDownload``, on the other hand, directly outputs the "
 "downloaded content to standard output."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:291
-#: 84f8cbe007e94923a8d1167f89550ee0
+#: 885730a6dda9426c859ae95840e6ffd2
 msgid "Machine-readable output"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:294
-#: 6cb48083085c4dd79a16bbc3afe008cb
+#: 8fe5fb7edf5b4795b7202a73c89d2c9d
 msgid ""
 "The commands ``qvm-template list`` and ``qvm-template info`` provide machine-"
 "readable output in both pipe(``|``)-separated and JSON format. See the ``qvm-"
@@ -674,17 +675,17 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:297
-#: 2d166904baa14264ad5c521b8000fa9a
+#: 4df4187cdbb54bddac977a1a225552cb
 msgid "Interactions with existing tools"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:301
-#: 57149213722d4630b69f2bc62d0ce2c5
+#: fc1052191ada4692814e5723e672dbcd
 msgid "``qvm-remove``"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:304
-#: 35f5d888e00942b78c25bc68ed97d63c
+#: e07934e969c74ebf88f76049367ecfc1
 msgid ""
 "The existing ``qvm-remove`` tool should behave identically to ``qvm-template "
 "remove`` – albeit without fancy features like disassociation. This is unlike "
@@ -693,19 +694,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:306
-#: 6b6d8e4c9193486391b373a75fadba09
+#: 39d49eb60f164d6b8baa1ae54d501887
 msgid ""
 "Notably, the metadata needs no special handling as it is stored in VM "
 "features and thus automatically consistent."
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:309
-#: 8ed0e2246db44daa91bf74042b36664d
+#: f16830504ef94f22bafb4eaf685c7841
 msgid "Renaming and cloning"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:312
-#: a34b2838fa6a45e688776f580480c6f8
+#: 35ba14d3f85b4ab9ba6bc50cf0f0ba6e
 msgid ""
 "A template is treated as non-manager-installed once renamed or cloned. "
 "However, relevant metadata in the VM features is still retained for future "
@@ -713,56 +714,56 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:315
-#: 0abd571993b549338e11aefe0d575909
+#: 7d046d077dc947eb970f6b63bf1ac22a
 msgid "Further reading"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:318
-#: 6ffa123c61f447e3940df660c50e76ce
+#: 1d90523b6c2c4ae2876b2ccffd6d97ee
 msgid "Initial Google Summer of Code (2020) project proposal:"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:320
-#: 899bceb05bf5456e9240ea6ccc032111
+#: d4918ae4320e48b1a4c1eb763bd94da5
 msgid "https://hackmd.io/aYauztkGR0iOIoh8fJLecw"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:324
-#: 2c15e4f49d5e48a09655866b2dc5261d
+#: 36071ad0e5a34e95a755f453d949c65d
 msgid "Previous design document:"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:326
-#: 241aa3251e0f4fed9c58bbf88cee4cfa
+#: c0694465f33b43448b2e7edc7e1a519f
 msgid "https://gist.github.com/WillyPillow/b8a643ddbd9235a97bc187e6e44b16e4"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:330
-#: d56ad87042fd48d0af76e3820cf1966e
+#: 96d02e06dd154afeb5a5bbf7550e950d
 msgid "Discussion threads:"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:332
-#: 09791fe558bf4d6793fb4954ba67c8c2
+#: eb9d88e7885444deb06b448de41560f4
 msgid "https://groups.google.com/forum/#!topic/qubes-devel/6Zb_WLy3GY4"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:334
-#: 2afa691c095241ee9e9db2debf9a3bd4
+#: c126e0adb5234e03b8c2a75c5ad92aa1
 msgid "https://groups.google.com/forum/#!topic/qubes-devel/PyJogqT1TUg"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:336
-#: 13661792ea664366b1bd4d26c0329dfa
+#: cf8809350ae542fcb8f48be3510bcfe6
 msgid "https://groups.google.com/forum/#!topic/qubes-devel/2XaMP4Us3kg"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:338
-#: dcb3e28859b84c1f9aae1b6349ae63f0
+#: 43a4b1a06c434a62a11fcfe6804bfece
 msgid "https://groups.google.com/forum/#!topic/qubes-devel/wF_84b1BR0A"
 msgstr ""
 
 #: ../../../developer/system/template-manager.rst:340
-#: 385f3935af754d0d9f675d95defd2006
+#: a6f8d4b18ed941ea8cabe71119553604
 msgid "https://groups.google.com/forum/#!topic/qubes-devel/pYHnihVCBM0"
 msgstr ""
