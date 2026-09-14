@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:3
+#: 73df343ff8dc45339ef57f0221af6b12
+msgid "Safe remote dom0 terminals"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:6
+#: 6162b84272a84df6b919daa7e55a16ee
+msgid ""
+"If you do not have working graphics in Dom0, then using a terminal can be "
+"quite annoying! This was the case for the author while trying to debug PCI-"
+"passthrough of a machine’s primary (only) GPU."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:8
+#: 57e3f148e8fb421686311f6b2be8c3f5
+msgid ""
+"Your first thought might be to just allow network access to Dom0, enable "
+"ssh, and connect in remotely. But, this gravely violates the Qubes security "
+"model."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:10
+#: 387420ffe2bf473e8f7a33d6bcad3cf1
+msgid ""
+"Instead, a better solution is to split the input and output paths of using a "
+"terminal. Use your normal keyboard for input, but have the output go to a "
+"remote machine in a unidirectional manner."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:12
+#: 61e3f8e67a9d472382fb074444335805
+msgid ""
+"To do this, we make use of script(1), qvm-run, and optionally your network "
+"transport of choice."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:15
+#: 1ca1c4c1f5724402b5c736e74a6d460c
+msgid "To a different VM"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:18
+#: 443e30966b9d4948b588a35e6ed21267
+msgid ""
+"As an example of forwarding terminal output to another VM on the same "
+"machine:"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:29
+#: a0f9d8076d5a4ff0b9e8bb7827e953e3
+msgid "To a different machine"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:32
+#: 5d82ff7aa8224c508a044442b6e03d7a
+msgid "In this case over SSH (from a network-connected VM):"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:44
+#: e52a7f95e1004dfd90ede94931867f03
+msgid ""
+"Note that no data received over SSH is ever treated as terminal input in "
+"Dom0. The input path remains only from your trusted local keyboard."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:47
+#: 2abf1177217945ee86ca573f35a2cbf5
+msgid "Multiple terminals"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:50
+#: d163388c88594fbb838758d7320f505d
+msgid ""
+"For multiple terminals, you may find it easier to just use tmux than to try "
+"to blindly switch to the correct window."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:53
+#: cf96260d77a741cba0750a5aadc650d6
+msgid "Terminal size"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:56
+#: 25290477b4934488b29365520312d67b
+msgid ""
+"It is up to you to ensure the sizes of the local and remote terminal are the "
+"same, otherwise things may display incorrectly (especially in interactive "
+"programs). Depending on your shell, the size of your local (blind) terminal "
+"is likely stored in the ``$LINES`` and ``$COLUMNS`` variables."
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:66
+#: 54dba74052284c12a143b0964b450ad7
+msgid "A note on serial consoles"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:69
+#: ca2609de3ba24c728ff409b4b1bd691e
+msgid ""
+"If your machine has a serial console, you may with to use that, but note "
+"that a similar split-I/O model should be used to ensure Dom0 integrity. If "
+"you use the serial console as normal (via e.g. getty on ttyX, and logging in "
+"as normal), then the machine at the end of the serial cable could compromise "
+"your machine! Ideally, you would take input from your trusted keyboard, and "
+"only send the output over the serial cable via e.g. disabling getty and "
+"using:"
+msgstr ""
+
+#: ../../../developer/debugging/safe-remote-ttys.rst:77
+#: 1646a2dffaf14308a93515b5b364a8d6
+msgid "You don’t even need to connect the TX pin."
+msgstr ""

@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:3
+#: c4905bee185f4d0b8f4cd0d847ddfa14
+msgid "Emergency backup recovery (v2)"
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:6
+#: b831c341708f469da94be990141535e3
+msgid ""
+"This page describes how to perform emergency restore of backup created on "
+"Qubes R2 Beta3 or earlier (which uses backup format 2)."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:8
+#: 8ebd1dc0f40a48b6813a90d935a64ee8
+msgid ""
+"The Qubes backup system has been designed with emergency disaster recovery "
+"in mind. No special Qubes-specific tools are required to access data backed "
+"up by Qubes. In the event a Qubes system is unavailable, you can access your "
+"data on any GNU/Linux system with the following procedure."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:10
+#: 75410b76870d40b8b8088873949afeaa
+msgid ""
+"**Note:** In the following example, the backup file is assumed to be both "
+"encrypted and compressed."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:12
+#: 05181fd5f1044467a2bb2fe76b66397f
+msgid "Untar the main backup file."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:34
+#: 6ddb38a362e04a7da774e4c4adb99a41
+msgid ""
+"Set the backup passphrase environment variable. While this isn’t strictly "
+"required, it will be handy later and will avoid saving the passphrase in the "
+"shell’s history."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:42
+#: 28a1eb35abb843939cba838776bb0da1
+msgid ""
+"Verify the integrity of the ``private.img`` file which houses your data."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:56
+#: 56534df30d2548ba818a8e995bfa415a
+msgid ""
+"**Note:** The hash values should match. If they do not match, then the "
+"backup file may have been tampered with, or there may have been a storage "
+"error."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:58
+#: 8a6a1fff9ff044718b2fede086040916
+msgid ""
+"**Note:** If your backup was hashed with a message digest algorithm other "
+"than ``sha512``, you must substitute the correct message digest command. A "
+"complete list of supported message digest algorithms can be found with "
+"``openssl list-message-digest-algorithms``."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:60
+#: 467434b8ee0944fc8eadfe0110618cc9
+msgid "Decrypt the ``private.img`` file."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:72
+#: 051d7730c2c14368811be8e82d5bcb85
+msgid "**Note:** For multi-part files, a loop can be used:"
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:84
+#: 58a6e3877c374b7499c3c9734557509d
+msgid ""
+"**Note:** If your backup was encrypted with a cipher algorithm other than "
+"``aes-256-cbc``, you must substitute the correct cipher command. A complete "
+"list of supported cipher algorithms can be found with ``openssl   list-"
+"cipher-algorithms``."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:86
+#: a480cf56154246888e41442d1211b07f
+msgid "Decompress the decrypted ``private.img`` file."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:99
+#: 470db69e4afd48f2b1a270455a3d9b18
+msgid ""
+"**Note:** If your backup was compressed with a program other than ``gzip``, "
+"you must substitute the correct compression program."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:101
+#: 62c877696c80464ea3533958f8e10bec
+msgid "Untar the decrypted and decompressed ``private.img`` file."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:109
+#: f4eb6772aed24eb39b204e05d22e36d8
+msgid "**Note:** For multi-part files, a script is required:"
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:111
+#: df15935484894d0eaff207fbcbac97ac
+msgid "Create a ``new-volume-script``:"
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:122
+#: 52bb51555aa344e0a9d2d8e4345cbb2f
+msgid "``chmod +x new-volume-script``."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:124
+#: fa457739702a49a0914b48c1c3b3a01e
+msgid ""
+"``tar --new-volume-script=./new-volume-script -xvf private.img.dec.000``. "
+"(The ``--new-volume-script`` option enables multi-volume untaring.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:128
+#: 911386b676cb4e71bd7f2500bc0eebc4
+msgid "Mount the private.img file and access your data."
+msgstr ""
+
+#: ../../../user/how-to-guides/backup-emergency-restore-v2.rst:143
+#: 3791385f87ce4aa7a6374e3977712b22
+msgid ""
+"**Note:** You may wish to store a plain text copy of these instructions with "
+"your Qubes backups in the event that you fail to recall the above procedure "
+"while this web page is inaccessible. You may obtain a plaintext version of "
+"this file in Git repository housing all the documentation on `Github "
+"<https://github.com/QubesOS/qubes-doc.git>`__"
+msgstr ""

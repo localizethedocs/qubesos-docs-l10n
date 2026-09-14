@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/services/dom0-secure-updates.rst:3
+#: 9cedd4a662724b79b687b59d05a71490
+msgid "Dom0 secure updates"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:7
+#: 3579241c35794e57a7a80219bfb4c201
+msgid "Reasons for Dom0 updates"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:10
+#: 978394265c9c44959fbb90ec4a0f7c79
+msgid ""
+"Normally there should be few reasons for updating software in Dom0. This is "
+"because there is no networking in Dom0, which means that even if some bugs "
+"will be discovered e.g. in the Dom0 Desktop Manager, this really is not a "
+"problem for Qubes, because all the third-party software running in Dom0 is "
+"not accessible from VMs or network in any way. Some exceptions to the above "
+"include: Qubes GUI daemon, Xen store daemon, and disk back-ends (we plan to "
+"move the disk backends to untrusted domain in Qubes 2.0). Of course we "
+"believe this software is reasonably secure and we hope it will not need "
+"patching."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:12
+#: 18b2a1394f644354a6a472471812fa47
+msgid ""
+"However, we anticipate some other situations when updating Dom0 software "
+"might be required:"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:14
+#: 51841137d2e44beb87b297034d0ab0fb
+msgid "Updating drivers/libs for new hardware support"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:16
+#: 25aa2bcc9d5f414e805147ab3f968318
+msgid ""
+"Correcting non-security related bugs (e.g. new buttons for qubes manager)"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:18
+#: 4028ed2f6e584b93bc16038408de692d
+msgid "Adding new features (e.g. GUI backup tool)"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:23
+#: 843e003e18b1448e9b232893b26d770f
+msgid "Problems with traditional network-based update mechanisms"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:26
+#: 7bff487330c9476aa2d44de7902a8e03
+msgid ""
+"Dom0 is the most trusted domain on Qubes OS, and for this reason we decided "
+"to design Qubes in such a way that Dom0 is not connected to any network. In "
+"fact only certain domains can be connected to a network via so-called "
+"network domains. There can also be more than one network domain, e.g. in "
+"case the user is connected to more than one physically or logically "
+"separated networks."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:29
+#: 998c5575119a45f5a4ea1f395f0eb614
+msgid "Secure update mechanism we use in Qubes (starting from Beta 2)"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:32
+#: adbf004dd90a4ff8af49e38bc8386e84
+msgid ""
+"Keeping Dom0 not connected to any network makes it hard, however, to provide "
+"updates for software in Dom0. For this reason we have come up with the "
+"following mechanism for Dom0 updates, which minimizes the amount of "
+"untrusted input processed by Dom0 software:"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:34
+#: b4786c0583ae4b738fdd17a08b45c42d
+msgid ""
+"The update process is initiated by `qubes-dom0-update script <https://github."
+"com/QubesOS/qubes-core-admin-linux/blob/release2/dom0-updates/qubes-dom0-"
+"update>`__, running in Dom0."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:36
+#: 6a0aa7f94dcb464dac7e272cfa3d77b9
+msgid ""
+"Updates (``*.rpm`` files) are checked and downloaded by UpdateVM, which by "
+"default is the same as the firewall VM, but can be configured to be any "
+"other, network-connected VM. This is done by `qubes-download-dom0-updates.sh "
+"script <https://github.com/QubesOS/qubes-core-agent-linux/blob/release2/misc/"
+"qubes-download-dom0-updates.sh>`__ (this script is executed using qrexec by "
+"the previously mentioned qubes-dom0-update). Note that we assume that this "
+"script might get compromised and fetch maliciously compromised downloads – "
+"this is not a problem as Dom0 verifies digital signatures on updates later. "
+"The downloaded rpm files are placed in a ``/var/lib/qubes/dom0-updates`` "
+"directory on UpdateVM filesystem (again, they might get compromised while "
+"being kept there, still this isn’t a problem). This directory is passed to "
+"yum using the ``--installroot=`` option."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:38
+#: 84983783ee18489390f760e730590002
+msgid ""
+"Once updates are downloaded, the update script that runs in UpdateVM "
+"requests an RPM service `qubes.ReceiveUpdates <https://github.com/QubesOS/"
+"qubes-core-admin-linux/blob/release2/dom0-updates/qubes.ReceiveUpdates>`__ "
+"to be executed in Dom0. This service is implemented by `qubes-receive-"
+"updates script <https://github.com/QubesOS/qubes-core-admin-linux/blob/"
+"release2/dom0-updates/qubes-receive-updates>`__ running in Dom0. The Dom0’s "
+"qubes-dom0-update script (which originally initiated the whole update "
+"process) waits until qubes-receive-updates finished."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:40
+#: 76bb0a4778cc469f9210ddf5d43b4d6d
+msgid ""
+"The qubes-receive-updates script processes the untrusted input from Update "
+"VM: it first extracts the received ``*.rpm`` files (that are sent over "
+"qrexec data connection) and then verifies digital signature on each file. "
+"The qubes-receive-updates script is a security-critical component of the "
+"Dom0 update process (as is the `qfile-dom0-unpacker.c <https://github.com/"
+"QubesOS/qubes-core-admin-linux/blob/release2/dom0-updates/qfile-dom0-"
+"unpacker.c>`__ and the rpm utility, both used by the qubes-receive-updates "
+"for processing the untrusted input)."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:42
+#: 96957b99246e47f59cfd5c15b96ac269
+msgid ""
+"Once qubes-receive-updates finished unpacking and verifying the updates, the "
+"updates are placed in ``qubes-receive-updates`` directory in Dom0 "
+"filesystem. Those updates are now trusted. Dom0 is configured (see /etc/yum."
+"conf in Dom0) to use this directory as a default (and only) `yum repository "
+"<https://github.com/QubesOS/qubes-core-admin-linux/blob/release2/dom0-"
+"updates/qubes-cached.repo>`__."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:44
+#: b6f4a0aed0b24692b471a9fe248ddcb9
+msgid ""
+"Finally, qubes-dom0-update runs ``yum update`` that fetches the RPMs from "
+"qubes-cached repo and installs them as usual."
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:47
+#: 21174fd295d14ea784596fa38cfb6a09
+msgid "Security benefit of our update mechanism"
+msgstr ""
+
+#: ../../../developer/services/dom0-secure-updates.rst:50
+#: 86333d7e933a496e8393331f4c3a48a5
+msgid ""
+"The benefit of the above scheme is that one doesn’t need to trust the TCP/IP "
+"stack, the HTTP stack, and wget implementation in order to safely deliver "
+"and install updates in Dom0. One only needs to trust a few hundred lines of "
+"code as discussed above, as well as the rpm utility for properly checking "
+"digital signature (but this is required in any update scheme)."
+msgstr ""

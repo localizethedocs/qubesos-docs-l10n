@@ -1,0 +1,1931 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:3
+#: b7d8594830004203b220a5354a609993
+msgid "Qubes Windows Tools (QWT)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:7
+#: 18ded194e11746289409e2e237b90131
+msgid ""
+"As there is no officially supported version of Qubes Windows Tools for "
+"Windows 7, the following instructions describe a workaround to obtain QWT "
+"functionality using an older version of QWT for Windows 7. For Windows 10 "
+"and 11, the latest official version of QWT must be used."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:10
+#: 9bfddd7eba3b489384759d2139449ce4
+msgid ""
+"Qubes Windows Tools (QWT) are a set of programs and drivers that provide "
+"integration of Windows 7, 10, and 11 Standalone, TemplateVMs, and AppVMs "
+"with the rest of the Qubes system. They contain several components that can "
+"be enabled or disabled during installation and rely on specific functions of "
+"Qubes, which support this integration:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:12
+#: 54425fe0cd634e829c7065ac0147a9b7
+msgid ""
+"**Shared components (required)** - common libraries used by QWT components"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:14
+#: 70d3b2814a0c4a34a4896862fbd7124e
+msgid ""
+"**Qubes GUI Agent** - video driver and GUI agent that enable the seamless "
+"GUI mode that integrates Windows apps onto the common Qubes trusted desktop "
+"(currently only for Windows 7 and, in a preliminary experimental version, "
+"for Windows 10 and 11)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:16
+#: 49495fbf5d1e4a4fb319f986dc3688cb
+msgid ""
+"**Configure autologon** - To start a Windows qube without a prompt for user "
+"name and password, autologon is defined, using a random hidden password "
+"which cannot be extracted from the registry."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:18
+#: 4428fccddef0424ca01b267c7761c116
+msgid ""
+"**Disable UAC** - User Account Control may interfere with QWT and doesn't "
+"really provide any additional benefits in the Qubes environment"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:20
+#: 4b145acae62244a1893ef07fcfd04947
+msgid ""
+"**Clipboard sender/receiver** - Support for :doc:`secure clipboard copy/"
+"paste </user/how-to-guides/how-to-copy-and-paste-text>` between the Windows "
+"VM and other AppVMs"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:22
+#: 741bbab5dba14544b08c5c674cd8ca5e
+msgid ""
+"**File sender/receiver** - Support for :doc:`secure file exchange </user/how-"
+"to-guides/how-to-copy-and-move-files>` between the Windows VM and other "
+"AppVMs"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:24
+#: d43f45d6f54c407c9bc69381bd4e94a8
+msgid ""
+"**Xen PV drivers** - drivers for the virtual hardware exposed by Xen for "
+"Windows that increase performance compared to QEMU emulated devices and are "
+"required for attaching USB devices"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:26
+#: 4f4c87c7c30f461a90ad42ea12125869
+msgid "Base Xen PV Drivers (required): paravirtual bus and interface drivers"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:28
+#: d671d340bc724eaab081cbfab36e7183
+msgid "Xen PV Disk Drivers: paravirtual storage drivers"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:30
+#: 973bd5bbe64a40e1b5865d15f8f6eeb6
+msgid "Xen PV Network Drivers: paravirtual network drivers"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:32
+#: 4bf28154ca9042d1b19b20b752b442d7
+msgid ""
+"Move user profiles: user profile directory (``C:\\users``) is moved to VM’s "
+"private disk backed by ``private.img file`` in ``dom0`` (useful mainly for "
+"HVM templates)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:36
+#: fee1d4a018dd48e295c98d001a01d9c0
+msgid ""
+"**Qubes Core Agent** (part of Qubes) - Needed for proper integration with "
+"Qubes as well as for ``qvm-run`` and generic ``qrexec`` for the Windows VM "
+"(e.g., ability to run custom service within/from the Windows VM)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:38
+#: 17c76fdc4b69490f807e4fc1977fca1c
+msgid ""
+"**Copy/Edit in Disposable VM** (part of Qubes) - Support for editing files "
+"in DisposableVMs"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:40
+#: 01cae838487d420f9ea184c20d5a6385
+msgid ""
+"**Audio** - Audio support is available even without QWT installation if "
+"``qvm-features audio-model`` is set as ``ich6``"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:45
+#: 4ae6acaebe2a413fa5cb59e690da3a60
+msgid ""
+"Due to the security problems described in `QSB-091 <https://github.com/"
+"QubesOS/qubes-secpack/blob/master/QSBs/qsb-091-2023.txt>`__, installation of "
+"Qubes Windows Tools is currently blocked in Qubes R4.2. Instead, a text file "
+"containing a warning is displayed. Currently, it is difficult to estimate "
+"the severity of the risks posed by the sources of the Xen drivers used in "
+"QWT possibly being compromised, so it was decided not to offer direct QWT "
+"installation until this problem could be treated properly. While Windows "
+"qubes are, in Qubes, generally not regarded as being very trustworthy, a "
+"possible compromise of the Xen drivers used in Qubes Windows Tools might "
+"create a risk for Xen or `dom0` and thus be dangerous for Qubes itself. This "
+"risk may be small or even non-existent, as stated in QSB-091. If you "
+"**understand** this risk and are **willing to take it**, you can still "
+"install the previous version of Qubes Windows Tools **for Windows 7**, which "
+"will work for Windows 7, but not for Windows 10 or 11."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:47
+#: 4987bbda068e4f9d889897f008c2d26f
+msgid ""
+"**For Windows 10 or 11**, currently, there is no official, final QWT version "
+"available for Qubes R4.2, but for Qubes R4.3, an official version has been "
+"developed and can also be used in Qubes R4.2. This version is not subject to "
+"the security problems stated above, but it should be noted that its graphics "
+"agent is still regarded as experimental and so may show some errors. The new "
+"Qubes graphics driver used there is not yet fully compatible with Windows "
+"and may cause weird effects. So, in Windows 11 25H2, it will cause all "
+"windows to be displayed twice; this can be, at least partially, remedied by "
+"moving the second instance to another workspace. Furthermore, trying to "
+"display the Windows menu via the keyboard button may result in a tiny, "
+"unusable menu. If the driver is installed, despite these risks, and is "
+"working at least partially, switching to seamless mode and staying there "
+"will probably work quite satisfactorily, but switching to and from non-"
+"seamless mode may cause trouble, as well as changing the screen resolution "
+"will do there. So, usage of the new Qubes graphics driver should be avoided "
+"unless a casual reboot of the Windows VM is acceptable, even if it is "
+"partially working. Using the Qubes graphics driver will not provide seamless "
+"mode unless the ``qvm-features`` parameter ``gui`` is set to ``1``. To "
+"disable the graphics driver, the parameter ``gui`` has to be set to an empty "
+"string, while the parameter ``gui-emulated`` has to be set to ``1``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:49
+#: 37a36e8d6ba74145bc8f5dfa22e3ec0a
+msgid ""
+"**Note**: If you choose to move profiles, drive letter ``Q:`` must be "
+"assigned to the secondary (private) disk."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:51
+#: 0a0688d77fec49e98809756e5d5b67df
+msgid ""
+"**Note**: Xen PV disk drivers are not installed by default. This is because "
+"they seem to cause problems (BSOD = Blue Screen Of Death). We're working "
+"with upstream devs to fix this. **However**, the BSOD seems to only occur "
+"after the first boot, and everything works fine after that. **Enable the "
+"drivers at your own risk**, of course, but we welcome reports of success/"
+"failure in any case (backup your VM first!). With disk PV drivers absent, "
+"``qvm-block`` will not work for the VM, but you can still use standard Qubes "
+"inter-VM file copying mechanisms. On the other hand, the Xen PV drivers "
+"allow USB device access even without QWT installation if ``qvm-features "
+"stubdom-qrexec`` is set as ``1``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:53
+#: c9998ce71d964bdc9c487f4241a626ec
+msgid ""
+"Below is a breakdown of the feature availability depending on the Windows "
+"version (only x64):"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:60
+#: 4bdb00f4092641da9fa38c8d76a8e756
+msgid "Feature"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:61
+#: ../../../user/templates/windows/qubes-windows-tools.rst:642
+#: fb3413302df64e3db1c7418caebfc85a 7be8bbca48bc4f07ac840b25646079a1
+msgid "Windows 7"
+msgstr "Windows 7"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:62
+#: 0a72ec53082e4aa0a3153f2d59626dc7
+msgid "Windows 10"
+msgstr "Windows 10"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:63
+#: 4183328cb5f143b293604e6c98ca4573
+msgid "Windows 11"
+msgstr "Windows 11"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:64
+#: f2f0c70f9c7645a59943cd7689900271
+msgid "Qubes Video Driver"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:65
+#: ../../../user/templates/windows/qubes-windows-tools.rst:69
+#: ../../../user/templates/windows/qubes-windows-tools.rst:70
+#: ../../../user/templates/windows/qubes-windows-tools.rst:71
+#: ../../../user/templates/windows/qubes-windows-tools.rst:73
+#: ../../../user/templates/windows/qubes-windows-tools.rst:74
+#: ../../../user/templates/windows/qubes-windows-tools.rst:75
+#: ../../../user/templates/windows/qubes-windows-tools.rst:77
+#: ../../../user/templates/windows/qubes-windows-tools.rst:78
+#: ../../../user/templates/windows/qubes-windows-tools.rst:79
+#: ../../../user/templates/windows/qubes-windows-tools.rst:81
+#: ../../../user/templates/windows/qubes-windows-tools.rst:86
+#: ../../../user/templates/windows/qubes-windows-tools.rst:87
+#: ../../../user/templates/windows/qubes-windows-tools.rst:89
+#: ../../../user/templates/windows/qubes-windows-tools.rst:90
+#: ../../../user/templates/windows/qubes-windows-tools.rst:91
+#: ../../../user/templates/windows/qubes-windows-tools.rst:93
+#: ../../../user/templates/windows/qubes-windows-tools.rst:94
+#: ../../../user/templates/windows/qubes-windows-tools.rst:95
+#: ../../../user/templates/windows/qubes-windows-tools.rst:97
+#: ../../../user/templates/windows/qubes-windows-tools.rst:98
+#: ../../../user/templates/windows/qubes-windows-tools.rst:99
+#: ../../../user/templates/windows/qubes-windows-tools.rst:101
+#: ../../../user/templates/windows/qubes-windows-tools.rst:102
+#: ../../../user/templates/windows/qubes-windows-tools.rst:103
+#: ../../../user/templates/windows/qubes-windows-tools.rst:105
+#: ../../../user/templates/windows/qubes-windows-tools.rst:106
+#: ../../../user/templates/windows/qubes-windows-tools.rst:107
+#: ../../../user/templates/windows/qubes-windows-tools.rst:109
+#: ../../../user/templates/windows/qubes-windows-tools.rst:110
+#: ../../../user/templates/windows/qubes-windows-tools.rst:111
+#: 1c464181e6a146c396a27be7599ed685 8eb7b5d282d7442d89782dd897f5a446
+#: 8f4210b1086048339c20c85f7a9dad91 9be2918270164e308a9e6a9485e68172
+#: 1288e8262c7d42c5a0ca2e21958fd7ea 1f35414dacdf4dd8b014180e0f865c2a
+#: 6ed61717d2d34eebbc17f85a39dc54c9 691d9e2ba1f14935a1e95938dc583d45
+#: 32bfbb74789d4389979b125d029a0618 55940d2a00c6474fb71a96ee33eae232
+#: 0e70620120f8400ca305f56c7460661e 95d300790edc49cf95dae2d71bbb5c0e
+#: 1aec133fbcd749df8bc5d7f1ce90a2d6 f63007dfef1a4286a9fef4620db58bc7
+#: 6b68432ef4ea4474b9b190a4771c4857 335f5c4a946d4348afb86f637acdf795
+#: e89e88dae0814ee8b50bd4cca1bf36bd 076c949bf5c6404184d62146d0cd7980
+#: 1029c0b6114248aabd2359b2b0ba07b9 5d5bc00d03d14cfbbf2dd7edf8fa1a73
+#: 0804d68bfcdf4ed68bd57334e2d91b39 8162fe1d9098487fb6a562036f9e945a
+#: 831e4620085346dcbd97aac97d572f63 49c5c195b7794487ae7c79ba82bca27f
+#: c1acebe45dc24efbadfec3d7abd0203b 8dc71aa265a645b88b2e246dbeab20ff
+#: b2ab20d7517a4bd0bb69485988d6952a aac621ce9c04411f9f730daf7afe2ebf
+#: a85e20cc3d874964a64280c07f5922b9 38c50c81d2314c3eb3b205e4338d23a3
+#: bdf716a8eb634c98af6fab8597d48e4e
+msgid "y"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:66
+#: ../../../user/templates/windows/qubes-windows-tools.rst:67
+#: 49f1855b21944482a63378acb0ea99fd df912a955785430c8a35b281fc0460e2
+msgid "\\(y\\)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:68
+#: 76f9b4f03b7e46c4af6c9f43c8fb1722
+msgid "Qubes Network Setup"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:72
+#: 64bd2dcc4d4d4b1983dd644eb6a11636
+msgid "Private Volume Setup (move profiles)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:76
+#: 5c2d6d7d2057408eb05155155738368c
+msgid "File sender/receiver"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:80
+#: ec08c6c60af443b4ba796acac41e9a83
+msgid "Disable UAC"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:82
+#: ../../../user/templates/windows/qubes-windows-tools.rst:83
+#: ../../../user/templates/windows/qubes-windows-tools.rst:85
+#: 42c3ac306f33474fba40064c2ca4adcd ca0e282e02c64ab6a000e3e944cb9aa0
+#: 4ef83074e3a64804b1f4652a994425b0
+msgid "n"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:84
+#: 5eaf3d9c19af46ba84180e3b94d34741
+msgid "Configure autologon"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:88
+#: d5e442ee56164756b19249fdd60299ab
+msgid "Clipboard Copy/Paste"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:92
+#: de48af06744f433588bd20e0724fa8e8
+msgid "Application shortcuts"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:96
+#: 8de1e4d59b8d420c8f48e9be4b97723f
+msgid "Copy/Edit in Disposable VM"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:100
+#: 1b8ee1a352f54466bb6a253282c2a129
+msgid "Block device"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:104
+#: ab482152f22c47f08a3c43cd43e1df38
+msgid "USB device"
+msgstr "USB 裝置"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:108
+#: b7592b7e5220410b84691e57c6e67e26
+msgid "Audio"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:115
+#: 2f7ef06141d14770a3f1080e0f8226b7
+msgid ""
+"Qubes Windows Tools are open source and are distributed under a GPL license."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:117
+#: e7cd794c79334c6eaa6ea34fccd7b899
+msgid "**Notes:**"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:119
+#: 6c553040c683458aa8529c311322564a
+msgid ""
+"Currently, only 64-bit versions of Windows 7, 10, and 11 are supported by "
+"Qubes Windows Tools. Only the emulated SVGA GPU is supported (although "
+"`there have been reports <https:///groups.google.com/forum/#!topic/qubes-"
+"users/cmPRMOkxkdA>`__ on working GPU passthrough)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:121
+#: e84fc2901d8f4fee811fc22b5a944180
+msgid ""
+"This page documents the process of installing Qubes Windows Tools in "
+"versions **R4.2** and **R4.3**."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:123
+#: 68bd14da2f2e430c9f4bf627916d208a
+msgid ""
+"*In testing VMs only* it's probably a good idea to install a VNC server "
+"before installing QWT. If something goes very wrong with the Qubes GUI "
+"agent, a VNC server should still allow access to the OS."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:125
+#: 278d913854b9416c886f88d6f8baca61
+msgid ""
+"As several of the installation steps described below may cause errors, the "
+"Windows VM where Qubes Windows Tools are installed should be cloned before "
+"starting the installation."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:130
+#: 0915bbcb406c420b8d527cb60497622c
+msgid "Installing Windows OS as a Qubes VM"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:133
+#: 3cde10127a0942fc8bf8fac1f458fb31
+msgid ""
+"Please refer to :doc:`this page </user/templates/windows/qubes-windows>` for "
+"instructions on how to install Windows in a Qubes VM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:138
+#: ccae8c0a893a45bd84fa8051959a6fcd
+msgid "Preparation"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:140
+#: 8f7f75baa0eb4cdbaebbb08b2ebbcc24
+msgid ""
+"Before proceeding with the installation, we need to disable the Windows "
+"mechanism that allows only signed drivers to be installed, because "
+"currently, the drivers provided as part of the Windows Tools are not "
+"digitally signed with a publicly recognizable certificate. To do that:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:142
+#: f5d2617fe7e24f779aced98446b99f30
+msgid ""
+"Start the command prompt as Administrator, i.e., right-click on the Command "
+"Prompt icon (All Programs -> Accessories) and choose \"Run as "
+"administrator\"."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:144
+#: 8c24ec1f0dc64d5996a1a7f6069dbd2d
+msgid "In the command prompt, type ``bcdedit /set testsigning on``"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:146
+#: ../../../user/templates/windows/qubes-windows-tools.rst:188
+#: b4572ffe585f4c7e8a80e72cbceb6f1e ad35bc94fd09417c9f804963675e6442
+msgid "Reboot your Windows VM"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:149
+#: beacf1d858f344719d81dccad3731b23
+msgid ""
+"Maybe in the future, this step will not be necessary anymore, because we "
+"will sign our drivers with a publicly verifiable certificate. However, it "
+"should be noted that even given the fact that those drivers are not "
+"digitally signed, this doesn't affect the security of the Windows VM in any "
+"way. This is because the actual installation `iso` file can be verified as "
+"described in step 3 below. The only downside of those drivers not being "
+"signed is the inconvenience to the user that he or she must disable the "
+"signature enforcement policy before installing the tools."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:151
+#: fd107860c1cf45999825177befde49e6
+msgid ""
+"QWT relies on PowerShell scripts. If the execution policy defined for "
+"PowerShell is set to `Restricted`, execution of these scripts is blocked. "
+"Before QWT installation, this should be checked using the PowerShell command"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:157
+#: 66f745fdc8554c52864292a1e51eb2b4
+msgid ""
+"If script execution is blocked, it must be allowed using the following "
+"PowerShell command with administrator privileges:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:163
+#: 27e11e63671f4cc39f1d5301d92733ae
+msgid ""
+"**Warning:** It is encouraged to enable autologon for any Windows HVMs that "
+"will have Qubes Tools installed in order to avoid possible problems with the "
+"Windows logon process, especially if the :kbd:`Ctrl-Alt-Del` requirement is "
+"enabled there. To do so, in Windows 7, run the ``netplwiz`` command from "
+"the :kbd:`Win-R` \"execute\" prompt, and uncheck the *Users must enter a "
+"user name and password to use this computer* option. In Windows 10 and 11, "
+"autologon can be configured later on during Qubes Windows Tools installation."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:166
+#: d621d15e04bd4ed68d8beb9fc806c241
+msgid ""
+"**Warning:** It is recommended to increase the default value of the Windows "
+"VM’s ``qrexec_timeout`` property from 60 (seconds) to, for example, 300. "
+"During one of the first reboots after Windows Tools installation, Windows "
+"user profiles are moved onto the private VM’s virtual disk (private.img), "
+"and this operation can take some time. Moving profiles and, later on, "
+"updating a Windows installation, is performed in an early boot phase when "
+"``qrexec`` is not yet running, so a timeout may occur with the default "
+"value. To change the property use this command in ``dom0``: *(where* "
+"``<VMname>`` *is the name of your Windows VM)*"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:173
+#: 1993d46293ca45beb92790456e8ab7a9
+msgid ""
+"To enable file copy operations to a Windows VM, the ``default_user`` "
+"property of this VM should be set to the ``<USERNAME>`` that you use to log "
+"in to the Windows VM. This can be done via the following command on a "
+"``dom0`` terminal  (where ``<VMNAME>`` is the name of your Windows VM):"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:180
+#: 43ff1c5efefc4e2da1ed1e0cd5785411
+msgid ""
+"**Warning:** If this property is not set or set to a wrong value, files "
+"copied to this VM are stored in the folder :file:`C:\\\\Windows\\\\System32\\"
+"\\config\\\\systemprofile\\\\Documents\\\\QubesIncoming\\\\{<source_VM>}`. "
+"If the target VM is an AppVM, this has the consequence that the files are "
+"stored in the corresponding TemplateVM and so are lost on AppVM shutdown."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:182
+#: b2bf9cb3bdfc4ffe94b0f861abcf0ef9
+msgid ""
+"**For Windows 10 and 11:** From the Windows command line, disable "
+"hibernation in order to avoid an incomplete Windows shutdown, which may lead "
+"to corruption of the VM's disk."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:184
+#: 2edcfe48705d4ec786cd1cbf0fdfe096
+msgid ""
+"Start the command prompt as Administrator, i.e., right-click on the Command "
+"Prompt icon :menuselection:`All Programs --> Accessories` and select :"
+"guilabel:`Run as administrator`"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:186
+#: 03bd286f7c3e40b08d7f0066a798f900
+msgid "In the command prompt, type ``powercfg -H off``"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:191
+#: 10356aae08bb4d79970ad185cf85bf36
+msgid ""
+"Additionally, these versions of Windows will not display the CD-ROM drive "
+"after starting the qube with"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:197
+#: 1bc5ab808a934322b251c63f8ccec436
+msgid "or"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:203
+#: bc8c876721e84deb8e680301ebe3320a
+msgid ""
+"The solution is to disable hibernation in Windows with this command. (That "
+"command is included in QWT’s setup, but it’s necessary to run it manually in "
+"order to be able to open QWT’s setup ISO/CD-ROM in Windows)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:207
+#: 7b91ab615c9a475d9c9c8eb502c5eb84
+msgid "Installing Qubes Windows Tools (QWT) in a Windows VM"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:210
+#: 3120e768f3334554b1a6933c1bea28f5
+msgid ""
+"Installing the Qubes Windows Tools on Windows 7, 10, and 11, both as a "
+"StandaloneVM as well as a Template VM and a corresponding AppVM, is "
+"described in the following sections."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:212
+#: 37449e6d8b584ffbb9ab04adbd2d6b91
+msgid ""
+"**Note:** Seamless mode is currently only available in an experimental "
+"version for Windows 10 and 11. Please check the top of this document for the "
+"full feature availability breakdown."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:217
+#: 51b35457ee714eb4850ec71cdb800ead
+msgid ""
+"For Qubes R4.2, the new version of QWT is not included in the repositories, "
+"but it can be downloaded from the R4.3 repository (version `4.2.2-1 <https://"
+"yum.qubes-os.org/r4.3/current-testing/dom0/fc41/rpm/qubes-windows-"
+"tools-4.2.2-1.fc41.noarch.rpm>`__ ), and it will work under R4.2, too."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:220
+#: 7282bff7f2194c85a7ed696d1530e402
+msgid ""
+"First, make sure that ``qubes-windows-tools`` is installed in your system:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:222
+#: 271e87cbd1814b829e3b3896f82d5a27
+msgid ""
+"For use with **Windows 7**, install the previous version of Qubes Windows "
+"Tools. The corresponding .rpm file for manual QWT installation for Windows "
+"7is still available from the repositories for Qubes R4.2 (version `4.1.69-1 "
+"<https://yum.qubes-os.org/r4.2/current/dom0/fc37/rpm/qubes-windows-"
+"tools-4.1.69-1.fc37.noarch.rpm>`__ )."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:224
+#: 9b637c70b325432d858f30bbbb47a949
+msgid ""
+"After downloading, copy the file to `dom0` as described in `How to copy from "
+"dom0 <https://www.qubes-os.org/doc/how-to-copy-from-dom0/#copying-to-"
+"dom0>`__ and install it via ``sudo dnf install PATH_TO_RPMFILE``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:226
+#: c4843ed4cfe64fa38a6c9b9a54804177
+msgid ""
+"For use with **Windows 10 and 11**, you have to install the new version "
+"4.2.2 of Qubes Windows Tools. In Qubes R4.3, the QWT package is already part "
+"of the repositories. So, QWT can be installed directy, without downloading "
+"anything, via"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:233
+#: f139c6347a0f47b3bf06e3f629b472ee
+msgid ""
+"**Caution:** Installing one of these QWT versions will remove the other if "
+"it is installed."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:235
+#: 4c928234b2374e4486e3b33f550b173b
+msgid ""
+"**Warning:** In Windows 7, the older version of Qubes Windows Tools will be "
+"replaced during the next ``dom0`` update by the current dummy version "
+"4.1.70-1. This can be inhibited by appending the line ``exclude=qubes-"
+"windows-tools`` to the file ``/etc/dnf/dnf.conf`` in ``dom0``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:237
+#: f71a90841ad84236b972528a2a5437f2
+msgid ""
+"This package makes the ISO with Qubes Windows Tools available, which is "
+"passed to the VM when ``--install-windows-tools`` is specified for the ``qvm-"
+"start`` command. Please note that none of this software ever runs in "
+"``dom0`` or any other part of the system except for the Windows AppVM in "
+"which it is to be installed. (It could not run in ``dom0`` at all, because "
+"``dom0`` is a VM running under Fedora, while the QWT software is Windows "
+"software.)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:239
+#: 4178220e5e9a4b6db66d12a3bc23edff
+msgid ""
+"To install the Qubes Windows Tools in a Windows VM, one should start the VM "
+"passing the additional option ``--install-windows-tools``:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:245
+#: 9cb66da720634d17bb61df90b41c90a3
+msgid ""
+"Once the Windows VM boots, a CDROM should appear in the ‘My Computer’ menu "
+"(typically as ``D:`` or ``E:``) with the setup program with the setup "
+"program ``qubes-tools-x64.msi`` for Windows 7 or ``qubes-tools-4.2.2.exe`` "
+"for Windows 10 and 11 in its main directory."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:247
+#: 9460d3a118eb4aeea8beb420203e58f9
+msgid ""
+"Install Qubes Windows Tools by starting the setup program (logged in as "
+"administrator), optionally selecting the ``Xen PV disk drivers``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:249
+#: 881d5b9cfe824e0587afb693e383aed4
+msgid ""
+"**Caution:** For Windows 7, the installation of the graphics driver in the "
+"first step will probably break the Windows qube, causing it to show only a "
+"black window and become unresponsive; the graphics driver has to be "
+"installed later on in a second step described below. For Windows 10 and 11, "
+"the Qubes graphics driver is still in experimental development. It may work "
+"or not, possibly depending on your hardware. So, in Windows 10 and 11, it "
+"may be less risky to install Qubes Windows Tools without selecting this "
+"driver, and later on, to try it in a clone of your Windows VM by re-running "
+"the installation in change mode."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:251
+#: 7c4fae3fa84c4158b133fd4e126634e8
+msgid ""
+"**Warning:** The installation of the PV disk drivers may lead Windows to "
+"declare that the hardware has changed and that, in consequence, the "
+"activation is no longer valid, possibly complaining that the use of the "
+"software is no longer lawful. It should be possible to reactivate the "
+"software if a valid product key is provided."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:253
+#: 13fc1d83215d48759569a117a8fe11e1
+msgid ""
+"For installation in a template, you should select ``Move user profiles``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:255
+#: 7b469db3254949ccbe07ce0b883bb8a4
+msgid "|QWT_install_select|"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:684
+#: 5094f246c9934830b2025e782de22e6c
+msgid "QWT_install_select"
+msgstr "QWT_install_select"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:257
+#: 972f6ffe2c26467e888573219f2b6bbf
+msgid ""
+"Several times, Windows security may ask for confirmation of driver "
+"installation. Driver installation has to be allowed; otherwise, the "
+"installation of Qubes Windows Tools will abort."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:259
+#: ad13b9bdd6eb4bbfb2a38b4bb09568a9
+msgid "|QWT_install_driver|"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:687
+#: cfe85d1c7fc94fbda09c6ff47d92ffcf
+msgid "QWT_install_driver"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:261
+#: 0f30bf825392437187d1f338107af11f
+msgid ""
+"If during installation, the Xen driver requests a reboot, select “No” and "
+"let the installation continue - the system will be rebooted later."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:263
+#: f535151a7bb444dbb9be96c2e8927a5e
+msgid "|QWT_install_no_restart|"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:690
+#: 6855ae59329b4b70ad994e1e65682a9f
+msgid "QWT_install_no_restart"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:265
+#: 1d4af0d01c954852b8c408fad8ba5836
+msgid ""
+"After successful installation, the Windows VM must be shut down and started "
+"again, possibly a couple of times. On each shutdown, wait until the VM has "
+"**really** stopped, i.e., Qubes shows no more activity."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:267
+#: ab14b78f235d487e91ea5a79dc79b608
+msgid ""
+"**For Windows 7:** If seamless mode is to be used, the Qubes graphics driver "
+"can now be installed, using a sequence of rather awkward operations:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:269
+#: 21901e3752f94900a4823a2e3a9e6578
+msgid "Start the Windows 7 VM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:271
+#: 8e27827e156f4593b1a60719b0d4246a
+msgid ""
+"In the Windows device manager, you will probably find one or more unknown "
+"devices. Uninstall these devices."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:273
+#: ../../../user/templates/windows/qubes-windows-tools.rst:281
+#: b1e210ca76474e5e8ed942cdc452565f 0d7c741d980a41f1a30772e103e55ce0
+msgid "Reboot the VM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:275
+#: 49fb9be4c57a45c9877203818cc31d95
+msgid ""
+"Now, using the  appropriate Windows system management function, change the "
+"QWT installation, adding the Qubes graphics driver, but **do not** click on "
+"the “Finish” button to complete the installation."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:277
+#: d303fdb42c0541c8b14bafe63a4ff7b5
+msgid ""
+"In the device manager, you will find a new display called “Qubes Video "
+"Driver”. Deactivate this device."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:279
+#: 2cd86a6cf8a7434a86e8513bebff8675
+msgid ""
+"Now, click on the “Finish” button to complete the QWT installation change."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:283
+#: d9f4962af02d484bb8f2f86e4c75a80d
+msgid ""
+"It may be necessary to start the GUI manually, by typing ``qvm-start-gui "
+"VMNAME`` in dom0."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:285
+#: 189a35d5aee242dea12ad14f7412a066
+msgid ""
+"The device “Qubes Video Driver” may show up as deactivated. In this case, "
+"you can now activate it again."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:287
+#: 1e1b3bfa415a45579023239735014915
+msgid ""
+"Changing the screen resolution for this VM probably will not work and may "
+"lead to a crash, so it’s better to avoid it. But you can start any program, "
+"e.g., the Windows Explorer. In the Qube Manager, you can now select seamless "
+"mode for this VM, and it works!"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:289
+#: 3c645ae3ce30401e9b19310256e607cd
+msgid "Shut down the Windows VM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:291
+#: e7f5f65075ac45789512325e74a8a2cd
+msgid ""
+"It is advisable to set some other parameters in order to enable audio and "
+"USB block device access, synchronize the Windows clock with the Qubes clock, "
+"and so on:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:300
+#: 8e36f3dfd68f4f2e9ed11642e5f4c238
+msgid ""
+"For audio, the parameter ``audio-model`` can be selected as ``ich6`` or "
+"``ich9``; select the value that gives the best audio quality. Audio quality "
+"may also be improved by setting the following parameters, but this can "
+"depend on the Windows version and on your hardware:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:309
+#: 2f56e4554370431cbd135b5ac73b0f32
+msgid ""
+"With the value ``localtime`` the dom0 ``timezone`` will be provided to "
+"virtual hardware, effectively setting the Windows clock to that of Qubes. "
+"With a digit value (negative or positive) the guest clock will have an "
+"offset (in seconds) applied relative to UTC."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:311
+#: 3572699f74bf45a48b337608e4e0a46d
+msgid ""
+"Reboot Windows. If the VM starts, but does not show any window, then shut "
+"down Windows from the Qube manager, wait until it has **really** stopped, "
+"and reboot Windows once more."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:313
+#: 323f358777804177a1b89d62eb432fb8
+msgid "Now the system should be up, with QWT running correctly."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:315
+#: 666d9ebad28e4e3e8d1a43eee418b458
+msgid ""
+"**Windows 7 only:** Optionally enable seamless mode on VM startup. This can "
+"be done by setting appropriate values in the Windows registry:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:317
+#: 3089548f85e045dfb19dd8ab81cbf878
+msgid ""
+"Start the command prompt as administrator, i.e., right click on the Command "
+"Prompt icon (All Programs -> Accessories) and choose “Run as administrator”"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:319
+#: f7d7c8ffc57e4c14bfca57c083b08e6b
+msgid "In the command prompt, type ``regedit``"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:321
+#: af1ff292479a4681a938f174e45b7280
+msgid ""
+"In the registry editor, position to the key "
+"``\\HKEY_LOCAL_MACHINE\\Software\\Invisible Things Lab\\Qubes Tools\\``"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:323
+#: ../../../user/templates/windows/qubes-windows-tools.rst:327
+#: d53f63aa81564fa395a2b092dca7c491 5f6c38b38ac8454b989a1a41079ad2b4
+msgid "Change the value ``SeamlessMode`` from 0 to 1"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:325
+#: 8b773c45a6254b239f5d4c53c17c459a
+msgid ""
+"Position to the key ``\\HKEY_LOCAL_MACHINE\\Software\\Invisible Things "
+"Lab\\Qubes Tools\\qga\\``"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:329
+#: b48ee330a4704ea48f980466832d4b78
+msgid "Terminate the registry editor."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:332
+#: 5ee5b10b65ca4cee968a664174cf6d51
+msgid ""
+"After the next boot, the VM will start in seamless mode. If Windows is used "
+"in a TemplateVM / AppVM combination, this registry fix has to be applied to "
+"the TemplateVM, as the ``HKLM`` registry key belongs to the template-based "
+"part of the registry."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:334
+#: 129473a74dcc4db2abf9e5af24569e31
+msgid ""
+"**Windows 10 and 11:**  If the experimental graphics driver is installed and "
+"enabled by setting the ``qvm-features`` parameter ``gui`` to 1, seamless "
+"mode can be enabled and will stay enabled even after reboot of the qube."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:338
+#: f7dc8cb601184c149a3c4be1a994d144
+msgid "Xen PV drivers and Qubes Windows Tools"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:341
+#: 5c23533128e1499684fb691dbc63d844
+msgid ""
+"Installing Xen’s PV drivers in the VM will lower its resources usage when "
+"using network and/or I/O intensive applications, but *may* come at the price "
+"of system stability (although Xen’s PV drivers on a Windows VM are usually "
+"very stable). They can be installed as an optional part of Qubes Windows "
+"Tools (QWT), which bundles Xen’s PV drivers."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:343
+#: 398ace05b7114de19dda01859ed6cb1a
+msgid "**Notes** about using Xen’s VBD (storage) PV driver:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:345
+#: c10173e57ad94b6982d2b369d6d18b36
+msgid ""
+"**Windows 7:** Installing the driver requires a fully updated VM, or else "
+"you’ll likely get a BSOD (“Blue Screen Of Death”) and a VM in a difficult-to-"
+"fix state. Updating Windows takes *hours* and for casual usage there isn’t "
+"much of a performance between the disk PV driver and the default one; so "
+"there is likely no need to go through the lengthy Windows Update process if "
+"your VM doesn’t have access to untrusted networks and if you don’t use I/O "
+"intensive apps or attach block devices. If you plan to update your newly "
+"installed Windows VM, it is recommended that you do so *before* installing "
+"Qubes Windows Tools. Installing the driver will probably cause Windows 7 "
+"activation to become invalid, but the activation can be restored using the "
+"Microsoft telephone activation method."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:347
+#: 339a5ed7b42b4070982f7890cea825d9
+msgid ""
+"The option to install the storage PV driver is disabled by default in Qubes "
+"Windows Tools"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:349
+#: cf47ff8c6fa54e998c0f88a60385e6ff
+msgid ""
+"In case you already had QWT installed without the storage PV driver and you "
+"then updated the VM, you may then install the driver by again starting the "
+"QWT installer and selecting the change option."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:354
+#: a01b36da753a45c98c1e250f5d84a893
+msgid "Using Windows AppVMs in seamless mode"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:357
+#: c2bbafe546944ac780d70456baa22a4d
+msgid ""
+"Windows Apps can be started using the Qubes menu. Alternatively, you can "
+"open the Windows menu by typing the Windows key on your keyboard while the "
+"cursor is positioned in a window of the Windows VM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:359
+#: bffeac65dec04136a28000e7ccb5d2b6
+msgid ""
+"**Note:** The following features are only available for Windows 7 and are "
+"still somewhat buggy in Windows 10 and 11."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:361
+#: 8f8ccde53dc648f6ab87248974c09a0a
+msgid ""
+"Once you start a Windows-based AppVM with Qubes Tools installed, you can "
+"easily start individual applications from the VM (note the ``-a`` switch "
+"used here, which will auto-start the VM if it is not running):"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:369
+#: 9b1ef59df19448a49715267c9d2630bd
+msgid "|windows-seamless-4.png| |windows-seamless-1.png|"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:693
+#: f57d41faf7044a929dd9c7bb4c47d4a5
+msgid "windows-seamless-4.png"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:696
+#: 4c28a66005ff45499213cd1814f0714b
+msgid "windows-seamless-1.png"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:371
+#: d78d22995bfd4e6d8109884f58508e5e
+msgid ""
+"Also, the inter-VM services work as usual – e.g. to request opening a "
+"document or URL in the Windows AppVM from another VM:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:380
+#: 86e4d50c5a8f415caf52bec2cfaa6f60
+msgid ""
+"… just like in the case of Linux AppVMs. Of course all those operations are "
+"governed by central policy engine running in Dom0 – if the policy doesn’t "
+"contain explicit rules for the source and/or target AppVM, the user will be "
+"asked whether to allow or deny the operation."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:382
+#: a4155afeeb1b4004853ecde1120baf02
+msgid ""
+"Inter-VM file copy and clipboard works for Windows AppVMs the same way as "
+"for Linux AppVM (except that we don’t provide a command line wrapper, ``qvm-"
+"copy-to-vm`` in Windows VMs) – to copy files from Windows AppVMs just right-"
+"click on the file in Explorer, and choose: Send To-> Other AppVM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:384
+#: 4f648bdcefe7440d9349e7d9d2e794f9
+msgid ""
+"To simulate :kbd:`Ctrl-Alt-Delete` in the HVM (SAS, Secure Attention "
+"Sequence), press Ctrl-Alt-Home while having any window of this VM in the "
+"foreground."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:386
+#: 804dc4b32c7d409eb206d626cbd2ff48
+msgid "|windows-seamless-7.png|"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:699
+#: 74209dfdedd84309ac3bb9fa018bf816
+msgid "windows-seamless-7.png"
+msgstr "windows-seamless-7.png"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:388
+#: 529d922d1a894e3fb9a02df8d27856be
+msgid "**Changing between seamless and full desktop mode**"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:390
+#: 1ced491738f647f5a62cdfb6abc67368
+msgid ""
+"You can switch between seamless and “full desktop” mode for Windows HVMs in "
+"their settings in Qubes Manager. The latter is the default."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:393
+#: e71880e63ffa4e229c13cccec1868690
+msgid "Using template-based Windows AppVMs"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:396
+#: 894188b1c06f43e483596d5fc3790d6d
+msgid ""
+"Qubes allows HVM VMs to share a common root filesystem from a select "
+"Template VM, just as for Linux AppVMs. This mode is not limited to Windows "
+"AppVMs, and can be used for any HVM (e.g. FreeBSD running in a HVM)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:398
+#: 5637d0913ae942eb91c1a4d3a3860354
+msgid ""
+"In order to create an HVM TemplateVM, the type “TemplateVM” has to be "
+"selected on creating the VM. Then set memory as appropriate, and install the "
+"Windows OS (or any other OS) into this template the same way as you would "
+"install it into a normal HVM – please see instructions on :doc:`this page </"
+"user/advanced-topics/standalones-and-hvms>`."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:400
+#: a32c08bc061c4f74adb44a64a6cba9f1
+msgid ""
+"If you use this Template as it is, then any HVMs that use it will "
+"effectively be DisposableVMs - the User directory will be wiped when the HVM "
+"is closed down."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:402
+#: 330a710215ed4e2ba681f73b8ca41ece
+msgid ""
+"If you want to retain the User directory between reboots, then it would make "
+"sense to store the ``C:\\Users`` directory on the 2nd disk, which is "
+"automatically exposed by Qubes to all HVMs. This 2nd disk is backed by the "
+"``private.img`` file in the AppVMs and is not reset upon AppVMs reboot, so "
+"the user’s directories and profiles would survive the AppVMs reboot, unlike "
+"the “root” filesystem, which will be reverted to the “golden image” from the "
+"Template VM automatically. To facilitate such separation of user profiles, "
+"Qubes Windows Tools provide an option to automatically move the ``C:"
+"\\Users`` directory to the 2nd disk backed by ``private.img``. It’s a "
+"selectable feature of the installer. For Windows 7, the private disk must be "
+"renamed to ``Q:`` before QWT installation (see above); for Windows 10 and "
+"11, this renaming occurs automatically during QWT installation."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:404
+#: 8dc6ffdeb2514e0bae154eedcc06dfe5
+msgid ""
+"If that feature is selected during installation, completion of the process "
+"requires two reboots:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:406
+#: bba0d8e4ab9d431cb165bcdc3efa2883
+msgid ""
+"The private disk is initialised and formatted on the first reboot after "
+"tools installation. It can’t be done **during** the installation because Xen "
+"mass storage drivers are not yet active."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:408
+#: b4428080367b4959af03880956be035b
+msgid ""
+"User profiles are moved to the private disk on the next reboot after the "
+"private disk is initialised. A reboot is required because the “mover "
+"utility” runs very early in the boot process so OS can’t yet lock any files "
+"in there. This can take some time depending on the profiles’ size, and "
+"because the GUI agent is not yet active, dom0/Qubes Manager may complain "
+"that the AppVM failed to boot. That’s a false alarm (you can increase the "
+"AppVM’s default boot timeout using ``qvm-prefs``), the VM should appear "
+"“green” in Qubes Manager shortly after."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:411
+#: 51cef94feb5645eba4ea88e44c06645e
+msgid ""
+"It also makes sense to disable Automatic Updates for all the template-based "
+"AppVMs – of course, this should be done in the Template VM, not in "
+"individual AppVMs, because the system-wide settings are stored in the root "
+"filesystem (which holds the system-wide registry hives). Then, periodically "
+"check for updates in the Template VM, and the changes will be carried over "
+"to any child AppVMs."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:413
+#: 417f50a96d0544fea641463e55973c67
+msgid ""
+"Once the template has been created and installed, it is easy to create "
+"AppVMs based on it by selecting the type “AppVM” and a suitable template."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:417
+#: 8fa9375fcf8f44e39cf77144c31d468e
+msgid "Using Windows disposables"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:420
+#: dd1ce856cc0640889ec2422b05a9edf3
+msgid ""
+"Windows qubes can be used as disposables, like any other Linux-based qubes. "
+"On creating a template for Windows disposables, certain preparations have to "
+"be executed:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:422
+#: f5e5c56ce715438a96542566601a348d
+msgid "Create an AppVM based on a Windows TemplateVM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:424
+#: 6b39805eab1d450697db8875ffbd9477
+msgid ""
+"Start this AppVM and insert a link to the command prompt executable in the "
+"``Autostart`` directory of the Windows menu tree:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:426
+#: 3c0ee62acc13453280703028e24a1e23
+msgid "**For Windows 7:**"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:428
+#: c5263a85f87841df8d935e130bdd372d
+msgid ""
+"If the Windows qube started in seamless mode, hit the Windows keyboard key "
+"while the cursor is positioned in a window of this VM. In non-seamless mode, "
+"click on the Start button. In both cases, the Windows menu will be displayed."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:430
+#: aeb4f024d5bc424088a007ce973d5ede
+msgid "Position into the ``Autostart`` submenu."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:433
+#: 353002ad10f24ecabe213274e0da1f64
+msgid "**For Windows 10 or 11:**"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:435
+#: f291fa01ff0848fcb1ae4ba7fb9a7da4
+msgid "Type :kbd:`Win+R` to open the execution Prompt."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:437
+#: c74d57b6fec14ee498a6acb5349b348c
+msgid "Type ``shell:startup``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:439
+#: 1b4426d2c32e4b11afb7b542a7331d93
+msgid ""
+"An explorer window will open, which is positioned to the ``Autostart`` "
+"folder."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:442
+#: afc04969da1a470d90f9ee6ef8575622
+msgid "Right-click and select the option “New -> Link”."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:444
+#: 2abf4bfc142d4e41aa5d2682d15db251
+msgid "Select ``C:\\Windows\\System32\\CMD.exe`` as executable."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:446
+#: b0d322e45b4343d38ff98b26c0106151
+msgid "Name the link, e.g. as ``Command Prompt``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:448
+#: 7eed5976e1644fd1b56c9ad21584f8fa
+msgid "Close the Window with ``OK``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:450
+#: 19f602bb4da846c0ae79de5fa39f737c
+msgid "Shut down this AppVM."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:453
+#: 2fd5254dc03e49d2955c9396c97df592
+msgid ""
+"In the Qube Manager, refresh the applications of the newly created AppVM and "
+"select those applications that you want to make available from the "
+"disposable. Alternatively, in dom0 execute the command"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:459
+#: cbcc2839e02e432ba3f7be53f8155bde
+msgid "where ``<VMNAME>`` is the name of your windows qube."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:461
+#: 8fdbce15f4534b339632c7178154f84a
+msgid ""
+"In the Qube Manager, go to the “Advanced” tab and enable the option "
+"``Disposable template`` for your Windows qube. Alternatively, in dom0 "
+"execute the commands"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:468
+#: 915530e98be74f9a937be96b453fbf84
+msgid "Click ``Apply``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:470
+#: 1056ca04110f41af9451276019b81d75
+msgid ""
+"Still in the Advanced tab, select your Windows qube as its own ``Default "
+"disposable template``. Alternatively, in dom0 execute the command ``qvm-"
+"prefs <VMNAME> default_dispvm <VMNAME>``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:472
+#: 57562a5e94e44c3b81ecc9ea0ad8eb87
+msgid "Close the Qube Manager by clicking ``OK``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:475
+#: 3bc1753b0db74c5ba33b444e62c86311
+msgid ""
+"Now you should have a menu ``Disposable: <VMname>`` containing the "
+"applications that can be started in a disposable Windows VM. If you set the "
+"newly created and configured Windows VM as ``Default disposable template`` "
+"for any other Windows- (or Linux-) based qube, this qube can use the Windows-"
+"based dispvm like any other disposable."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:477
+#: 3e9de3eed0444f8abc0055b4c42c8405
+msgid ""
+"For further information on usage of disposables, see :doc:`How to use "
+"disposables </user/how-to-guides/how-to-use-disposables>`."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:479
+#: 9d85b776648c4c5da424adfd79e3198c
+msgid ""
+"**Caution:** *If a Windows-based disposable is used from another qube via "
+"the* ``Open/Edit in DisposableVM`` *command, this disposable may not close "
+"automatically, due to the command prompt window still running in this "
+"dispvm. In this case, the disposable has to be shut down manually.*"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:482
+#: 2a90a183639d430d847d80eee96aa90b
+msgid "Installation logs"
+msgstr "安裝日誌"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:485
+#: b3563dfaec0f4a488eddc197ca7e5abb
+msgid ""
+"If the installation process fails or something goes wrong during it, include "
+"the installation logs in your bug report. They are created in the ``%TEMP%`` "
+"directory, by default ``<user profile>\\AppData\\Local\\Temp``. There are "
+"two text files, one small and one big, with names starting with "
+"``Qubes_Windows_Tools``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:487
+#: 73f9cf6e23a741cd9c5df521deb3796c
+msgid ""
+"Uninstalling QWT is supported. After uninstalling, you need to manually "
+"enable the DHCP Client Windows service, or set IP settings yourself to "
+"restore network access."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:490
+#: 32ce7ff9a315454f98e68118f5876947
+msgid "Configuration"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:493
+#: 5767ff41f59941c09ac4b9b13924b435
+msgid ""
+"Various aspects of Qubes Windows Tools (QWT) can be configured through the "
+"registry. The main configuration key is located in "
+"``HKEY_LOCAL_MACHINE\\SOFTWARE\\Invisible Things Lab\\Qubes Tools``. "
+"Configuration values set on this level are global to all QWT components. "
+"It’s possible to override global values with component-specific keys; this "
+"is useful mainly for setting log verbosity for troubleshooting. Possible "
+"configuration values are:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:500
+#: a1588cbfc4674d79b89259a5a24b0366
+msgid "Name"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:501
+#: ../../../user/templates/windows/qubes-windows-tools.rst:559
+#: 4a07f328d415409e922814a363e272af b452fc14b5854f709bea6f0226906a16
+msgid "Type"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:502
+#: ../../../user/templates/windows/qubes-windows-tools.rst:528
+#: ../../../user/templates/windows/qubes-windows-tools.rst:560
+#: ../../../user/templates/windows/qubes-windows-tools.rst:597
+#: bc95b6d3557e442fa3af1951e895dc59 b6efd7da488b423b894415eea79aee5c
+#: 7c926830ebca4273a20e041a9efb0d55 124f25ff40c747bb89e4348449b53195
+msgid "Description"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:503
+#: ../../../user/templates/windows/qubes-windows-tools.rst:561
+#: 5957d5c6c7af4f999410bc3cb877dcac f27d3b41bb2c47a9b32c924f851e6fb0
+msgid "Default value"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:504
+#: bf226fc3533b49838f20323c9e1988db
+msgid "LogDir"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:505
+#: d28036e84d6f4b868c7e751ca40d6e5f
+msgid "String"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:506
+#: 45cb322d5a8940f1b46f055c8b534913
+msgid "Directory where logs are created"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:507
+#: 87ed1c5a210246a4b2e5b570802181d3
+msgid "c:\\\\Program Files\\\\Invisible Things Lab\\\\Qubes Tools\\\\log"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:508
+#: d1052aa48b59413b8868300b06083d2a
+msgid "LogLevel"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:509
+#: ../../../user/templates/windows/qubes-windows-tools.rst:513
+#: ../../../user/templates/windows/qubes-windows-tools.rst:564
+#: d658de407ee346dd85c680adf8bc4ca6 8013c6354b2143318038bf540898b80a
+#: a99d1975c1dc4b4e8d042adf2bc6a86b
+msgid "DWORD"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:510
+#: 1eec48249430432984a260f7b8d9f40c
+msgid "Log verbosity (see below)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:511
+#: 1bc90f8472fb45fabf287f23c47a0638
+msgid "2 (INFO)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:512
+#: 4b8e2cee9efe44ca91e21ae2d2c145c3
+msgid "LogRetention"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:514
+#: dc42d66f32614bd9b58e32e87afd3075
+msgid ""
+"Maximum age of log files (in seconds), older logs are automatically deleted"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:515
+#: 836014abdfba4a4cab98cf6b1ce35504
+msgid "604800 (7 days)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:519
+#: 7f1120a928f542148d61cb1f28636c26
+msgid "Possible log levels:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:526
+#: bad8700d1f5c465faed2df8a43fb3964
+msgid "Level"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:527
+#: df071a13e1e04bc3bb7daf4bb597983d
+msgid "Title"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:529
+#: ../../../user/templates/windows/qubes-windows-tools.rst:566
+#: c8b5fb3d6db34944a3b0f717051b9c38 360206d02ad0424996ccfb0d78cc7d5d
+msgid "1"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:530
+#: 1c11bce889bf43948adc359d0b255d60
+msgid "Error"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:531
+#: 8d65d08ec4e741479ffeda87916cfe7d
+msgid "Serious errors that most likely cause irrecoverable failures"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:532
+#: e0ceea03746146c3b194ec9952efcc6a
+msgid "2"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:533
+#: 85f9c18071d8415984a6c1245d0c6b52
+msgid "Warning"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:534
+#: 4403a110429a41b0bc05252581f05b2e
+msgid "Unexpected but non-fatal events"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:535
+#: 55259ebeb8dd42329449ab171952c511
+msgid "3"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:536
+#: 0f73dd8f63614a11bff1aa384891fbff
+msgid "Info"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:537
+#: d645d00df8a4420b962510a58d757541
+msgid "Useful information (default)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:538
+#: c90f21ff811b4bb98af7280c823e13e4
+msgid "4"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:539
+#: 3e69888d741343ed8057cf372d8d72f3
+msgid "Debug"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:540
+#: 9af52e84611e4ac7b7a2dfa9520f8077
+msgid "Internal state dumps for troubleshooting"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:541
+#: 53c67b5b496a4d1bbb3666adaf9516c0
+msgid "5"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:542
+#: 4ce30cd39e9a4d73bc475be5264f9aae
+msgid "Verbose"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:543
+#: 74d2753af6aa45b0b4f49157eca5a0c4
+msgid "Trace most function calls"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:546
+#: 8c9a3efe927b48aba33f16dd211b210e
+msgid ""
+"Debug and Verbose levels can generate a large volume of logs and are "
+"intended for development/troubleshooting only."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:548
+#: d41013ef05a04cbf90edf0f34cf80726
+msgid ""
+"To override global settings for a specific component, create a new key under "
+"the root key mentioned above and name it as the executable name, without ``."
+"exe`` extension."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:550
+#: 03e7cdea456a457db9c5c45915d2ab47
+msgid "Component-specific settings currently available:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:557
+#: ../../../user/templates/windows/qubes-windows-tools.rst:596
+#: 473e4bf1a19c43e0bb038a5aa6513ede 36a088b9942d4b67bfd0cadd115a7d09
+msgid "Component"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:558
+#: d50c9c5d671d4496a416860c0f360600
+msgid "Setting"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:562
+#: ../../../user/templates/windows/qubes-windows-tools.rst:604
+#: e64f073bcf8d406b883b2983efb3bfe2 c0f9725cf3344cd094135595fc6db9fd
+msgid "qga"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:563
+#: d5e239a2270a4012b25786ee15ccbeb9
+msgid "DisableCursor"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:565
+#: 185141f6586f4364ac132717a6818663
+msgid ""
+"Disable the cursor in the VM. Useful for integration with Qubes desktop, so "
+"you don’t see two cursors. Can be disabled if you plan to use the VM through "
+"a remote desktop connection of some sort. Needs GUI agent restart to apply "
+"change (locking OS/logoff should be enough since qga is restarted on desktop "
+"change)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:570
+#: b0c25d9b7cd440d3a60e57cd69a47628
+msgid "Troubleshooting"
+msgstr "疑難排解"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:573
+#: 8024a953b8f647228612341c70b2cc7b
+msgid ""
+"If the VM is inaccessible (doesn’t respond to qrexec commands, gui is not "
+"functioning), try to boot it in safe mode:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:580
+#: 3b94e0359dca4212bbdcc215d19ca039
+msgid ""
+"Enable boot options and select Safe Mode (method depends on the Windows "
+"version; optionally with networking)"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:583
+#: ed7d9ae3f7d743398854f2d4f5bbe232
+msgid "Safe Mode should at least give you access to logs (see above)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:585
+#: a7ba5a57381946a2a8e25a3809c0591e
+msgid ""
+"**Please include appropriate logs when reporting bugs/problems.** Logs "
+"contain the QWT version. If the OS crashes (BSOD) please include the BSOD "
+"code and parameters in your bug report. The BSOD screen should be visible if "
+"you run the VM in debug mode (``qvm-start --debug vmname``). If it’s not "
+"visible or the VM reboots automatically, try to start Windows in safe mode "
+"(see above) and 1) disable automatic restart on BSOD (Control Panel - System "
+"- Advanced system settings - Advanced - Startup and recovery), 2) check the "
+"system event log for BSOD events. If you can, send the ``memory.dmp`` dump "
+"file from ``C:\\Windows``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:587
+#: 3d668b514c244d36a1b3da798332cc32
+msgid ""
+"Xen logs in dom0 (``/var/log/xen/console/guest-*``) are also useful as they "
+"contain pvdrivers diagnostic output."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:589
+#: aeb3967fbe26489d83a799588c9ec1d9
+msgid ""
+"If a specific component is malfunctioning, you can increase its log "
+"verbosity as explained above to get more troubleshooting information. Below "
+"is a list of components:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:598
+#: 0be5ef9dfa1143f0b42fa6f334637c9a
+msgid "qrexec-agent"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:599
+#: 95fd3e896609441fa3b9ef07392a4312
+msgid ""
+"Responsible for most communication with Qubes (dom0 and other domains), "
+"secure clipboard, file copying, qrexec services."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:600
+#: fc2c7167d6d849a8a3ed8ede3d211f1c
+msgid "qrexec-wrapper"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:601
+#: eadc9ac62e0a4d85b1f2532cb014b2e1
+msgid ""
+"Helper executable that’s responsible for launching qrexec services, handling "
+"their I/O and vchan communication."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:602
+#: fe1b29ec83a84f0eb90e6743a4002063
+msgid "qrexec-client-vm"
+msgstr "qrexec-client-vm"
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:603
+#: ff35d6d236e34d19a7e68b114ef95c3f
+msgid "Used for communications by the qrexec protocol."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:605
+#: 6ad7ce2d5c354961872143d4f5322b50
+msgid "GUI agent."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:606
+#: 454fb32d058a45aeb976bda7ae8ef82d
+msgid "QgaWatchdog"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:607
+#: 8357c893411b487b827d34eb2c822f57
+msgid ""
+"Service that monitors session/desktop changes (logon/logoff/locking/UAC…) "
+"and simulates SAS sequence (Ctrl-Alt-Del)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:608
+#: ce46b6a4f0ff4cef9f9a39cfa4848941
+msgid "qubesdb-daemon"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:609
+#: 2e4cfee4ad37415fa62c5d3ba138cbec
+msgid "Service for accessing the Qubes configuration database."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:610
+#: a75f9497686f41bfbf193a7cf3dad8f6
+msgid "network-setup"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:611
+#: 36fc732cfdb74ce4a7145a4617c07e24
+msgid ""
+"Service that sets up network parameters according to the VM’s configuration."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:612
+#: 1f2dfb5a13ac44a1b6dbb98289088cb1
+msgid "prepare-volume"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:613
+#: 9b0ada9adc9f4253af4d1da9de9c1233
+msgid ""
+"Utility that initializes and formats the disk backed by private.img file. "
+"It’s registered to run on the next system boot during QWT setup, if that "
+"feature is selected (it can’t run during the setup because Xen block device "
+"drivers are not yet active). It, in turn, registers \"move profiles\" (see "
+"below) to run at early boot."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:614
+#: a2295a5b48254d1cbc0decaf049a69a0
+msgid "relocate-dir"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:615
+#: 395ab86a1ef54c27aaed6282707482cd
+msgid ""
+"Utility that moves the user profiles directory to the private disk. It’s "
+"registered as an early boot native executable (similar to chkdsk), so it can "
+"run before any profile files are opened by some other process. Its log is in "
+"a fixed location: C:\\\\move-profiles.log (it can’t use our common logger "
+"library, so none of the log settings apply)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:618
+#: efd61e5a1e8e48519f788aa86ff4f95f
+msgid ""
+"If there are network-related issues, the qube doesn’t resolve DNS and has "
+"trouble accessing the Internet, this might be an issue with the PV Network "
+"Drivers."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:620
+#: 944b1fbac45442dea9ff9e8a5dd642bb
+msgid ""
+"In this case, it’s recommended that the PV Network Drivers be unchecked "
+"during installation of Qubes Windows Tools as seen in the screenshot below."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:622
+#: a69befd99d8c489bb43b4c9a446e98fc
+msgid "|QWT_no_PV_network|"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:702
+#: 2780eab874c942e59c18be25834a7e88
+msgid "QWT_no_PV_network"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:625
+#: 28d0598b17224c32bdf99a1623345b5e
+msgid "Updates"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:628
+#: f6d16939a33e4fdf87e8fe6c3f1d4c10
+msgid ""
+"When we publish a new QWT version, it’s usually pushed to the ``current-"
+"testing`` or ``unstable`` repository first. To use versions from current-"
+"testing, run this in dom0:"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:635
+#: 33011c9d9d2444ccad904c22b5ff35ea
+msgid ""
+"That command will download a new QWT ``iso`` file from the testing "
+"repository. It goes without saying that you should **backup your VMs** "
+"before installing anything from testing repos."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:639
+#: 8377f93834d64d56af88eaf2e08b0cca
+msgid "Uninstalling Qubes Windows Tools in a Windows VM"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:645
+#: 9aa7fa1ec9984359b5db8dd848393162
+msgid ""
+"Uninstall QWT 4.1.69-1, using the standard procedure from the system control "
+"panel of Windows. This will most likely result in a crash with the error "
+"INACCESSIBLE BOOT DEVICE, especially if the PV drivers were installed with "
+"QWT."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:647
+#: 4132e1fefe9a4fd797cd2561a4f3ede5
+msgid ""
+"Restart Windows again, hitting the :kbd:`F8` key, select the restart menu, "
+"and then select a start in safe mode."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:649
+#: ../../../user/templates/windows/qubes-windows-tools.rst:670
+#: 5aef4210559542d1a5536a3281dbd056 f194ba13cd04488ba5a76af6f2014eda
+msgid ""
+"The system will start again, but in a rather useless way. Just shut it down "
+"and reboot again."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:651
+#: a35a6a1be18c4b178bd9761f67d6cc3c
+msgid ""
+"Now Windows will start normally. Check within the control panel if there are "
+"any Xen drivers left. If so, uninstall them."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:653
+#: ../../../user/templates/windows/qubes-windows-tools.rst:674
+#: 7dee12c14c9c451d95dcd83ad7bdff7d 09962b8d5a1844d9af554e5ab1fd26e1
+msgid ""
+"In the Windows device manager, check if there is still a (probably non-"
+"working) Xen PV disk device. If so, uninstall it."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:655
+#: b82a24bd92a54983aa9d30c63103e972
+msgid ""
+"In the control panel, check again if the Xen drivers are removed. A Xen Bus "
+"Package (version 8.2.1.8) may remain and cannot be removed, but does no "
+"harm. Any other Xen drivers should have disappeared."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:659
+#: 9622a5352d034ca6aa31c63c81e18595
+msgid "Windows 10 and 11"
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:662
+#: b37ce69b823649a5857e4c7d2c27ece1
+msgid ""
+"If there is a drive ``D:`` from this earlier installation of Qubes Windows "
+"Tools, it will probably contain incomplete private data; especially the "
+"folder ``AppData`` containing program configuration data will be missing. In "
+"this situation, it may be better to perform a new Windows installation, "
+"because repair may be difficult and trouble-prone."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:664
+#: bb4adaa356794e2e9cfa94fd0406283b
+msgid ""
+"First, be sure that the automatic repair function is disabled. In a command "
+"window, execute ``bcdedit /set recoveryenabled NO``, and check that this "
+"worked by issuing the command ``bcdedit``, without parameters, again."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:666
+#: 1f8dce8073dc42f2a2e63e960ac42ac8
+msgid ""
+"Now, uninstall QWT (currently version 4.2.2-1), using the Apps and Features "
+"function of Windows. This will most likely result in a crash with the error "
+"INACCESSIBLE BOOT DEVICE, especially if the PV drivers were installed with "
+"QWT."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:668
+#: aaf4fc833c974ba98d6811fa76fefd5d
+msgid ""
+"Restart Windows again, possibly two or three times, until repair options are "
+"offered. By hitting the F8 key, select the restart menu, and in that menu "
+"select a start in safe mode (in German, it’s option number 4)."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:672
+#: f0bdf4bc350941c0903c1ede436cef3d
+msgid ""
+"Now Windows will start normally. Check in the Apps and Features display if "
+"there are any Xen drivers left. If so, uninstall them."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:676
+#: b61425844ae34df2b29a81781399c54a
+msgid ""
+"In the Apps and Features display, check again if the Xen drivers are "
+"removed. A Xen Bus Package may remain and cannot be removed, but it does not "
+"cause harm. Any other Xen drivers should have disappeared."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:678
+#: 3f0b5161eb4443108ff97f8395c00bb1
+msgid ""
+"In order to avoid Qubes stopping Windows VMs forcefully after QWT was "
+"uninstalled, it is advisable to undefine the qrexec control for these VMs. "
+"This can be done using the command ``qvm-features <VMNAME> qrexec \"\"``."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:680
+#: c01fe26fa4044025a23bc722b8db3fc7
+msgid ""
+"After successful uninstallation of the PV disk drivers, the disks will "
+"appear as QEMU ATA disks."
+msgstr ""
+
+#: ../../../user/templates/windows/qubes-windows-tools.rst:682
+#: 3989cf87836b4793b6dc4ce2547c2407
+msgid ""
+"**Warning:** The uninstallation of the PV disk drivers may lead Windows to "
+"declare that the hardware has changed and that, in consequence, the "
+"activation is no longer valid, possibly complaining that the use of the "
+"software is no longer lawful. It should be possible to reactivate the "
+"software if a valid product key is provided."
+msgstr ""
