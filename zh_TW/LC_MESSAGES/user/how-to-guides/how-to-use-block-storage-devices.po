@@ -1,0 +1,488 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:3
+#: 23194072db164e898a1bf073a9b21683
+msgid "How to use block storage devices"
+msgstr "如何使用區塊儲存裝置"
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:5
+#: 7e0f7ff74fc141dd99b74b488c568f27
+msgid ""
+"*This page is part of* :doc:`device handling in qubes </user/how-to-guides/"
+"how-to-use-devices>` *.*"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:7
+#: c9a060a853974f469133096e40402140
+msgid ""
+"If you don’t know what a “block device” is, just think of it as a fancy way "
+"to say “something that stores data”."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:10
+#: ede109c846e64bfd8b3db7d68de93029
+msgid "Using the Devices Widget to Attach a Drive"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:12
+#: 7c07573144eb40f8b84b34263bb5eb2f
+msgid ""
+"(**Note:** In the present context, the term “USB drive” denotes any `USB "
+"mass storage device <https://en.wikipedia.org/wiki/"
+"USB_mass_storage_device_class>`__. In addition to smaller flash memory "
+"sticks, this includes things like USB external hard drives.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:14
+#: 8eadef8281594060bbbe4d290a8322f4
+msgid ""
+"Qubes OS supports the ability to attach a USB drive (or just its partitions) "
+"to any qube easily, no matter which qube handles the USB controller."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:21
+#: 6b6a856b2a7a4aaab24ce33e35cfde97
+msgid "Qubes Devices Widget tray icon"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:23
+#: 584519ce08c54989a3cbb77496634f5c
+msgid ""
+"Attaching USB drives is integrated into the Devices Widget. Simply insert "
+"your USB drive and click on the widget. You will see multiple entries for "
+"your USB drive; typically, ``sys-usb:sda``, ``sys-usb:sda1``, and ``sys-"
+"usb:2-1`` for example. Entries starting with a number (e.g. here ``2-1``) "
+"are the :doc:`whole usb-device </user/how-to-guides/how-to-use-usb-"
+"devices>`. Entries without a number (e.g. here ``sda``) are the whole block-"
+"device. Other entries are partitions of that block-device (e.r. here "
+"``sda1``)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:25
+#: 52395fc71c2745f39e8f6ba2880c4b22
+msgid ""
+"The simplest option is to attach the entire block drive. In our example, "
+"this is ``sys-usb:sda``, so hover over it. This will pop up a submenu "
+"showing running VMs to which the USB drive can be connected. Click on one "
+"and your USB drive will be attached!"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:27
+#: 63a58e8a3b6441b096de38a9745f260c
+msgid ""
+"**Note:** attaching individual partitions (e.g. ``sys-usb:sda1``) can be "
+"slightly more secure because it doesn’t force the target app qube to parse "
+"the partition table. However, it often means the app qube won’t detect the "
+"new partition and you will need to manually mount it inside the app qube. "
+"See below for more detailed steps."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:30
+#: 9753fe559b7742d9a9470533ba38e147
+msgid "Block Devices in VMs"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:32
+#: 2196fe055c62497e8388cb73b2c4c99a
+msgid ""
+"If not specified otherwise, block devices will show up as ``/dev/xvdi*`` in "
+"a linux VM, where ``*`` may be the partition-number. If a block device isn’t "
+"automatically mounted after attaching, open a terminal in the VM and execute:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:40
+#: c1c7df477aa0495ca3df33c216fb2c91
+msgid ""
+"where ``xvdi2`` needs to be replaced with the partition you want to mount. "
+"This will make your drive content accessible under ``~/mnt``."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:42
+#: ea7fd5ac41504add8bac098859f62f9a
+msgid ""
+"Beware that when you attach a whole block device, partitions can be "
+"identified by their trailing integer (i.e. ``/dev/xvdi2`` for the second "
+"partition, ``/dev/xvdi`` for the whole device), whereas if you attach a "
+"single partition, the partition has *no trailing integer*."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:44
+#: 6f2f6de994284a6090e6be99c8797b31
+msgid ""
+"If several different block-devices are attached to a single VM, the last "
+"letter of the device node name is advanced through the alphabet, so after "
+"``xvdi`` the next device will be named ``xvdj``, the next ``xvdk``, and so "
+"on."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:46
+#: 914b482dbca544e0b4c54ced8743385d
+msgid ""
+"To specify this device node name, you need to use the command line tool and "
+"its :ref:`frontend-dev-option <user/how-to-guides/how-to-use-block-storage-"
+"devices:frontend-dev>`."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:49
+#: f1a4eb4d656d4bd7b83d57d1ffa940df
+msgid "Command Line Tool Guide"
+msgstr "命令行工具指南"
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:51
+#: ae2beaf5f95144b4b73a3b4b6b2f4511
+msgid ""
+"The command-line tool you may use to mount whole USB drives or their "
+"partitions is ``qvm-block``, a shortcut for ``qvm-device block``."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:53
+#: 84f7f5ebcd7d4e3b95d6b570485289b0
+msgid ""
+"``qvm-block`` won’t recognise your device by any given name, but rather the "
+"device-node the sourceVM assigns. So make sure you have the drive available "
+"in the sourceVM, then list the available block devices (step 1.) to find the "
+"corresponding device-node."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:55
+#: b5989bc7ea8d46caabc75322abbe2bd8
+msgid ""
+"In case of a USB-drive, make sure it’s attached to your computer. If you "
+"don’t see anything that looks like your drive, run ``sudo udevadm trigger --"
+"action=change`` in your USB-qube (typically ``sys-usb``)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:57
+#: 2c574c5a434e40d0b67a09bc0a205ae7
+msgid ""
+"In a dom0 console (running as a normal user), list all available block "
+"devices:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:63
+#: c5c0a49a0d654bd7850c275c9e7d0c2a
+msgid ""
+"This will list all available block devices in your system across all VMs. "
+"The name of the qube hosting the block device is displayed before the colon "
+"in the device ID. The string after the colon is the ID of the device used "
+"within the qube, like so:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:70
+#: eef70067c5fd4b399d6abf9395d33c75
+msgid ""
+"Assuming your block device is attached to ``sys-usb`` and its device node is "
+"``sdb``, we attach the device to a qube with the name ``work`` like so:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:76
+#: 90e83437916a471cb7fd415d43167420
+msgid ""
+"This will attach the device to the qube as ``/dev/xvdi`` if that name is not "
+"already taken by another attached device, or ``/dev/xvdj``, etc."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:78
+#: eac2cd15bc524c639c043c9125e2362c
+msgid ""
+"You may also mount one partition at a time by using the same command with "
+"the partition number, e.g. ``sdb1``."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:80
+#: 9a18c759469f41638f1afe6eab7c72a1
+msgid ""
+"The block device is now attached to the qube. If using a default qube, you "
+"may open the Nautilus file manager in the qube, and your drive should be "
+"visible in the **Devices** panel on the left. If you’ve attached a single "
+"partition (e.g. ``sdb2`` instead of ``sdb`` in our example), you may need to "
+"manually mount before it becomes visible:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:88
+#: af02d4a9f335421d9aa138b0f75ed7d3
+msgid ""
+"When you finish using the block device, click the eject button or right-"
+"click and select **Unmount**."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:90
+#: c2a11edc18524f41b7e77b8875dddfa9
+msgid "If you’ve manually mounted a single partition in the above step, use:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:96
+#: 7cc8ca17ab054ff19733ad54a2f9eb8b
+msgid "In a dom0 console, detach the device"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:102
+#: 5c2fb4a463fb454b85345386a60baf2f
+msgid "You may now remove the device or attach it to another qube."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:105
+#: 5810dd6917cf4e1cb8a0c5be3c62675f
+msgid "Recovering From Premature Device Destruction"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:107
+#: 247645e73d4c4379b03e01ea4c6d1813
+msgid ""
+"If you fail to detach the device before it’s destroyed in the sourceVM (e."
+"g. by physically detaching the thumbdrive), `there will be problems <https://"
+"github.com/QubesOS/qubes-issues/issues/1082>`__."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:109
+#: 1c49bbe0fd8a45d3af9ff4220c6eab8a
+msgid "To recover from this error state, in dom0 run"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:115
+#: 8cc745974f78451bac77d2dd7e163a9b
+msgid ""
+"(where ``targetVM`` is to be replaced with the VM name you attached the "
+"device to and ``xvdi`` is to be replaced with the used `frontend device node "
+"<#frontend-dev>`__.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:117
+#: e9eb4665dd0b4276b72d470d38d20fdc
+msgid ""
+"However, if the block device originated in dom0, you will have to refer to "
+"the next section."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:120
+#: bddf9605c3534dda907dcaf89251aca6
+msgid "What if I removed the device before detaching it from the VM?"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:122
+#: e6bfbf88d67c4d8fb74ce453e0ecd767
+msgid ""
+"Currently (until issue `1082 <https://github.com/QubesOS/qubes-issues/"
+"issues/1082>`__ gets implemented), if you remove the device before detaching "
+"it from the qube, Qubes OS (more precisely, ``libvirtd``) will think that "
+"the device is still attached to the qube and will not allow attaching "
+"further devices under the same name. The easiest way to recover from such a "
+"situation is to reboot the qube to which the device was attached. If this "
+"isn’t an option, you can manually recover from the situation by following "
+"these steps:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:124
+#: 31f58696cb844c409d7042ff97231323
+msgid ""
+"Physically connect the device back. You can use any device as long as it "
+"will be detected under the same name (for example, ``sdb``)."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:126
+#: 57037a96485542b28684707b50079d8a
+msgid ""
+"Attach the device manually to the same VM using the ``xl block-attach`` "
+"command. It is important to use the same “frontend” device name (by default, "
+"``xvdi``). You can get it from the ``qvm-block`` listing:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:134
+#: 6726264f85ce40c282f2174a0525e549
+msgid ""
+"In above example, all ``xl block-attach`` parameters can be deduced from the "
+"output of ``qvm-block``. In order:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:136
+#: 0160cd17a2864935bc115976f54b545b
+msgid ""
+"``testvm`` - name of target qube to which device was attached - listed in "
+"brackets by ``qvm-block`` command"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:138
+#: 8b9ca1f169994b82b3daf514168d45ea
+msgid ""
+"``phy:/dev/sda`` - physical path at which device appears in source qube "
+"(just after source qube name in ``qvm-block`` output)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:140
+#: 4561d46eb4454da4839e86742056f850
+msgid ""
+"``backend=sys-usb`` - name of source qube, can be omitted in the case of dom0"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:142
+#: b0222585a9e7415fba26efd97c35c2fd
+msgid ""
+"``xvdi`` - “frontend” device name (listed at the end of line in ``qvm-"
+"block`` output)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:144
+#: 11fb8e842d864593b19d337391fd7fbc
+msgid ""
+"Now properly detach the device, either using Qubes VM Manager or the ``qvm-"
+"block -d`` command."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:147
+#: 2f21c6b6155c43d6a4691fcc3982bf90
+msgid "Attaching a File"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:149
+#: 3d82c2f278204021bb3ed174c4edf30a
+msgid ""
+"To attach a file as block device to another qube, first turn it into a "
+"loopback device inside the sourceVM."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:151
+#: bdde5ee371214d21a0b50813143dac27
+msgid "In the linux sourceVM run"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:157
+#: 32749757adbd4a71ad3effdfc1832ae7
+msgid ""
+"`This command <https://linux.die.net/man/8/losetup>`__ will create the "
+"device node ``/dev/loop0`` or, if that is already in use, increase the "
+"trailing integer until that name is still available. Afterwards it prints "
+"the device-node-name it found."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:159
+#: 2eb106dc66be4c18819a88219e6d1661
+msgid ""
+"If you want to use the GUI, you’re done. Click the Device Widget and select "
+"the ``loop0``-device to attach it to another qube."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:161
+#: 30471e7d946f4614aca794ad3885635a
+msgid "If you rather use the command line, continue:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:163
+#: 6a53397a454541f7837e51598392b582
+msgid ""
+"In dom0, run ``qvm-block`` to display known block devices. The newly created "
+"loop device should show up:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:171
+#: 1c5812cb879e46849590e98d3a55cb6d
+msgid "Attach the ``loop0``-device using qvm-block as usual:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:177
+#: 628d065ad10247948d48494b1079ba05
+msgid ""
+"After detaching, destroy the loop-device inside the sourceVM as follows:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:184
+#: 67793f62f6274bb4a58bd1a407ce8fc4
+msgid "Additional Attach Options"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:186
+#: 9767607b4d90491ea85bf9e5b5873857
+msgid ""
+"Attaching a block device through the command line offers additional "
+"customisation options, specifiable via the ``--option``/``-o`` option. (Yes, "
+"confusing wording, there’s an `issue for that <https://github.com/QubesOS/"
+"qubes-issues/issues/4530>`__.)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:189
+#: fccb4f146492487dba2e03ae52a02d99
+msgid "frontend-dev"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:191
+#: 566a6fc72e494a9da32a79846278fee9
+msgid ""
+"This option allows you to specify the name of the device node made available "
+"in the targetVM. This defaults to ``xvdi`` or, if already occupied, the "
+"first available device node name in alphabetical order. (The next one tried "
+"will be ``xvdj``, then ``xvdk``, and so on …)"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:193
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:208
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:227
+#: 7e8eee6e1c924b68959247f07a66860c 0041f5f79eb04813a89d1a97885d64fb
+#: ce396b851e6d4eb5b640a3e19ed803a0
+msgid "usage example:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:199
+#: ef0a0f0353c64c62840bf3a4de020fb7
+msgid ""
+"This command will attach the partition ``sda1`` to ``work`` as ``/dev/xvdz``."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:202
+#: 3226f51801264f1b84ca1abdc71ccfce
+msgid "read-only"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:204
+#: 8826a09d071f49eebd5ec05bb8df0310
+msgid ""
+"Attach device in read-only mode. Protects the block device in case you don’t "
+"trust the targetVM."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:206
+#: b58e9ad3e80941fb9d24ee2813df4bb9
+msgid "If the device is a read-only device, this option is forced true."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:214
+#: 566eae9332c54a60b84dca8de8582aa7
+msgid "There exists a shortcut to set read-only ``true``, ``--ro``:"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:220
+#: 60aa184fa7624095bec2a23ff67371eb
+msgid "The two commands are equivalent."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:223
+#: dd6f04e0acca4390a36a9186d3e83eae
+msgid "devtype"
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:225
+#: de50715bfc22463e95cd51d5432fe6ec
+msgid ""
+"Usually, a block device is attached as disk. In case you need to attach a "
+"block device as cdrom, this option allows that."
+msgstr ""
+
+#: ../../../user/how-to-guides/how-to-use-block-storage-devices.rst:233
+#: 9afe356911544e9e9a6e8ad6bf324d8e
+msgid "This option accepts ``cdrom`` and ``disk``, default is ``disk``."
+msgstr ""
