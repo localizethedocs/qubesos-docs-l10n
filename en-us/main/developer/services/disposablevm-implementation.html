@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Disposable implementation" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/services/disposablevm-implementation.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Disposable behavior: A disposable template is not a disposable qube in itself, but a qube that can be used to create different disposable types: normal disposables and named disposables. This inter..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Disposable behavior: A disposable template is not a disposable qube in itself, but a qube that can be used to create different disposable types: normal disposables and named disposables. This inter..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disposable implementation &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/services/disposablevm-implementation.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=795a194b"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Qubes OS Documentation"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dom0 secure updates" href="dom0-secure-updates.html" />
+    <link rel="prev" title="Qubes memory manager (qmemman)" href="qmemman.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">Screenshots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">Video tours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">Frequently asked questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">Issue tracking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">Code of conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Choosing Your Hardware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">Community-recommended hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">Hardware compatibility list (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Downloading, Installing, and Upgrading Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">Download Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">Download mirrors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">Upgrade guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">Supported releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">Testing new releases and updates</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How-to guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">How to update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">How to copy and paste text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">How to copy and move files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">How to install software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">How to enter fullscreen mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">How to use devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">How to use block storage devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">How to use USB devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">How to use PCI devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">How to use optical discs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">How to reinstall a template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">How to enable a qube service</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Templates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">How to upgrade a Fedora template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">How to upgrade a Debian template in-place</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">Installation troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">Update troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">Updating Debian and Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">Hardware troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">Disk troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">Media troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Security in Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">Firewall</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">Data leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG-1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP proxy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">How to install software in dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">Config files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">Managing qube kernels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">Resize disk image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE (desktop environment)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">Command-line tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Project Security</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">Verifying signatures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - general</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/package-contributions.html">Package contributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsoc.html">Google Summer of Code (GSoC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-rst-documentation.html">How to edit the documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/rst-documentation-style-guide.html">reStructuredText documentation style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/website-style-guide.html">Website style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/continuous-integration.html">Continuous integration (CI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/usability-ux.html">Usability &amp; UX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/developing-gui-applications.html">Developing Qubes OS GUI tools</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">Visual style guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/research.html">Research</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - code</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">Software license</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - system</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes core admin</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes core admin client</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes core stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">Networking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">Audio virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">Passwordless root access implementation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - services</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Disposable implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#disposable-behavior">Disposable behavior</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-disposables-through-qrexec">Creating disposables through qrexec</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#preloaded-disposables">Preloaded disposables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#preloaded-disposable-s-stages">Preloaded disposable’s stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preloaded-disposable-s-worry-free-life-cycle">Preloaded disposable’s worry-free life-cycle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#preloaded-disposable-s-management">Preloaded disposable’s management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#availability-gaps">Availability gaps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bootstrapping-preloaded-disposables">Bootstrapping Preloaded disposables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#preloaded-disposables-memory-management">Preloaded disposables’ memory management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preloaded-disposable-s-pause">Preloaded disposable’s pause</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preloaded-disposable-s-security">Preloaded disposable’s security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alternatives-considered">Alternatives considered</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#restoration-from-savefile">Restoration from savefile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xen-domain-fork">Xen domain fork</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#preload-queue">Preload queue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - debugging</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">Safe remote dom0 terminals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - building</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">Development workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO building</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes template configs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Developers - releases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">Release schedules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">Version scheme</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About External documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">About external documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Operating System Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">Template: CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">Template: Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">Pentesting: BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">Pentesting: Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">Pentesting: PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">Tips for Using Linux in an HVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">Creating a NetBSD VM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Security Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">Security Guidelines</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">Using Multi-factor Authentication with Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">How to Set Up a Split Bitcoin Wallet in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">Using OnlyKey with Qubes OS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Privacy Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix for Privacy &amp; Anonymity</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">Running Tails in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">Anonymizing your MAC Address</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">How to install Signal Desktop in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">Reducing the fingerprint of the text-based web browser w3m</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Configuration Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">Multibooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">Changing your Time Zone</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">Installing ZFS in Qubes</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">Creating Custom NetVMs and ProxyVMs</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">How to make proxy for individual tcp connection from networkless VM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">Adding Bridge Support to the NetVM (EXPERIMENTAL)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">Screen Sharing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">Configuring a Network Printer</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">Using External Audio Devices</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">Adding SSD storage cache</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">How to Make a Multimedia TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">How to install an Nvidia driver in dom0</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Customization Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">Customizing Fedora minimal templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">Customizing Windows 7 templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">Language Localization</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dark Theme in Dom0 and DomU</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">Safely Removing TemplateVM Packages (Example: Thunderbird)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Troubleshooting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia troubleshooting guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel Integrated Graphics Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">Multiboot Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">Application Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">External - Building Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">Building a TemplateVM based on a new OS (ArchLinux example)</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">Building the Archlinux Template</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">Building the Whonix Templates</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">How to compile kernels for dom0</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Disposable implementation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/services/disposablevm-implementation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="disposable-implementation">
+<h1>Disposable implementation<a class="headerlink" href="#disposable-implementation" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This page is intended for advanced users.</p>
+</div>
+<section id="disposable-behavior">
+<h2>Disposable behavior<a class="headerlink" href="#disposable-behavior" title="Link to this heading"></a></h2>
+<p>A <a class="reference internal" href="../../user/reference/glossary.html#term-disposable-template"><span class="xref std std-term">disposable template</span></a> is not a disposable qube in itself, but a qube that can be used to create different disposable types: normal <a class="reference internal" href="../../user/reference/glossary.html#term-disposable"><span class="xref std std-term">disposables</span></a> and <a class="reference internal" href="../../user/reference/glossary.html#term-named-disposable"><span class="xref std std-term">named disposables</span></a>. This intermediary template serves different functions: first, it allows customization of the private volume of a disposable, and second, it provides a degree of inheritance that would not be possible with normal templates. It has the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/index.html#qubes.vm.mix.dvmtemplate.DVMTemplateMixin.template_for_dispvms" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">template_for_dispvms</span></code></a> property enabled, being a <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/index.html#qubes.vm.mix.dvmtemplate.DVMTemplateMixin" title="(in core-admin v4.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DVMTemplateMixin</span></code></a>.</p>
+<p>A <a class="reference internal" href="../../user/reference/glossary.html#term-disposable"><span class="xref std std-term">disposable</span></a> is a qube with the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM" title="(in core-admin v4.4.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DispVM</span></code></a> class and is based on a disposable template. Every disposable type has all of its volumes configured to disable <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-storage.html#qubes.storage.Volume.save_on_stop" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">save_on_stop</span></code></a>, therefore no changes are saved on shutdown. Normal disposables enable the property <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.auto_cleanup" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">auto_cleanup</span></code></a> by default, thus Qubes OS automatically removes the qube upon shutdown. Named disposables don’t enable <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.auto_cleanup" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">auto_cleanup</span></code></a> by default, thus the qube skeleton is not removed upon shutdown, thus allowing to keep qube settings.</p>
+<p>Named disposables are useful for service qubes, as referencing static names is easier when the qube name is mentioned on qrexec policies (<code class="file docutils literal notranslate"><span class="pre">qubes.UpdatesProxy</span></code> target) or as a property of another qube, such as a disposable <a class="reference internal" href="../../user/reference/glossary.html#term-net-qube"><span class="xref std std-term">net qube</span></a> which is referenced by downstream clients in the <code class="docutils literal notranslate"><span class="pre">netvm</span></code> property.</p>
+<p>Disposables are generally named according to the <code class="samp docutils literal notranslate"><span class="pre">disp</span><em><span class="pre">1234</span></em></code> scheme, where <code class="samp docutils literal notranslate"><em><span class="pre">1234</span></em></code> is derived from the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.dispid" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dispid</span></code></a> property, a random integer ranging from 0 to 9999 with a fail-safe mechanism to avoid reusing the same value in a short period. Named disposables have a user-set permanent name.</p>
+<section id="creating-disposables-through-qrexec">
+<h3>Creating disposables through qrexec<a class="headerlink" href="#creating-disposables-through-qrexec" title="Link to this heading"></a></h3>
+<p>Every qube has the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.default_dispvm" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">default_dispvm</span></code></a> property, which defines which disposable template will be used to spawn disposables for this qube by default (when using actions such as “open in disposable”).
+It can have one of three values:</p>
+<ul class="simple">
+<li><p>a disposable template</p></li>
+<li><p>empty value</p></li>
+<li><p>default system value (this will use the system-wide <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.default_dispvm" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">default_dispvm</span></code></a> property)</p></li>
+</ul>
+<p>In case of disposables, this property is by default set to their own disposable template, to avoid data leaks through, for example, using unintended network access paths.</p>
+<p>This value is also used in case of qrexec policy: when policy rules use the <a class="reference external" href="https://doc.qubes-os.org/projects/core-qrexec/en/stable/qrexec-policy.html" title="(in qubes-core-qrexec v4.4.2)"><span class="xref std std-doc">&#64;dispvm</span></a> tag, it translates to “a disposable based on the source qube’s <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.default_dispvm" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">default_dispvm</span></code></a>. It is most commonly used to open files and URLs, (<code class="file docutils literal notranslate"><span class="pre">qubes.OpenInVM</span></code> and <code class="file docutils literal notranslate"><span class="pre">qubes.OpenURL</span></code>, respectively).</p>
+<p>If you want to allow creating disposables based on different disposable templates, you can use the disposable template name or tag as destination. In particular:</p>
+<ul class="simple">
+<li><p><code class="samp docutils literal notranslate"><span class="pre">&#64;dispvm:</span><em><span class="pre">DISPOSABLE_TEMPLATE</span></em></code>, where <code class="samp docutils literal notranslate"><em><span class="pre">DISPOSABLE_TEMPLATE</span></em></code> is the desired template;</p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">&#64;dispvm:&#64;tag:</span><em><span class="pre">CUSTOM_TAG</span></em></code>, where <code class="samp docutils literal notranslate"><em><span class="pre">CUSTOM_TAG</span></em></code> is the tag of your choice.</p></li>
+</ul>
+</section>
+</section>
+<section id="preloaded-disposables">
+<h2>Preloaded disposables<a class="headerlink" href="#preloaded-disposables" title="Link to this heading"></a></h2>
+<p>Starting new disposables can be a slow process. To speed it up, Qubes OS provides disposable preloading, which enables fast retrieval of fresh disposables.</p>
+<p>Instead of performing the whole startup each time a new <a class="reference internal" href="../../user/reference/glossary.html#term-disposable"><span class="xref std std-term">disposable</span></a> is requested, preloading keeps prepared (running and paused) qubes in the background, ready to be used when needed. In order to accomplish this, they are started in the background without user interaction, hidden from most graphical applications by being <a class="reference internal" href="../../user/reference/glossary.html#term-internal-qube"><span class="xref std std-term">internal</span></a>. They are unpaused (transparently) when a disposable qube is requested by the user.</p>
+<section id="preloaded-disposable-s-stages">
+<h3>Preloaded disposable’s stages<a class="headerlink" href="#preloaded-disposable-s-stages" title="Link to this heading"></a></h3>
+<p>There are several stages a disposable goes through when preloading is enabled:</p>
+<ol class="arabic simple">
+<li><p><strong>Preload</strong>: The qube is created and marked as preloaded. The qube is not visible in GUI applications.</p></li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>Startup</strong>: Begins qube startup, starts basic services and attempts to pause the qube.</p></li>
+<li><p><strong>Request</strong>: Triggered by the user requesting a new disposable qube. The qube is removed from the preload list. If qube startup has not yet reached pause, the pause stage is skipped.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>Used</strong>: The qube is marked as used and will be unpaused/resumed (if needed). At this stage, GUI applications treat the qube as any other disposable and the qube object is returned to the caller if requested.</p></li>
+</ol>
+</section>
+<section id="preloaded-disposable-s-worry-free-life-cycle">
+<h3>Preloaded disposable’s worry-free life-cycle<a class="headerlink" href="#preloaded-disposable-s-worry-free-life-cycle" title="Link to this heading"></a></h3>
+<p>There are several events that may trigger the creation or deletion of preloaded disposables. Qubes OS attempts to maintain as many preloaded disposables as the user set through the <code class="docutils literal notranslate"><span class="pre">preload-dispvm-max</span></code> feature, and any preloaded disposables that are invalid will be deleted or replaced as soon as possible. This is balanced by the need to ensure the system is responsive, thus the refreshing of disposables may take some time.</p>
+<section id="preloaded-disposable-s-management">
+<h4>Preloaded disposable’s management<a class="headerlink" href="#preloaded-disposable-s-management" title="Link to this heading"></a></h4>
+<p>Maximum number of preloaded disposables is defined by the <code class="docutils literal notranslate"><span class="pre">preload-dispvm-max</span></code> feature. This feature can be set on any disposable template (this defines the maximum number of disposables preloaded from this template), and on the <code class="docutils literal notranslate"><span class="pre">dom0</span></code> (this defines the maximum number of disposables preloaded from the system-wide default disposable template). In case those values conflict, the <code class="docutils literal notranslate"><span class="pre">dom0</span></code> value takes precedence (for example, if <code class="docutils literal notranslate"><span class="pre">preload-dispvm-max</span></code> is set to 0 on the <code class="docutils literal notranslate"><span class="pre">default-dvm</span></code> disposable template, which is the default disposable template, and to 4 on <code class="docutils literal notranslate"><span class="pre">dom0</span></code>, Qubes OS will attempt to preload 4 disposables from <code class="docutils literal notranslate"><span class="pre">default-dvm</span></code>).</p>
+<p>These are common events that trigger changes in preloaded disposables quantity:</p>
+<ul class="simple">
+<li><p>Create or remove:</p>
+<ul>
+<li><p>Changing the <code class="docutils literal notranslate"><span class="pre">preload-dispvm-max</span></code> feature;</p></li>
+<li><p>Changing system-wide <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.default_dispvm" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">default_dispvm</span></code></a> if system-wide <code class="docutils literal notranslate"><span class="pre">preload-dispvm-max</span></code> is set to a different value than the disposable template setting;</p></li>
+</ul>
+</li>
+<li><p>Refill:</p>
+<ul>
+<li><p>(Re)starting <code class="file docutils literal notranslate"><span class="pre">qubes-preload-dispvm.service</span></code>;</p></li>
+<li><p>Requesting a disposable;</p></li>
+<li><p>Using a preloaded disposable (both this and requesting a disposable trigger a refill, in case one of them fails - this ensures maximum preloading if possible);</p></li>
+</ul>
+</li>
+<li><p>Refresh (delete old preloaded disposables and create then anew):</p>
+<ul>
+<li><p>Updating the volumes of a template or disposable template;</p></li>
+<li><p>Qubesd was interrupted mid preload creation, on the next service restart, <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/index.html#qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded" title="(in core-admin v4.4.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">domain-load</span></code></a> of the disposable template.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="availability-gaps">
+<h4>Availability gaps<a class="headerlink" href="#availability-gaps" title="Link to this heading"></a></h4>
+<p>Some events that may cause a temporary gap in preloaded disposable availability:</p>
+<ul class="simple">
+<li><p>There is not enough memory to preload at the moment;</p></li>
+<li><p>Service to check if the system is fully operational has failed and will remove the qube. This will not cause repeated attempts as it most likely would lead to the same outcome to infinity.</p></li>
+</ul>
+</section>
+<section id="bootstrapping-preloaded-disposables">
+<h4>Bootstrapping Preloaded disposables<a class="headerlink" href="#bootstrapping-preloaded-disposables" title="Link to this heading"></a></h4>
+<p>To bootstrap the creation of preloaded disposables after boot, the service <code class="file docutils literal notranslate"><span class="pre">qubes-preload-dispvm.service</span></code> is used instead of <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/index.html#qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded" title="(in core-admin v4.4.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">domain-load</span></code></a> of the disposable template because it relies on systemd to:</p>
+<ul class="simple">
+<li><p>Order this action after the autostart or standard qubes - they must precede in order to have a functional system;</p></li>
+<li><p>Skip preloading if kernel command line prevents autostart.</p></li>
+</ul>
+</section>
+</section>
+<section id="preloaded-disposables-memory-management">
+<h3>Preloaded disposables’ memory management<a class="headerlink" href="#preloaded-disposables-memory-management" title="Link to this heading"></a></h3>
+<p>Qubes OS attempts to manage a preloaded disposable’s qube memory directly before the pause stage, as it is impossible to negotiate memory with a paused qube. At the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.on_domain_pre_paused" title="(in core-admin v4.4.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">domain-pre-paused</span></code></a> stage, memory is set to use preferred memory value. In <a class="reference internal" href="qmemman.html"><span class="doc">qmemman terms</span></a>, preferred memory is just enough to have the qube running, and so, hopefully as much as possible of qube memory is retrieved to be used by other, currently running qubes.</p>
+<p>This process can take a bit of time because it depends on how fast the qube can free up memory. In <code class="docutils literal notranslate"><span class="pre">qubes.qmemman.systemstate</span></code>, there is a timeout (<code class="docutils literal notranslate"><span class="pre">CHECK_PERIOD</span></code>) and a threshold in transfer speed (<code class="docutils literal notranslate"><span class="pre">CHECK_MB_S</span></code>) when attempting to balloon. When both of these conditions are met, the memory management is done and the preloaded disposable can be paused.</p>
+<p>We do not worry about the time this process takes, even though it does prolong the preload creation stage. In the long run, the memory usage is more important. Unfortunately, qmemman is synchronous, so only one request can be made at a time, thus anything that takes too much time on qmemman could prevent balancing memory usage of other qubes.</p>
+</section>
+<section id="preloaded-disposable-s-pause">
+<h3>Preloaded disposable’s pause<a class="headerlink" href="#preloaded-disposable-s-pause" title="Link to this heading"></a></h3>
+<p>Preloaded disposables are paused because:</p>
+<ul class="simple">
+<li><p>it makes detecting if a qube was used without being requested with <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.from_appvm" title="(in core-admin v4.4.0)"><code class="docutils literal notranslate"><span class="pre">qubes.vm.dispvm.DispVM.from_appvm()</span></code></a>. Not every communication with a qube goes through <strong class="program">qubesd</strong>, it may happen via qrexec or GUI daemon;</p></li>
+<li><p>CPU scheduling economy: a paused domain is not eligible for it;</p></li>
+<li><p>Cronjob, timers and other things that don’t block the init system and service manager completion won’t run and alter a clean state.</p></li>
+</ul>
+<p>But this comes at a cost:</p>
+<ul class="simple">
+<li><p>Memory management before pause may take some seconds. As described above, this does not increase time to use the preloaded qube but can slow down the system as a whole, as <a class="reference internal" href="qmemman.html"><span class="doc">qmemman</span></a> can not balance memory usage of other qubes in the mean time.</p></li>
+</ul>
+</section>
+<section id="preloaded-disposable-s-security">
+<h3>Preloaded disposable’s security<a class="headerlink" href="#preloaded-disposable-s-security" title="Link to this heading"></a></h3>
+<p>As preloaded disposables are started before being used, some measures to prevent accidental tampering and reuse were introduced:</p>
+<ul class="simple">
+<li><p>The qube has the <code class="docutils literal notranslate"><span class="pre">internal</span></code> feature enabled. Qubes GUI applications hide <a class="reference internal" href="../../user/reference/glossary.html#term-internal-qube"><span class="xref std std-term">internal qubes</span></a>;</p></li>
+<li><p>When requesting a disposable, the qube object is only returned to the user once it has finished preloading;</p></li>
+<li><p>The qube is paused as the last stage of preloading. This means the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.on_domain_unpaused" title="(in core-admin v4.4.0)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">domain-unpaused</span></code></a> event  can be used to mark the qube as used and remove it from the preload list, avoiding reliabce on <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.from_appvm" title="(in core-admin v4.4.0)"><code class="docutils literal notranslate"><span class="pre">qubes.vm.dispvm.DispVM.from_appvm()</span></code></a>;</p></li>
+<li><p>The GUID and Audio daemon only connect to the GUI agent and audio agent in the qube after the preloaded disposable is marked as used. This prevents autostarted applications from appearing on the screen before they are ready or before pause, which could be confusing. Enabling a GUI is controlled by the <a class="reference external" href="https://doc.qubes-os.org/projects/core-admin/en/latest/qubes-vm/dispvm.html#qubes.vm.dispvm.DispVM.is_preload" title="(in core-admin v4.4.0)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_preload</span></code></a> property - when it is set to False, GUI and audio connections are initiated.</p></li>
+</ul>
+<p>To ensure reliability:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">preload-dispvm-threshold</span></code> feature controls how much free memory must be present on the system before attempting to create a new preloaded disposable. Used to ensure preloaded disposables do not consume all available memory, which would prevent starting other qubes.</p></li>
+</ul>
+<p>To have late GUI daemon but an early GUI agent, changes have been made that limit the usability on <code class="docutils literal notranslate"><span class="pre">sys-gui</span></code>. <a class="reference external" href="https://github.com/QubesOS/qubes-gui-agent-linux/pull/253">Events such as plugging or removing external monitors can’t work, it will be ignored by Xephyr</a>.</p>
+</section>
+<section id="alternatives-considered">
+<h3>Alternatives considered<a class="headerlink" href="#alternatives-considered" title="Link to this heading"></a></h3>
+<p>For an alternative to be considered for implementation, it must meet the following requirements:</p>
+<ul class="simple">
+<li><p>No memory or <code class="docutils literal notranslate"><span class="pre">vcpus</span></code> restrictions such as limiting to a few number of <code class="docutils literal notranslate"><span class="pre">vcpus</span></code> or assigns memory on request (can be slow).</p></li>
+<li><p>Performant as much as a normal disposable even on long running sessions;</p></li>
+<li><p>Caller transparency, no change necessary for callers, the request must be transparent and the server must find the fastest option. This is to avoid transition burden (API breakage).</p></li>
+</ul>
+<p>From the evaluated options, only <a class="reference internal" href="#preload-queue"><span class="std std-ref">preload queue</span></a> meets all requirements.</p>
+<section id="restoration-from-savefile">
+<h4>Restoration from savefile<a class="headerlink" href="#restoration-from-savefile" title="Link to this heading"></a></h4>
+<p><strong>Description</strong>: Disposable template booted, its image was dumped (suspend to disk), newly disposables would restore this image to become their own.</p>
+<p><strong>Evaluation</strong>:</p>
+<ul class="simple">
+<li><p>Used in R3.2, worked at that time, when there was only one disposable template available, see next points of why it can’t be used anymore.</p></li>
+<li><p>Incompatible with multiple <code class="docutils literal notranslate"><span class="pre">vcpus</span></code>.</p></li>
+<li><p>Some memory issues.</p></li>
+<li><p>Savefile creation takes a long time. The disposable qube savefile contains references to template rootfs and <abbr title="Copy-on-Write">CoW</abbr> files, if there is a modification on the template or disposable template, it took longer than 2.5 minutes to generate the next disposable.</p></li>
+</ul>
+</section>
+<section id="xen-domain-fork">
+<h4>Xen domain fork<a class="headerlink" href="#xen-domain-fork" title="Link to this heading"></a></h4>
+<p><strong>Description</strong>: domain forking is the process of creating a domain with an empty memory space and a parent domain specified from which to populate the memory when necessary. For the new domain to be functional the domain state is copied over as part of the fork operation (HVM params, heap allocation etc). This description was sourced from <a class="reference external" href="https://lists.xenproject.org/archives/html/xen-devel/2019-09/msg02497.html">[Xen-devel] [RFC PATCH for-next 17/18] xen/mem_sharing: VM forking, Tamas K Lengyel</a>.</p>
+<p><strong>Evaluation</strong>:</p>
+<ul class="simple">
+<li><p>Shares too much information from the trunk to the forks. This appears to have improved if not totally fixed on Linux 6.14, as mentioned by Andrew Cooper on Qubes OS Summit 2025;</p></li>
+<li><p>Requires changing properties after the fork is done, this includes, but not limited to, <code class="docutils literal notranslate"><span class="pre">xid</span></code> of connected qubes, network uplink;</p></li>
+<li><p>Not designed for long running sessions, the initial intention was fuzzing. As fast as the creation can be, the usage may be slower as memory is mapped on request. Xen doesn’t have a poper <abbr title="Copy-on-Write">CoW</abbr> support for domain memory, so making a full copy of a domain on fork also has some overhead;</p></li>
+<li><p>Tamas K Lengyiel <a class="reference external" href="https://www.youtube.com/watch?v=3MYo8ctD_aU">VM Forking &amp; Hypervisor-Based Fuzzing with Xen</a> presentation during the Open Source Summit Europe in 2022, showed impressive results on CPU i5-8350U, an average of time of 0.745 ms per fork (created 1300 VM/s). These fast results were later explained that was due to not initializing the whole VM memory on the fork unless it was requested, as explained on the point above. Still impressive results but current usage is limited to fuzzing.</p></li>
+</ul>
+</section>
+<section id="preload-queue">
+<h4>Preload queue<a class="headerlink" href="#preload-queue" title="Link to this heading"></a></h4>
+<p><strong>Description</strong>: Start disposables and queue them in a disposable template feature, requested disposables will prefer to retrieve disposables from this list.</p>
+<p><strong>Evaluation</strong>:</p>
+<ul class="simple">
+<li><p>Because the qube is running prior to being requested, multiple components have to be patched to support it to various levels off difficulty. Excluding from backups to allowing removal of disposable templates that only have preloaded disposables to even stranger issues such as deferring net qube change from a preloaded disposable where the old net qube has already been purged from the system.</p></li>
+<li><p>The biggest difference between the queue and the other alternatives is that this solution works, is reliable and fulfills all requirements. A proper solution would be patching upstream Xen to implement <abbr title="Copy-on-Write">CoW</abbr>, but that would involve a lot more work than what the Qubes Team can provide with current resources.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qmemman.html" class="btn btn-neutral float-left" title="Qubes memory manager (qmemman)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dom0-secure-updates.html" class="btn btn-neutral float-right" title="Dom0 secure updates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/services/disposablevm-implementation.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

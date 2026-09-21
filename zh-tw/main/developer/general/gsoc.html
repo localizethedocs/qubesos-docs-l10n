@@ -1,0 +1,815 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Google Summer of Code (GSoC)" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="developer/general/gsoc.html" />
+<meta property="og:site_name" content="Qubes OS" />
+<meta property="og:description" content="Information for Students: Thank you for your interest in participating in the Google Summer of Code program with the Qubes OS team. You can read more about the Google Summer of Code program at the ..." />
+<meta property="og:image" content="https://www.qubes-os.org/attachment/icons/qubes-logo-icon-name-slogan-fb.png" />
+<meta name="description" content="Information for Students: Thank you for your interest in participating in the Google Summer of Code program with the Qubes OS team. You can read more about the Google Summer of Code program at the ..." />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Summer of Code (GSoC) &mdash; Qubes OS Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2f3a6127" />
+
+  
+    <link rel="shortcut icon" href="../../_static/favicon-16x16.png"/>
+    <link rel="canonical" href="https://projects.localizethedocs.org/qubesos-docs-l10n/developer/general/gsoc.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=b8127bbf"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cbf116e0"></script>
+      <script src="../../_static/custom.js?v=01ac952c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="在 Qubes OS Documentation 中搜尋"
+          href="../../_static/opensearch.xml"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../search.html" />
+    <link rel="next" title="Google Season of Docs (GSoD)" href="gsod.html" />
+    <link rel="prev" title="軟體包貢獻" href="package-contributions.html" />
+
+   
+
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Qubes OS
+              <img src="../../_static/qubes-logo-icon.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">介紹</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro.html">介紹</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/screenshots.html">螢幕擷圖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/video-tours.html">影片導覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting-started.html">開始使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/faq.html">常見問題（FAQ）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/issue-tracking.html">議題追蹤</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/support.html">Help, support, mailing lists, and forum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/contributing.html">如何貢獻</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/statistics.html">統計資料</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/code-of-conduct.html">行為守則</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/privacy.html">Privacy policy</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">選擇您的硬體</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/system-requirements.html">System requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/certified-hardware/certified-hardware.html">Certified hardware</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/community-recommended-computers/5560">社群推薦硬體</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/hcl/">硬體相容性清單 (HCL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hardware/how-to-use-the-hcl.html">How to use the hardware compatibility list (HCL)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">下載、安裝與升級 Qubes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/downloads/">下載 Qubes OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/download-mirrors.html">下載鏡像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/installation-guide.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/install-security.html">Installation security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/upgrade/upgrade.html">升級指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/supported-releases.html">支援的發行版</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/downloading-installing-upgrading/testing.html">測試新發行版與更新</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">操作指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-organize-your-qubes.html">How to organize your qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-set-a-wallpaper.html">How to take screenshots and set a wallpaper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-update.html">如何更新</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-back-up-restore-and-migrate.html">How to back up, restore, and migrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-paste-text.html">如何複製並貼上文字</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-and-move-files.html">如何複製與移動檔案</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-copy-from-dom0.html">How to copy from dom0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html">如何安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-disposables.html">How to use disposables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enter-fullscreen-mode.html">如何進入全螢幕模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-devices.html">如何使用裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-block-storage-devices.html">如何使用區塊儲存裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-usb-devices.html">如何使用 USB 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-pci-devices.html">如何使用 PCI 裝置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-use-optical-discs.html">如何使用光碟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-reinstall-a-template.html">如何重新安裝模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-edit-a-policy.html">How to edit a policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/how-to-guides/how-to-enable-a-service.html">如何啟用 qube 服務</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">模板</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/templates.html">模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora.html">Fedora templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html">如何就地升級 Fedora 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian.html">Debian templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/debian/debian-upgrade.html">如何就地升級 Debian 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/minimal-templates.html">Minimal templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/xfce-templates.html">Xfce 模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/templates/windows/index.html">Windows qubes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/installation-troubleshooting.html">安裝疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/update-troubleshooting.html">更新疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/debian-and-whonix-update-troubleshooting.html">更新 Debian 與 Whonix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hardware-troubleshooting.html">硬體疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/uefi-troubleshooting.html">UEFI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/autostart-troubleshooting.html">Autostart troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/resume-suspend-troubleshooting.html">Suspend/resume troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/app-menu-shortcut-troubleshooting.html">App menu shortcut troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/vm-troubleshooting.html">Qube 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/hvm-troubleshooting.html">HVM 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/disk-troubleshooting.html">磁碟疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/pci-troubleshooting.html">PCI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/usb-troubleshooting.html">USB 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/gui-troubleshooting.html">GUI 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/troubleshooting/media-troubleshooting.html">媒體疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Qubes 安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/firewall.html">防火牆</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/data-leaks.html">資料洩漏</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/vm-sudo.html">Passwordless root access in qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/device-handling-security.html">Device handling security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/anti-evil-maid.html">Anti evil maid (AEM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg.html">Split GPG</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/split-gpg-2.html">Split GPG-2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/mfa.html">Multi-factor Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/security-in-qubes/ctap-proxy.html">CTAP 代理</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">進階話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/how-to-install-software-in-dom0.html">如何在 dom0 中安裝軟體</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/volume-backup-revert.html">Volume backup and revert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/standalones-and-hvms.html">Standalones and HVMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/config-files.html">組態檔</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/secondary-storage.html">Secondary storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/rpc-policy.html">RPC policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/usb-qubes.html">USB qubes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/managing-vm-kernels.html">管理 qube 內核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/salt.html">Salt (management software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-domain.html">GUI domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/disposable-customization.html">Disposable customization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/installing-contributed-packages.html">Installing contributed packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/bind-dirs.html">How to make any file persistent (bind-dirs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/gui-configuration.html">GUI 組態</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/resize-disk-image.html">調整磁碟映像檔大小</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/qubes-service.html">Qubes service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/mount-from-other-os.html">How to mount a Qubes partition from another OS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/kde.html">KDE（桌面環境）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/i3.html">i3 (window manager)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/advanced-topics/awesomewm.html">AwesomeWM (window manager)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">參考</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/tools.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/reference/glossary.html">詞彙表</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">專案安全性</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security.html">Qubes OS project security center</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/security-pack.html">Qubes security pack (qubes-secpack)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project-security/verifying-signatures.html">驗證簽章</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 一般</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="package-contributions.html">軟體包貢獻</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Google Summer of Code (GSoC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#information-for-students">Information for Students</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-steps">Overview of Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributor-proposal-guidelines">Contributor proposal guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#project-ideas">Project Ideas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#graphical-package-manager-support-in-templates">Graphical package manager support in templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automate-template-version-upgrade">Automate template version upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-as-a-vagrant-provider">Qubes as a Vagrant provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-health-monitor">System health monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mechanism-for-maintaining-in-vm-configuration">Mechanism for maintaining in-VM configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qubes-live-usb">Qubes Live USB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logvm-s">LogVM(s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#whonix">Whonix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gui-agent-for-windows-8-10">GUI agent for Windows 8/10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generalize-the-qubes-pdf-converter-to-other-types-of-files">Generalize the Qubes PDF Converter to other types of files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#progress-towards-reproducible-builds">Progress towards reproducible builds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#porting-qubes-to-arm-aarch64">Porting Qubes to ARM/aarch64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#android-development-in-qubes">Android development in Qubes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#admin-api-fuzzer">Admin API Fuzzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#secure-boot-support">Secure Boot support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reduce-logging-of-disposable-vms">Reduce logging of Disposable VMs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#past-projects">Past Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsod.html">Google Season of Docs (GSoD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-edit-the-rst-documentation.html">如何編輯文件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst-documentation-style-guide.html">reStructuredText 文件風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-edit-the-website.html">How to edit the website</a></li>
+<li class="toctree-l1"><a class="reference internal" href="website-style-guide.html">網站風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="continuous-integration.html">持續整合（CI）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usability-ux.html">可用性與使用者體驗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developing-gui-applications.html">開發 Qubes OS GUI 工具</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/doc/visual-style-guide/">視覺風格指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="research.html">研究</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devel-books.html">Developer books</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 程式碼</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../code/source-code.html">Source code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/license.html">軟體授權條款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/coding-style.html">Coding style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../code/code-signing.html">Code signing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 系統</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../system/architecture.html">架構</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-design-goals.html">Security design goals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/security-critical-code.html">Security-critical code</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin/">Qubes 核心管理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dev.qubes-os.org/projects/core-admin-client/">Qubes 核心管理客戶端</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.qubes-os.org/news/2017/10/03/core3/">Qubes 核心堆疊</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/gui.html">GUI 虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/networking.html">網路</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-implementation.html">Template implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/audio.html">音訊虛擬化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/template-manager.html">Template manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../system/vm-sudo.html">無密碼 root 存取實作</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfilecopy.html">Inter-qube file copying (qfilecopy)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qmemman.html">Qubes memory manager (qmemman)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/disposablevm-implementation.html">Disposable implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/dom0-secure-updates.html">Dom0 secure updates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec.html">Qrexec: secure communication across domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec2.html">Qrexec v2 (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-internals.html">Qrexec: Qubes RPC internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qrexec-socket-services.html">Qrexec: socket-based services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/admin-api.html">Admin API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/qfileexchgd.html">Qfileexchgd (deprecated)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 偵錯</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/test-bench.html">How to set up a test bench</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/automated-tests.html">Automated tests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/vm-interface.html">Qube configuration interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/windows-debugging.html">Windows debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/safe-remote-ttys.html">安全的遠端 dom0 終端機</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../debugging/mount-lvm-image.html">How to mount LVM images</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 建置</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-v2.html">Qubes builder v2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-builder-details.html">Qubes builder details</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/development-workflow.html">開發工作流程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../building/qubes-iso-building.html">Qubes ISO 建置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/QubesOS/qubes-template-configs">Qubes 模板組態</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">開發者 - 發行版</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/notes.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/schedules.html">發行時程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/todo.html">Release checklist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/version-scheme.html">版本方案</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">關於外部文件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/external-documentation.html">關於外部文件</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 作業系統指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/centos-rhel-clone-8-templatevm/19006">模板：CentOS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/gentoo-templatevm/19007">模板：Gentoo</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/blackarch-templatevm/19010">滲透測試：BlackArch</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/creating-a-kali-linux-templatevm/19071">滲透測試：Kali</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/penetration-testers-framework-ptf-templatevm/19011">滲透測試：PTF</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tips-for-linux-hvms/19008">在 HVM 中使用 Linux 的技巧</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/netbsd-qube/19009">建立 NetBSD 虛擬機器</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 安全指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/general-security-guidelines/19075">安全準則</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-multi-factor-authentication/19016">在 Qubes 中使用多因素驗證</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/how-to-set-up-a-split-bitcoin-wallet/19017">如何在 Qubes 中設定分割比特幣錢包</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/rustybird/qubes-split-dm-crypt">Split dm-crypt</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/split-ssh/19060">Split SSH</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.crp.to/qubes.html">將 OnlyKey 與 Qubes OS 搭配使用</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 隱私指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/whonix-for-privacy-anonymity/19014">Whonix 實現隱私與匿名</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-hvm/19012">在 Qubes 中執行 Tails</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/anonymizing-your-mac-address/19072">匿名化您的 MAC 位址</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/signal-messenger/19073">如何在 Qubes 中安裝 Signal Desktop</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/reducing-the-fingerprint-of-the-text-based-web-browser-w3m/18993">降低文字型網頁瀏覽器 w3m 的指紋辨識度</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 組態指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988">多重開機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/changing-your-time-zone/18983">變更您的時區</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/zfs-in-qubes-os/18994">在 Qubes 中安裝 ZFS</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/mutt-mail-user-agent/18989">Mutt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/postfix-mta/18991">Postfix 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fetchmail/18985">Fetchmail 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://theinvisiblethings.blogspot.com/2011/09/playing-with-qubes-networking-for-fun.html">建立自訂 NetVM 和 ProxyVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/group/qubes-devel/msg/4ca950ab6d7cd11a">如何為無網路的 VM 建立個別 TCP 連線代理</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/network-bridge-support-experimental-and-unsupported/18990">為 NetVM 加入橋接支援（實驗性）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sharing-a-screen-across-qubes/19059">螢幕共享</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-network-printer/19056">設定網路印表機</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/using-external-audio-devices/18984">使用外部音訊裝置</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/rxvt-terminal/18992">Rxvt 指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/msgid/qubes-users/a08359c9-9eb0-4d1a-ad92-a8a9bc676ea6%40googlegroups.com">加入 SSD 儲存快取</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/configuring-a-multimedia-templatevm/19055">如何製作多媒體 TemplateVM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-proprietary-driver-installation/18987">如何在 dom0 中安裝 Nvidia 驅動程式</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 自訂指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/fedora-packages-recommendations/18999">自訂 Fedora 精簡模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/disable-uninstall-unnecessary-features-in-windows-qubes/19005">自訂 Windows 7 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/language-localization/19001">語言在地化</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/dark-theme-in-dom0/18997">Dom0 和 DomU 中的深色主題</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/safely-uninstalling-packages-in-templatevms/19002">安全移除 TemplateVM 套件（範例：Thunderbird）</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 疑難排解</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/nvidia-troubleshooting-guide/19021">Nvidia 疑難排解指南</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/lenovo-thinkpad-troubleshooting/19024">Lenovo ThinkPad 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/apple-macbook-troubleshooting/19020">Apple MacBook 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/sony-vaio-z-laptop-troubleshooting/19022">Sony Vaio 疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/intel-integrated-graphics-troubleshooting/19081">Intel 內建顯示卡疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/multibooting-qubes/18988#troubleshooting-5">多重開機疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/troubleshooting-default-applications/19019">應用程式疑難排解</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/tails-troubleshooting-guide/19023">Tails 疑難排解</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">外部 - 建置指南</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-a-templatevm-for-a-new-os/18972">基於新作業系統建置 TemplateVM（ArchLinux 範例）</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/archlinux-minimal-template/19052">建置 Archlinux 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forum.qubes-os.org/t/building-whonix-templates/18981">建置 Whonix 模板</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/d/topic/qubes-users/yBeUJPwKwHM/discussion">如何為 dom0 編譯內核</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Qubes OS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Google Summer of Code (GSoC)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/QubesOs/qubes-doc/blob/main/developer/general/gsoc.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="google-summer-of-code-gsoc">
+<h1>Google Summer of Code (GSoC)<a class="headerlink" href="#google-summer-of-code-gsoc" title="連結到這個標頭"></a></h1>
+<section id="information-for-students">
+<h2>Information for Students<a class="headerlink" href="#information-for-students" title="連結到這個標頭"></a></h2>
+<p>Thank you for your interest in participating in the <a class="reference external" href="https://summerofcode.withgoogle.com/">Google Summer of Code program</a> with the <a class="reference external" href="https://www.qubes-os.org/team/">Qubes OS team</a>. You can read more about the Google Summer of Code program at the <a class="reference external" href="https://summerofcode.withgoogle.com/">official website</a> and the <a class="reference external" href="https://developers.google.com/open-source/gsoc/faq">official FAQ</a>.</p>
+<p>Being accepted as a Google Summer of Code contributor is quite competitive. If you are interested in participating in the Summer of Code please be aware that you must be able to produce code for Qubes OS for 3-5 months. Your mentors, Qubes developers, will dedicate a portion of their time towards mentoring you. Therefore, we seek candidates who are committed to helping Qubes long-term and are willing to do quality work and be proactive in communicating with your mentor.</p>
+<p>You don’t have to be a proven developer – in fact, this whole program is meant to facilitate joining Qubes and other free and open source communities. The Qubes community maintains information about <a class="reference internal" href="../../introduction/contributing.html#contributing-code"><span class="std std-ref">contributing to Qubes development</span></a> and <a class="reference internal" href="../code/source-code.html#how-to-send-patches"><span class="std std-ref">how to send patches</span></a>. In order to contribute code to the Qubes project, you must be able to <a class="reference internal" href="../code/code-signing.html"><span class="doc">sign your code</span></a>.</p>
+<p>You should start learning the components that you plan on working on before the start date. Qubes developers are available on the <a class="reference internal" href="../../introduction/support.html#qubes-devel"><span class="std std-ref">mailing lists</span></a> for help. The GSoC timeline reserves a lot of time for bonding with the project – use that time wisely. Good communication is key, you should plan to communicate with your team daily and formally report progress and plans weekly. Students who neglect active communication will be failed.</p>
+<section id="overview-of-steps">
+<h3>Overview of Steps<a class="headerlink" href="#overview-of-steps" title="連結到這個標頭"></a></h3>
+<ul class="simple">
+<li><p>Join the <a class="reference internal" href="../../introduction/support.html#qubes-devel"><span class="std std-ref">qubes-devel list</span></a> and introduce yourself, and meet your fellow developers</p></li>
+<li><p>Read <a class="reference external" href="https://developers.google.com/open-source/gsoc/">Google’s instructions for participating</a> and the <a class="reference external" href="https://google.github.io/gsocguides/student/">GSoC Student Manual</a></p></li>
+<li><p>Take a look at the list of ideas below</p></li>
+<li><p>Come up with a project that you are interested in (and feel free to propose your own! Don’t feel limited by the list below.)</p></li>
+<li><p>Read the Contributor Proposal guidelines below</p></li>
+<li><p>Write a first draft proposal and send it to the qubes-devel mailing list for review</p></li>
+<li><p>Submit proposal using <a class="reference external" href="https://summerofcode.withgoogle.com/">Google’s web interface</a> ahead of the deadline (this requires a Google Account!)</p></li>
+<li><p>Submit proof of enrollment well ahead of the deadline</p></li>
+</ul>
+<p>Coming up with an interesting idea that you can realistically achieve in the time available to you (one summer) is probably the most difficult part. We strongly recommend getting involved in advance of the beginning of GSoC, and we will look favorably on applications from prospective contributors who have already started to act like free and open source developers.</p>
+<p>Before the summer starts, there are some preparatory tasks which are highly encouraged. First, if you aren’t already, definitely start using Qubes as your primary OS as soon as possible! Also, it is encouraged that you become familiar and comfortable with the Qubes development workflow sooner than later. A good way to do this (and also a great way to stand out as an awesome applicant and make us want to accept you!) might be to pick up some issues from <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues">qubes-issues</a> (our issue-tracking repo) and submit some patches addressing them. Some suitable issues might be those with tags <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22P%3A%20minor%22%20label%3A%22help%20wanted%22">“help wanted” and “P: minor”</a> (although more significant things are also welcome, of course). Doing this will get you some practice with <a class="reference internal" href="../building/qubes-builder-v2.html"><span class="doc">qubes-builder</span></a>, our code-signing policies, and some familiarity with our code base in general so you are ready to hit the ground running come summer.</p>
+</section>
+<section id="contributor-proposal-guidelines">
+<h3>Contributor proposal guidelines<a class="headerlink" href="#contributor-proposal-guidelines" title="連結到這個標頭"></a></h3>
+<p>A project proposal is what you will be judged upon. Write a clear proposal on what you plan to do, the scope of your project, and why we should choose you to do it. Proposals are the basis of the GSoC projects and therefore one of the most important things to do well.</p>
+<p>Below is the application template:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Introduction</span>
+
+Every software project should solve a problem. Before offering the solution (your Google Summer of Code project), you should first define the problem. What’s the current state of things? What’s the issue you wish to solve and why? Then you should conclude with a sentence or two about your solution. Include links to discussions, features, or bugs that describe the problem further if necessary.
+
+<span class="gh"># Project goals</span>
+
+Be short and to the point, and perhaps format it as a list. Propose a clear list of deliverables, explaining exactly what you promise to do and what you do not plan to do. “Future developments” can be mentioned, but your promise for the Google Summer of Code term is what counts.
+
+<span class="gh"># Implementation</span>
+
+Be detailed. Describe what you plan to do as a solution for the problem you defined above. Include technical details, showing that you understand the technology. Illustrate key technical elements of your proposed solution in reasonable detail.
+
+<span class="gh"># Timeline</span>
+
+Show that you understand the problem, have a solution, have also broken it down into manageable parts, and that you have a realistic plan on how to accomplish your goal. Here you set expectations, so don’t make promises you can’t keep. A modest, realistic and detailed timeline is better than promising the impossible.
+
+If you have other commitments during GSoC, such as a job, vacation, exams, internship, seminars, or papers to write, disclose them here. GSoC should be treated like a full-time job, and we will expect approximately 40 hours of work per week. If you have conflicts, explain how you will work around them. If you are found to have conflicts which you did not disclose, you may be failed.
+
+Open and clear communication is of utmost importance. Include your plans for communication in your proposal; daily if possible. You will need to initiate weekly formal communications such as a detailed email to the qubes-devel mailing list. Lack of communication will result in you being failed.
+
+<span class="gh"># About me</span>
+
+Provide your contact information and write a few sentences about you and why you think you are the best for this job. Prior contributions to Qubes are helpful; list your commits. Name people (other developers, students, professors) who can act as a reference for you. Mention your field of study if necessary. Now is the time to join the relevant mailing lists. We want you to be a part of our community, not just contribute your code.
+
+Tell us if you are submitting proposals to other organizations, and whether or not you would choose Qubes if given the choice.
+
+Other things to think about:
+<span class="k">*</span><span class="w"> </span>Are you comfortable working independently under a supervisor or mentor who is several thousand miles away, and perhaps 12 time zones away? How will you work with your mentor to track your work? Have you worked in this style before?
+<span class="k">*</span><span class="w"> </span>If your native language is not English, are you comfortable working closely with a supervisor whose native language is English? What is your native language, as that may help us find a mentor who has the same native language?
+<span class="k">*</span><span class="w"> </span>After you have written your proposal, you should get it reviewed. Do not rely on the Qubes mentors to do it for you via the web interface, although we will try to comment on every proposal. It is wise to ask a colleague or a developer to critique your proposal. Clarity and completeness are important.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="project-ideas">
+<h2>Project Ideas<a class="headerlink" href="#project-ideas" title="連結到這個標頭"></a></h2>
+<p>These project ideas were contributed by our developers and may be incomplete. If you are interested in submitting a proposal based on these ideas, you should contact the <a class="reference internal" href="../../introduction/support.html#qubes-devel"><span class="std std-ref">qubes-devel mailing list</span></a> and associated GitHub issue to learn more about the idea.</p>
+<section id="graphical-package-manager-support-in-templates">
+<h3>Graphical package manager support in templates<a class="headerlink" href="#graphical-package-manager-support-in-templates" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Graphical package manager support in templates</p>
+<p><strong>Brief explanation</strong>: Most of the actions needed to be performed by a Qubes OS user can be done easily with GUI tools and without the command line -- except installing managing software in a template. This project aims to fill this gap by ensuring a smooth user experience across different default templates (Fedora, Debian, Whonix) to have GUI-based software management. for more info please see: <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/6310">https://github.com/QubesOS/qubes-issues/issues/6310</a> as well as <a class="reference external" href="https://forum.qubes-os.org/t/how-to-fix-software-in-templates-to-install-packages-using-a-gui/20944">https://forum.qubes-os.org/t/how-to-fix-software-in-templates-to-install-packages-using-a-gui/20944</a></p>
+<p><strong>Expected results</strong>:
+- select a basic software manager for each template
+- ensure necessary tweaks so that they can access internet via <cite>qubes updates proxy</cite> <a class="reference internal" href="../../user/how-to-guides/how-to-install-software.html#updates-proxy"><span class="std std-ref">Updates proxy</span></a>
+- an &quot;Add Software&quot; context button in Qubes menu that works across different templates</p>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>:
+- Python</p>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentor</strong>: Marta Marczykowska-Górecka &lt;<a class="reference external" href="mailto:marmarta&#37;&#52;&#48;invisiblethingslab&#46;com">marmarta<span>&#64;</span>invisiblethingslab<span>&#46;</span>com</a>&gt;</p>
+</section>
+<section id="automate-template-version-upgrade">
+<h3>Automate template version upgrade<a class="headerlink" href="#automate-template-version-upgrade" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Automate template version upgrade</p>
+<p><strong>Brief explanation</strong>: At least once a year, users have to upgrade the Fedora template to the next version (e.g. Fedora 42 to Fedora 43), for Debian-based qubes this is less frequent <a class="reference internal" href="../../user/templates/debian/debian.html#upgrading"><span class="std std-ref">but is eventually necessary</span></a>. The documentation <a class="reference internal" href="../../user/templates/fedora/fedora.html#upgrading"><span class="std std-ref">recommends</span></a> downloading the new template and then installing once again all the software the user had on the previous template. This is a cumbersome process that requires remembering / discovering all that had been installed / modified on the older template. The alternative is to <a class="reference internal" href="../../user/templates/fedora/fedora-upgrade.html"><span class="doc">perform an inplace upgrade</span></a>, but it involves running manual commands in the template's terminal. The goal of this project to enable users to easily do template inplace upgrades with a single command / push of a button. You can find prior efforts in <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/8605">issue #8605</a>.</p>
+<p><strong>Expected results</strong>:
+- Build and integrate Fedora and Debian template upgrade mechanism into existing tooling
+- Adequate safeguards to accommodate failure scenarios during upgrades
+- <a class="reference internal" href="../debugging/automated-tests.html"><span class="doc">Write integration tests</span></a></p>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>:
+- Python
+- Bash
+- Debian / Fedora packaging</p>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: Piotr Bartman-Szwarc</p>
+</section>
+<section id="qubes-as-a-vagrant-provider">
+<h3>Qubes as a Vagrant provider<a class="headerlink" href="#qubes-as-a-vagrant-provider" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Qubes as a Vagrant provider</p>
+<p><strong>Brief explanation</strong>: Currently using Vagrant on Qubes requires finding an image that uses Docker as isolation provider and running Docker in a qube, or downloading the Vagrantfile and manually setting up a qube according to the Vagrantfile. This project aims at simplifying this workflow. Since introduction of Admin API, it’s possible for a qube to provision another qube - which is exactly what is needed for Vagrant. <a class="reference external" href="https://groups.google.com/d/msgid/qubes-devel/535299ca-d16a-4a70-8223-a4ac6be4be41%40googlegroups.com">Related discussion</a></p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>Design how Vagrant Qubes provider should look like, including:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.vagrantup.com/docs/plugins/providers.html#box-format">box format</a></p></li>
+<li><p>method for running commands inside (ssh vs qvm-run)</p></li>
+</ul>
+</li>
+<li><p>Write a Vagrant provider able to create/start/stop/etc a VM</p></li>
+<li><p>Document how to configure and use the provider, including required qrexec policy changes and possibly firewall rules</p></li>
+<li><p>Write integration tests</p></li>
+</ul>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>Ruby</p></li>
+<li><p>Vagrant concepts</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Wojtek Porczyk</a>, <a class="reference external" href="https://www.qubes-os.org/team/">Marek Marczykowski-Górecki</a></p>
+</section>
+<section id="system-health-monitor">
+<h3>System health monitor<a class="headerlink" href="#system-health-monitor" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: System health monitor</p>
+<p><strong>Brief explanation</strong>: A tool that informs the user about common system and configuration issues. Some of this is already available, but scattered across different places. See related issues: <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/6663">6663</a>, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/2134">2134</a> (see issues linked to it).</p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>a tool / service that checks for common issues and things needing user attention, for example:</p>
+<ul>
+<li><p>some updates to be applied (separate widget already exists)</p></li>
+<li><p>running out of disk space (separate widget already exists)</p></li>
+<li><p>running out of memory</p></li>
+<li><p>insecure USB configuration (USB in dom0)</p></li>
+<li><p>some system VM crashed</p></li>
+<li><p>…</p></li>
+</ul>
+</li>
+<li><p>a GUI that provides terse overview of the system state, and notifies the user if something bad happens</p></li>
+</ul>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p>basic knowledge about systemd services</p></li>
+<li><p>PyGTK (optional)</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Marta Marczykowska-Górecka</a>, <a class="reference external" href="https://www.qubes-os.org/team/">Benjamin Grande</a></p>
+</section>
+<section id="mechanism-for-maintaining-in-vm-configuration">
+<h3>Mechanism for maintaining in-VM configuration<a class="headerlink" href="#mechanism-for-maintaining-in-vm-configuration" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Mechanism for maintaining in-VM configuration</p>
+<p><strong>Brief explanation</strong>: Large number of VMs is hard to maintain. Templates helps with keeping them updated, but many applications have configuration in user home directory, which is not synchronized.</p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>Design a mechanism how to <em>safely</em> synchronize application configuration living in user home directory (<code class="docutils literal notranslate"><span class="pre">~/.config</span></code>, some other “dotfiles”). Mechanism should be resistant against malicious VM forcing its configuration on other VMs. Some approach could be a strict control which VM can send what changes (whitelist approach, not blacklist).</p></li>
+<li><p>Implementation of the above mechanism.</p></li>
+<li><p>Documentation how to configure it securely.</p></li>
+</ul>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>shell and/or python scripting</p></li>
+<li><p>Qubes OS qrexec services</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Frédéric Pierret</a></p>
+</section>
+<section id="qubes-live-usb">
+<h3>Qubes Live USB<a class="headerlink" href="#qubes-live-usb" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Revive Qubes Live USB, integrate it with installer</p>
+<p><strong>Brief explanation</strong>: Qubes Live USB is based on Fedora tools to build live distributions. But for Qubes we need some adjustments: starting Xen instead of Linux kernel, smarter copy-on-write handling (we run there multiple VMs, so a lot more data to save) and few more. Additionally in Qubes 3.2 we have so many default VMs that default installation does not fit in 16GB image (default value) - some subset of those VMs should be chosen. Ideally we’d like to have just one image being both live system and installation image. More details: <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/1552">#1552</a>, <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/1965">#1965</a>.</p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>Adjust set of VMs and templates included in live edition.</p></li>
+<li><p>Update and fix build scripts for recent Qubes OS version.</p></li>
+<li><p>Update startup script to mount appropriate directories as either copy-on-write (device-mapper snapshot), or tmpfs.</p></li>
+<li><p>Optimize memory usage: should be possible to run sys-net, sys-firewall, and at least two more VMs on 4GB machine. This include minimizing writes to copy-on-write layer and tmpfs (disable logging etc).</p></li>
+<li><p>Research option to install the system from live image. If feasible add this option.</p></li>
+</ul>
+<p><strong>Difficulty</strong>: hard</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>System startup sequence: bootloaders (isolinux, syslinux, grub, UEFI), initramfs, systemd.</p></li>
+<li><p>Python and Bash scripting</p></li>
+<li><p>Filesystems and block devices: loop devices, device-mapper, tmpfs, overlayfs, sparse files.</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Frédéric Pierret</a></p>
+</section>
+<section id="logvm-s">
+<h3>LogVM(s)<a class="headerlink" href="#logvm-s" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: LogVM(s)</p>
+<p><strong>Brief explanation</strong>: Qubes AppVMs do not have persistent /var (on purpose). It would be useful to send logs generated by various VMs to a dedicated log-collecting VM. This way logs will not only survive VM shutdown, but also be immune to altering past entries. See <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/830">#830</a> for details.</p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>Design a <em>simple</em> protocol for transferring logs. The less metadata (parsed in log-collecting VM) the better.</p></li>
+<li><p>Implement log collecting service. Besides logs itself, should save information about logs origin (VM name) and timestamp. The service should <em>not</em> trust sending VM in any of those.</p></li>
+<li><p>Implement log forwarder compatible with systemd-journald and rsyslog. A mechanism (service/plugin) fetching logs in real time from those and sending to log-collecting VM over qrexec service.</p></li>
+<li><p>Document the protocol.</p></li>
+<li><p>Write unit tests and integration tests.</p></li>
+</ul>
+<p><strong>Difficulty</strong>: easy</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>syslog</p></li>
+<li><p>systemd</p></li>
+<li><p>Python/Bash scripting</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Frédéric Pierret</a></p>
+</section>
+<section id="whonix">
+<h3>Whonix<a class="headerlink" href="#whonix" title="連結到這個標頭"></a></h3>
+<p>Nowadays, the following policies apply:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.whonix.org/wiki/First_Time_Source_Code_Contributor_Policy">First Time Source Code Contributor Policy</a></p></li>
+<li><p><a class="reference external" href="https://www.whonix.org/wiki/Development_Discussion_Policy">Development Discussion Policy</a></p></li>
+<li><p><a class="reference external" href="https://www.whonix.org/wiki/Policy_On_Artificial_Intelligence">Policy On Artificial Intelligence</a></p></li>
+</ul>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li><p>Read the policies listed above.</p></li>
+<li><p>Become a contributor.</p></li>
+<li><p>Suggest a GSoC project in the <a class="reference external" href="https://forums.whonix.org/">Whonix Forum</a></p></li>
+</ol>
+</section>
+<section id="gui-agent-for-windows-8-10">
+<h3>GUI agent for Windows 8/10<a class="headerlink" href="#gui-agent-for-windows-8-10" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: GUI agent for Windows 8/10</p>
+<p><strong>Brief explanation</strong>: Add support for Windows 8+ to the Qubes GUI agent and video driver. Starting from Windows 8, Microsoft requires all video drivers to conform to the WDDM display driver model which is incompatible with the current Qubes video driver. Unfortunately the WDDM model is much more complex than the old XPDM one and officially <em>requires</em> a physical GPU device (which may be emulated). Some progress has been made to create a full WDDM driver that <em>doesn’t</em> require a GPU device, but the driver isn’t working correctly yet. Alternatively, WDDM model supports display-only drivers which are much simpler but don’t have access to system video memory and rendering surfaces (a key feature that would simplify seamless GUI mode). <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/1861">#1861</a></p>
+<p><strong>Expected results</strong>: Working display-only WDDM video driver or significant progress towards making the full WDDM driver work correctly.</p>
+<p><strong>Difficulty</strong>: hard</p>
+<p><strong>Knowledge prerequisite</strong>: C/C++ languages, familiarity with Windows API, familiarity with the core Windows WDM driver model. Ideally familiarity with the WDDM display driver model.</p>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Rafał Wojdyła</a></p>
+</section>
+<section id="generalize-the-qubes-pdf-converter-to-other-types-of-files">
+<h3>Generalize the Qubes PDF Converter to other types of files<a class="headerlink" href="#generalize-the-qubes-pdf-converter-to-other-types-of-files" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Qubes Converters</p>
+<p><strong>Brief explanation</strong>: One of the pioneering ideas of Qubes is to use disposable virtual machines to convert untrustworthy files (such as documents given to journalists by unknown and potentially malicious whistleblowers) into trustworthy files. See <a class="reference external" href="https://theinvisiblethings.blogspot.co.uk/2013/02/converting-untrusted-pdfs-into-trusted.html">Joanna’s blog on the Qubes PDF Convert</a> for details of the idea. Joanna has implemented a prototype for PDF documents. The goal of this project would be to generalize beyond the simple prototype to accommodate a wide variety of file formats, including Word documents, audio files, video files, spreadsheets, and so on. The converters should prioritise safety over faithful conversion. For example the Qubes PDF converter typically leads to lower quality PDFs (e.g. cut and paste is no longer possible), because this makes the conversion process safer.</p>
+<p><strong>Expected results</strong>: We expect that in the timeframe, it will be possible to implement many converters for many file formats. However, if any unexpected difficulties arise, we would prioritise a small number of safe and high quality converters over a large number of unsafe or unuseful converters.</p>
+<p><strong>Difficulty</strong>: easy</p>
+<p><strong>Knowledge prerequisite</strong>: Most of the coding will probably be implemented as shell scripts to interface with pre-existing converters (such as ImageMagick in the Qubes PDF converter). However, shell scripts are not safe for processing untrusted data, so any extra processing will need to be implemented in another language – probably Python.</p>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentors</strong>: Andrew Clausen and Jean-Philippe Ouellet</p>
+</section>
+<section id="progress-towards-reproducible-builds">
+<h3>Progress towards reproducible builds<a class="headerlink" href="#progress-towards-reproducible-builds" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Progress towards reproducible builds</p>
+<p><strong>Brief explanation</strong>: A long-term goal is to be able to build the entire OS and installation media in a completely bit-wise deterministic manner, but there are many baby steps to be taken along that path. See:</p>
+<ul class="simple">
+<li><p>“<a class="reference external" href="https://www.qubes-os.org/news/2016/05/30/build-security/">Security challenges for the Qubes build process</a>”</p></li>
+<li><p><a class="reference external" href="https://groups.google.com/d/msg/qubes-devel/gq-wb9wTQV8/mdliS4P2BQAJ">This mailing list post</a></p></li>
+<li><p>and <a class="reference external" href="https://reproducible-builds.org/">reproducible-builds.org</a></p></li>
+</ul>
+<p>for more information and qubes-specific background.</p>
+<p><strong>Expected results</strong>: Significant progress towards making the Qubes build process deterministic. This would likely involve cooperation with and hacking on several upstream build tools to eliminate sources of variability.</p>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>: qubes-builder <a class="reference internal" href="../building/qubes-builder-v2.html"><span class="doc">[1]</span></a> <a class="reference external" href="https://github.com/QubesOS/qubes-builderv2">[2]</a>, and efficient at introspecting complex systems: comfortable with tracing and debugging tools, ability to quickly identify and locate issues within a large codebase (upstream build tools), etc.</p>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Marek Marczykowski-Górecki</a></p>
+</section>
+<section id="porting-qubes-to-arm-aarch64">
+<h3>Porting Qubes to ARM/aarch64<a class="headerlink" href="#porting-qubes-to-arm-aarch64" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Porting Qubes to ARM/aarch64</p>
+<p><strong>Brief explanation</strong>:</p>
+<p>Qubes currently only supports the x86_64 CPU architecture. Xen currently has additional support for ARM32/ARM64 processors, however work needs to be done to integrate this into the Qubes build process, as well as work in integrating this with the Qubes toolstack and security model. This may also be beneficial in simplifying the process of porting to other architectures.</p>
+<p>Some related discussion:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4318">#4318</a> on porting to ppc64.</p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/3894">#3894</a> on porting to L4 microkernel.</p></li>
+</ul>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>Add cross-compilation support to qubes-builder and related components.</p></li>
+<li><p>Make aarch64 specific adjustments to Qubes toolstacks/manager (including passthrough of devices from device tree to guest domains).</p></li>
+<li><p>Aarch64 specific integration and unit tests.</p></li>
+<li><p>Production of generic u-boot or uefi capable image/iso for target hardware.</p></li>
+</ul>
+<p><strong>Difficulty</strong>: hard</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>Libvirt and Qubes toolstacks (C and python languages).</p></li>
+<li><p>Xen debugging.</p></li>
+<li><p>General ARM architecture knowledge.</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Marek Marczykowski-Górecki</a></p>
+</section>
+<section id="android-development-in-qubes">
+<h3>Android development in Qubes<a class="headerlink" href="#android-development-in-qubes" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Research running Android in Qubes VM (probably HVM) and connecting it to Android Studio</p>
+<p><strong>Brief explanation</strong>: The goal is to enable Android development (and testing!) on Qubes OS. Currently it’s only possible using qemu-emulated Android for ARM. Since it’s software emulation it’s rather slow. Details, reference: <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/2233">#2233</a></p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>a simple way of setting up Android qubes with hardware emulation (distributed as a template or as a salt, handling various modern Android versions)</p></li>
+<li><p>figuring out and implementing an easy and secure way to connect an Android qube to a development qube with Android studio</p></li>
+<li><p>documentation and tests</p></li>
+</ul>
+<p><strong>Difficulty</strong>: hard</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: Inquire on <a class="reference internal" href="../../introduction/support.html#qubes-devel"><span class="std std-ref">qubes-devel</span></a>.</p>
+</section>
+<section id="admin-api-fuzzer">
+<h3>Admin API Fuzzer<a class="headerlink" href="#admin-api-fuzzer" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Develop a <a class="reference external" href="https://en.wikipedia.org/wiki/Fuzzing">Fuzzer</a> for the <a class="reference internal" href="../services/admin-api.html"><span class="doc">Qubes OS Admin API</span></a>.</p>
+<p><strong>Brief explanation</strong>: The <a class="reference internal" href="../services/admin-api.html"><span class="doc">Qubes OS Admin API</span></a> enables VMs to execute privileged actions on other VMs or dom0 - if allowed by the Qubes OS RPC policy. Programming errors in the Admin API however may cause these access rights to be more permissive than anticipated by the programmer. If the there is a client error and the API response is too restrictive, it won't reveal any information making it difficult to debug and handle errors, as it is a general error. More details:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.qubes-os.org/news/2018/02/20/qsb-38/">QSB-038: Qrexec policy bypass and possible information leak</a></p></li>
+<li><p><a class="reference external" href="https://www.qubes-os.org/news/2022/11/23/qsb-087/">QSB-087: Qrexec: Injection of unsanitized data into log output</a> (related to Qrexec rather than the Admin API, but helps understand dangers of unsanitized data in logs/output)</p></li>
+<li><p><a class="reference external" href="https://www.qubes-os.org/news/2023/05/11/qsb-089/">QSB-089: Qrexec: Memory corruption in service request handling</a> (related to Qrexec rather than the Admin API, but helps understand dangers of unsanitized data length that could be passed to other applications that may cause memory corruption on a faulty application)</p></li>
+<li><p><a class="reference external" href="https://www.qubes-os.org/news/2024/01/19/qsb-099/">QSB-099: Qrexec policy leak via policy.RegisterArgument service</a></p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/5316">#5316: qvm-create error message unhelpful on missing template</a></p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/6739">#6739: Improve “Got empty response from qubesd” message</a></p></li>
+<li><p><a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/10345">#10345: Specific exception against PermissionDenied when API argument is invalid</a></p></li>
+</ul>
+<p>Since the Admin API is continuously growing and changing, continuous security assessments are required. A <a class="reference external" href="https://en.wikipedia.org/wiki/Fuzzing">Fuzzer</a> would help to automate part of these assessments.</p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>fully automated &amp; extensible Fuzzer for parts of the Admin API</p></li>
+<li><p>user &amp; developer documentation</p></li>
+</ul>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul class="simple">
+<li><p>basic Python understanding</p></li>
+<li><p>some knowledge about fuzzing &amp; existing fuzzing frameworks (e.g. <a class="reference external" href="https://github.com/google/oss-fuzz/tree/master/projects/qubes-os">oss-fuzz</a>)</p></li>
+<li><p>a hacker’s curiosity</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentor</strong>: Inquire on <a class="reference internal" href="../../introduction/support.html#qubes-devel"><span class="std std-ref">qubes-devel</span></a>.</p>
+</section>
+<section id="secure-boot-support">
+<h3>Secure Boot support<a class="headerlink" href="#secure-boot-support" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Add support for protecting boot binaries with Secure Boot technology, using user-generated keys.</p>
+<p><strong>Brief explanation</strong>: Since recently, Xen supports “unified EFI boot” which allows to sign not only Xen binary itself, but also dom0 kernel and their parameters. While the base technology is there, enabling it is a painful and complex process. The goal of this project is to integrate configuration of this feature into Qubes, automating as much as possible. See discussion in <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4371">issue #4371</a></p>
+<p><strong>Expected results</strong>:</p>
+<ul class="simple">
+<li><p>a tool to prepare relevant boot files for unified Xen EFI boot - this includes collecting Xen, dom0 kernel, initramfs, config file, and possibly few more (ucode update?); the tool should then sign the file with user provided key (preferably propose to generate it too)</p></li>
+<li><p>integrate it with updates mechanism, so new Xen or dom0 kernel will be picked up automatically</p></li>
+<li><p>include a fallback configuration that can be used for troubleshooting (main unified Xen EFI intentionally does not allow to manipulate parameters at boot time)</p></li>
+</ul>
+<p><strong>Difficulty</strong>: hard</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>basic understanding of Secure Boot</p></li>
+<li><p>Bash and Python scripting</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 175 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Marek Marczykowski-Górecki</a></p>
+</section>
+<section id="reduce-logging-of-disposable-vms">
+<h3>Reduce logging of Disposable VMs<a class="headerlink" href="#reduce-logging-of-disposable-vms" title="連結到這個標頭"></a></h3>
+<p><strong>Project</strong>: Reduce logging of Disposable VMs</p>
+<p><strong>Brief explanation</strong>: Partial metadata of a DisposableVM is stored in the dom0 filesystem. This applies to various logs, GUI status files etc. There should be an option to hide as much of that as possible - including bypassing some logging, and removing various state files, or at the very least obfuscating any hints what is running inside DisposableVM. More details at <a class="reference external" href="https://github.com/QubesOS/qubes-issues/issues/4972">issue #4972</a></p>
+<p><strong>Expected results</strong>: A DisposableVM should not leave logs hinting what was running inside.</p>
+<p><strong>Difficulty</strong>: medium</p>
+<p><strong>Knowledge prerequisite</strong>:</p>
+<ul class="simple">
+<li><p>Python scripting</p></li>
+<li><p>Basic knowledge of Linux system services management (systemd, syslog etc)</p></li>
+</ul>
+<p><strong>Size of the project</strong>: 350 hours</p>
+<p><strong>Mentor</strong>: <a class="reference external" href="https://www.qubes-os.org/team/">Marek Marczykowski-Górecki</a></p>
+</section>
+</section>
+<section id="past-projects">
+<h2>Past Projects<a class="headerlink" href="#past-projects" title="連結到這個標頭"></a></h2>
+<p>You can view the projects we had in 2017 in the <a class="reference external" href="https://summerofcode.withgoogle.com/archive/2017/organizations/5074771758809088/">GSoC 2017 archive</a>. We also participated in GSoC 2020 and GSoC 2021, and you can see the project in the <a class="reference external" href="https://summerofcode.withgoogle.com/archive/2020/organizations/4924517870206976/">GSoC 2020 archive</a> and <a class="reference external" href="https://summerofcode.withgoogle.com/archive/2021/organizations/5682513023860736">GSoC 2021 archive</a>.</p>
+<p>Here are some successful projects which have been implemented in the past by Google Summer of Code participants.</p>
+<hr class="docutils" />
+<p>We adapted some of the language here about GSoC from the <a class="reference external" href="https://community.kde.org/GSoC">KDE GSoC page</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="package-contributions.html" class="btn btn-neutral float-left" title="軟體包貢獻" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gsod.html" class="btn btn-neutral float-right" title="Google Season of Docs (GSoD)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+  <p><strong>Need help?</strong> search <a href="../../introduction/issue-tracking.html#search-tips">the issue tracker</a>, <a href="../../introduction/support.html#mailing-lists">the mailing-lists</a>, <a class="reference external" href="https://forum.qubes-os.org">the forum</a>, or <a href="../../introduction/support.html#chat">the chatrooms</a>. If you don't find the solution, feel free to <a href="../../introduction/support.html#i-didn-t-find-a-solution-or-an-answer">ask for help</a>.</p>
+
+  
+    <p>&#169; Copyright 2026, Qubes OS Project and others.</p>
+  
+  
+  <p>Last edition of the current page: 
+  <a class="reference external" href="https://github.com/QubesOs/qubes-doc/commits/main/developer/general/gsoc.rst" title="History of the source file of the current page">2026-06-21 15:55:43-07:00</a></p>
+  
+
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
