@@ -8,81 +8,82 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/system/template-implementation.rst:3
-#: e3eed993c4e249a7b8b292090129eaed
+#: c055766d8e594e0eaf2d467aa5d65896
 msgid "Template implementation"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:7
-#: fce9d7058efd43f39bde17a2e07a5c62
+#: bdd2d80a5a5e4d1bbfb5c0986b92bb93
 msgid "Block devices of a VM"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:10
-#: 1dd3165c052b4ffa8a585e89de831807
+#: c9ae2eb7e8904ffca82f40ee0100f174
 msgid "Every VM has 4 block devices connected:"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:12
-#: 38c35fb1ed304f6fbd5a6691e59c3af3
+#: b493a65ad0b1476882eed8ad58e002b7
 msgid "**xvda** – base root device (/) – details described below"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:14
-#: 6acac312c1ec4e5eb5f0be5cb6be0129
+#: d0dd5ec469c04c9c82110a730c49bd85
 msgid "**xvdb** – private.img – place where VM always can write."
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:16
-#: 38e16bf6935047658268aa2f4f5c3d6a
+#: 486c1a458a15417db8259f70708fc502
 msgid ""
 "**xvdc** – volatile.img, discarded at each VM restart – here is placed swap "
 "and temporal “/” modifications (see below)"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:18
-#: d72e6214937b498eb19578aa35a3504a
+#: b61852bb300a4a92b3417795c56d92d9
 msgid "**xvdd** – modules.img – kernel modules and firmware"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:23
-#: 2ce9780397494c248cbe22176f56abd0
+#: ee69cb8a657a43dcb055ef1add3291f1
 msgid "private.img (xvdb)"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:26
-#: d283bd228c634186acee85efe0b509ea
+#: 2ed42823629f4646822d861baad23c55
 msgid ""
 "This is mounted as /rw and here is placed all VM private data. This includes:"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:28
-#: d9fa4bea6ed6405c8620178f5772be5e
+#: c1057935a2b14d248c4fb4174cbda8e8
 msgid "*/home* – which is bind mounted to /rw/home"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:30
-#: ce484b175c7d4bf1af4face197e8b82d
+#: 2a47e47b774140478b269a7b15e7fa51
 msgid "*/usr/local* – which is symlink to /rw/usrlocal"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:32
-#: 8921a71dd75740578147e972e7c92e45
+#: cb0a3e7364a1415a95e3b2d412e4a38a
 msgid ""
 "some config files (/rw/config) called by qubes core scripts (ex /rw/config/"
 "rc.local)"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:36
-#: 840f7bae3f0346768a636e4f0adee64b
+#: fce0f92e39d2459fbd9f8fd5b17e46a2
 msgid ""
 "**Note:** Whenever a TemplateBasedVM is created, the contents of the ``/"
 "home`` directory of its parent TemplateVM are *not* copied to the :ref:"
@@ -100,31 +101,31 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:39
-#: 0478381e7b42406ba5245e5b3cc529e8
+#: 38bd08522a82430d8022fd003138479c
 msgid "modules.img (xvdd)"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:42
-#: a946002b446c4a6d9412d09f0ce5a85d
+#: a41118de92a94ff596ae3897d3160b4a
 msgid ""
 "As the kernel is chosen in dom0, there must be some way to provide matching "
 "kernel modules to VM. Qubes kernel directory consists of 3 files:"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:44
-#: cc836e112ae24565985f8188de0b754a
+#: e3d3c13770cf48a6836b363a550e293d
 msgid "*vmlinuz* – actual kernel"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:46
-#: 5d336c65814b440fad791acfa46ca675
+#: cda8004b316d43c3bc76273191a7b5db
 msgid ""
 "*initramfs* – initial ramdisk containing script to setup snapshot devices "
 "(see below) and mount /lib/modules"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:48
-#: 709a1c2f27354cd8ba024469c80ce99e
+#: 81e2b0c70ff54478aa9303d1075c2358
 msgid ""
 "*modules.img* – filesystem image of /lib/modules with matching kernel "
 "modules and firmware (/lib/firmware/updates is symlinked to /lib/modules/"
@@ -132,7 +133,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:52
-#: 6dbcacd70a0c47869273e384e55edaca
+#: 426328b0bd654a1387dc45cdd5eec7a5
 msgid ""
 "Normally kernel “package” is common for many VMs (can be set using qvm-"
 "prefs). One of them can be set as default (qvm-set-default-kernel) to "
@@ -142,7 +143,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:54
-#: bfbb89f79131418a81fb12e67e4aa1c3
+#: 5e8243aa2fd643e9b838764efb5d315b
 msgid ""
 "There is a special case when the VM can have a custom kernel – when it is "
 "updateable (StandaloneVM or TemplateVM) and the kernel is set to “none” (by "
@@ -151,12 +152,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:57
-#: 52d36a0767064fbf9632667475d7ffc5
+#: 2bb1ea0f8af946ebaa0f1e710a89a983
 msgid "Qubes TemplateVM implementation"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:60
-#: 3ddc3144b350476987895e615a0b792a
+#: fc96b40aa2104725b466220100ccb4a0
 msgid ""
 "TemplateVM has a shared root.img across all AppVMs that are based on it. "
 "This mechanism has some advantages over a simple common device connected to "
@@ -164,21 +165,21 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:62
-#: 2515affecd1a41bbbe166e40edfe9f1c
+#: a18403a69dcd4634a41a867354ef923b
 msgid ""
 "root.img can be modified while there are AppVMs running – without corrupting "
 "the filesystem"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:64
-#: 92ddc07496634b13a901e6ba678f956a
+#: b3002790068f457c88b89acb9b73408f
 msgid ""
 "multiple AppVMs that are using different versions of root.img (from various "
 "points in time) can be running concurrently"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:68
-#: 8cf699ce40414bdfa46b91a940ed9969
+#: 2e14108f28624c9a9de51a94961491d4
 msgid ""
 "There are two layers of the device-mapper snapshot device; the first one "
 "enables modifying root.img without stopping the AppVMs and the second one, "
@@ -188,34 +189,34 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:70
-#: 72368fb601004cffb44ac7f667fc13e3
+#: 6c8e4212354f405692d8821def763374
 msgid "TemplateSharing2.png"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:76
-#: 281c693090ef448b8e208af5f452b971
+#: 8b67d9af7b944a7b82941dc05d1d39fa
 msgid "Snapshot device in Dom0"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:79
-#: 8d199ffd364946b19a184867979c036d
+#: 3ed9c0b7dd4347b583491b35ea283a88
 msgid "This device consists of:"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:81
-#: f124ac1a9f1b42b195a810bdd4b244d9
+#: 2228d4e0a48e4887bed3a592da5b4a48
 msgid "root.img – real template filesystem"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:83
-#: 5099f557f1bd4a778462701b17674cd3
+#: 04914ff3bd5549efaf16c6217d4467b8
 msgid ""
 "root-cow.img – differences between the device as seen by AppVM and the "
 "current root.img"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:87
-#: afea2a4e9cd44a8f9738fe5d040545b0
+#: 092a9284333e4a7bb426c338c0318a54
 msgid ""
 "The above is achieved through creating device-mapper snapshots for each "
 "version of root.img. When an AppVM is started, a xen hotplug script (/etc/"
@@ -230,7 +231,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:89
-#: 634f33d7a63f4399ab0b658d1e5507c0
+#: 508e4beaba05460d9e4bb2184c9e4744
 msgid ""
 "When an AppVM is stopped the xen hotplug script checks whether the device is "
 "still in use – if it is not, the script removes the snapshot and frees the "
@@ -238,12 +239,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:92
-#: ee9eb7451d5e423e81c8379f04bf7674
+#: 338cbb87b2be42439d30cb1305d64b1f
 msgid "Changes to template filesystem"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:95
-#: 598a224c5d0244fe8569a374cad870a2
+#: c3b6343d5db04a1ca6ec5b991f68e847
 msgid ""
 "In order for the full potential of the snapshot device to be realized, every "
 "change in root.img must save the original version of the modified block in "
@@ -251,7 +252,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:97
-#: 670620cc16234db09489d24d527347d4
+#: 81519be6a8574cdb9bc2e6cd03654cab
 msgid ""
 "When TemplateVM is started, it receives the snapshot-origin device connected "
 "as a root device (in read-write mode). Therefore, every change to this "
@@ -260,7 +261,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:99
-#: f014221a8ea040488d60891ea0780c2c
+#: 13e3eccf17474c88bd7b99df32a9a65d
 msgid ""
 "When TemplateVM is stopped, the xen script moves root-cow.img to root-cow."
 "img.old and creates a new one (using the ``qvm-template-commit`` tool). The "
@@ -272,65 +273,65 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:102
-#: f2e6d1584d05457aa7dba263335d5103
+#: fb028fc7cfb5404690c2d692571de3f6
 msgid "Rollback template changes"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:105
-#: e6fda100507c4a60af3c6f2e1c8a2f77
+#: ca5a1e3b84424a43b7b81e9fbc37bc3f
 msgid ""
 "There is possibility to rollback last template changes. Using the automatic "
 "snapshot that is normally saved every time the template is shutdown."
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:107
-#: 09f64766549144fa9292d0823af0403d
+#: 03d7b5969dd94240a18b0091aee3d375
 msgid ""
 "Refer to volume backup and revert :doc:`documentation </user/advanced-topics/"
 "volume-backup-revert>` for more information."
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:110
-#: 6fe1e48845ac4c9e9640a14b2c67c6ee
+#: cd547d7435f34b5cb95f07cfc543ef89
 msgid "Snapshot device in AppVM"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:113
-#: ea98851f53cb4126a6af5e90056806a7
+#: 4548af5c7913482a892b87c92735049d
 msgid ""
 "Root device is exposed to AppVM in read-only mode. AppVM can write only in:"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:115
-#: 29fcb0e884c848b1943b52ac63194bad
+#: 417b69fd5a064dc5abe024ec4885b640
 msgid ""
 "private.img – persistent storage (mounted in /rw) used for /home, /usr/local "
 "– in future versions, its use may be extended"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:117
-#: 637dac54916b4faa81283955564380fa
+#: 3c3e22ad6a5d4fa58561799445df2656
 msgid ""
 "volatile.img – temporary storage, which is discarded after an AppVM restart"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:121
-#: b03415c1f539436fae7ad026cb96b4a5
+#: 9559019367894a2c899358b97bfe1918
 msgid "volatile.img is divided into two partitions:"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:123
-#: e3c51134ec3f461bae7e3b50751ba215
+#: 70052e9a480348e9978bdc9d4094d301
 msgid "changes to root device"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:125
-#: 9dc6b317b1aa4459b6bfc89a01533623
+#: 1a8f2dce913d46c49f133e3238183b44
 msgid "swap partition"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:129
-#: c24a5d1c0b6f4248a8a7830f5b3a0bd3
+#: 17e2ee853e844031a7d3eea60ca833a8
 msgid ""
 "Inside of an AppVM, the root device is wrapped by the snapshot in the first "
 "partition of volatile.img. Therefore, the AppVM can write anything to its "
@@ -338,19 +339,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:132
-#: bde4ae2b07764c6d802a4011f9820637
+#: ce903be279ee4d768c4e8add7ae6163b
 msgid "StandaloneVM"
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:135
-#: 92142b83b6d84d0ca9acdfca97702dd7
+#: 401e342245ad4e57948cb1a081b75ddf
 msgid ""
 "Standalone VM enables user to modify root filesystem persistently. It can be "
 "created using *–standalone* switch to *qvm-create*."
 msgstr ""
 
 #: ../../../developer/system/template-implementation.rst:137
-#: 017eac154477405a9270844a16851323
+#: f31750bd3da84ed8a993e07ea25d103b
 msgid ""
 "It is implemented just like TemplateVM (has own root.img connected as R/W "
 "device), but no other VMs can be based on it."

@@ -8,25 +8,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-24 16:44+0000\n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../developer/services/qrexec.rst:3 d6ab1fce43664c8d84db394e6d3a08ce
+#: ../../../developer/services/qrexec.rst:3 5a1565203223483ba114753b6a2d1455
 msgid "Qrexec: secure communication across domains"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:6 dfd5330b337a4d86bd1029a6cf1cbee2
+#: ../../../developer/services/qrexec.rst:6 7ce2e129410c422d83b9d747424986d7
 msgid ""
 "(*This page is about qrexec v3. For qrexec v2, see* :doc:`here </developer/"
 "services/qrexec2>` *.*)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:8 0dfe3252c66b4f96a963b01b3aae9dbd
+#: ../../../developer/services/qrexec.rst:8 8a92c7def96b4d239f9bc010b4e88252
 msgid ""
 "The **qrexec framework** is used by core Qubes components to implement "
 "communication between domains. Qubes domains are strictly isolated by "
@@ -42,11 +43,11 @@ msgid ""
 "allows users and developers to use and design secure inter-VM tools."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:11 e147a743b7cd47b7bab10f290565c278
+#: ../../../developer/services/qrexec.rst:11 6c060e712b68432e9c90244e6944ff36
 msgid "Qrexec basics: architecture and examples"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:14 1e817df2f6b447a3bf7e7cbdcf66debd
+#: ../../../developer/services/qrexec.rst:14 98d6bc93dfcc4cf5b6a4d52ff869c919
 msgid ""
 "Qrexec is built on top of *vchan*, a Xen library providing data links "
 "between VMs. During domain startup, a process named ``qrexec-daemon`` is "
@@ -64,18 +65,18 @@ msgid ""
 "``qrexec-client`` process."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:16 a9bfb8b8bdf64d66a5b7447c4ef118c7
+#: ../../../developer/services/qrexec.rst:16 88d65fffb5c84b00861126cbde8844a4
 msgid "qrexec basics diagram"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:19 5eddd3090f5c4508a8c7c82868ad06ac
+#: ../../../developer/services/qrexec.rst:19 127e39f64c234056b80ca8f272732b9e
 msgid ""
 "The ``qrexec-client`` command is used to make connections to VMs from dom0. "
 "For example, the following command creates an empty file called ``hello-"
 "world.txt`` in the home folder of ``someVM``:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:27 df98eba47351458085b35184f57c92a5
+#: ../../../developer/services/qrexec.rst:27 359786ccde4f4a8cb52a181e15cf3543
 msgid ""
 "The string before the colon specifies which user will run the command. The "
 "``-e`` flag tells ``qrexec-client`` to exit immediately after sending the "
@@ -85,7 +86,7 @@ msgid ""
 "between dom0 and someVM (in this case, a remote shell):"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:35 8266f278e6e4436ab408abff62be691d
+#: ../../../developer/services/qrexec.rst:35 ce1db35e6af04d07a80f67b53b20545e
 msgid ""
 "The ``qvm-run`` command is heavily based on ``qrexec-client``. It also "
 "handles additional activities, e.g. starting the domain if the domain is not "
@@ -93,24 +94,24 @@ msgid ""
 "``qvm-run``."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:37 b8804aaa8e814c0bbd8778b9787e7db7
+#: ../../../developer/services/qrexec.rst:37 d4bdc9d4ee1643a8b454ed44ca3d7e38
 msgid ""
 "There can be an almost arbitrary number of ``qrexec-client`` processes for a "
 "given domain. The limiting factor is the number of available vchan channels, "
 "which depends on the underlying hypervisor, as well the domain’s OS."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:39 5e5788753eae44749f08c74fa7217207
+#: ../../../developer/services/qrexec.rst:39 44fcd251d9f14b4cb680e27a2c528bf2
 msgid ""
 "For more details on the qrexec framework and protocol, see “:doc:`Qubes RPC "
 "internals </developer/services/qrexec-internals>`.”"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:42 ae35ded416484692bd31f3a3e5e100d6
+#: ../../../developer/services/qrexec.rst:42 3a54a70f7b124470bae17969c81aa332
 msgid "Qubes RPC services"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:45 e230c0c0e8244b118dad98570eaaee8e
+#: ../../../developer/services/qrexec.rst:45 ee5bb05ae17045e9aef7b488c23488fa
 msgid ""
 "Some common tasks (like copying files between VMs) have an RPC-like "
 "structure: a process in one VM (say, the file sender) needs to invoke and "
@@ -119,7 +120,7 @@ msgid ""
 "actions."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:47 1cd1c2e83ecc43e09ebbcfebb0f1db70
+#: ../../../developer/services/qrexec.rst:47 609f18d30c584371ae451c206e8153b9
 msgid ""
 "Inter-VM communication must be tightly controlled to prevent one VM from "
 "taking control of another, possibly more privileged, VM. The design decision "
@@ -128,7 +129,7 @@ msgid ""
 "framework."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:49 fd03eadf45c746148e326abbf6c7b7cd
+#: ../../../developer/services/qrexec.rst:49 e595344493134ace9fa1e3deea894149
 msgid ""
 "Note that bare qrexec provides ``VM <-> dom0`` connectivity, but the command "
 "execution is always initiated by dom0. There are cases when a VM needs to "
@@ -137,7 +138,7 @@ msgid ""
 "target as well."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:51 d4d79705b2d645b4b5c133694985eda6
+#: ../../../developer/services/qrexec.rst:51 ca62bbdf34f34c87b11583d8f215f8f6
 msgid ""
 "Thanks to the framework, RPC programs are very simple – both RPC client and "
 "server just use their stdin/stdout to pass data. The framework does all the "
@@ -147,15 +148,15 @@ msgid ""
 "is to pass ``@dispvm`` as the remote domain name."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:54 c22d0640aae743e0bcbc44be47e2ae82
+#: ../../../developer/services/qrexec.rst:54 1422f4d8b5df4547b688f81fd860c671
 msgid "Qubes RPC administration"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:58 1f60e712c705414fb5bf47dd9741c4ac
+#: ../../../developer/services/qrexec.rst:58 6cfce16d05d248b39141842f2e57c2a9
 msgid "Policy files"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:60 388be83cf1a746649d44f21f20664ec5
+#: ../../../developer/services/qrexec.rst:60 2c7b16749db5497db03351f639ba4812
 msgid ""
 "The dom0 directories ``/etc/qubes/policy.d/`` and ``/run/qubes/policy.d/`` "
 "contain files that set policy for each available RPC action that a VM might "
@@ -163,21 +164,21 @@ msgid ""
 "default policy settings."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:61 0b21d3393dfe4d02865f30604ad02281
+#: ../../../developer/services/qrexec.rst:61 b28567f0f1c54ab3a3745db305c9f76a
 msgid ""
 "When making changes to existing policies it is recommended that you create a "
 "*new* policy file starting with a lower number, like ``/etc/qubes/policy."
 "d/30-user.policy``."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:62 01c73936bb284c29b436fd6ac96f8aa7
+#: ../../../developer/services/qrexec.rst:62 ef26af7602b04115ad7503199848154f
 msgid ""
 "You may keep your custom policies in one file like ``/etc/qubes/policy.d/30-"
 "user.policy``, or you may choose to have multiple files, like ``/etc/qubes/"
 "policy.d/10-copy.policy``, ``/etc/qubes/policy.d/10-open.policy``."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:63 b08c96a62b024b38a7a1e4a18fc01c5b
+#: ../../../developer/services/qrexec.rst:63 1a08661e2ed24bbeb49c2790cf6b901f
 msgid ""
 "Together the contents of these files make up the RPC access policy database: "
 "the files are merged, with policies in lower number files overriding "
@@ -186,11 +187,11 @@ msgid ""
 "specified which takes precedence, so you should avoid this situation."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:66 8d6b07460df54ccd92092dc80d032975
+#: ../../../developer/services/qrexec.rst:66 d2b1bb16744d4ba1b7f14f0c3f6468f3
 msgid "Policies are defined in lines with the following format:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:74 922a0ff65aca4330a8e1512b13829fb4
+#: ../../../developer/services/qrexec.rst:74 37376b69e86744ff94ea66c0312c4f88
 msgid ""
 "You can specify the source and destination by name or by one of the reserved "
 "keywords such as ``*``, ``@dispvm``, or ``dom0``. (Of these three, only "
@@ -200,7 +201,7 @@ msgid ""
 "using *tags* and *types* are also available (and discussed below)."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:76 cd806edde5ba4fc4958fae979ecc9aa0
+#: ../../../developer/services/qrexec.rst:76 459cca31c13f41a5b73587972b2d31bb
 msgid ""
 "Whenever a RPC request for an action is received, the domain checks the "
 "first matching line of the files in ``/etc/qubes/policy.d/`` and ``/run/"
@@ -212,7 +213,7 @@ msgid ""
 "denied."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:78 df0c658316e1475daaae82326121b35f
+#: ../../../developer/services/qrexec.rst:78 10fd00be8f8c4d9083d49312e34f8300
 msgid ""
 "Files in ``/run/qubes/policy.d/`` are deleted when the system is rebooted. "
 "This is useful for temporary policy that contains the name or UUID of a "
@@ -221,19 +222,19 @@ msgid ""
 "automatically by a qrexec call to dom0."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:81 d952e7e428ee498b815af8eb406e2320
+#: ../../../developer/services/qrexec.rst:81 b2626feb914d493e89426f8931330a4b
 msgid "Making an RPC call"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:84 a0b5de295e6a4fcba70b134cc298838b
+#: ../../../developer/services/qrexec.rst:84 454b95ffa65e4687bf11822977b4ab92
 msgid "From outside of dom0, RPC calls take the following form:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:92 934e1593669d453c8009ab70a3b1e34a
+#: ../../../developer/services/qrexec.rst:92 0fd2386d58844d6f8c4947b605b89e9d
 msgid "For example:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:100 af8caa8235824a6eafa75fc08ac5b64a
+#: ../../../developer/services/qrexec.rst:100 0ecc77e12352409b8b9f16ce615cf0e2
 msgid ""
 "Note that only stdin/stdout is passed between RPC server and client – "
 "notably, no command line arguments are passed. By default, stderr of client "
@@ -241,17 +242,17 @@ msgid ""
 "running."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:102 a7d6a411d13d4d9a8f9795ded6f77ee7
+#: ../../../developer/services/qrexec.rst:102 73ccdff7f6664877ba7b23738be6b3d1
 msgid ""
 "It is also possible to call service without specific client program – in "
 "which case server stdin/out will be connected with the terminal:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:111 def25f7b86364826b8e85b543a621cc0
+#: ../../../developer/services/qrexec.rst:111 77df3c35ca434291909d20e48bd84799
 msgid "Answering an RPC call"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:114 ef9b10c6e0cb467a8ecff3fac4bf27cb
+#: ../../../developer/services/qrexec.rst:114 d625910a0b064723b1704ed722f62ed4
 msgid ""
 "In order for a RPC call to be answered in the target VM, a file in either of "
 "the following locations must exist, containing the file name of the program "
@@ -259,18 +260,18 @@ msgid ""
 "have executable permission set (``chmod +x``):"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:116 37563020bee8493ea03a2370bd1ad499
+#: ../../../developer/services/qrexec.rst:116 af409c31f2be4e86b40fac9cd9334e8a
 msgid ""
 "``/etc/qubes-rpc/RPC_ACTION_NAME`` when you make it in the template qube;"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:117 9a20a981867d435c888935b6683b71fc
+#: ../../../developer/services/qrexec.rst:117 2f68ecb6ae55415b8078e7babe970408
 msgid ""
 "``/usr/local/etc/qubes-rpc/RPC_ACTION_NAME`` for making it only in an app "
 "qube."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:119 fd60c41903ec4a218766410cdccabd1c
+#: ../../../developer/services/qrexec.rst:119 4f7671ee280449c7bd19dd5a942963c7
 msgid ""
 "The source VM name can then be accessed in the server process via "
 "``QREXEC_REMOTE_DOMAIN`` environment variable. (Note the source VM has *no* "
@@ -278,26 +279,26 @@ msgid ""
 "provided by dom0, and so is trusted.)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:122 ef750510fca2419f9cc4b467161ff224
+#: ../../../developer/services/qrexec.rst:122 fff08b647fdd481095aa80ec31adfa9d
 msgid "Specifying VMs: tags, types, targets, etc."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:125 f5952b2115cb436d818417c89646d794
+#: ../../../developer/services/qrexec.rst:125 fd5deddf3d704e9582f824260311780e
 msgid ""
 "There are severals methods for specifying source/target VMs in RPC policies."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:127 6f2725a69b384e4d952661ce551003a8
+#: ../../../developer/services/qrexec.rst:127 7d91a40e44cd41a18f3f68a71c26cc63
 msgid "``@tag:some-tag`` - meaning a VM with tag ``some-tag``"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:129 03ca5accb83e42799e416750f8ce433c
+#: ../../../developer/services/qrexec.rst:129 45be3cbbc10049728f8471df21e13055
 msgid ""
 "``@type:type`` - meaning a VM of ``type`` (like ``AppVM``, ``TemplateVM`` "
 "etc)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:133 0e339307d5994a649241a57a932ba01d
+#: ../../../developer/services/qrexec.rst:133 0cc8940cb4e343b3a4305a4809584441
 msgid ""
 "Target VM can be also specified as ``@default``, which matches the case when "
 "calling VM didn’t specified any particular target (either by using "
@@ -306,7 +307,7 @@ msgid ""
 "(``DISP_VM``) as a base VM to be started as DisposableVM. For example:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:141 484ac10e548942b6b76f86ced85f57da
+#: ../../../developer/services/qrexec.rst:141 14258bc8f7d440de8d78996250a7d21f
 msgid ""
 "Adding such policy itself will not force usage of this particular "
 "``DISP_VM`` - it will only allow it when specified by the caller. But "
@@ -315,7 +316,7 @@ msgid ""
 "specify it:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:149 a1e81fe9a08541f98f01d7aa0e7789bf
+#: ../../../developer/services/qrexec.rst:149 02ca42d753f94c16b9eb5c73c7f7f7c0
 msgid ""
 "Note that without redirection, this rule would allow using default "
 "Disposable VM (``default_dispvm`` VM property, which itself defaults to "
@@ -325,7 +326,7 @@ msgid ""
 "it. This is because the redirection happens *after* considering the action."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:151 4e3918c226764cf7890c4f4324363205
+#: ../../../developer/services/qrexec.rst:151 2f76a3ba3bf946e5826a7c5cfbe09c19
 msgid ""
 "The policy confirmation dialog (``ask`` action) allows the user to specify "
 "target VM. User can choose from VMs that, according to policy, would lead to "
@@ -335,7 +336,7 @@ msgid ""
 "For example:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:161 b903b1f7611e47f2933feb6b7479cf88
+#: ../../../developer/services/qrexec.rst:161 467369c765f24dc3a865e423e783b1f0
 msgid ""
 "The first rule allows calls from ``work-mail`` to ``work-archive``, without "
 "any confirmation. The second rule will ask the user about calls from ``work-"
@@ -347,11 +348,11 @@ msgid ""
 "default."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:164 a3c6bde50d034849afc11aea20ebdf3c
+#: ../../../developer/services/qrexec.rst:164 dd3590f5502e4c3598ecb0e8d22500ad
 msgid "RPC services and security"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:167 960e5ad553a54788b64ae3b754adc2fe
+#: ../../../developer/services/qrexec.rst:167 22db995e88244e088e5c63d0012203a7
 msgid ""
 "Be very careful when coding and adding a new RPC service. Unless the offered "
 "functionality equals full control over the target (it is the case with e."
@@ -361,17 +362,17 @@ msgid ""
 "AppVMs, thus wise usage of it increases security."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:169 4e1794e0a0e244f6811add2d718774bc
+#: ../../../developer/services/qrexec.rst:169 8c9fb87a70084166b558f006262b0d3b
 msgid ""
 "For example, this command will run the ``firefox`` command in a DisposableVM "
 "based on ``work``:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:177 ef87beddee3745debac620ffba2046af
+#: ../../../developer/services/qrexec.rst:177 e90445c41fe14a5bbf0ff661d6692e11
 msgid "By contrast, consider this command:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:185 dbfb0bacaef64029a1e2def0ae9e6a00
+#: ../../../developer/services/qrexec.rst:185 2fac08342b834e94975ca4613b5d5122
 msgid ""
 "This will look for a ``firefox.desktop`` file in a standard location in a "
 "DisposableVM based on ``work``, then launch the application described by "
@@ -392,11 +393,11 @@ msgid ""
 "files."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:188 219a1d4d78804a6c96338b708a5ecc4c
+#: ../../../developer/services/qrexec.rst:188 8a5e108e08c248dc936b698880953cd9
 msgid "Service policies with arguments"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:191 cd899484d24a445bac7412eb6f525a2a
+#: ../../../developer/services/qrexec.rst:191 8eff13e49f0746c9a7cb1c718c0711d1
 msgid ""
 "Sometimes a service name alone isn’t enough to make reasonable qrexec "
 "policy. One example of such a situation is :doc:`qrexec-based USB "
@@ -407,7 +408,7 @@ msgid ""
 "multiple files any time we wanted to update the service."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:193 e8ff62703cdb46fc951cd09cf2333d93
+#: ../../../developer/services/qrexec.rst:193 9fdec696fd5844c38b7f5f6634a6a98a
 msgid ""
 "For this reason it is possible to specify a service argument, which will be "
 "subject to a policy. A service argument can make service policies more fine-"
@@ -418,7 +419,7 @@ msgid ""
 "make a mistake.)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:195 2741cc8e2dd54486aa68fad2ad2a5659
+#: ../../../developer/services/qrexec.rst:195 a6b26838e07347b19f065d92123a5a88
 msgid ""
 "The argument is specified in the second column of the policy line, as "
 "+ARGUMENT. If the policy uses “*” as an argument, then it will match any "
@@ -428,13 +429,13 @@ msgid ""
 "depending on the argument:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:205 10d89ef782bc4b1dbe5480a222c36dbe
+#: ../../../developer/services/qrexec.rst:205 eb175a4832954f2c9e0af94fa974c756
 msgid ""
 "When calling a service that takes an argument, just add the argument to the "
 "service name separated with ``+``."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:213 6a75d4bcad8d4d5caf90341a316b279c
+#: ../../../developer/services/qrexec.rst:213 54541338bc37444796850d1732bd2196
 msgid ""
 "The script will receive ``ARGUMENT`` as its argument. The argument will also "
 "become available as the ``QREXEC_SERVICE_ARGUMENT`` environment variable. "
@@ -442,27 +443,27 @@ msgid ""
 "service argument."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:215 464414107995487e85c20446d04e77c0
+#: ../../../developer/services/qrexec.rst:215 7c111190824d49a18efa8a3779583aa7
 msgid ""
 "See :ref:`developer/services/qrexec:rpc service with argument (file reader)` "
 "for an example of an RPC service using an argument."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:218 bf751c7e089a4d4db585d23aaeef07a3
+#: ../../../developer/services/qrexec.rst:218 0a0417035db74c9b87eb27ae8727b0b0
 msgid "Qubes RPC examples"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:221 dc6e762dee3942429477559379edec4d
+#: ../../../developer/services/qrexec.rst:221 8559b8342e3e42b8b671030a3963e05c
 msgid ""
 "To demonstrate some of the possibilities afforded by the qrexec framework, "
 "here are two examples of custom RPC services."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:224 30ed22f0d69343c8bc5bdc47df973bb3
+#: ../../../developer/services/qrexec.rst:224 aebb0882826b4926baa753ff5a022e79
 msgid "Simple RPC service (addition)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:227 cb486c4ba7bc489caa87a1c0ef84ab8a
+#: ../../../developer/services/qrexec.rst:227 c33d215efb6e40eaa0556585c0c3e62d
 msgid ""
 "We can create an RPC service that adds two integers in a target domain (the "
 "server, call it “anotherVM”) and returns back the result to the invoker (the "
@@ -470,13 +471,13 @@ msgid ""
 "save it with the path ``/usr/bin/our_test_add_client``:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:237 370600d2dbef427895765661115a95e1
+#: ../../../developer/services/qrexec.rst:237 f7c4eab8a60e4029b2eeaed5cd9afa2f
 msgid ""
 "Our server will be anotherVM at ``/usr/bin/our_test_add_server``. The code "
 "for this file is:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:247 4d86f86624284245a2df29fddd66bded
+#: ../../../developer/services/qrexec.rst:247 518858846a154581a6ab93ada41d7665
 msgid ""
 "We’ll need to create a service called ``test.Add`` with its own definition "
 "and policy file in dom0. Now we need to define what the service does. In "
@@ -486,39 +487,39 @@ msgid ""
 "sure the file has executable bit set!):"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:255 4ca02dff7a4e421fb02af2e0fe7b2e12
+#: ../../../developer/services/qrexec.rst:255 4d3212095e08485ea90c2b996c50f0db
 msgid ""
 "The administrative domain will direct traffic based on the current RPC "
 "policies. In dom0, create a file at ``/etc/qubes/policy.d/30-test.policy`` "
 "containing the following:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:263 9a947657122a49fe93933d2adbec92cc
+#: ../../../developer/services/qrexec.rst:263 b7ab85be0b4143edaa2dbc1f2c37d0a9
 msgid "This will allow our client and server to communicate."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:265 9bf722cd3e734aad854b09d3a8586ae2
+#: ../../../developer/services/qrexec.rst:265 81fef7719b0e447985f292d990797b4e
 msgid ""
 "Before we make the call, ensure that the client and server scripts have "
 "executable permissions. Finally, invoke the RPC service."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:273 75adcdc0405043839fa2cf5496bd511e
+#: ../../../developer/services/qrexec.rst:273 483dcf3599e642ea840dfa2f219673bc
 msgid "We should get “3” as answer. (dom0 will ask for confirmation first.)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:275 179160a39f3d455cbc82b0a775d316ea
+#: ../../../developer/services/qrexec.rst:275 a113d7715e2745d2a3194e3baaa42f48
 msgid ""
 "**Note:** For a real world example of writing a qrexec service, see this "
 "`blog post <https://blog.invisiblethings.org/2013/02/21/converting-untrusted-"
 "pdfs-into-trusted.html>`__."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:278 90bea18a6b9747b98a46e70f1a3a017c
+#: ../../../developer/services/qrexec.rst:278 5e800f352fa6401893ee7e65a87cb5d0
 msgid "RPC service with argument (file reader)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:281 a015cfcec0d74866a4d1ff4364d69e81
+#: ../../../developer/services/qrexec.rst:281 d49c464accd041d48e7d3d6f1e6bbfe4
 msgid ""
 "Here we create an RPC call that reads a specific file from a predefined "
 "directory on the target. This example uses an :ref:`argument <developer/"
@@ -528,46 +529,46 @@ msgid ""
 "script will be needed."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:283 df31951f922c45ba895edad67c5814ed
+#: ../../../developer/services/qrexec.rst:283 3321c491290944dcbb17681dc00deee1
 msgid ""
 "First, on your target VM, create two files in the home directory: "
 "``testfile1`` and ``testfile2``. Have them contain two different “Hello "
 "world!” lines."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:285 8d3358f05f7d460f93f6381050bba3d2
+#: ../../../developer/services/qrexec.rst:285 7646a3047ed24ef7ae93a3abef713b2f
 msgid ""
 "Next, we define the RPC service. On the target VM, place the code below at "
 "``/etc/qubes-rpc/test.File``:"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:299 599bc755f2eb4596be43b8d5d165772a
+#: ../../../developer/services/qrexec.rst:299 04d3d64f2f18413fbf8ac8458849daf8
 msgid ""
 "Make sure the file is executable! (The service argument is already sanitized "
 "by qrexec framework. It is guaranteed to not contain any spaces or slashes, "
 "so there should be no need for additional path sanitization.)"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:301 1a7666d72fa34e3d9cf278eca0adb40a
+#: ../../../developer/services/qrexec.rst:301 0cec948a7ad945a8b49da8a99e1efd10
 msgid ""
 "Now we create the policy file in dom0, at ``/etc/qubes/policy.d/30-test."
 "policy``. The contents of the file are below. Replace “source_vm1” and "
 "others with the names of your own chosen domains."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:311 adebcde9f8a3404ebfbc8d203bc5a5ed
+#: ../../../developer/services/qrexec.rst:311 253428a084a244d1baaac2e646212445
 msgid ""
 "With this done, we can run some tests. Invoke RPC from ``source_vm1`` via"
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:319 b0d4be8878ff46e9a1aeef29ea893170
+#: ../../../developer/services/qrexec.rst:319 4a34e8f1fee8456881bc27baff20c35c
 msgid ""
 "We should get the contents of ``/home/user/testfile1`` printed to the "
 "terminal. Invoking the service from ``source_vm2`` should result in a "
 "denial, but ``testfile2`` should work."
 msgstr ""
 
-#: ../../../developer/services/qrexec.rst:329 e584b221688f42dd91e271b192fd1802
+#: ../../../developer/services/qrexec.rst:329 bfce2723b9ed4ce1bf2ed986f8432296
 msgid ""
 "And when invoked with other arguments or from a different VM, it should also "
 "be denied."
