@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:3
+#: 7dd2da74c8c64cb5a120041b85000aa4
+msgid "Suspend/resume troubleshooting"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:6
+#: 07bc5bcce5f2417babe6a8ec198aab5b
+msgid ""
+"First check if there are any remarks for similar devices in the `Hardware "
+"Compatibility List (HCL) <https://www.qubes-os.org/hcl/>`__."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:9
+#: 766a1f704836483cae6733c15cc04ebc
+msgid "Network-Manager says \"Device not ready\" on suspend/resume"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:12
+#: 0165d52b4fc14d09a2a012987b31a9da
+msgid ""
+"These instructions may help with suspend/resume issues for more devices than "
+"just wireless cards, that is just the (unfortunately not uncommon) example "
+"used here."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:14
+#: faec7bfa4efb4fb49f7de228d2579edc
+msgid ""
+"If your wireless card works, but after suspending and resuming your "
+"computer, the Network-Manager applet just says “Device not ready”, then try "
+"un-loading and re-loading the driver."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:17
+#: e2ca2e37d2e94ba3a3c21fa4c3be9246
+msgid "Determining your wireless card driver"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:20
+#: b9c4d37eaf324d59b000fc2b47f9409c
+msgid ""
+"First, determine which kernel module corresponds to your wireless card. "
+"There are several ways to do this."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:22
+#: 5c601b34e2204584b51d9e2bf12ff58a
+msgid "The easiest is via the output of ``lspci -k`` in your sys-net VM:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:34
+#: 8cbce433898e4b7fb2e10c4839399bf9
+msgid ""
+"Here we see that the machine in question has an Intel wireless card, being "
+"used by the ``iwlwifi`` kernel module."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:37
+#: a84d1b5a477f4c3abfa2c6110f81cbf5
+msgid "Checking logs for relevant messages"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:40
+#: 82de64a6812245c9805e6029e3b8c0bc
+msgid ""
+"View the output of ``dmesg`` in sys-net, and check if you see a bunch of "
+"wireless related errors. Depending on your hardware, they may look like the "
+"following (or not):"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:60
+#: d915118f1fda46b2b629e1a5965446a0
+msgid "Seeing what modules you have loaded"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:63
+#: 09a966f7225e4db5b46bc84a16cc7067
+msgid ""
+"You can check which drivers are currently loaded with ``lsmod``, and view "
+"details about a module with ``modinfo <module_name>``."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:65
+#: 314f57b8755c47e1a8e6e761d6da5971
+msgid "For example, we list what modules we have loaded:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:79
+#: 64380f03d6cb4ee182ec7c23047a2ea1
+msgid "and check one:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:90
+#: 6e3da4db2159452c8968ef963b7d86f3
+msgid "Hey, it’s our wireless driver!"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:92
+#: cf7d1409df9f4921a06447f8fdda0c82
+msgid "Now, check if reloading the module makes wireless work again:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:101
+#: af80ef726440446e9ca86e9a6ee66158
+msgid "and try reconnecting to a network that is known to work."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:103
+#: dc3aa151eab64fc2b0b4844ebd673469
+msgid ""
+"If that is successful, see below about having Qubes automatically reload the "
+"driver for you. If not, try also reloading some dependent modules, in our "
+"example we must also reload iwlwifi:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:124
+#: d8e1b1b2b7164187800ff8f10563bede
+msgid "Drivers do not reload automatically on suspend/resume"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:127
+#: 661b9b92e042490bba353760604eb5fc
+msgid ""
+"If reloading the driver (which resets the hardware into a known-state) "
+"resolves your issue when done manually, you can have Qubes automatically un/"
+"reload them on suspend & resume by listing the relevant modules in ``/rw/"
+"config/suspend-module-blacklist``."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:129
+#: 6afcdb402aa047d3aa0b0dba4a8f67fd
+msgid "In the above example, it would look like this:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:143
+#: 83bce73b51c243a686d7180839157360
+msgid "Power consumption increases on suspend/resume"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:146
+#: d7f3beb2216e46fcb1abd5befe891149
+msgid ""
+"This problem is related to the software method used to disable sibling "
+"threads and how it interacts with suspend/resume. To solve the problem, "
+"disable hyper-threading in the BIOS. This `external guide <https://www.pcmag."
+"com/news/how-to-disable-hyperthreading>`__ explains how to disable hyper-"
+"threading. Since Qubes does disable hyperthreading by default (by not using "
+"secondary threads), you won’t pay any performance cost."
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:149
+#: d1c1c29aac71496189356bed99ec2d0c
+msgid "Attached devices in Windows HVM stop working on suspend/resume"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:152
+#: a0870d64255c4b79bb7d9ede1ecd1173
+msgid ""
+"After the whole system gets suspended into S3 sleep and subsequently "
+"resumed, some attached devices may stop working. To make the devices work, "
+"they should be restarted within the VM. This can be achieved under a Windows "
+"HVM by opening the Device Manager, selecting the actual device (such as a "
+"USB controller), ‘Disabling’ the device, and then ‘Enabling’ the device "
+"again. This is illustrated on the screenshot below:"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:154
+#: 0276985cc4284997a4f1c857f6e2d02a
+msgid "r2b1-win7-usb-disable.png"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:160
+#: 885b3c27bb5248ba9c8f35e3650b4d58
+msgid "Suspend turns off the screen and gets stuck"
+msgstr ""
+
+#: ../../../user/troubleshooting/resume-suspend-troubleshooting.rst:163
+#: c2c7020aaac14410b5f43c4d1f526454
+msgid ""
+"On some devices suspend-to-RAM does not work and a hard power-off is needed "
+"to recover, because the system does not go into deep sleep. To get suspend "
+"to work, you need to add ``mem_sleep_default=deep`` kernel option. Add it to "
+"the ``GRUB_CMDLINE_LINUX`` setting in ``/etc/default/grub``, update the grub "
+"config, and reboot."
+msgstr ""

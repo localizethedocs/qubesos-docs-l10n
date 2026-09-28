@@ -1,0 +1,414 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/system/networking.rst:3 d6feb649a9814d0fa9f7a993c2b568ae
+msgid "Networking"
+msgstr "網路"
+
+#: ../../../developer/system/networking.rst:7 7705fbe9e421458b948341dc474d567c
+msgid "Overall description"
+msgstr "總體說明"
+
+#: ../../../developer/system/networking.rst:10 e3d93b56b3c248ae9c085f0f90125e81
+msgid ""
+"In Qubes, the standard Xen networking is used, based on backend driver in "
+"the driver domain and frontend drivers in VMs. In order to eliminate layer 2 "
+"attacks originating from a compromised VM, routed networking is used instead "
+"of the default bridging of ``vif`` devices and NAT is applied at each "
+"network hop. The default *vif-route* script had some deficiencies (requires "
+"``eth0`` device to be up, and sets some redundant iptables rules), therefore "
+"the custom *vif-route-qubes* script is used."
+msgstr ""
+"在 Qubes 中，使用標準的 Xen 網路功能，基於驅動程式領域中的後端驅動程式和 VM "
+"中的前端驅動程式。為了消除源自遭入侵 VM 的第二層攻擊，使用路由網路而非預設的 "
+"``vif`` 裝置橋接，並在每個網路躍點套用 NAT。預設的 *vif-route* 指令稿有一些缺"
+"陷（需要 ``eth0`` 裝置處於啟動狀態，並設定了一些冗餘的 iptables 規則），因此"
+"使用了自訂的 *vif-route-qubes* 指令稿。"
+
+#: ../../../developer/system/networking.rst:12 d38f8ab555364c46932e52f152b945a4
+msgid ""
+"The IP address of ``eth0`` interface in AppVM, as well as two IP addresses "
+"to be used as nameservers (``DNS1`` and ``DNS2``), are passed via QubesDB to "
+"AppVM during its boot (thus, there is no need for DHCP daemon in the network "
+"driver domain). ``DNS1`` and ``DNS2`` are private addresses; whenever an "
+"interface is brought up in the network driver domain, the */usr/lib/qubes/"
+"qubes_setup_dnat_to_ns* script sets up the DNAT iptables rules translating "
+"``DNS1`` and ``DNS2`` to the newly learned real dns servers. This way AppVM "
+"networking configuration does not need to be changed when configuration in "
+"the network driver domain changes (e.g. user switches to a different WLAN). "
+"Moreover, in the network driver domain, there is no DNS server either, and "
+"consequently there are no ports open to the VMs."
+msgstr ""
+"AppVM 中 ``eth0`` 介面的 IP 位址，以及用作名稱伺服器的兩個 IP 位址（``DNS1`` "
+"和 ``DNS2``），會在 AppVM 啟動期間透過 QubesDB 傳遞給 AppVM（因此，網路驅動程"
+"式領域中不需要 DHCP 守護進程）。``DNS1`` 和 ``DNS2`` 是私有位址；每當網路驅動"
+"程式領域中介面啟動時，*/usr/lib/qubes/qubes_setup_dnat_to_ns* 腳本會設定 "
+"DNAT iptables 規則，將 ``DNS1`` 和 ``DNS2`` 轉換為新學習到的真實 DNS 伺服器。"
+"這樣一來，當網路驅動程式領域中的組態變更時（例如使用者切換到不同的 WLAN），"
+"AppVM 的網路組態無需更改。此外，網路驅動程式領域中也沒有 DNS 伺服器，因此沒有"
+"對 VM 開放的連接埠。"
+
+#: ../../../developer/system/networking.rst:15 33f8d8b4d21c43d3b3f05940dd5d1f84
+msgid "Routing tables examples"
+msgstr "路由表範例"
+
+#: ../../../developer/system/networking.rst:18 2cf9bd2d905441379f50c74464122778
+msgid "VM routing table is simple:"
+msgstr "VM 路由表很簡單："
+
+#: ../../../developer/system/networking.rst:25
+#: ../../../developer/system/networking.rst:50 01b253bd34744988a459f9eb759b2951
+#: f50c9807f0b747f9a044850de6ae8b60
+msgid "Destination"
+msgstr "目的地"
+
+#: ../../../developer/system/networking.rst:26
+#: ../../../developer/system/networking.rst:51 f1132a59f88a4d07b948a0a6089db3a8
+#: d29ed75a361e46ad85f07482d5716662
+msgid "Gateway"
+msgstr "閘道"
+
+#: ../../../developer/system/networking.rst:27
+#: ../../../developer/system/networking.rst:52 5fc401cc142e4132a154598c2ccdf02d
+#: 518c143b9814480c9dfd99a608c68f04
+msgid "Genmask"
+msgstr "通用遮罩"
+
+#: ../../../developer/system/networking.rst:28
+#: ../../../developer/system/networking.rst:53 c1e8620f740e4d4693035cce31d5eb9c
+#: 0ef869fe7c4048d7b33990651562c3eb
+msgid "Flags"
+msgstr "旗標"
+
+#: ../../../developer/system/networking.rst:29
+#: ../../../developer/system/networking.rst:54 3a05aa5719274416af68083a6cec3153
+#: 033bc89cec944cc894efa39d4b2033dc
+msgid "Metric"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:30
+#: ../../../developer/system/networking.rst:55 25aecb854ee84505903602fec8989a1c
+#: 7e062a703a6d48e09eb0cb40ba0ea4d0
+msgid "Ref"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:31
+#: ../../../developer/system/networking.rst:56 3ca9c81204164b05ab1c0fcfe6668433
+#: 8cba64ee9ecd4b52803b1e4e85e54391
+msgid "Use"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:32
+#: ../../../developer/system/networking.rst:57 0db7534721b642faa20bb4c500ef072b
+#: 2ef8abad558547f780f8b3b5c10e3348
+msgid "Iface"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:33
+#: ../../../developer/system/networking.rst:34
+#: ../../../developer/system/networking.rst:35
+#: ../../../developer/system/networking.rst:59
+#: ../../../developer/system/networking.rst:67
+#: ../../../developer/system/networking.rst:75
+#: ../../../developer/system/networking.rst:83
+#: ../../../developer/system/networking.rst:91
+#: ../../../developer/system/networking.rst:99
+#: ../../../developer/system/networking.rst:106
+#: ../../../developer/system/networking.rst:108
+#: 73c78d2f709147a89869c0eed26259a5 636be2393641465784b95992d999165a
+#: 64c2e3e1270d4cbab0b576e75b60284d 73cd97454a21406b9bc77c3081279400
+#: f87dfecc88b14104bb66d9f5074a05b8 bf0aa969ee0d48318f0588a34e7bb428
+#: f8897b70720f467fab516adedbb8b231 486b198258014a3e8a05be2434727a2a
+#: c065f34858534ff7aec178832860ce51 5d4875064abc46e892b3001bc2eb7e96
+#: 6ee888274f6a45339af06f50b9f478ed
+msgid "0.0.0.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:36
+#: ../../../developer/system/networking.rst:101
+#: f8aef2c606a1471fb03ad1ba114aa70d 31a1889c17be4f828444d43b15c3997b
+msgid "U"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:37
+#: ../../../developer/system/networking.rst:38
+#: ../../../developer/system/networking.rst:39
+#: ../../../developer/system/networking.rst:62
+#: ../../../developer/system/networking.rst:63
+#: ../../../developer/system/networking.rst:64
+#: ../../../developer/system/networking.rst:70
+#: ../../../developer/system/networking.rst:71
+#: ../../../developer/system/networking.rst:72
+#: ../../../developer/system/networking.rst:78
+#: ../../../developer/system/networking.rst:79
+#: ../../../developer/system/networking.rst:80
+#: ../../../developer/system/networking.rst:86
+#: ../../../developer/system/networking.rst:87
+#: ../../../developer/system/networking.rst:88
+#: ../../../developer/system/networking.rst:94
+#: ../../../developer/system/networking.rst:95
+#: ../../../developer/system/networking.rst:96
+#: ../../../developer/system/networking.rst:103
+#: ../../../developer/system/networking.rst:104
+#: ../../../developer/system/networking.rst:110
+#: ../../../developer/system/networking.rst:111
+#: ../../../developer/system/networking.rst:112
+#: 836cac3a6a6d4cc787da3a99b463fa06 d7bed9549db84f239413689b6005cf0a
+#: d9d37eb3169c40648424d66f21b2220c 071f525ef96043c3a424ab94236e6a2c
+#: 7754948cb9ed423383a430b934e56102 e166dd99a87d49b5a20de330f3150665
+#: 88e3f2c04c8c48f6a08ee86719a13448 a38c87ff83964b789e57c4952b5d0a4b
+#: 9c6f54c960d04e2cbb3bbcc30e37b4f9 91d1f4d43c1549fabb5024253f9ff269
+#: acd14edff6a9412498554af69115fd41 f6145a0dcd324f0e87aba9ae3a8dff74
+#: 7a28772f3684420aadb838aa838a1653 f51d625944864b32b5f1fa65513743e4
+#: 5484ff48d9fa467ab32a8b019d45ea5d 3328cc20161b46e780e1510a87d09721
+#: 1296467f0c8a4d3faf00c92dbb30c4ed 75f7a0f7b52e474abc1ec2d56e32cf90
+#: 654c034705724787a46db7be0bace6b7 6e1c8de041e44da1801769168d14e6c2
+#: ad15c8cf8b5942eb80d1d6e3bce0a48d 43a82c994eac4b9fb9437f9fe766ea00
+#: 35de5c355aef4adbbcfcfba04225b121
+msgid "0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:40
+#: ../../../developer/system/networking.rst:105
+#: ../../../developer/system/networking.rst:113
+#: b348fbcd25b345f68afdc2f4c3e79c41 6a220a2247b94b6ca6744d959a7831e2
+#: cc9d4bf9014f4a53a2f0d6189c99721b
+msgid "eth0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:43 1f7a76b136104999a29e958e124f4a2f
+msgid "Network driver domain routing table is a bit longer:"
+msgstr "網路驅動程式領域的路由表稍微長一些："
+
+#: ../../../developer/system/networking.rst:58 74eedede90814819854339cd9d50e7b9
+msgid "10.137.0.16"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:60
+#: ../../../developer/system/networking.rst:68
+#: ../../../developer/system/networking.rst:76
+#: ../../../developer/system/networking.rst:84
+#: ../../../developer/system/networking.rst:92 6749feadc8c34479ad4006b7a62e56cd
+#: 03ce515061fa405da40caec918412d7d e57eab6c4bb84998b48394a72f76f21c
+#: e9c395beffaa4e98b39f9e350a127f0b 57758299ba7b46e8b3ea2a5bdc568e22
+msgid "255.255.255.255"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:61
+#: ../../../developer/system/networking.rst:69
+#: ../../../developer/system/networking.rst:77
+#: ../../../developer/system/networking.rst:85
+#: ../../../developer/system/networking.rst:93 90be3efb76bd414b97044bffd2ce195e
+#: eb149f8635ee44eba5716b4c1dcb896a 14eb2e1105004887ab37438ae2a8d7c0
+#: d380f10fdfbb4b80a0bdd71cc59d313f d57febd808124b9d86c6e54b3ae9df38
+msgid "UH"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:65 9090bcf5c04b45628ec79327a3786599
+msgid "vif4.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:66 3262167f70a64ecab97a504e34d17159
+msgid "10.137.0.7"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:73 a529c9441fa646928a60d50bd3c1b447
+msgid "vif10.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:74 9ce305dc4f884f9a9c4eaa476f2c5fcf
+msgid "10.137.0.9"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:81 21516f613f63407c94a6946142fae26d
+msgid "vif9.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:82 e3f3e37bf2ca45548404f04c9ea4411a
+msgid "10.137.0.8"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:89 07e6cbde6de94c26a73fcb0b7216e607
+msgid "vif8.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:90 52eb2dfd404142cd9a4e2df85fc7ba53
+msgid "10.137.0.12"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:97 18486e6b2b8e4d8ead4dbbf539d53cf9
+msgid "vif3.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:98 03c19262201f48fc98b3b73982157b35
+msgid "192.168.0.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:100
+#: f38cd5332eef42fc93df0fd38254b882
+msgid "255.255.255.0"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:102
+#: e90534edd3cb4287ac410a55611c4f46
+msgid "1"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:107
+#: 0f2fbdd81a7c4325948973ca1c1b7d4d
+msgid "192.168.0.1"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:109
+#: a7927f091b9a46cb8409921ec4b398a2
+msgid "UG"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:117
+#: 649dcd4287054cbf97888cbdc051f71d
+msgid "IPv6"
+msgstr ""
+
+#: ../../../developer/system/networking.rst:120
+#: df295de18b974602b5889531d60c04e2
+msgid ""
+"Starting with Qubes 4.0, there is opt-in support for IPv6 forwarding. "
+"Similar to the IPv4, traffic is routed and NAT is applied at each network "
+"gateway. This way we avoid reconfiguring every connected qube whenever "
+"uplink connection is changed, and even telling the qube what that uplink is "
+"- which may be complex when VPN or other tunneling services are employed. "
+"The feature can be enabled on any network-providing qube, and will be "
+"propagated down the network tree, so every qube connected to it will also "
+"have IPv6 enabled. To enable the ``ipv6`` feature use ``qvm-features`` tool "
+"and set the value to ``1``. For example to enable it on ``sys-net``, execute "
+"in dom0:"
+msgstr ""
+"從 Qubes 4.0 開始，可選擇加入支援 IPv6 轉發。與 IPv4 類似，流量會進行路由並在"
+"每個網路閘道套用 NAT。這樣一來，每當上行連線變更時，我們無需重新設定每個連接"
+"的 qube 組態，甚至無需告訴 qube 上行連線是什麼——這在使用 VPN 或其他隧道服務時"
+"可能很複雜。此功能可以在任何提供網路的 qube 上啟用，並會向下傳播到網路樹，因"
+"此連接到它的每個 qube 也將啟用 IPv6。要啟用 ``ipv6`` 功能，請使用 ``qvm-"
+"features`` 工具並將值設為 ``1``。例如，要在 ``sys-net`` 上啟用它，請在 dom0 "
+"中執行："
+
+#: ../../../developer/system/networking.rst:127
+#: 68ab7341d95640ffb8d389aad2cdf7d5
+msgid ""
+"Enabling IPv6 in this way will not propagate to running qubes. You will have "
+"to restart connected qubes for the change to take effect. In some cases you "
+"may also have to restart the network-providing qube."
+msgstr ""
+"以此方式啟用 IPv6 不會傳播到正在執行的 qube。您需要重新啟動已連接的 qube，變"
+"更才會生效。在某些情況下，您可能還需要重新啟動提供網路的 qube。"
+
+#: ../../../developer/system/networking.rst:130
+#: ae1916ec0da94ca79d07472c088569d4
+msgid ""
+"It is also possible to explicitly disable IPv6 support for some qubes, even "
+"if it is connected to IPv6-providing one. This can be done by setting "
+"``ipv6`` feature to empty value:"
+msgstr ""
+"也可以明確停用某些 qube 的 IPv6 支援，即使它們已連接到提供 IPv6 的 qube。這可"
+"以透過將 ``ipv6`` 功能設為空值來完成："
+
+#: ../../../developer/system/networking.rst:138
+#: 65735b48df6242e2b97cf3c8ddd5e9f7
+msgid ""
+"This configuration is presented below - green qubes have IPv6 access, red "
+"one does not."
+msgstr "此組態如下所示——綠色的 qube 具有 IPv6 存取權，紅色的則沒有。"
+
+#: ../../../developer/system/networking.rst:140
+#: 865d55174c2d4dd0855d08b6caf36659
+msgid ""
+"Qubes networking tree showing green qubes with IPv6 access and a red qube "
+"where ipv6 feature is set to empty value."
+msgstr ""
+"Qubes 網路樹，顯示具有 IPv6 存取權的綠色 qube，以及 ipv6 功能設為空值的紅色 "
+"qube。"
+
+#: ../../../developer/system/networking.rst:145
+#: 1307eb9308984ecdb6ede079c8108879
+msgid ""
+"In that case, system uplink connection have native IPv6. But in some cases "
+"it may not be true. Then some tunneling solution can be used (for example "
+"teredo). The same will apply when the user is connected to VPN service "
+"providing IPv6 support, regardless of user’s internet connection. Such "
+"configuration can be expressed by enabling ``ipv6`` feature only on some "
+"subset of Qubes networking, for example by creating separate qube to "
+"encapsulate IPv6 traffic and setting ``ipv6`` to ``1`` only there. See "
+"diagram below"
+msgstr ""
+"在這種情況下，系統的上行連線具有原生 IPv6。但在某些情況下可能並非如此。這時可"
+"以使用一些隧道解決方案（例如 teredo）。當使用者連接到提供 IPv6 支援的VPN 服務"
+"時，無論使用者的網際網路連線如何，也同樣適用。此類組態可以透過僅在Qubes 網路"
+"的某個子集上啟用 ``ipv6`` 功能來表達，例如建立單獨的 qube 來封裝IPv6 流量，並"
+"僅在那裡將 ``ipv6`` 設為 ``1``。請參閱下圖"
+
+#: ../../../developer/system/networking.rst:147
+#: e5669b8f58fa4203b77fc964ce74b989
+msgid "Qubes networking tree showing IPv6 provided only by a subset of qubes."
+msgstr "Qubes 網路樹，顯示僅由部分 qube 提供 IPv6。"
+
+#: ../../../developer/system/networking.rst:152
+#: c942b90ad73c46b7bde33d66554b5c6a
+msgid ""
+"Besides enabling IPv6 forwarding, the standard Qubes firewall can be used to "
+"limit what network resources are available to each qube. Currently only the "
+"``qvm-firewall`` command supports adding IPv6 rules, the GUI firewall editor "
+"will have this ability later."
+msgstr ""
+"除了啟用 IPv6 轉發之外，還可以使用標準的 Qubes 防火牆來限制每個 qube 可存取的"
+"網路資源。目前只有 ``qvm-firewall`` 命令支援新增 IPv6 規則，GUI 防火牆編輯器"
+"之後將具備此功能。"
+
+#: ../../../developer/system/networking.rst:154
+#: 37579181908549bb8eaae833275fc050
+msgid ""
+"**Note:** Setting or unsetting the ``ipv6`` feature only affects qubes-"
+"configured networking. It does not affect e.g. external interfaces. If you "
+"want to restrict IPv6 on these interfaces change the settings in Network "
+"Manager. Alternatively, disable IPv6 support using methods appropriate to "
+"the underlying template."
+msgstr ""
+"**注意：** 設定或取消設定 ``ipv6`` 功能僅影響 qubes 組態的網路。它不會影響例"
+"如外部介面。如果您想限制這些介面上的 IPv6，請在 Network Manager 中變更設定。"
+"或者，使用底層範本適用的方法停用 IPv6 支援。"
+
+#: ../../../developer/system/networking.rst:157
+#: 3209cef58ec347fa8dce47a3284f79bb
+msgid "Limitations"
+msgstr "限制"
+
+#: ../../../developer/system/networking.rst:160
+#: f1fb8565da554e08bbedfb0d1c612719
+msgid ""
+"Currently only IPv4 DNS servers are configured, regardless of ``ipv6`` "
+"feature state. It is done this way to avoid reconfiguring all connected "
+"qubes whenever IPv6 DNS becomes available or not. Configuring qubes to "
+"always use IPv6 DNS and only fallback to IPv4 may result in relatively long "
+"timeouts and poor usability. But note that DNS using IPv4 does not prevent "
+"to return IPv6 addresses. In practice this is only a problem for IPv6-only "
+"networks."
+msgstr ""
+"目前僅設定 IPv4 DNS 伺服器，無論 ``ipv6`` 功能的狀態如何。這樣做是為了避免在 "
+"IPv6 DNS 可用或不可用時重新設定所有連接的 qube。將 qube 設定為始終使用 IPv6 "
+"DNS 並僅在故障時回退到 IPv4，可能會導致較長的逾時和較差的使用體驗。但請注意，"
+"使用 IPv4 的 DNS 並不妨礙返回 IPv6 位址。在實踐中，這僅對純 IPv6 網路才有問"
+"題。"

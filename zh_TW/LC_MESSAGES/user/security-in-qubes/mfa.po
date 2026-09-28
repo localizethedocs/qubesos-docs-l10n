@@ -1,0 +1,612 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/security-in-qubes/mfa.rst:3 2bc2f0084e904ba999eefde8c18af5d7
+msgid "Multi-factor Login"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:7 c38a6978bb08474e83165bd91306b3b8
+msgid "Multi-factor authentication within particular qubes"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:10 14a5c92934f9440bad24e3b0478c1702
+msgid ""
+"Most use cases for the hardware tokens can be achieved exactly as described "
+"by the manufacturer or other instructions found online. One usually just "
+"needs to attach the token (e.g. YubiKey) to the corresponding app qube to "
+"get the same result (see the documentation on how to use :doc:`USB devices </"
+"user/how-to-guides/how-to-use-usb-devices>` in Qubes OS accordingly). The "
+"recommended way for using CTAP in Qubes is described :doc:`here </user/"
+"security-in-qubes/ctap-proxy>`."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:13 d0cc2d5dc60c4c1891f54f65c4658c49
+msgid "Multi-factor login for Qubes OS"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:16 886c50c07f4345e2ae92b56a6f018e60
+msgid ""
+"By default Qubes has two protection mechanisms against attackers. The first "
+"is full disk encryption and the second the user login screen / lockscreen. "
+"This article section concerns only adding multi-factor authentication to the "
+"second one."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:19 9e36d812ef9a434a9ae1f36343dd4c02
+msgid "Time-based One-time Password (TOTP)"
+msgstr "基於時間的一次性密碼（TOTP）"
+
+#: ../../../user/security-in-qubes/mfa.rst:22 903016f8a52849258b39e3204b299c7f
+msgid ""
+"As the name implies, this generates authentication code that is time-"
+"dependent. You can save the TOTP secret in a mobile app like `FreeOTP "
+"<https://en.wikipedia.org/wiki/FreeOTP>`__ and then use it as an additional "
+"factor to login to your Qubes system."
+msgstr ""
+"顧名思義，這會生成與時間相關的驗證碼。您可以將 TOTP 秘密儲存在像 `FreeOTP "
+"<https://en.wikipedia.org/wiki/FreeOTP>`__ 這類的行動應用中，然後將其作為額外"
+"的因素用來登入您的 Qubes 系統。"
+
+#: ../../../user/security-in-qubes/mfa.rst:24 d415f25b5aa243d7914ebc58f3794168
+msgid "**Warning**: remember to keep backup access codes."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:26 6afc2e6377654c79abe927ec26ac5084
+msgid "Download ``google-authenticator`` in dom0:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:34 bcde1baa95ad4285a01d22afc1cf0ffd
+msgid "Run google authenticator:"
+msgstr "執行 google authenticator："
+
+#: ../../../user/security-in-qubes/mfa.rst:42 6da56a9fd56c44bfaa1b495837560af3
+msgid ""
+"Walk through the setup instructions which will also generate your QR code "
+"for your auth app of choice:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:58 ffc91a868668484fb635521e3fd649ee
+msgid ""
+"**Warning**: in the next session if incorrectly performed, there is the risk "
+"of locking yourself out. Before procedding ensure that you have an up-to-"
+"date backup."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:60 34a90c4395ed4a7f88d54e1ae237fd8b
+msgid ""
+"For advanced users, to make sure you can quickly recover, you can also open "
+"another loging session in a tty. To do this, you do ``ctrl`` + ``alt`` + "
+"``F2`` and login normally. Should anything go wrong, as long as you don’t "
+"shut the computer down, you can still access this tty by entering the same "
+"key combination and reverting the changes. After you’ve opened this “backup” "
+"login, you can get to your graphical desktop with ``ctrl`` + ``alt`` + "
+"``F1``."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:62 c80a9de9687b4102b1a106f1d37c1c5d
+msgid "Now we are going to add the authenticator as a login requirement:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:64 62994e2c223f45f7b5e6823952dabb7f
+msgid "``sudo authselect create-profile mfa --base-on sssd``"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:66 e47a999380d84f18b94890f74f298e1f
+msgid ""
+"Edit the custom system authentication template in ``/etc/authselect/custom/"
+"mfa/system-auth``. Add the following line right after ``auth required "
+"pam_faildelay.so delay=2000000``:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:74 c4e169065bf54da095fa12157d08b6a3
+msgid "After the change, the top of the file should look like this:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:85 4c12b7e8ec754b3a978d0e279771c7fe
+msgid "Lastly, activate this authentication method with:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:95 edd3f931f646470dadab83467a506715
+msgid ""
+"Now you can test by locking the screen with ``ctrl`` + ``alt`` + ``l`` . If "
+"it was successful and you are pleased with the results, restart your "
+"computer."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:97 07e7b0aacb7d4f5fafc1d551a5470524
+msgid ""
+"**Note**: When logging in. the first thing you put is the TOTP secret and "
+"then the password. This is true in the screen locker and as well as the "
+"session manager (the login window that shows right after you put the disk "
+"encryption passphrase)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:99 3cb61f7f94784b5e945ba6c6f560f774
+msgid ""
+"After this is done, its recommended to do a backup. This is because as long "
+"as you incude dom0 in the backup, your authentication code will be backed up "
+"as well."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:102 c33f0d0398db4abe88de520a91e220dd
+msgid "Troubleshooting"
+msgstr "疑難排解"
+
+#: ../../../user/security-in-qubes/mfa.rst:105 d63f025282a545d0be7eed17900b58e0
+msgid ""
+"The following assumes you haven’t restarted your computer since setting up "
+"TOTP secret."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:107 9f30a1d9941b448b8d415805b8247013
+msgid "Switch to TTY2 with ``ctrl`` + ``alt`` + ``F2`` ."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:109 401725c3107e45d19f044f3026dc1884
+msgid "Revert to the original policy with:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:117 25230995b0854167862c7cca69781b61
+msgid ""
+"Switch back to the graphical desktop with ``ctrl`` + ``alt`` + ``F1`` . You "
+"should be able to login normally (without multi-factor authentication)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:119 9959f2a340504a289ee2417a58e0d814
+msgid "Change the mfa custom policy and apply it again."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:124 cb9fec61895b4bad8411b90ac14b5300
+msgid "Lost TOTP / authentication device?"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:127 280753a3d25142a38868a03444666f9c
+msgid ""
+"In case you’ve lost your TOTP authentication device, you have two options."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:129 3f0ad1433dc247e2810f473f59ed312d
+msgid ""
+"The first option is backup codes. When generating the TOTP secret you must "
+"have saved some recovery codes. Those can be used in place of the TOTP code, "
+"but they’re discarded after use. So make sure you redo the multi-factor "
+"authentications intructions."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:131 a7e08275e75641639a7785a4ec0d4b60
+msgid ""
+"The second option is recovery from a backup. It will work as long as you "
+"included dom0 in said backup. After restoring the dom0 backup, open a "
+"terminal in dom0 and the file should be located in ``/home/<USER>/home-"
+"restore-<DATE>/dom0-home/<USER>/.google_authenticator``."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:134 822cd0a4eeb7458eba706bce526c6cac
+msgid "Login with a YubiKey / NitroKey3"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:137 e353df8f13514d2dbef13e8e147c6528
+msgid ""
+"The YubiKey / NitroKey3 is a hardware authentication device manufactured by "
+"Yubico / NitroKey to protect access to computers, networks, and online "
+"services that supports one-time passwords (OTP), public-key cryptography, "
+"and authentication, and the Universal 2nd Factor `(U2F) <https://en."
+"wikipedia.org/wiki/Universal_2nd_Factor>`__ and FIDO2 protocols developed by "
+"the `FIDO Alliance <https://en.wikipedia.org/wiki/FIDO_Alliance>`__."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:139 d6d47338189243e4a9c4690bbc4370a6
+msgid ""
+"You can use a YubiKey / NitroKey3 to enhance the user authentication in "
+"Qubes. The following instructions explain how to setup the YubiKey / "
+"NitroKey3 as an *additional* way to login."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:141 c33d834269ac477497a1f9fbcc946157
+msgid ""
+"After setting it up, you can login by providing both - a password typed in "
+"via keyboard *and* the YubiKey / NitroKey3 plugged in. Someone eavesdropping "
+"your login attempt would not be able to login by only observing and "
+"remembering your password. Stealing your YubiKey / NitroKey3 would not "
+"suffice to login either. Only if an attacker has both, the password and the "
+"Yubikey / NitroKey3, it would be possible to login (it is thus called `Multi-"
+"factor authentication <https://en.wikipedia.org/wiki/Multi-"
+"factor_authentication>`__)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:143 40fd63d7a441494e8a6a50c9703edef1
+msgid ""
+"The following instructions keep your current login password untouched and "
+"recommends to define a new, additional password that is used in combination "
+"with the YubiKey / NitroKey3 only. This ensures that you a) do not "
+"accidentally lock yourself out during setup and b) you do not need to fear "
+"`shoulder surfing <https://en.wikipedia.org/wiki/"
+"Shoulder_surfing_(computer_security)>`__ so much (i.e. by not using your "
+"standard login password in public)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:146 1f4785bc5c4f4b49a08382ca22fd3ac9
+msgid "Setup login with YubiKey / NitroKey3"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:149 86ccd05ad56f4d69b015dc33a98b8b3a
+msgid ""
+"To use the YubiKey / NitroKey3 for multi-factor authentication you need to"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:151 805cb4a7938346528de7ba45f43f0e1f
+msgid "install software for the YubiKey / NitroKey3,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:153 77485f5f21e640ca82c25165537f0987
+msgid ""
+"configure the YubiKey for the `Challenge-Response <https://en.wikipedia.org/"
+"wiki/Challenge%E2%80%93response_authentication>`__ mode or the NitroKey3 for "
+"`HOTP <https://en.wikipedia.org/wiki/HMAC-based_one-time_password>`__ mode,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:155 27fd5e02394c424eb1995038f4f387d7
+msgid ""
+"store the password for YubiKey / NitroKey3 Login and the Challenge-"
+"Response / HOTP secret in dom0,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:157 597d060b796f464bb0016ec8fd883f1c
+msgid ""
+"enable YubiKey / NitroKey3 authentication for every service you want to use "
+"it for."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:161 20705c99c81a4c77aab57b3053398dda
+msgid ""
+"All these requirements are described below, step by step, for the YubiKey "
+"and NitroKey3. Note that setting up both a YubiKey and a NitroKey3 is not "
+"supported."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:163 fb3af2ca4eb64f24a551684e7ef5299e
+msgid ""
+"Install YubiKey / NitroKey3 software in the template on which your USB VM is "
+"based. Without this software the challenge-response / HOTP mechanism won’t "
+"work."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:165
+#: ../../../user/security-in-qubes/mfa.rst:213
+#: ../../../user/security-in-qubes/mfa.rst:266 590d261709df4b898a536bcebc15dead
+#: cb9f4a9d78094276ab4da64e5c854f9f 4ade54bf8b6f4cca8317923077516e45
+msgid "**YubiKey**"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:167 0d1acfccafe0475fbb959786a90898f4
+msgid "For Fedora."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:177 f25bbece387e4cc1b3e95c1a7fbb3cb2
+msgid "For Debian."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:187
+#: ../../../user/security-in-qubes/mfa.rst:235
+#: ../../../user/security-in-qubes/mfa.rst:270 5d8c852aaaef459dada3ab2a8033c0f5
+#: 8ca1103caab04b9d9c4a2712a2d92f43 f001ddd9fc1a4c6c807ec02d35adc32f
+msgid "**NitroKey3**"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:189 0964b4ba1cc5488a93ed6f59a3d2bf6c
+msgid ""
+"Follow the installation instructions on the official `NitroKey website "
+"<https://docs.nitrokey.com/software/nitropy/all-platforms/installation>`__."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:191 5d32b99aa0384fc5a9b9e69d07c649ff
+msgid ""
+"**WARNING**: *as of April 2024 the official instructions involve using pipx "
+"to install the pynitrokey package and its dependencies without any GPG "
+"verification! This is not a recommended practice, but will soon be fixed by "
+"NitroKey when they start providing release artifacts with detached "
+"signatures on* `their GitHub <https://github.com/Nitrokey/pynitrokey/"
+"releases>`__ *. Proper packaging and distribution for Debian and perhaps "
+"Fedora is also planned for the mid-long term.* **Installing packages using "
+"pip or pipx is not recommended!**"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:195
+#: ../../../user/security-in-qubes/mfa.rst:250 63a624cee3974d6093c9b525e370a1b8
+#: 7aebf3d97e7a462285384e8c980232af
+msgid "**both**"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:197 78316c71cdc6496a8adac8bf6524cbb0
+msgid ""
+"Shut down your template. Then, either reboot your USB VM (so changes inside "
+"the template take effect in your USB app qube) or install the packages "
+"inside your USB VM as well if you would like to avoid rebooting it."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:203 696f0270ddc24eb785c23230b87c43fc
+msgid ""
+"Install `qubes-app-yubikey <https://github.com/QubesOS/qubes-app-yubikey>`__ "
+"in dom0. This provides the program to authenticate with password and "
+"YubiKey / NitroKey3."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:211 11ea84958f1340a49a0d23c4272ed999
+msgid "Configure your YubiKey / NitroKey3:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:215 f1dac25a05bd49d2a0f2fc58fb767c22
+msgid ""
+"Configure your YubiKey for challenge-response ``HMAC-SHA1`` mode. This can "
+"be done on any qube, e.g. a disposable (you need to :doc:`attach the YubiKey "
+"</user/how-to-guides/how-to-use-usb-devices>` to this app qube though) or "
+"directly on the sys-usb vm. You need to (temporarily) install the package "
+"“yubikey-personalization-gui” and run it by typing ``yubikey-personalization-"
+"gui`` in the command line."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:217 fc0632998359426d879346f5cff019f4
+msgid "In the program go to ``Challenge-Response``,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:219 07d5f26bc2634e05bd9522526fad7a39
+msgid "select ``HMAC-SHA1``,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:221 5b6af72075de43118fd1a7fbe24dc26f
+msgid "choose ``Configuration Slot 2``,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:223 477c73436fb94e478a550e50c31deeff
+msgid "optional: enable ``Require user input (button press)`` (recommended),"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:225 d54f6e17ed2a4e7d8d72b1bd31db8850
+msgid "use ``fixed 64 bit input`` for ``HMAC-SHA1 mode``,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:227 a032b266cf3e4b4f8fd8cf9e2108b49b
+msgid ""
+"insert the YubiKey (if not done already) and make sure that it is attached "
+"to the vm,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:229 f40043f8b25b4752a054cd31da6d04dc
+msgid "press ``Write Configuration`` once you are ready."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:237 8f9e5fbe7108452182af697b7a9226b8
+msgid ""
+"Set up a new NK3 Secrets App HOTP secret by attaching the NitroKey to your "
+"USB qube and running the following commands in it:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:246 143be9b341a04333977b406a5b95bf61
+msgid ""
+"Note that the 20 digit sequence can contain any printable ASCII character, e."
+"g. letters, numbers, punctuation marks. The actual ``Secret Key (base 32)`` "
+"is the base32 encoded form of that sequence."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:252 5e332438af6d4301b5413711a676005f
+msgid ""
+"We will call the ``Secret Key (20 bytes hex)`` (YubiKey) or ``Secret Key "
+"(base 32)`` ``AESKEY``."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:254 ed82386cfc1c4b58938f998e655116e5
+msgid ""
+"It is recommended to keep a backup of your ``AESKEY`` in an offline VM used "
+"as a vault."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:256 fd54b0528a4b4ac1915f443b13fbbd83
+msgid ""
+"Consider keeping a backup of your ``AESKEY`` on paper and storing it in a "
+"safe place."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:258 20b0ebcdaa8d43c9b51a051332116b6e
+msgid ""
+"If you have multiple YubiKeys for backup purposes (in case one gets lost, "
+"stolen or breaks) you can write the same settings into other YubiKeys. For "
+"YubiKeys you can choose “Program multiple YubiKeys” in the program; make "
+"sure to select ``Same secret for all keys`` in this case. For NitroKeys you "
+"can set up the secret for multiple of them, but you must always use the same "
+"NitroKey, because the HOTP counter will be incremented in dom0 as well as "
+"the used NitroKey whenever you make use of this method. If you want to "
+"switch to a different NitroKey later, delete the file ``/etc/qubes/yk-keys/"
+"nk-hotp-counter`` in dom0 first to make it work with a fresh NitroKey 3. Do "
+"the same if for some reason your counters get desynchronized (it stops "
+"working), e.g. due to connectivity issues (NitroKey3A Minis are known to "
+"wear out quickly)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:268 5dbcdcc7008d471eafad6a87dc33eb9a
+msgid ""
+"Paste your ``AESKEY`` into ``/etc/qubes/yk-keys/yk-secret-key.hex`` in dom0. "
+"Note that if you had previously used a NitroKey3 with this package, you "
+"*must* delete the file ``/etc/qubes/yk-keys/nk-hotp-secret`` or its content!"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:272 4285d001f5ba462cb816d09cb6579e6e
+msgid ""
+"Create the file ``/etc/qubes/yk-keys/nk-hotp-secret`` in dom0 and paste your "
+"``AESKEY`` (in base 32 format) into it."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:278 316fcd67a91e46fea15372088853ce87
+msgid ""
+"As mentioned before, you need to define a new password that is only used in "
+"combination with the YubiKey / NitroKey3. You can write this password in "
+"plain text into ``/etc/qubes/yk-keys/login-pass`` in dom0. This is "
+"considered safe as dom0 is ultimately trusted anyway."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:280 f02d3df7286546ee8d4c8226b48692ac
+msgid ""
+"However, if you prefer you can paste a hashed password instead into ``/etc/"
+"qubes/yk-keys/login-pass-hashed.hex`` in dom0."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:282 318fb6993abc400c93c0dabb89acbf52
+msgid ""
+"You can calculate your hashed password using the following two commands. "
+"First run the following command to store your password in a temporary "
+"variable ``password``. (This way your password will not leak to the terminal "
+"command history file.)"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:290 c346ed48ea174d3981289ad5c87eee99
+msgid "Now run the following command to calculate your hashed password."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:300 68c15586c2454a6c9a87ba9cb6487e7f
+msgid "To enable multi-factor authentication for a service, you need to add"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:307 08140d3640024248a16807adab9b22eb
+msgid ""
+"(same for YubiKey and NitroKey3) to the corresponding service file in ``/etc/"
+"pam.d/`` in dom0. This means, if you want to enable the login via YubiKey / "
+"NitroKey3 for xfce4-screensaver (the default screen lock program), you add "
+"the line at the beginning of ``/etc/pam.d/xfce4-screensaver``. If you want "
+"to use the login for a tty shell, add it to ``/etc/pam.d/login``. Add it to "
+"``/etc/pam.d/lightdm`` if you want to enable the login for the default "
+"display manager and so on. It is important, that ``auth include yubikey`` is "
+"added at the beginning of these files, otherwise it will most likely not "
+"work."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:310 7c441af424af424ea4ede2efbeec8741
+msgid ""
+"Adjust the USB VM name in case you are using something other than the "
+"default ``sys-usb`` by editing ``/etc/qubes/yk-keys/vm`` in dom0."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:315 51864c3bec4b46759f27244f4c304c33
+msgid "Usage"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:318 736c1e3da6ae4ec1bc6ffddf8580ceb7
+msgid "When you want to authenticate"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:320 0bea8e0653a942f7a1ec3524e62093fb
+msgid "plug your YubiKey / NitroKey3 into an USB slot,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:322 7ee094f2d63c435a913dd1d78f57f5fe
+msgid "enter the password associated with the YubiKey / NitroKey3,"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:324 5cc225e6bf334767b0068c2e26d580b1
+msgid "press Enter and"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:326 aee9302d1d2b4357a97c1f70a9634c3f
+msgid ""
+"press the button of the YubiKey / NitroKey3, if you configured the "
+"confirmation (it will light up or blink)."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:330 13b0ccf6a8644dbab96b7c35b3e703ca
+msgid "When everything is ok, your screen will be unlocked."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:332 4f00ddc5b4e443789000bb40e2eeedb2
+msgid ""
+"In any case you can still use your normal login password, but do it in a "
+"secure location where no one can snoop your password."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:335 a5f234edc18d4aa48e6874eeb7dfa4b7
+msgid "Optional: Enforce YubiKey / NitroKey3 Login"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:338 2a91cc9f886b4faf8b527cd37e790a0b
+msgid ""
+"Edit ``/etc/pam.d/yubikey`` (or appropriate file if you are using other "
+"screen locker program) and remove ``default=ignore`` so the line looks like "
+"this."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:347 907587ce011e47b7b9005b329426d099
+msgid "Optional: Locking the screen when YubiKey / NitroKey3 is removed"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:350 4b6fb6fc9c6f413c8badb87be3c0b4b7
+msgid ""
+"You can setup your system to automatically lock the screen when you unplug "
+"your YubiKey / NitroKey3. This will require creating a simple qrexec service "
+"which will expose the ability to lock the screen to your USB VM, and then "
+"adding a udev hook to actually call that service."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:352 dbd652b7a55946da8e9418ec129e7014
+msgid "In dom0:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:354 bb25c3ee58564b2a87b01cb1678d879b
+msgid ""
+"First configure the qrexec service. Create ``/etc/qubes-rpc/custom."
+"LockScreen`` with a simple command to lock the screen. In the case of xfce4-"
+"screensaver (used in Xfce) it would be:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:362 84da5698c66f4275bbbf7ea878265968
+msgid "Then make ``/etc/qubes-rpc/custom.LockScreen`` executable."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:370 cd444932bf17463c9eacc40093850933
+msgid ""
+"Allow your USB VM to call that service. Assuming that it’s named ``sys-usb`` "
+"it would require creating ``/etc/qubes-rpc/policy/custom.LockScreen`` with:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:380 87b28fd7622144978168bdc33e7e4e44
+msgid "In your USB VM:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:382 763973c4f8a048b3a43bdb667a79ec65
+msgid ""
+"Create udev hook. Store it in ``/rw/config`` to have it persist across VM "
+"restarts. For example name the file ``/rw/config/yubikey.rules``. Add the "
+"following line:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:390 be838a9296994e928214bbdccf4cf3be
+msgid ""
+"Ensure that the udev hook is placed in the right place after VM restart. "
+"Append to ``/rw/config/rc.local``:"
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:399 48d2a2f6e77745ee90a172d558aa4b61
+msgid "Then make ``/rw/config/rc.local`` executable."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:407 6cb2f222e7064e92a15fa41d0cc00cac
+msgid ""
+"For changes to take effect, you need to call this script manually for the "
+"first time."
+msgstr ""
+
+#: ../../../user/security-in-qubes/mfa.rst:417 92d50ce1608f44d2b0178f1236a221c5
+msgid "If you use KDE, the command(s) in first step would be different:"
+msgstr ""
