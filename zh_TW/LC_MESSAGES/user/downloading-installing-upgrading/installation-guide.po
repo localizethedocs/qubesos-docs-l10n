@@ -1,0 +1,1214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:3
+#: d40e489aef1740a3bf1d0bde561d9c2d
+msgid "Installation guide"
+msgstr "安裝指南"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:6
+#: a7d98d538fa849a5b5e72d12c6980788
+msgid ""
+"Welcome to the Qubes OS installation guide! This guide will walk you through "
+"the process of installing Qubes. Please read it carefully and thoroughly, as "
+"it contains important information for ensuring that your Qubes OS "
+"installation is functional and secure."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:10
+#: 792b273b37b14495980dcfbc8b50c40b
+msgid "Pre-installation"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:14
+#: de3ce23dfeb94e8594d485bd3a8e375b
+msgid "Hardware requirements"
+msgstr "硬體要求"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:19
+#: bc916b4ff63f474ca2d97528a6159ff8
+msgid ""
+"Qubes has no control over what happens on your computer before you install "
+"it. No software can provide security if it is installed on compromised "
+"hardware. Do not install Qubes on a computer you don’t trust. See :doc:"
+"`installation security </user/downloading-installing-upgrading/install-"
+"security>` for more information."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:21
+#: 3ad7096d271e4c758d1c0b49136ce57d
+msgid ""
+"Qubes OS has very specific :doc:`system requirements </user/hardware/system-"
+"requirements>`. To ensure compatibility, we strongly recommend using :doc:"
+"`Qubes-certified hardware </user/hardware/certified-hardware/certified-"
+"hardware>`. Other hardware may require you to perform significant "
+"troubleshooting. You may also find it helpful to consult the `Hardware "
+"Compatibility List <https://www.qubes-os.org/hcl/>`__."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:23
+#: d0dd9d9092f34029853983a280ad6ae6
+msgid ""
+"Even on supported hardware, you must ensure that `IOMMU-based virtualization "
+"<https://en.wikipedia.org/wiki/"
+"Input%E2%80%93output_memory_management_unit#Virtualization>`__ is activated "
+"in the BIOS or UEFI. Without it, Qubes OS won’t be able to enforce "
+"isolation. For Intel-based boards, this setting is called Intel "
+"Virtualization for Directed I/O (**Intel VT-d**) and for AMD-based boards, "
+"it is called AMD I/O Virtualization Technology (or simply **AMD-Vi**). This "
+"parameter should be activated in your computer’s BIOS or UEFI, alongside the "
+"standard Virtualization (**Intel VT-x**) and AMD Virtualization (**AMD-V**) "
+"extensions. This `external guide <https://web.archive.org/web/20200112220913/"
+"https://www.intel.in/content/www/in/en/support/articles/000007139/server-"
+"products.html>`__ made for Intel-based boards can help you figure out how to "
+"enter your BIOS or UEFI to locate and activate those settings. If those "
+"settings are not nested under the Advanced tab, you might find them under "
+"the Security tab."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:27
+#: f353d038b59b40068c658540bf6b117d
+msgid ""
+"Qubes OS is not meant to be installed inside a virtual machine as a guest "
+"hypervisor. In other words, *nested virtualization* is not supported. In "
+"order for a strict compartmentalization to be enforced, Qubes OS needs to be "
+"able to manage the hardware directly."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:30
+#: 29383b78732949cda0d11005cbe1c2b9
+msgid "Copying the ISO onto the installation medium"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:33
+#: 430eec95293844eda736b3676b4b8688
+msgid ""
+"Pick the most secure existing computer and OS you have available for "
+"downloading and copying the Qubes ISO onto the installation medium. "
+"`Download <https://www.qubes-os.org/downloads/>`__ a Qubes ISO. The size of "
+"each Qubes ISO is available on the `downloads <https://www.qubes-os.org/"
+"downloads/>`__ page by hovering over the download button."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:35
+#: 1103b5b1cf0243b3bc16885573474114
+msgid ""
+"If your Internet connection is unstable and the download is interrupted, you "
+"could:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:37
+#: 4fbae7f2a56d4fbbacfec55d5500cfde
+msgid ""
+"resume the partial download with ``wget --continue`` in case you are "
+"currently using wget for downloading;"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:38
+#: 02bf0b721ac840b59babe332310627e7
+msgid "use a download-manager with resume capability;"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:39
+#: 43b66e7579244fc7a3943dd918a239a9
+msgid ""
+"or alternatively you can download installation ISO via BitTorrent that "
+"sometimes enables higher download speeds and more reliable downloads of "
+"large files."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:43
+#: e8cfea62500a40329a8f8f77ee9c73bb
+msgid ""
+"Any file you download from the internet **could be malicious**, even if it "
+"appears to come from a trustworthy source. Our philosophy is to :ref:"
+"`distrust the infrastructure <introduction/faq:what does it mean to "
+"\"distrust the infrastructure\"?>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:45
+#: 48bb6b2f9d944561a35b32ade51537f9
+msgid ""
+"Regardless of how you acquire your Qubes ISO, :doc:`verify its authenticity "
+"</project-security/verifying-signatures>` before continuing."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:47
+#: 95bbbb1a7cbf490f9e571b74ee63e1e2
+msgid ""
+"**Once the ISO has been verified as authentic**, you should copy it onto the "
+"installation medium of your choice, such as a USB drive, dual-layer DVD, or "
+"Blu-ray disc. The instructions below assume you’ve chosen a USB drive as "
+"your medium. If you’ve chosen a different medium, please adapt the "
+"instructions accordingly."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:49
+#: 984c5a42f2454465aa801399a692c439
+msgid ""
+"There are important :doc:`security considerations </user/downloading-"
+"installing-upgrading/install-security>` to keep in mind when choosing an "
+"installation medium."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:52
+#: 913cfad8dd5f402685abde0102216eec
+msgid "Linux ISO to USB"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:56
+#: 264902c06d2c421cb73f3f182ffbe6fe
+msgid ""
+"Be careful to choose the correct device when copying the ISO, or you may "
+"lose data. We strongly recommended making a full backup before modifying any "
+"devices."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:58
+#: 13b40c928cba4c1a98fdeff2faea5fa5
+msgid ""
+"On Linux, if you choose to use a USB drive, copy the ISO onto the USB "
+"device, e.g. using ``dd``:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:64
+#: 4a91ff5aef4148eaa3c7253f3487524a
+msgid ""
+"Change :file:`Qubes-R{X}-x86_64.iso` to the filename of the version you’re "
+"installing, and change :file:`/dev/sd{Y}` to the correct target device e."
+"g., :file:`/dev/sdc`). Make sure to write to the entire device (e.g., :file:"
+"`/dev/sdc`) rather than just a single partition (e.g., :file:`/dev/sdc1`). "
+"If you are doing this within Qubes OS, you must make sure that you have "
+"attached the whole device to your qube, not just a partition. The path of "
+"your target device will then be :file:`/dev/xvd{Y}` such as :file:`/dev/"
+"xvdi` - avoid writing to a single partition (e.g., :file:`/dev/xvdi1`)."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:66
+#: f0de1e2716844d5cb2148b0a45ebb889
+msgid ""
+"**Advanced users** may wish to :ref:`re-verify their installation media "
+"after writing <project-security/verifying-signatures:how to re-verify "
+"installation media after writing>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:69
+#: 2aaf129459dd47509881748e491842ba
+msgid "Windows ISO to USB"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:72
+#: b5ecd2047573460e8354b38fb177c166
+msgid ""
+"On Windows, you can use the `Rufus <https://rufus.ie/>`__ tool to write the "
+"ISO to a USB key. Be sure to select “Write in DD Image mode” *after* "
+"selecting the Qubes ISO and pressing “START” on the Rufus main window."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:76
+#: a2d80d53261f481e960da58b6278ffbd
+msgid ""
+"Using Rufus to create the installation medium means that you `won’t be able "
+"<https://github.com/QubesOS/qubes-issues/issues/2051>`__ to choose the “Test "
+"this media and install Qubes OS” option mentioned in the example below. "
+"Instead, choose the “Install Qubes OS” option."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:78
+#: 39701d03328e484b8fa41ac8d7c83d60
+msgid "|Rufus menu|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:376
+#: f597929e4aee4ef5bbbd0b2125d7a927
+msgid "Rufus menu"
+msgstr "Rufus 選單"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:80
+#: f937a674b9964a67a6c454c0c68eb910
+msgid "|Rufus DD image mode|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:377
+#: 8b9418dd27514b739810cabf184a2576
+msgid "Rufus DD image mode"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:83
+#: 8190c62ebc0a4d40bc61e51c23f1a771
+msgid "Installation"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:86
+#: 642fcff8ac284060b1243e69e45303c9
+msgid ""
+"This section will demonstrate a simple installation using mostly default "
+"settings."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:89
+#: 3f113a63009a4e3a8e65c4aa1b9adbfa
+msgid "Getting to the boot screen"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:92
+#: 904c3e57a4e74bf9b08af51bc69d063c
+msgid ""
+"“Booting” is the process of starting your computer. When a computer boots "
+"up, it first runs :term:`low-level software <firmware>` before the main "
+"operating system. Depending on the computer, this low-level software may be "
+"called the `“BIOS” <https://en.wikipedia.org/wiki/BIOS>`__ or `“UEFI” "
+"<https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface>`__."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:94
+#: adc631d76291479eb7f5207b08e0c49a
+msgid ""
+"Since you’re installing Qubes OS, you’ll need to access your computer’s BIOS "
+"or UEFI menu so that you can tell it to boot from the USB drive to which you "
+"just copied the Qubes installer ISO."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:96
+#: 4a34f4dc22ef4a6f960e70438b76fe1c
+msgid ""
+"To begin, power off your computer and plug the USB drive into a USB port, "
+"but don’t press the power button yet. Right after you press the power "
+"button, you’ll have to immediately press a specific key to enter the BIOS or "
+"UEFI menu. The key to press varies from brand to brand. :kbd:`Esc`, :kbd:"
+"`Del`, and :kbd:`F10` are common ones. If you’re not sure, you can search "
+"the web for ``<COMPUTER_MODEL> BIOS key`` or ``<COMPUTER_MODEL> UEFI key`` "
+"(replacing ``<COMPUTER_MODEL>`` with your specific computer model) or look "
+"it up in your computer’s manual."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:98
+#: 810cdeca96a146ed9af3f879bef7b92f
+msgid ""
+"Once you know the key to press, press your computer’s power button, then "
+"repeatedly press that key until you’ve entered your computer’s BIOS or UEFI "
+"menu. To give you an idea of what you should be looking for, we’ve provided "
+"a couple of example photos below."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:100
+#: 9c2ea518881a44539d0e7672c12284ad
+msgid "Here’s an example of what the BIOS menu looks like on a ThinkPad T430:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:102
+#: c4a425e401d04f8c8597a2f4c0d0ad4d
+msgid "|ThinkPad T430 BIOS menu|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:378
+#: f6df357a955b48649022a69bca76ec01
+msgid "ThinkPad T430 BIOS menu"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:104
+#: 10f2e6e53411476f812099244a9c67f7
+msgid "And here’s an example of what a modern UEFI menu looks like:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:106
+#: e23e9c57f4964cdb8b1e742b74aad526
+msgid "|UEFI menu|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:379
+#: 4aac3e76cad1425f8327091ced97e2a6
+msgid "UEFI menu"
+msgstr "UEFI 選單"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:108
+#: 1ea51e3cc8cd484d9cff348f93c405fa
+msgid ""
+"Once you access your computer’s BIOS or UEFI menu, you’ll want to go to the "
+"“boot menu”, which is where you tell your computer which devices to boot "
+"from. The goal is to tell the computer to boot from your USB drive so that "
+"you can run the Qubes installer. If your boot menu lets you select which "
+"device to boot from first, simply select your USB drive. (If you have "
+"multiple entries that all look similar to your USB drive, and you’re not "
+"sure which one is correct, one option is just to try each one until it "
+"works.) If, on the other hand, your boot menu presents you with a list of "
+"boot devices in order, then you’ll want to move your USB drive to the top so "
+"that the Qubes installer runs before anything else."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:110
+#: aece4d8d09f74783af59591bdc68b83a
+msgid ""
+"Then, if you are on a computer using UEFI, you’ll have to disable `Secure "
+"Boot <https://en.m.wikipedia.org/wiki/UEFI#SECURE-BOOT>`__ to allow Qubes OS "
+"to boot."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:112
+#: 349c43ce9d39469da9192d0193dcdd09
+msgid ""
+"Once you’re done with the settings, save your changes. How you do this "
+"depends on your BIOS or UEFI, but the instructions should be displayed right "
+"there on the screen or in a nearby tab. (If you’re not sure whether you’ve "
+"saved your changes correctly, you can always reboot your computer and go "
+"back into the boot menu to check whether it still reflects your changes.) "
+"Once your BIOS or UEFI is configured the way you want it, reboot your "
+"computer. This time, don’t press any special keys. Instead, let the BIOS or "
+"UEFI load and let your computer boot from your USB drive. If you’re "
+"successful in this step, after a few seconds you’ll be presented with the "
+"Qubes installer screen:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:114
+#: eb17d35bac964f2180e756a314db2e1d
+msgid "|Boot screen|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:380
+#: 18783a78044347859c10b6762f542af4
+msgid "Boot screen"
+msgstr "開機螢幕"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:116
+#: 3ebdd94818f746e79cdfd00306f8a9bc
+msgid ""
+"From here, you can navigate the boot screen using the arrow keys on your "
+"keyboard. Pressing the “Tab” key will reveal options. You can choose one of "
+"five options:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:118
+#: 85ed9d94b5b44a50bed4f0d4a8f4c391
+msgid "Install Qubes OS"
+msgstr "安裝 Qubes OS"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:120
+#: 7bbb9ffd85ca418ea331e53f1d5697e3
+msgid "Test this media and install Qubes OS"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:122
+#: 3db9804523484bbdbe370a7d0992be09
+msgid "Troubleshooting - verbose boot"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:124
+#: 9e56cf129ff64acab2f2c7fe39c8ea85
+msgid "Rescue a Qubes OS system"
+msgstr "救援 Qubes OS 系統"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:126
+#: 0d144127c5bc499b85be36cba426f07e
+msgid "Install Qubes OS 4.2.1 using kernel-latest"
+msgstr "使用 kernel-latest 安裝 Qubes OS 4.2.1"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:130
+#: 3b158330afb64ba0b45d7d2b779380a1
+msgid "Select the option to test this media and install Qubes OS."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:134
+#: 466e26f93a8148619f6053b454d4b71d
+msgid ""
+"If the latest stable release is not compatible with your hardware, you may "
+"wish to consider installing using the latest kernel. Be aware that this has "
+"not been as well tested as the standard kernel."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:136
+#: 6b1ec302694d4c49804bdf12b578ac89
+msgid ""
+"If the boot screen does not appear, there are several options to "
+"troubleshoot. First, try rebooting your computer. If it still loads your "
+"currently installed operating system or does not detect your installation "
+"medium, make sure the boot order is set up appropriately. The process to "
+"change the boot order varies depending on the currently installed system and "
+"the motherboard manufacturer. If **Windows 10** is installed on your "
+"machine, you may need to follow specific instructions to change the boot "
+"order. This may require an `advanced reboot <https://support.microsoft.com/"
+"en-us/help/4026206/windows-10-find-safe-mode-and-other-startup-settings>`__."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:139
+#: 3adb5e8a1d6d499196ea767bfc22f4c0
+msgid "The installer home screen"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:142
+#: c419b0503a414f8989fb8cc33ed83aab
+msgid ""
+"On the first screen, you are asked to select the language that will be used "
+"during the installation process. When you are done, select **Continue**."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:144
+#: f33474c6708143169cfa23bc0ce7aae7
+msgid "|Language selection window|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:381
+#: 4545fd8a7dc847b79bbef5be1e591ad3
+msgid "Language selection window"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:146
+#: d3295b166f1b47649dad9ef860e36a4a
+msgid ""
+"Prior to the next screen, a compatibility test runs to check whether IOMMU-"
+"virtualization is active or not. If the test fails, a window will pop up."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:148
+#: 03fa19a74b9b4c70abbdcd53404d80b6
+msgid "|Unsupported hardware detected|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:382
+#: 2f46161031534cefaa615755fa6dd7bf
+msgid "Unsupported hardware detected"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:150
+#: 3d3fd7118e6f4b1da04f15c8e6fc3cc9
+msgid ""
+"Do not panic. It may simply indicate that IOMMU-virtualization hasn’t been "
+"activated in the BIOS or UEFI. Return to the :ref:`user/downloading-"
+"installing-upgrading/installation-guide:hardware requirements` section to "
+"learn how to activate it. If the setting is not configured correctly, it "
+"means that your hardware won’t be able to leverage some Qubes security "
+"features, such as a strict isolation of the networking and USB hardware."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:152
+#: b503666a3bff4fceafabcf31a9143ae2
+msgid ""
+"If the test passes, you will reach the installation summary screen. The "
+"installer loads Xen right at the beginning. If you can see the installer’s "
+"graphical screen, and you pass the compatibility check that runs immediately "
+"afterward, Qubes OS is likely to work on your system!"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:154
+#: 658e99ddcb1a4dfe894cc696451af964
+msgid ""
+"Like Fedora, Qubes OS uses the Anaconda installer. Those that are familiar "
+"with RPM-based distributions should feel at home."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:157
+#: 7b1f1bfa40b149829d7821635deb1f82
+msgid "Installation summary"
+msgstr "安裝摘要"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:160
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:206
+#: 2f560d2c1a3946b2aa2230aa4bbb151a 7a083ae3928a4bcb99e6ba98006e6b98
+msgid "Did you know?"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:162
+#: f3a985a390c040e796b80fa8b44d532a
+msgid ""
+"The Qubes OS installer is completely offline. It doesn’t even load any "
+"networking drivers, so there is no possibility of internet-based data leaks "
+"or attacks during the installation process."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:164
+#: a9f6c87a6e0c44c5b7125a8babe1932a
+msgid ""
+"The Installation summary screen allows you to change how the system will be "
+"installed and configured, including localization settings. At minimum, you "
+"are required to select the storage device on which Qubes OS will be "
+"installed."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:166
+#: 2042a498b04742d1b5975dcdb1023284
+msgid "|Installation summary screen awaiting input|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:383
+#: 9613c842a2da4396bd308475407d7f97
+msgid "Installation summary screen awaiting input"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:169
+#: 1a148a3c86a24fceb726199dfda9ce61
+msgid "Localization"
+msgstr "在地化"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:172
+#: 6179111b99f74f768100cb4e7e620463
+msgid ""
+"Let’s assume you wish to add a German keyboard layout. Go to Keyboard "
+"Layout, press the “Plus” symbol, search for “German” as indicated in the "
+"screenshot and press “Add”. If you want it be your default language, select "
+"the “German” entry in the list and press the arrow button. Click on “Done” "
+"in the upper left corner, and you’re ready to go!"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:174
+#: 4b06716ff7824da9bc31667af567c55a
+msgid "|Keyboard layout selection|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:384
+#: 25e752fe9cd541a28e1ec682d464af33
+msgid "Keyboard layout selection"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:176
+#: e65d48c957574347adb4bb32d152bf65
+msgid ""
+"The process to select a new language is similar to the process to select a "
+"new keyboard layout. Follow the same process in the “Language Support” entry."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:178
+#: 77c4428a566c4a559f8f5c18194bf98c
+msgid "|Language support selection|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:385
+#: e93e57ef1789455aa60946ed77a34633
+msgid "Language support selection"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:180
+#: 534683e8aa9a4249b0bfc5265f23e2e4
+msgid ""
+"You can have as many keyboard layout and languages as you want. Post-"
+"install, you will be able to switch between them and install others."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:182
+#: f3d246d2a8c7463aa3b13a27c5bae123
+msgid ""
+"Don’t forget to select your time and date by clicking on the Time & Date "
+"entry."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:184
+#: 6757a4de568f4650ab5a28212861097c
+msgid "|Time and date|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:386
+#: 19d18de4a966474dad2a24122f17b586
+msgid "Time and date"
+msgstr "時間與日期"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:187
+#: fe27b6f683b942c1ba674910d0516fbc
+msgid "Installation destination"
+msgstr "安裝目的地"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:190
+#: a8076712715240f899aef14d7f737c89
+msgid ""
+"Under the System section, you must choose the installation destination. "
+"Select the storage device on which you would like to install Qubes OS."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:194
+#: 5893ced57df74e7ba547a2772de2fdf5
+msgid ""
+"Be careful to choose the correct installation target, or you may lose data. "
+"We strongly recommended making a full backup before proceeding."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:196
+#: c8dd28d63a804f1fb356a90c96d934ec
+msgid ""
+"Your installation destination can be an internal or external storage drive, "
+"such as an SSD, HDD, or USB drive. The installation destination must have a "
+"least 32 GiB of free space available."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:200
+#: 844b75e17b3c42c1bafde48eee27914c
+msgid ""
+"The installation destination cannot be the same as the installation medium. "
+"For example, if you’re installing Qubes OS *from* a USB drive *onto* a USB "
+"drive, they must be two distinct USB drives, and they must both be plugged "
+"into your computer at the same time. (**Note:** This may not apply to "
+"advanced users who partition their devices appropriately.)"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:202
+#: 5ca5aeee69624bd78b4f0b5e9c8d1f65
+msgid ""
+"Installing an operating system onto a USB drive can be a convenient way to "
+"try Qubes. However, USB drives are typically much slower than internal SSDs. "
+"We recommend a very fast USB 3.0 drive for decent performance. Please note "
+"that a minimum storage of 32 GiB is required. If you want to install Qubes "
+"OS onto a USB drive, just select the USB device as the target installation "
+"device. Bear in mind that the installation process is likely to take longer "
+"than it would on an internal storage device."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:204
+#: 2052b97d849a40528fd811e2c8374b2a
+msgid "|Select storage device screen|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:387
+#: 9903a9efc6884477ac0aa5b46f80cc27
+msgid "Select storage device screen"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:208
+#: 98f543fe5d33414692117477c410d1a9
+msgid ""
+"By default, Qubes OS uses `LUKS <https://en.wikipedia.org/wiki/"
+"Linux_Unified_Key_Setup>`__ /`dm-crypt <https://en.wikipedia.org/wiki/Dm-"
+"crypt>`__ to encrypt everything except the ``/boot`` partition."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:210
+#: 4ec4c7bb70dd48db9ab7f68e37cf406e
+msgid ""
+"As soon as you press **Done**, the installer will ask you to enter a "
+"passphrase for disk encryption. The passphrase should be complex. Make sure "
+"that your keyboard layout reflects what keyboard you are actually using. "
+"When you’re finished, press **Done**."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:214
+#: b0f1140c985f45199baccb216c8f7f8f
+msgid ""
+"If you forget your encryption passphrase, there is no way to recover it."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:216
+#: c4da10c86d1a40eabf48ca561ac88ff2
+msgid "|Select storage passphrase|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:388
+#: b681be945e1a49359c7eac84215ca6bf
+msgid "Select storage passphrase"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:219
+#: 5e5778a381e0405caced20158af83c09
+msgid "Create your user account"
+msgstr "建立您的使用者帳號"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:222
+#: 4b15749e253644ad948eba103670fb6b
+msgid ""
+"Select “User Creation” to create your user account. This is what you’ll use "
+"to log in after disk decryption and when unlocking the screen locker. This "
+"is a purely local, offline account in :term:`dom0`. By design, Qubes OS is a "
+"single-user operating system, so this is just for you."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:224
+#: 8088fbf4bc8447baba94f6c6e397fdf2
+msgid ""
+"The new user you create has full administrator privileges and is protected "
+"by a password. Just as for the disk encryption, this password should be "
+"complex. The root account is deactivated and should remain as such."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:226
+#: 477fbdc05a8043c6a9dfa0f8b5899515
+msgid "|Account name and password creation window.|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:389
+#: 6fbde3820c9f472e8d00fb140673a5f0
+msgid "Account name and password creation window."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:231
+#: 560614a6c0a84b07b2695e3ca52e4f7c
+msgid "Begin Installation"
+msgstr "開始安裝"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:236
+#: 9eee0122d4634193954fe02064685075
+msgid ""
+"When you have completed all the items marked with the warning icon, press "
+"**Begin Installation**."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:238
+#: e6b2e9c3d66243f18da8a716b1a7588f
+msgid "Installation can take some time."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:240
+#: fd835a42778e4a7b94bb632d2f7022d0
+msgid "|Windows showing installation complete and Reboot button.|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:390
+#: d6b4de4f999e4845ac0123034335cd63
+msgid "Windows showing installation complete and Reboot button."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:242
+#: 6b8ea6c7b6a142908ba4053b27b989bc
+msgid ""
+"When the installation is complete, press **Reboot System**. Don't forget to "
+"remove the installation medium, or else you may end up seeing the installer "
+"boot screen again. Also disconnect any *unneeded* USB devices which are "
+"connected to the machine, including Security dongles, mouse or keyboard. (Do "
+"not disconnect USB mouse or keyboard if these are your primary devices). If "
+"you do not do this the second stage install might take decisions on your "
+"behalf lowering your security model (ie: dongles or USB keyboard being "
+"connected on next boot will punch holes so that USB keyboard can be used to "
+"control dom0, which might or might not be desired)."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:245
+#: 52306bfa617e42a2b0ea57d8beb56dd2
+msgid "Post-installation"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:249
+#: fff951522d4a40ee9f59e11b1432ad69
+msgid "First boot"
+msgstr "首次開機"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:252
+#: 4fc5fbfae650402186b465b595f2c379
+msgid ""
+"If the installation was successful, you should now see the GRUB menu during "
+"the boot process."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:254
+#: db06055fbe8e4f909cbb8dcca3860414
+msgid "|Grub boot menu|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:391
+#: bcc5a2cd5a6e4cfa8aa13e066752c178
+msgid "Grub boot menu"
+msgstr "Grub 開機選單"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:256
+#: d1d94ac388ad4eb6bda89c3bd9cf2e6a
+msgid ""
+"Just after this screen, you will be asked to enter your encryption "
+"passphrase."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:258
+#: 5da65371c1d043f1be1ffa3ef3fcee64
+msgid "|Screen to enter device decryption password|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:392
+#: 86d4967ea79240b0897ef67bf9d9b299
+msgid "Screen to enter device decryption password"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:261
+#: b383c42dbe9a4fe8911a4ea0b2ac9b37
+msgid "Initial Setup"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:264
+#: 5d069f4b1fc6442bb7ace89152b43b04
+msgid ""
+"You’re almost done. Before you can start using Qubes OS, some configuration "
+"is needed."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:266
+#: 72a8a9b9526b4377999bdcca5fb6477a
+msgid ""
+"|Window with link for final configuration| Click on the item marked with the "
+"warning triangle to enter the configuration screen. |Initial configuration "
+"menu|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:393
+#: 44673257de484a6e8e573bbbdf39b2fc
+msgid "Window with link for final configuration"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:394
+#: d656378f31824632b085b379e4eb7ca9
+msgid "Initial configuration menu"
+msgstr "初始組態選單"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:268
+#: 226a037b08ed43e6b8c4b29ed75b05f2
+msgid ""
+"By default, the installer will create a number of :term:`qubes <qube>` "
+"(depending on the options you selected during the installation process). "
+"These are designed to give you a more ready-to-use environment from the get-"
+"go."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:270
+#: 41d47148580843a6992dd4b9b8a602c1
+msgid "Let’s briefly go over the options:"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:273
+#: e4e79e83282942ae9a63f63dc3e9cc05
+msgid "Templates Configuration"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:275
+#: 7846e4a8b18f4d3fa83b949077ce53e8
+msgid ""
+"This section provides the :term:`templates <template>` you wish to install "
+"and which one to use as the default one. The default template settings can "
+"always be changed after this initial configuration too."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:278
+#: 63e63a2291604ec485817cdc7834743c
+msgid "Main Configuration"
+msgstr "主要組態"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:280
+#: 2f2b3890041a49b889df31d741109567
+msgid ""
+":guilabel:`Create default system qubes (sys-net, sys-firewall, default "
+"DispVM)`: These are the core components of the system, required for things "
+"like internet access."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:282
+#: 9a6b1530004747dbba0ee20f90bf50a0
+msgid ""
+":guilabel:`Make sys-firewall and sys-usb disposable`: The :term:`qubes "
+"<qube>` responsible for firewalling/isolating network traffic and holding "
+"certain hardware devices like USB, Bluetooth adapter, integrated cameras, "
+"etc. (**sys-usb** only, if applicable) will be made :term:`disposable`. "
+"Enabled by default as it fits most users' needs."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:284
+#: 5f9706b324bb48ddaade4ddc8aa03bce
+msgid ""
+":guilabel:`Make sys-net disposable`: The :term:`net qube` handling your "
+"network devices will be made :term:`disposable`. This will result in loss of "
+"stored Wi-Fi passwords and therefore automatic Wi-Fi connections each time :"
+"term:`the qube <net qube>` gets booted. Disabled by default for a more user-"
+"friendly experience but if you don't mind storing the aforementioned "
+"passwords e.g. in an offline password manager, you may turn it on for "
+"privacy enhancements (no broadcasting of saved Wi-Fi network names). You "
+"might also :ref:`customize the disposable net qube so that your Wi-Fi "
+"credentials will be passed dynamically <user/advanced-topics/disposable-"
+"customization:Change application settings dynamically>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:286
+#: 02440bcf567647fca79c9479a40d08bc
+msgid ""
+":guilabel:`Preload disposable qubes based on the default DispVM (faster "
+"usage)`: If your computer has enough memory, this option will be enabled by "
+"default and :ref:`transparently enqueue several disposables in the "
+"background for faster startup <user/how-to-guides/how-to-use-disposables:"
+"Faster disposable startup (preloading)>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:288
+#: 77ead44cfe4f4031b4f894740def98e2
+msgid ""
+":guilabel:`Create default application qubes (personal, work, untrusted, "
+"vault)`: These are how you compartmentalize your digital life. There's "
+"nothing special about the ones the installer creates. They're just "
+"suggestions that apply to most people. If you decide you don't want them, "
+"you can always delete them later, and you can always :doc:`create your own </"
+"user/how-to-guides/how-to-organize-your-qubes>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:290
+#: d988988b460f4f0eb85d1f723f9bbbde
+msgid ""
+":guilabel:`Use a qube to hold all USB controllers (create a new qube called "
+"sys-usb by default)`: A dedicated :term:`qube` that holds certain hardware "
+"devices like USB, Bluetooth adapter, integrated cameras, etc. (**sys-usb**) "
+"will be created."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:292
+#: 80fdcaba7aa94087aab6f48ce856b467
+msgid ""
+":guilabel:`Use sys-net qube for both networking and USB devices`: certain "
+"hardware devices will be held by **sys-net** instead. You should select this "
+"option if you rely on a USB device for network access, such as a USB modem "
+"or a USB Wi-Fi adapter, as this option will make the experience with them "
+"more user-friendly and seamless."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:294
+#: 8ff1af9a780140379b26502508c50ef4
+msgid ""
+":guilabel:`Automatically accept USB mice (discouraged)`: If enabled, upon "
+"the connecting of a device that presents itself as a USB mouse, it will be "
+"automatically forwarded to :term:`dom0`. Disabled by default so once such "
+"device is connected, manual user interaction is required to confirm "
+"forwarding that device. This results in additional security benefits - e.g. "
+"a malicious device presenting itself as a mouse will be rendered useless "
+"until a confirmation dialog in :term:`dom0` is accepted."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:296
+#: 592ad1474aa4449eb0861e11d95b8f6a
+msgid ""
+":guilabel:`Automatically accept USB keyboard (discouraged if non-USB "
+"keyboard is available)`: See the point above about USB mice. The same "
+"applies here. Enabling this is mostly beneficial to modern stationary "
+"workstations where only a USB keyboard can be used for typing. If you can "
+"use a PS/2 keyboard (generally laptops use an emulated PS/2 for their "
+"internal keyboards), you may want to leave this option disabled for "
+"additional security."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:300
+#: e1afcf0833734cae8401c41a5d1148b3
+msgid ""
+"**Note:** When choosing to automatically accept USB mice or keyboards, be "
+"aware of the :ref:`security considerations <user/security-in-qubes/device-"
+"handling-security:USB Security>`. For troubleshooting non-working devices, "
+"see :ref:`this document <user/how-to-guides/how-to-use-usb-devices:Using USB "
+"keyboards and other input devices>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:302
+#: 9c9a5aec97f040488659d2e4a8dad84f
+msgid ""
+":guilabel:`Create Whonix Gateway and Workstation qubes (sys-whonix, anon-"
+"whonix)`: If you want to use `Whonix <https://www.whonix.org/wiki/Qubes>`__, "
+"you should select this option."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:304
+#: 9f72a55841904ce989d9c34f78f64805
+msgid ""
+":guilabel:`Enable system and template updates over the Tor anonymity network "
+"using Whonix`: If you select this option, then whenever you install or "
+"update software in :term:`dom0` or a :term:`templates <template>`, the "
+"internet traffic will go through Tor."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:307
+#: ee6c7087faa44b098cee0f0f9c3f0470
+msgid "Advanced Configuration"
+msgstr "進階組態"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:309
+#: 6ba9885ec6334b8cb97f7d8931924d2a
+msgid ""
+":guilabel:`Use custom storage pool`: Here you can specify custom names for "
+"the LVM pool holding your :term:`qubes <qube>`' filesystems as well as LVM "
+"Volume Group name. Unless you're preparing a customized environment on your "
+"machine (e.g. dual booting distinct Qubes OS releases), you can leave this "
+"option unchecked."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:311
+#: 11b77a11e8184400a9e39d491ee51fe6
+msgid ""
+":guilabel:`Do not configure anything (for advanced users)`: This is for very "
+"advanced users only. If you select this option, you'll have to set "
+"everything up manually afterward."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:314
+#: 119f0971a19b4b4481a4b401a244171c
+msgid ""
+"When you’re satisfied with your choices, press **Done**. This configuration "
+"process may take a while, depending on the speed of your computer and the "
+"selected options described above (the more :term:`templates <template>` to "
+"be installed, the longer the configuration process will take)."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:316
+#: 574b589c17a6408a8bddfc6f6aaf1426
+msgid ""
+"After configuration is done, you will be greeted by the login screen. Enter "
+"your password and log in."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:318
+#: 3a9bb05f61fd4b7cb0e600ad4836cff1
+msgid "|Login screen|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:395
+#: 4b52f90ac3374f12a6b2dc3661d0e514
+msgid "Login screen"
+msgstr "登入螢幕"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:320
+#: 68aecdc6a6d24ab298dd5f6943ae3e87
+msgid "Congratulations, you are now ready to use Qubes OS!"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:322
+#: 2591542c6be840fc956a3c69c24823a4
+msgid "|Desktop menu|"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:396
+#: 956208e9df5b44ecbf67c584aa0f32c2
+msgid "Desktop menu"
+msgstr "桌面選單"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:325
+#: 3e584e3a915b41afb2d6b66b65bb3a88
+msgid "Next steps"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:329
+#: 8723a578bf184bc6a7405d0c07c261a6
+msgid "Updating"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:332
+#: 80e86ff6d0354a4dad0e54ad23d95a26
+msgid ""
+"Next, :doc:`update </user/how-to-guides/how-to-update>` your installation to "
+"ensure you have the latest security updates. Frequently updating is one of "
+"the best ways to remain secure against new threats."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:335
+#: 8aadb245aaaa4ac39c24735ff638777a
+msgid "Security"
+msgstr "安全性"
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:338
+#: 3b3f04a9ac204b2195f648422cbedc53
+msgid ""
+"The Qubes OS Project occasionally issues `Qubes Security Bulletins (QSBs) "
+"<https://www.qubes-os.org/security/qsb/>`__ as part of the :doc:`Qubes "
+"Security Pack (qubes-secpack) </project-security/security-pack>`. It is "
+"important to make sure that you receive all QSBs in a timely manner so that "
+"you can take action to keep your system secure. (While :ref:`user/"
+"downloading-installing-upgrading/installation-guide:updating` will handle "
+"most security needs, there may be cases in which additional action from you "
+"is required.) For this reason, we strongly recommend that every Qubes user "
+"subscribe to the :ref:`qubes-announce <introduction/support:qubes-announce>` "
+"mailing list."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:340
+#: 27189add3ae94d5d85e820f32fbcbcbd
+msgid ""
+"In addition to QSBs, the Qubes OS Project also publishes `Canaries <https://"
+"www.qubes-os.org/security/canary/>`__, XSA summaries, :term:`templates "
+"<template>` releases and end-of-life notices, and other items of interest to "
+"Qubes users. Since these are not essential for all Qubes users to read, they "
+"are not sent to :ref:`qubes-announce <introduction/support:qubes-announce>` "
+"in order to keep the volume on that list low. However, we expect that most "
+"users, especially novice users, will find them helpful. If you are "
+"interested in these additional items, we encourage you to subscribe to the "
+"`Qubes News RSS feed <https://www.qubes-os.org/feed.xml>`__ or join one of "
+"our other :doc:`venues </introduction/support>`, where these news items are "
+"also announced."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:342
+#: 02281bfefc114d2090a40e009ecb8406
+msgid ""
+"For more information about Qubes OS Project security, please see the :doc:"
+"`security center </project-security/security>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:345
+#: 874a06b9fa214d2495ed02a91f0450fe
+msgid "Backups"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:348
+#: 9674772de45345458fa753626fec0db7
+msgid ""
+"It is extremely important to make regular backups so that you don’t lose "
+"your data unexpectedly. The :doc:`Qubes backup system </user/how-to-guides/"
+"how-to-back-up-restore-and-migrate>` allows you to do this securely and "
+"easily."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:351
+#: e04b6ff6b3bd4599a8f5839c14b32c97
+msgid "Submit your HCL report"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:354
+#: e7d95fcfc3874908a51d6c3d6556e179
+msgid ""
+"Consider giving back to the Qubes community and helping other users by :ref:"
+"`generating and submitting a Hardware Compatibility List (HCL) report <user/"
+"hardware/how-to-use-the-hcl:generating and submitting new reports>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:357
+#: da9e778887c14bbfb08cd844a10ea3af
+msgid "Get Started"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:360
+#: 8f0097912c5b4ae8a4c8b1eef1ee54f3
+msgid ""
+"Find out :doc:`Getting Started </introduction/getting-started>` with Qubes, "
+"check out the other :ref:`How-To Guides <how-to-guides>`, and learn about :"
+"ref:`Templates <templates>`."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:363
+#: ae8f3b9f254747bca0a5f2208ae1601f
+msgid "Getting help"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:366
+#: 537b2d43c1e241c4b43c78c71edc9fc3
+msgid ""
+"We work very hard to make the :doc:`documentation </index>` accurate, "
+"comprehensive useful and user friendly. We urge you to read it! It may very "
+"well contain the answers to your questions. (Since the documentation is a "
+"community effort, we’d also greatly appreciate your help in :doc:`improving "
+"</developer/general/how-to-edit-the-rst-documentation>` it!)"
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:368
+#: a0f4da91a4464bbdaeb4c8ce847f8873
+msgid ""
+"If issues arise during installation, see the :doc:`Installation "
+"Troubleshooting </user/troubleshooting/installation-troubleshooting>` guide."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:370
+#: 6a49debdc82b4346b66bae041c5f061b
+msgid ""
+"If you don’t find your answer in the documentation, please see :doc:`Help, "
+"Support, Mailing Lists, and Forum </introduction/support>` for places to ask."
+msgstr ""
+
+#: ../../../user/downloading-installing-upgrading/installation-guide.rst:372
+#: dfb693a2b665460b8725f22d4b94d38d
+msgid ""
+"Please do **not** email individual members of the Qubes team with questions "
+"about installation or other problems. Instead, please see :doc:`Help, "
+"Support, Mailing Lists, and Forum </introduction/support>` for appropriate "
+"places to ask questions."
+msgstr ""
