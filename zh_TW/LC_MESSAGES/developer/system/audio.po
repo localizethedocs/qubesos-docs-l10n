@@ -1,0 +1,218 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/system/audio.rst:3 928a8c5c74d343b1bdc52fe92bca70f7
+msgid "Audio virtualization"
+msgstr "音訊虛擬化"
+
+#: ../../../developer/system/audio.rst:6 99b5af89887c4f5483c7f48d840270fc
+msgid ""
+"VMs on Qubes OS have access to virtualized audio through the PulseAudio "
+"module. It consists of two parts:"
+msgstr ""
+"Qubes OS 上的 VM 可透過 PulseAudio 模組存取虛擬化音訊。它由兩部分組成："
+
+#: ../../../developer/system/audio.rst:8 db969d0750fc45ab861830b4d7e6a3d9
+msgid ""
+"``pacat-simple-vchan`` running in a dom0/Audio VM (standalone application, "
+"one per VM, connected to the PulseAudio daemon)"
+msgstr ""
+"``pacat-simple-vchan`` 在 dom0/音訊 VM 中執行（獨立應用程式，每個 VM 一個，連"
+"接到 PulseAudio 守護進程）"
+
+#: ../../../developer/system/audio.rst:10 b05a869a907c4aab982596f69786cd16
+msgid ""
+"``module-vchan-sink`` running in a VM (loaded into the PulseAudio process)"
+msgstr "``module-vchan-sink`` 在 VM 中執行（載入至 PulseAudio 進程中）"
+
+#: ../../../developer/system/audio.rst:15 fadb190201474bb298f4e8a72e8b43b9
+msgid "Protocol"
+msgstr "協定"
+
+#: ../../../developer/system/audio.rst:18 7a2e895e4b494a998047bb4566b618eb
+msgid ""
+"The protocol between these two parts is designed to be as simple as "
+"possible. Specifically, there is no audio format negotiation, no "
+"compression, etc. All the audio data is transferred as raw 44.1kHz samples "
+"in S16LE format, 2 channels."
+msgstr ""
+"這兩個部分之間的協定設計得盡可能簡單。具體來說，沒有音訊格式協商、沒有壓縮"
+"等。所有音訊資料都以 S16LE 格式的原始 44.1kHz 取樣傳輸，2 個通道。"
+
+#: ../../../developer/system/audio.rst:20 1b8bfd4a194249848463f33d61e79c7e
+msgid "These two parts are connected with two vchan links:"
+msgstr "這兩個部分透過兩條 vchan 連結連接："
+
+#: ../../../developer/system/audio.rst:22 1f9813caa46e45cba42029c31be2a959
+msgid ""
+"Connection on vchan port 4713 used to transfer audio from VM to dom0/Audio "
+"VM. There is no negotiation, no headers, etc. Only raw samples are sent over "
+"this channel."
+msgstr ""
+"vchan 連接埠 4713 上的連線用於將音訊從 VM 傳輸到 dom0/音訊 VM。沒有協商、沒有"
+"標頭等。僅透過此通道傳送原始取樣資料。"
+
+#: ../../../developer/system/audio.rst:24 e29138603a644ccf90060e97bc696e64
+msgid ""
+"Connection on vchan port 4714 used to transfer audio from dom0/Audio VM to "
+"VM. Like the previous one, audio data is sent as raw samples."
+msgstr ""
+"vchan 連接埠 4714 上的連線用於將音訊從 dom0/音訊 VM 傳輸到 VM。與前一個類似，"
+"音訊資料以原始取樣資料傳送。"
+
+#: ../../../developer/system/audio.rst:28 2f74f3e196b4416bb959a897f5a8733a
+msgid ""
+"Additionally, the second vchan connection (on port 4714) is used in the "
+"opposite direction (VM to dom0) to send simple notifications/commands about "
+"the audio state. Each such notification is a 4-byte number in little-endian "
+"format."
+msgstr ""
+"此外，第二條 vchan 連線（連接埠 4714）以相反方向（VM 到 dom0）用於傳送關於音"
+"訊狀態的簡單通知/命令。每個此類通知是一個採用 little-endian 格式的4 位元組數"
+"字。"
+
+#: ../../../developer/system/audio.rst:30 db3ce18593644576b378ef3b8f0735c3
+msgid "List of defined codes:"
+msgstr "已定義的代碼列表："
+
+#: ../../../developer/system/audio.rst:32 0b76a6cc5e5a469f993070cb518870d9
+msgid ""
+"``0x00010001`` – VM wants to receive audio input (some process is "
+"listening); prior to this message, ``pacat-simple-vchan`` will not send any "
+"audio samples to the VM."
+msgstr ""
+"``0x00010001`` – VM 想要接收音訊輸入（某個進程正在監聽）；在此訊息之前，"
+"``pacat-simple-vchan`` 不會向 VM 發送任何音訊取樣資料。"
+
+#: ../../../developer/system/audio.rst:34 92b8483d52cf4c55bff101bff43db777
+msgid ""
+"``0x00010000`` – VM does not want to receive audio input (no process is "
+"listening anymore); after this message, ``pacat-simple-vchan`` will not send "
+"any audio samples to the VM."
+msgstr ""
+"``0x00010000`` – VM 不想要接收音訊輸入（沒有進程在監聽了）；在此訊息之後，"
+"``pacat-simple-vchan`` 不會向 VM 發送任何音訊取樣資料。"
+
+#: ../../../developer/system/audio.rst:36 251b2a327e8643f7a1e8b310a855216c
+msgid ""
+"``0x00020000`` – VM does not want to send audio output; informational for "
+"dom0, to avoid buffer under runs (may affect PulseAudio calculated delays)."
+msgstr ""
+"``0x00020000`` – VM 不想要發送音訊輸出；供 dom0 參考，以避免緩衝區欠載（可能"
+"影響 PulseAudio 計算的延遲）。"
+
+#: ../../../developer/system/audio.rst:38 77842fa59c234f53affd20aa30b92d84
+msgid "``0x00020001`` – VM does want to send audio output."
+msgstr "``0x00020001`` – VM 確實想要發送音訊輸出。"
+
+#: ../../../developer/system/audio.rst:43 72927c6b39974568a39aa0286c466081
+msgid "pacat-simple-vchan"
+msgstr ""
+
+#: ../../../developer/system/audio.rst:46 ddd2ea90179844d09a001f7b9d533dea
+msgid ""
+"This is the dom0 (or Audio VM) part of the audio virtualization. It is "
+"responsible for transferring audio samples between the PulseAudio daemon in "
+"dom0/Audio VM (which has access to the actual audio hardware) and a VM "
+"playing/recording sounds. A separate ``pacat-simple-vchan`` process runs in "
+"dom0 for each VM with audio. Each of them opens separate input and output "
+"streams to their local PulseAudio, which allows for controlling the volume "
+"of each VM separately (using the ``pavucontrol`` tool, for example). In "
+"order to (re)create a stream for a VM in dom0, ``pacat-simple-vchan`` can be "
+"used. In order to find the needed parameters, domid and domain name, the "
+"command ``xl list`` can be used."
+msgstr ""
+"這是音訊虛擬化的 dom0（或音訊 VM）部分。它負責在 dom0/音訊 VM 中的 "
+"PulseAudio 守護進程（可存取實際音訊硬體）與播放/錄製聲音的 VM 之間傳輸音訊取"
+"樣資料。每個具有音訊的 VM 在 dom0 中都有一個獨立的 ``pacat-simple-vchan`` 進"
+"程在執行。每個進程都會開啟通往其本機 PulseAudio 的獨立輸入和輸出串流，這允許"
+"分別控制每個 VM 的音量（例如使用 ``pavucontrol`` 工具）。要在 dom0 中為 VM"
+"（重新）建立串流，可以使用 ``pacat-simple-vchan``。要查找所需的參數、domid 和"
+"網域名稱，可以使用 ``xl list`` 命令。"
+
+#: ../../../developer/system/audio.rst:48 2c1f0d5cb77f4bcca6166da349c4e7ad
+msgid ""
+"Audio input to the VM is not sent by default. It needs to be both requested "
+"by the VM part and explicitly enabled in ``pacat-simple-vchan``. The "
+"mechanism to do this differs between Qubes versions. In Qubes before R4.1, "
+"``pacat-simple-vchan`` is controlled over system D-Bus:"
+msgstr ""
+"傳送給 VM 的音訊輸入預設不會發送。它需要同時由 VM 端請求並在 ``pacat-simple-"
+"vchan`` 中明確啟用。執行此操作的機制因 Qubes 版本而異。在 R4.1 之前的 Qubes "
+"中，``pacat-simple-vchan`` 是透過系統 D-Bus 控制的："
+
+#: ../../../developer/system/audio.rst:50 717a0557890d43be91a31cf6e6b1c13f
+msgid ""
+"destination: ``org.qubesos.Audio.VMNAME`` (where ``VMNAME`` is the VM’s name)"
+msgstr "目的地：``org.qubesos.Audio.VMNAME``（其中 ``VMNAME`` 是 VM 的名稱）"
+
+#: ../../../developer/system/audio.rst:52 f5e493782257437694c15803167739aa
+msgid "object path: ``/org/qubesos/audio``"
+msgstr "物件路徑：``/org/qubesos/audio``"
+
+#: ../../../developer/system/audio.rst:54 a442dd4f696f4130a518a90881acd247
+msgid "interface: ``org.qubesos.Audio``"
+msgstr "介面：``org.qubesos.Audio``"
+
+#: ../../../developer/system/audio.rst:56 77f7391963064039956a2e6c9806efe9
+msgid ""
+"property: ``RecAllowed`` (which can be set using the ``org.freedesktop.DBus."
+"Properties`` interface)"
+msgstr ""
+"屬性：``RecAllowed``（可使用 ``org.freedesktop.DBus.Properties`` 介面設定）"
+
+#: ../../../developer/system/audio.rst:60 c0b9ca029c06452f95f80ea8209cc117
+msgid ""
+"In Qubes R4.1 and later, ``pacat-simple-vchan`` is controlled over a UNIX "
+"socket at ``/var/run/qubes/audio-control.VMNAME`` (where ``VMNAME`` is the "
+"VM’s name). Supported commands:"
+msgstr ""
+"在 Qubes R4.1 及更高版本中，``pacat-simple-vchan`` 是透過位於 ``/var/run/"
+"qubes/audio-control.VMNAME`` 的 UNIX socket 控制的（其中 ``VMNAME`` 是 VM 的"
+"名稱）。支援的命令："
+
+#: ../../../developer/system/audio.rst:62 381e859f3ced43c3b9fe5ed35a2ac638
+msgid "``audio-input 1\\n`` - enable audio input"
+msgstr "``audio-input 1\\n`` - 啟用音訊輸入"
+
+#: ../../../developer/system/audio.rst:64 ae1aa6d2abd747abb600c9ccb7d4fd1a
+msgid "``audio-input 0\\n`` - disable audio input"
+msgstr "``audio-input 0\\n`` - 停用音訊輸入"
+
+#: ../../../developer/system/audio.rst:68 79cbe397567a4e69b954a51d25e78bcb
+msgid ""
+"These commands can be sent using the ``qubes.AudioInputEnable+VMNAME`` and "
+"``qubes.AudioInputDisable+VMNAME`` qrexec services, respectively. The "
+"current status is written into QubesDB at ``/audio-input/VMNAME`` (where "
+"``VMNAME`` is the VM’s name) with either ``1`` or ``0`` values. The lack of "
+"a key means that the ``pacat-simple-vchan`` for a given VM is not running."
+msgstr ""
+"這些命令可分別使用 ``qubes.AudioInputEnable+VMNAME`` 和 ``qubes."
+"AudioInputDisable+VMNAME`` qrexec 服務發送。目前狀態會被寫入 QubesDB 中的 ``/"
+"audio-input/VMNAME``（其中 ``VMNAME`` 是 VM 的名稱），值為 ``1`` 或 ``0``。缺"
+"少鍵值表示特定 VM 的 ``pacat-simple-vchan``未在執行中。"
+
+#: ../../../developer/system/audio.rst:70 04152a1ec9d9437eaedd30355412c47b
+msgid ""
+"In either version, it is exposed to the user as device of class ``mic``, "
+"which can be attached to a VM (for example, using the ``qvm-device mic`` "
+"command)."
+msgstr ""
+"在任一版本中，它都作為類別 ``mic`` 的裝置暴露給使用者，可以附加到 VM（例如使"
+"用 ``qvm-device mic`` 命令）。"
