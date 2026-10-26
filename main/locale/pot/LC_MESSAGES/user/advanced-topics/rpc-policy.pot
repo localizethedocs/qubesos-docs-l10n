@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-10-26 15:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../user/advanced-topics/rpc-policy.rst:3
-#: 438952750f1f41a4933f1b7c8364b6ad
+#: 7f3ee005d24c44dabed08cb06bbd8a26
 msgid "RPC policies"
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:7
-#: 48b174f0e0f6477e913e54d218bb2b11
+#: d9b3dd0e8f144247be8b4fddd2d162f0
 msgid "This page is intended for advanced users."
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:9
-#: 20c42002e1624d41af3422af0cbd29aa
+#: 6476745dcea34d40ba96c533eb4f0520
 msgid ""
 "*Qubes OS 4.1 introduced a new qrexec policy system and policy format. "
 "Please see* `this article <https://www.qubes-os.org/news/2020/06/22/new-"
@@ -36,7 +36,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:11
-#: 97c7979713c445dfb7ee401162206b37
+#: 863324429d484e4aab31c1a06db2d5bd
 msgid ""
 "This document explains the basics of RPC policies in Qubes. For more "
 "information, see :doc:`Qrexec: command execution in VMs </developer/services/"
@@ -44,12 +44,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:13
-#: 0fb2d24e49ee4a128cc1d9cd39c10f33
+#: 6a5599a698254395aa6c8987c2e008a9
 msgid "Here’s an example of an RPC policy file in dom0:"
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:27
-#: fb260292a3b54541bdaf0f6020917032
+#: 964c364cb1354b4e992630925fcc75ac
 msgid ""
 "It has three columns (from left to right): source, destination, and "
 "permission. Each row is a rule. For example, the second row says that we’re "
@@ -63,7 +63,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:29
-#: 776483fc40744c94801ce20402fc7edf
+#: dbdf467e51e545858de04f214c3c86e6
 msgid ""
 "Now, the whole policy file is parsed from top to bottom. As soon as a rule "
 "is found that matches the action being evaluated, parsing stops. We can see "
@@ -82,7 +82,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:31
-#: e5f059068f7b40e3be29f1d4d0eb5543
+#: dcd73950c0374b80849afb4e0910dc58
 msgid ""
 "When an operation is initiated with a specific target, e.g. ``qvm-copy-to-vm "
 "other_work_vm some_file`` the policy mechanism looks for a row matching "
@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:33
-#: ffdd430c374a464f9d25151a73c583a2
+#: 2f0389b4d5a04d7385337bdeb5515cee
 msgid ""
 "The fourth row says that we’re **denied** from copying files **from** any VM "
 "in the system **to** any VM tagged with “work”. Again, since parsing goes "
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:35
-#: 6c15f20da0d946439da074696106af84
+#: 879a38c91bbf4d60be2c3ea18772db38
 msgid ""
 "The fifth and final row says that we’re **asked** (i.e., prompted) to copy "
 "files **from** any VM in the system **to** any VM in the system. (This rule "
@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:37
-#: fe7edca9442744ac8c74bf70d5fef329
+#: 1e7b132b9a8c4caeb4eff48d2a793081
 msgid ""
 "All together, the four rules we added say that all VMs tagged with “work” "
 "are allowed to copy files to each other; however, they’re denied from "
@@ -136,14 +136,14 @@ msgid ""
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:39
-#: a54119a50b3c4accb81fae4da0af7c2d
+#: f8399ac42db746aebaf9260e20119740
 msgid ""
 "Further details about how this system works can be found in :doc:`Qrexec: "
 "command execution in VMs </developer/services/qrexec>`."
 msgstr ""
 
 #: ../../../user/advanced-topics/rpc-policy.rst:41
-#: 995d587ca9b544c7bbdbe4cf1adfb81f
+#: 589eb494add1474281b15a8da67f22d1
 msgid ""
 "(**Note** *: the* ``$`` *character is deprecated in qrexec keywords – please "
 "use* ``@`` *instead (e.g.* ``@anyvm`` *). For more information, see the "

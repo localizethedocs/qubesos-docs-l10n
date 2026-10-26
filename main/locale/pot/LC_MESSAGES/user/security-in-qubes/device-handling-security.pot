@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-10-26 15:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,24 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:3
-#: f9779a71d556467dba8045a7ca8a93c6
+#: 81587b1864cf424189b2a97fae6cff5e
 msgid "Device handling security"
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:6
-#: e242a31f84384e44a56e083b96e542de
+#: 65c1db77117b46acb87e834c20478215
 msgid ""
 "Any additional ability a VM gains is additional attack surface. It’s a good "
 "idea to always attach the minimum entity required in a VM."
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:8
-#: 99943370c1bb4c98bbf64830b8e462fc
+#: cca0a566b43d4f2194f9489a0be6b1b1
 msgid ""
 "For example, attaching a full USB-device offers `more attack surface than "
 "attaching a single block device <https://blog.invisiblethings.org/2011/05/31/"
-"usb-security-challenges.html>`__, while attaching a full block device (e."
-"g. ``sda``) again offers more attack surface than attaching a single "
+"usb-security-challenges.html>`__, while attaching a full block device "
+"(e.g. ``sda``) again offers more attack surface than attaching a single "
 "partition (e.g. ``sda1``), since the targetVM doesn’t have to parse the "
 "partition-table. (Attaching a full block device offers the advantage that "
 "most file-managers will mount and display them correctly, whereas they don’t "
@@ -44,12 +44,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:11
-#: effc8802252f40679e10810990e669a5
+#: 01d0efaa8a3d4ffdae4cf5ec8cc905f1
 msgid "PCI Security"
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:14
-#: a3c55a0c97ea49ca89defc17a969ba03
+#: c8604e60ca074b6eba8389edc40b3dac
 msgid ""
 "Attaching a PCI device to a qube has serious security implications. It "
 "exposes the device driver running in the qube to an external device (and "
@@ -65,7 +65,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:16
-#: ec09227f0be54bc8a923c14e81d38227
+#: f7e302302bb847ca9f6560ac549f46c0
 msgid ""
 "By default, Qubes requires any PCI device to be resettable from the outside "
 "(i.e. via the hypervisor), which completely reinitialises the device. This "
@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:18
-#: 6759e22e9eac43fea9ee9d1906dfb9f8
+#: c56669a7993847869afea4754499a655
 msgid ""
 "Some devices do not implement a reset option. In these cases, Qubes by "
 "default does not allow attaching the device to any VM. If you decide to "
@@ -86,7 +86,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:20
-#: a14a0830b26945778802292edd573f0f
+#: fe05aa6394a74865a40c341ac1b9455d
 msgid ""
 "In case device reset is disabled for any reason, detaching the device should "
 "be considered a risk. Ideally, devices for which the ``no-strict-reset`` "
@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:22
-#: 123daf4d1ca641c1a9b58d7ebd7c3164
+#: be234a738b814b4a89c7861522d6988a
 msgid ""
 "Additionally, Qubes restricts the config-space a VM may use to communicate "
 "with a PCI device. Only whitelisted registers are accessible. However, some "
@@ -112,12 +112,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:25
-#: 64b777fb93ed4eb4a3d1f229ea0c4bf0
+#: 931e5f78134d4b129c5a0e7502d99f84
 msgid "USB Security"
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:28
-#: 8934f58bc3dd416ab7111b1c9842371f
+#: da00e6ece9274bebb9f3bb2c66142744
 msgid ""
 "The connection of an untrusted USB device to dom0 is a security risk since "
 "the device can attack an arbitrary USB driver (which are included in the "
@@ -131,28 +131,28 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:30
-#: 1dd54650d1e14fa5a7bc15f216a865d5
+#: d556011a33c2491eb4cd5b2f8bb1f092
 msgid ""
 "To avoid this risk, use a :doc:`USB qube </user/advanced-topics/usb-qubes>`."
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:32
-#: 777b19509f6f46e6a87ab7d9d5e161af
+#: e47a6005bad34acabfd348affebcb558
 msgid ""
 "Attaching a USB device to a VM (USB passthrough) will **expose your target "
-"qube** to most of the `security issues <https://blog.invisiblethings."
-"org/2011/05/31/usb-security-challenges.html>`__ associated with the USB-"
-"stack. If possible, use a method specific for particular device type (for "
-"example, block devices described above), instead of this generic one."
+"qube** to most of the `security issues <https://blog.invisiblethings.org/"
+"2011/05/31/usb-security-challenges.html>`__ associated with the USB-stack. "
+"If possible, use a method specific for particular device type (for example, "
+"block devices described above), instead of this generic one."
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:35
-#: 1458b3ee4646405d95a3c7b08f151b6f
+#: fb16d3b741ff41469de3263f3ddfd2bb
 msgid "Security Warning On USB Input Devices"
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:38
-#: 1a35fb68b05846f696445b7279e304d5
+#: db52de199e184a0e825c2263b7935fdc
 msgid ""
 "If you connect USB input devices (keyboard and mouse) to a VM, that VM will "
 "effectively have control over your system. Because of this, the benefits of "
@@ -164,14 +164,14 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:40
-#: 099451d1509c453a8234ea7a37dd63c0
+#: bc5edf65a2d3451ebb25246cfe7a4802
 msgid ""
 "There is no simple way to protect against sniffing, but you can make it "
 "harder to exploit control over input devices."
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:42
-#: d9cd366bed1141bf84b5dfcc86514a30
+#: 5fb6574a1ead4dcda5444a53cb94a455
 msgid ""
 "If you have only a USB mouse connected to a USB qube, but the keyboard is "
 "connected directly to dom0 (using a PS/2 connector, for example), you simply "
@@ -185,7 +185,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:44
-#: 8dccc5e4eead49a385e39ac7d75debb7
+#: e008b40bc90341e98ba9284dfde98844
 msgid ""
 "If your keyboard is also connected to a USB qube, things are much harder. "
 "Locking the screen (with a traditional password) does not solve the problem, "
@@ -197,9 +197,9 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/device-handling-security.rst:46
-#: 36024b01ccaa454aa7115574969c3c50
+#: a88655ea1afb4af9be9f231e167b8a33
 msgid ""
-"Support for `two factor authentication <https://www.qubes-os.org/"
-"news/2018/09/11/qubes-u2f-proxy/>`__ was recently added, though there are "
-"`issues <https://github.com/QubesOS/qubes-issues/issues/4661>`__."
+"Support for `two factor authentication <https://www.qubes-os.org/news/"
+"2018/09/11/qubes-u2f-proxy/>`__ was recently added, though there are `issues "
+"<https://github.com/QubesOS/qubes-issues/issues/4661>`__."
 msgstr ""
