@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-02 18:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:3
-#: a9828b9e977740f1835261eac1c91906
+#: 76158af299074f498d78ce93a0589724
 msgid "Emergency backup recovery (v4)"
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:6
-#: 02c86e0b9c724254a2857ee7255e2a78
+#: 7e06c809f32b4ff585f9b1c69c3ffa9f
 msgid ""
 "This page describes how to perform an emergency restore of a backup created "
 "on Qubes R4.X (which uses backup format version 4)."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:8
-#: 837d928b87bc482b9e373e76a977071e
+#: e6ff5d75a86a4865b834abba7b1a253a
 msgid ""
 "The Qubes backup system is designed with emergency disaster recovery in "
 "mind. No special Qubes-specific tools are required to access data backed up "
@@ -39,7 +39,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:10
-#: 670c11feb55b485fbf03c3ab9a00fb22
+#: 4715d1e70cfe410bbfce75a8b5e5de65
 msgid ""
 "**Important:** You may wish to store a copy of these instructions with your "
 "Qubes backups. All Qubes documentation, including this page, is available in "
@@ -48,12 +48,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:13
-#: 240d9efc46cd410488b7d6d4b36e8ea9
+#: 864606fe7108423bbb0030141fa3ac58
 msgid "Required ``scrypt`` utility"
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:16
-#: 46dfbaabe8ed43a1a000dbeb3620a3dc
+#: cdfe605ec543446c8acc9ed82b9fd3cb
 msgid ""
 "In Qubes 4.X, backups are encrypted and integrity-protected with `scrypt "
 "<https://www.tarsnap.com/scrypt.html>`__. You will need a copy of this "
@@ -71,7 +71,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:18
-#: 38d21d8b617941cf8500cd7cf34ca109
+#: 1abf0e5d7f3f4bc6908b9461ee87505f
 msgid ""
 "Here are instructions for obtaining a compiled ``scrypt`` binary. This "
 "example uses an RPM-based system (Fedora), but the same general procedure "
@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:20
-#: 41cf2d6281f64397a65168af12a9146d
+#: 15b19dd9755f4e18b48e5301d3b2c20f
 msgid ""
 "If you’re not on Qubes 4.X, :ref:`import and authenticate the Release 4 "
 "Signing Key <project-security/verifying-signatures:how to import and "
@@ -87,58 +87,58 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:28
-#: 10a40ec22a6b46ae9650591fee3a7b1d
+#: d36d475fe9ad4412bc08e1c61088ba20
 msgid "Download the ``scrypt`` RPM."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:35
-#: 7c14e7766dff4397a292bf283b40030f
+#: 4300360295114b88bc389e421860b947
 msgid "Or, if that doesn’t work:"
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:43
-#: efe17a3e8d874390ba685d146f95d6c4
+#: a0cf25a4bc084547abc477d4987d6ec9
 msgid "Verify the signature on the ``scrypt`` RPM."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:51
-#: 51779ce5a4f94d9e8758868e397c413a
+#: 061cc1de107f4269ae62e76e26f11ad7
 msgid ""
 "The message ``digests signatures OK`` means that both the digest (i.e., the "
 "output of a hash function) and PGP signature verification were successful."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:53
-#: 3813a1da9f30421591995e47dbba235d
+#: 77bc494304724135b89726feefcfaf25
 msgid "Install ``rpmdevtools``."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:61
-#: 6bea63f3bdcf437da08df786a2f8866e
+#: 8e7b881f8a52448f9d96f19f9e99503e
 msgid ""
 "Extract the ``scrypt`` binary from the RPM and make it conveniently "
 "available."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:73
-#: f5e80b08e449427eadd4605b45a732d2
+#: 5c2fe45666b94bbcb3d53fd88a575814
 msgid "Emergency recovery instructions"
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:76
-#: e08e8c3542314223b4ae85d9fc4b4fb5
+#: d53cecd01b604280af14874aa3709709
 msgid ""
 "**Note:** In the following example, the backup file is both *encrypted* and "
 "*compressed*."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:78
-#: 49bbac479d2a454386274e877fbad302
+#: 977b81748250466ea082490a60976d7c
 msgid "Untar the backup metadata from the main backup file."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:90
-#: 9eb8e990b27d452597986957e29bbde3
+#: bb638b1fa716409d9f6bfd3ba65516cf
 msgid ""
 "Set the backup passphrase environment variable. While this isn’t strictly "
 "required, it will be handy later and will avoid saving the passphrase in the "
@@ -146,20 +146,20 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:97
-#: 38d3a1d9f79b4ebe9d45ef07382ce43a
+#: 2e3befc3376b4cbfbbfc232bc66acf8f
 msgid ""
 "Type in your passphrase (it will be visible on screen!) and press Enter."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:99
-#: 58ac90912a4442068d6dbb0c40699ac3
+#: 3182fa6b8cbf42c999563c5fab434735
 msgid ""
 "Verify the integrity of ``backup-header`` using ``backup-header.hmac`` (an "
 "encrypted *and integrity protected* version of ``backup-header``)."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:110
-#: 3956ff2c61cb4577a65b44494e5c79b3
+#: 460fc41e4b594c45af044b8c080facac
 msgid ""
 "**Note:** If this command fails, it may be that the backup was tampered with "
 "or is in a different format. In the latter case, look inside ``backup-"
@@ -168,26 +168,26 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:112
-#: 87495785b06a4a2c92977b138b37ebb7
+#: 212b3220d2d94dc0a4aebd5863c1ca22
 msgid ""
 ":doc:`Emergency Backup Recovery without Qubes (v2) </user/how-to-guides/"
 "backup-emergency-restore-v2>`"
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:114
-#: d496dc0099b94dff8989dfdf933c385b
+#: 8cacc4eec1c04115a77482b5418aefa9
 msgid ""
 ":doc:`Emergency Backup Recovery without Qubes (v3) </user/how-to-guides/"
 "backup-emergency-restore-v3>`"
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:118
-#: a7e1c21bb77147e1bf96aa285224593e
+#: 9b9a658176ce4d3596d52b49e9570293
 msgid "Read ``backup-header``."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:132
-#: b7d3b345d6b042f4af86da519df829bb
+#: 9abfea2dd6fa4439bce9906a144d18b8
 msgid ""
 "Set ``backup_id`` to the value in the last line of ``backup-header``. (Note "
 "that there is a hyphen in ``backup-id`` in the file, whereas there is an "
@@ -195,19 +195,19 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:140
-#: 9f9bd17e344e471692bbe85252d0435b
+#: 4175e8777d4a4686a3982fe5bd6b9eb6
 msgid "Verify and decrypt, decompress, and extract the ``qubes.xml`` file."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:150
-#: a678d4db2469448f953f3f18095f8f22
+#: cb4520b30d744026b8f37965531b1c08
 msgid ""
 "If this pipeline fails, it is likely that the backup is corrupted or has "
 "been tampered with."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:152
-#: 96599456355d42949ff1369f0b812f43
+#: 932097b954b0447c94c58d50239a684c
 msgid ""
 "**Note:** If your backup was compressed with a program other than ``gzip``, "
 "you must substitute the correct compression program in the command above. "
@@ -219,7 +219,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:156
-#: 8d6b69e0f3214aee90abc04bf6621065
+#: c29373e26b894b86b778055fe14c0cb0
 msgid ""
 "Search inside of the ``qubes.xml`` file for the ``backup-path`` of the qube "
 "whose data you wish to restore. If you install the ``xmlstarlet`` package, "
@@ -228,7 +228,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:183
-#: d5f84ad75fa8499c976bd4c6d6e511c1
+#: 358c1b867f994a0bb0d1d4b5352bb461
 msgid ""
 "The example output above shows that the backup file includes a qube named "
 "``personal`` and a qube named ``vault``, with ``backup-path`` values of "
@@ -238,12 +238,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:191
-#: 11dc9eabbded436e92cb90985e8502b8
+#: 7d1ff8b1d38148acbbb9263eaa8e9f56
 msgid "Verify and decrypt the backed up data, decompress it, and extract it."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:202
-#: 37ab81d824b84eceb99b6324839efebf
+#: cb1c03b9f9e748c085d6aa0e74a9da1d
 msgid ""
 "If this pipeline fails, it is likely that the backup is corrupted or has "
 "been tampered with. Also see the note in step 6 about substituting a "
@@ -251,12 +251,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:205
-#: 7ed2fb130fde4464ad8192da38d57631
+#: 4e2f1b1f41514541ab2409b7fcc36b44
 msgid "Mount ``private.img`` and access your data."
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:207
-#: c2ebca3e715a4f528b37e4d38d122aab
+#: eee93b438ad04fb781bd38d6efe1048f
 msgid ""
 "Beside the security risk of accessing compromised *files*,  there can be "
 "security consequences of simply mounting *file systems* if an attacker had "
@@ -266,7 +266,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/how-to-guides/backup-emergency-restore-v4.rst:222
-#: 573ddc0516a840ddb4cad685f0955695
+#: f86befa32ffa4cfd82ef4d4ee24a8255
 msgid ""
 "Success! If you wish to recover data from more than one qube in your backup, "
 "simply repeat steps 7, 8, and 9 for each additional qube."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-02 18:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../developer/services/qmemman.rst:3 a1b46654f2474f718084a22151bfe429
+#: ../../../developer/services/qmemman.rst:3 379cddf87287483e91ca53496dfde6e6
 msgid "Qubes memory manager (qmemman)"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:7 bcd84f8c59bc4f96829631346148252c
+#: ../../../developer/services/qmemman.rst:7 ccfc71e6b6294383b7c2d0302effc612
 msgid "Rationale"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:10 e4230ceb806c4ecaa6e79d9685bcfd96
+#: ../../../developer/services/qmemman.rst:10 24eac8fa458049a8a8ab91e5633537cb
 msgid ""
 "Traditionally, Xen VMs are assigned a fixed amount of memory. It is not the "
 "optimal solution, as some VMs may require more memory than assigned "
@@ -33,28 +33,28 @@ msgid ""
 "solution capable of shifting free memory from VM to another VM."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:12 6f3beff16ef8488681d37ca5aa96d849
+#: ../../../developer/services/qmemman.rst:12 92ac240b16fd478cae36e0a2af69d596
 msgid ""
 "The `tmem <https://web.archive.org/web/20210712161104/https://oss.oracle.com/"
 "projects/tmem/>`__ project provides a “pseudo-RAM” that is assigned on per-"
 "need basis. However this solution has some disadvantages:"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:14 438d5804b2214f929bd635d89d009670
+#: ../../../developer/services/qmemman.rst:14 08008559354d47768edd246a91ac30a8
 msgid ""
 "It does not provide real RAM, just an interface to copy memory to/from fast, "
 "RAM-based storage. It is perfect for swap, good for file cache, but not "
 "ideal for many tasks."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:16 36478bbe202d4b2f99566b4183c5f9ab
+#: ../../../developer/services/qmemman.rst:16 24d4dacde04d4a848d4d1c1e954e00df
 msgid ""
 "It is deeply integrated with the Linux kernel. When Qubes will support "
 "Windows guests natively, we would have to port *tmem* to Windows, which may "
 "be challenging."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:20 75602bf2f3c446878568884db6277ead
+#: ../../../developer/services/qmemman.rst:20 dcf2d7bf221f472e9fcd72472ed6ecb9
 msgid ""
 "Therefore, in Qubes another solution is used. There is the *qmemman* dom0 "
 "daemon. All VMs report their memory usage (via xenstore) to *qmemman*, and "
@@ -64,7 +64,7 @@ msgid ""
 "PV drivers)."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:22 78450d64c9aa40b792eb72630bcfa8e0
+#: ../../../developer/services/qmemman.rst:22 3ec6be454a5846f5bd872d551ff0e68f
 msgid ""
 "Similarly, when there is need for Xen free memory (for instance, in order to "
 "create a new VM), traditionally the memory is obtained from dom0 only. When "
@@ -72,69 +72,69 @@ msgid ""
 "domains."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:24 f7ea72bbd9a643a6924795aa0ef98634
+#: ../../../developer/services/qmemman.rst:24 f3d3b06788314baab02d378673567864
 msgid "To sum up, *qmemman* pros and cons."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:26 bf30b74b00054e33964a01b33031c2af
+#: ../../../developer/services/qmemman.rst:26 28105a3cf402401680822a7791bb1908
 msgid "|checkmark| **Pros**"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:114 17b50df5e6b549c2bf1da0fab28b6109
+#: ../../../developer/services/qmemman.rst:114 879d53ff9ecf430584411837fa2239b0
 msgid "checkmark"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:28 10271025b9254fc8a3b469c49dc17378
+#: ../../../developer/services/qmemman.rst:28 ac15211c35894aa081d861ec5aaf7e89
 msgid ""
 "provides automatic balancing of memory across participating PV and HVM "
 "domains, based on their memory demand"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:30 24139130ec5a432ba24256e6955d7a44
+#: ../../../developer/services/qmemman.rst:30 746d0da109e4434eac55f6bdb037472b
 msgid ""
 "works well in practice, with less than 1% CPU consumption in the idle case"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:32 46f91c58f6364a1e9e712422ade4ba78
+#: ../../../developer/services/qmemman.rst:32 1bf29cd263e4472c8b1a2162e510fd73
 msgid "simple, concise implementation"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:36 da63bd7183234f71bb847e55cd59176a
+#: ../../../developer/services/qmemman.rst:36 483323870b38402da05a8085d1e119a9
 msgid "|redx| **Cons**"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:115 e65008851fe44ce3b3dfde5bbaa9b3b0
+#: ../../../developer/services/qmemman.rst:115 22447712c6334064a28afe5bf30b2b84
 msgid "redx"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:38 d40e14f1939840fabe0174cb3f9f4c6b
+#: ../../../developer/services/qmemman.rst:38 4be22fd95283481782a42fb288bd49ba
 msgid ""
 "the algorithm to calculate the memory requirement for a domain is "
 "necessarily simple, and may not closely reflect reality"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:40 eed8615b749640ae94cd7606150bdfaa
+#: ../../../developer/services/qmemman.rst:40 09afdbc84a8b46e2bd5b9b71964b9ee9
 msgid ""
 "*qmemman* is notified by a VM about memory usage change not more often than "
 "10 times per second (to limit CPU overhead in VM). Thus, there can be up to "
 "0.1s delay until qmemman starts to react to the new memory requirements"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:42 be38d346446b4a2693e0893ee408de80
+#: ../../../developer/services/qmemman.rst:42 670eff0ee4d548db87d7be4044bf99e0
 msgid ""
 "it takes more time to obtain free Xen memory, as all participating domains "
 "need to instructed to yield memory"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:47 372a8f016aad415a9392c94eac1763fc
+#: ../../../developer/services/qmemman.rst:47 fed81744b64d4fb1b7b898887c572cfb
 msgid "Interface"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:50 09a42c0d13184b2384f1dbf97f44156a
+#: ../../../developer/services/qmemman.rst:50 500d550096804663b2ada93f8063a8a8
 msgid "*qmemman* listens for the following events:"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:52 5280556e7c46413c987987d480cc35ee
+#: ../../../developer/services/qmemman.rst:52 7176a1ebd93945caa6eff1eb61536db7
 msgid ""
 "writes to ``/local/domain/domid/memory/meminfo`` xenstore keys by *meminfo-"
 "writer* process in VM. The content of this key is taken from the VM’s ``/"
@@ -144,14 +144,14 @@ msgid ""
 "default 30MB), to prevent flooding with almost identical data"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:54 6be2eb5fc6504f4bad12c53cc3163c08
+#: ../../../developer/services/qmemman.rst:54 7a2b4162ea81478b80b115043bf8ac2f
 msgid ""
 "commands issued over Unix socket ``/var/run/qubes/qmemman.sock``. Currently, "
 "the only command recognized is to free the specified amount of memory. The "
 "QMemmanClient class implements the protocol."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:56 5a72dc0786294af493378ffabd4bf235
+#: ../../../developer/services/qmemman.rst:56 7416828fcea64500ba62eeecb1ca9b87
 msgid ""
 "if the ``/var/run/qubes/do-not-membalance`` file exists, *qmemman* suspends "
 "memory balancing. It is primarily used when allocating memory for a to-be-"
@@ -159,11 +159,11 @@ msgid ""
 "algorithm before the domain creation is completed."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:61 00dbe26e904e4c7880be9f5f7f64a633
+#: ../../../developer/services/qmemman.rst:61 8c3959a1c6dd4c8ab3ed7baba13210de
 msgid "Algorithms basics"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:64 e264854557c84441b114539075215fbd
+#: ../../../developer/services/qmemman.rst:64 5fe985bf109d44f0a2742a69bf85badf
 msgid ""
 "The core VM property is ``prefmem``. It denotes the amount of memory that "
 "should be enough for a domain to run efficiently in the nearest future. All "
@@ -173,7 +173,7 @@ msgid ""
 "calculated by *qmemman* based on the information passed by *meminfo-writer*."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:66 33fdf2288235420d8b3b0e2fc84f2e48
+#: ../../../developer/services/qmemman.rst:66 3b06cc15f733470494e7262ce1989b6b
 msgid ""
 "Whenever *meminfo-writer* running in domain A provides new data on memory "
 "usage to *qmemman*, the ``prefmem`` value for A is updated and the following "
@@ -181,103 +181,103 @@ msgid ""
 "list of (domain_id, new_memory_target_to_be_set) pairs:"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:68 aadca1b0a5ae4958b641be1cb41aa552
+#: ../../../developer/services/qmemman.rst:68 8d62483717f7449496b88a1689ef25f6
 msgid "TOTAL_PREFMEM = sum of ``prefmem`` of all participating domains"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:70 eeb199dcddf94119873d20c4af6ee340
+#: ../../../developer/services/qmemman.rst:70 26a31f68713441be9a4ac28c46613ebb
 msgid ""
 "TOTAL_MEMORY = sum of all memory assigned to participating domains plus Xen "
 "free memory"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:72 44bc891f2f234bb5b9d2aafe477f64a6
+#: ../../../developer/services/qmemman.rst:72 22d51c893d2e44a68b3bd6bda3f893be
 msgid ""
 "if TOTAL_MEMORY > TOTAL_PREFMEM, then redistribute TOTAL_MEMORY across all "
 "domains proportionally to their ``prefmem``"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:74 a1436febdba9451791c3ba8760e8a061
+#: ../../../developer/services/qmemman.rst:74 34631e97b6d64e91864c0a9c8d2acf51
 msgid "if TOTAL_MEMORY < TOTAL_PREFMEM, then"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:76 e3d1089f212645f6ba1849946163af89
+#: ../../../developer/services/qmemman.rst:76 9c4575680be8492f97ee37977a85407f
 msgid ""
 "for all domains whose ``prefmem`` is less than actual memory, shrink them to "
 "their ``prefmem``"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:78 292b4f5c900245619dd9bc9ed4bce1fe
+#: ../../../developer/services/qmemman.rst:78 15d8c3577b4e47dfb853d5d721ce9293
 msgid ""
 "redistribute memory reclaimed in the previous step between the rest of "
 "domains, proportionally to their ``prefmem``"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:84 6e6f10848a1d46ffbd626e3aea58b366
+#: ../../../developer/services/qmemman.rst:84 d18e7e3d61d64f75b78c8a1364f2a3e8
 msgid ""
 "In order to avoid too frequent memory redistribution, it is actually "
 "executed only if one of the below conditions hold:"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:86 7e8de6018faa453c8d3614672618c4d8
+#: ../../../developer/services/qmemman.rst:86 05e5bd4dd3cb43d5aac412f2e85d2896
 msgid ""
 "the sum of memory size changes for all domains is more than "
 "MIN_TOTAL_MEMORY_TRANSFER (150MB)"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:88 b2d2d15bb6244d7cb34a744ced6e148a
+#: ../../../developer/services/qmemman.rst:88 4ebcc88775f049baab57e6085a1a849e
 msgid ""
 "one of the domains is below its ``prefmem``, and more than "
 "MIN_MEM_CHANGE_WHEN_UNDER_PREF (15MB) would be added to it"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:92 d756f91fc8df4bf7bb00515ad0bb94e6
+#: ../../../developer/services/qmemman.rst:92 aa2a254f9db846b8a9bb59559f788e14
 msgid ""
 "Additionally, the balance algorithm is tuned so that XEN_FREE_MEM_LEFT "
 "(50MB) is always left as Xen free memory, to make coherent memory "
 "allocations in driver domains work."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:94 737ebc3ba9f6477190d5b31f9fa301ed
+#: ../../../developer/services/qmemman.rst:94 ce6594eef9204fb1ae9822d7e07f550b
 msgid ""
 "Whenever *qmemman* is asked to return X megabytes of memory to Xen free "
 "pool, the following algorithm (*qmemman_algo.balloon*) is executed:"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:96 cdf5f05a68c441ee8390f9c2f0bd3f5f
+#: ../../../developer/services/qmemman.rst:96 af59e2346fa04724a5ac696e2e84789b
 msgid ""
 "find all domains (“donors”) whose actual memory is greater than its "
 "``prefmem``"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:98 40a0f0fd73f145ad8524bdb0c0de9e63
+#: ../../../developer/services/qmemman.rst:98 662985a3f4b84e83981aa801ce1b9f64
 msgid ""
 "calculate how much memory can be reclaimed by shrinking donors to their "
 "``prefmem``. If it is less than X, return error."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:100 cf93520a2db14a9ebb80b232d98b368a
+#: ../../../developer/services/qmemman.rst:100 55c187ad82f44e6cb488500f94d0f5cc
 msgid ""
 "shrink donors, proportionally to their ``prefmem``, so that X MB should "
 "become free"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:102 c9c6bf65b6024985be4f8598fda6f37a
+#: ../../../developer/services/qmemman.rst:102 c5416acdcd024f2fb6be39803fd76f51
 msgid "wait BALOON_DELAY (0.1s)"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:104 d4cbbb2edffd42d49ee03f0f8b7398a0
+#: ../../../developer/services/qmemman.rst:104 8e555a93e4554d6aaf85af8c1973f777
 msgid ""
 "if some domain have not given back any memory, remove it from the donors "
 "list, and go to step 2, unless we already did MAX_TRIES (20) iterations "
 "(then return error)."
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:109 f88b900e0e864498bbdfd15777cf7944
+#: ../../../developer/services/qmemman.rst:109 6ef82d176738409cbf84d021b4579066
 msgid "Notes"
 msgstr ""
 
-#: ../../../developer/services/qmemman.rst:112 94b4a82a775440088a570fa0a0a16126
+#: ../../../developer/services/qmemman.rst:112 f45be54e98624f72ac74eaaa85399a45
 msgid ""
 "Conventional means of viewing the memory available to Qubes will give "
 "incorrect values for ``dom0`` since commands such as ``free`` will only show "
