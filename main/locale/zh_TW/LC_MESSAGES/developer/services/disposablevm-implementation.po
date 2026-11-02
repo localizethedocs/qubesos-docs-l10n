@@ -41,22 +41,24 @@ msgid ""
 "disposable>`. This intermediary template serves different functions: first, "
 "it allows customization of the private volume of a disposable, and second, "
 "it provides a degree of inheritance that would not be possible with normal "
-"templates. It has the :py:attr:`~core-admin:qubes.vm.mix.dvmtemplate."
-"DVMTemplateMixin.template_for_dispvms` property enabled, being a :py:class:"
-"`~core-admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin`."
+"templates. It has the :py:attr:`~core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.template_for_dispvms` "
+"property enabled, being a :py:class:`~core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin`."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:15
 #: e207f29b88d549cdb03d9b5928ac3a28
 msgid ""
-"A :term:`disposable` is a qube with the :py:class:`~core-admin:qubes.vm."
-"dispvm.DispVM` class and is based on a disposable template. Every disposable "
-"type has all of its volumes configured to disable :py:attr:`~core-admin:"
-"qubes.storage.Volume.save_on_stop`, therefore no changes are saved on "
-"shutdown. Normal disposables enable the property :py:attr:`~core-admin:qubes."
-"vm.dispvm.DispVM.auto_cleanup` by default, thus Qubes OS automatically "
-"removes the qube upon shutdown. Named disposables don't enable :py:attr:"
-"`~core-admin:qubes.vm.dispvm.DispVM.auto_cleanup` by default, thus the qube "
+"A :term:`disposable` is a qube with the :py:class:`~core-"
+"admin:qubes.vm.dispvm.DispVM` class and is based on a disposable template. "
+"Every disposable type has all of its volumes configured to "
+"disable :py:attr:`~core-admin:qubes.storage.Volume.save_on_stop`, therefore "
+"no changes are saved on shutdown. Normal disposables enable the "
+"property :py:attr:`~core-admin:qubes.vm.dispvm.DispVM.auto_cleanup` by "
+"default, thus Qubes OS automatically removes the qube upon shutdown. Named "
+"disposables don't enable :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.auto_cleanup` by default, thus the qube "
 "skeleton is not removed upon shutdown, thus allowing to keep qube settings."
 msgstr ""
 
@@ -64,20 +66,20 @@ msgstr ""
 #: f17c3d5dd6524f2e8fb7ae1f481d679e
 msgid ""
 "Named disposables are useful for service qubes, as referencing static names "
-"is easier when the qube name is mentioned on qrexec policies (:file:`qubes."
-"UpdatesProxy` target) or as a property of another qube, such as a "
-"disposable :term:`net qube` which is referenced by downstream clients in the "
-"``netvm`` property."
+"is easier when the qube name is mentioned on qrexec policies "
+"(:file:`qubes.UpdatesProxy` target) or as a property of another qube, such "
+"as a disposable :term:`net qube` which is referenced by downstream clients "
+"in the ``netvm`` property."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:19
 #: 370c1e1d7c4a4ffcae6b982577ba1f0a
 msgid ""
 "Disposables are generally named according to the :samp:`disp{1234}` scheme, "
-"where :samp:`{1234}` is derived from the :py:attr:`~core-admin:qubes.vm."
-"dispvm.DispVM.dispid` property, a random integer ranging from 0 to 9999 with "
-"a fail-safe mechanism to avoid reusing the same value in a short period. "
-"Named disposables have a user-set permanent name."
+"where :samp:`{1234}` is derived from the :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.dispid` property, a random integer ranging from "
+"0 to 9999 with a fail-safe mechanism to avoid reusing the same value in a "
+"short period. Named disposables have a user-set permanent name."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:23
@@ -88,10 +90,11 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:25
 #: 933ee18fab4a40f4afca56525edcf83d
 msgid ""
-"Every qube has the :py:attr:`~core-admin:qubes.vm.dispvm.DispVM."
-"default_dispvm` property, which defines which disposable template will be "
-"used to spawn disposables for this qube by default (when using actions such "
-"as \"open in disposable\"). It can have one of three values:"
+"Every qube has the :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm` property, which defines which "
+"disposable template will be used to spawn disposables for this qube by "
+"default (when using actions such as \"open in disposable\"). It can have one "
+"of three values:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:28
@@ -107,8 +110,8 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:30
 #: 4af92cc5828544a9ac956be68a94a9a6
 msgid ""
-"default system value (this will use the system-wide :py:attr:`~core-admin:"
-"qubes.vm.dispvm.DispVM.default_dispvm` property)"
+"default system value (this will use the system-wide :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm` property)"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:32
@@ -122,11 +125,12 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:34
 #: b180fabc863d4179813212acb39f3cce
 msgid ""
-"This value is also used in case of qrexec policy: when policy rules use the :"
-"doc:`@dispvm <core-qrexec:qrexec-policy>` tag, it translates to \"a "
-"disposable based on the source qube's :py:attr:`~core-admin:qubes.vm.dispvm."
-"DispVM.default_dispvm`. It is most commonly used to open files and URLs, (:"
-"file:`qubes.OpenInVM` and :file:`qubes.OpenURL`, respectively)."
+"This value is also used in case of qrexec policy: when policy rules use "
+"the :doc:`@dispvm <core-qrexec:qrexec-policy>` tag, it translates to \"a "
+"disposable based on the source qube's :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm`. It is most commonly used to "
+"open files and URLs, (:file:`qubes.OpenInVM` and :file:`qubes.OpenURL`, "
+"respectively)."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:36
@@ -272,9 +276,9 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:79
 #: c9597f738394474d95cf112b8d2085d2
 msgid ""
-"Changing system-wide :py:attr:`~core-admin:qubes.vm.dispvm.DispVM."
-"default_dispvm` if system-wide ``preload-dispvm-max`` is set to a different "
-"value than the disposable template setting;"
+"Changing system-wide :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm` if system-wide ``preload-dispvm-"
+"max`` is set to a different value than the disposable template setting;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:80
@@ -313,9 +317,10 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:89
 #: 687ec8bb61ea48a487ccffc6643b0a4a
 msgid ""
-"Qubesd was interrupted mid preload creation, on the next service restart, :"
-"py:meth:`domain-load <core-admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin."
-"on_domain_loaded>` of the disposable template."
+"Qubesd was interrupted mid preload creation, on the next service "
+"restart, :py:meth:`domain-load <core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded>` of the "
+"disposable template."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:92
@@ -351,10 +356,11 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:104
 #: edcb32dfcf0346bdae6dfd1bbb025bf7
 msgid ""
-"To bootstrap the creation of preloaded disposables after boot, the service :"
-"file:`qubes-preload-dispvm.service` is used instead of :py:meth:`domain-load "
-"<core-admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded>` of "
-"the disposable template because it relies on systemd to:"
+"To bootstrap the creation of preloaded disposables after boot, the "
+"service :file:`qubes-preload-dispvm.service` is used instead "
+"of :py:meth:`domain-load <core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded>` of the "
+"disposable template because it relies on systemd to:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:106
@@ -379,12 +385,12 @@ msgstr ""
 msgid ""
 "Qubes OS attempts to manage a preloaded disposable's qube memory directly "
 "before the pause stage, as it is impossible to negotiate memory with a "
-"paused qube. At the :py:meth:`domain-pre-paused <core-admin:qubes.vm.dispvm."
-"DispVM.on_domain_pre_paused>` stage, memory is set to use preferred memory "
-"value. In :doc:`qmemman terms </developer/services/qmemman>`, preferred "
-"memory is just enough to have the qube running, and so, hopefully as much as "
-"possible of qube memory is retrieved to be used by other, currently running "
-"qubes."
+"paused qube. At the :py:meth:`domain-pre-paused <core-"
+"admin:qubes.vm.dispvm.DispVM.on_domain_pre_paused>` stage, memory is set to "
+"use preferred memory value. In :doc:`qmemman terms </developer/services/"
+"qmemman>`, preferred memory is just enough to have the qube running, and so, "
+"hopefully as much as possible of qube memory is retrieved to be used by "
+"other, currently running qubes."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:115
@@ -420,10 +426,10 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:124
 #: 5a8a0ad2a2294aea95d0aac1231415d7
 msgid ""
-"it makes detecting if a qube was used without being requested with :py:meth:"
-"`core-admin:qubes.vm.dispvm.DispVM.from_appvm`. Not every communication with "
-"a qube goes through :program:`qubesd`, it may happen via qrexec or GUI "
-"daemon;"
+"it makes detecting if a qube was used without being requested "
+"with :py:meth:`core-admin:qubes.vm.dispvm.DispVM.from_appvm`. Not every "
+"communication with a qube goes through :program:`qubesd`, it may happen via "
+"qrexec or GUI daemon;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:125
@@ -467,8 +473,8 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:138
 #: e24e6802099b46a2ac364e22908bd406
 msgid ""
-"The qube has the ``internal`` feature enabled. Qubes GUI applications hide :"
-"term:`internal qubes<internal qube>`;"
+"The qube has the ``internal`` feature enabled. Qubes GUI applications "
+"hide :term:`internal qubes<internal qube>`;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:139
@@ -481,11 +487,11 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:140
 #: 6a6befa4ccd044d3ad92ee46a4c976d1
 msgid ""
-"The qube is paused as the last stage of preloading. This means the :py:meth:"
-"`domain-unpaused <core-admin:qubes.vm.dispvm.DispVM.on_domain_unpaused>` "
-"event  can be used to mark the qube as used and remove it from the preload "
-"list, avoiding reliabce on :py:meth:`core-admin:qubes.vm.dispvm.DispVM."
-"from_appvm`;"
+"The qube is paused as the last stage of preloading. This means "
+"the :py:meth:`domain-unpaused <core-"
+"admin:qubes.vm.dispvm.DispVM.on_domain_unpaused>` event  can be used to mark "
+"the qube as used and remove it from the preload list, avoiding reliabce "
+"on :py:meth:`core-admin:qubes.vm.dispvm.DispVM.from_appvm`;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:141
@@ -518,8 +524,8 @@ msgstr ""
 msgid ""
 "To have late GUI daemon but an early GUI agent, changes have been made that "
 "limit the usability on ``sys-gui``. `Events such as plugging or removing "
-"external monitors can't work, it will be ignored by Xephyr <https://github."
-"com/QubesOS/qubes-gui-agent-linux/pull/253>`__."
+"external monitors can't work, it will be ignored by Xephyr <https://"
+"github.com/QubesOS/qubes-gui-agent-linux/pull/253>`__."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:150
@@ -621,8 +627,8 @@ msgid ""
 "memory when necessary. For the new domain to be functional the domain state "
 "is copied over as part of the fork operation (HVM params, heap allocation "
 "etc). This description was sourced from `[Xen-devel] [RFC PATCH for-next "
-"17/18] xen/mem_sharing: VM forking, Tamas K Lengyel <https://lists."
-"xenproject.org/archives/html/xen-devel/2019-09/msg02497.html>`__."
+"17/18] xen/mem_sharing: VM forking, Tamas K Lengyel <https://"
+"lists.xenproject.org/archives/html/xen-devel/2019-09/msg02497.html>`__."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:183
