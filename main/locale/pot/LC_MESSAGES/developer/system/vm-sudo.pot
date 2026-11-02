@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-02 18:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,54 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../developer/system/vm-sudo.rst:3 64aa116f38d544b38c3ec9caac88c483
+#: ../../../developer/system/vm-sudo.rst:3 2a0051e475c24bc7a0e90dc3378a6ed8
 msgid "Passwordless root access implementation"
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:6 36329a03d902493eb0f765b3a7c0a13d
+#: ../../../developer/system/vm-sudo.rst:6 ba0e3dcce6e149edaba2e13ff5142496
 msgid ""
 "The rationale behind passwordless root in qubes is set out :doc:`here </user/"
 "security-in-qubes/vm-sudo>`. Implementation is by the qubes-core-agent-"
 "passwordless-root package."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:8 7f500e9650c24481bd18be641e05031b
+#: ../../../developer/system/vm-sudo.rst:8 97b50e483be14ad48bed1f6266194f6d
 msgid ""
 "This page sets out the configuration changes made, with (not necessary "
 "complete) list of mechanisms depending on each of them:"
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:10 12e14ae73df542cfbb9fd6853ca71e43
+#: ../../../developer/system/vm-sudo.rst:10 e959a24cbd6f47b18a9f2a0dc0d260b8
 msgid "sudo (``/etc/sudoers.d/qubes``):"
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:21 ceeccd93891b462abf82b720a215009e
+#: ../../../developer/system/vm-sudo.rst:21 edb3db17707f47ebbe9b60f8857aa5eb
 msgid "Easy user -> root access (main option for the user)."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:23 b4262e126ca6423db4b500741aea2bb6
+#: ../../../developer/system/vm-sudo.rst:23 5c68cedbf01a4aee919efd243379d7f4
 msgid "``qvm-usb`` (not really working, as of R2)."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:27 89c9d9d6c7394b378214fcfdb2f9e4cc
+#: ../../../developer/system/vm-sudo.rst:27 d7574792907b4569992bcbb4f6770bab
 msgid "PolicyKit (``/etc/polkit-1/rules.d/00-qubes-allow-all.rules``):"
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:35 2c91517784c8483da58e9101c1b908a2
+#: ../../../developer/system/vm-sudo.rst:35 96990c1d6b14407593bc1f5b2d7b265d
 msgid ""
 "PAM (``/etc/pam.d/su.qubes`` or ``/usr/share/pam-configs/su.qubes``) "
 "``auth        sufficient  pam_succeed_if.so use_uid user ingroup qubes``"
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:37 ee95c63434df4196a117500b353561da
+#: ../../../developer/system/vm-sudo.rst:37 dd30c2cdea134b47a35a6c850cffd70f
 msgid "NetworkManager configuration from normal user (``nm-applet``)."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:39 53c0c1e0a07b422e8021315c4275163c
+#: ../../../developer/system/vm-sudo.rst:39 bfa77229505a42c29605363c54bd1744
 msgid "Updates installation (``gpk-update-viewer``)."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:41 1ecd8dbab7b64b38b74160c2b99f8dc4
+#: ../../../developer/system/vm-sudo.rst:41 28f3bd2b1db34d5096de05c3d0fadc36
 msgid ""
 "User can use pkexec just like sudo **Note:** above is needed mostly because "
 "Qubes user GUI session isn’t treated by PolicyKit/logind as “local” session "
@@ -73,16 +73,16 @@ msgid ""
 "welcomed anyway."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:45 48382838d8aa4a459d426e8d1a2fd045
+#: ../../../developer/system/vm-sudo.rst:45 708cef81b48840c28156cfa73b1ade37
 msgid "Empty root password:"
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:47 8c23309b025c408e9b50f716f6bfed1a
+#: ../../../developer/system/vm-sudo.rst:47 64dc72f3cfa9494ab862e32f284e2a11
 msgid ""
 "Used for access to ‘root’ account from text console (``qvm-console-dispvm``) "
 "- the only way to access the VM when GUI isn’t working."
 msgstr ""
 
-#: ../../../developer/system/vm-sudo.rst:49 00bd1d8810414e729731b1b7fadc05fd
+#: ../../../developer/system/vm-sudo.rst:49 03a8319a97fa469ba64fbc8061c354ef
 msgid "Can be used for easy ‘su -’ from user to root."
 msgstr ""

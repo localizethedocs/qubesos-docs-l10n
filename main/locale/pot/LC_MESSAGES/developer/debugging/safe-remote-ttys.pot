@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-02 18:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:3
-#: d6c336ddc8c24aed95f7e2059bb426ce
+#: 3d3b95b346564ac09b72806dad64e77f
 msgid "Safe remote dom0 terminals"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:6
-#: 6e643a20964f45fca64c556762e0b2a0
+#: f96877c3df454b40a2853c5f5fa98282
 msgid ""
 "If you do not have working graphics in Dom0, then using a terminal can be "
 "quite annoying! This was the case for the author while trying to debug PCI-"
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:8
-#: bf4309d95bfe447e8137b076edef2235
+#: 7e1b850d33464cc2b6fa2a9d082c27c8
 msgid ""
 "Your first thought might be to just allow network access to Dom0, enable "
 "ssh, and connect in remotely. But, this gravely violates the Qubes security "
@@ -39,7 +39,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:10
-#: ff93c5725f4d419ba86dc49f949fdb1f
+#: 3baa9dc5c37c4e4ab8c5d792362c97ea
 msgid ""
 "Instead, a better solution is to split the input and output paths of using a "
 "terminal. Use your normal keyboard for input, but have the output go to a "
@@ -47,60 +47,60 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:12
-#: d395fe05124844a7b0c54713a95c66f6
+#: f3f6e274436d471d87ad0dde4a7d25cd
 msgid ""
 "To do this, we make use of script(1), qvm-run, and optionally your network "
 "transport of choice."
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:15
-#: 0d69e62409f342b8b918a255b1d94529
+#: e9fd05a193cd49d09ef268c3c3a2e892
 msgid "To a different VM"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:18
-#: 9b8726b066d54c96aa0a48b0222f469e
+#: 247f3e25335a444faed70f6546784906
 msgid ""
 "As an example of forwarding terminal output to another VM on the same "
 "machine:"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:29
-#: 70d591ba6c87436690c1e454d65e2bca
+#: 905d92451bcb406f923834fb385b1da6
 msgid "To a different machine"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:32
-#: 85dc1d7072e04703b5a90fedfe0d8eef
+#: 1ce47f202fea4e4392cd3ccc01c80b28
 msgid "In this case over SSH (from a network-connected VM):"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:44
-#: 4e9765d2766748fd96097960935f32d7
+#: ba7fe2f360014078b08793c8b9b004fc
 msgid ""
 "Note that no data received over SSH is ever treated as terminal input in "
 "Dom0. The input path remains only from your trusted local keyboard."
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:47
-#: 87d14de6505a4d60ba3b51cb6c57750c
+#: 9af456ab158145dfb9c71e4bbbd671e2
 msgid "Multiple terminals"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:50
-#: 2cd57359386a4aea8a13b28c0957e45c
+#: 74bd90fe32884d549d34da72fe943b05
 msgid ""
 "For multiple terminals, you may find it easier to just use tmux than to try "
 "to blindly switch to the correct window."
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:53
-#: 24d25f1d0504483da1fce1243242a0a5
+#: 3a732c75e5b54998bd182118fb5dbdd9
 msgid "Terminal size"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:56
-#: d5470d239cad4c41aa9744e2fc7b3a98
+#: 3d8e70e755eb4207b2c23e7475fc8638
 msgid ""
 "It is up to you to ensure the sizes of the local and remote terminal are the "
 "same, otherwise things may display incorrectly (especially in interactive "
@@ -109,12 +109,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:66
-#: 1b3b9e3c04ff44b3a6d831afb54f32aa
+#: 89a771d160594d7d8a86a8f737849e86
 msgid "A note on serial consoles"
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:69
-#: 7098199ab9f54b9f9785f5a861ae446b
+#: 45b3ebc759f74c328b64589dc0fd4f7d
 msgid ""
 "If your machine has a serial console, you may with to use that, but note "
 "that a similar split-I/O model should be used to ensure Dom0 integrity. If "
@@ -126,6 +126,6 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/debugging/safe-remote-ttys.rst:77
-#: 4253b1051b9c42e0bbcfd649377977e1
+#: 77d46445812143d5b35afc9e09fcd071
 msgid "You don’t even need to connect the TX pin."
 msgstr ""
