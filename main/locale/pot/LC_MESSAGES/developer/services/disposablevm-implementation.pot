@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-16 18:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/services/disposablevm-implementation.rst:3
-#: 31d73e79eed54f93a900b28a385a9a0a
+#: c38f3b76420a406c837f7bb08d4a39d7
 msgid "Disposable implementation"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:7
-#: 7fcc62afc0ea4e48b6ef09bca3ed1bb9
+#: c67fdf39153e47968ad46b66bf661f32
 msgid "This page is intended for advanced users."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:10
-#: 3c5a7baef1664fe4bd3b81e380c5cfab
+#: feffe8e0d400417cb76072df2ec54ffd
 msgid "Disposable behavior"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:13
-#: 69bb7ed2ab114d019ee77e2a8ed9df7f
+#: ed0ad93842004a31a6a3c3503bbf7f2e
 msgid ""
 "A :term:`disposable template <disposable template>` is not a disposable qube "
 "in itself, but a qube that can be used to create different disposable types: "
@@ -41,78 +41,81 @@ msgid ""
 "disposable>`. This intermediary template serves different functions: first, "
 "it allows customization of the private volume of a disposable, and second, "
 "it provides a degree of inheritance that would not be possible with normal "
-"templates. It has the :py:attr:`~core-admin:qubes.vm.mix.dvmtemplate."
-"DVMTemplateMixin.template_for_dispvms` property enabled, being a :py:class:"
-"`~core-admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin`."
+"templates. It has the :py:attr:`~core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.template_for_dispvms` "
+"property enabled, being a :py:class:`~core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin`."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:15
-#: e207f29b88d549cdb03d9b5928ac3a28
+#: e420921b7282421eb016feb73a44e209
 msgid ""
-"A :term:`disposable` is a qube with the :py:class:`~core-admin:qubes.vm."
-"dispvm.DispVM` class and is based on a disposable template. Every disposable "
-"type has all of its volumes configured to disable :py:attr:`~core-admin:"
-"qubes.storage.Volume.save_on_stop`, therefore no changes are saved on "
-"shutdown. Normal disposables enable the property :py:attr:`~core-admin:qubes."
-"vm.dispvm.DispVM.auto_cleanup` by default, thus Qubes OS automatically "
-"removes the qube upon shutdown. Named disposables don't enable :py:attr:"
-"`~core-admin:qubes.vm.dispvm.DispVM.auto_cleanup` by default, thus the qube "
+"A :term:`disposable` is a qube with the :py:class:`~core-"
+"admin:qubes.vm.dispvm.DispVM` class and is based on a disposable template. "
+"Every disposable type has all of its volumes configured to "
+"disable :py:attr:`~core-admin:qubes.storage.Volume.save_on_stop`, therefore "
+"no changes are saved on shutdown. Normal disposables enable the "
+"property :py:attr:`~core-admin:qubes.vm.dispvm.DispVM.auto_cleanup` by "
+"default, thus Qubes OS automatically removes the qube upon shutdown. Named "
+"disposables don't enable :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.auto_cleanup` by default, thus the qube "
 "skeleton is not removed upon shutdown, thus allowing to keep qube settings."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:17
-#: f17c3d5dd6524f2e8fb7ae1f481d679e
+#: febe174c8ca64f76bf0ad86b9eb4485b
 msgid ""
 "Named disposables are useful for service qubes, as referencing static names "
-"is easier when the qube name is mentioned on qrexec policies (:file:`qubes."
-"UpdatesProxy` target) or as a property of another qube, such as a "
-"disposable :term:`net qube` which is referenced by downstream clients in the "
-"``netvm`` property."
+"is easier when the qube name is mentioned on qrexec policies "
+"(:file:`qubes.UpdatesProxy` target) or as a property of another qube, such "
+"as a disposable :term:`net qube` which is referenced by downstream clients "
+"in the ``netvm`` property."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:19
-#: 370c1e1d7c4a4ffcae6b982577ba1f0a
+#: a49e278787ac4d9d8769be62f6ce926b
 msgid ""
 "Disposables are generally named according to the :samp:`disp{1234}` scheme, "
-"where :samp:`{1234}` is derived from the :py:attr:`~core-admin:qubes.vm."
-"dispvm.DispVM.dispid` property, a random integer ranging from 0 to 9999 with "
-"a fail-safe mechanism to avoid reusing the same value in a short period. "
-"Named disposables have a user-set permanent name."
+"where :samp:`{1234}` is derived from the :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.dispid` property, a random integer ranging from "
+"0 to 9999 with a fail-safe mechanism to avoid reusing the same value in a "
+"short period. Named disposables have a user-set permanent name."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:23
-#: eccf03dd57534222a2c9c955f121f0c3
+#: 3efbd38e441b472a95243debc8817033
 msgid "Creating disposables through qrexec"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:25
-#: 933ee18fab4a40f4afca56525edcf83d
+#: 7d048e1feef445d6b9d284215c305e69
 msgid ""
-"Every qube has the :py:attr:`~core-admin:qubes.vm.dispvm.DispVM."
-"default_dispvm` property, which defines which disposable template will be "
-"used to spawn disposables for this qube by default (when using actions such "
-"as \"open in disposable\"). It can have one of three values:"
+"Every qube has the :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm` property, which defines which "
+"disposable template will be used to spawn disposables for this qube by "
+"default (when using actions such as \"open in disposable\"). It can have one "
+"of three values:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:28
-#: 4ce70be4b6e247788c5cfa383a626a1e
+#: f873eb47c4974ed5a93dd8df1e342649
 msgid "a disposable template"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:29
-#: e6e2f09c4e8442b8ab84494d64233e87
+#: 6daef8457edd46f1abb5bfea82870479
 msgid "empty value"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:30
-#: 4af92cc5828544a9ac956be68a94a9a6
+#: 253a8d75c16345d5b5eba3de39d1e7bc
 msgid ""
-"default system value (this will use the system-wide :py:attr:`~core-admin:"
-"qubes.vm.dispvm.DispVM.default_dispvm` property)"
+"default system value (this will use the system-wide :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm` property)"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:32
-#: bd3f2fa8d0144bbea09d8e6e402b4b47
+#: 1c1d7f28837a406a9bd342ad5cb05ed0
 msgid ""
 "In case of disposables, this property is by default set to their own "
 "disposable template, to avoid data leaks through, for example, using "
@@ -120,17 +123,18 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:34
-#: b180fabc863d4179813212acb39f3cce
+#: a698b62534944dc7ba6e8ef86562c682
 msgid ""
-"This value is also used in case of qrexec policy: when policy rules use the :"
-"doc:`@dispvm <core-qrexec:qrexec-policy>` tag, it translates to \"a "
-"disposable based on the source qube's :py:attr:`~core-admin:qubes.vm.dispvm."
-"DispVM.default_dispvm`. It is most commonly used to open files and URLs, (:"
-"file:`qubes.OpenInVM` and :file:`qubes.OpenURL`, respectively)."
+"This value is also used in case of qrexec policy: when policy rules use "
+"the :doc:`@dispvm <core-qrexec:qrexec-policy>` tag, it translates to \"a "
+"disposable based on the source qube's :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm`. It is most commonly used to "
+"open files and URLs, (:file:`qubes.OpenInVM` and :file:`qubes.OpenURL`, "
+"respectively)."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:36
-#: b738271bc4814aa6af70bf556de79552
+#: bb8f4f7ab6cb4585857e098a5f482d3c
 msgid ""
 "If you want to allow creating disposables based on different disposable "
 "templates, you can use the disposable template name or tag as destination. "
@@ -138,26 +142,26 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:38
-#: 0a7b96bd74c445afae897b34178b3232
+#: 45795ee5715746fa889e1cdf38a1ffa1
 msgid ""
 ":samp:`@dispvm:{DISPOSABLE_TEMPLATE}`, where :samp:`{DISPOSABLE_TEMPLATE}` "
 "is the desired template;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:39
-#: 97a5ddc4573e46d3902e587dded924c0
+#: e4eb551e045a492482fbcaab3fb101ed
 msgid ""
 ":samp:`@dispvm:@tag:{CUSTOM_TAG}`, where :samp:`{CUSTOM_TAG}` is the tag of "
 "your choice."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:42
-#: bd1d51c1b5ec4526995ca7029c631e9c
+#: 1f0f360d12f14577beee73da3cd865ec
 msgid "Preloaded disposables"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:45
-#: fd4d554633f5447f8f5d7cae51d17432
+#: d7d8dcd610bf4fb980b01af3e570331f
 msgid ""
 "Starting new disposables can be a slow process. To speed it up, Qubes OS "
 "provides disposable preloading, which enables fast retrieval of fresh "
@@ -165,7 +169,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:47
-#: 5fbb365b698e45bdbe0fdef600ad460f
+#: 3187f7b1094849a68c53399be2b03c2e
 msgid ""
 "Instead of performing the whole startup each time a new :term:`disposable` "
 "is requested, preloading keeps prepared (running and paused) qubes in the "
@@ -176,33 +180,33 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:50
-#: 2c3050b9991f42109993aaa11c294125
+#: b8550edd4fb041fa98cbcf71fae80181
 msgid "Preloaded disposable's stages"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:52
-#: b970f9e9f6224771a49079bdab5036d4
+#: c11be3906234454dbe841e1f3893829c
 msgid ""
 "There are several stages a disposable goes through when preloading is "
 "enabled:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:54
-#: c7b33ce9b14241ca8e6028a58bbbe0a0
+#: cd708da4df60435e86d5d905f5225baa
 msgid ""
 "**Preload**: The qube is created and marked as preloaded. The qube is not "
 "visible in GUI applications."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:56
-#: 7df4738b3ea3428a89fe70c873d006da
+#: fb140949662640ca8dc5c533c6b5e32d
 msgid ""
 "**Startup**: Begins qube startup, starts basic services and attempts to "
 "pause the qube."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:58
-#: fd16d0d079a14487bfaf54e9a624cb73
+#: 59f45e0bbae94843917c986ea2fc4fe1
 msgid ""
 "**Request**: Triggered by the user requesting a new disposable qube. The "
 "qube is removed from the preload list. If qube startup has not yet reached "
@@ -210,7 +214,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:60
-#: 4d6d03c6169e407aa148eb72762bd4e7
+#: 06f970e073174aa1b8a25a780159599d
 msgid ""
 "**Used**: The qube is marked as used and will be unpaused/resumed (if "
 "needed). At this stage, GUI applications treat the qube as any other "
@@ -218,12 +222,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:63
-#: 58827a4a142840dab7e15da79a8a976a
+#: b34c370e732f42939e363792771accd2
 msgid "Preloaded disposable's worry-free life-cycle"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:66
-#: ef8ca35e23794c669f58c3e90497f59c
+#: 84035377d73c436fbfbb2c485f5e1d81
 msgid ""
 "There are several events that may trigger the creation or deletion of "
 "preloaded disposables. Qubes OS attempts to maintain as many preloaded "
@@ -234,12 +238,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:70
-#: 51301eef752f40b6b14dfcc7fa441160
+#: a92cf00f5eb14b0dbc1d9f02d093b838
 msgid "Preloaded disposable's management"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:72
-#: c90e8f71c81f47bf8932398f04751092
+#: 3fb649ee14c445c28ccdc59af670bf4a
 msgid ""
 "Maximum number of preloaded disposables is defined by the ``preload-dispvm-"
 "max`` feature. This feature can be set on any disposable template (this "
@@ -253,47 +257,47 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:74
-#: e260dbf5be864ce3a9088e133eab692e
+#: 19317ac9e81140c79423af9e2ff192fd
 msgid ""
 "These are common events that trigger changes in preloaded disposables "
 "quantity:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:76
-#: ec53d3772bef456ebc8cb4603a7f9ba5
+#: ba5d1c5b4e6e423db3586651bbc0540b
 msgid "Create or remove:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:78
-#: c955727b3ef34cccaa6f3e5591ac7485
+#: c484e9ce73cd4d14aad31a21513ce8a2
 msgid "Changing the ``preload-dispvm-max`` feature;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:79
-#: c9597f738394474d95cf112b8d2085d2
+#: 32ac81f0f49241e7978d970df6001656
 msgid ""
-"Changing system-wide :py:attr:`~core-admin:qubes.vm.dispvm.DispVM."
-"default_dispvm` if system-wide ``preload-dispvm-max`` is set to a different "
-"value than the disposable template setting;"
+"Changing system-wide :py:attr:`~core-"
+"admin:qubes.vm.dispvm.DispVM.default_dispvm` if system-wide ``preload-dispvm-"
+"max`` is set to a different value than the disposable template setting;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:80
-#: 4f6d574ca9b14a02b30514be88987e31
+#: f120919168b3474b877d146e465dad61
 msgid "Refill:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:82
-#: 1e495d5aaa114ce1904bad66beeade88
+#: 7602d40b70f74e72b35f501f20ca7b6b
 msgid "(Re)starting :file:`qubes-preload-dispvm.service`;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:83
-#: e2fd8c8acb6c4de495572a9fd1478eb0
+#: eada8bd64d8f49288669410ebfda3ee4
 msgid "Requesting a disposable;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:84
-#: 1d2b4402487f4ae6894864824860f6b5
+#: 847bdb454a234347bd77b259a9456bc4
 msgid ""
 "Using a preloaded disposable (both this and requesting a disposable trigger "
 "a refill, in case one of them fails - this ensures maximum preloading if "
@@ -301,42 +305,43 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:86
-#: c33978489f4d4b33884b3f56082bbbf2
+#: d3ed72efc221417a88c7badd442a53cb
 msgid "Refresh (delete old preloaded disposables and create then anew):"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:88
-#: 49509d22caaa4d1daf7d347a41428a16
+#: 480707ad3ab4465f87a8f4b096719b9e
 msgid "Updating the volumes of a template or disposable template;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:89
-#: 687ec8bb61ea48a487ccffc6643b0a4a
+#: e7d71742ce9a48c5807ad0081e58d004
 msgid ""
-"Qubesd was interrupted mid preload creation, on the next service restart, :"
-"py:meth:`domain-load <core-admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin."
-"on_domain_loaded>` of the disposable template."
+"Qubesd was interrupted mid preload creation, on the next service "
+"restart, :py:meth:`domain-load <core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded>` of the "
+"disposable template."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:92
-#: 2f5c3e1ecfcb4e4eb6707706a2761cde
+#: 59e210c2ff614dc4889c737fbec1b977
 msgid "Availability gaps"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:95
-#: 1d678b52aa474f5ea8cc6a98abfc9d0f
+#: 7274b4c409ae44f5b1a2b40fb3c0e7ec
 msgid ""
 "Some events that may cause a temporary gap in preloaded disposable "
 "availability:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:97
-#: 83534bd573964bb6a012146311821224
+#: e57ab1faed7149648fb2a633132c80a8
 msgid "There is not enough memory to preload at the moment;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:98
-#: dbcd38256e824828ad080d2096363e80
+#: 2d8e4fcdccc348ccb039add8b352366c
 msgid ""
 "Service to check if the system is fully operational has failed and will "
 "remove the qube. This will not cause repeated attempts as it most likely "
@@ -344,51 +349,52 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:101
-#: 23e4a63e6d8f44a798f380882e736c6b
+#: c2a6d1ac40ef4c1fb8bec62d0ce1117f
 msgid "Bootstrapping Preloaded disposables"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:104
-#: edcb32dfcf0346bdae6dfd1bbb025bf7
+#: 8b4d629ff3b54329a2d88982e4b4e5ce
 msgid ""
-"To bootstrap the creation of preloaded disposables after boot, the service :"
-"file:`qubes-preload-dispvm.service` is used instead of :py:meth:`domain-load "
-"<core-admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded>` of "
-"the disposable template because it relies on systemd to:"
+"To bootstrap the creation of preloaded disposables after boot, the "
+"service :file:`qubes-preload-dispvm.service` is used instead "
+"of :py:meth:`domain-load <core-"
+"admin:qubes.vm.mix.dvmtemplate.DVMTemplateMixin.on_domain_loaded>` of the "
+"disposable template because it relies on systemd to:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:106
-#: 442ab170387341f18a7e760c41f6210d
+#: 1274dfea1fe645848fb64f9d8f1b5b1e
 msgid ""
 "Order this action after the autostart or standard qubes - they must precede "
 "in order to have a functional system;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:107
-#: 88d7b63d57ec4cac9a3d6aaf4436b8c4
+#: 5a4ee1bcd3a1440181a10175d31f8e09
 msgid "Skip preloading if kernel command line prevents autostart."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:110
-#: ac2e6ce45044464ead0eb4bd4e1c0b3d
+#: ddade244812144efbd1a0f06debc5120
 msgid "Preloaded disposables' memory management"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:113
-#: 01d5b31a3380483c9a91c6a51aad470c
+#: 76634894c93242d290cf9659d484597e
 msgid ""
 "Qubes OS attempts to manage a preloaded disposable's qube memory directly "
 "before the pause stage, as it is impossible to negotiate memory with a "
-"paused qube. At the :py:meth:`domain-pre-paused <core-admin:qubes.vm.dispvm."
-"DispVM.on_domain_pre_paused>` stage, memory is set to use preferred memory "
-"value. In :doc:`qmemman terms </developer/services/qmemman>`, preferred "
-"memory is just enough to have the qube running, and so, hopefully as much as "
-"possible of qube memory is retrieved to be used by other, currently running "
-"qubes."
+"paused qube. At the :py:meth:`domain-pre-paused <core-"
+"admin:qubes.vm.dispvm.DispVM.on_domain_pre_paused>` stage, memory is set to "
+"use preferred memory value. In :doc:`qmemman terms </developer/services/"
+"qmemman>`, preferred memory is just enough to have the qube running, and so, "
+"hopefully as much as possible of qube memory is retrieved to be used by "
+"other, currently running qubes."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:115
-#: e6b840bf71dc4daf85341ea5191718d9
+#: 559b871c66f54ae5b2ec2c37178aff88
 msgid ""
 "This process can take a bit of time because it depends on how fast the qube "
 "can free up memory. In ``qubes.qmemman.systemstate``, there is a timeout "
@@ -398,7 +404,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:117
-#: be8323a405a24ad28e76f7e0802fb668
+#: 92df83d7ccfc489aba7d49925350dd54
 msgid ""
 "We do not worry about the time this process takes, even though it does "
 "prolong the preload creation stage. In the long run, the memory usage is "
@@ -408,43 +414,43 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:120
-#: 733fba48596f49159211d5ed4c61360b
+#: fa006cdcae0146779ae705714ea037f6
 msgid "Preloaded disposable's pause"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:122
-#: 3cdeeb76d26443209fc2a0920345a1b2
+#: ba5ff66a2cf842aa88ebe31060157d4b
 msgid "Preloaded disposables are paused because:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:124
-#: 5a8a0ad2a2294aea95d0aac1231415d7
+#: 69d698e36d7a4d3596d592c70caa76a2
 msgid ""
-"it makes detecting if a qube was used without being requested with :py:meth:"
-"`core-admin:qubes.vm.dispvm.DispVM.from_appvm`. Not every communication with "
-"a qube goes through :program:`qubesd`, it may happen via qrexec or GUI "
-"daemon;"
+"it makes detecting if a qube was used without being requested "
+"with :py:meth:`core-admin:qubes.vm.dispvm.DispVM.from_appvm`. Not every "
+"communication with a qube goes through :program:`qubesd`, it may happen via "
+"qrexec or GUI daemon;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:125
-#: 50ea97f2fd544d76939034ee8454fbbc
+#: 9874782d13a64605b89cbad6dd13c8f9
 msgid "CPU scheduling economy: a paused domain is not eligible for it;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:126
-#: 631c90824308403e91c94dfa60c77d2e
+#: 0350c255eaec4ecebfe83f74c42b1603
 msgid ""
 "Cronjob, timers and other things that don't block the init system and "
 "service manager completion won't run and alter a clean state."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:128
-#: 898a08d3f6dd4552b421bf5f0b284ea4
+#: c61274eb7c584a13923b5d08ebc19e30
 msgid "But this comes at a cost:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:130
-#: 3855bc77c7114e93a49c83cbfc978f0c
+#: 03e5df920b42439889a0e64ed3192a51
 msgid ""
 "Memory management before pause may take some seconds. As described above, "
 "this does not increase time to use the preloaded qube but can slow down the "
@@ -453,43 +459,43 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:133
-#: 141b40fcac65499cb356facbe4df16a5
+#: eb2a12ad75e04b4999b75f39b6f6dda0
 msgid "Preloaded disposable's security"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:136
-#: 63dba64db3f94bdebc7c1ef1bb7b01ab
+#: 9f90c016e58045e9aaec4b627a8f690d
 msgid ""
 "As preloaded disposables are started before being used, some measures to "
 "prevent accidental tampering and reuse were introduced:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:138
-#: e24e6802099b46a2ac364e22908bd406
+#: 99bfaf327d3346bc99a936af10d580b4
 msgid ""
-"The qube has the ``internal`` feature enabled. Qubes GUI applications hide :"
-"term:`internal qubes<internal qube>`;"
+"The qube has the ``internal`` feature enabled. Qubes GUI applications "
+"hide :term:`internal qubes<internal qube>`;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:139
-#: 8479ab4c5a9c419290f71150b224ffb8
+#: 0561acc9fa5147dc98d4a6aea1b60ed0
 msgid ""
 "When requesting a disposable, the qube object is only returned to the user "
 "once it has finished preloading;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:140
-#: 6a6befa4ccd044d3ad92ee46a4c976d1
+#: a6d803c3dfb54ccf9d7342f6e88b6fea
 msgid ""
-"The qube is paused as the last stage of preloading. This means the :py:meth:"
-"`domain-unpaused <core-admin:qubes.vm.dispvm.DispVM.on_domain_unpaused>` "
-"event  can be used to mark the qube as used and remove it from the preload "
-"list, avoiding reliabce on :py:meth:`core-admin:qubes.vm.dispvm.DispVM."
-"from_appvm`;"
+"The qube is paused as the last stage of preloading. This means "
+"the :py:meth:`domain-unpaused <core-"
+"admin:qubes.vm.dispvm.DispVM.on_domain_unpaused>` event  can be used to mark "
+"the qube as used and remove it from the preload list, avoiding reliabce "
+"on :py:meth:`core-admin:qubes.vm.dispvm.DispVM.from_appvm`;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:141
-#: 0a0013907cdc44669cb987bfedfe3a8d
+#: 74c1fa71b89e49159320aba8bd26c7d4
 msgid ""
 "The GUID and Audio daemon only connect to the GUI agent and audio agent in "
 "the qube after the preloaded disposable is marked as used. This prevents "
@@ -500,12 +506,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:143
-#: 79e8547ba2614e128f8522c435957f1f
+#: f467d139df934335a52fa7b2d5ef7d15
 msgid "To ensure reliability:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:145
-#: 7a556c6c17ca4f98af82ceabc510bc31
+#: 90b9c5186e004e0280d380f01d468c81
 msgid ""
 "The ``preload-dispvm-threshold`` feature controls how much free memory must "
 "be present on the system before attempting to create a new preloaded "
@@ -514,41 +520,41 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:147
-#: c7435d9cf2e543ee9b6097bb0dae1c9e
+#: ab29faa541244c39a543deff04346399
 msgid ""
 "To have late GUI daemon but an early GUI agent, changes have been made that "
 "limit the usability on ``sys-gui``. `Events such as plugging or removing "
-"external monitors can't work, it will be ignored by Xephyr <https://github."
-"com/QubesOS/qubes-gui-agent-linux/pull/253>`__."
+"external monitors can't work, it will be ignored by Xephyr <https://"
+"github.com/QubesOS/qubes-gui-agent-linux/pull/253>`__."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:150
-#: f06ebc87537544ac8ca1ce3f35d92c3e
+#: 23f870b7b0e44713a25b87616b7b0e90
 msgid "Alternatives considered"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:153
-#: 72295e867b22414da961520728906359
+#: 76a16471d1cc48b78e430cd512812a63
 msgid ""
 "For an alternative to be considered for implementation, it must meet the "
 "following requirements:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:155
-#: ed9d53c50ed44b58bc525d2865000c83
+#: fe1d58315a64436e84ccaf2127396216
 msgid ""
 "No memory or ``vcpus`` restrictions such as limiting to a few number of "
 "``vcpus`` or assigns memory on request (can be slow)."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:156
-#: eda74d47a3494d29b9733f19498e6aa1
+#: 8d2909c628884938968cbd3a1a66700f
 msgid ""
 "Performant as much as a normal disposable even on long running sessions;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:157
-#: 5f35efde5bc24f9a9d3977d65b0c7cd8
+#: de60da3a30374c03865a9088766e712c
 msgid ""
 "Caller transparency, no change necessary for callers, the request must be "
 "transparent and the server must find the fastest option. This is to avoid "
@@ -556,19 +562,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:159
-#: 12e97fd816b54fb1923810c0b1d0455b
+#: 8bf39b00924c414bbaaf0eb5b7325592
 msgid ""
 "From the evaluated options, only :ref:`preload queue <developer/services/"
 "disposablevm-implementation:preload queue>` meets all requirements."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:163
-#: fd70db3c70664bf39722f9ce25569e2a
+#: 6d1418fb615c4c109a27184eb51856bc
 msgid "Restoration from savefile"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:166
-#: 0201d8ee26894fb5ad6e8ca18e277f93
+#: 39900c479a4f4b849a1f6d511c1590cf
 msgid ""
 "**Description**: Disposable template booted, its image was dumped (suspend "
 "to disk), newly disposables would restore this image to become their own."
@@ -577,30 +583,30 @@ msgstr ""
 #: ../../../developer/services/disposablevm-implementation.rst:168
 #: ../../../developer/services/disposablevm-implementation.rst:181
 #: ../../../developer/services/disposablevm-implementation.rst:194
-#: e69590ae74654862b4ebd44927bdee64 2f2626b517fc4eadb6bab7af0d85b5dc
-#: 39365be876654866b456e5c5627c7a42
+#: e4150270f6ee488fbd9d46b2b756076a 5e32fcde2a0742639466a5080eaa317b
+#: 372a3258e3f54bb0b252ae69d5f2c6fd
 msgid "**Evaluation**:"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:170
-#: ab3a5aced2fc42a3a4fbe85a4b202790
+#: 698f99cf4cb64f179c064ffc13316ed5
 msgid ""
 "Used in R3.2, worked at that time, when there was only one disposable "
 "template available, see next points of why it can't be used anymore."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:171
-#: 267e0007f7e242f3b1086aa97de38538
+#: 8a847289de5543b6ba04920e55d4450a
 msgid "Incompatible with multiple ``vcpus``."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:172
-#: 1e1863c4b5844b15beb7f2750a3e3b76
+#: 8e28c74a10ce401a9a1f6523ddd819c6
 msgid "Some memory issues."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:173
-#: 7de05c17ea6f4699b21c36f7c96090f9
+#: 611bb838f9444fc68fa5a23573129c61
 msgid ""
 "Savefile creation takes a long time. The disposable qube savefile contains "
 "references to template rootfs and :abbr:`CoW (Copy-on-Write)` files, if "
@@ -609,24 +615,24 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:176
-#: d8470af4d7f0499387d47ee944a10bfd
+#: 5f44b5e2c7ef43e5bf2e566d6a56782f
 msgid "Xen domain fork"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:179
-#: cb3abb839b4649e0b2f1377dfff9a246
+#: 63737f7ecd1c4cf2b9d3812dbcfe5b63
 msgid ""
 "**Description**: domain forking is the process of creating a domain with an "
 "empty memory space and a parent domain specified from which to populate the "
 "memory when necessary. For the new domain to be functional the domain state "
 "is copied over as part of the fork operation (HVM params, heap allocation "
 "etc). This description was sourced from `[Xen-devel] [RFC PATCH for-next "
-"17/18] xen/mem_sharing: VM forking, Tamas K Lengyel <https://lists."
-"xenproject.org/archives/html/xen-devel/2019-09/msg02497.html>`__."
+"17/18] xen/mem_sharing: VM forking, Tamas K Lengyel <https://"
+"lists.xenproject.org/archives/html/xen-devel/2019-09/msg02497.html>`__."
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:183
-#: c7fa4f4cd2fe4d0c99e5a442ff25aa40
+#: 956f22addf8d430fba7161fd44d2796b
 msgid ""
 "Shares too much information from the trunk to the forks. This appears to "
 "have improved if not totally fixed on Linux 6.14, as mentioned by Andrew "
@@ -634,14 +640,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:184
-#: 590a68bac3894c54b0d88e699ba8d3ec
+#: 3e9e9fe5aa624fad82cd55c96089873c
 msgid ""
 "Requires changing properties after the fork is done, this includes, but not "
 "limited to, ``xid`` of connected qubes, network uplink;"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:185
-#: e8af30d77ee34faeac99cefd8e85cdb0
+#: 06daad81b59b4dd0a126e1a703800a31
 msgid ""
 "Not designed for long running sessions, the initial intention was fuzzing. "
 "As fast as the creation can be, the usage may be slower as memory is mapped "
@@ -651,7 +657,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:186
-#: e52f59eaf0494915a5fe2920cf355611
+#: b573044943094dd8b9fae71c50d30fcf
 msgid ""
 "Tamas K Lengyiel `VM Forking & Hypervisor-Based Fuzzing with Xen <https://"
 "www.youtube.com/watch?v=3MYo8ctD_aU>`__ presentation during the Open Source "
@@ -663,12 +669,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:189
-#: 99ca4204e1bd484187a2202f63efdbc1
+#: 51f436f9ed3f4d8c95025948d64d69a7
 msgid "Preload queue"
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:192
-#: a8bc4febeed446bbbdbb64e5345313e5
+#: 5793dc3ae00c4dd097f1f570fd3c3b87
 msgid ""
 "**Description**: Start disposables and queue them in a disposable template "
 "feature, requested disposables will prefer to retrieve disposables from this "
@@ -676,7 +682,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:196
-#: c51af710227249e4aba7a4d25c5f0436
+#: d2d6013ea47a4457ba7401aa9c221201
 msgid ""
 "Because the qube is running prior to being requested, multiple components "
 "have to be patched to support it to various levels off difficulty. Excluding "
@@ -687,7 +693,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/services/disposablevm-implementation.rst:197
-#: cea50b33d5634cd7a9f88baa0f0ba13c
+#: 0c29532f4c5147a09fa7163b8825148c
 msgid ""
 "The biggest difference between the queue and the other alternatives is that "
 "this solution works, is reliable and fulfills all requirements. A proper "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-16 18:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/building/qubes-iso-building.rst:3
-#: 61000b71fedb466c91276fe92aed7215
+#: 0a39754435f24f81b6dac7d17cf58fa7
 msgid "Qubes ISO building"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:8
-#: 55021e50e6a24ad3b18c91149bbdcb5c
+#: d5379e95e3f045c2b6e9a8b6aa4bbed1
 msgid ""
 "**Note:** These instructions concern the older Qubes builder (v1). It "
 "supports only building Qubes 4.2 or earlier.The build process has been "
@@ -33,12 +33,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:11
-#: 6a3b4c0df6074e6f8485b8afd77cdc9b
+#: ffccac723a434aeea0b698452e57086c
 msgid "Build Environment"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:14
-#: 079d7840b2704afe8925be0925a36661
+#: 0c9ffddb62024378abebfc76406e4c2c
 msgid ""
 "Fedora 36 (and 37) has been successfully used to build Qubes R4.1 with the "
 "below steps. Other rpm-based operating systems may also work. Travis-CI uses "
@@ -47,7 +47,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:16
-#: 4a0c62a2bf5c42a8a1410a653eee5559
+#: 1c97cfc342d54b34bf4c3d3754fc3568
 msgid ""
 "**Notes:** On modern Fedora system (like Fedora 37) SeLinux is enforced by "
 "default and is blocking the build system. You would get error like “can’t "
@@ -56,14 +56,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:23
-#: c5ad3dbda7c74fa2bfbc082d94cd398d
+#: 4762a4ea48f14ac3a564743d64cb2707
 msgid ""
 "In ``dom0``, install the Fedora 36 (or 37) template if you don’t already "
 "have it."
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:31
-#: b167de5940ca4ab38929a3d905584886
+#: 9a7f32fb01e2472580eb3d46a73770e2
 msgid ""
 "Create a standalone AppVM from the Fedora template. Set private storage to "
 "at least 60 GB if you will be building only the default templates; 100 GB or "
@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:33
-#: ab4f88aa784349f58796b77031cbf503
+#: 05aae9c42f3b4c1c8bbe0ca76eacbb46
 msgid ""
 "Once you’ve built the development AppVM, open a Terminal window to it and "
 "install the necessary dependencies (see :doc:`QubesBuilder </developer/"
@@ -83,14 +83,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:41
-#: 9e05f3528adb4d0dbe268ae3e813f9ff
+#: 8b256be97f4c42369daeb71aa23e559e
 msgid ""
 "Get the necessary keys to verify the sources (run these and other commands "
 "below as a regular user, not root):"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:63
-#: 139282db186f4e939225c1f332c5656a
+#: 9efab85250844c4fac0592130e99c563
 msgid ""
 "**Note** In the above process, we do *not* rely on the security of our "
 "server (keys.qubes-os.org) nor the connection (ssl, cert) – we only rely on "
@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:65
-#: b51dc1c9d6e446d5ad17cf936d6ebd1b
+#: 91efabbe48224e91ada1acd80ef722f6
 msgid ""
 "Now let’s bootstrap the builder. Unfortunately, the builder cannot verify "
 "itself (the classic Chicken and Egg problem), so we need to verify the "
@@ -109,7 +109,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:75
-#: 5026b6b68a7f4acba9a851562299b6ee
+#: 92d29ec2e1a64b2fa9632547f6c6208c
 msgid ""
 "**Note** It’s very important to check if the verification message contains "
 "“Good signature from …” and does not contain “WARNING: This key is not "
@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:77
-#: c9435d4ddfa249a18e4eb992ae8a59f4
+#: c6ea6721022445d995db4de15891a709
 msgid ""
 "Assuming the verification went fine, we’re good to go with all the rest "
 "without ever thinking more about verifying digital signatures on all the "
@@ -128,12 +128,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:80
-#: 1090c807fac34d3393984db11f6d4ab6
+#: 88ba100f73cb4549829d5f696ada1816
 msgid "Build using setup script"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:83
-#: db3b4aee5ac444e78b31a793c77f0cbc
+#: 369cbe26fdb44f3c88320242948633e3
 msgid ""
 "Let’s configure the builder first (see :ref:`procedure <developer/building/"
 "qubes-iso-building:build using manual steps>` at bottom if you would prefer "
@@ -141,19 +141,19 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:106
-#: 3076bfed01a7454c8d4cb77c27b803af
+#: e8cf340e081543f28948fbce35857cfd
 msgid ""
 "Once it completes downloading, re-run ``setup`` to add the Whonix templates:"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:119
 #: ../../../developer/building/qubes-iso-building.rst:207
-#: 1d996c1a5f64426ca6eaf61bd1a581aa 77ac7ca9c31e47408a818e51fd037ac8
+#: 3b6b9ea4ec7249408112e21706ff6457 63bbdd70ff7e41afa0167fb7eef03ff5
 msgid "Continue the build process with:"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:128
-#: 7c03a8b6c48f41178daba57a28a9adb1
+#: 24ea32cba76f443497e41ef1a40ad211
 msgid ""
 "When building the Whonix templates, you will often need to add/update the "
 "``WHONIX_TBB_VERSION`` variable in ``builder.conf`` at this stage to specify "
@@ -162,7 +162,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:130
-#: 88c8eb42841d4d9ba9a44e1166c7935a
+#: d9a5318cc001470eaf161e2089b0adc7
 msgid ""
 "You may also want to add ``COMPONENTS := $(filter-out gcc,$(COMPONENTS))`` "
 "to bypass a multiple hour compile step. See :ref:`QubesBuilder <developer/"
@@ -171,31 +171,31 @@ msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:132
 #: ../../../developer/building/qubes-iso-building.rst:219
-#: a40004637fe849bc8458a85027ffc2d3 796279d85d1b425cb81387b74cea582b
+#: 8b9d79942a54465aa9169fe3bf622715 9b381f15e7fe40a48f26ff1353fa4c57
 msgid "Finally, if you are making a test build, use:"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:141
 #: ../../../developer/building/qubes-iso-building.rst:228
-#: a34aba9a21c34a3db22b15494b731b98 ad3ee8cd1d38499eb82475d7ae442cec
+#: d6a6835625704182a8f3d87bfc6753b6 68fe653d53d04e608c876264a3b58c87
 msgid ""
-"Or for a fully signed build (this requires setting ``SIGN_KEY`` in ``builder."
-"conf``):"
+"Or for a fully signed build (this requires setting ``SIGN_KEY`` in "
+"``builder.conf``):"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:151
 #: ../../../developer/building/qubes-iso-building.rst:238
-#: 46f58a4040ca41419fd1ba349b991586 b2235eedc141425297c86f1d8776cbf3
+#: 8a7748da2c324b92aa5be81eb437c787 b47e04054e3b45df85a2e8469322385c
 msgid "Enjoy your new ISO!"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:154
-#: 669e232cf49c4546866ed866c16cc6b9
+#: 9931e277a9c64c1eb712b3c96529b2a9
 msgid "Build using manual steps"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:157
-#: 95e36157cfc04e5fb3a855edaf83fc4e
+#: 929f8745abae4e3191e34bd4ef7c7eca
 msgid ""
 "Instead of using ``./setup``, you can manually configure the build. The "
 "script takes care of a lot of the keyring preparation for us, so we first "
@@ -203,12 +203,12 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:159
-#: e774306439a34ff582a6287c9a19861d
+#: 12375830ae1548b997c01f58aa18efba
 msgid "If you will be building Whonix templates:"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:169
-#: 7a0013bdd3404f1f8a2ed9421e569671
+#: 5e60f786f8054b2eb71eff44ba7e1419
 msgid ""
 "**Note:** It’s very important to check the fingerprint displayed against "
 "multiple sources such as the `Whonix web site <https://www.whonix.org/wiki/"
@@ -216,24 +216,24 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:184
-#: 3150450c4bfd47bb92c1e4ffadc19d8d
+#: 3d6aaacc1c0c4f43837f09970d5337a5
 msgid "Next, prepare the Git keyring directory and copy them in:"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:196
-#: 8aaedad5bb1f4936abf1dcbcb63b0490
+#: 2766ab595a914f4d9a689057c3295505
 msgid "Copy one of the example configurations:"
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:205
-#: 926919f5b29b4ee6b83907b8f078b99e
+#: 60b8fce724a143b0a7c47902020994d4
 msgid ""
 "Edit ``builder.conf``, referring to ``doc/Configuration.md`` for a "
 "description of all available options."
 msgstr ""
 
 #: ../../../developer/building/qubes-iso-building.rst:217
-#: 18f8a7138237426a8544c904e8499f48
+#: 9b99d3a7062d4ae7b281b74f5382d9a1
 msgid ""
 "When building the Whonix templates, you will often need to add/update the "
 "``WHONIX_TBB_VERSION`` variable at this stage to specify the currently "
