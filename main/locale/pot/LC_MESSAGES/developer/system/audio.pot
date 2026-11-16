@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-16 18:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../developer/system/audio.rst:3 928a8c5c74d343b1bdc52fe92bca70f7
+#: ../../../developer/system/audio.rst:3 38816a4039b74573859084c065134b1e
 msgid "Audio virtualization"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:6 99b5af89887c4f5483c7f48d840270fc
+#: ../../../developer/system/audio.rst:6 4bdf7f76607b4790a31ee539058aaabb
 msgid ""
 "VMs on Qubes OS have access to virtualized audio through the PulseAudio "
 "module. It consists of two parts:"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:8 db969d0750fc45ab861830b4d7e6a3d9
+#: ../../../developer/system/audio.rst:8 4fb662902beb42cb8d5da62d8fc864c3
 msgid ""
 "``pacat-simple-vchan`` running in a dom0/Audio VM (standalone application, "
 "one per VM, connected to the PulseAudio daemon)"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:10 b05a869a907c4aab982596f69786cd16
+#: ../../../developer/system/audio.rst:10 d1868e783aac438eaec5cb9a8dabb535
 msgid ""
 "``module-vchan-sink`` running in a VM (loaded into the PulseAudio process)"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:15 fadb190201474bb298f4e8a72e8b43b9
+#: ../../../developer/system/audio.rst:15 99e52f1130ed4ba9ab0ed39ade6c111a
 msgid "Protocol"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:18 7a2e895e4b494a998047bb4566b618eb
+#: ../../../developer/system/audio.rst:18 1d65f46ab15b410480419a0e1e1bc364
 msgid ""
 "The protocol between these two parts is designed to be as simple as "
 "possible. Specifically, there is no audio format negotiation, no "
@@ -50,24 +50,24 @@ msgid ""
 "in S16LE format, 2 channels."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:20 1b8bfd4a194249848463f33d61e79c7e
+#: ../../../developer/system/audio.rst:20 4ff1df4503004865a9d0c6409181a5bb
 msgid "These two parts are connected with two vchan links:"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:22 1f9813caa46e45cba42029c31be2a959
+#: ../../../developer/system/audio.rst:22 9cdf016347e845da8ad10a9e901c86b0
 msgid ""
 "Connection on vchan port 4713 used to transfer audio from VM to dom0/Audio "
 "VM. There is no negotiation, no headers, etc. Only raw samples are sent over "
 "this channel."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:24 e29138603a644ccf90060e97bc696e64
+#: ../../../developer/system/audio.rst:24 86a3a18faafe42648185c9c59a53e011
 msgid ""
 "Connection on vchan port 4714 used to transfer audio from dom0/Audio VM to "
 "VM. Like the previous one, audio data is sent as raw samples."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:28 2f74f3e196b4416bb959a897f5a8733a
+#: ../../../developer/system/audio.rst:28 dda9870e2d03409bb6dfe4abc09a9ee8
 msgid ""
 "Additionally, the second vchan connection (on port 4714) is used in the "
 "opposite direction (VM to dom0) to send simple notifications/commands about "
@@ -75,39 +75,39 @@ msgid ""
 "format."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:30 db3ce18593644576b378ef3b8f0735c3
+#: ../../../developer/system/audio.rst:30 fdd922b6e6b04e959ac037217360245a
 msgid "List of defined codes:"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:32 0b76a6cc5e5a469f993070cb518870d9
+#: ../../../developer/system/audio.rst:32 c78dd1128ae74cdcbb1308839f64c028
 msgid ""
 "``0x00010001`` – VM wants to receive audio input (some process is "
 "listening); prior to this message, ``pacat-simple-vchan`` will not send any "
 "audio samples to the VM."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:34 92b8483d52cf4c55bff101bff43db777
+#: ../../../developer/system/audio.rst:34 272a6e94b624452cb933bf1419b00fed
 msgid ""
 "``0x00010000`` – VM does not want to receive audio input (no process is "
 "listening anymore); after this message, ``pacat-simple-vchan`` will not send "
 "any audio samples to the VM."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:36 251b2a327e8643f7a1e8b310a855216c
+#: ../../../developer/system/audio.rst:36 a028bb8c82134a0fb2964b124f1c8e60
 msgid ""
 "``0x00020000`` – VM does not want to send audio output; informational for "
 "dom0, to avoid buffer under runs (may affect PulseAudio calculated delays)."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:38 77842fa59c234f53affd20aa30b92d84
+#: ../../../developer/system/audio.rst:38 c07fad0d562f44f78f8bac571146a032
 msgid "``0x00020001`` – VM does want to send audio output."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:43 72927c6b39974568a39aa0286c466081
+#: ../../../developer/system/audio.rst:43 9e278f9b8f284bb5936dec6365726bf0
 msgid "pacat-simple-vchan"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:46 ddd2ea90179844d09a001f7b9d533dea
+#: ../../../developer/system/audio.rst:46 98263318de7547478c067ee8e736b426
 msgid ""
 "This is the dom0 (or Audio VM) part of the audio virtualization. It is "
 "responsible for transferring audio samples between the PulseAudio daemon in "
@@ -121,7 +121,7 @@ msgid ""
 "command ``xl list`` can be used."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:48 2c1f0d5cb77f4bcca6166da349c4e7ad
+#: ../../../developer/system/audio.rst:48 3e643d96b44b4932803ddacf74bed240
 msgid ""
 "Audio input to the VM is not sent by default. It needs to be both requested "
 "by the VM part and explicitly enabled in ``pacat-simple-vchan``. The "
@@ -129,41 +129,41 @@ msgid ""
 "``pacat-simple-vchan`` is controlled over system D-Bus:"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:50 717a0557890d43be91a31cf6e6b1c13f
+#: ../../../developer/system/audio.rst:50 f43e91e3484a4e1a938b71d6d4dc59f0
 msgid ""
 "destination: ``org.qubesos.Audio.VMNAME`` (where ``VMNAME`` is the VM’s name)"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:52 f5e493782257437694c15803167739aa
+#: ../../../developer/system/audio.rst:52 4132e5c1db1c464bbd7bb3ce50ce3b63
 msgid "object path: ``/org/qubesos/audio``"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:54 a442dd4f696f4130a518a90881acd247
+#: ../../../developer/system/audio.rst:54 2d9e5c3572804102b74f15baaa43cfdd
 msgid "interface: ``org.qubesos.Audio``"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:56 77f7391963064039956a2e6c9806efe9
+#: ../../../developer/system/audio.rst:56 747d0a55351244b7a17f8e320193ef4d
 msgid ""
-"property: ``RecAllowed`` (which can be set using the ``org.freedesktop.DBus."
-"Properties`` interface)"
+"property: ``RecAllowed`` (which can be set using the "
+"``org.freedesktop.DBus.Properties`` interface)"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:60 c0b9ca029c06452f95f80ea8209cc117
+#: ../../../developer/system/audio.rst:60 b5cfdba22dba4a3b981e817a09cac780
 msgid ""
 "In Qubes R4.1 and later, ``pacat-simple-vchan`` is controlled over a UNIX "
 "socket at ``/var/run/qubes/audio-control.VMNAME`` (where ``VMNAME`` is the "
 "VM’s name). Supported commands:"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:62 381e859f3ced43c3b9fe5ed35a2ac638
+#: ../../../developer/system/audio.rst:62 b35baef074e14f6d94905031ce4a953f
 msgid "``audio-input 1\\n`` - enable audio input"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:64 ae1aa6d2abd747abb600c9ccb7d4fd1a
+#: ../../../developer/system/audio.rst:64 cbb6133159064903a01cc7be2d8efdd9
 msgid "``audio-input 0\\n`` - disable audio input"
 msgstr ""
 
-#: ../../../developer/system/audio.rst:68 79cbe397567a4e69b954a51d25e78bcb
+#: ../../../developer/system/audio.rst:68 0a71bdca6a094ed48e9acf19631d4c9c
 msgid ""
 "These commands can be sent using the ``qubes.AudioInputEnable+VMNAME`` and "
 "``qubes.AudioInputDisable+VMNAME`` qrexec services, respectively. The "
@@ -172,7 +172,7 @@ msgid ""
 "a key means that the ``pacat-simple-vchan`` for a given VM is not running."
 msgstr ""
 
-#: ../../../developer/system/audio.rst:70 04152a1ec9d9437eaedd30355412c47b
+#: ../../../developer/system/audio.rst:70 df7fdf793cea4f249c8dbaefc005217d
 msgid ""
 "In either version, it is exposed to the user as device of class ``mic``, "
 "which can be attached to a VM (for example, using the ``qvm-device mic`` "
