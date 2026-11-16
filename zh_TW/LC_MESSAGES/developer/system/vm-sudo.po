@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, Qubes OS Project and others
+# This file is distributed under the same license as the Qubes OS package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qubes OS main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../developer/system/vm-sudo.rst:3 64aa116f38d544b38c3ec9caac88c483
+msgid "Passwordless root access implementation"
+msgstr "無密碼 root 存取實作"
+
+#: ../../../developer/system/vm-sudo.rst:6 36329a03d902493eb0f765b3a7c0a13d
+msgid ""
+"The rationale behind passwordless root in qubes is set out :doc:`here </user/"
+"security-in-qubes/vm-sudo>`. Implementation is by the qubes-core-agent-"
+"passwordless-root package."
+msgstr ""
+"\"\"Qubes 中無密碼 root 的設計原理說明請參閱 :doc:\\`此處 </user/security-in-"
+"qubes/vm-sudo>\\`。實作由 qubes-core-agent-passwordless-root 套件提供。"
+
+#: ../../../developer/system/vm-sudo.rst:8 7f500e9650c24481bd18be641e05031b
+msgid ""
+"This page sets out the configuration changes made, with (not necessary "
+"complete) list of mechanisms depending on each of them:"
+msgstr ""
+"此頁面列出了所做的配置變更，以及依賴於各項配置的機制列表（可能不完整）："
+
+#: ../../../developer/system/vm-sudo.rst:10 12e14ae73df542cfbb9fd6853ca71e43
+msgid "sudo (``/etc/sudoers.d/qubes``):"
+msgstr "sudo（``/etc/sudoers.d/qubes``）："
+
+#: ../../../developer/system/vm-sudo.rst:21 ceeccd93891b462abf82b720a215009e
+msgid "Easy user -> root access (main option for the user)."
+msgstr "輕鬆的使用者 -> root 存取（使用者的主要選項）。"
+
+#: ../../../developer/system/vm-sudo.rst:23 b4262e126ca6423db4b500741aea2bb6
+msgid "``qvm-usb`` (not really working, as of R2)."
+msgstr "``qvm-usb``（截至 R2 版本實際上無法正常運作）。"
+
+#: ../../../developer/system/vm-sudo.rst:27 89c9d9d6c7394b378214fcfdb2f9e4cc
+msgid "PolicyKit (``/etc/polkit-1/rules.d/00-qubes-allow-all.rules``):"
+msgstr "PolicyKit（``/etc/polkit-1/rules.d/00-qubes-allow-all.rules``）："
+
+#: ../../../developer/system/vm-sudo.rst:35 2c91517784c8483da58e9101c1b908a2
+msgid ""
+"PAM (``/etc/pam.d/su.qubes`` or ``/usr/share/pam-configs/su.qubes``) "
+"``auth        sufficient  pam_succeed_if.so use_uid user ingroup qubes``"
+msgstr ""
+"PAM（``/etc/pam.d/su.qubes`` 或 ``/usr/share/pam-configs/su.qubes``）"
+"``auth        sufficient  pam_succeed_if.so use_uid user ingroup qubes``"
+
+#: ../../../developer/system/vm-sudo.rst:37 ee95c63434df4196a117500b353561da
+msgid "NetworkManager configuration from normal user (``nm-applet``)."
+msgstr "普通使用者進行 NetworkManager 配置（``nm-applet``）。"
+
+#: ../../../developer/system/vm-sudo.rst:39 53c0c1e0a07b422e8021315c4275163c
+msgid "Updates installation (``gpk-update-viewer``)."
+msgstr "更新安裝（``gpk-update-viewer``）。"
+
+#: ../../../developer/system/vm-sudo.rst:41 1ecd8dbab7b64b38b74160c2b99f8dc4
+msgid ""
+"User can use pkexec just like sudo **Note:** above is needed mostly because "
+"Qubes user GUI session isn’t treated by PolicyKit/logind as “local” session "
+"because of the way in which X server and session is started. Perhaps we will "
+"address this issue in the future, but this is really low priority. Patches "
+"welcomed anyway."
+msgstr ""
+"使用者可以像使用 sudo 一樣使用 pkexec **注意：** 上述設定之所以必要，主要是因"
+"為Qubes 使用者的 GUI 工作階段不被 PolicyKit/logind 視為「本地」工作階段，這是"
+"由於 X 伺服器和工作階段的啟動方式所致。也許我們未來會解決這個問題，但這確實優"
+"先順序很低。無論如何都歡迎提供修補程式。"
+
+#: ../../../developer/system/vm-sudo.rst:45 48382838d8aa4a459d426e8d1a2fd045
+msgid "Empty root password:"
+msgstr "空的 root 密碼："
+
+#: ../../../developer/system/vm-sudo.rst:47 8c23309b025c408e9b50f716f6bfed1a
+msgid ""
+"Used for access to ‘root’ account from text console (``qvm-console-dispvm``) "
+"- the only way to access the VM when GUI isn’t working."
+msgstr ""
+"用於從文字主控台（``qvm-console-dispvm``）存取 'root' 帳號— 當 GUI 無法運作時"
+"存取 VM 的唯一方式。"
+
+#: ../../../developer/system/vm-sudo.rst:49 00bd1d8810414e729731b1b7fadc05fd
+msgid "Can be used for easy ‘su -’ from user to root."
+msgstr "可用於輕鬆地從使用者 'su -' 到 root。"
