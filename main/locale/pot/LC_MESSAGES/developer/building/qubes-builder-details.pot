@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-23 20:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../developer/building/qubes-builder-details.rst:3
-#: 91f91f8bb95e413b937810b05a15c4f9
+#: 2e965d0825344e8e828f13078cc5ca84
 msgid "Qubes builder details"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:8
-#: 61144893db664e989527946b0abc24ad
+#: 4dc48ac31d7c4918b62dc7c3d660c2a0
 msgid ""
 "**Note:** This information concerns the old Qubes builder (v1). It supports "
 "only building Qubes 4.1 or earlier.The build process has been completely "
@@ -33,40 +33,40 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:11
-#: 2e45bff975564ce1b31c1976b4aef278
+#: cd05d44e29ca4520b71495df8114b16e
 msgid "Components Makefile.builder file"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:14
-#: d2ce3ec2d52a4d8d91d3dec2b373b14f
+#: eeb903ad12884da4ac4574875ed02f57
 msgid ""
 ":doc:`QubesBuilder </developer/building/qubes-builder>` expects that each "
 "component have *Makefile.builder* file in its root directory. This file "
 "specifies what should be done to build the package. As name suggests, this "
 "is normal makefile, which is included by builder as its configuration. Its "
 "main purpose is to set some variables. Generally all available variables/"
-"settings are described as comments at the beginning of Makefile.* in :doc:"
-"`QubesBuilder </developer/building/qubes-builder>`."
+"settings are described as comments at the beginning of Makefile.* "
+"in :doc:`QubesBuilder </developer/building/qubes-builder>`."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:16
-#: 8246e014635f4cdd9bfbc058a1bf9cb9
+#: f665fadf1ef3403cad6076dae1f092b8
 msgid "Variables for Linux build:"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:18
-#: 20c096fe340f48d18c6d816827d7df38
+#: 2ec06d54ed8a456f8f7b5d5cfa5fb655
 msgid ""
 "``RPM_SPEC_FILES`` List (space separated) of spec files for RPM package "
-"build. Path should be relative to component root directory. :doc:"
-"`QubesBuilder </developer/building/qubes-builder>` will install all "
-"BuildRequires (in chroot environment) before the build. In most Qubes "
-"components all spec files are kept in *rpm_spec* directory. This is mainly "
-"used for Fedora packages build."
+"build. Path should be relative to component root "
+"directory. :doc:`QubesBuilder </developer/building/qubes-builder>` will "
+"install all BuildRequires (in chroot environment) before the build. In most "
+"Qubes components all spec files are kept in *rpm_spec* directory. This is "
+"mainly used for Fedora packages build."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:20
-#: 4e21480af987457aa3d9a13f00b03fcd
+#: fba901915b954185b65a7d9d895f56fe
 msgid ""
 "``ARCH_BUILD_DIRS`` List (space separated) of directories with PKGBUILD "
 "files for Archlinux package build. Similar to RPM build, :doc:`QubesBuilder "
@@ -75,44 +75,44 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:24
-#: a4614c968f494938a183cfea3c5011ea
+#: 659a2ee403b142f0be128b4790e264ee
 msgid ""
 "Most components uses *archlinux* directory for this purpose, so its good to "
 "keep this style."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:26
-#: 5baa43c39602423aac454810f717c05f
+#: 483300c8200a49439fe0d30bb6df22da
 msgid "Variables for Windows build:"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:28
-#: 793758b26263498fa8c48bc4dbec162e
+#: 001b9e6d480c487da982bccaf3231a4d
 msgid ""
 "``WIN_COMPILER`` Choose which compiler should be used for this component, "
 "thus which build scripts. Currently two options available:"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:30
-#: 9c8070f95b444285a5929c3e03e455cd
+#: 829f3575cf0849fd9285344c7b0689c4
 msgid ""
 "``WDK`` - Windows Driver Kit (default). Command used to build: *build -cZg*."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:32
-#: 45680ea2ba6747afaab9f2d047157a5c
+#: dfb6029ee7c2439abbbe535f7c5d9458
 msgid "``mingw`` - MinGW (Windows gcc port). Command used to build: *make all*"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:36
-#: c39d77627f2f4f5ea1014bbe96b61896
+#: cd10b370aecb4c45bc3091448206741d
 msgid ""
 "``WIN_SOURCE_SUBDIRS`` List of directories in which above command should be "
 "run. In most cases it will be only one entry: current directory (*.*)."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:38
-#: 9e38d89ee03e4c0fbe0e9b0001ca8d8b
+#: b4bbcc64e42446f6887c3bf1085e741c
 msgid ""
 "``WIN_PREBUILD_CMD`` Command to run before build, mostly useful for WDK "
 "build (in mingw case, you can use makefile for this purpose). Can be used to "
@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:40
-#: 5a0a67c749da4989b761ee447c5d2493
+#: d89b991198114e0085f150f0a30b3ad6
 msgid ""
 "``WIN_SIGN_CMD`` Command used to sign resulting binaries. Note that default "
 "value is *sign.bat*. If you don’t want to sign binaries, specify some "
@@ -130,35 +130,35 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:42
-#: e1049ff9af1c4cc18f8c32279b2d547e
+#: 133aba85b10446dea6e5255360700a12
 msgid "``CERT_FILENAME`` Path to key file (pfx format)"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:44
-#: 2b8db020d6f846dfbc1bad5d8360d605
+#: 5dd492926e944c65a0031a0e5ef1fb21
 msgid "``CERT_PASSWORD`` Key password"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:46
-#: 93a6a93d69874c528faf6d7789ffd403
+#: a528430de96c4db9be4a5c7b20466f51
 msgid ""
 "``CERT_PUBLIC_FILENAME`` Certificate path in the case of self-signed cert"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:48
-#: 9f2ce209cd9948ff9a4d0ff530a32cb2
+#: 54c5c9b74833492a9ab318a183b95435
 msgid ""
 "``CERT_CROSS_CERT_FILENAME`` Certificate path in the case of correct "
 "autheticode cert"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:50
-#: 5c5aa8dfbd4346229bb50f706f2b96b8
+#: 64e0dafb7c0640248ea99947550f250d
 msgid "``SIGNTOOL`` Path to signtool"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:54
-#: bc4e3dd21dea4ecab72f941ea9ce0a61
+#: 9822a9d04be04cb1be2fcd2bf056e144
 msgid ""
 "``WIN_PACKAGE_CMD`` Command used to produce installation package (msi or "
 "msm). Default value is *wix.bat*, similar to above - use *true* if you don’t "
@@ -166,14 +166,14 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:56
-#: ab03509a81284840b2fdd9d6311c2901
+#: bb1e64baee8a43a1bc92df6b0fe24673
 msgid ""
 "``WIN_OUTPUT_HEADERS`` Directory (relative to ``WIN_SOURCE_SUBDIRS`` "
 "element) with public headers of the package - for use in other components."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:58
-#: 95693ebdc8124fbf96c1955c50db7b87
+#: 6f6e0f526a874e9295a5998050d81d24
 msgid ""
 "``WIN_OUTPUT_LIBS`` Directory (relative to ``WIN_SOURCE_SUBDIRS`` element) "
 "with libraries (both DLL and implib) of the package - for use in other "
@@ -185,44 +185,44 @@ msgid ""
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:60
-#: cc76ca5539354d2d9a333501cc7944ab
+#: e05d9dd37fce4e25a1fa4ece41690203
 msgid ""
-"``WIN_BUILD_DEPS`` List of components required to build this one. :doc:"
-"`QubesBuilder </developer/building/qubes-builder>` will copy files specified "
-"with ``WIN_OUTPUT_HEADERS`` and ``WIN_OUTPUT_LIBS`` of those components to "
-"some directory and provide its path with ``QUBES_INCLUDES`` and "
-"``QUBES_LIBS`` variables. Use those variables in your build scripts "
+"``WIN_BUILD_DEPS`` List of components required to build this "
+"one. :doc:`QubesBuilder </developer/building/qubes-builder>` will copy files "
+"specified with ``WIN_OUTPUT_HEADERS`` and ``WIN_OUTPUT_LIBS`` of those "
+"components to some directory and provide its path with ``QUBES_INCLUDES`` "
+"and ``QUBES_LIBS`` variables. Use those variables in your build scripts "
 "(*sources* or *Makefile* - depending on selected compiler). You can assume "
 "that the variables are always set and directories always exists, even if "
 "empty."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:65
-#: 2cbd4c7182eb45f9ac08e3b700416d5d
+#: 8894e19b394f4b86ab1e812076a0196f
 msgid "builder.conf settings"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:68
-#: 8f322ec87b624bb2b9891b44b4f01b3d
+#: fa12ae2b2412439695bf73731ab8abe8
 msgid ""
 "Most settings are documented in *builder.conf.default* file, which can be "
 "used as template the actual configuration."
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:70
-#: 2797799707b14de6befb15e7ee49044e
+#: 06976d6e3dda44efb30357ca17268dc5
 msgid "**TODO**"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:73
-#: 32490afada60410481a9b54b73ae20da
+#: 78394f5501a246dba90765129ba6386f
 msgid "Notes"
 msgstr ""
 
 #: ../../../developer/building/qubes-builder-details.rst:76
-#: 1ff8ebb1c91844ce908e11aa8164040c
+#: b84bfd252e5945b7b37e16c0f95f0897
 msgid ""
-"For a list of custom TemplateVMs available in QubesBuilder look at :doc:"
-"`Supported Versions page </user/downloading-installing-upgrading/supported-"
-"releases>`."
+"For a list of custom TemplateVMs available in QubesBuilder look "
+"at :doc:`Supported Versions page </user/downloading-installing-upgrading/"
+"supported-releases>`."
 msgstr ""

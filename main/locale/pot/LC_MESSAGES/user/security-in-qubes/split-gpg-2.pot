@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qubes OS main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-21 14:52+0000\n"
+"POT-Creation-Date: 2026-11-23 20:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:3
-#: 04ece0a55f434e6a8cf2bccfaf00fbd1
+#: cbfdd916c0264eae8be12b34ac7b8319
 msgid "Split GPG-2"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:5
-#: c4b178269304474581bd63ebe04d79d6
+#: 971525caa4364a3e9d89a206539d6c21
 msgid ""
 "Qubes OS allows you to split the management and usage of GPG keys. You can "
 "store your secret keys in one trusted qube and use them in another less "
@@ -31,38 +31,38 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:7
-#: 2ac6932c08ab4895ae78698225b205c2
+#: 935eaf2f3f2a4fa18ac3cfd735557192
 msgid ""
 "This way the compromise of your less trusted qube does not allow the "
 "attacker to automatically also steal all your keys."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:10
-#: 5a6780c43c254255b78988b1fd1b60db
+#: 94973df4a54748c2be98972303a2cc90
 msgid "How-to split your GPG keys between two qubes"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:12
-#: 20a9f4497fe94302bea9256c364c1518
+#: c95fd982d98b4a228c6f519028597830
 msgid "The following how-to will set up Split GPG-2 with two qubes:"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:14
-#: a16c639856be4320aaf219ec1b25a0b8
+#: 58291547647448fbbab8fe477d6ace10
 msgid ""
 "one qube holding the private keys, called **server-qube**. This qube is "
 "offline and should be trusted."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:15
-#: 34d57e0efd93488093e8deed8ec6a519
+#: 0a815c071f1941c49502f25b41bafb99
 msgid ""
 "the other qube using the keys, called **client-qube**. This qube doesn't "
 "have to be trusted as much as the server."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:17
-#: 71f9164e91234b558b4e7cf3d68c0582
+#: 21802894ff4143969e94742c46752905
 msgid ""
 "Each time you want to do something with a GPG key, the *client qube* will "
 "delegate the operation to the *server qube*. This qube will ask you to "
@@ -70,53 +70,54 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:20
-#: 49a1207e77bf4e2689da56f7328ac3b8
+#: 82f2677dc93b41ecaf3ca6e746232e40
 msgid "Install Split GPG-2"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:22
-#: 53d04b07924a4f47983763aec43e7ffa
+#: 9d4ec247060248f58105c37067f3c0cd
 msgid ""
-"In the template(s) qube(s) used by the *server qube* and the *client qube*, :"
-"ref:`install the split-gpg2 package <user/how-to-guides/how-to-install-"
-"software:installing software from default repositories>`."
+"In the template(s) qube(s) used by the *server qube* and the *client "
+"qube*, :ref:`install the split-gpg2 package <user/how-to-guides/how-to-"
+"install-software:installing software from default repositories>`."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:24
-#: e9245c14713c4a80a8fbc7a68236a81d
+#: 094519945f354fc09356d5859692ad70
 msgid "If you use a minimal template, make sure to install ``zenity`` package."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:27
-#: 405b9426709843e39cfc387ad5374c9d
+#: d63a4226d55148368e68957d655ba256
 msgid "Create a policy for Split GPG-2"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:29
-#: 6c67dc3d1a0a41818132b351c3b59d3f
+#: aca2f8d39d714205ae1be1986cd43b9d
 msgid ""
 "**In dom0**, :doc:`create or edit an RPC policy </user/how-to-guides/how-to-"
-"edit-a-policy>`. Add a line like the following and make sure to replace :"
-"samp:`{client-qube}` and :samp:`{server-qube}` by the appropriate values."
+"edit-a-policy>`. Add a line like the following and make sure to "
+"replace :samp:`{client-qube}` and :samp:`{server-qube}` by the appropriate "
+"values."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:36
-#: b20492ac7f1845da885ab2ceca9a8308
+#: 406c6fb70e7649f0ae41e1e53c3159e1
 msgid "Generate or import the secret keys in the *server qube*"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:38
-#: 2e56baa6c50e40d3acd62647102375ed
+#: 97cc98a4402a439ea84ec9191b4678d6
 msgid "**In the server qube**, you have two options:"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:40
-#: 9fe4c31dc76b45ad9955af11229a63f8
+#: bfc5a165aac148029d8e6e6b595cb271
 msgid "either generate your secret keys, like this:"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:46
-#: abebf5d800c24ade8bb5623ad7bbdc64
+#: eb12770925d54f368580fb9abb3033c6
 msgid ""
 "or, if you want to use some old keys, previously generated in another qube, "
 "import them and the ownertrust. Make sure to replace :file:`/home/user/"
@@ -124,34 +125,34 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:53
-#: a883bd212b6d41f9a22500c778c1a4e1
+#: 0664193df7a044118428904d10128449
 msgid "Ensure your key doesn't have a passphrase set."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:55
-#: 3597a48c7d784738a79e451e67b05ee3
+#: 3e7fe2c23d364425b15dedb03a4277c7
 msgid ""
 "In both situations, you have to export the public part of your keys and the "
 "\"ownertrust\" values in the *client qube*:"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:63
-#: cead9eb8f693472fb5957694072f396e
+#: 1328ce8820e843afb8af285995269ba4
 msgid "Do not export the private keys!"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:66
-#: 67624373ffc04494a72c5c9405c4c9ce
+#: b157d774081246d4b34c78a36fefaf97
 msgid "Set up the *client qube*"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:69
-#: 67152d2e30574ac586aed938db511dbb
+#: b7bf8a85d4924a769430937142d885b0
 msgid "Enable the ``split-gpg2-client`` service in the *client qube*"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:71
-#: d6bbcfa8f2b247a599522c5b77c632b1
+#: 5f7cd5f90a6641dfba362c930578d62d
 msgid ""
 "The first step is to :doc:`enable the qube service </user/how-to-guides/how-"
 "to-enable-a-service>` called ``split-gpg2-client``. Restarting the *client "
@@ -159,12 +160,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:74
-#: fbf7c581c0914ca8a71c500e0a989ea4
+#: 5e3d19eb591c43e98fbe6c7ed05f1398
 msgid "Import the public keys and ownertrust"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:76
-#: 693c4769bfc04fc7b369785c6fb75238
+#: f4356f4aa7d6476389451a828704d925
 msgid ""
 "If you have previously exported the public keys and the \"ownertrust\" "
 "values from the *server qube*. Now, you have to import them in the *client "
@@ -172,27 +173,27 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:84
-#: dfc9f1cc71e24e2da8c88a2dec0d4882
+#: 6a6a61ded11c4ea7943bcdadb3d035f3
 msgid "Check that Split GPG-2 works"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:86
-#: ca0211cc376f42f7afb9fe63b657ee16
+#: 61612b6beff94e04928c7441f65b4281
 msgid "You should be able to run ``gpg -K`` in the *client qube*:"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:99
-#: 8f691d951ff04bda99877fcf2b37048b
+#: c9e9a1b9757c465b80f19dd0e9a70796
 msgid "Troubleshooting"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:102
-#: 9d1509a7cb5f4434b07d45ea5298c60f
+#: 357159a30ada400f96a352b690807d75
 msgid "``gpg-agent`` only shows the \"keygrip\""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:104
-#: af384db753484277a6e0632ea8077583
+#: 531db7441b094d9daf8d01075bb832af
 msgid ""
 "If you have a passphrase on your keys and ``gpg-agent`` only shows the "
 "“keygrip” (something like the fingerprint of the private key) when asking "
@@ -201,12 +202,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:107
-#: 3821dab81d3f4d8885c244a12f582e1b
+#: 255efce93c094bf8a46198a78839888f
 msgid "Subkeys vs primary keys"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:109
-#: 6599a6f03f0c4c1896cf0394d2f45201
+#: 8a32d98d2a274137aeb9ed8219f5f92e
 msgid ""
 "Split GPG-2 only knows a hash of the data being signed. Therefore, it cannot "
 "differentiate between e.g. signatures of a piece of data or signatures of "
@@ -215,7 +216,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:111
-#: 8c692e9da94f472a961e45946400e666
+#: a21fa86314e4484786477398e2c55db4
 msgid ""
 "To prevent this, Split GPG-2 creates a new GnuPG home directory and imports "
 "the secret subkeys (**not** the primary key!) to it. Clients will be able to "
@@ -231,23 +232,23 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:114
-#: 728b9ca1abb94607bbb694d259de7dbd
+#: 0e0c22b55286487db331736a57326929
 msgid "Server options"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:116
-#: 2c858861c03d4ec8b7b0b7e21fb7b673
+#: 489d9f4a37744ca29655da058fd04fbe
 msgid ""
 "If you want to change some server option, copy :file:`/usr/share/doc/split-"
 "gpg2/examples/qubes-split-gpg2.conf.example` to :file:`/home/user/.config/"
 "qubes-split-gpg2/qubes-split-gpg2.conf` and change it as desired, it will "
 "take precedence over other loaded files, such as the drop-in configuration "
-"files with the suffix ``.conf`` in `/home/user/.config/qubes-split-gpg2/conf."
-"d/`."
+"files with the suffix ``.conf`` in `/home/user/.config/qubes-split-gpg2/"
+"conf.d/`."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:118
-#: fdf444ca042548088336d214d7a72a87
+#: d7724a0686c149c19ffd99779458c103
 msgid ""
 "By setting up some values in the configuration file, you can change some "
 "parameters. The configurations files are INI files, you can set global "
@@ -258,26 +259,26 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:0
-#: 0f54b6386e77467dbd28f2b7ed6a67da 97b2ab5c6f524bebbc7b39262930f4f7
-#: 429f16d86e8d4e298d3a1a558adafeff 88e2d17179e8472ca7379c75abaa8455
-#: cbded2d73b9b452eb28344dc1de28096 2132c3cfbec44bb9a6ed114a49b23b88
-#: 27d482a5bf234f9184148230137e23d9 e5e004b3e89841e69e12a75cbd140935
+#: 1612eb7f515e4d5a90489d5ed99e62d7 7d8e06e85d1a4eee808bbfc55c46e11f
+#: 1da42ec627f749489e0ae311b38b0f6f 42b71ed1d25e4e8f99eecd39f773c313
+#: 52636509be194f53b6f36136bb729a7d 3540f23a38554e48a1eec5ce79ba12ec
+#: 79a8a525146e46ea8317dcc76cba7fed af283cc19a2d4be8a524bd02e854557c
 msgid "type"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:130
 #: ../../../user/security-in-qubes/split-gpg-2.rst:140
 #: ../../../user/security-in-qubes/split-gpg-2.rst:148
-#: 1e199350e9b34aafb23cb2b90038e3d9 81dc8451ae0945af8ce7113442fb6ad7
-#: ed5465bc34994936a085ce3059540734
+#: 9b7e4f19f5ad4b65885757ad348865b7 94f64b03356b4c388fe652a03cf46eec
+#: c6a21e9cd0a746a18216f7498e962512
 msgid "boolean or integer"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:0
-#: b349606c047241ba9254c5a9cc507f1d 6c0a864a04b84e688b215cb670ab4cc3
-#: e1f59e7f0f4c432eb669957fb52d4c8b 8b371d33f2f9432d8342ab6904c61d59
-#: 7663ef4e7ab04acbb6a00bc7d3737331 43fc286e87194da9a8750d19f74e0ca6
-#: 497eb5eb76ba4991af1b6a67f04381af eb9524bdba444a7f860f7cba9cd6b153
+#: b76985954eac40d8afe2df38f90ab3ab 1792c99a3ef64ce4b868de50ec713ffa
+#: a8a8265be6a04a43948c5f565f688da9 f36277d66cee4e25b643502802bae13c
+#: 632064a0bde549e28ddfc7c724136fdf 6b8300caeaab40c89a1e256547e8eb9c
+#: c77032b5ede846aba9a8d28994a31c4a 1c1e4fa808304992a0c2535cc1945aad
 msgid "default"
 msgstr ""
 
@@ -286,29 +287,29 @@ msgstr ""
 #: ../../../user/security-in-qubes/split-gpg-2.rst:149
 #: ../../../user/security-in-qubes/split-gpg-2.rst:157
 #: ../../../user/security-in-qubes/split-gpg-2.rst:165
-#: c3350373ba38402f86c446fc02965b6c d69739e52f194dbea487209400c7cd97
-#: ba6b59e4fde84f88926e123a89957935 7788486df5f540a3b81f84f36462b9bb
-#: 379162ff7e6c411c917dcc7792536def
+#: 5c099a6f719c4210b589c177bc3d4598 fff7bf79b8474ff0abcca50badc3685a
+#: 8b5012c5d0744785bacc7efd03a6c951 a0bf401a3f6c4ebe85728ad92bf7c44b
+#: 3d113c6a67994c5abe9d644fcc5e3480
 msgid "``no``"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:0
-#: e16079160bb7411385af5070da87e087 0babf79e42d84933b7cc80d084605a57
-#: 5be504e303d1462da6228781dc8e8cfa cb6063276d804c82ae28e8f61996649a
-#: 98bfb4cab2924f16a7513a8fac629c16
+#: 3db6ba6104394df0bb8a77f040debfa0 909e965a7cd7435596a672c4c7ace0cb
+#: 07758dfc327f4867971f34d6d258990b b3debbdbdca046cca0b59cfed3f5ee7b
+#: c882974c4e2647b69f5c2e280474083c
 msgid "allowed values"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:132
 #: ../../../user/security-in-qubes/split-gpg-2.rst:142
 #: ../../../user/security-in-qubes/split-gpg-2.rst:150
-#: 44dee9e8f2da422ab9666e0a00623ac1 d9093c269bd7456b9463d13b39ce4122
-#: 64ea41cff057414c8a4408dc2685cda8
+#: 6f300434b867449db912390ef47b5f47 af77d440c9be41a3a002ff91ee2976d1
+#: f95484ebe4e34307aba4ba45cfab6791
 msgid "``no``, ``yes`` or any integer"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:134
-#: ce8e3f9b072046b090dfc4b46785085e
+#: c9fdc0616c9c4b079da44f8f673dde9f
 msgid ""
 "By default, all requests made to the *server qube* need to be confirmed. You "
 "can tell Split GPG-2 to accept requests: never (``no``), always (``yes``) or "
@@ -317,47 +318,47 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:136
-#: 2b1f0577ada8432e8cfdcba44d95b25b
+#: 7a32d4b28bfc4e6da2df4cdbe35b9d7a
 msgid "This option has two alternatives:"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:144
-#: 678bc9b5ea694ecba483e9e685b7cff7
+#: b14aeb8d703a426b9335a43c45036058
 msgid "same as :confval:`autoaccept` but only for signing requests"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:152
-#: afe8c42272ca4d16b94ff19ddddb1810
+#: 078f6b4f209c449aa90d4c6889be9434
 msgid "same as :confval:`autoaccept` but only for decrypt requests"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:156
 #: ../../../user/security-in-qubes/split-gpg-2.rst:164
-#: 0a130017b4114f458610c0fd73d6ed60 04f6e1b63ecb46f89ec0b8bc37829809
+#: 639b02e3cd954d0e878857e26fa5db0d af593e4cb9844703aea1044291e82d1b
 msgid "boolean"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:158
 #: ../../../user/security-in-qubes/split-gpg-2.rst:166
-#: a92db558fb0a47338023602a661b42d8 51c30eeae12b44078d237392f8d350bf
+#: 531d11becdde4b0796a64bd32bfaa0f0 e3685755187f4e318f1d05162736c492
 msgid "``no`` or ``yes``"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:160
-#: 3c113dd84ee64c74991b454b3c1aa442
+#: 23fce7ddc6bf402fb78478be4731885e
 msgid ""
 "Setting ``verbose_notifications`` to ``yes`` will provide more notifications."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:168
-#: f187bee1a38443d38d53623b3ef89a0e
+#: 1c4e5c47e179455ea2377d1e89626986
 msgid ""
 "This feature is new and not much tested. Therefore it’s not security "
 "supported!"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:170
-#: a62194b533c44b4abc4f2065ba7196a3
+#: 87f6e4ea976945998da82a05c5b99d6c
 msgid ""
 "By setting :confval:`allow_keygen` to ``yes``, you can allow the client to "
 "generate new keys. Normal usage should not need this."
@@ -365,72 +366,72 @@ msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:174
 #: ../../../user/security-in-qubes/split-gpg-2.rst:181
-#: b719fb2d9486440d8479423f48659d84 b0ed303f58c54bfe9df1f9e0f89fdd88
+#: 727e4f74d7e54831b9f43d1077213fec 2c4aa9f2da0b45f3b15ff4a797dc3c7d
 msgid "full path"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:175
 #: ../../../user/security-in-qubes/split-gpg-2.rst:182
 #: ../../../user/security-in-qubes/split-gpg-2.rst:191
-#: 06be4c9b41474929a9c8d65016d0120e 24659e2a5223453f974e5e826a30dcfe
-#: b3db7e6c9bfb4ffc8aad8ac41ad64f36
+#: dd15746b4df54f3c96baecd9166eec8a a53b10072953442b88e497a8842d75eb
+#: 7e29ae12cef7411e96b76c0211cc4594
 msgid "empty"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:177
-#: 008801bb8889435b92ac605b99cd8188
+#: 04ae8e6a528046f2b600babba04fb1d6
 msgid ""
 "You can set up a different GnuPG home from the default :file:`/home/user/gpg-"
 "home`, using :confval:`gnupghome`."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:184
-#: 0e984d5a10a748bf91872bb2abf1e4d6
+#: 3be389650c4a4d7780b79cd590d1dca7
 msgid ""
 "If you store different keys for different *client qubes* in the same *server "
-"qube*, you can isolate each GnuPG home, by setting :confval:"
-"`isolated_gnupghome`. The value points at a directory where each client will "
-"get its own subdirectory. For example, when this option is set to :file:`/"
-"home/user/gpg-home`, then the qube *personal* will use :file:`/home/user/gpg-"
-"home/{personal}` as GnuPG home."
+"qube*, you can isolate each GnuPG home, by "
+"setting :confval:`isolated_gnupghome`. The value points at a directory where "
+"each client will get its own subdirectory. For example, when this option is "
+"set to :file:`/home/user/gpg-home`, then the qube *personal* will "
+"use :file:`/home/user/gpg-home/{personal}` as GnuPG home."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:186
-#: f1675ac5ef654028a1d65463b27cadb3
+#: 08371fb3008e4b8a91ab8e2d02b13b62
 msgid ""
 "If you do this, don't forget to use the option ``--gnupg-home`` or the "
 "environment variable ``GNUPGHOME`` when using :program:`gpg` commands."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:190
-#: cc9661cc90a047779ce163609c461e81
+#: 5770c58b7c764b719bdc763a0e8c56c6
 msgid "path"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:193
-#: e593609109ca4d16869162c2b2843cac
+#: 621a13aad19f4494933811ff3afb5302
 msgid "Enable debug logging and set the debug log path."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:195
-#: 430fd631df4747fc89b327ea1c29f011
+#: 84ff0baa52ea49eeb209ccea370c9edb
 msgid ""
 "This is for debugging purpose only, **everything will be logged** including "
 "potentially confidential data/keys/etc"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:198
-#: 0f9e98b5dc424b149d0c108a1d2f1832
+#: a2272083c1aa4da6b54617afc2613cbb
 msgid "Notes about Split GPG-2"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:203
-#: 6a3592a38dff44dca0614b00561f2034
+#: 264f361e78ff4b0abd409fb5fcc8995d
 msgid "Example of the Split GPG-2 architecture"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:205
-#: 92c2df6a84cd47d286fc8381e6070ff3
+#: 62a3a2596ced4e188a6c5226aea3cb2c
 msgid ""
 "In a qube called *work-email* (with a green level of trust), ``qubes-gpg-"
 "client`` pretends to be a standard ``/usr/bin/gpg`` to other apps, here with "
@@ -438,7 +439,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:207
-#: 1b913cae276844d6a8df41af5297add2
+#: 0fa33b6447ca4d8e85bbd99019dc5623
 msgid ""
 "In the *work-email* qube, ``qubes-gpg-client`` is communicating with ``qubes-"
 "gpg-server`` located in the *work-gpg* qube (with a black level of trust). "
@@ -447,30 +448,30 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:209
-#: c38f572af31e4f898724e03b5791c861
+#: 90577a65de9546bc98d02c2299fbba8b
 msgid ""
 "Inside the *work-gpg* qube, ``qubes-gpg-server`` has access to the GPG key, "
 "through ``/usr/bin/gpg``."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:212
-#: ec2c9052ec184061835c93980169718a
+#: b4e6f1e3dfb74fa0a7f515d91d6306a6
 msgid "Using Split GPG-2 with Split GPG-1"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:214
-#: d6c6c2ef8a3046beaef6fbe73b181c26
+#: cdeb41ffe8b44c4e8d002de6269f071c
 msgid ""
 "Using Split GPG-2 as the “backend” for :doc:`split-gpg` is known to work."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:217
-#: 9c43922d75df4204aca0269707f871de
+#: 6adc8821b8954e6ba24b6825aafd0152
 msgid "Advanced usage: checking what is signed, etc."
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:219
-#: 6d7c72e746144a23accff9c3f7e49838
+#: 1bf124e47d024a41beb38035d0d0b320
 msgid ""
 "Similar to a smartcard, Split GPG-2 only tries to protect the private key. "
 "For advanced usages, consider if a specialized RPC service would be better. "
@@ -479,12 +480,12 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:222
-#: 9289ab870e0e4c7884d9ebb3c105b72c
+#: 9a2cf148ab9f40e9823358d87528285d
 msgid "Advantages of Split GPG vs. traditional GPG with a smart card"
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:224
-#: 581aedb34b4e4d84a678b2c2b8b87071
+#: 34f9a3b9c84f4fdcbbd216ef29b9f212
 msgid ""
 "It is often thought that the use of smart cards for private key storage "
 "guarantees ultimate safety. While this might be true (unless the attacker "
@@ -504,7 +505,7 @@ msgid ""
 msgstr ""
 
 #: ../../../user/security-in-qubes/split-gpg-2.rst:226
-#: 7b62e5471dac4af587ed4d7f7486cef6
+#: ff16a0c973d544df8f975476cd8b50e1
 msgid ""
 "With Qubes Split GPG-2 this problem is drastically minimized, because each "
 "time the key is to be used the user is asked for consent (with a definable "
